@@ -3,26 +3,20 @@ import styled from "styled-components";
 
 // components
 import Nav from "./Nav";
-// import SocialMediaBar from "./SocialMediaBar";
-
-const Container = styled.div`
-  width: 98%;
-  margin-bottom: 2%;
-`;
 
 const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
+  // width: fit-content;
+  // height: 50px;
+  // margin-left: auto;
 `;
 
 const Header = () => {
   return (
-    <Container>
-      <Wrapper>
-        <Nav />
-        {/* <SocialMediaBar /> */}
-      </Wrapper>
-    </Container>
+    <Wrapper>
+      <Nav />
+    </Wrapper>
   );
 };
 

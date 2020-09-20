@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+
+import { StyledButton } from '../Button/Button';
 
 // icons
 import {
@@ -12,15 +13,6 @@ import {
 
 const Wrapper = styled.div`
   display: flex;
-`;
-
-const StyledButton = styled(motion.button)`
-  background: none;
-  outline: none !important;
-  border: none;
-  :hover {
-    cursor: pointer;
-  }
 `;
 
 const socialMediaButtons = [
