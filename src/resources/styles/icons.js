@@ -4,8 +4,7 @@ import { FacebookCircle } from "@styled-icons/boxicons-logos/FacebookCircle";
 import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
 import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Github } from "@styled-icons/boxicons-logos/Github";
-import { Sun } from "@styled-icons/bootstrap/Sun";
-import { Moon } from "@styled-icons/boxicons-solid/Moon";
+import { Lightbulb } from "@styled-icons/fa-solid/Lightbulb";
 
 export const StyledFacebookCircle = styled(FacebookCircle)`
   width: 40px;
@@ -39,20 +38,40 @@ export const StyledGithub = styled(Github)`
   border-radius: 50%;
 `;
 
-export const StyledSun = styled(Sun)`
+// export const StyledSun = styled(Sun)`
+//   height: auto;
+//   width: 2.5rem;
+//   color: yellow;
+//   transition: all 0.5s forwards;
+//   transform: ${({ lightTheme }) =>
+//     lightTheme ? "translateY(0)" : "translateY(100px)"};
+// `;
+
+// export const StyledMoon = styled(Moon)`
+//   height: auto;
+//   width: 2.5rem;
+//   color: white;
+//   transition: all 0.5s forwards;
+//   transform: ${({ lightTheme }) =>
+//     lightTheme ? "translateY(-100px)" : "translateY(0)"};
+// `;
+
+export const StyledLightBulbOn = styled(Lightbulb)`
   height: auto;
-  width: 2.5rem;
-  color: yellow;
-  transition: all 0.2s linear;
+  width: 16px;
+  padding: 2px 4px;
+  color: ${({ lightTheme }) => (lightTheme ? "white" : "yellow")};
+  transition: all 0.5s linear;
   transform: ${({ lightTheme }) =>
     lightTheme ? "translateY(0)" : "translateY(100px)"};
 `;
 
-export const StyledMoon = styled(Moon)`
+export const StyledLightBulbOff = styled(Lightbulb)`
   height: auto;
-  width: 2.5rem;
-  color: white;
-  transition: all 0.2s linear;
+  width: 16px;
+  padding: 2px 4px;
+  color: ${({ lightTheme }) => (lightTheme ? "white" : "yellow")};
+  transition: all 0.5s forwards;
   transform: ${({ lightTheme }) =>
-    lightTheme ? "translateY(-100px)" : "translateY(0)"};
+    lightTheme ? "translateY(100px)" : "translateY(0)"};
 `;
