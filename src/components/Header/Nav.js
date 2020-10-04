@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 import { NavButton } from "../Button/Button";
@@ -34,11 +34,11 @@ const Nav = () => {
           Portfolio
         </StyledNavLink>
       </NavButton>
-      <NavButton disabled whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+      {/* <NavButton disabled whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
         <StyledNavLink exact to='/blog'>
           Blog
         </StyledNavLink>
-      </NavButton>
+      </NavButton> */}
     </Wrapper>
   );
 };

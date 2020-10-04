@@ -30,13 +30,8 @@ export const StyledButton = styled(motion.button)`
 
 export const SeeMoreButton = styled(motion.button)`
   width: 20rem;
-  height: 4rem;
+  height: 5rem;
   margin-top: 3rem;
-  text-align: center;
-  line-height: 36px;
-  display: inline-block;
-  line-height: 44px;
-  color: white;
   font-size: 16px;
   font-weight: 800;
   text-transform: uppercase;
@@ -57,14 +52,9 @@ export const SeeMoreButton = styled(motion.button)`
 
 export const ContactMeButton = styled(motion.button)`
   width: 20rem;
-  height: 4rem;
-  margin-left: 9rem;
+  height: 5rem;
   margin-top: 3rem;
   margin-right: 3rem;
-  text-align: center;
-  line-height: 36px;
-  display: inline-block;
-  line-height: 44px;
   color: white;
   font-size: 16px;
   font-weight: 800;

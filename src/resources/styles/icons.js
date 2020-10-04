@@ -6,6 +6,19 @@ import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Github } from "@styled-icons/boxicons-logos/Github";
 import { Lightbulb } from "@styled-icons/fa-solid/Lightbulb";
 
+import { Javascript } from "@styled-icons/boxicons-logos/Javascript";
+import { ReactLogo } from "@styled-icons/boxicons-logos/ReactLogo";
+import { Nodejs } from "@styled-icons/boxicons-logos/Nodejs";
+import { Mongodb } from "@styled-icons/simple-icons/Mongodb";
+import { Sass } from "@styled-icons/boxicons-logos/Sass";
+import { Css3 } from "@styled-icons/boxicons-logos/Css3";
+import { Html5 } from "@styled-icons/boxicons-logos/Html5";
+import { Aws } from "@styled-icons/fa-brands/Aws";
+import { Graphql } from "@styled-icons/simple-icons/Graphql";
+import { Mysql } from "@styled-icons/simple-icons/Mysql"
+
+
+
 export const StyledFacebookCircle = styled(FacebookCircle)`
   width: 40px;
   padding: 5px;
@@ -38,40 +51,30 @@ export const StyledGithub = styled(Github)`
   border-radius: 50%;
 `;
 
-// export const StyledSun = styled(Sun)`
-//   height: auto;
-//   width: 2.5rem;
-//   color: yellow;
-//   transition: all 0.5s forwards;
-//   transform: ${({ lightTheme }) =>
-//     lightTheme ? "translateY(0)" : "translateY(100px)"};
-// `;
-
-// export const StyledMoon = styled(Moon)`
-//   height: auto;
-//   width: 2.5rem;
-//   color: white;
-//   transition: all 0.5s forwards;
-//   transform: ${({ lightTheme }) =>
-//     lightTheme ? "translateY(-100px)" : "translateY(0)"};
-// `;
-
 export const StyledLightBulbOn = styled(Lightbulb)`
-  height: auto;
-  width: 16px;
-  padding: 2px 4px;
+  position: absolute;
+  height: 24px;
+  width: 24px;
   color: ${({ lightTheme }) => (lightTheme ? "white" : "yellow")};
   transition: all 0.5s linear;
   transform: ${({ lightTheme }) =>
-    lightTheme ? "translateY(0)" : "translateY(100px)"};
+    lightTheme ? "translateY(3px)" : "translateY(100px)"};
 `;
 
 export const StyledLightBulbOff = styled(Lightbulb)`
-  height: auto;
-  width: 16px;
-  padding: 2px 4px;
+  position: absolute;
+  height: 24px;
+  width: 24px;
   color: ${({ lightTheme }) => (lightTheme ? "white" : "yellow")};
-  transition: all 0.5s forwards;
+  transition: all 0.5s linear;
   transform: ${({ lightTheme }) =>
-    lightTheme ? "translateY(100px)" : "translateY(0)"};
+    lightTheme ? "translateY(-100px)" : "translateY(3px)"};
+`;
+
+export const StyledJavascript = styled(Javascript)`
+  width: 40px;
+  padding: 5px;
+  color: white;
+  background: #1da1f2;
+  border-radius: 50%;
 `;

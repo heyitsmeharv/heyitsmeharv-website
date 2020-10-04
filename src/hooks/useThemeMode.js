@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-export const useDarkMode = () => {
+export const useThemeMode = () => {
   const [theme, setTheme] = useState("light");
   const [componentMounted, setComponentMounted] = useState(false);
 
@@ -8,11 +8,14 @@ export const useDarkMode = () => {
     setTheme(mode);
   };
 
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setMode("dark");
-    } else {
-      setMode("light");
+  const toggleTheme = (theme) => {
+    switch(theme) {
+      case "light": return setMode("light");
+      case "dark": return setMode("dark");
+      case "summer": return setMode("summer");
+      case "spring": return setMode("spring");
+      case "winter": return setMode("winter"); 
+      case "autum": return setMode("autum");
     }
   };
 

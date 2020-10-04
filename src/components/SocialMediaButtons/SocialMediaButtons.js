@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import { motion } from "framer-motion";
-import { size } from "../../resources/styles/breakpoints";
+import { size } from "../../helpers/breakpoints";
 
 import {
   FacebookMSS,
