@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 // components
-import { Container } from "../Container/Container"
+// import { Container } from "../Container/Container"
 import { ContactMeButton, SeeMoreButton } from "../Button/Button";
 
 // animations
@@ -14,12 +14,15 @@ import { size } from "../../helpers/breakpoints";
 // images
 import ProfileImg from "../../resources/images/profile-portrait.jpg";
 
-// const Container = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin-bottom: 5%;
-// `;
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+`;
 
 const IntroWrapper = styled.div`
   animation: ${SlideInBottom} 0.5s forwards;
@@ -34,8 +37,11 @@ const ButtonWrapper = styled.div`
 
 const ProfileImage = styled.img`
   border-radius: 50%;
-  width: 30%;
+  width: 50rem;
   margin: 0 4rem;
+  @media only screen and (max-width: 600px) {
+    width: 30rem;
+  }
 `;
 
 const Intro = styled.h1`
@@ -50,28 +56,28 @@ const Intro = styled.h1`
   line-height: 1.5;
   letter-spacing: 3.2px;
   width: 100%;
+  @media only screen and (max-width: 600px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const Introduction = () => {
   return (
-    <Container className='flex' justify='column' align='center'>
+    <Container>
       <ProfileImage src={ProfileImg} />
       <IntroWrapper>
         <Intro>
-          Hello, my name is Adam. I'm a software engineer from Oxford,
-          England.
+          Hello, my name is Adam. I'm a software engineer from Oxford, England.
         </Intro>
         <ButtonWrapper>
           <ContactMeButton
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}>
             Contact Me
-        </ContactMeButton>
-          <SeeMoreButton
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}>
+          </ContactMeButton>
+          <SeeMoreButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             See More
-        </SeeMoreButton>
+          </SeeMoreButton>
         </ButtonWrapper>
       </IntroWrapper>
     </Container>

@@ -34,11 +34,6 @@ const Nav = () => {
           Portfolio
         </StyledNavLink>
       </NavButton>
-      {/* <NavButton disabled whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-        <StyledNavLink exact to='/blog'>
-          Blog
-        </StyledNavLink>
-      </NavButton> */}
     </Wrapper>
   );
 };

@@ -12,6 +12,7 @@ import { GlobalStyles } from "./resources/styles/global";
 // pages
 import Home from "./pages/Home";
 import CurriculumVitae from "./pages/CurriculumVitae";
+import Projects from "./pages/Projects";
 
 // components
 import Themes from "./components/Theme/Theme";
@@ -48,6 +49,7 @@ const App = () => {
             return (
               <Switch location={location}>
                 <Route exact path='/' component={Home} />
+                <Route exact path='/portfolio' component={Projects} />
                 <Route exact path='/cv' component={CurriculumVitae} />
               </Switch>
             );
