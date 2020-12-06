@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // hooks
@@ -6,7 +6,7 @@ import { useThemeMode } from "./hooks/useThemeMode";
 
 // styles
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, springTheme, summerTheme, winterTheme, autumTheme } from "./resources/styles/theme";
+import { lightTheme, darkTheme, blueTheme, redTheme } from "./resources/styles/theme";
 import { GlobalStyles } from "./resources/styles/global";
 
 // pages
@@ -26,10 +26,9 @@ const App = () => {
     switch (theme) {
       case "light": return lightTheme;
       case "dark": return darkTheme;
-      case "summer": return summerTheme;
-      case "spring": return springTheme;
-      case "winter": return winterTheme;
-      case "autum": return autumTheme;
+      case "blue": return blueTheme;
+      case "red": return redTheme;
+      default: return lightTheme;
     }
   }
 

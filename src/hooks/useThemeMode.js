@@ -12,10 +12,8 @@ export const useThemeMode = () => {
     switch(theme) {
       case "light": return setMode("light");
       case "dark": return setMode("dark");
-      case "summer": return setMode("summer");
-      case "spring": return setMode("spring");
-      case "winter": return setMode("winter"); 
-      case "autum": return setMode("autum");
+      case "blue": return setMode("blue");
+      case "red": return setMode("red");
     }
   };
 

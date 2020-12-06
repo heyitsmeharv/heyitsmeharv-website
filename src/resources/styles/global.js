@@ -21,7 +21,7 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     line-height: 1.7;
     color: #777;
-    padding: 5rem 5rem;
+    /* padding: 5rem; */
     box-sizing: 3rem;
 
     @media screen and (max-width: 480px) {

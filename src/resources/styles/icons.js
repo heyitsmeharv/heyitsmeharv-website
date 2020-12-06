@@ -6,6 +6,8 @@ import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Github } from "@styled-icons/boxicons-logos/Github";
 import { Lightbulb } from "@styled-icons/fa-solid/Lightbulb";
 
+import { ExternalLinkOutline } from "@styled-icons/evaicons-outline/ExternalLinkOutline"
+
 import { Javascript } from "@styled-icons/boxicons-logos/Javascript";
 import { ReactLogo } from "@styled-icons/boxicons-logos/ReactLogo";
 import { Nodejs } from "@styled-icons/boxicons-logos/Nodejs";
@@ -16,6 +18,7 @@ import { Html5 } from "@styled-icons/boxicons-logos/Html5";
 import { Aws } from "@styled-icons/fa-brands/Aws";
 import { Graphql } from "@styled-icons/simple-icons/Graphql";
 import { Mysql } from "@styled-icons/simple-icons/Mysql"
+import { StyledComponents } from '@styled-icons/simple-icons/StyledComponents'
 
 
 
@@ -46,8 +49,8 @@ export const StyledTwitter = styled(Twitter)`
 export const StyledGithub = styled(Github)`
   width: 40px;
   padding: 5px;
-  color: white;
-  background: black;
+  color: grey;
+  /* background: black; */
   border-radius: 50%;
 `;
 
@@ -74,7 +77,21 @@ export const StyledLightBulbOff = styled(Lightbulb)`
 export const StyledJavascript = styled(Javascript)`
   width: 40px;
   padding: 5px;
-  color: white;
-  background: #1da1f2;
+  color: grey;
+  border-radius: 50%;
+`;
+
+export const StyledMongodb= styled(Mongodb)`
+  width: 40px;
+  padding: 5px;
+  color: grey;
+  border-radius: 50%;
+`;
+
+
+export const StyledExternalLinkOutline = styled(ExternalLinkOutline)`
+  width: 40px;
+  padding: 5px;
+  color: grey;
   border-radius: 50%;
 `;

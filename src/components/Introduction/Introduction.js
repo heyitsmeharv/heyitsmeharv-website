@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 // components
-import { ContactMeButton, SeeMoreButton } from "../../components/Button/Button";
+import { Container } from "../Container/Container"
+import { ContactMeButton, SeeMoreButton } from "../Button/Button";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -13,19 +14,18 @@ import { size } from "../../helpers/breakpoints";
 // images
 import ProfileImg from "../../resources/images/profile-portrait.jpg";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3%;
-`;
+// const Container = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin-bottom: 5%;
+// `;
 
 const IntroWrapper = styled.div`
   animation: ${SlideInBottom} 0.5s forwards;
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: 0 4rem;
+  width: 100%;
 `;
 
 const ButtonWrapper = styled.div`
@@ -35,6 +35,7 @@ const ButtonWrapper = styled.div`
 const ProfileImage = styled.img`
   border-radius: 50%;
   width: 30%;
+  margin: 0 4rem;
 `;
 
 const Intro = styled.h1`
@@ -47,16 +48,17 @@ const Intro = styled.h1`
   border-radius: 35px;
   font-size: 5rem;
   line-height: 1.5;
+  letter-spacing: 3.2px;
   width: 100%;
 `;
 
 const Introduction = () => {
   return (
-    <Container>
+    <Container className='flex' justify='column' align='center'>
       <ProfileImage src={ProfileImg} />
       <IntroWrapper>
         <Intro>
-          Hello, my name is Adam. I'm a software developer from Oxford,
+          Hello, my name is Adam. I'm a software engineer from Oxford,
           England.
         </Intro>
         <ButtonWrapper>

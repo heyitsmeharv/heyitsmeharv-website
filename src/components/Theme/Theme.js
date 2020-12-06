@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+const Wrapper = styled.div`
+  padding: 2rem;
+`;
 
 const ThemeButton = styled.button`
   border: 2px solid black;
@@ -18,15 +21,15 @@ const Theme = ({ theme, toggleTheme }) => {
   const themes = [
     { name: 'light', colour: '#fff' },
     { name: 'dark', colour: '#000' },
-    { name: 'summer', colour: '#fddb3a' },
-    { name: 'spring', colour: '#ffa36c' },
-    { name: 'winter', colour: '#0f3057' },
-    { name: 'autum', colour: '#a35638' }
+    { name: 'blue', colour: '#0f3057' },
+    { name: 'red', colour: '#ffa36c' },
   ]
   return (
-    themes.map(theme => {
-      return <ThemeButton onClick={() => toggleTheme(theme.name)} colour={theme.colour} />
-    })
+    <Wrapper>
+      {themes.map(theme => {
+        return <ThemeButton onClick={() => toggleTheme(theme.name)} colour={theme.colour} />
+      })}
+    </Wrapper>
   );
 };
 
