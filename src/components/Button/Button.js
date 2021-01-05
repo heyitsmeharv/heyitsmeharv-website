@@ -28,7 +28,7 @@ export const StyledButton = styled(motion.button)`
   }
 `;
 
-export const SeeMoreButton = styled(motion.button)`
+export const DownloadCVButton = styled(motion.button)`
   width: 20rem;
   height: 5rem;
   margin-top: 3rem;

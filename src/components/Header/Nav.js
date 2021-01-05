@@ -25,11 +25,6 @@ const Nav = () => {
         </StyledNavLink>
       </NavButton>
       <NavButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-        <StyledNavLink exact to='/cv'>
-          Curriculum Vitae
-        </StyledNavLink>
-      </NavButton>
-      <NavButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
         <StyledNavLink exact to='/portfolio'>
           Portfolio
         </StyledNavLink>

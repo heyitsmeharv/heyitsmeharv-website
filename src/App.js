@@ -50,7 +50,6 @@ const App = () => {
               <Switch location={location}>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/portfolio' component={Projects} />
-                <Route exact path='/cv' component={CurriculumVitae} />
               </Switch>
             );
           }}
