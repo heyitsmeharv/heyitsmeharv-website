@@ -13,13 +13,15 @@ import {
 
 const Wrapper = styled.div`
   display: flex;
+  margin-left: auto;
+  padding: 2rem;
 `;
 
 const socialMediaButtons = [
-  { icon: <StyledFacebookCircle />, link: "https://www.facebook.com/adam.harvey.73/" },
+  { icon: <StyledGithub />, link: "https://github.com/heyitsmeharv" },
   { icon: <StyledLinkedinSquare />, link: "https://www.linkedin.com/in/heyitsmeharv/" },
   { icon: <StyledTwitter />, link: "https://twitter.com/heyitsmeharv" },
-  { icon: <StyledGithub />, link: "https://github.com/heyitsmeharv" }
+  { icon: <StyledFacebookCircle />, link: "https://www.facebook.com/adam.harvey.73/" },
 ];
 
 const SocialMediaBar = () => {

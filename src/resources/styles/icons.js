@@ -23,34 +23,42 @@ import { StyledComponents } from '@styled-icons/simple-icons/StyledComponents'
 
 
 export const StyledFacebookCircle = styled(FacebookCircle)`
-  width: 40px;
+  width: 2rem;
+  height: 2rem;
   padding: 5px;
+  margin: 0 0.5rem;
   color: white;
   background: #4267b2;
   border-radius: 50%;
 `;
 
 export const StyledLinkedinSquare = styled(LinkedinSquare)`
-  width: 40px;
+  width: 2rem;
+  height: 2rem;
   padding: 5px;
+  margin: 0 0.5rem;
   color: white;
   background: #0e76a8;
   border-radius: 50%;
 `;
 
 export const StyledTwitter = styled(Twitter)`
-  width: 40px;
+  width: 2rem;
+  height: 2rem;
   padding: 5px;
+  margin: 0 0.5rem;
   color: white;
   background: #1da1f2;
   border-radius: 50%;
 `;
 
 export const StyledGithub = styled(Github)`
-  width: 40px;
+  width: 2rem;
+  height: 2rem;
   padding: 5px;
+  margin: 0 0.5rem;
   color: grey;
-  /* background: black; */
+  background: white;
   border-radius: 50%;
 `;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import styled from "styled-components";
 
 // hooks
 import { useThemeMode } from "./hooks/useThemeMode";
@@ -12,10 +12,14 @@ import { GlobalStyles } from "./resources/styles/global";
 // pages
 import Home from "./pages/Home";
 import CurriculumVitae from "./pages/CurriculumVitae";
-import Projects from "./pages/Projects";
 
 // components
 import Themes from "./components/Theme/Theme";
+import SocialMediaBar from "./components/SocialMedia/SocialMediaBar";
+
+const Wrapper = styled.div`
+  display: flex;
+`;
 
 const App = () => {
 
@@ -42,19 +46,11 @@ const App = () => {
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
-      <Themes theme={theme} toggleTheme={toggleTheme} />
-      <Router>
-        <Route
-          render={({ location }) => {
-            return (
-              <Switch location={location}>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/portfolio' component={Projects} />
-              </Switch>
-            );
-          }}
-        />
-      </Router>
+      <Wrapper>
+        <Themes theme={theme} toggleTheme={toggleTheme} />
+        <SocialMediaBar />
+      </Wrapper>
+      <Home />
     </ThemeProvider>
   );
 };

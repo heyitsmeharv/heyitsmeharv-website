@@ -6,7 +6,7 @@ const Wrapper = styled.div`
 `;
 
 const ThemeButton = styled.button`
-  border: 2px solid black;
+  border: 1px solid white;
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
@@ -21,8 +21,8 @@ const Theme = ({ theme, toggleTheme }) => {
   const themes = [
     { name: 'light', colour: '#fff' },
     { name: 'dark', colour: '#000' },
-    { name: 'blue', colour: '#0f3057' },
-    { name: 'red', colour: '#ffa36c' },
+    { name: 'blue', colour: '#219ebc' },
+    { name: 'red', colour: '#780000' },
   ]
   return (
     <Wrapper>

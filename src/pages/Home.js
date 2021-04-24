@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 // components
-import Header from "../components/Header/Header";
 import Introduction from "../components/Introduction/Introduction";
 import AboutMeSection from "../components/AboutMeSection/AboutMeSection";
+import ContactMe from "../components/ContactMe/ContactMe";
 
 
 const Margin = styled.div`
@@ -14,10 +14,10 @@ const Margin = styled.div`
 const Home = () => {
   return (
     <>
-      <Header />
       <Margin>
         <Introduction />
       </Margin>
+      <ContactMe />
       <AboutMeSection />
     </>
   );
