@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 // components
 // import { Container } from "../Container/Container"
 import { ContactMeButton, DownloadCVButton } from "../Button/Button";
+import ContactMe from "../ContactMe/ContactMe";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
-
-// helpers
-import { size } from "../../helpers/breakpoints";
 
 // images
 import ProfileImg from "../../resources/images/profile-portrait.jpg";
@@ -64,7 +62,7 @@ const Intro = styled.h1`
   }
 `;
 
-const Introduction = () => {
+const Introduction = ({ open, setOpen }) => {
   return (
     <Container>
       <ProfileImage src={ProfileImg} />
@@ -75,7 +73,9 @@ const Introduction = () => {
         <ButtonWrapper>
           <ContactMeButton
             whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}>
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setOpen(!open)}
+          >
             Contact Me
           </ContactMeButton>
           <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>

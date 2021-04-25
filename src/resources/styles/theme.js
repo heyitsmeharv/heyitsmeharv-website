@@ -6,6 +6,7 @@ export const lightTheme = {
   background: '#000',
   contactMeButtonText: '#fff',
   contactMeButtonBackground: '#000',
+  contactMeBackground: '#000',
   seeMoreButtonText: '#000',
 };
 
@@ -17,6 +18,7 @@ export const darkTheme = {
   background: '#E2E2E2',
   contactMeButtonText: '#000',
   contactMeButtonBackground: '#fff',
+  contactMeBackground: '#000',
   seeMoreButtonText: '#fff',
 };
 
@@ -28,6 +30,7 @@ export const blueTheme = {
   background: '#000',
   contactMeButtonText: '#fff',
   contactMeButtonBackground: '#000',
+  contactMeBackground: '#000',
   seeMoreButtonText: '#000',
 };
 
@@ -40,5 +43,6 @@ export const redTheme = {
   background: '#fff',
   contactMeButtonText: '#000',
   contactMeButtonBackground: '#fff',
+  contactMeBackground: '#000',
   seeMoreButtonText: '#fff',
 };
