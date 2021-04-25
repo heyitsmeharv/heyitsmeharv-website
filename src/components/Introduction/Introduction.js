@@ -48,7 +48,6 @@ const Intro = styled.h1`
   animation: ${SlideInBottom} 0.5s forwards;
   display: flex;
   align-items: center;
-  justify-content: center;
   height: fit-content;
   border-radius: 35px;
   font-size: 4rem;
