@@ -8,6 +8,9 @@ export const lightTheme = {
   contactMeButtonBackground: '#000',
   contactMeBackground: '#000',
   seeMoreButtonText: '#000',
+  commentsBackground: '#fff',
+  commentsInput: '#E2E2E2',
+  commentsBubble: '#E2E2E2',
 };
 
 export const darkTheme = {
@@ -20,6 +23,9 @@ export const darkTheme = {
   contactMeButtonBackground: '#fff',
   contactMeBackground: '#000',
   seeMoreButtonText: '#fff',
+  commentsBackground: '#fff',
+  commentsInput: '#000',
+  commentsBubble: '#E2E2E2',
 };
 
 export const blueTheme = {
@@ -32,6 +38,9 @@ export const blueTheme = {
   contactMeButtonBackground: '#000',
   contactMeBackground: '#000',
   seeMoreButtonText: '#000',
+  commentsBackground: '#fff',
+  commentsInput: '#219ebc',
+  commentsBubble: '#E2E2E2',
 };
 
 export const redTheme = {
@@ -45,4 +54,7 @@ export const redTheme = {
   contactMeButtonBackground: '#fff',
   contactMeBackground: '#000',
   seeMoreButtonText: '#fff',
+  commentsBackground: '#fff',
+  commentsInput: '#780000',
+  commentsBubble: '#E2E2E2',
 };
