@@ -70,7 +70,6 @@ export const ContactMeButton = styled(motion.button)`
 
 export const ContactMeSendButton = styled(motion.button)`
   height: 50px;
-  width: 40%;
   min-width: 180px;
   padding: 0 20px;
   background-color: ${({ theme }) => theme.accent};
@@ -92,7 +91,6 @@ export const ContactMeSendButton = styled(motion.button)`
 
 export const CommentSendButton = styled(motion.button)`
   height: 50px;
-  width: 40%;
   min-width: 180px;
   padding: 0 20px;
   background-color: ${({ theme }) => theme.accent};

@@ -16,7 +16,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5% 0 5% 0;
+  margin-top: 5%;
   @media only screen and (max-width: 600px) {
     flex-direction: column;
   }

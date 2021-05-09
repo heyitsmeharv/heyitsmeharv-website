@@ -8,30 +8,29 @@ import { CommentSendButton } from '../Button/Button';
 const Container = styled.section`
   width: 100%;
   max-height: 100%;
-  padding: 4rem 0;
-  background: ${({ theme }) => theme.secondary};
-  margin-bottom: 20px;
+  background: ${({ theme }) => theme.primary};
 `;
 
 const CommentList = styled.div`
   width: 100%;
   max-height: 100%;
   padding: 4rem 0;
-  background: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.secondary};
 `;
 
 const Seporator = styled.span`
   width: 30px;
   height: 2px;
   display: block;
-  margin: auto;
+  margin: 20px auto;
   background-color: ${({ theme }) => theme.accent};
 `;
 
 const FlexWrapper = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: ${props => props.direction};
+  
 `;
 
 const Title = styled.h1`
@@ -40,7 +39,23 @@ const Title = styled.h1`
   text-align: center;
 `;
 
+const Text = styled.p`
+  font-size: 18px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  line-height: 25px;
+`;
+
 const Comment = styled.div`
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  border: 2px solid ${({ theme }) => theme.accent};
+  background: ${({ theme }) => theme.primary};
+`;
+
+const Message = styled.div`
   font-size: 2rem;
   padding: 10px;
   margin-bottom: 5px;
@@ -48,7 +63,12 @@ const Comment = styled.div`
   background: ${({ theme }) => theme.commentsBubble};
 `;
 
-const CommentAuthor = styled.p`
+const Author = styled.p`
+  text-align: right;
+  font-size: 1.5rem; 
+`;
+
+const Timestamp = styled.p`
   text-align: right;
   font-size: 1.5rem; 
 `;
@@ -56,13 +76,14 @@ const CommentAuthor = styled.p`
 const Comments = ({ comments, setComment, setName, handleSubmitComment }) => {
   return (
     <Container>
-      <Title>Leave Me A Comment Below</Title>
+      <Title>Comment</Title>
       <Seporator />
-      <FlexWrapper>
+      <Text>Feel free to leave me a comment below 👇</Text>
+      <FlexWrapper direction="column">
         <TextArea onClick={(e) => setComment(e.target.value)} type="text" placeholder="Comment" />
         <Input onClick={(e) => setName(e.target.value)} type="text" placeholder="Name" />
       </FlexWrapper>
-      <FlexWrapper>
+      <FlexWrapper direction="column">
         <CommentSendButton onClick={() => handleSubmitComment()}>Submit</CommentSendButton>
       </FlexWrapper>
       <CommentList>
@@ -70,10 +91,15 @@ const Comments = ({ comments, setComment, setName, handleSubmitComment }) => {
           const nameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1)
           const timestamp = hdate.prettyPrint(item.createdAt);
           return (
-            <FlexWrapper key={i}>
-              <Comment>{item.comment}</Comment>
-              <CommentAuthor>{nameCapitalized} - {timestamp}</CommentAuthor>
-            </FlexWrapper>
+            <Comment>
+              <FlexWrapper key={i} direction="column">
+                <FlexWrapper direction="row">
+                  <Author>{nameCapitalized} - </Author>
+                  <Timestamp>{timestamp}</Timestamp>
+                </FlexWrapper>
+                <Message>{item.comment}</Message>
+              </FlexWrapper>
+            </Comment>
           )
         }) : ''}
       </CommentList>

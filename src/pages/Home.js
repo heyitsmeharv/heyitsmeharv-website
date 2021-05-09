@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 // components
 import Introduction from "../components/Introduction/Introduction";
-import AboutMeSection from "../components/AboutMe/AboutMe";
+import AboutMe from "../components/AboutMe/AboutMe";
 import ContactMe from "../components/ContactMe/ContactMe";
+import Skills from "../components/Skills/Skills";
 import Comments from "../components/Comments/Comments";
 
 const Margin = styled.div`
@@ -60,7 +61,8 @@ const Home = () => {
         <Introduction open={open} setOpen={setOpen} />
       </Margin>
       <ContactMe open={open} />
-      <AboutMeSection />
+      <AboutMe />
+      <Skills />
       <Comments
         comments={comments}
         setComment={setComment}

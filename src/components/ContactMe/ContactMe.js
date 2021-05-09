@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// animations
-import SlideInBottom from "../../animations/SlideInBottom";
-
 // components
 import { Input, TextArea } from "../Input/Input";
 import { ContactMeSendButton } from "../Button/Button";
@@ -15,7 +12,6 @@ const Container = styled.section`
   padding: ${props => props.open ? "4rem 0;" : "0"};
   transition: all 0.3s ease-out;
   overflow: hidden;
-  margin-bottom: 20px;
 `;
 
 const FlexWrapper = styled.div`
@@ -33,7 +29,7 @@ const Text = styled.p`
   font-size: 18px;
   text-align: center;
   margin-top: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   line-height: 25px;
 `;
 
@@ -41,7 +37,7 @@ const Seporator = styled.span`
   width: 30px;
   height: 2px;
   display: block;
-  margin: auto;
+  margin: 20px auto;
   background-color: ${({ theme }) => theme.accent};
 `;
 

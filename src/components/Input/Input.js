@@ -15,7 +15,7 @@ export const Input = styled.input`
 
 export const TextArea = styled.textarea`
   font-family: sans-serif;
-  width: 50%;
+  width: 53%;
   font-size: 18px;
   padding: 10px;
   margin: 10px;
