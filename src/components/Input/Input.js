@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContactMeInput = styled.input`
+export const Input = styled.input`
   width: 25%;
   font-size: 18px;
   padding: 10px;
@@ -13,7 +13,7 @@ export const ContactMeInput = styled.input`
   }
 `;
 
-export const ContactMeTextArea = styled.textarea`
+export const TextArea = styled.textarea`
   font-family: sans-serif;
   width: 50%;
   font-size: 18px;

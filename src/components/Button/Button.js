@@ -89,3 +89,25 @@ export const ContactMeSendButton = styled(motion.button)`
     color: ${({ theme }) => theme.accent};
   }
 `;
+
+export const CommentSendButton = styled(motion.button)`
+  height: 50px;
+  width: 40%;
+  min-width: 180px;
+  padding: 0 20px;
+  background-color: ${({ theme }) => theme.accent};
+  border-radius: 2px;
+  color: ${({ theme }) => theme.primary};
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 44px;
+  margin: 30px 14px;
+  border: 2px solid ${({ theme }) => theme.accent};
+  :hover {
+    background: ${({ theme }) => theme.secondary};
+    color: ${({ theme }) => theme.accent};
+  }
+`;

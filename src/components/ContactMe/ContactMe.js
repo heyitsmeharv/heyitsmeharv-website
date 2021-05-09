@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import SlideInBottom from "../../animations/SlideInBottom";
 
 // components
-import { ContactMeInput, ContactMeTextArea } from "../Input/Input";
+import { Input, TextArea } from "../Input/Input";
 import { ContactMeSendButton } from "../Button/Button";
 
 const Container = styled.section`
@@ -50,17 +50,17 @@ const ContactMe = ({ open }) => {
     <Container open={open}>
       <Title>Contact Me</Title>
       <Seporator />
-      <Text>Contact me for more information on my own work experiences and services.</Text>
+      <Text>Contact me for more information on my own work experiences and services and any business enquiries.</Text>
       <FlexWrapper>
-        <ContactMeInput type="text" placeholder="Name" />
-        <ContactMeInput type="text" placeholder="Email" />
+        <Input type="text" placeholder="Name" />
+        <Input type="text" placeholder="Email" />
       </FlexWrapper>
       <FlexWrapper>
-        <ContactMeInput type="text" placeholder="Company" />
-        <ContactMeInput type="text" placeholder="Telephone" />
+        <Input type="text" placeholder="Company" />
+        <Input type="text" placeholder="Telephone" />
       </FlexWrapper>
       <FlexWrapper>
-        <ContactMeTextArea type="text" placeholder="Message" />
+        <TextArea type="text" placeholder="Message" />
       </FlexWrapper>
       <FlexWrapper>
         <ContactMeSendButton>Send Message</ContactMeSendButton>

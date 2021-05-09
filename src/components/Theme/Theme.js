@@ -26,8 +26,8 @@ const Theme = ({ theme, toggleTheme }) => {
   ]
   return (
     <Wrapper>
-      {themes.map(theme => {
-        return <ThemeButton onClick={() => toggleTheme(theme.name)} colour={theme.colour} />
+      {themes.map((theme, i) => {
+        return <ThemeButton key={i} onClick={() => toggleTheme(theme.name)} colour={theme.colour} />
       })}
     </Wrapper>
   );
