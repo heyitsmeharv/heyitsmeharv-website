@@ -4,7 +4,7 @@ import hdate from "human-date";
 
 // components
 import Introduction from "../components/Introduction/Introduction";
-import AboutMeSection from "../components/AboutMeSection/AboutMeSection";
+import AboutMeSection from "../components/AboutMe/AboutMe";
 import ContactMe from "../components/ContactMe/ContactMe";
 
 const Margin = styled.div`
@@ -82,9 +82,6 @@ const Home = () => {
     fetch('https://heyitsmeharv-backend.herokuapp.com/comments/')
       .then(response => {
         return response.json();
-        // console.log(JSON.stringify(response));
-        // setComments(response.json());
-        // console.log(comments);
       }).then(comment => {
         setComments(comment);
         console.log(comment);

@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// animations
-import SlideInBottom from "../../animations/SlideInBottom";
-
-
 const StyledSection = styled.section`
   width: 100%;
   padding: 2rem 0;
@@ -14,18 +10,16 @@ const StyledSection = styled.section`
 const Title = styled.h1`
   font-size: 4rem;
   font-weight: bold;
-  margin: 0rem 4rem;
-  /* animation: ${SlideInBottom} 0.5s forwards; */
+  margin-left: 10%;
 `;
 
 const Text = styled.p`
   font-size: 2rem;
   letter-spacing: 1.4px;
   margin: 1rem 4rem;
-  /* animation: ${SlideInBottom} 0.5s forwards; */
 `;
 
-const AboutMeSection = () => {
+const AboutMe = () => {
   return (
     <StyledSection>
       <Title>About Me</Title>
@@ -38,4 +32,4 @@ const AboutMeSection = () => {
   )
 }
 
-export default AboutMeSection;
+export default AboutMe;

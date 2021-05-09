@@ -11,7 +11,6 @@ import { GlobalStyles } from "./resources/styles/global";
 
 // pages
 import Home from "./pages/Home";
-import CurriculumVitae from "./pages/CurriculumVitae";
 
 // components
 import Themes from "./components/Theme/Theme";

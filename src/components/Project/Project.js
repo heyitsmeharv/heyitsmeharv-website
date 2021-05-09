@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { StyledGithub, StyledExternalLinkOutline } from "../../resources/styles/icons";
 
 const Container = styled.div`
-  background: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.secondary};
   width: 50%;
   /* border: 2px solid darkgray; */
   margin: 2rem;

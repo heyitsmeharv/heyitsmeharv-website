@@ -15,12 +15,12 @@ export const GlobalStyles = createGlobalStyle`
   
   
   body {
-    background: ${({ theme }) => theme.body};
+    background: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.text};
     font-family: sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: #777;
+    /* color: #777; */
     /* padding: 5rem; */
     box-sizing: 3rem;
 
