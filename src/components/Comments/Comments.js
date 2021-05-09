@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import hdate from "human-date";
 
+import CommentBox from './CommentBox';
 import { Input, TextArea } from '../Input/Input';
 import { CommentSendButton } from '../Button/Button';
 
@@ -73,19 +74,20 @@ const Timestamp = styled.p`
   font-size: 1.5rem; 
 `;
 
-const Comments = ({ comments, setComment, setName, handleSubmitComment }) => {
+const Comments = ({ comments }) => {
   return (
     <Container>
       <Title>Comment</Title>
       <Seporator />
       <Text>Feel free to leave me a comment below 👇</Text>
-      <FlexWrapper direction="column">
+      {/* <FlexWrapper direction="column">
         <TextArea onClick={(e) => setComment(e.target.value)} type="text" placeholder="Comment" />
         <Input onClick={(e) => setName(e.target.value)} type="text" placeholder="Name" />
       </FlexWrapper>
       <FlexWrapper direction="column">
         <CommentSendButton onClick={() => handleSubmitComment()}>Submit</CommentSendButton>
-      </FlexWrapper>
+      </FlexWrapper> */}
+      <CommentBox />
       <CommentList>
         {comments ? comments.map((item, i) => {
           const nameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1)

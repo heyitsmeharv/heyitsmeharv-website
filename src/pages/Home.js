@@ -19,8 +19,6 @@ const Container = styled.div`
 const Home = () => {
   const [open, setOpen] = useState(false);
   const [comments, setComments] = useState([]);
-  const [name, setName] = useState('');
-  const [comment, setComment] = useState('');
 
   useEffect(() => {
     fetch('https://heyitsmeharv-backend.herokuapp.com/comments/')
@@ -31,29 +29,9 @@ const Home = () => {
         console.log(comment);
       })
       .catch(error => {
-        console.log(`Unable to get leaderboards: ${error}`)
+        console.log(`Unable to get comments: ${error}`)
       })
   }, []);
-
-  const handleSubmitComment = () => {
-    const commentObj = {
-      comment: comment,
-      name: name,
-    }
-    fetch('https://heyitsmeharv-backend.herokuapp.com/comments/add', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify(commentObj)
-    })
-      .catch(error => {
-        console.log(`Unable to submit comment: ${error}`)
-      })
-    setName('');
-    setComment('');
-  }
 
   return (
     <Container>
@@ -63,12 +41,7 @@ const Home = () => {
       <ContactMe open={open} />
       <AboutMe />
       <Skills />
-      <Comments
-        comments={comments}
-        setComment={setComment}
-        setName={setName}
-        handleSubmitComment={handleSubmitComment}
-      />
+      <Comments comments={comments} />
     </Container>
   );
 };

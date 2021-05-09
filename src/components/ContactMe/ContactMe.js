@@ -61,7 +61,6 @@ const ContactMe = ({ open }) => {
       <FlexWrapper>
         <ContactMeSendButton>Send Message</ContactMeSendButton>
       </FlexWrapper>
-
     </Container>
   )
 }

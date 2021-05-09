@@ -90,8 +90,6 @@ export const ContactMeSendButton = styled(motion.button)`
 `;
 
 export const CommentSendButton = styled(motion.button)`
-  height: 50px;
-  min-width: 180px;
   padding: 0 20px;
   background-color: ${({ theme }) => theme.accent};
   border-radius: 2px;
@@ -102,10 +100,28 @@ export const CommentSendButton = styled(motion.button)`
   font-weight: 800;
   text-transform: uppercase;
   line-height: 44px;
-  margin: 30px 14px;
-  border: 2px solid ${({ theme }) => theme.accent};
+  border: 2px solid ${({ theme }) => theme.primary};
   :hover {
     background: ${({ theme }) => theme.secondary};
     color: ${({ theme }) => theme.accent};
   }
 `;
+
+export const CommentCancelButton = styled(motion.button)`
+  padding: 0 20px;
+  background: none; 
+  border-radius: 2px;
+  color: ${({ theme }) => theme.accent};
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 44px;
+  border: 2px solid ${({ theme }) => theme.accent};
+  :hover {
+    background: ${({ theme }) => theme.secondary};
+    color: ${({ theme }) => theme.primary};
+  }
+`;
+
