@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import hdate from "human-date";
 
 import CommentBox from './CommentBox';
-import { Input, TextArea } from '../Input/Input';
-import { CommentSendButton } from '../Button/Button';
 
 const Container = styled.section`
   width: 100%;
@@ -31,7 +29,8 @@ const FlexWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: ${props => props.direction};
-  
+  align-items: baseline;
+  width: 100%;
 `;
 
 const Title = styled.h1`
@@ -49,29 +48,28 @@ const Text = styled.p`
 `;
 
 const Comment = styled.div`
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 15px;
-  border: 2px solid ${({ theme }) => theme.accent};
-  background: ${({ theme }) => theme.primary};
+  display: flex;
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  box-shadow: 0 0 8px rgb(0 0 0 / 20%);
+  padding: 14px;
+  max-height: 90px;
 `;
 
 const Message = styled.div`
-  font-size: 2rem;
-  padding: 10px;
+  font-size: 20px;
+  padding: 10px 0px;
   margin-bottom: 5px;
-  border-radius: 15px;
-  background: ${({ theme }) => theme.commentsBubble};
 `;
 
 const Author = styled.p`
-  text-align: right;
-  font-size: 1.5rem; 
+  font-size: 18px; 
+  margin-right: auto;
 `;
 
 const Timestamp = styled.p`
-  text-align: right;
-  font-size: 1.5rem; 
+  font-size: 18px; 
 `;
 
 const Comments = ({ comments }) => {
@@ -80,23 +78,16 @@ const Comments = ({ comments }) => {
       <Title>Comment</Title>
       <Seporator />
       <Text>Feel free to leave me a comment below 👇</Text>
-      {/* <FlexWrapper direction="column">
-        <TextArea onClick={(e) => setComment(e.target.value)} type="text" placeholder="Comment" />
-        <Input onClick={(e) => setName(e.target.value)} type="text" placeholder="Name" />
-      </FlexWrapper>
-      <FlexWrapper direction="column">
-        <CommentSendButton onClick={() => handleSubmitComment()}>Submit</CommentSendButton>
-      </FlexWrapper> */}
       <CommentBox />
       <CommentList>
         {comments ? comments.map((item, i) => {
           const nameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1)
           const timestamp = hdate.prettyPrint(item.createdAt);
           return (
-            <Comment>
-              <FlexWrapper key={i} direction="column">
+            <Comment key={i}>
+              <FlexWrapper direction="column">
                 <FlexWrapper direction="row">
-                  <Author>{nameCapitalized} - </Author>
+                  <Author>{nameCapitalized}</Author>
                   <Timestamp>{timestamp}</Timestamp>
                 </FlexWrapper>
                 <Message>{item.comment}</Message>

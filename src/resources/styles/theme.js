@@ -16,10 +16,10 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  primary: '#363537',
-  secondary: '#8d99ae',
-  accent: '#2b2d42',
-  text: '#000',
+  primary: '#1b1c22',
+  secondary: '#4f5669',
+  accent: '#fff',
+  text: '#fff',
   toggleBorder: '#6B8096',
   contactMeButtonText: '#000',
   contactMeButtonBackground: '#fff',
@@ -33,10 +33,10 @@ export const darkTheme = {
 };
 
 export const blueTheme = {
-  primary: '#fff',
-  secondary: '#8d99ae',
-  accent: '#2b2d42',
-  text: '#000',
+  primary: '#118ab2',
+  secondary: '#023047',
+  accent: '#001d3d',
+  text: '#fff',
   toggleBorder: '#6B8096',
   contactMeButtonText: '#fff',
   contactMeButtonBackground: '#000',
@@ -50,10 +50,10 @@ export const blueTheme = {
 };
 
 export const redTheme = {
-  primary: '#fff',
-  secondary: '#8d99ae',
-  accent: '#2b2d42',
-  text: '#000',
+  primary: '#6a040f',
+  secondary: '#f7b538',
+  accent: '#fdf0d5',
+  text: '#fff',
   toggleBorder: '#6B8096',
   contactMeButtonText: '#000',
   contactMeButtonBackground: '#fff',

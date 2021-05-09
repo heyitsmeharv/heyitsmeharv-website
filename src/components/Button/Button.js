@@ -109,19 +109,18 @@ export const CommentSendButton = styled(motion.button)`
 
 export const CommentCancelButton = styled(motion.button)`
   padding: 0 20px;
-  background: none; 
   border-radius: 2px;
-  color: ${({ theme }) => theme.accent};
   display: inline-block;
   text-align: center;
   font-size: 16px;
   font-weight: 800;
   text-transform: uppercase;
   line-height: 44px;
-  border: 2px solid ${({ theme }) => theme.accent};
+  background: none;
+  outline: none !important;
+  border: none;
   :hover {
-    background: ${({ theme }) => theme.secondary};
-    color: ${({ theme }) => theme.primary};
+    cursor: pointer;
   }
 `;
 

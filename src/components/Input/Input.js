@@ -46,6 +46,7 @@ export const CommentTextArea = styled.textarea`
   color: ${({ theme }) => theme.accent};
   transition: transform 0.4s ease;;
   font-size: 18px;
+  padding: 10px;
   width: 100%;
   outline: none;
   padding: 0;

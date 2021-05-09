@@ -105,6 +105,7 @@ const CommentBox = () => {
   const onClose = () => {
     setName('');
     setComment('');
+    console.log(name, comment);
     setIsExpanded(false);
   };
 
@@ -123,7 +124,6 @@ const CommentBox = () => {
     >
       <Header className="header">
         <CommentInput
-          value={name}
           onClick={(e) => setName(e.target.value)}
           placeholder="Name"
         />
