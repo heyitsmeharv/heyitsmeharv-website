@@ -49,7 +49,6 @@ export const CommentTextArea = styled.textarea`
   padding: 10px;
   width: 100%;
   outline: none;
-  padding: 0;
   min-height: 60px;
   transform: translateY(-32px);
   line-height: 1;

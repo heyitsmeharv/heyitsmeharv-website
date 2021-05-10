@@ -6,16 +6,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.primary};
-  border: 2px solid ${({ theme }) => theme.accent};
-  margin: 20px;
-  padding: 30px;
   min-width: 180px;
-  transition: all .2s ease-in-out;
-
-  :hover {
-    transform: scale(1.05, 1.05);
-  }
 `;
 
 const Icon = styled.div`

@@ -5,18 +5,22 @@ import Card from '../Card/Card';
 
 // icons
 import {
-  StyledJavascript,
-  StyledHtml5,
-  StyledCss3,
-  StyledSass,
-  StyledStyledComponents,
-  StyledReactLogo,
-  StyledNodejs,
-  StyledMongodb,
-  StyledAWS,
-  StyledTwilio,
-  StyledGraphql,
-  StyledMysql,
+  AWSSVG,
+  GraphqlSVG,
+  ReactjsSVG,
+  ExpressSVG,
+  JavascriptSVG,
+  NodejsSVG,
+  HtmlSVG,
+  CssSVG,
+  MongoDBSVG,
+  MySQLSVG,
+  TwilioSVG,
+  WebpackSVG,
+  GithubSVG,
+  GitSVG,
+  SassSVG,
+  StyledComponentsSVG,
 } from "../../resources/styles/icons";
 
 const Container = styled.section`
@@ -59,52 +63,68 @@ const Text = styled.p`
 const Skills = () => {
   const skillList = [
     {
-      icon: <StyledJavascript />,
+      icon: <JavascriptSVG />,
       title: "Javascript",
     },
     {
-      icon: <StyledHtml5 />,
+      icon: <HtmlSVG />,
       title: "HTML",
     },
     {
-      icon: <StyledCss3 />,
+      icon: <CssSVG />,
       title: "CSS",
     },
     {
-      icon: <StyledSass />,
+      icon: <SassSVG />,
       title: "Sass",
     },
     {
-      icon: <StyledStyledComponents />,
+      icon: <StyledComponentsSVG />,
       title: "Styled Comonents",
     },
     {
-      icon: <StyledReactLogo />,
+      icon: <ReactjsSVG />,
       title: "React",
     },
     {
-      icon: <StyledNodejs />,
+      icon: <NodejsSVG />,
       title: "Node",
     },
     {
-      icon: <StyledAWS />,
+      icon: <ExpressSVG />,
+      title: "Express",
+    },
+    {
+      icon: <AWSSVG />,
       title: "AWS",
     },
     {
-      icon: <StyledTwilio />,
+      icon: <TwilioSVG />,
       title: "Twilio",
     },
     {
-      icon: <StyledMongodb />,
+      icon: <MongoDBSVG />,
       title: "Mongo DB",
     },
     {
-      icon: <StyledGraphql />,
+      icon: <GraphqlSVG />,
       title: "GraphQL",
     },
     {
-      icon: <StyledMysql />,
-      title: "SQL",
+      icon: <WebpackSVG />,
+      title: "Webpack",
+    },
+    {
+      icon: <MySQLSVG />,
+      title: "MySQL",
+    },
+    {
+      icon: <GitSVG />,
+      title: "Git",
+    },
+    {
+      icon: <GithubSVG />,
+      title: "GitHub",
     },
   ];
 
