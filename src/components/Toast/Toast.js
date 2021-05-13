@@ -13,8 +13,6 @@ const Container = styled.div`
   position: fixed;
   top: 12px;
   right: 12px;
-  animation: ${ToastInRight} .7s;
-  transition: transform .6s ease-in-out;
 `;
 
 const Wrapper = styled.div`
@@ -67,8 +65,8 @@ const Toast = ({ toastList }) => {
     }
   }, []);
 
-  const deleteToast = id => {
-    const index = list.findIndex(e => e.id === id);
+  const deleteToast = item => {
+    const index = list.findIndex(e => e.id === item);
     list.splice(index, 1);
     setList([...list]);
   }
@@ -85,7 +83,7 @@ const Toast = ({ toastList }) => {
             <Box>
               <FlexWrapper>
                 <Title>{toast.title}</Title>
-                <ToastCloseButton onClick={() => deleteToast(toast.id)}><StyledClose /></ToastCloseButton>
+                <ToastCloseButton onClick={() => deleteToast(toast)}><StyledClose /></ToastCloseButton>
               </FlexWrapper>
               <Text>{toast.description}</Text>
             </Box>

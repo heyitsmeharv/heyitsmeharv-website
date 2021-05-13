@@ -93,23 +93,25 @@ const Comments = () => {
       <Seporator />
       <Text>Feel free to leave me a comment below 👇</Text>
       <CommentBox />
-      <CommentList>
-        {comments ? comments.map((item, i) => {
-          const nameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1)
-          const timestamp = hdate.prettyPrint(item.createdAt);
-          return (
-            <Comment key={i}>
-              <FlexWrapper direction="column">
-                <FlexWrapper direction="row">
-                  <Author>{nameCapitalized}</Author>
-                  <Timestamp>{timestamp}</Timestamp>
+      {comments.length !== 0 ?
+        <CommentList>
+          {comments.map((item, i) => {
+            const nameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1)
+            const timestamp = hdate.prettyPrint(item.createdAt);
+            return (
+              <Comment key={i}>
+                <FlexWrapper direction="column">
+                  <FlexWrapper direction="row">
+                    <Author>{nameCapitalized}</Author>
+                    <Timestamp>{timestamp}</Timestamp>
+                  </FlexWrapper>
+                  <Message>{item.comment}</Message>
                 </FlexWrapper>
-                <Message>{item.comment}</Message>
-              </FlexWrapper>
-            </Comment>
-          )
-        }) : ''}
-      </CommentList>
+              </Comment>
+            )
+          })}
+        </CommentList>
+        : ''}
     </Container>
   );
 }
