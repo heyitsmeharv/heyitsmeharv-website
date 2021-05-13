@@ -124,3 +124,12 @@ export const CommentCancelButton = styled(motion.button)`
   }
 `;
 
+export const ToastCloseButton = styled.button`
+  width: 25px;
+  height: 25px;
+  color: white;
+  background: none;
+  outline: none;
+  border: none;
+  margin-left: auto;
+`;

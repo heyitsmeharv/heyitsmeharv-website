@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import hdate from "human-date";
 
@@ -72,7 +72,21 @@ const Timestamp = styled.p`
   font-size: 18px; 
 `;
 
-const Comments = ({ comments }) => {
+const Comments = () => {
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    fetch('https://heyitsmeharv-backend.herokuapp.com/comments/')
+      .then(response => {
+        return response.json();
+      }).then(comment => {
+        setComments(comment);
+      })
+      .catch(error => {
+        console.log(`Unable to get comments: ${error}`)
+      })
+  }, []);
+
   return (
     <Container>
       <Title>Comment</Title>

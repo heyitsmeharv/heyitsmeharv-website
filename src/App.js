@@ -18,6 +18,7 @@ import SocialMediaBar from "./components/SocialMedia/SocialMediaBar";
 
 const Wrapper = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const App = () => {

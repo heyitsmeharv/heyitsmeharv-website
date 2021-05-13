@@ -2,8 +2,13 @@ import React, { useState, useRef } from 'react';
 import useDynamicHeightField from '../../hooks/useDynamicHeightField';
 import styled, { css } from 'styled-components';
 
+import Toast from '../Toast/Toast';
 import { CommentInput, CommentTextArea } from '../Input/Input';
 import { CommentSendButton, CommentCancelButton } from '../Button/Button';
+
+//icons
+import { CheckSVG } from '../../resources/styles/icons';
+import { ErrorSVG } from '../../resources/styles/icons';
 
 const INITIAL_HEIGHT = 46;
 
@@ -65,17 +70,37 @@ const CommentBox = () => {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
   const [isExpanded, setIsExpanded] = useState(false);
+  const [list, setList] = useState([])
 
   const outerHeight = useRef(INITIAL_HEIGHT);
   const textRef = useRef(null);
   const containerRef = useRef(null);
+
+  const handleOnReset = () => {
+    setName('');
+    setComment('');
+  };
+
+  const createToast = type => {
+    const id = Math.floor((Math.random() * 100) + 1);
+    const toast = {
+      id,
+      title: type === 'Success' ? 'Success' : 'Error',
+      description: type === 'Success' ? 'Successfully Made Comment' : 'Failed To Make Comment',
+      backgroundColor: type === 'Success' ? '#5cb85c' : '#d9534f',
+      icon: type === 'Success' ? <CheckSVG /> : <ErrorSVG />
+    }
+    let array = [];
+    array.push(...list, toast);
+    setList(array);
+  };
 
   const handleSubmitComment = () => {
     const commentObj = {
       comment: comment,
       name: name,
     }
-    console.log(commentObj);
+
     fetch('https://heyitsmeharv-backend.herokuapp.com/comments/add', {
       headers: {
         'Accept': 'application/json',
@@ -83,12 +108,17 @@ const CommentBox = () => {
       },
       method: "POST",
       body: JSON.stringify(commentObj)
+    }).then(response => {
+      if (response.ok) {
+        createToast('Success');
+      } else {
+        createToast('Fail');
+      }
     })
       .catch(error => {
-        console.log(`Unable to submit comment: ${error}`)
-      })
-    setName('');
-    setComment('');
+        console.log(`Unable to submit comment: ${error}`);
+      });
+    handleOnReset();
   }
 
   const onExpand = () => {
@@ -103,9 +133,7 @@ const CommentBox = () => {
   }
 
   const onClose = () => {
-    setName('');
-    setComment('');
-    console.log(name, comment);
+    handleOnReset();
     setIsExpanded(false);
   };
 
@@ -124,7 +152,7 @@ const CommentBox = () => {
     >
       <Header className="header">
         <CommentInput
-          onClick={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           placeholder="Name"
         />
       </Header>
@@ -151,6 +179,7 @@ const CommentBox = () => {
           Submit
         </CommentSendButton>
       </Actions>
+      <Toast toastList={list} />
     </Container>
   );
 };

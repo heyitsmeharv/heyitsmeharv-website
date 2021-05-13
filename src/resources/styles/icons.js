@@ -6,6 +6,7 @@ import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
 import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Github } from "@styled-icons/boxicons-logos/Github";
 
+import { CircleWithCross } from "@styled-icons/entypo/CircleWithCross"
 import { ExternalLinkOutline } from "@styled-icons/evaicons-outline/ExternalLinkOutline";
 
 const StyledSvg = styled.svg`
@@ -256,6 +257,33 @@ export const MySQLSVG = () => {
   );
 };
 
+export const CheckSVG = () => {
+  return (
+    <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1" />
+      </g>
+      <g>
+        <path id="svg_1" fill="#ffffff" d="m16,0c-8.836,0 -16,7.164 -16,16s7.164,16 16,16s16,-7.164 16,-16s-7.164,-16 -16,-16zm-2.48,23.383l-7.362,-7.363l2.828,-2.828l4.533,4.535l9.617,-9.617l2.828,2.828l-12.444,12.445z" />
+      </g>
+    </svg>
+  );
+}
+
+export const ErrorSVG = () => {
+  return (
+    <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1" />
+      </g>
+      <g>
+        <circle fill="#ffffff" r="16" id="BG" cy="16" cx="16" />
+        <path fill="#d72828" id="Exclamatory_x5F_Sign" d="m14.5,25l3,0l0,-3l-3,0l0,3zm0,-19l0,13l3,0l0,-13l-3,0z" />
+      </g>
+    </svg>
+  );
+}
+
 export const StyledExternalLinkOutline = styled(ExternalLinkOutline)`
   width: 40px;
   padding: 5px;
@@ -301,5 +329,13 @@ export const StyledGithub = styled(Github)`
   margin: 0 0.5rem;
   color: grey;
   background: white;
+  border-radius: 50%;
+`;
+
+export const StyledClose = styled(CircleWithCross)`
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  margin: 0 0.5rem;
   border-radius: 50%;
 `;
