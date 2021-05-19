@@ -87,6 +87,15 @@ export const ContactMeSendButton = styled(motion.button)`
     background: ${({ theme }) => theme.secondary};
     color: ${({ theme }) => theme.accent};
   }
+  ${props => props.disabled && css`
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    :hover {
+      background: #cccccc;
+      color: #666666;
+    }
+  `}
 `;
 
 export const CommentSendButton = styled(motion.button)`
@@ -105,6 +114,15 @@ export const CommentSendButton = styled(motion.button)`
     background: ${({ theme }) => theme.secondary};
     color: ${({ theme }) => theme.accent};
   }
+  ${props => props.disabled && css`
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    :hover {
+      background: #cccccc;
+      color: #666666;
+    }
+  `}
 `;
 
 export const CommentCancelButton = styled(motion.button)`

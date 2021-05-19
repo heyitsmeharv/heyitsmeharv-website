@@ -70,7 +70,7 @@ const CommentBox = ({ setLoading }) => {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
   const [isExpanded, setIsExpanded] = useState(false);
-  const [list, setList] = useState([])
+  const [list, setList] = useState([]);
 
   const outerHeight = useRef(INITIAL_HEIGHT);
   const textRef = useRef(null);
@@ -154,7 +154,7 @@ const CommentBox = ({ setLoading }) => {
       <Header className="header">
         <CommentInput
           onChange={(e) => setName(e.target.value)}
-          placeholder="Name"
+          placeholder="Name *"
           value={name}
           name="name"
         />
@@ -177,7 +177,7 @@ const CommentBox = ({ setLoading }) => {
         </CommentCancelButton>
         <CommentSendButton
           onClick={() => handleSubmitComment()}
-          disabled={comment && comment.length < 1 || name && name.length < 1}
+          disabled={comment.length === 0 || name.length === 0}
         >
           Submit
         </CommentSendButton>

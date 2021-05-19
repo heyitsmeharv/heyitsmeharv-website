@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Input = styled.input`
   width: 25%;
@@ -11,6 +11,9 @@ export const Input = styled.input`
   ::placeholder {
     opacity: 0.5;
   }
+  ${props => props.error && css`
+    border: 2px solid red;
+  `}
 `;
 
 export const TextArea = styled.textarea`

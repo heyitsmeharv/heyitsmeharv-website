@@ -53,6 +53,7 @@ const ContactMe = ({ open }) => {
   const [telephone, setTelephone] = useState('');
   const [message, setMessage] = useState('');
   const [list, setList] = useState([]);
+  const [error, setError] = useState(false);
 
   const handleOnReset = () => {
     setName('');
@@ -60,6 +61,7 @@ const ContactMe = ({ open }) => {
     setTelephone('');
     setCompany('');
     setMessage('');
+    setError(false);
   };
 
   const createToast = type => {
@@ -77,7 +79,6 @@ const ContactMe = ({ open }) => {
   };
 
   const handleOnSendEmail = () => {
-    const id = Math.floor((Math.random() * 100) + 1);
     const emailObj = {
       name,
       email,
@@ -95,13 +96,14 @@ const ContactMe = ({ open }) => {
     }).then(response => {
       if (response.ok) {
         createToast('Success');
+        handleOnReset();
       } else {
         createToast('Fail');
+        setError(true);
       }
     }).catch(error => {
       console.log(`Unable to send email: ${error}`);
     });
-    handleOnReset();
   }
 
   return (
@@ -110,21 +112,23 @@ const ContactMe = ({ open }) => {
       <Seporator />
       <Text>Contact me for more information on my own work experiences and services and any business enquiries.</Text>
       <FlexWrapper>
-        <Input onChange={(e) => setName(e.target.value)} type="text" placeholder="Name" />
-        <Input onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email" />
+        <Input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Name *" />
+        <Input error={error} value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email *" />
       </FlexWrapper>
       <FlexWrapper>
-        <Input onChange={(e) => setCompany(e.target.value)} type="text" placeholder="Company" />
-        <Input onChange={(e) => setTelephone(e.target.value)} type="text" placeholder="Telephone" />
+        <Input value={company} onChange={(e) => setCompany(e.target.value)} type="text" placeholder="Company" />
+        <Input value={telephone} onChange={(e) => setTelephone(e.target.value)} type="text" placeholder="Telephone" />
       </FlexWrapper>
       <FlexWrapper>
-        <TextArea onChange={(e) => setMessage(e.target.value)} type="text" placeholder="Message" />
+        <TextArea value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder="Message *" />
       </FlexWrapper>
       <FlexWrapper>
-        <ContactMeSendButton onClick={handleOnSendEmail}>Send Message</ContactMeSendButton>
+        <ContactMeSendButton disabled={email.length === 0 || name.length === 0 || message.length === 0} onClick={handleOnSendEmail}>
+          Send Message
+        </ContactMeSendButton>
       </FlexWrapper>
       <Toast toastList={list} />
-    </Container>
+    </Container >
   )
 }
 
