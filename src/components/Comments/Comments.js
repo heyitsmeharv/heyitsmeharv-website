@@ -74,6 +74,7 @@ const Timestamp = styled.p`
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch('https://heyitsmeharv-backend.herokuapp.com/comments/')
@@ -81,18 +82,19 @@ const Comments = () => {
         return response.json();
       }).then(comment => {
         setComments(comment);
+        setLoading(false);
       })
       .catch(error => {
         console.log(`Unable to get comments: ${error}`)
       })
-  }, []);
+  }, [loading]);
 
   return (
     <Container>
       <Title>Comment</Title>
       <Seporator />
       <Text>Feel free to leave me a comment below 👇</Text>
-      <CommentBox />
+      <CommentBox setLoading={setLoading} />
       {comments.length !== 0 ?
         <CommentList>
           {comments.map((item, i) => {

@@ -21,7 +21,9 @@ import {
   GitSVG,
   SassSVG,
   StyledComponentsSVG,
-} from "../../resources/styles/icons";
+} from '../../resources/styles/icons';
+
+import awscp2020 from '../../resources/images/AWS-CloudPractitioner-2020.png';
 
 const Container = styled.section`
   width: 100%;
@@ -58,6 +60,12 @@ const Text = styled.p`
   text-align: center;
   margin-top: 30px;
   line-height: 25px;
+`;
+
+const Image = styled.img`
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const Skills = () => {
@@ -143,6 +151,11 @@ const Skills = () => {
             />
           )
         })}
+      </FlexWrapper>
+      <FlexWrapper>
+        <a href="https://www.credly.com/badges/445bcb6b-31b2-4c23-8ca4-adf17e871e42">
+          <Image width="100px" height="100px" src={awscp2020} />
+        </a>
       </FlexWrapper>
     </Container>
   );

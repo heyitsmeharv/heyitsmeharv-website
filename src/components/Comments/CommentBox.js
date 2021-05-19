@@ -66,7 +66,7 @@ const Actions = styled.div`
   transition: opacity 0.4s 0.2s ease;
 `;
 
-const CommentBox = () => {
+const CommentBox = ({ setLoading }) => {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
   const [isExpanded, setIsExpanded] = useState(false);
@@ -111,6 +111,7 @@ const CommentBox = () => {
     }).then(response => {
       if (response.ok) {
         createToast('Success');
+        setLoading(true);
       } else {
         createToast('Fail');
       }
@@ -154,6 +155,8 @@ const CommentBox = () => {
         <CommentInput
           onChange={(e) => setName(e.target.value)}
           placeholder="Name"
+          value={name}
+          name="name"
         />
       </Header>
       <Label htmlFor="comment">What are your thoughts?</Label>
