@@ -1,23 +1,26 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-export const NavButton = styled(motion.button)`
-  font-size: 2em;
-  width: 8em;
-  background: none;
-  outline: none !important;
-  border: none;
-  :hover {
-    cursor: pointer;
-  }
+// contactMeButtonText: '#fff',
+// contactMeButtonBackground: '#000',
+// contactMeBackground: '#000',
 
-  ${(props) =>
-    props.disabled &&
-    css`
-      cursor: not-allowed;
-      pointer-events: none;
-    `}
-`;
+// contactMeInputBorder: '#fff',
+// contactMeInputColor: '#000',
+
+// cvButtonText: '#fff',
+// cvButtonBackground: '#000',
+// cvBackground: '#000',
+
+// sendEmailButtonText: '#fff',
+// sendEmailButtonBackground: '#000',
+// sendEmailBackground: '#000',
+
+// commentsBoxBackground: '#fff',
+// commentsInputColor: '#E2E2E2',
+
+// commentsBackground: '#fff',
+// commentsText: '#fff',
 
 export const StyledButton = styled(motion.button)`
   background: none;
@@ -40,10 +43,10 @@ export const DownloadCVButton = styled(motion.button)`
   border-radius: 2px;
   background: none;
   outline: none;
-  color: ${({ theme }) => theme.seeMoreButtonText};
+  color: ${({ theme }) => theme.text};
   :hover {
-    background: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.primary};
+    background: ${({ theme }) => theme.secondary};
+    color: ${({ theme }) => theme.accent};
   }
   :focus {
     text-decoration: underline;
@@ -55,14 +58,13 @@ export const ContactMeButton = styled(motion.button)`
   height: 5rem;
   margin-top: 3rem;
   margin-right: 3rem;
-  color: white;
   font-size: 16px;
   font-weight: 800;
   text-transform: uppercase;
   border: none;
   outline: none;
-  background: ${({ theme }) => theme.contactMeButtonBackground};
-  color: ${({ theme }) => theme.contactMeButtonText};
+  background: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.primary};
   :focus {
     text-decoration: underline;
   }
@@ -88,6 +90,8 @@ export const ContactMeSendButton = styled(motion.button)`
     color: ${({ theme }) => theme.accent};
   }
   ${props => props.disabled && css`
+    cursor: not-allowed;
+    pointer-events: none;
     border: 1px solid #999999;
     background-color: #cccccc;
     color: #666666;
@@ -115,6 +119,8 @@ export const CommentSendButton = styled(motion.button)`
     color: ${({ theme }) => theme.accent};
   }
   ${props => props.disabled && css`
+    cursor: not-allowed;
+    pointer-events: none;
     border: 1px solid #999999;
     background-color: #cccccc;
     color: #666666;

@@ -6,7 +6,7 @@ const Wrapper = styled.div`
 `;
 
 const ThemeButton = styled.button`
-  border: 1px solid white;
+  border: 2px solid ${props => props.border};
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
@@ -19,15 +19,15 @@ const ThemeButton = styled.button`
 
 const Theme = ({ theme, toggleTheme }) => {
   const themes = [
-    { name: 'light', colour: '#fff' },
-    { name: 'dark', colour: '#000' },
-    { name: 'blue', colour: '#219ebc' },
-    { name: 'red', colour: '#780000' },
+    { name: 'light', colour: '#fff', border: '#000' },
+    { name: 'dark', colour: '#000', border: '#fff' },
+    { name: 'blue', colour: '#219ebc', border: '#fff' },
+    { name: 'red', colour: '#780000', border: '#fff' },
   ]
   return (
     <Wrapper>
       {themes.map((theme, i) => {
-        return <ThemeButton key={i} onClick={() => toggleTheme(theme.name)} colour={theme.colour} />
+        return <ThemeButton key={i} onClick={() => toggleTheme(theme.name)} border={theme.border} colour={theme.colour} />
       })}
     </Wrapper>
   );

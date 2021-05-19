@@ -18,7 +18,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   max-width: 400px;
   margin: 50px auto;
-  background: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.commentsBoxBackground};
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   padding: 14px;

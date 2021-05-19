@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 // components
 import Toast from '../Toast/Toast';
-import { Input, TextArea } from "../Input/Input";
+import { ContactMeInput, ContactMeTextArea } from "../Input/Input";
 import { ContactMeSendButton } from "../Button/Button";
 
 //icons
@@ -15,6 +15,7 @@ const Container = styled.section`
   background: ${({ theme }) => theme.secondary};
   max-height: ${props => props.open ? "100%" : "0"};
   padding: ${props => props.open ? "4rem 0;" : "0"};
+  margin: ${props => props.open ? "4rem 0;" : "0"};
   transition: all 0.3s ease-out;
   overflow: hidden;
 `;
@@ -112,15 +113,15 @@ const ContactMe = ({ open }) => {
       <Seporator />
       <Text>Contact me for more information on my own work experiences and services and any business enquiries.</Text>
       <FlexWrapper>
-        <Input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Name *" />
-        <Input error={error} value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email *" />
+        <ContactMeInput value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Name *" />
+        <ContactMeInput error={error} value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email *" />
       </FlexWrapper>
       <FlexWrapper>
-        <Input value={company} onChange={(e) => setCompany(e.target.value)} type="text" placeholder="Company" />
-        <Input value={telephone} onChange={(e) => setTelephone(e.target.value)} type="text" placeholder="Telephone" />
+        <ContactMeInput value={company} onChange={(e) => setCompany(e.target.value)} type="text" placeholder="Company" />
+        <ContactMeInput value={telephone} onChange={(e) => setTelephone(e.target.value)} type="text" placeholder="Telephone" />
       </FlexWrapper>
       <FlexWrapper>
-        <TextArea value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder="Message *" />
+        <ContactMeTextArea value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder="Message *" />
       </FlexWrapper>
       <FlexWrapper>
         <ContactMeSendButton disabled={email.length === 0 || name.length === 0 || message.length === 0} onClick={handleOnSendEmail}>

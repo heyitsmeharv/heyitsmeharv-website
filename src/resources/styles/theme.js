@@ -4,32 +4,57 @@ export const lightTheme = {
   accent: '#202020',
   text: '#000',
   toggleBorder: '#000',
+
   contactMeButtonText: '#fff',
   contactMeButtonBackground: '#000',
   contactMeBackground: '#000',
-  contactMeButtonInputBackground: '#fff',
-  contactMeButtonInputPlaceholder: '#000',
-  seeMoreButtonText: '#000',
+
+  contactMeInputBorder: '#fff',
+  contactMeInputColor: '#000',
+
+  cvButtonText: '#fff',
+  cvButtonBackground: '#000',
+  cvBackground: '#000',
+
+  sendEmailButtonText: '#fff',
+  sendEmailButtonBackground: '#000',
+  sendEmailBackground: '#000',
+
+  commentsBoxBackground: '#fff',
+  commentsInputColor: '#E2E2E2',
+
   commentsBackground: '#fff',
-  commentsInput: '#E2E2E2',
-  commentsBubble: '#E2E2E2',
+  commentsText: '#fff',
+
 };
 
 export const darkTheme = {
   primary: '#1b1c22',
   secondary: '#4f5669',
-  accent: '#fff',
+  accent: '#000',
   text: '#fff',
   toggleBorder: '#6B8096',
-  contactMeButtonText: '#000',
-  contactMeButtonBackground: '#fff',
+
+  contactMeButtonText: '#fff',
+  contactMeButtonBackground: '#000',
   contactMeBackground: '#000',
-  contactMeButtonInputBackground: '#fff',
-  contactMeButtonInputPlaceholder: '#fff',
-  seeMoreButtonText: '#fff',
+
+  contactMeInputBorder: '#fff',
+  contactMeInputColor: '#000',
+
+  cvButtonText: '#fff',
+  cvButtonBackground: '#000',
+  cvBackground: '#000',
+
+  sendEmailButtonText: '#fff',
+  sendEmailButtonBackground: '#000',
+  sendEmailBackground: '#000',
+
+  commentsBoxBackground: '#fff',
+  commentsInputColor: '#E2E2E2',
+
   commentsBackground: '#fff',
-  commentsInput: '#000',
-  commentsBubble: '#E2E2E2',
+  commentsText: '#fff',
 };
 
 export const blueTheme = {
@@ -38,30 +63,54 @@ export const blueTheme = {
   accent: '#001d3d',
   text: '#fff',
   toggleBorder: '#6B8096',
+
   contactMeButtonText: '#fff',
   contactMeButtonBackground: '#000',
   contactMeBackground: '#000',
-  contactMeButtonInputBackground: '#fff',
-  contactMeButtonInputPlaceholder: '#fff',
-  seeMoreButtonText: '#000',
+
+  contactMeInputBorder: '#fff',
+  contactMeInputColor: '#000',
+
+  cvButtonText: '#fff',
+  cvButtonBackground: '#000',
+  cvBackground: '#000',
+
+  sendEmailButtonText: '#fff',
+  sendEmailButtonBackground: '#000',
+  sendEmailBackground: '#000',
+
+  commentsBoxBackground: '#fff',
+  commentsInputColor: '#E2E2E2',
+
   commentsBackground: '#fff',
-  commentsInput: '#219ebc',
-  commentsBubble: '#E2E2E2',
+  commentsText: '#fff',
 };
 
 export const redTheme = {
   primary: '#6a040f',
-  secondary: '#f7b538',
+  secondary: '#fff',
   accent: '#fdf0d5',
   text: '#fff',
   toggleBorder: '#6B8096',
-  contactMeButtonText: '#000',
-  contactMeButtonBackground: '#fff',
+
+  contactMeButtonText: '#fff',
+  contactMeButtonBackground: '#000',
   contactMeBackground: '#000',
-  contactMeButtonInputBackground: '#fff',
-  contactMeButtonInputPlaceholder: '#fff',
-  seeMoreButtonText: '#fff',
+
+  contactMeInputBorder: '#fff',
+  contactMeInputColor: '#000',
+
+  cvButtonText: '#fff',
+  cvButtonBackground: '#000',
+  cvBackground: '#000',
+
+  sendEmailButtonText: '#fff',
+  sendEmailButtonBackground: '#000',
+  sendEmailBackground: '#000',
+
+  commentsBoxBackground: '#fff',
+  commentsInputColor: '#E2E2E2',
+
   commentsBackground: '#fff',
-  commentsInput: '#780000',
-  commentsBubble: '#E2E2E2',
+  commentsText: '#fff',
 };
