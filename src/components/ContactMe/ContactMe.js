@@ -70,7 +70,7 @@ const ContactMe = ({ open }) => {
     const toast = {
       id,
       title: type === 'Success' ? 'Success' : 'Error',
-      description: type === 'Success' ? 'Successfully Send Email' : 'Failed To Send Email',
+      description: type === 'Success' ? 'Successfully Sent Email' : 'Failed To Send Email',
       backgroundColor: type === 'Success' ? '#5cb85c' : '#d9534f',
       icon: type === 'Success' ? <CheckSVG /> : <ErrorSVG />
     }
