@@ -77,9 +77,13 @@ const Introduction = ({ open, setOpen }) => {
           >
             Contact Me
           </ContactMeButton>
-          <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-            Curriculum Vitae
+          <a target="_blank"
+            href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/Adam+Harvey+-+CV.pdf"
+          >
+            <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              Curriculum Vitae
           </DownloadCVButton>
+          </a>
         </ButtonWrapper>
       </IntroWrapper>
     </Container>
