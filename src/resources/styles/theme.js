@@ -3,29 +3,7 @@ export const lightTheme = {
   secondary: '#f5f3f4',
   accent: '#202020',
   text: '#000',
-  toggleBorder: '#000',
-
-  contactMeButtonText: '#fff',
-  contactMeButtonBackground: '#000',
-  contactMeBackground: '#000',
-
-  contactMeInputBorder: '#fff',
-  contactMeInputColor: '#000',
-
-  cvButtonText: '#fff',
-  cvButtonBackground: '#000',
-  cvBackground: '#000',
-
-  sendEmailButtonText: '#fff',
-  sendEmailButtonBackground: '#000',
-  sendEmailBackground: '#000',
-
-  commentsBoxBackground: '#fff',
-  commentsInputColor: '#E2E2E2',
-
-  commentsBackground: '#fff',
-  commentsText: '#fff',
-
+  seporator: '#000',
 };
 
 export const darkTheme = {
@@ -33,28 +11,7 @@ export const darkTheme = {
   secondary: '#4f5669',
   accent: '#000',
   text: '#fff',
-  toggleBorder: '#6B8096',
-
-  contactMeButtonText: '#fff',
-  contactMeButtonBackground: '#000',
-  contactMeBackground: '#000',
-
-  contactMeInputBorder: '#fff',
-  contactMeInputColor: '#000',
-
-  cvButtonText: '#fff',
-  cvButtonBackground: '#000',
-  cvBackground: '#000',
-
-  sendEmailButtonText: '#fff',
-  sendEmailButtonBackground: '#000',
-  sendEmailBackground: '#000',
-
-  commentsBoxBackground: '#fff',
-  commentsInputColor: '#E2E2E2',
-
-  commentsBackground: '#fff',
-  commentsText: '#fff',
+  seporator: '#fff',
 };
 
 export const blueTheme = {
@@ -62,55 +19,13 @@ export const blueTheme = {
   secondary: '#023047',
   accent: '#001d3d',
   text: '#fff',
-  toggleBorder: '#6B8096',
-
-  contactMeButtonText: '#fff',
-  contactMeButtonBackground: '#000',
-  contactMeBackground: '#000',
-
-  contactMeInputBorder: '#fff',
-  contactMeInputColor: '#000',
-
-  cvButtonText: '#fff',
-  cvButtonBackground: '#000',
-  cvBackground: '#000',
-
-  sendEmailButtonText: '#fff',
-  sendEmailButtonBackground: '#000',
-  sendEmailBackground: '#000',
-
-  commentsBoxBackground: '#fff',
-  commentsInputColor: '#E2E2E2',
-
-  commentsBackground: '#fff',
-  commentsText: '#fff',
+  seporator: '#fff',
 };
 
 export const redTheme = {
   primary: '#6a040f',
-  secondary: '#fff',
-  accent: '#fdf0d5',
+  secondary: '#ffba08',
+  accent: '#000',
   text: '#fff',
-  toggleBorder: '#6B8096',
-
-  contactMeButtonText: '#fff',
-  contactMeButtonBackground: '#000',
-  contactMeBackground: '#000',
-
-  contactMeInputBorder: '#fff',
-  contactMeInputColor: '#000',
-
-  cvButtonText: '#fff',
-  cvButtonBackground: '#000',
-  cvBackground: '#000',
-
-  sendEmailButtonText: '#fff',
-  sendEmailButtonBackground: '#000',
-  sendEmailBackground: '#000',
-
-  commentsBoxBackground: '#fff',
-  commentsInputColor: '#E2E2E2',
-
-  commentsBackground: '#fff',
-  commentsText: '#fff',
+  seporator: '#fff',
 };

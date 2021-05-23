@@ -30,7 +30,7 @@ const Seporator = styled.span`
   height: 2px;
   display: block;
   margin: 20px auto;
-  background-color: ${({ theme }) => theme.accent};
+  background-color: ${({ theme }) => theme.seporator};
 `;
 
 const AboutMe = () => {

@@ -1,34 +1,12 @@
 import styled, { css } from 'styled-components';
 
-// contactMeButtonText: '#fff',
-// contactMeButtonBackground: '#000',
-// contactMeBackground: '#000',
-
-// contactMeInputBorder: '#fff',
-// contactMeInputColor: '#000',
-
-// cvButtonText: '#fff',
-// cvButtonBackground: '#000',
-// cvBackground: '#000',
-
-// sendEmailButtonText: '#fff',
-// sendEmailButtonBackground: '#000',
-// sendEmailBackground: '#000',
-
-// commentsBoxBackground: '#fff',
-// commentsInputBorder: '#E2E2E2',
-// commentsInputColor: '#E2E2E2',
-
-// commentsBackground: '#fff',
-// commentsText: '#fff',
-
 export const ContactMeInput = styled.input`
   width: 25%;
   font-size: 18px;
   padding: 10px;
   margin: 10px;
-  border: 2px solid ${({ theme }) => theme.contactMeInputBorder};
-  color: ${({ theme }) => theme.contactMeInputColor};
+  border: 2px solid ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.text};
   border-radius: 3px;
   ::placeholder {
     opacity: 0.5;
@@ -44,8 +22,8 @@ export const ContactMeTextArea = styled.textarea`
   font-size: 18px;
   padding: 10px;
   margin: 10px;
-  border: 2px solid ${({ theme }) => theme.contactMeInputBorder};
-  color: ${({ theme }) => theme.contactMeInputColor};
+  border: 2px solid ${({ theme }) => theme.secondary};
+  color: ${({ theme }) => theme.accent};
   border-radius: 3px;
   ::placeholder {
     opacity: 0.5;
@@ -57,7 +35,7 @@ export const CommentInput = styled.input`
   font-size: 18px;
   padding: 10px;
   border: none;
-  color: ${({ theme }) => theme.commentsInputColor};
+  color: ${({ theme }) => theme.text};
   border-radius: 3px;
   ::placeholder {
     opacity: 0.5;

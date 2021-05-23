@@ -17,7 +17,7 @@ const Icon = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.text};
   font-size: 20px;
   margin-top: 0;
   line-height: 22px;

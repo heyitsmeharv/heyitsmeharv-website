@@ -1,27 +1,6 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-// contactMeButtonText: '#fff',
-// contactMeButtonBackground: '#000',
-// contactMeBackground: '#000',
-
-// contactMeInputBorder: '#fff',
-// contactMeInputColor: '#000',
-
-// cvButtonText: '#fff',
-// cvButtonBackground: '#000',
-// cvBackground: '#000',
-
-// sendEmailButtonText: '#fff',
-// sendEmailButtonBackground: '#000',
-// sendEmailBackground: '#000',
-
-// commentsBoxBackground: '#fff',
-// commentsInputColor: '#E2E2E2',
-
-// commentsBackground: '#fff',
-// commentsText: '#fff',
-
 export const StyledButton = styled(motion.button)`
   background: none;
   outline: none !important;
@@ -46,7 +25,7 @@ export const DownloadCVButton = styled(motion.button)`
   color: ${({ theme }) => theme.text};
   :hover {
     background: ${({ theme }) => theme.secondary};
-    color: ${({ theme }) => theme.accent};
+    color: ${({ theme }) => theme.text};
   }
   :focus {
     text-decoration: underline;
