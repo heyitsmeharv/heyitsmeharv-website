@@ -25,6 +25,7 @@ const Title = styled.h1`
   margin-top: 0;
   line-height: 22px;
   margin-bottom: 20px;
+  font-weight: 600;
 `;
 
 const Card = ({ icon, title }) => {

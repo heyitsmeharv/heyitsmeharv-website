@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.text};
-    font-family: sans-serif;
+    font-family: Raleway;
     font-weight: 400;
     line-height: 1.7;
     /* color: #777; */

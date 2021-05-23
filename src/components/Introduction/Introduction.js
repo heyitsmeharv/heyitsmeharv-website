@@ -32,12 +32,14 @@ const ButtonWrapper = styled.div`
 `;
 
 const ProfileImage = styled.img`
-  border: 6px solid ${({ theme }) => theme.background};
   border-radius: 50%;
   width: 30rem;
   margin: 0 4rem;
   @media only screen and (max-width: 600px) {
     width: 30rem;
+  }
+  @media only screen and (max-width: 375px) {
+    width: 25rem;
   }
 `;
 
@@ -51,11 +53,20 @@ const Intro = styled.h1`
   font-size: 4rem;
   line-height: 1.5;
   letter-spacing: 3.2px;
+  font-weight: 600;
   width: 100%;
   @media only screen and (max-width: 600px) {
     font-size: 2.5rem;
     text-align: center;
     margin-top: 5%;
+  }
+`;
+
+const StyledAnchor = styled.a`
+  color: ${({ theme }) => theme.text};
+  :hover {
+    background: ${({ theme }) => theme.secondary};
+    color: ${({ theme }) => theme.text};
   }
 `;
 
@@ -75,13 +86,14 @@ const Introduction = ({ open, setOpen }) => {
           >
             Contact Me
           </ContactMeButton>
-          <a target="_blank"
-            href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/Adam+Harvey+-+CV.pdf"
-          >
-            <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <StyledAnchor
+              target="_blank"
+              href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/Adam+Harvey+-+CV.pdf"
+            >
               Curriculum Vitae
+            </StyledAnchor>
           </DownloadCVButton>
-          </a>
         </ButtonWrapper>
       </IntroWrapper>
     </Container>

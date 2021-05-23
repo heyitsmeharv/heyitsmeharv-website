@@ -61,6 +61,7 @@ const Text = styled.p`
   text-align: center;
   margin-top: 30px;
   line-height: 25px;
+  font-weight: 600;
 `;
 
 const Image = styled.img`

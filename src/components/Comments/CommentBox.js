@@ -13,7 +13,7 @@ import { ErrorSVG } from '../../resources/styles/icons';
 const INITIAL_HEIGHT = 46;
 
 const Container = styled.div`
-  font-family: sans-serif;
+  font-family: 'Raleway', sans-serif;
   display: flex;
   flex-wrap: wrap;
   max-width: 400px;

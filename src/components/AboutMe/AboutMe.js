@@ -24,6 +24,7 @@ const Text = styled.p`
   margin: 1rem 4rem;
   margin-top: 30px;
   text-align: center;
+  font-weight: 600;
 `;
 
 const Seporator = styled.span`

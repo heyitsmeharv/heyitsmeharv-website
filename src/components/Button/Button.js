@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 export const StyledButton = styled(motion.button)`
+  font-family: 'Raleway', sans-serif;
   background: none;
   outline: none !important;
   border: none;
@@ -11,6 +12,7 @@ export const StyledButton = styled(motion.button)`
 `;
 
 export const DownloadCVButton = styled(motion.button)`
+  font-family: 'Raleway', sans-serif;
   width: 20rem;
   height: 5rem;
   margin-top: 3rem;
@@ -37,6 +39,7 @@ export const DownloadCVButton = styled(motion.button)`
 `;
 
 export const ContactMeButton = styled(motion.button)`
+  font-family: 'Raleway', sans-serif;
   width: 20rem;
   margin-top: 3rem;
   margin-right: 3rem;
@@ -53,11 +56,11 @@ export const ContactMeButton = styled(motion.button)`
   @media only screen and (max-width: 375px) {
     width: 100%;
     font-size: 14px;
-
   }
 `;
 
 export const ContactMeSendButton = styled(motion.button)`
+  font-family: 'Raleway', sans-serif;
   height: 50px;
   min-width: 180px;
   padding: 0 20px;
@@ -90,6 +93,7 @@ export const ContactMeSendButton = styled(motion.button)`
 `;
 
 export const CommentSendButton = styled(motion.button)`
+  font-family: 'Raleway', sans-serif;
   padding: 0 20px;
   background-color: ${({ theme }) => theme.accent};
   border-radius: 2px;
@@ -119,6 +123,7 @@ export const CommentSendButton = styled(motion.button)`
 `;
 
 export const CommentCancelButton = styled(motion.button)`
+  font-family: 'Raleway', sans-serif;
   padding: 0 20px;
   border-radius: 2px;
   display: inline-block;
@@ -136,6 +141,7 @@ export const CommentCancelButton = styled(motion.button)`
 `;
 
 export const ToastCloseButton = styled.button`
+  font-family: 'Raleway', sans-serif;
   width: 25px;
   height: 25px;
   color: white;
