@@ -89,7 +89,7 @@ const Introduction = ({ open, setOpen }) => {
           <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <StyledAnchor
               target="_blank"
-              href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/Adam+Harvey+-+CV.pdf"
+              href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH+-+CV.pdf"
             >
               Curriculum Vitae
             </StyledAnchor>
