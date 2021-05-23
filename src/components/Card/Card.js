@@ -7,6 +7,9 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   min-width: 180px;
+  @media only screen and (max-width: 375px) {
+    min-width: 170px;
+  }
 `;
 
 const Icon = styled.div`

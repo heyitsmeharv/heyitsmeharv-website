@@ -30,11 +30,14 @@ export const DownloadCVButton = styled(motion.button)`
   :focus {
     text-decoration: underline;
   }
+  @media only screen and (max-width: 375px) {
+    width: 100%;
+    font-size: 14px;
+  }
 `;
 
 export const ContactMeButton = styled(motion.button)`
   width: 20rem;
-  height: 5rem;
   margin-top: 3rem;
   margin-right: 3rem;
   font-size: 16px;
@@ -46,6 +49,11 @@ export const ContactMeButton = styled(motion.button)`
   color: ${({ theme }) => theme.primary};
   :focus {
     text-decoration: underline;
+  }
+  @media only screen and (max-width: 375px) {
+    width: 100%;
+    font-size: 14px;
+
   }
 `;
 

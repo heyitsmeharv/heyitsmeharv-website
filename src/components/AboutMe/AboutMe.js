@@ -23,6 +23,7 @@ const Text = styled.p`
   letter-spacing: 1.4px;
   margin: 1rem 4rem;
   margin-top: 30px;
+  text-align: center;
 `;
 
 const Seporator = styled.span`

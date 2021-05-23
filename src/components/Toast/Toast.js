@@ -69,7 +69,7 @@ const Toast = ({ toastList }) => {
     return () => {
       clearInterval(interval);
     }
-  }, [toastList, list.length]);
+  }, []);
 
   return (
     <Container>

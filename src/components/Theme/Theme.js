@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   padding: 2rem;
+  @media only screen and (max-width: 375px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const ThemeButton = styled.button`

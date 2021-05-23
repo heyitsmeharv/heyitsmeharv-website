@@ -15,6 +15,9 @@ const Wrapper = styled.div`
   display: flex;
   margin-left: auto;
   padding: 2rem;
+  @media only screen and (max-width: 375px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const socialMediaButtons = [
