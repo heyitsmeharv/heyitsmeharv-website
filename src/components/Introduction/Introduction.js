@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 // components
-// import { Container } from "../Container/Container"
 import { ContactMeButton, DownloadCVButton } from "../Button/Button";
-import ContactMe from "../ContactMe/ContactMe";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";

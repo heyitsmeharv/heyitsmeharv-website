@@ -50,6 +50,12 @@ const Text = styled.p`
 const Toast = ({ toastList }) => {
   const [list, setList] = useState([toastList]);
 
+  const deleteToast = item => {
+    const index = list.findIndex(e => e.id === item);
+    list.splice(index, 1);
+    setList([...list]);
+  }
+
   useEffect(() => {
     setList(toastList);
   }, [toastList, list]);
@@ -63,13 +69,7 @@ const Toast = ({ toastList }) => {
     return () => {
       clearInterval(interval);
     }
-  }, []);
-
-  const deleteToast = item => {
-    const index = list.findIndex(e => e.id === item);
-    list.splice(index, 1);
-    setList([...list]);
-  }
+  }, [toastList, list.length]);
 
   return (
     <Container>
