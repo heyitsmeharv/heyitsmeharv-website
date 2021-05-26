@@ -1,4 +1,5 @@
-import React from "react";
+import ReactGA from 'react-ga';
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 // hooks
@@ -22,6 +23,12 @@ const Wrapper = styled.div`
 `;
 
 const App = () => {
+
+  // analytics
+  useEffect(() => {
+    ReactGA.initialize('G-SYKXW4LZ44');
+    ReactGA.pageview('/homepage');
+  }, []);
 
   /* ---------------------------- theme toggle ----------------------------  */
   const [theme, toggleTheme, componentMounted] = useThemeMode();
