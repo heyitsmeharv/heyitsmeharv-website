@@ -17,6 +17,7 @@ import {
   MySQLSVG,
   TwilioSVG,
   WebpackSVG,
+  DockerSVG,
   GithubSVG,
   GitSVG,
   SassSVG,
@@ -127,6 +128,10 @@ const Skills = () => {
     {
       icon: <WebpackSVG />,
       title: "Webpack",
+    },
+    {
+      icon: <DockerSVG />,
+      title: "Docker",
     },
     {
       icon: <MySQLSVG />,
