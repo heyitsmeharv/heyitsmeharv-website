@@ -35,12 +35,12 @@ const Container = styled.section`
   background: ${({ theme }) => theme.secondary};
 `;
 
-const Seporator = styled.span`
+const Separator = styled.span`
   width: 30px;
   height: 2px;
   display: block;
   margin: 20px auto;
-  background-color: ${({ theme }) => theme.seporator};
+  background-color: ${({ theme }) => theme.separator};
 `;
 
 const FlexWrapper = styled.div`
@@ -150,7 +150,7 @@ const Skills = () => {
   return (
     <Container>
       <Title>Skills</Title>
-      <Seporator />
+      <Separator />
       <Text>Here's a list of technologies I've used: </Text>
       <FlexWrapper>
         {skillList.map((skill, i) => {

@@ -39,12 +39,12 @@ const Text = styled.p`
   line-height: 25px;
 `;
 
-const Seporator = styled.span`
+const Separator = styled.span`
   width: 30px;
   height: 2px;
   display: block;
   margin: 20px auto;
-  background-color: ${({ theme }) => theme.seporator};
+  background-color: ${({ theme }) => theme.separator};
 `;
 
 const ContactMe = ({ open }) => {
@@ -110,7 +110,7 @@ const ContactMe = ({ open }) => {
   return (
     <Container open={open}>
       <Title>Contact Me</Title>
-      <Seporator />
+      <Separator />
       <Text>Contact me for more information on my own work experiences and services and any business enquiries.</Text>
       <FlexWrapper>
         <ContactMeInput value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Name *" />

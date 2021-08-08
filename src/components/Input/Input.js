@@ -7,7 +7,7 @@ export const ContactMeInput = styled.input`
   padding: 10px;
   margin: 10px;
   border: 2px solid ${({ theme }) => theme.accent};
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.inputText};
   border-radius: 3px;
   ::placeholder {
     opacity: 0.5;
@@ -24,7 +24,7 @@ export const ContactMeTextArea = styled.textarea`
   padding: 10px;
   margin: 10px;
   border: 2px solid ${({ theme }) => theme.secondary};
-  color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.inputText};
   border-radius: 3px;
   ::placeholder {
     opacity: 0.5;
@@ -38,7 +38,7 @@ export const CommentInput = styled.input`
   font-size: 18px;
   padding: 10px;
   border: none;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.inputText};
   border-radius: 3px;
   ::placeholder {
     opacity: 0.5;
@@ -50,7 +50,7 @@ export const CommentTextArea = styled.textarea`
   font-weight: 600;
   border: none;
   resize: none;
-  color: ${({ theme }) => theme.commentsInputColor};
+  color: ${({ theme }) => theme.inputText};
   transition: transform 0.4s ease;;
   font-size: 18px;
   padding: 10px;

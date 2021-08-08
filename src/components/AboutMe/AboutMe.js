@@ -27,19 +27,19 @@ const Text = styled.p`
   font-weight: 600;
 `;
 
-const Seporator = styled.span`
+const Separator = styled.span`
   width: 30px;
   height: 2px;
   display: block;
   margin: 20px auto;
-  background-color: ${({ theme }) => theme.seporator};
+  background-color: ${({ theme }) => theme.Separator};
 `;
 
 const AboutMe = () => {
   return (
     <Container>
       <Title>About Me</Title>
-      <Seporator />
+      <Separator />
       <Text>
         I'm a self taught programmer with multiple years of experience delivering commercialised web applications built in React.js.
         I have an adventurous and inquisitive nature when it comes to technologies with a particular interest in cloud computing. I'm

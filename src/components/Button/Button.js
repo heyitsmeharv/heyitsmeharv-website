@@ -64,9 +64,9 @@ export const ContactMeSendButton = styled(motion.button)`
   height: 50px;
   min-width: 180px;
   padding: 0 20px;
-  background-color: ${({ theme }) => theme.accent};
+  background-color: ${({ theme }) => theme.buttonColour};
   border-radius: 2px;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.buttonText};
   display: inline-block;
   text-align: center;
   font-size: 16px;
@@ -95,9 +95,9 @@ export const ContactMeSendButton = styled(motion.button)`
 export const CommentSendButton = styled(motion.button)`
   font-family: 'Raleway', sans-serif;
   padding: 0 20px;
-  background-color: ${({ theme }) => theme.accent};
+  background-color: ${({ theme }) => theme.buttonColour};
   border-radius: 2px;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.buttonText};
   display: inline-block;
   text-align: center;
   font-size: 16px;

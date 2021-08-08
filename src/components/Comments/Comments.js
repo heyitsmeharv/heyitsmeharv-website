@@ -17,12 +17,12 @@ const CommentList = styled.div`
   background: ${({ theme }) => theme.secondary};
 `;
 
-const Seporator = styled.span`
+const Separator = styled.span`
   width: 30px;
   height: 2px;
   display: block;
   margin: 20px auto;
-  background-color: ${({ theme }) => theme.seporator};
+  background-color: ${({ theme }) => theme.separator};
 `;
 
 const FlexWrapper = styled.div`
@@ -35,11 +35,13 @@ const FlexWrapper = styled.div`
 
 const Title = styled.h1`
   font-size: 4rem;
-  font-weight: bold;
+  font-family: 'Raleway';
+  font-weight: 600;
   text-align: center;
 `;
 
 const Text = styled.p`
+  font-family: 'Raleway';
   font-size: 18px;
   text-align: center;
   margin-top: 30px;
@@ -50,26 +52,32 @@ const Text = styled.p`
 
 const Comment = styled.div`
   display: flex;
+  background: ${({ theme }) => theme.primary};
+  border: 2px solid white;
   max-width: 400px;
   margin: 50px auto;
-  background: #fff;
   box-shadow: 0 0 8px rgb(0 0 0 / 20%);
   padding: 14px;
-  max-height: 90px;
 `;
 
 const Message = styled.div`
+  font-family: 'Raleway';
+  font-weight: 600;
   font-size: 20px;
   padding: 10px 0px;
   margin-bottom: 5px;
 `;
 
 const Author = styled.p`
+  font-family: 'Raleway';
+  font-weight: 600;
   font-size: 18px; 
   margin-right: auto;
 `;
 
 const Timestamp = styled.p`
+  font-family: 'Raleway';
+  font-weight: 600;
   font-size: 18px; 
 `;
 
@@ -93,7 +101,7 @@ const Comments = () => {
   return (
     <Container>
       <Title>Comment</Title>
-      <Seporator />
+      <Separator />
       <Text>Feel free to leave me a comment below 👇</Text>
       <CommentBox setLoading={setLoading} />
       {comments.length !== 0 ?
