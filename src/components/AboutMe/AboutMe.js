@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
+import hdate from 'human-date';
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -32,14 +34,24 @@ const Separator = styled.span`
   height: 2px;
   display: block;
   margin: 20px auto;
-  background-color: ${({ theme }) => theme.Separator};
+  background-color: ${({ theme }) => theme.separator};
 `;
 
 const AboutMe = () => {
+  const [age, setAge] = useState(hdate.relativeTime(new Date("09-27-1993"), { returnObject: true }));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAge(hdate.relativeTime(new Date("09-27-1993"), { returnObject: true }));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <Container>
       <Title>About Me</Title>
       <Separator />
+      <Text>I've been alive for {age.years} years, {age.days} days, {age.hours} hours, {age.minutes} minutes and {age.seconds} seconds and counting..</Text>
       <Text>
         I'm a self taught programmer with multiple years of experience delivering commercialised web applications built in React.js.
         I have an adventurous and inquisitive nature when it comes to technologies with a particular interest in cloud computing. I'm
