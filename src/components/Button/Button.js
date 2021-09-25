@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export const StyledButton = styled(motion.button)`
@@ -9,6 +10,26 @@ export const StyledButton = styled(motion.button)`
   :hover {
     cursor: pointer;
   }
+`;
+
+export const StyledNavButton = styled(motion.button)`
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+  background: none;
+  outline: none !important;
+  border: none;
+  margin: 0 2rem;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const StyledNavLink = styled(NavLink)` 
+  text-decoration: none; 
+  color: black;
+  ${props => props.isActive && css`
+    text-decoration: 'underline'; 
+  `}
 `;
 
 export const DownloadCVButton = styled(motion.button)`
