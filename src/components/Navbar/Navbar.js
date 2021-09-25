@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+import useWindowDimensions from '../../hooks/useWindowDimension';
+
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
 const Wrapper = styled.div`
@@ -8,15 +10,18 @@ const Wrapper = styled.div`
   padding: 2rem;
   position: absolute;
   top: 6px;
-  left: 40%;
+  /* left: calc(${props => props.width - `50%`}); */
+  width: ${props => props.width};
   @media only screen and (max-width: 375px) {
     padding: 2rem 1rem;
   }
 `;
 
 const Navbar = () => {
+  const { width } = useWindowDimensions();
+
   return (
-    <Wrapper>
+    <Wrapper width={width}>
       <StyledNavButton
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
