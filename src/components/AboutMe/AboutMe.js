@@ -38,11 +38,11 @@ const Separator = styled.span`
 `;
 
 const AboutMe = () => {
-  const [age, setAge] = useState(hdate.relativeTime(new Date("09-27-1993"), { returnObject: true }));
+  const [age, setAge] = useState(hdate.relativeTime(new Date("09-27-1993".replace(/-/g, "/")), { returnObject: true }));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setAge(hdate.relativeTime(new Date("09-27-1993"), { returnObject: true }));
+      setAge(hdate.relativeTime(new Date("09-27-1993".replace(/-/g, "/")), { returnObject: true }));
     }, 1000);
     return () => clearInterval(interval);
   }, []);
