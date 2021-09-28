@@ -19,6 +19,7 @@ export const StyledNavButton = styled(motion.button)`
   outline: none !important;
   border: none;
   margin: 0 2rem;
+  text-decoration: ${props => props.isActive ? 'underline' : 'none'};
   :hover {
     cursor: pointer;
   }
@@ -27,9 +28,6 @@ export const StyledNavButton = styled(motion.button)`
 export const StyledNavLink = styled(NavLink)` 
   text-decoration: none; 
   color: black;
-  ${props => props.isActive && css`
-    text-decoration: 'underline'; 
-  `}
 `;
 
 export const DownloadCVButton = styled(motion.button)`
