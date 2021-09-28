@@ -15,6 +15,7 @@ export const StyledButton = styled(motion.button)`
 export const StyledNavButton = styled(motion.button)`
   font-family: 'Raleway', sans-serif;
   font-size: 1.5rem;
+  font-weight: 800;
   background: none;
   outline: none !important;
   border: none;
@@ -26,8 +27,8 @@ export const StyledNavButton = styled(motion.button)`
 `;
 
 export const StyledNavLink = styled(NavLink)` 
-  text-decoration: none; 
-  color: black;
+  text-decoration: none;
+  color: ${({ theme }) => theme.text};
 `;
 
 export const DownloadCVButton = styled(motion.button)`
