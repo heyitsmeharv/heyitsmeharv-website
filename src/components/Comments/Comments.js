@@ -4,6 +4,8 @@ import hdate from "human-date";
 
 import CommentBox from './CommentBox';
 
+import Loader from '../Loader/Loader';
+
 const Container = styled.section`
   width: 100%;
   max-height: 100%;
@@ -122,7 +124,7 @@ const Comments = () => {
             )
           })}
         </CommentList>
-        : ''}
+        : <Loader />}
     </Container>
   );
 }
