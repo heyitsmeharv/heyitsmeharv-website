@@ -56,7 +56,7 @@ const AboutMe = () => {
         I have an adventurous and inquisitive nature when it comes to technologies with a particular interest in cloud computing. I'm
         qualified in Amazon's cloud based computing platform (AWS).
       </Text>
-      <Text>I've been alive for {age.years} years, {age.days} days, {age.hours} hours, {age.minutes} minutes and {age.seconds} seconds and counting..</Text>
+      <Text>I've been alive for {age.years} years, {age.days} days, {age.hours} hours, {age.minutes} minutes and {age.seconds} seconds...</Text>
     </Container>
   )
 }
