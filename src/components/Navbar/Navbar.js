@@ -26,7 +26,7 @@ const Navbar = () => {
           Home
         </StyledNavLink>
       </StyledNavButton>
-      <StyledNavButton
+      {/* <StyledNavButton
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         isActive={window.location.href.indexOf("blog") !== -1}
@@ -35,7 +35,7 @@ const Navbar = () => {
           exact to='/blog'>
           Blog
         </StyledNavLink>
-      </StyledNavButton>
+      </StyledNavButton> */}
       <StyledNavButton
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
