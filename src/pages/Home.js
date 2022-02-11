@@ -8,6 +8,7 @@ import AboutMe from "../components/AboutMe/AboutMe";
 import ContactMe from "../components/ContactMe/ContactMe";
 import Skills from "../components/Skills/Skills";
 import Comments from "../components/Comments/Comments";
+import LikeCounter from "../components/LikeCounter/LikeCounter";
 
 const Margin = styled.div`
   margin: 0 5rem;
@@ -27,6 +28,7 @@ const Home = () => {
       <AboutMe />
       <Skills />
       <Comments />
+      <LikeCounter />
     </Container >
   );
 };

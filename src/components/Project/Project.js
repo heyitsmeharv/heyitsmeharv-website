@@ -1,84 +1,76 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
 
 // icons
-import { StyledGithub, StyledExternalLinkOutline } from "../../resources/styles/icons";
+import { Github } from "@styled-icons/boxicons-logos/Github";
+import { ExternalLink } from "@styled-icons/evaicons-solid/ExternalLink";
+
+const StyledGithub = styled(Github)`
+  width: 50%;
+  height: 50%;
+  margin: 0 10%;
+`;
+
+const StyledExternalLink = styled(ExternalLink)`
+  width: 50%;
+  height: 50%;
+  margin: 0 10%;
+`;
+
+const Flex = styled.div`
+  display: flex;
+`;
 
 const Container = styled.div`
-  background: ${({ theme }) => theme.secondary};
-  width: 50%;
-  /* border: 2px solid darkgray; */
-  margin: 2rem;
-  padding: 1rem 2rem;
-`;
-
-const HeaderWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const ContentWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 1rem 0;
-`;
-
-const MarginWrapper = styled.div`
-  display: flex;
-  margin-left: auto;
-`;
-
-const Title = styled.h1`
-  font-size: 2rem;
-  letter-spacing: 1.4px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-align: center;
 `;
 
 const Image = styled.img`
-  width: 60%;
+  max-width: 80%;
+
+  ${props => props.hovered && css`
+    opacity: 0.4;
+  `}
 `;
 
-const Text = styled.p`
-  color: black;
-  align-self: flex-start;
-  font-size: 1.8rem;
-  padding: 0 2rem;
+const LinkContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
-const Link = styled.div`
-  margin-left: auto;
+const StyledAnchor = styled.a`
+  color: ${({ theme }) => theme.text};
 `;
 
-const Icon = styled.div`
-  /* margin-left: auto; */
-`;
+const Project = ({ name, link, image, github }) => {
+  const [hovered, setHovered] = useState(false);
 
-const Button = styled.button`
-  outline: none;
-  border: none;
-  background: none;
-`;
-
-
-const Project = ({ name, link, image, text, github, icons }) => {
   return (
     <Container>
-      <HeaderWrapper>
-        <Title>{name}</Title>
-        <MarginWrapper>
-          {icons && icons.map(icon => {
-            return (
-              <Icon>{icon}</Icon>
-            )
-          })}
-        </MarginWrapper>
-      </HeaderWrapper>
-      <ContentWrapper>
-        <Image src={image} />
-        <Text>{text}</Text>
-      </ContentWrapper>
-      <Button><StyledGithub /></Button>
-      <Button><StyledExternalLinkOutline /></Button>
-      {/* <Link>{link}</Link> */}
+      <Image hovered={hovered} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} src={image} />
+      {hovered &&
+        <LinkContainer onMouseEnter={() => setHovered(true)}>
+          <Flex>
+            <StyledAnchor
+              target="_blank"
+              href={github}
+            >
+              <StyledGithub onMouseEnter={() => setHovered(true)} />
+            </StyledAnchor>
+            <StyledAnchor
+              target="_blank"
+              href={link}
+            >
+              <StyledExternalLink onMouseEnter={() => setHovered(true)} />
+            </StyledAnchor>
+          </Flex>
+        </LinkContainer>
+      }
     </Container>
   );
 }

@@ -1,5 +1,6 @@
 import ReactGA from 'react-ga';
 import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
 // hooks
@@ -12,14 +13,18 @@ import { GlobalStyles } from "./resources/styles/global";
 
 // pages
 import Home from "./pages/Home";
+import Projects from "./pages/Projects"
 
 // components
 import Themes from "./components/Theme/Theme";
+import Navbar from "./components/Navbar/Navbar";
 import SocialMediaBar from "./components/SocialMedia/SocialMediaBar";
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
 `;
 
 const App = () => {
@@ -57,7 +62,21 @@ const App = () => {
         <Themes theme={theme} toggleTheme={toggleTheme} />
         <SocialMediaBar />
       </Wrapper>
-      <Home />
+      <Router>
+        <Route
+          render={({ location }) => {
+            return (
+              <>
+                <Navbar />
+                <Switch location={location}>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/projects' component={Projects} />
+                </Switch>
+              </>
+            );
+          }}
+        />
+      </Router>
     </ThemeProvider>
   );
 };
