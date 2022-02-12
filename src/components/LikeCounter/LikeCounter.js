@@ -32,15 +32,17 @@ const StyledLikeIcon = styled(Like)`
 `;
 
 const StyledButton = styled(motion.button)`
+  color: ${({ theme }) => theme.text};
   outline: none;
   background: none;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.text};
+;
   border-radius: 50%;
   padding: 10px;
 `;
 
 const StyledText = styled.p`
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
   text-align: center;
   padding-bottom: 2px
