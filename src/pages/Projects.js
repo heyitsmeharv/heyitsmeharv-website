@@ -33,25 +33,28 @@ export default function Projects() {
       image: Website,
       link: "https://www.heyitsmeharv.com",
       github: "https://github.com/heyitsmeharv/my-portfolio",
+      hide: true
     },
     {
       name: 'Quiz',
       image: HarvsQuizzy,
       link: "https://harvs-quizzy.com/#/quizzy",
       github: "https://github.com/heyitsmeharv/quizzy",
+      hide: false
     },
     {
       name: 'Colour Generator',
       image: ColourGen,
       link: "https://colour-generator.netlify.app/",
       github: "https://github.com/heyitsmeharv/colour-generator",
+      hide: false
     },
   ];
 
   return (
     <Container>
       {projects.map((p, i) => {
-        return <Project index={i} name={p.name} link={p.github} image={p.image} github={p.github} />
+        return <Project index={i} name={p.name} link={p.link} image={p.image} github={p.github} hide={p.hide} />
       })}
     </Container>
   );
