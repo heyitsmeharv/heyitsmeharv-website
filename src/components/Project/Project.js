@@ -40,20 +40,12 @@ const Container = styled.div`
     animation: ${createBox} .25s;
     transition: 0.25s;
     -webkit-transition: 0.25s;
-    ${props => props.hovered && css`
-      position: fixed;
-      overflow: hidden; 
-      /* left: 0;  */
-      top: 0;
-      width: 100%;
-      height: 80vh;
-      z-index: 1;
-    `}
   }
 `;
 
 const Image = styled.img`
   max-width: 80%;
+  height: 80%;
   ${props => props.hovered && css`
     opacity: 0.8;
   `}

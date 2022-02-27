@@ -5,7 +5,7 @@ import Project from '../components/Project/Project';
 
 // images
 import HarvsQuizzy from '../resources/images/Harvs-Quizzy.png';
-import ColourGen from '../resources/images/Colour-Gen.png';
+import Coolours from '../resources/images/Coolours.png';
 import Website from '../resources/images/Website.png';
 
 // animations
@@ -43,10 +43,10 @@ export default function Projects() {
       hide: false
     },
     {
-      name: 'Colour Generator',
-      image: ColourGen,
-      link: "https://colour-generator.netlify.app/",
-      github: "https://github.com/heyitsmeharv/colour-generator",
+      name: 'Coolours',
+      image: Coolours,
+      link: "https://upbeat-lichterman-47bd92.netlify.app",
+      github: "https://github.com/heyitsmeharv/coolours",
       hide: false
     },
   ];
