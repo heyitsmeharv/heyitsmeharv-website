@@ -32,7 +32,7 @@ const Flex = styled.div`
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   position: relative;
   text-align: center;
  
@@ -44,8 +44,7 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 80%;
-  height: 80%;
+  width: 100%;
   ${props => props.hovered && css`
     opacity: 0.8;
   `}
@@ -53,7 +52,7 @@ const Image = styled.img`
 
 const LinkContainer = styled.div`
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -100%);
 `;
