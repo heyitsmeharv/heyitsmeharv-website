@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import SlideInBottom from '../../animations/SlideInBottom';
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,11 +17,13 @@ const Container = styled.div`
 const Icon = styled.div`
   margin: 10px;
   svg {
+    animation: ${SlideInBottom} 1s forwards;
     color: ${({ theme }) => theme.accent};
   }
 `;
 
 const Title = styled.h1`
+  animation: ${SlideInBottom} 1s forwards;
   color: ${({ theme }) => theme.text};
   font-size: 20px;
   margin-top: 0;

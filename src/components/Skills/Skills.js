@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+
+import { StyledButton } from '../Button/Button';
 
 import Card from '../Card/Card';
 
@@ -22,7 +24,12 @@ import {
   GitSVG,
   SassSVG,
   StyledComponentsSVG,
-  HerokuSVG
+  HerokuSVG,
+  CPlusPlusSVG,
+  CSharpSVG,
+  ElectronJSSVG,
+  RaspberryPiSVG,
+
 } from '../../resources/styles/icons';
 
 import awscp2020 from '../../resources/images/AWS-CloudPractitioner-2020.png';
@@ -72,80 +79,147 @@ const Image = styled.img`
 `;
 
 const Skills = () => {
+  const [list, setList] = useState([]);
+  const [filter, setFilter] = useState('all');
   const skillList = [
-    {
-      icon: <JavascriptSVG />,
-      title: "Javascript",
-    },
     {
       icon: <HtmlSVG />,
       title: "HTML",
+      tag: ["all", "webDev"]
     },
     {
       icon: <CssSVG />,
       title: "CSS",
+      tag: ["all", "webDev"]
+    },
+    {
+      icon: <JavascriptSVG />,
+      title: "Javascript",
+      tag: ["all", "language", "webDev"]
     },
     {
       icon: <SassSVG />,
       title: "Sass",
+      tag: ["all", "webDev"]
     },
     {
       icon: <StyledComponentsSVG />,
-      title: "Styled Comonents",
+      title: "Styled Components",
+      tag: ["all", "webDev"]
     },
     {
       icon: <ReactjsSVG />,
       title: "React",
+      tag: ["all", "webDev"]
     },
     {
       icon: <NodejsSVG />,
       title: "Node",
+      tag: ["all", "language"]
+    },
+    {
+      icon: <ElectronJSSVG />,
+      title: "Electron",
+      tag: ["all", "language", "webDev"]
     },
     {
       icon: <ExpressSVG />,
       title: "Express",
+      tag: ["all", "webDev"]
+    },
+    {
+      icon: <CPlusPlusSVG />,
+      title: "C++",
+      tag: ["all", "language"]
+    },
+    {
+      icon: <CSharpSVG />,
+      title: "C#",
+      tag: ["all", "language"]
     },
     {
       icon: <AWSSVG />,
       title: "AWS",
+      tag: ["all", "misc"]
     },
     {
       icon: <HerokuSVG />,
       title: "Heroku",
+      tag: ["all", "misc"]
     },
     {
       icon: <TwilioSVG />,
       title: "Twilio",
+      tag: ["all", "misc"]
     },
     {
       icon: <MongoDBSVG />,
       title: "Mongo DB",
+      tag: ["all", "database"]
+    },
+    {
+      icon: <RaspberryPiSVG />,
+      title: "Raspberry Pi",
+      tag: ["all", "misc"]
     },
     {
       icon: <GraphqlSVG />,
       title: "GraphQL",
+      tag: ["all", "database"]
     },
     {
       icon: <WebpackSVG />,
       title: "Webpack",
+      tag: ["all", "webDev", "misc"]
     },
     {
       icon: <DockerSVG />,
       title: "Docker",
+      tag: ["all", "misc"]
     },
     {
       icon: <MySQLSVG />,
       title: "MySQL",
+      tag: ["all", "database"]
     },
     {
       icon: <GitSVG />,
       title: "Git",
+      tag: ["all", "misc"]
     },
     {
       icon: <GithubSVG />,
       title: "GitHub",
+      tag: ["all", "misc"]
     },
   ];
+
+  const buttons = [
+    {
+      label: 'All',
+      onClick: () => setFilter('all')
+    },
+    {
+      label: 'Programming languages',
+      onClick: () => setFilter('language'),
+    },
+    {
+      label: 'Web/App Development',
+      onClick: () => setFilter('webDev'),
+    },
+    {
+      label: 'Databases',
+      onClick: () => setFilter('database'),
+    },
+    {
+      label: 'Misc',
+      onClick: () => setFilter('misc'),
+    },
+  ];
+
+  useEffect(() => {
+    setList(skillList.filter(skill => skill.tag.includes(filter)));
+  }, [filter])
 
   return (
     <Container>
@@ -153,7 +227,22 @@ const Skills = () => {
       <Separator />
       <Text>Here's a list of technologies I've used: </Text>
       <FlexWrapper>
-        {skillList.map((skill, i) => {
+        {buttons.map((button, i) => {
+          return (
+            <div key={i} style={{ margin: "10px" }}>
+              <StyledButton
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={button.onClick}
+              >
+                {button.label}
+              </StyledButton>
+            </div>
+          )
+        })}
+      </FlexWrapper>
+      <FlexWrapper>
+        {list.map((skill, i) => {
           return (
             <Card
               key={i}

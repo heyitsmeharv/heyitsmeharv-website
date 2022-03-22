@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export const StyledButton = styled(motion.button)`
+  color: ${({ theme }) => theme.text};
   font-family: 'Raleway', sans-serif;
   background: none;
   outline: none !important;
