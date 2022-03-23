@@ -124,7 +124,7 @@ const Comments = () => {
             )
           })}
         </CommentList>
-        : <Loader />}
+        : <div style={{ height: "100px" }}><Loader /></div>}
     </Container>
   );
 }

@@ -10,7 +10,6 @@ const DotWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin: 10%;
 `;
 const Dot = styled.div`
   background-color: black;

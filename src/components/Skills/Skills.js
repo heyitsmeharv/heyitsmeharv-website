@@ -29,6 +29,9 @@ import {
   CSharpSVG,
   ElectronJSSVG,
   RaspberryPiSVG,
+  JIRASVG,
+  BitBucketSVG,
+  ConfluenceSVG,
 
 } from '../../resources/styles/icons';
 
@@ -170,12 +173,12 @@ const Skills = () => {
     {
       icon: <WebpackSVG />,
       title: "Webpack",
-      tag: ["all", "webDev", "misc"]
+      tag: ["all", "webDev"]
     },
     {
       icon: <DockerSVG />,
       title: "Docker",
-      tag: ["all", "misc"]
+      tag: ["all", "webDev"]
     },
     {
       icon: <MySQLSVG />,
@@ -190,6 +193,21 @@ const Skills = () => {
     {
       icon: <GithubSVG />,
       title: "GitHub",
+      tag: ["all", "misc"]
+    },
+    {
+      icon: <BitBucketSVG />,
+      title: "BitBucket",
+      tag: ["all", "misc"]
+    },
+    {
+      icon: <JIRASVG />,
+      title: "JIRA",
+      tag: ["all", "misc"]
+    },
+    {
+      icon: <ConfluenceSVG />,
+      title: "Confluence",
       tag: ["all", "misc"]
     },
   ];
