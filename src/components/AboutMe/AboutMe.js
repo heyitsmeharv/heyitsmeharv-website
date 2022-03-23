@@ -10,7 +10,7 @@ const Container = styled.section`
   width: 100%;
   max-height: 100%;
   padding: 4rem 0;
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.secondary};
   animation: ${SlideInBottom} 0.5s forwards;
 `;
 
