@@ -32,6 +32,9 @@ import {
   JIRASVG,
   BitBucketSVG,
   ConfluenceSVG,
+  MaterialUISVG,
+  NetlifySVG,
+  SocketIOSVG,
 
 } from '../../resources/styles/icons';
 
@@ -58,7 +61,7 @@ const FlexWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-flow: wrap;
-  margin-top: 30px;
+  margin: 30px;
 `;
 
 const Title = styled.h1`
@@ -116,6 +119,11 @@ const Skills = () => {
       tag: ["all", "webDev"]
     },
     {
+      icon: <MaterialUISVG />,
+      title: "Material UI",
+      tag: ["all", "webDev"]
+    },
+    {
       icon: <NodejsSVG />,
       title: "Node",
       tag: ["all", "language"]
@@ -151,9 +159,19 @@ const Skills = () => {
       tag: ["all", "misc"]
     },
     {
+      icon: <NetlifySVG />,
+      title: "Netlify",
+      tag: ["all", "misc"]
+    },
+    {
       icon: <TwilioSVG />,
       title: "Twilio",
       tag: ["all", "misc"]
+    },
+    {
+      icon: <SocketIOSVG />,
+      title: "Socket IO",
+      tag: ["all", "webDev"]
     },
     {
       icon: <MongoDBSVG />,
