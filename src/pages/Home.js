@@ -12,7 +12,7 @@ import Comments from "../components/Comments/Comments";
 import LikeCounter from "../components/LikeCounter/LikeCounter";
 
 const Margin = styled.div`
-  margin: 0 5rem;
+  margin: 5rem;
 `;
 
 const Container = styled.div``;
