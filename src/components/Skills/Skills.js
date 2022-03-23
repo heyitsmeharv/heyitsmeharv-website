@@ -35,7 +35,7 @@ import {
   MaterialUISVG,
   NetlifySVG,
   SocketIOSVG,
-
+  ServerlessSVG,
 } from '../../resources/styles/icons';
 
 import awscp2020 from '../../resources/images/AWS-CloudPractitioner-2020.png';
@@ -151,6 +151,11 @@ const Skills = () => {
     {
       icon: <AWSSVG />,
       title: "AWS",
+      tag: ["all", "misc"]
+    },
+    {
+      icon: <ServerlessSVG />,
+      title: "Serverless",
       tag: ["all", "misc"]
     },
     {
