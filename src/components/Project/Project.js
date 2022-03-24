@@ -31,11 +31,12 @@ const Flex = styled.div`
 `;
 
 const Container = styled.div`
-  width: 50%;
+  width: 100%;
   position: relative;
   text-align: center;
    
   @media only screen and (min-width: 585px) {
+    width: 50%;
     animation: ${createBox} .25s;
     transition: 0.25s;
     -webkit-transition: 0.25s;

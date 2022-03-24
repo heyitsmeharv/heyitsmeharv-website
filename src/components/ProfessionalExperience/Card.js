@@ -27,6 +27,7 @@ const Title = styled.h1`
   line-height: 22px;
   margin: 30px;
   font-weight: 600;
+  width: max-content;
 `;
 
 const Text = styled.p`
