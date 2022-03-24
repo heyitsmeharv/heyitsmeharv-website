@@ -4,7 +4,8 @@ import styled from "styled-components";
 import SlideInBottom from '../../animations/SlideInBottom';
 
 const Container = styled.div`
-  width: 500px;
+  width: 450px;
+  min-height: 600px;
   margin: 30px;
   padding: 50px;
   background: ${({ theme }) => theme.secondary};
@@ -13,7 +14,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-width: 180px;
   @media only screen and (max-width: 375px) {
     min-width: 170px;
@@ -25,7 +25,7 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.text};
   font-size: 3rem;
   line-height: 22px;
-  margin: 20px;
+  margin: 30px;
   font-weight: 600;
 `;
 

@@ -94,17 +94,28 @@ const ProfessionalExperience = () => {
     {
       icon: <StyledCogs />,
       title: 'Problem Solving',
-      text: ''
+      text: `
+      Implemented an internal testing system “Watch Service” which detects issues with applications
+      using Amazon Web Services (AWS).
+      Created an automated end-to-end test runner which generates a HTML report of passed and failed
+      tests. Using React, Cypress, AWS.
+      `
     },
     {
       icon: <StyledPeopleCommunity />,
       title: 'Team Work',
-      text: ''
+      text: `
+      Collaborated with dozens of cross-functional clients (policy/content, design, QA).
+      I have worked in teams up to seven people developing and maintaining multiple CRM solutions.
+      `
     },
     {
       icon: <StyledListCheck />,
       title: 'Management',
-      text: ''
+      text: `Managed JIRA Service Desks and Kanban Boards.
+        Led development of a new internal tool that encompasses chat functionality (Facebook
+        Messenger/ WhatsApp/SMS/Email/Phone). Held sprint reviews, refinements and planning meetings.
+      `
     }
   ];
 

@@ -7,6 +7,7 @@ import Project from '../components/Project/Project';
 import HarvsQuizzy from '../resources/images/Harvs-Quizzy.png';
 import Coolours from '../resources/images/Coolours.png';
 import Website from '../resources/images/Website.png';
+import Harvgram from '../resources/images/Harvgram.png';
 
 // animations
 import SlideInBottom from "../animations/SlideInBottom";
@@ -14,6 +15,7 @@ import SlideInBottom from "../animations/SlideInBottom";
 
 const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   max-height: 100%;
   padding: 4rem 0;
@@ -48,6 +50,12 @@ export default function Projects() {
       link: "https://upbeat-lichterman-47bd92.netlify.app",
       github: "https://github.com/heyitsmeharv/coolours",
       hide: false
+    },
+    {
+      name: 'Harvgram',
+      image: Harvgram,
+      github: "https://github.com/heyitsmeharv/harvgram",
+      hide: true
     },
   ];
 
