@@ -31,10 +31,10 @@ const Flex = styled.div`
 `;
 
 const Container = styled.div`
-  width: 100%;
+  width: 50%;
   position: relative;
   text-align: center;
- 
+   
   @media only screen and (min-width: 585px) {
     animation: ${createBox} .25s;
     transition: 0.25s;

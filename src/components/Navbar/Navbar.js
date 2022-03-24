@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   padding: 2rem;
   margin-top: -60px;
   @media only screen and (max-width: 585px) {
-    padding: 2rem 1rem;
+    padding: 2rem 0rem;
     margin-top: 0px;
   }
 `;

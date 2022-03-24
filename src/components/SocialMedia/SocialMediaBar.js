@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   display: flex;
   padding: 2rem;
   @media only screen and (max-width: 375px) {
-    padding: 2rem 1rem;
+    padding: 2rem 0rem;
   }
 `;
 
