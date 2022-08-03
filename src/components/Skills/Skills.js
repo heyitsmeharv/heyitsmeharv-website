@@ -36,6 +36,7 @@ import {
   NetlifySVG,
   SocketIOSVG,
   ServerlessSVG,
+  CypressSVG
 } from '../../resources/styles/icons';
 
 import awscp2020 from '../../resources/images/AWS-CloudPractitioner-2020.png';
@@ -127,6 +128,11 @@ const Skills = () => {
       icon: <NodejsSVG />,
       title: "Node",
       tag: ["all", "language"]
+    },
+    {
+      icon: <CypressSVG />,
+      title: "Cypress",
+      tag: ["all", "language", "webDev"]
     },
     {
       icon: <ElectronJSSVG />,
