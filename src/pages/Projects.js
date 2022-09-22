@@ -8,6 +8,7 @@ import HarvsQuizzy from '../resources/images/Harvs-Quizzy.png';
 import Coolours from '../resources/images/Coolours.png';
 import Website from '../resources/images/Website.png';
 import Harvgram from '../resources/images/Harvgram.png';
+import RockPaperScissors from '../resources/images/RockPaperScissors.png';
 
 // gifs
 import gif from '../resources/gifs/navigation-menu.gif';
@@ -33,6 +34,13 @@ const Container = styled.div`
 
 export default function Projects() {
   const projects = [
+    {
+      name: 'Rock Paper Scissors',
+      image: RockPaperScissors,
+      link: "https://heyitsmeharv-rockpaperscissors.herokuapp.com/",
+      github: "https://github.com/heyitsmeharv/rock-paper-scissors",
+      hide: false
+    },
     {
       name: 'Navigation-Menu',
       image: gif,
