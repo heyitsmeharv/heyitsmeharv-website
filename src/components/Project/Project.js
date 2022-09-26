@@ -61,6 +61,12 @@ const StyledAnchor = styled.a`
   color: ${({ theme }) => theme.text};
 `;
 
+const StyledName = styled.span`
+  font-size: 4rem;
+  font-weight: bold;
+  color: ${({ theme }) => theme.text};
+`;
+
 const Project = ({ name, link, image, github, hide }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -85,6 +91,7 @@ const Project = ({ name, link, image, github, hide }) => {
               </StyledAnchor>
             }
           </Flex>
+          <StyledName>{name}</StyledName>
         </LinkContainer>
       }
     </Container>
