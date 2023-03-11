@@ -30,7 +30,7 @@ const Home = () => {
       <ProfessionalExperience />
       <Skills />
       <Comments />
-      <LikeCounter />
+      {/* <LikeCounter /> */}
     </Container >
   );
 };

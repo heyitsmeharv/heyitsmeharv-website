@@ -124,7 +124,8 @@ const Comments = () => {
             )
           })}
         </CommentList>
-        : <div style={{ height: "100px" }}><Loader /></div>}
+        : // <div style={{ height: "100px" }}><Loader /></div>}
+        <span>too cheap to pay for server space...</span>}
     </Container>
   );
 }
