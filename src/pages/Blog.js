@@ -9,10 +9,9 @@ import SlideInTop from "../animations/SlideInTop";
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  width: 100%;
-  max-height: 100%;
-  padding: 4rem 0;
+  padding: 4rem;
   background: ${({ theme }) => theme.background};
   animation: ${SlideInTop} 0.5s forwards;
   text-align: center;
@@ -27,7 +26,10 @@ export default function Blog() {
       title: 'The Start',
       type: 'Retrospective',
       date: '05/04/2023',
-      tags: [],
+      tags: ['My Own Journey', 'Tech Blog', 'First Of Many 🤞'],
+      intro: `For a long time I've wanted to write a blog about technologies I'm interested in. 
+      I'm hopeful that I can keep this going for a long time where I can write about my personal journey through learning cool tech, 
+      if only to cement my own understanding...`,
       navigate: 'the-start'
     }
   ];
@@ -35,7 +37,7 @@ export default function Blog() {
   return (
     <Container>
       {blogPosts.map((p, i) => {
-        return <BlogPost index={i} title={p.title} type={p.type} date={p.date} tags={p.tags} navigate={p.navigate} />
+        return <BlogPost index={i} title={p.title} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} />
       })}
     </Container>
   );

@@ -4,74 +4,101 @@ import styled, { css, keyframes } from "styled-components";
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
+const Container = styled.div`
+  background: ${({ theme }) => theme.secondary};
+  position: relative;
+  width: 30%;
+  ${props => props.hovered && css`
+    border: .5px solid ${({ theme }) => theme.text};
+  `}
 
-const createBox = keyframes`
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
+ @media only screen and (min-width: 500px) and (max-width: 1000px) {
+    width: 100%;
+    margin: 20px 0;
+  } 
 `;
 
 const Flex = styled.div`
   display: flex;
+  justify-content: center;
+  margin: 20px 0;
+`
+
+const TopBarText = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+  color: ${({ theme }) => theme.text};
 `;
 
-const Container = styled.div`
-  width: 100%;
+const BottomBarText = styled.div`
   position: relative;
-  text-align: center;
-   
-  @media only screen and (min-width: 585px) {
-    width: 50%;
-    animation: ${createBox} .25s;
-    transition: 0.25s;
-    -webkit-transition: 0.25s;
-  }
+  width: max-content;
+  bottom: 0;
+  margin: 30px auto;
 `;
 
-const Image = styled.img`
-  width: 100%;
-  ${props => props.hovered && css`
-    opacity: 0.8;
-  `}
+const StyledTopBarText = styled.span`
+  font-size: 1.5rem;
 `;
 
-const LinkContainer = styled.div`
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -100%);
-`;
-
-const StyledAnchor = styled.a`
-  color: ${({ theme }) => theme.text};
-`;
-
-const StyledName = styled.span`
-  font-size: 4rem;
+const StyledTitle = styled.h1`
+  font-size: 2.5rem;
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
 `;
 
-const BlogPost = ({ title, type, date, tags, navigate }) => {
+const StyledTags = styled.div`
+  border: 2px solid ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.text};
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 6px 0px;
+  margin: 0 10px;
+  width: 120px;
+`;
+
+const StyledIntro = styled.div`
+  margin: 2rem;
+  font-size: 2rem;
+`;
+
+const StyledBorder = styled.div`
+  border: 2px solid ${({ theme }) => theme.text};
+  padding: 6px 0px;
+`;
+
+
+const BlogPost = ({ title, type, date, tags, intro, navigate }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <Container hovered={hovered} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-      {title}
-      {type}
-      {date}
-      {tags}
-      <StyledNavButton
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <StyledNavLink
-          exact to={`blog/${navigate}`}>
-          read more
-        </StyledNavLink>
-      </StyledNavButton>
+      <TopBarText>
+        <StyledTopBarText>{type}</StyledTopBarText >
+        <StyledTopBarText>{date}</StyledTopBarText >
+      </TopBarText>
+      <StyledTitle>
+        {title}
+      </StyledTitle>
+      <Flex>
+        {tags?.map((x, i) => <StyledTags index={i}>{x}</StyledTags>)}
+      </Flex>
+      <StyledIntro>
+        {intro}
+      </StyledIntro>
+      <BottomBarText>
+        <StyledBorder>
+          <StyledNavButton
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <StyledNavLink
+              exact to={`blog/${navigate}`}>
+              Read more
+            </StyledNavLink>
+          </StyledNavButton>
+        </StyledBorder>
+      </BottomBarText>
     </Container>
   );
 }
