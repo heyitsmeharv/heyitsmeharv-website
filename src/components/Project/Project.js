@@ -65,6 +65,9 @@ const StyledName = styled.span`
   font-size: 4rem;
   font-weight: bold;
   color: ${({ theme }) => theme.text};
+  @media only screen and (max-width: 585px) {
+    font-size: 2rem;
+  }
 `;
 
 const Project = ({ name, link, image, github, hide }) => {
