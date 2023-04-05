@@ -7,6 +7,7 @@ export const lightTheme = {
   inputText: '#000',
   buttonText: '#fff',
   buttonColour: '#202020',
+  icon: '#000'
 };
 
 export const darkTheme = {
@@ -18,6 +19,7 @@ export const darkTheme = {
   inputText: '#000',
   buttonText: '#fff',
   buttonColour: '#4f5669',
+  icon: '#1b1c22'
 };
 
 export const blueTheme = {
@@ -29,6 +31,7 @@ export const blueTheme = {
   inputText: '#000',
   buttonText: '#fff',
   buttonColour: '#023047',
+  icon: '#118ab2'
 };
 
 export const redTheme = {
@@ -40,4 +43,5 @@ export const redTheme = {
   inputText: '#000',
   buttonText: '#fff',
   buttonColour: '#ffba08',
+  icon: '#6a040f'
 };

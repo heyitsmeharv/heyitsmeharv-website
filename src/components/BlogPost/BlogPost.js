@@ -70,6 +70,7 @@ const StyledBorder = styled.div`
   padding: 6px 0px;
   :hover {
     background: ${({ theme }) => theme.primary};
+    transition: background .5s;
   }
 `;
 

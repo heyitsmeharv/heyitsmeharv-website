@@ -39,13 +39,13 @@ const StyledSearchBar = styled.input`
 const StyledSearchIcon = styled(Search)`
   position: absolute;
   align-self: center;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.icon};
   width: 2.5rem;
   padding: 0 8px;
 `;
 
 const StyledCloseIcon = styled(StyledClose)`
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.icon};
 `;
 
 const StyledCloseButton = styled.button`
@@ -69,8 +69,8 @@ export default function Blog() {
       type: 'Retrospective',
       date: '05/04/2023',
       tags: [{ name: 'My Own Journey', background: '#4367B1' }, { name: 'Tech Blog', background: '#F4BF36' }, { name: 'First Of Many 🤞', background: '#D53745' }],
-      intro: `For a long time I've wanted to write a blog about technologies I'm interested in. 
-      I'm hopeful that I can keep this going for a long time where I can write about my personal journey through learning cool tech, 
+      intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
+      The purpose of this is just to document my personal journey learning cool tech,
       if only to cement my own understanding...`,
       navigate: 'the-start'
     }
@@ -82,8 +82,8 @@ export default function Blog() {
       type: 'Retrospective',
       date: '05/04/2023',
       tags: [{ name: 'My Own Journey', background: '#4367B1' }, { name: 'Tech Blog', background: '#F4BF36' }, { name: 'First Of Many 🤞', background: '#D53745' }],
-      intro: `For a long time I've wanted to write a blog about technologies I'm interested in. 
-      I'm hopeful that I can keep this going for a long time where I can write about my personal journey through learning cool tech, 
+      intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
+      The purpose of this is just to document my personal journey learning cool tech,
       if only to cement my own understanding...`,
       navigate: 'the-start'
     }
