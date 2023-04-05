@@ -69,9 +69,9 @@ export default function Blog() {
       type: 'Retrospective',
       date: '05/04/2023',
       tags: [{ name: 'My Own Journey', background: '#4367B1' }, { name: 'Tech Blog', background: '#F4BF36' }, { name: 'First Of Many 🤞', background: '#D53745' }],
-      intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
-      The purpose of this is just to document my personal journey learning cool tech,
-      if only to cement my own understanding...`,
+      intro: ` For a long time I've wanted to write a blog about technologies I'm interested in.
+            The purpose of this blog is just to document my personal journey learning cool tech,
+            if only to cement my own understanding and potentially help people with similar interests...`,
       navigate: 'the-start'
     }
   ]);
@@ -82,9 +82,9 @@ export default function Blog() {
       type: 'Retrospective',
       date: '05/04/2023',
       tags: [{ name: 'My Own Journey', background: '#4367B1' }, { name: 'Tech Blog', background: '#F4BF36' }, { name: 'First Of Many 🤞', background: '#D53745' }],
-      intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
-      The purpose of this is just to document my personal journey learning cool tech,
-      if only to cement my own understanding...`,
+      intro: ` For a long time I've wanted to write a blog about technologies I'm interested in.
+            The purpose of this blog is just to document my personal journey learning cool tech,
+            if only to cement my own understanding and potentially help people with similar interests...`,
       navigate: 'the-start'
     }
   ];
