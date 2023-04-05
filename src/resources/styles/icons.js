@@ -520,7 +520,19 @@ export const ServerlessSVG = () => {
   return (
     <StyledSvg viewBox="0 0 32 32">
       <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" ><title>file_type_serverless</title>
-        <path d="M2,22.419H6.956L5.42,27H2ZM2,13.71H9.875L8.34,18.29H2ZM2,5H12.794L11.259,9.581H2ZM17.679,5H30V9.581H16.143ZM13.224,18.291,14.76,13.71H30v4.581Zm-1.383,4.128H30V27H10.305Z" fill="#fd5750" fillRule="evenodd" /></svg>
+        <path d="M2,22.419H6.956L5.42,27H2ZM2,13.71H9.875L8.34,18.29H2ZM2,5H12.794L11.259,9.581H2ZM17.679,5H30V9.581H16.143ZM13.224,18.291,14.76,13.71H30v4.581Zm-1.383,4.128H30V27H10.305Z" fill="#fd5750" fillRule="evenodd" />
+      </svg>
+    </StyledSvg>
+  )
+};
+
+export const TerraformSVG = () => {
+  return (
+    <StyledSvg viewBox="0 0 64 64">
+      <svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" fill="none">
+        <path d="M38.06 26.151v11.473L48 31.891V20.406l-9.94 5.745z" fill="#4040B2" />
+        <path d="m27.03 20.406 9.94 5.745v11.473l-9.94-5.74V20.407zM16 14v11.479l9.94 5.74v-11.48L16 14zm11.03 30.624 9.94 5.74v-11.48l-9.94-5.739v11.48z" fill="#5C4EE5" />
+      </svg>
     </StyledSvg>
   )
 };

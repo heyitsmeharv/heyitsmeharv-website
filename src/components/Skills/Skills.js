@@ -36,6 +36,7 @@ import {
   NetlifySVG,
   SocketIOSVG,
   ServerlessSVG,
+  TerraformSVG,
   CypressSVG
 } from '../../resources/styles/icons';
 
@@ -162,6 +163,11 @@ const Skills = () => {
     {
       icon: <ServerlessSVG />,
       title: "Serverless",
+      tag: ["all", "misc"]
+    },
+    {
+      icon: <TerraformSVG />,
+      title: "Terraform",
       tag: ["all", "misc"]
     },
     {
