@@ -65,6 +65,7 @@ const StyledIntro = styled.div`
 
 const StyledBorder = styled.div`
   border: 2px solid ${({ theme }) => theme.text};
+  /* box-shadow: 2px 2px 2px ${({ theme }) => theme.primary}; */
   padding: 6px 0px;
 `;
 
