@@ -16,6 +16,11 @@ const Container = styled.div`
     width: 100%;
     margin: 20px 0;
   } 
+
+  @media only screen and (max-width: 500px) {
+    width: 100%;
+    margin: 20px 0;
+  } 
 `;
 
 const Flex = styled.div`
