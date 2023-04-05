@@ -13,12 +13,16 @@ import { GlobalStyles } from "./resources/styles/global";
 
 // pages
 import Home from "./pages/Home";
-import Projects from "./pages/Projects"
+import Projects from "./pages/Projects";
+import Blog from "./pages/Blog";
 
 // components
 import Themes from "./components/Theme/Theme";
 import Navbar from "./components/Navbar/Navbar";
 import SocialMediaBar from "./components/SocialMedia/SocialMediaBar";
+
+// blog posts
+import TheStart from "./components/Posts/TheStart";
 
 const Wrapper = styled.div`
   display: flex;
@@ -71,6 +75,9 @@ const App = () => {
                 <Switch location={location}>
                   <Route exact path='/' component={Home} />
                   <Route exact path='/projects' component={Projects} />
+                  <Route exact path='/blog' component={Blog} />
+                  {/* Add blog posts here */}
+                  <Route exact path='/blog/the-start' component={TheStart} />
                 </Switch>
               </>
             );
