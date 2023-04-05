@@ -48,14 +48,17 @@ const StyledTitle = styled.h1`
 `;
 
 const StyledTags = styled.div`
-  border: 2px solid ${({ theme }) => theme.text};
-  background: ${({ theme }) => theme.primary};
+  border: 1px solid ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.text};
   font-size: 1.2rem;
   font-weight: bold;
   padding: 6px 0px;
   margin: 0 10px;
   width: 120px;
+
+  ${props => props.background && css`
+    background: ${props => props.background}
+  `}
 `;
 
 const StyledIntro = styled.div`
@@ -64,9 +67,10 @@ const StyledIntro = styled.div`
 `;
 
 const StyledBorder = styled.div`
-  border: 2px solid ${({ theme }) => theme.text};
-  /* box-shadow: 2px 2px 2px ${({ theme }) => theme.primary}; */
   padding: 6px 0px;
+  :hover {
+    background: ${({ theme }) => theme.primary};
+  }
 `;
 
 
@@ -82,17 +86,14 @@ const BlogPost = ({ title, type, date, tags, intro, navigate }) => {
         {title}
       </StyledTitle>
       <Flex>
-        {tags?.map((x, i) => <StyledTags index={i}>{x}</StyledTags>)}
+        {tags?.map((x, i) => <StyledTags index={i} background={x.background}>{x.name}</StyledTags>)}
       </Flex>
       <StyledIntro>
         {intro}
       </StyledIntro>
       <BottomBarText>
         <StyledBorder>
-          <StyledNavButton
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
+          <StyledNavButton>
             <StyledNavLink
               exact to={`blog/${navigate}`}>
               Read more
