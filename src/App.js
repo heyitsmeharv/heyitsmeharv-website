@@ -23,6 +23,7 @@ import SocialMediaBar from "./components/SocialMedia/SocialMediaBar";
 
 // blog posts
 import TheStart from "./components/Posts/TheStart";
+import JavaScriptArray from "./components/Posts/JavaScriptArray";
 
 const Wrapper = styled.div`
   display: flex;
@@ -78,6 +79,7 @@ const App = () => {
                   <Route exact path='/blog' component={Blog} />
                   {/* Add blog posts here */}
                   <Route exact path='/blog/the-start' component={TheStart} />
+                  <Route exact path='/blog/javascript-arrays' component={JavaScriptArray} />
                 </Switch>
               </>
             );

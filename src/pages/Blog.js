@@ -13,7 +13,7 @@ import SlideInTop from "../animations/SlideInTop";
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 4rem;
   background: ${({ theme }) => theme.background};
@@ -69,10 +69,20 @@ export default function Blog() {
       type: 'Retrospective',
       date: '05/04/2023',
       tags: [{ name: 'My Own Journey', background: '#4367B1' }, { name: 'Tech Blog', background: '#F4BF36' }, { name: 'First Of Many 🤞', background: '#D53745' }],
-      intro: ` For a long time I've wanted to write a blog about technologies I'm interested in.
+      intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
             The purpose of this blog is just to document my personal journey learning cool tech,
             if only to cement my own understanding and potentially help people with similar interests...`,
       navigate: 'the-start'
+    },
+    {
+      title: 'JavaScript Arrays',
+      type: 'Discovery',
+      date: '12/04/2023',
+      tags: [{ name: 'JavaScript', background: '#F4BF36' }],
+      intro: `Do you ever find yourself forgetting what function would be best to manipulate your data?
+      In this post, I would like to go through different use cases for manipulating your data.
+      First let's tackle what an array is exactly...`,
+      navigate: 'javascript-arrays'
     }
   ]);
 
@@ -86,6 +96,16 @@ export default function Blog() {
             The purpose of this blog is just to document my personal journey learning cool tech,
             if only to cement my own understanding and potentially help people with similar interests...`,
       navigate: 'the-start'
+    },
+    {
+      title: 'JavaScript Arrays',
+      type: 'Discovery',
+      date: '12/04/2023',
+      tags: [{ name: 'JavaScript', background: '#F4BF36' }],
+      intro: `Do you ever find yourself forgetting what function would be best to manipulate your data?
+      In this post, I would like to go through different use cases for manipulating your data.
+      First let's tackle what an array is exactly...`,
+      navigate: 'javascript-arrays'
     }
   ];
 
