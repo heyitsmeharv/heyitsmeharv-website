@@ -103,10 +103,10 @@ const JavaScriptArray = () => {
   const mapExample6 = `console.log(reformattedArray); // [ { word: "Defence" }, { word: "Colour" }, { word: "Offence" } ];`;
   const forLoop = `for (let i = 0; i < item.length; i++) {
     copyItems.push(items[i]);
-  }`;
+}`;
   const forEachExample = `items.forEach(item => {
     copyItems.push(item);
-  });`;
+});`;
   return (
     <Wrapper>
       <StyledNavButton>
@@ -195,7 +195,7 @@ const JavaScriptArray = () => {
           <Spacer />
           <Heading>Syntax</Heading>
           <CodeBlock>array.forEach(function(currentValue, index, arr));</CodeBlock>
-          The typical use case is to execute side effects at the end of a chain. The forEach method is a cleaner way of writing a 'for loop'.
+          The forEach method is a cleaner way of writing a 'for loop'.
           <CodeBlock>
             const items = ["item1", "item2", "item3"];
             <Spacer />
@@ -205,11 +205,12 @@ const JavaScriptArray = () => {
             <Spacer />
             {forEachExample}
           </CodeBlock>
+          The typical use case is to execute side effects at the end of a chain.
           <Heading>Use Case</Heading>
           If you need to call a function on every element in the array.
         </Text>
       </Container>
-    </Wrapper >
+    </Wrapper>
   );
 }
 
