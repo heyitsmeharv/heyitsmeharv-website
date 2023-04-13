@@ -32,7 +32,7 @@ const CodeBlock = styled.pre`
   background: #292929;
   color: ${({ theme }) => theme.buttonText};
   word-wrap: break-word;
-  padding: 1rem 3rem 2rem;
+  padding: 1rem 2rem 1rem;
   border-radius: 2rem;
   overflow-x: auto;
   line-height: 3.5rem;
@@ -49,6 +49,11 @@ const SubTitle = styled.h1`
   font-style: italic;
 `;
 
+const Heading = styled.h1`
+  font-size: 2rem;
+  font-weight: bold;
+`;
+
 const Text = styled.span`
   color: ${({ theme }) => theme.text};
   font-size: 2rem;
@@ -62,7 +67,11 @@ const BoldText = styled.b`
 
 const StyledListItem = styled.li`
   color: ${({ theme }) => theme.text};
-`
+`;
+
+const StyledAnchor = styled.a`
+  color: ${({ theme }) => theme.text};
+`;
 
 const StyledBackIcon = styled(ChevronBackCircle)`
   color: ${({ theme }) => theme.secondary};
@@ -72,6 +81,32 @@ const StyledBackIcon = styled(ChevronBackCircle)`
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
+  const example = `const starWarsCharacters = [ "starwars", { starwars: [ { nameOne: "Luke", nameTwo: "Leia", nameThree: "Han" } ] }, 4, ["starwars"] ];`
+  const mapExample = `const kvpArray = [
+      { key: 1, value: 10 },
+      { key: 2, value: 20 },
+      { key: 3, value: 30 },
+    ];`;
+  const mapExample2 = `const reformattedArray = kvpArray.map(({ key, value }) => ({ [key]: value }));`;
+  const mapExample3 = `console.log(reformattedArray); // [{ 1: 10 }, { 2: 20 }, { 3: 30 }]`;
+  const mapExample4 = `const wordArray = [
+    { word: "Defence" },
+    { word: "Color" },
+    { word: "Offence" },
+    ];`;
+  const mapExample5 = `const reformattedArray = wordArray.map(item => {
+    if (item.word === "Color") {
+      item.word = "Colour";
+    }
+    return item;
+    });`;
+  const mapExample6 = `console.log(reformattedArray); // [ { word: "Defence" }, { word: "Colour" }, { word: "Offence" } ];`;
+  const forLoop = `for (let i = 0; i < item.length; i++) {
+    copyItems.push(items[i]);
+  }`;
+  const forEachExample = `items.forEach(item => {
+    copyItems.push(item);
+  });`;
   return (
     <Wrapper>
       <StyledNavButton>
@@ -86,7 +121,7 @@ const JavaScriptArray = () => {
         <Text>
           Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this post, I would like to go through the different helper functions and the use cases for manipulating your data.
           <Spacer />
-          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably skip this part.
+          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor>
           <Spacer />
           <Spacer />
           <SubTitle>What is an Array?</SubTitle>
@@ -95,7 +130,7 @@ const JavaScriptArray = () => {
           <ul>
             <li>JavaScript arrays are resizable and can contain a mix of different data types (integers, object and even arrays themselves)</li>
             <CodeBlock>
-              const starWarsCharacters = [ "starwars", {`starwars: [ { nameOne: "Luke", nameTwo: "Leia", nameThree: "Han" } ]`}, 4, ["starwars"] ];
+              {example}
             </CodeBlock>
             <li>JavaScript arrays are zero-indexed, which means they start at index 0, the second index being 1 and so forth.</li>
             <CodeBlock>
@@ -119,52 +154,62 @@ const JavaScriptArray = () => {
           JavaScript Arrays come with helper methods which help with data manipulation, which was introduces with ES6 (ECMAScript 6). The reason why we need to manipulate data can be for several reasons, this could be
           because a front-end application needs it to be in a different format in order to easily display the data, or that we want the data to be more readable and understandable.
           <Spacer />
-          <SubTitle>Helper Methods</SubTitle>
+          <SubTitle id="skip">Helper Methods</SubTitle>
           Here are the helper methods that I'll be covering in this post. I'll be explaining how they work as well as the use cases for when you would want to use each of them:
-          <a href="#map"><StyledListItem>map</StyledListItem></a>
-          <a href="#forEach"><StyledListItem>forEach</StyledListItem></a>
-          <a href="#filter"><StyledListItem>filter</StyledListItem></a>
-          <a href="#find"><StyledListItem>find</StyledListItem></a>
-          <a href="#every"><StyledListItem>every</StyledListItem></a>
-          <a href="#some"><StyledListItem>some</StyledListItem></a>
-          <a href="#reduce"><StyledListItem>reduce</StyledListItem></a>
+          <StyledAnchor href="#map"><StyledListItem>map</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#forEach"><StyledListItem>forEach</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#filter"><StyledListItem>filter</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#find"><StyledListItem>find</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#every"><StyledListItem>every</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#some"><StyledListItem>some</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#reduce"><StyledListItem>reduce</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id='map'>Map</SubTitle>
-          The map helper method is an iterative method, meaning it loops through each element in the array and <BoldText>constructs a new array from the results.</BoldText> This can be quite handy when
-          we want to manipulate the data into a new structure. The example below shows how we can remove the labels from each element in the array, and just show the key and value.
+          The map helper method is an iterative method, meaning it loops through each element in the array and <BoldText>constructs a new array from the results.</BoldText>
+          <Spacer />
+          <Heading>Syntax</Heading>
+          <CodeBlock>array.map(function(currentValue, index, arr));</CodeBlock>
+          This can be quite handy when we want to manipulate the data into a new structure. The example below shows how we can remove the labels from each element in the array, and just show the key and value.
           <CodeBlock>
-            const kvpArray = [
-              {` key: 1, value: 10 `},
-              {` key: 2, value: 20 `},
-              {` key: 3, value: 30 `},
-            ];
+            {mapExample}
             <Spacer />
-            const reformattedArray = kvpArray.map(({` key, value `}) => ({` [key]: value `}));
+            {mapExample2}
             <Spacer />
-            console.log(reformattedArray); // [{` 1: 10 `}, {` 2: 20 `}, {` 3: 30 `}]
+            {mapExample3}
           </CodeBlock>
-          It's also common to have conditions within a map function. For example, if you needed to specifically change an element within the array, you can set a condition. For example, let's say we need
+          It's also common to have conditions within a map function. For example, if you needed to specifically change an element within the array, you can set a condition. Let's say we need
           to ammend our data set to only have British spelling.
           <CodeBlock>
-            const wordArray = [
-              {` word: "Defence" `},
-              {` word: "Color" `},
-              {` word: "Offence" `},
-            ];
+            {mapExample4}
             <Spacer />
-            const reformattedArray = wordArray.map(item => {`
-              if (item.word === "Color") {
-                item.word = "Colour";
-              }
-              return item;
-            `});
+            {mapExample5}
             <Spacer />
-            console.log(reformattedArray); // [ {`word: "Defence"`}, {`word: "Colour"`}, {`word: "Offence"`} ];
+            {mapExample6}
           </CodeBlock>
           I know this is a bit of a tedious example, and I am by no means recommending this approach, but I just want to easily demonstrate that you can manipulate data sets with conditions.
+          <Heading>Use Case</Heading>
+          If you need to create a new array from the result of calling a function on every element in the array.
+
+          <SubTitle id='forEach'>ForEach</SubTitle>
+          The forEach helper method much like the map, is an iterative method, however a key difference is the output does not return a new array.
+          <Spacer />
+          <Heading>Syntax</Heading>
+          <CodeBlock>array.forEach(function(currentValue, index, arr));</CodeBlock>
+          The typical use case is to execute side effects at the end of a chain. The forEach method is a cleaner way of writing a 'for loop'.
+          <CodeBlock>
+            const items = ["item1", "item2", "item3"];
+            <Spacer />
+            const copyItems = [];
+            <Spacer />
+            {forLoop}
+            <Spacer />
+            {forEachExample}
+          </CodeBlock>
+          <Heading>Use Case</Heading>
+          If you need to call a function on every element in the array.
         </Text>
       </Container>
-    </Wrapper>
+    </Wrapper >
   );
 }
 
