@@ -154,6 +154,7 @@ const JavaScriptArray = () => {
           JavaScript Arrays come with helper methods which help with data manipulation, which was introduces with ES6 (ECMAScript 6). The reason why we need to manipulate data can be for several reasons, this could be
           because a front-end application needs it to be in a different format in order to easily display the data, or that we want the data to be more readable and understandable.
           <Spacer />
+          <Spacer />
           <SubTitle id="skip">Helper Methods</SubTitle>
           Here are the helper methods that I'll be covering in this post. I'll be explaining how they work as well as the use cases for when you would want to use each of them:
           <StyledAnchor href="#map"><StyledListItem>map</StyledListItem></StyledAnchor>
@@ -190,6 +191,8 @@ const JavaScriptArray = () => {
           <Heading>Use Case</Heading>
           If you need to create a new array from the result of calling a function on every element in the array.
 
+          <Spacer />
+          <Spacer />
           <SubTitle id='forEach'>ForEach</SubTitle>
           The forEach helper method much like the map, is an iterative method, however a key difference is the output does not return a new array.
           <Spacer />
