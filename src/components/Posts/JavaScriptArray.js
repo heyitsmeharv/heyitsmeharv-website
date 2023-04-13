@@ -93,13 +93,13 @@ const JavaScriptArray = () => {
     { word: "Defence" },
     { word: "Color" },
     { word: "Offence" },
-    ];`;
+];`;
   const mapExample5 = `const reformattedArray = wordArray.map(item => {
     if (item.word === "Color") {
       item.word = "Colour";
     }
     return item;
-    });`;
+});`;
   const mapExample6 = `console.log(reformattedArray); // [ { word: "Defence" }, { word: "Colour" }, { word: "Offence" } ];`;
   const forLoop = `for (let i = 0; i < item.length; i++) {
     copyItems.push(items[i]);
