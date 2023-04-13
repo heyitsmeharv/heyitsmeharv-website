@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styled, { css, keyframes } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";

@@ -132,7 +132,7 @@ export default function Blog() {
       </SearchBarWrapper>
       <Container>
         {blogPosts.map((p, i) => {
-          return <BlogPost index={i} title={p.title} readingTime={p.readingTime} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} />
+          return <BlogPost key={i} index={i} title={p.title} readingTime={p.readingTime} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} />
         }).reverse()}
       </Container>
     </>

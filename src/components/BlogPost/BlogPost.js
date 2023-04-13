@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
@@ -8,6 +8,7 @@ const Container = styled.div`
   background: ${({ theme }) => theme.secondary};
   position: relative;
   width: 30%;
+  margin: 25px 0;
   ${props => props.hovered && css`
     border: .5px solid ${({ theme }) => theme.text};
   `}
@@ -101,7 +102,7 @@ const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => 
         {readingTime}
       </ReadingTime>
       <Flex>
-        {tags?.map((x, i) => <StyledTags index={i} background={x.background}>{x.name}</StyledTags>)}
+        {tags?.map((x, i) => <StyledTags key={i} index={i} background={x.background}>{x.name}</StyledTags>)}
       </Flex>
       <StyledIntro>
         {intro}
