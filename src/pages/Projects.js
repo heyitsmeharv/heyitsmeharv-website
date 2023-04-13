@@ -79,7 +79,7 @@ export default function Projects() {
   return (
     <Container>
       {projects.map((p, i) => {
-        return <Project index={i} name={p.name} link={p.link} image={p.image} github={p.github} hide={p.hide} />
+        return <Project key={i} index={i} name={p.name} link={p.link} image={p.image} github={p.github} hide={p.hide} />
       })}
     </Container>
   );

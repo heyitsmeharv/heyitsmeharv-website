@@ -67,6 +67,7 @@ const TheStart = () => {
           <li>Create Tutorials</li>
           <li>Solidifying my own understanding</li>
           <li>Following conferences and events</li>
+          <Spacer />
           I don't have a list of blog posts I want to write about, but I'm hoping that now I have created a space for
           myself to blog, I'll be more inclined to write... Watch this space!
         </Text>
