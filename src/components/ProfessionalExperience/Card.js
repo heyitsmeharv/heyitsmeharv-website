@@ -34,6 +34,7 @@ const Text = styled.p`
   font-size: 2rem;
   letter-spacing: 1.4px;
   text-align: center;
+  overflow-wrap: anywhere;
 `;
 
 const Card = ({ icon, title, text }) => {

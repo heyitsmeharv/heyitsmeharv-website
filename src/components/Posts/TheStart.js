@@ -13,6 +13,11 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 const Wrapper = styled.div`
   padding: 1rem 4rem;
   line-height: 6.5rem;
+
+  @media only screen and (max-width: 500px) {
+     line-height: 5rem;
+     padding: 0;
+  } 
 `;
 
 const Container = styled.div`

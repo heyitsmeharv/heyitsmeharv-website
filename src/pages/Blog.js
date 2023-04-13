@@ -133,7 +133,7 @@ export default function Blog() {
       <Container>
         {blogPosts.map((p, i) => {
           return <BlogPost index={i} title={p.title} readingTime={p.readingTime} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} />
-        })}
+        }).reverse()}
       </Container>
     </>
   );

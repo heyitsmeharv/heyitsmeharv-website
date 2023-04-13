@@ -64,6 +64,10 @@ const FlexWrapper = styled.div`
   justify-content: center;
   flex-flow: wrap;
   margin: 30px;
+
+  @media only screen and (max-width: 500px) {
+    margin: 30px 0;
+  } 
 `;
 
 const Title = styled.h1`
