@@ -30,6 +30,7 @@ const CodeBlock = styled.pre`
   padding: 1rem 3rem 2rem;
   border-radius: 2rem;
   overflow-x: auto;
+  line-height: 3.5rem;
 `;
 
 const Title = styled.h1`
@@ -54,6 +55,10 @@ const BoldText = styled.b`
   font-weight: bold;
 `;
 
+const StyledListItem = styled.li`
+  color: ${({ theme }) => theme.text};
+`
+
 const StyledBackIcon = styled(ChevronBackCircle)`
   color: ${({ theme }) => theme.secondary};
   width: 4rem;
@@ -74,7 +79,7 @@ const JavaScriptArray = () => {
         <Title>JavaScript Arrays</Title>
         <Spacer />
         <Text>
-          Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this post, I would like to go through different use cases for manipulating your data.
+          Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this post, I would like to go through the different helper functions and the use cases for manipulating your data.
           <Spacer />
           But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably skip this part.
           <Spacer />
@@ -111,13 +116,47 @@ const JavaScriptArray = () => {
           <Spacer />
           <SubTitle>Helper Methods</SubTitle>
           Here are the helper methods that I'll be covering in this post. I'll be explaining how they work as well as the use cases for when you would want to use each of them:
-          <li>map</li>
-          <li>forEach</li>
-          <li>filter</li>
-          <li>find</li>
-          <li>every</li>
-          <li>some</li>
-          <li>reduce</li>
+          <a href="#map"><StyledListItem>map</StyledListItem></a>
+          <a href="#forEach"><StyledListItem>forEach</StyledListItem></a>
+          <a href="#filter"><StyledListItem>filter</StyledListItem></a>
+          <a href="#find"><StyledListItem>find</StyledListItem></a>
+          <a href="#every"><StyledListItem>every</StyledListItem></a>
+          <a href="#some"><StyledListItem>some</StyledListItem></a>
+          <a href="#reduce"><StyledListItem>reduce</StyledListItem></a>
+          <Spacer />
+          <SubTitle id='map'>Map</SubTitle>
+          The map helper method is an iterative method, meaning it loops through each element in the array and <BoldText>constructs a new array from the results.</BoldText> This can be quite handy when
+          we want to manipulate the data into a new structure. The example below shows how we can remove the labels from each element in the array, and just show the key and value.
+          <CodeBlock>
+            const kvpArray = [
+              {` key: 1, value: 10 `},
+              {` key: 2, value: 20 `},
+              {` key: 3, value: 30 `},
+            ];
+            <Spacer />
+            const reformattedArray = kvpArray.map(({` key, value `}) => ({` [key]: value `}));
+            <Spacer />
+            console.log(reformattedArray); // [{` 1: 10 `}, {` 2: 20 `}, {` 3: 30 `}]
+          </CodeBlock>
+          It's also common to have conditions within a map function. For example, if you needed to specifically change an element within the array, you can set a condition. For example, let's say we need
+          to ammend our data set to only have British spelling.
+          <CodeBlock>
+            const wordArray = [
+              {` word: "Defence" `},
+              {` word: "Color" `},
+              {` word: "Offence" `},
+            ];
+            <Spacer />
+            const reformattedArray = wordArray.map(item => {`
+              if (item.word === "Color") {
+                item.word = "Colour";
+              }
+              return item;
+            `});
+            <Spacer />
+            console.log(reformattedArray); // [ {`word: "Defence"`}, {`word: "Colour"`}, {`word: "Offence"`} ];
+          </CodeBlock>
+          I know this is a bit of a tedious example, and I am by no means recommending this approach, but I just want to easily demonstrate that you can manipulate data sets with conditions.
         </Text>
       </Container>
     </Wrapper>

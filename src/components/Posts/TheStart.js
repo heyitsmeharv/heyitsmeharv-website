@@ -54,12 +54,16 @@ const TheStart = () => {
           For a long time I've wanted to write a blog about technologies I'm interested in.
           The purpose of this blog is just to document my personal journey learning cool tech,
           if only to cement my own understanding and potentially help people with similar interests.
-          I'm hoping by the end of the year I will have blogged about the following:
+          I'm hoping by the end of the year I will have got the hang of blogging with more than a handful
+          of blog posts created. I'm hoping to have blogged about the following:
           <Spacer />
           <li>Making cool software</li>
           <li>Exploring using new technologies</li>
           <li>Create Tutorials</li>
+          <li>Solidifying my own understanding</li>
           <li>Following conferences and events</li>
+          I don't have a list of blog posts I want to write about, but I'm hoping that now I have created a space for
+          myself to blog, I'll be more inclined to write... Watch this space!
         </Text>
       </Container>
     </Wrapper>

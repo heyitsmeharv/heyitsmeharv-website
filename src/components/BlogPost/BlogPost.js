@@ -52,6 +52,12 @@ const StyledTitle = styled.h1`
   font-weight: bold;
 `;
 
+const ReadingTime = styled.h1`
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+`;
+
 const StyledTags = styled.div`
   border: 1px solid ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.text};
@@ -80,7 +86,7 @@ const StyledBorder = styled.div`
 `;
 
 
-const BlogPost = ({ title, type, date, tags, intro, navigate }) => {
+const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <Container hovered={hovered} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
@@ -91,6 +97,9 @@ const BlogPost = ({ title, type, date, tags, intro, navigate }) => {
       <StyledTitle>
         {title}
       </StyledTitle>
+      <ReadingTime>
+        {readingTime}
+      </ReadingTime>
       <Flex>
         {tags?.map((x, i) => <StyledTags index={i} background={x.background}>{x.name}</StyledTags>)}
       </Flex>

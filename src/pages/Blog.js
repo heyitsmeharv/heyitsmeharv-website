@@ -66,6 +66,7 @@ export default function Blog() {
   const [blogPosts, setBlogPosts] = useState([
     {
       title: 'The Start',
+      readingTime: 'less than 1 minute',
       type: 'Retrospective',
       date: '05/04/2023',
       tags: [{ name: 'My Own Journey', background: '#4367B1' }, { name: 'Tech Blog', background: '#F4BF36' }, { name: 'First Of Many 🤞', background: '#D53745' }],
@@ -76,12 +77,14 @@ export default function Blog() {
     },
     {
       title: 'JavaScript Arrays',
+      readingTime: 'approx 5 minutes',
       type: 'Discovery',
       date: '12/04/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36' }],
-      intro: `Do you ever find yourself forgetting what function would be best to manipulate your data?
-      In this post, I would like to go through different use cases for manipulating your data.
-      First let's tackle what an array is exactly...`,
+      intro: `Do you ever find yourself forgetting what helper methods would be best to manipulate your data? 
+        In this post, I would like to go through the different helper functions and the use cases for manipulating your data.
+        But before we get into that... 
+      `,
       navigate: 'javascript-arrays'
     }
   ]);
@@ -89,6 +92,7 @@ export default function Blog() {
   const defaultArr = [
     {
       title: 'The Start',
+      readingTime: 'less than 1 minute',
       type: 'Retrospective',
       date: '05/04/2023',
       tags: [{ name: 'My Own Journey', background: '#4367B1' }, { name: 'Tech Blog', background: '#F4BF36' }, { name: 'First Of Many 🤞', background: '#D53745' }],
@@ -99,12 +103,14 @@ export default function Blog() {
     },
     {
       title: 'JavaScript Arrays',
-      type: 'Discovery',
+      readingTime: 'approx 5 minutes',
+      type: 'Retrospective',
       date: '12/04/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36' }],
-      intro: `Do you ever find yourself forgetting what function would be best to manipulate your data?
-      In this post, I would like to go through different use cases for manipulating your data.
-      First let's tackle what an array is exactly...`,
+      intro: `Do you ever find yourself forgetting what helper methods would be best to manipulate your data? 
+      In this post, I would like to go through the different helper functions and the use cases for manipulating your data.
+      But before we get into that...
+    `,
       navigate: 'javascript-arrays'
     }
   ];
@@ -126,7 +132,7 @@ export default function Blog() {
       </SearchBarWrapper>
       <Container>
         {blogPosts.map((p, i) => {
-          return <BlogPost index={i} title={p.title} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} />
+          return <BlogPost index={i} title={p.title} readingTime={p.readingTime} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} />
         })}
       </Container>
     </>
