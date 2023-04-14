@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 500px) {
      line-height: 5rem;
      padding: 0;
-  } 
+  }
 `;
 
 const Container = styled.div`
@@ -151,7 +151,7 @@ const JavaScriptArray = () => {
           </ul>
           <Spacer />
           <SubTitle>Why Data Manipulation?</SubTitle>
-          JavaScript Arrays come with helper methods which help with data manipulation, which was introduces with ES6 (ECMAScript 6). The reason why we need to manipulate data can be for several reasons, this could be
+          JavaScript Arrays come with helper methods which help with data manipulation. The reason why we need to manipulate data can be for several reasons, this could be
           because a front-end application needs it to be in a different format in order to easily display the data, or that we want the data to be more readable and understandable.
           <Spacer />
           <Spacer />
@@ -179,7 +179,7 @@ const JavaScriptArray = () => {
             {mapExample3}
           </CodeBlock>
           It's also common to have conditions within a map function. For example, if you needed to specifically change an element within the array, you can set a condition. Let's say we need
-          to ammend our data set to only have British spelling.
+          to amend our data set to only have British spelling.
           <CodeBlock>
             {mapExample4}
             <Spacer />
@@ -211,6 +211,14 @@ const JavaScriptArray = () => {
           The typical use case is to execute side effects at the end of a chain.
           <Heading>Use Case</Heading>
           If you need to call a function on every element in the array.
+
+          <Spacer />
+          <Spacer />
+          <SubTitle id='filter'>Filter</SubTitle>
+          The filter helper method
+          <Spacer />
+          <Heading>Syntax</Heading>
+          <CodeBlock>array.filter(function(currentValue, index, arr));</CodeBlock>
         </Text>
       </Container>
     </Wrapper>
