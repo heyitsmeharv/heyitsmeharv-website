@@ -10,6 +10,9 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
+// codeblocks
+import { example, mapExample, mapExample2, mapExample3, mapExample4, mapExample5, mapExample6, forLoop, forEachExample } from "../../helpers/codeblocks";
+
 const Wrapper = styled.div`
   padding: 1rem 4rem;
   line-height: 6.5rem;
@@ -81,32 +84,6 @@ const StyledBackIcon = styled(ChevronBackCircle)`
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
-  const example = `const starWarsCharacters = [ "starwars", { starwars: [ { nameOne: "Luke", nameTwo: "Leia", nameThree: "Han" } ] }, 4, ["starwars"] ];`
-  const mapExample = `const kvpArray = [
-      { key: 1, value: 10 },
-      { key: 2, value: 20 },
-      { key: 3, value: 30 },
-    ];`;
-  const mapExample2 = `const reformattedArray = kvpArray.map(({ key, value }) => ({ [key]: value }));`;
-  const mapExample3 = `console.log(reformattedArray); // [{ 1: 10 }, { 2: 20 }, { 3: 30 }]`;
-  const mapExample4 = `const wordArray = [
-    { word: "Defence" },
-    { word: "Color" },
-    { word: "Offence" },
-];`;
-  const mapExample5 = `const reformattedArray = wordArray.map(item => {
-    if (item.word === "Color") {
-      item.word = "Colour";
-    }
-    return item;
-});`;
-  const mapExample6 = `console.log(reformattedArray); // [ { word: "Defence" }, { word: "Colour" }, { word: "Offence" } ];`;
-  const forLoop = `for (let i = 0; i < item.length; i++) {
-    copyItems.push(items[i]);
-}`;
-  const forEachExample = `items.forEach(item => {
-    copyItems.push(item);
-});`;
   return (
     <Wrapper>
       <StyledNavButton>
@@ -119,8 +96,7 @@ const JavaScriptArray = () => {
         <Title>JavaScript Arrays</Title>
         <Spacer />
         <Text>
-          Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this post, I would like to go through the different helper functions and the use cases for manipulating your data.
-          <Spacer />
+          Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this blog post, we will cover the basics of JavaScript arrays, including how to create them, access and modify their elements, and use built-in methods to manipulate them.
           But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor>
           <Spacer />
           <Spacer />
@@ -128,7 +104,11 @@ const JavaScriptArray = () => {
           <BoldText>"Arrays are technically objects which help with storing a collection of multiple data sets under a single variable name."</BoldText>
           <Spacer />
           <ul>
-            <li>JavaScript arrays are resizable and can contain a mix of different data types (integers, object and even arrays themselves)</li>
+            <li>JavaScript arrays are incredibly versatile and can be used to create complex data structures and algorithms.
+              Arrays can be created using the Array constructor or by using literal notation. The most common method is using literal notation, which involves enclosing a list of values in square brackets.
+              <Spacer />
+              Here is an example:
+            </li>
             <CodeBlock>
               {example}
             </CodeBlock>
