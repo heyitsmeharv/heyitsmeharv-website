@@ -11,7 +11,7 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
 // codeblocks
-import { example, mapExample, mapExample2, mapExample3, mapExample4, mapExample5, mapExample6, forLoop, forEachExample, filterExample } from "../../helpers/codeblocks";
+import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2 } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -150,23 +150,15 @@ const JavaScriptArray = () => {
           The map helper method is an iterative method, meaning it loops through each element in the array and <BoldText>constructs a new array from the results.</BoldText>
           <Spacer />
           <Heading>Syntax</Heading>
-          <CodeBlock>array.map(function(currentValue, index, arr));</CodeBlock>
+          <CodeBlock>array.map(callback(currentValue, index, arr));</CodeBlock>
           This can be quite handy when we want to manipulate the data into a new structure. The example below shows how we can remove the labels from each element in the array, and just show the key and value.
           <CodeBlock>
             {mapExample}
-            <Spacer />
-            {mapExample2}
-            <Spacer />
-            {mapExample3}
           </CodeBlock>
           It's also common to have conditions within a map function. For example, if you needed to specifically change an element within the array, you can set a condition. Let's say we need
           to amend our data set to only have British spelling.
           <CodeBlock>
-            {mapExample4}
-            <Spacer />
-            {mapExample5}
-            <Spacer />
-            {mapExample6}
+            {mapExample2}
           </CodeBlock>
           I know this is a bit of a tedious example, and I am by no means recommending this approach, but I just want to easily demonstrate that you can manipulate data sets with conditions.
           <Heading>Use Case</Heading>
@@ -177,7 +169,7 @@ const JavaScriptArray = () => {
           The forEach helper method much like the map, is an iterative method, however a key difference is the output does not return a new array.
           <Spacer />
           <Heading>Syntax</Heading>
-          <CodeBlock>array.forEach(function(currentValue, index, arr));</CodeBlock>
+          <CodeBlock>array.forEach(callback(currentValue, index, arr));</CodeBlock>
           The forEach method is a cleaner way of writing a 'for loop'.
           <CodeBlock>
             const items = ["item1", "item2", "item3"];
@@ -199,10 +191,30 @@ const JavaScriptArray = () => {
           <CodeBlock>
             {filterExample}
           </CodeBlock>
+          In this example, the callback function checks if the current number is odd by using the modulus operator (%) to check if it's divisible by 2 with a remainder. 
+          If the remainder is not 0, the number is odd and true is returned, so it is included in the oddNumbers array.
           <Heading>Syntax</Heading>
-          <CodeBlock>array.filter(function(currentValue, index, arr));</CodeBlock>
+          <CodeBlock>array.filter(callback(currentValue, index, arr));</CodeBlock>
           <Heading>Use Case</Heading>
-          If you need to filter data. 
+          If you need to filter data.
+          <Spacer />
+          <Spacer />
+          <SubTitle id='find'>Find</SubTitle>
+          The find method is used to search an array for a specific element and returns the first element in the array that satisfies the given condition.
+          <Spacer />
+          Here is an example of the find method out to search an array for a specific element:
+          <CodeBlock>
+            {findExample}
+          </CodeBlock>
+          In this example, the callback function checks if the current number is greater than 3. The method then returns the first element in the array that satisfies this condition, which is 4.
+          If no element satisfies the search condition, the method returns undefined.
+          <CodeBlock>
+            {findExample2}
+          </CodeBlock>
+          In this example, there is no element in the array greater than 10, so the method returns undefined.
+          <Heading>Syntax</Heading>
+          <CodeBlock>array.find(callback(currentValue, index, arr));</CodeBlock>
+          <Heading>Use Case</Heading>
         </Text>
       </Container>
     </Wrapper>
