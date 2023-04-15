@@ -11,7 +11,7 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
 // codeblocks
-import { example, mapExample, mapExample2, mapExample3, mapExample4, mapExample5, mapExample6, forLoop, forEachExample } from "../../helpers/codeblocks";
+import { example, mapExample, mapExample2, mapExample3, mapExample4, mapExample5, mapExample6, forLoop, forEachExample, filterExample } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -112,6 +112,7 @@ const JavaScriptArray = () => {
             <CodeBlock>
               {example}
             </CodeBlock>
+            Notice that they can contain a mix of different data types (integers, object and even arrays themselves).
             <li>JavaScript arrays are zero-indexed, which means they start at index 0, the second index being 1 and so forth.</li>
             <CodeBlock>
               const starWarsCharacters = [];
@@ -170,7 +171,6 @@ const JavaScriptArray = () => {
           I know this is a bit of a tedious example, and I am by no means recommending this approach, but I just want to easily demonstrate that you can manipulate data sets with conditions.
           <Heading>Use Case</Heading>
           If you need to create a new array from the result of calling a function on every element in the array.
-
           <Spacer />
           <Spacer />
           <SubTitle id='forEach'>ForEach</SubTitle>
@@ -188,17 +188,21 @@ const JavaScriptArray = () => {
             <Spacer />
             {forEachExample}
           </CodeBlock>
-          The typical use case is to execute side effects at the end of a chain.
           <Heading>Use Case</Heading>
-          If you need to call a function on every element in the array.
-
+          If you need to call a function on every element in the array. The typical use case is to execute side effects at the end of a chain.
           <Spacer />
           <Spacer />
           <SubTitle id='filter'>Filter</SubTitle>
-          The filter helper method
+          The filter method is used to create a new array with all the elements that pass a certain condition. When iterating over each element it will return a boolean value (true or false) indicating whether the element should be included in the filtered array or not.
           <Spacer />
+          Here is an example of filtering out all even numbers from an array:
+          <CodeBlock>
+            {filterExample}
+          </CodeBlock>
           <Heading>Syntax</Heading>
           <CodeBlock>array.filter(function(currentValue, index, arr));</CodeBlock>
+          <Heading>Use Case</Heading>
+          If you need to filter data. 
         </Text>
       </Container>
     </Wrapper>

@@ -24,3 +24,9 @@ export const forLoop = `for (let i = 0; i < item.length; i++) {
 export const forEachExample = `items.forEach(item => {
   copyItems.push(item);
 });`;
+export const filterExample = `const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const oddNumbers = numbers.filter(function(num) {
+  return num % 2 !== 0;
+});
+console.log(oddNumbers); // Output: [1, 3, 5, 7, 9]
+`;
