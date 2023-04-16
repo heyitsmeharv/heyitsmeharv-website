@@ -137,7 +137,7 @@ const JavaScriptArray = () => {
           <Spacer />
           <Spacer />
           <SubTitle id="skip">Helper Methods</SubTitle>
-          Here are the helper methods that I'll be covering in this post. I'll be explaining how they work as well as the use cases for when you would want to use each of them:
+          Here are the helper methods that I'll be covering in this post:
           <StyledAnchor href="#map"><StyledListItem>map</StyledListItem></StyledAnchor>
           <StyledAnchor href="#forEach"><StyledListItem>forEach</StyledListItem></StyledAnchor>
           <StyledAnchor href="#filter"><StyledListItem>filter</StyledListItem></StyledAnchor>
@@ -161,8 +161,6 @@ const JavaScriptArray = () => {
             {mapExample2}
           </CodeBlock>
           I know this is a bit of a tedious example, and I am by no means recommending this approach, but I just want to easily demonstrate that you can manipulate data sets with conditions.
-          <Heading>Use Case</Heading>
-          If you need to create a new array from the result of calling a function on every element in the array.
           <Spacer />
           <Spacer />
           <SubTitle id='forEach'>ForEach</SubTitle>
@@ -180,8 +178,6 @@ const JavaScriptArray = () => {
             <Spacer />
             {forEachExample}
           </CodeBlock>
-          <Heading>Use Case</Heading>
-          If you need to call a function on every element in the array. The typical use case is to execute side effects at the end of a chain.
           <Spacer />
           <Spacer />
           <SubTitle id='filter'>Filter</SubTitle>
@@ -195,8 +191,6 @@ const JavaScriptArray = () => {
           If the remainder is not 0, the number is odd and true is returned, so it is included in the oddNumbers array.
           <Heading>Syntax</Heading>
           <CodeBlock>array.filter(callback(currentValue, index, arr));</CodeBlock>
-          <Heading>Use Case</Heading>
-          If you need to filter data.
           <Spacer />
           <Spacer />
           <SubTitle id='find'>Find</SubTitle>
@@ -214,7 +208,21 @@ const JavaScriptArray = () => {
           In this example, there is no element in the array greater than 10, so the method returns undefined.
           <Heading>Syntax</Heading>
           <CodeBlock>array.find(callback(currentValue, index, arr));</CodeBlock>
-          <Heading>Use Case</Heading>
+          <Spacer />
+          <Spacer />
+          {/* <SubTitle id='every'>Every</SubTitle>
+          The filter method is used to create a new array with all the elements that pass a certain condition. When iterating over each element it will return a boolean value (true or false) indicating whether the element should be included in the filtered array or not.
+          <Spacer />
+          Here is an example of filtering out all even numbers from an array:
+          <CodeBlock>
+            {filterExample}
+          </CodeBlock>
+          In this example, the callback function checks if the current number is odd by using the modulus operator (%) to check if it's divisible by 2 with a remainder. 
+          If the remainder is not 0, the number is odd and true is returned, so it is included in the oddNumbers array.
+          <Heading>Syntax</Heading>
+          <CodeBlock>array.filter(callback(currentValue, index, arr));</CodeBlock>
+          <Spacer />
+          <Spacer /> */}
         </Text>
       </Container>
     </Wrapper>
