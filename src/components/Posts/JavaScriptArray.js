@@ -211,16 +211,15 @@ const JavaScriptArray = () => {
           <Spacer />
           <Spacer />
           <SubTitle id='every'>Every</SubTitle>
-          The every method is used to test whether all elements in an array pass a certain condition or not. It returns a boolean value indicating whether every element in the array satisfies the given condition.
+          The every method is used to test whether all elements in an array pass a certain condition or not. It returns a boolean value (true or false) indicating whether every element in the array satisfies the given condition.
           <Spacer />
-          Here is an example of testing if all elements in the array are even:
+          Here is an example of testing if all elements in the array have a length of less than 4:
           <CodeBlock>
             {everyExample}
           </CodeBlock>
-          In this example, the callback function checks if the current number is odd by using the modulus operator (%) to check if it's divisible by 2 with a remainder. 
-          If the remainder is not 0, the number is odd and true is returned, so it is included in the oddNumbers array.
+          In this example, the callback function checks each element's length and because the length of the string 'Anakin' is bigger than 4 the return will be false despite the other elements satisfying the condition.
           <Heading>Syntax</Heading>
-          <CodeBlock>array.filter(callback(currentValue, index, arr));</CodeBlock>
+          <CodeBlock>array.every(callback(currentValue, index, arr));</CodeBlock>
           <Spacer />
           <Spacer />
         </Text>

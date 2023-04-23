@@ -54,11 +54,11 @@ const foundNumber = numbers.find(num => {
 console.log(foundNumber); // undefined
 `;
 
-export const everyExample = `const numbers = [2, 4, 6, 8];
+export const everyExample = `const names = ["luke", "Leia", "Han", "Anakin"];
 
-const allEven = numbers.every(num => {
-  return num % 2 === 0;
+const shortNames = names.every(name => {
+  return name.length < 4;
 });
 
-console.log(allEven); // true
+console.log(shortNames); // false
 `;
