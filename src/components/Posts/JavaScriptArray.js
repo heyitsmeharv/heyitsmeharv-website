@@ -11,7 +11,7 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
 // codeblocks
-import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2 } from "../../helpers/codeblocks";
+import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -210,19 +210,19 @@ const JavaScriptArray = () => {
           <CodeBlock>array.find(callback(currentValue, index, arr));</CodeBlock>
           <Spacer />
           <Spacer />
-          {/* <SubTitle id='every'>Every</SubTitle>
-          The filter method is used to create a new array with all the elements that pass a certain condition. When iterating over each element it will return a boolean value (true or false) indicating whether the element should be included in the filtered array or not.
+          <SubTitle id='every'>Every</SubTitle>
+          The every method is used to test whether all elements in an array pass a certain condition or not. It returns a boolean value indicating whether every element in the array satisfies the given condition.
           <Spacer />
-          Here is an example of filtering out all even numbers from an array:
+          Here is an example of testing if all elements in the array are even:
           <CodeBlock>
-            {filterExample}
+            {everyExample}
           </CodeBlock>
           In this example, the callback function checks if the current number is odd by using the modulus operator (%) to check if it's divisible by 2 with a remainder. 
           If the remainder is not 0, the number is odd and true is returned, so it is included in the oddNumbers array.
           <Heading>Syntax</Heading>
           <CodeBlock>array.filter(callback(currentValue, index, arr));</CodeBlock>
           <Spacer />
-          <Spacer /> */}
+          <Spacer />
         </Text>
       </Container>
     </Wrapper>
