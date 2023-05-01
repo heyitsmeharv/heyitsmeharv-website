@@ -11,7 +11,7 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
 // codeblocks
-import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample } from "../../helpers/codeblocks";
+import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample, someExample } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -149,8 +149,6 @@ const JavaScriptArray = () => {
           <SubTitle id='map'>Map</SubTitle>
           The map helper method is an iterative method, meaning it loops through each element in the array and <BoldText>constructs a new array from the results.</BoldText>
           <Spacer />
-          <Heading>Syntax</Heading>
-          <CodeBlock>array.map(callback(currentValue, index, arr));</CodeBlock>
           This can be quite handy when we want to manipulate the data into a new structure. The example below shows how we can remove the labels from each element in the array, and just show the key and value.
           <CodeBlock>
             {mapExample}
@@ -166,8 +164,6 @@ const JavaScriptArray = () => {
           <SubTitle id='forEach'>ForEach</SubTitle>
           The forEach helper method much like the map, is an iterative method, however a key difference is the output does not return a new array.
           <Spacer />
-          <Heading>Syntax</Heading>
-          <CodeBlock>array.forEach(callback(currentValue, index, arr));</CodeBlock>
           The forEach method is a cleaner way of writing a 'for loop'.
           <CodeBlock>
             const items = ["item1", "item2", "item3"];
@@ -187,14 +183,12 @@ const JavaScriptArray = () => {
           <CodeBlock>
             {filterExample}
           </CodeBlock>
-          In this example, the callback function checks if the current number is odd by using the modulus operator (%) to check if it's divisible by 2 with a remainder. 
+          In this example, the callback function checks if the current number is odd by using the modulus operator (%) to check if it's divisible by 2 with a remainder.
           If the remainder is not 0, the number is odd and true is returned, so it is included in the oddNumbers array.
-          <Heading>Syntax</Heading>
-          <CodeBlock>array.filter(callback(currentValue, index, arr));</CodeBlock>
           <Spacer />
           <Spacer />
           <SubTitle id='find'>Find</SubTitle>
-          The find method is used to search an array for a specific element and returns the first element in the array that satisfies the given condition.
+          The find method is used to search an array for a <BoldText>specific element</BoldText> and <BoldText>returns the first element</BoldText> in the array that satisfies the given condition.
           <Spacer />
           Here is an example of the find method out to search an array for a specific element:
           <CodeBlock>
@@ -206,22 +200,37 @@ const JavaScriptArray = () => {
             {findExample2}
           </CodeBlock>
           In this example, there is no element in the array greater than 10, so the method returns undefined.
-          <Heading>Syntax</Heading>
-          <CodeBlock>array.find(callback(currentValue, index, arr));</CodeBlock>
           <Spacer />
           <Spacer />
           <SubTitle id='every'>Every</SubTitle>
-          The every method is used to test whether all elements in an array pass a certain condition or not. It returns a boolean value (true or false) indicating whether every element in the array satisfies the given condition.
+          The every method is used to test whether <BoldText>all elements</BoldText> in an array passes a certain condition or not. It returns a boolean value (true or false) indicating whether every element in the array satisfies the given condition.
           <Spacer />
           Here is an example of testing if all elements in the array have a length of less than 4:
           <CodeBlock>
             {everyExample}
           </CodeBlock>
           In this example, the callback function checks each element's length and because the length of the string 'Anakin' is bigger than 4 the return will be false despite the other elements satisfying the condition.
-          <Heading>Syntax</Heading>
-          <CodeBlock>array.every(callback(currentValue, index, arr));</CodeBlock>
           <Spacer />
           <Spacer />
+          <SubTitle id='some'>Some</SubTitle>
+          The some method is used to test <BoldText>at least one element</BoldText> in an array passes a certain condition or not. It returns a boolean value (true or false) indicating whether any element in the array satisfies the given condition.
+          <Spacer />
+          Here is an example of testing if there are any elements in the array that are odd:
+          <CodeBlock>
+            {someExample}
+          </CodeBlock>
+          In this example, the callback function performs a calculation on each element (checks to see if the number is divisible by 2) and returns true because there is one element that does not meet the condition (7).
+          <Spacer />
+          <Spacer />
+          <SubTitle id='reduce'>Reduce</SubTitle>
+          The reduce method is used to <BoldText>reduce the values of an array to a single value.</BoldText> It iterates over an array and applies a function to each element of the array, accumulating the result as it goes along.
+          <Spacer />
+          Here is an example of using the reduce method to find the sum of an array of numbers:
+          <CodeBlock>
+            {someExample}
+          </CodeBlock>
+          In this example, the callback function takes two arguments, the accumulator and the currentValue. It returns the sum of the accumulator and the currentValue. The reduce method then accumulates the result of each iteration, starting with an initial value of 0.
+          If no initial value is provided, the reduce method uses the first element of the array as the initial value, and starts iterating from the second element.
         </Text>
       </Container>
     </Wrapper>

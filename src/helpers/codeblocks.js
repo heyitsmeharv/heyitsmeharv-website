@@ -62,3 +62,20 @@ const shortNames = names.every(name => {
 
 console.log(shortNames); // false
 `;
+
+export const someExample = `const numbers = [2, 4, 6, 7, 8];
+
+const hasOdd = numbers.some(function(num) {
+  return num % 2;
+});
+
+console.log(hasOdd); // true`;
+
+export const reduceExample = `const numbers = [1, 2, 3, 4, 5];
+
+const sum = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log(sum); // 15
+`;
