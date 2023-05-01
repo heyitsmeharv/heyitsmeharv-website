@@ -77,7 +77,7 @@ export default function Blog() {
     },
     {
       title: 'JavaScript Arrays',
-      readingTime: 'approx 5 minutes',
+      readingTime: 'approx 10 minutes',
       type: 'Discovery',
       date: '12/04/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36' }],
@@ -103,7 +103,7 @@ export default function Blog() {
     },
     {
       title: 'JavaScript Arrays',
-      readingTime: 'approx 5 minutes',
+      readingTime: 'approx 10 minutes',
       type: 'Retrospective',
       date: '12/04/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36' }],

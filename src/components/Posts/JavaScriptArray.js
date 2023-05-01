@@ -9,6 +9,7 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
+import ArrayExplorer from "../ArrayExplorer/ArrayExplorer";
 
 // codeblocks
 import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample, someExample } from "../../helpers/codeblocks";
@@ -52,11 +53,6 @@ const SubTitle = styled.h1`
   font-style: italic;
 `;
 
-const Heading = styled.h1`
-  font-size: 2rem;
-  font-weight: bold;
-`;
-
 const Text = styled.span`
   color: ${({ theme }) => theme.text};
   font-size: 2rem;
@@ -97,7 +93,7 @@ const JavaScriptArray = () => {
         <Spacer />
         <Text>
           Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this blog post, we will cover the basics of JavaScript arrays, including how to create them, access and modify their elements, and use built-in methods to manipulate them.
-          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor>
+          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor>. Alternatively, you can go straight to the  <StyledAnchor href="#use-case">use case </StyledAnchor>section where you can find what helper method you require depending on what you require.
           <Spacer />
           <Spacer />
           <SubTitle>What is an Array?</SubTitle>
@@ -231,6 +227,11 @@ const JavaScriptArray = () => {
           </CodeBlock>
           In this example, the callback function takes two arguments, the accumulator and the currentValue. It returns the sum of the accumulator and the currentValue. The reduce method then accumulates the result of each iteration, starting with an initial value of 0.
           If no initial value is provided, the reduce method uses the first element of the array as the initial value, and starts iterating from the second element.
+          <Spacer />
+          <Spacer />
+          <SubTitle id='use-case'>Use Cases</SubTitle>
+          I have an array and I would like to...
+          <ArrayExplorer />
         </Text>
       </Container>
     </Wrapper>
