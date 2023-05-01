@@ -12,7 +12,7 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import ArrayExplorer from "../ArrayExplorer/ArrayExplorer";
 
 // codeblocks
-import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample, someExample } from "../../helpers/codeblocks";
+import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample, someExample, reduceExample } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -223,7 +223,7 @@ const JavaScriptArray = () => {
           <Spacer />
           Here is an example of using the reduce method to find the sum of an array of numbers:
           <CodeBlock>
-            {someExample}
+            {reduceExample}
           </CodeBlock>
           In this example, the callback function takes two arguments, the accumulator and the currentValue. It returns the sum of the accumulator and the currentValue. The reduce method then accumulates the result of each iteration, starting with an initial value of 0.
           If no initial value is provided, the reduce method uses the first element of the array as the initial value, and starts iterating from the second element.
