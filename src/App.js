@@ -32,13 +32,11 @@ const Wrapper = styled.div`
 
 `;
 
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
+
 const App = () => {
-
-  console.log('process.env', process.env);
-
   // analytics
   useEffect(() => {
-    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
     ReactGA.pageview('/homepage');
   }, []);
 

@@ -49,7 +49,6 @@ const TheStart = () => {
   // analytics
   useEffect(() => {
     ReactGA.pageview('/blog/the-start');
-    console.log('sent reactGA', ReactGA);
   }, []);
 
   return (
