@@ -34,6 +34,8 @@ const Wrapper = styled.div`
 
 const App = () => {
 
+  console.log('process.env', process.env);
+
   // analytics
   useEffect(() => {
     ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
