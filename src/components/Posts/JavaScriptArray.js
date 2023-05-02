@@ -84,7 +84,6 @@ const JavaScriptArray = () => {
 
   // analytics
   useEffect(() => {
-    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
     ReactGA.pageview('/blog/javascript-arrays');
   }, []);
 

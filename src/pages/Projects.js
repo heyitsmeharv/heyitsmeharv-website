@@ -79,7 +79,6 @@ export default function Projects() {
 
   // analytics
   useEffect(() => {
-    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
     ReactGA.pageview('/projects');
   }, []);
 
