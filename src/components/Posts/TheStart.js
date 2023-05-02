@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import ReactGA from 'react-ga';
+import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
 // animations
@@ -44,6 +45,13 @@ const StyledBackIcon = styled(ChevronBackCircle)`
 const Spacer = styled.br``
 
 const TheStart = () => {
+
+  // analytics
+  useEffect(() => {
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
+    ReactGA.pageview('/blog/the-start');
+  }, []);
+
   return (
     <Wrapper>
       <StyledNavButton>

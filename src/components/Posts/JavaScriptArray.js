@@ -1,4 +1,5 @@
-import React from "react";
+import ReactGA from 'react-ga';
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 // animations
@@ -80,6 +81,13 @@ const StyledBackIcon = styled(ChevronBackCircle)`
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
+
+  // analytics
+  useEffect(() => {
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
+    ReactGA.pageview('/blog/javascript-arrays');
+  }, []);
+
   return (
     <Wrapper>
       <StyledNavButton>
@@ -101,7 +109,7 @@ const JavaScriptArray = () => {
           <Spacer />
           <ul>
             <li>JavaScript arrays are incredibly versatile and can be used to create complex data structures and algorithms.
-              Arrays can be created using the Array constructor or by using literal notation. The most common method is using literal notation, which involves enclosing a list of values in square brackets.
+            Arrays can be created using the Array constructor or by using literal notation. The most common method is using literal notation, which involves enclosing a list of values in square brackets.
               <Spacer />
               Here is an example:
             </li>

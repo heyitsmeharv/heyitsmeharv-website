@@ -1,4 +1,5 @@
-import React from 'react';
+import ReactGA from 'react-ga';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import Project from '../components/Project/Project';
@@ -75,6 +76,12 @@ export default function Projects() {
       hide: true
     },
   ];
+
+  // analytics
+  useEffect(() => {
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
+    ReactGA.pageview('/projects');
+  }, []);
 
   return (
     <Container>

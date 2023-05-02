@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -122,6 +123,12 @@ export default function Blog() {
       setBlogPosts(defaultArr)
     }
   }, [search]);
+
+  // analytics
+  useEffect(() => {
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
+    ReactGA.pageview('/blog');
+  }, []);
 
   return (
     <>

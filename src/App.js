@@ -36,7 +36,7 @@ const App = () => {
 
   // analytics
   useEffect(() => {
-    ReactGA.initialize('G-SYKXW4LZ44');
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
     ReactGA.pageview('/homepage');
   }, []);
 
