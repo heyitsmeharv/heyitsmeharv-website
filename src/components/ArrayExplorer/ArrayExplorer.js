@@ -14,8 +14,29 @@ const StyledSelect = styled(Select)`
   }
 
   & .Select__option {
+    background:  ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.text};
     &:hover {
-      color: ${({ theme }) => theme.primary};
+      background:  ${({ theme }) => theme.secondary};
+      color: ${({ theme }) => theme.text};
+    }
+  }
+
+  // BUG: NESTED OPTIONS MEANS THE SELECT STATE IS GLOBAL - TEMP FIX
+  & .Select__option--is-focused {
+    background:  ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.text};
+    &:hover {
+      background: ${({ theme }) => theme.secondary};
+      color: ${({ theme }) => theme.text};
+    }
+  }
+  & .Select__option--is-selected {
+    background:  ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.text};
+    &:hover {
+      background: ${({ theme }) => theme.secondary};
+      color: ${({ theme }) => theme.text};
     }
   }
 `;

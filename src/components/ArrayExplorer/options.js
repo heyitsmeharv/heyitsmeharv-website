@@ -1,5 +1,14 @@
 // examples
-import { addExampleUsage, addExampleOutput } from "./codeExamples";
+import {
+  spliceExample,
+  spliceExampleOutput,
+  pushExample,
+  pushExampleOutput,
+  unshiftExample,
+  unshiftExampleOutput,
+  concatExample,
+  concatExampleOutput
+} from "./codeExamples";
 
 export const options = [
   {
@@ -10,20 +19,29 @@ export const options = [
         label: 'Elements/s to an array',
         helper: 'Array.splice()',
         helperDescription: 'Adds and/or removes elements from an array.',
-        usage: addExampleUsage,
-        output: addExampleOutput
+        usage: spliceExample,
+        output: spliceExampleOutput
       },
       {
-        value: 'I need to add',
-        label: 'Elements/s to the end of an array'
+        label: 'Elements/s to the end of an array',
+        helper: 'Array.push()',
+        helperDescription: 'Adds one or more elements to the end of an array and returns the new length of the array.',
+        usage: pushExample,
+        output: pushExampleOutput
       },
       {
-        value: 'I need to add',
-        label: 'Elements/s to the front of an array'
+        label: 'Elements/s to the front of an array',
+        helper: 'Array.unshift()',
+        helperDescription: 'Adds one or more elements to the front of an array and returns the new length of the array.',
+        usage: unshiftExample,
+        output: unshiftExampleOutput
       },
       {
-        value: 'I need to add',
-        label: 'this array to other array(s) and/or value(s)'
+        label: 'this array to other array(s) and/or value(s)',
+        helper: 'Array.concat()',
+        helperDescription: 'Returns a new array comprised of this array joined with other array(s) and/or value(s).',
+        usage: concatExample,
+        output: concatExampleOutput
       }
     ]
   },
