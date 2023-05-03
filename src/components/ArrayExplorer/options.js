@@ -2,12 +2,20 @@
 import {
   spliceExample,
   spliceExampleOutput,
+  spliceSecondExample,
+  spliceSecondExampleOutput,
   pushExample,
   pushExampleOutput,
   unshiftExample,
   unshiftExampleOutput,
   concatExample,
-  concatExampleOutput
+  concatExampleOutput,
+  popExample,
+  popExampleOutput,
+  shiftExample,
+  shiftExampleOutput,
+  sliceExample,
+  sliceExampleOutput
 } from "./codeExamples";
 
 export const options = [
@@ -50,20 +58,33 @@ export const options = [
     label: 'Remove items',
     secondOptions: [
       {
-        value: 'I need to remove',
-        label: 'Elements/s from an array'
+        label: 'Elements/s from an array',
+        helper: 'Array.splice()',
+        helperDescription: 'Adds and/or removes elements from an array.',
+        usage: spliceSecondExample,
+        output: spliceSecondExampleOutput
       },
       {
-        value: 'I need to remove',
-        label: 'The last element of the array'
+        label: 'The last element of the array',
+        helper: 'Array.pop()',
+        helperDescription: 'Removes the last element from an array and returns that element.',
+        usage: popExample,
+        output: popExampleOutput
       },
       {
-        value: 'I need to remove',
-        label: 'The first element of an array'
+        label: 'The first element of an array',
+        helper: 'Array.shift()',
+        helperDescription: 'Removes the first element from an array and returns that element.',
+        usage: shiftExample,
+        output: shiftExampleOutput
       },
       {
-        value: 'I need to remove',
-        label: 'one or more elements in order for use, leaving the array as is'
+        label: 'one or more elements in order for use, leaving the array as is',
+        helper: 'Array.slice()',
+        helperDescription: `The slice() method returns a shallow copy of a portion of an array into a new array object. You can specify either just the beginning element 
+(where end will default to the arrays length) or both the beginning and the end, comma-separated. The original array will not be modified.`,
+        usage: sliceExample,
+        output: sliceExampleOutput
       }
     ]
   },

@@ -80,6 +80,7 @@ const StyledIntro = styled.div`
 
 const StyledBorder = styled.div`
   padding: 6px 0px;
+  border: 2px solid ${({ theme }) => theme.primary};
   :hover {
     background: ${({ theme }) => theme.primary};
     transition: background .5s;

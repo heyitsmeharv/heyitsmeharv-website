@@ -7,6 +7,9 @@ import Select from 'react-select';
 // helpers
 import { options } from './options';
 
+// animations
+import SlideInLeft from "../../animations/SlideInLeft";
+
 const StyledSelect = styled(Select)`
   & .Select__menu {
     color: ${({ theme }) => theme.text};
@@ -39,6 +42,12 @@ const StyledSelect = styled(Select)`
       color: ${({ theme }) => theme.text};
     }
   }
+`;
+
+const Container = styled.div`
+  padding: 2.5rem 0;
+  background: ${({ theme }) => theme.background};
+  animation: ${SlideInLeft} 0.5s forwards;
 `;
 
 const Text = styled.span`
@@ -116,7 +125,7 @@ const ArrayExplorer = () => {
             onChange={s => handleSelectChange(s, 'second')}
           />
           {secondSelectedOptions.usage && secondSelectedOptions.output ?
-            <>
+            <Container>
               <Text>Solution</Text>
               <SolutionBlock>
                 <Text>{secondSelectedOptions.helper}</Text>
@@ -127,7 +136,7 @@ const ArrayExplorer = () => {
               <SolutionBlock>{secondSelectedOptions.usage}</SolutionBlock>
               <Text>Output</Text>
               <SolutionBlock>{secondSelectedOptions.output}</SolutionBlock>
-            </>
+            </Container >
             : ''}
           <Spacer />
           {Object.keys(thirdSelectedOptions).length !== 0 ?
