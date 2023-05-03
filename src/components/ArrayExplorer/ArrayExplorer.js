@@ -124,6 +124,17 @@ const ArrayExplorer = () => {
             value={secondSelectedOptions}
             onChange={s => handleSelectChange(s, 'second')}
           />
+          {Object.keys(secondSelectedOptions).length !== 0 && secondSelectedOptions.thirdOptions ?
+            <>
+              <Text>{selectedOptions.thirdSelectText}</Text>
+              <StyledSelect
+                classNamePrefix={'Select'}
+                options={secondSelectedOptions.thirdOptions}
+                value={thirdSelectedOptions}
+                onChange={s => handleSelectChange(s, 'third')}
+              />
+            </>
+            : ''}
           {secondSelectedOptions.usage && secondSelectedOptions.output ?
             <Container>
               <Text>Solution</Text>
@@ -136,31 +147,24 @@ const ArrayExplorer = () => {
               <SolutionBlock>{secondSelectedOptions.usage}</SolutionBlock>
               <Text>Output</Text>
               <SolutionBlock>{secondSelectedOptions.output}</SolutionBlock>
-            </Container >
+            </Container>
+            : ''}
+
+          {thirdSelectedOptions.usage && thirdSelectedOptions.output ?
+            <Container>
+              <Text>Solution</Text>
+              <SolutionBlock>
+                <Text>{thirdSelectedOptions.helper}</Text>
+                <Spacer />
+                <Text>{thirdSelectedOptions.helperDescription}</Text>
+              </SolutionBlock>
+              <Text>Usage</Text>
+              <SolutionBlock>{thirdSelectedOptions.usage}</SolutionBlock>
+              <Text>Output</Text>
+              <SolutionBlock>{thirdSelectedOptions.output}</SolutionBlock>
+            </Container>
             : ''}
           <Spacer />
-          {Object.keys(thirdSelectedOptions).length !== 0 ?
-            <>
-              <StyledSelect
-                classNamePrefix={'Select'}
-                options={selectedOptions.thirdOptions}
-                value={thirdSelectedOptions}
-                onChange={s => handleSelectChange(s, 'third')}
-              />
-              {thirdSelectedOptions.usage ?
-                <>
-                  <Text>Usage</Text>
-                  <CodeBlock>{thirdSelectedOptions.usage}</CodeBlock>
-                </>
-                : ''}
-              {thirdSelectedOptions.output ?
-                <>
-                  <Text>Output</Text>
-                  <CodeBlock>{thirdSelectedOptions.output}</CodeBlock>
-                </>
-                : ''}
-            </>
-            : ''}
         </>
         : ''}
     </>

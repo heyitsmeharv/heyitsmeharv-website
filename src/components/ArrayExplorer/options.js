@@ -15,7 +15,9 @@ import {
   shiftExample,
   shiftExampleOutput,
   sliceExample,
-  sliceExampleOutput
+  sliceExampleOutput,
+  includesExample,
+  includesExampleOutput
 } from "./codeExamples";
 
 export const options = [
@@ -90,30 +92,25 @@ export const options = [
   },
   {
     secondSelectText: `I'm trying to find`,
+    thirdSelectText: `I need to find`,
     label: 'Find items',
     secondOptions: [
       {
-        value: `I'm trying to find`,
-        label: 'one item'
-      }, {
-        value: `I'm trying to find`,
+        label: 'one item',
+        thirdOptions: [
+          {
+            label: `out if a certain element exists`,
+            helper: 'Array.includes()',
+            helperDescription: 'Determines whether an array contains a certain element, returning true or false as appropriate.',
+            usage: includesExample,
+            output: includesExampleOutput
+          }
+        ]
+      },
+      {
         label: 'one or many items'
       }
     ],
-    thirdOptions: [
-      {
-        value: 'I need to find',
-        label: 'Values based on a condition I create'
-      },
-      {
-        value: 'TEST',
-        label: 'Whether or not every item satisfies a condition'
-      },
-      {
-        value: 'I need to find',
-        label: 'Whether or not at least one item satisfies a condition'
-      }
-    ]
   },
   {
     secondSelectText: 'I need to iterate by',

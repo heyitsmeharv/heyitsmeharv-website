@@ -46,3 +46,7 @@ let slicedArr = arr.slice(1);
 `;
 
 export const sliceExampleOutput = `[1, 8]`;
+
+export const includesExample = `let arr = [5, 1, 8];`;
+
+export const includesExampleOutput = `true`;
