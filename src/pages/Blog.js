@@ -63,8 +63,9 @@ const StyledCloseButton = styled.button`
 `;
 
 /* COOL TAG COLOURS */
-// #64CBF6'
+// #64CBF6
 // #8B191D
+// #23262E
 
 export default function Blog() {
   const [search, setSearch] = useState('')
