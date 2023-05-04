@@ -19,12 +19,17 @@ import { example, mapExample, mapExample2, forLoop, forEachExample, filterExampl
 import JavaScriptObject from "../../resources/images/blog/JavaScriptObject.png";
 
 const Wrapper = styled.div`
-  padding: 1rem 4rem;
+  padding: 1rem 25%;
   line-height: 6.5rem;
   
-  @media only screen and (max-width: 500px) {
-     line-height: 5rem;
-     padding: 0;
+  @media only screen and (max-width: 1000px) {
+    line-height: 5rem;
+    padding: 0;
+  }
+
+  @media only screen and (min-width: 1001px) and (max-width: 1800px) {
+    line-height: 6.5rem;
+    padding: 1rem 20%;
   }
 `;
 
@@ -55,6 +60,11 @@ const SubTitle = styled.h1`
   font-size: 3rem;
   font-weight: bold;
   font-style: italic;
+`;
+
+const SubSubTitle = styled.h1`
+  font-size: 2.5rem;
+  font-weight: bold;
 `;
 
 const Text = styled.span`
@@ -88,7 +98,7 @@ const StyledBackIcon = styled(ChevronBackCircle)`
 `;
 
 const StyledImage = styled.img`
-  width: 50%;
+  width: 100%;
 `;
 
 const Spacer = styled.br``
@@ -112,15 +122,21 @@ const JavaScriptArray = () => {
         <Title>JavaScript Objects</Title>
         <Spacer />
         <Text>
-          After writing a blog post about arrays, which you can find here 👉 <StyledAnchorText><StyledNavLink exact to={`/blog/javascript-arrays`}>JavaScript Arrays</StyledNavLink></StyledAnchorText>. Naturally it feels like the next post needs to be about JavaScript Objects, so
-          in this post I'll aim to try and explain what objects are, why they're needed and how you can use them. Simple enough? Let's get it.
+          After writing a blog post about arrays, which you can find here 👉 <StyledAnchorText><StyledNavLink exact to={`/blog/javascript-arrays`}>JavaScript Arrays</StyledNavLink></StyledAnchorText>. Naturally it feels like the next post needs to be about JavaScript Objects.
+          Similar to my last post, I'll be keeping a similar format; that being explaining what objects are, why they're needed and how we can use them. Simple enough? Let's get it. Oh yeah, you can skip this if you're comfortable with JavaScript and you just want to look through the <StyledAnchor href="#use-case">use cases</StyledAnchor>.
           <Spacer />
           <Spacer />
           <SubTitle>What is an Object?</SubTitle>
+          Well, Objects are pretty much anything that is a 'Non-Primitive' value, if you're not clear on what the difference between a 'Primitive' and 'Non-Primitive' value is? <StyledAnchor href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive" target="_blank">Read up.</StyledAnchor> 👀
+          <Spacer />
+          What does that actually mean? It means that they are mutable (we can change them). Before looking at how we can access an objects properties, let's take a quick look at what an object is made of.
           <Spacer />
           <Spacer />
-          <SubTitle>The anatomy of an Object</SubTitle>
+          <SubSubTitle>The Anatomy Of An Object</SubSubTitle>
           <StyledImage src={JavaScriptObject} />
+          Here is a declaration of an object which I've named 'person'. This object has three 'properties' and you'll notice that each property will be a 'kvp' (key value pair). The left side being - 'key' and the right side - 'value'.
+          <Spacer />
+          <Spacer />
           <SubTitle id='use-case'>Use Cases</SubTitle>
           I have an object, I would like to...
           <ObjectExplorer />

@@ -70,7 +70,7 @@ const SolutionBlock = styled.pre`
   background: ${({ theme }) => theme.secondary};
   color: ${({ theme }) => theme.text};
   word-wrap: break-word;
-  padding: 1rem;
+  padding: 1rem 2rem 1rem;
   border-radius: 2rem;
   overflow-x: auto;
   line-height: 3.5rem;
@@ -82,8 +82,6 @@ const ObjectExplorer = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [secondSelectedOptions, setSecondSelectedOptions] = useState([]);
   const [thirdSelectedOptions, setThirdSelectedOptions] = useState([]);
-
-  console.log('secondSelectedOptions', secondSelectedOptions);
 
   const handleSelectChange = (selected, option) => {
     switch (option) {

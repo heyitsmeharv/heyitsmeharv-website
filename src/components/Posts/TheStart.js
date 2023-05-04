@@ -12,13 +12,18 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
 const Wrapper = styled.div`
-  padding: 1rem 4rem;
+  padding: 1rem 25%;
   line-height: 6.5rem;
+  
+  @media only screen and (max-width: 1000px) {
+    line-height: 5rem;
+    padding: 0;
+  }
 
-  @media only screen and (max-width: 500px) {
-     line-height: 5rem;
-     padding: 0;
-  } 
+  @media only screen and (min-width: 1001px) and (max-width: 1800px) {
+    line-height: 6.5rem;
+    padding: 1rem 20%;
+  }
 `;
 
 const Container = styled.div`
