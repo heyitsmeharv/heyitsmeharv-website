@@ -17,7 +17,25 @@ import {
   sliceExample,
   sliceExampleOutput,
   includesExample,
-  includesExampleOutput
+  includesExampleOutput,
+  indexOfExample,
+  indexOfExampleOutput,
+  lastIndexOfExample,
+  lastIndexOfExampleOutput,
+  findExample,
+  findExampleOutput,
+  findIndexExample,
+  findIndexExampleOutput,
+  reduceExample,
+  reduceExampleOutput,
+  reduceRightExample,
+  reduceRightExampleOutput,
+  filterExample,
+  filterExampleOutput,
+  everyExample,
+  everyExampleOutput,
+  someExample,
+  someExampleOutput,
 } from "./codeExamples";
 
 export const options = [
@@ -104,11 +122,76 @@ export const options = [
             helperDescription: 'Determines whether an array contains a certain element, returning true or false as appropriate.',
             usage: includesExample,
             output: includesExampleOutput
-          }
+          },
+          {
+            label: `the first index of a particular item`,
+            helper: 'Array.indexOf()',
+            helperDescription: 'Returns the first index at which a given element can be found in the array, or -1 if it is not present.',
+            usage: indexOfExample,
+            output: indexOfExampleOutput
+          },
+          {
+            label: `the last index of a particular item`,
+            helper: 'Array.lastIndexOf()',
+            helperDescription: 'Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none is found.',
+            usage: lastIndexOfExample,
+            output: lastIndexOfExampleOutput
+          },
+          {
+            label: `the first element that satisfies a condition`,
+            helper: 'Array.find()',
+            helperDescription: 'Returns the found value in the array, if an element in the array satisfies the provided testing function or undefined if not found. Similar to findIndex(), but it returns the item instead of the index.',
+            usage: findExample,
+            output: findExampleOutput
+          },
+          {
+            label: `the first index of an item that satisfies a condition`,
+            helper: 'Array.findIndex()',
+            helperDescription: 'Returns the index of the first element in the array that satisfies the provided testing function. Otherwise -1 is returned. Similar to find(), but it returns the index instead of the item.',
+            usage: findIndexExample,
+            output: findIndexExampleOutput
+          },
+          {
+            label: `a value by reducing the Array, start to finish`,
+            helper: 'Array.reduce()',
+            helperDescription: 'Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value.',
+            usage: reduceExample,
+            output: reduceExampleOutput
+          },
+          {
+            label: `a value by reducing the Array, finish to start`,
+            helper: 'Array.reduceRight()',
+            helperDescription: 'Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value.',
+            usage: reduceRightExample,
+            output: reduceRightExampleOutput
+          },
         ]
       },
       {
-        label: 'one or many items'
+        label: 'one or many items',
+        thirdOptions: [
+          {
+            label: `values based on a condition I create`,
+            helper: 'Array.filter()',
+            helperDescription: 'Creates a new array with all of the elements of this array for which the provided filtering function returns true.',
+            usage: filterExample,
+            output: filterExampleOutput
+          },
+          {
+            label: `whether or not every item satisfies a condition`,
+            helper: 'Array.every()',
+            helperDescription: 'Returns true if every element in this array satisfies the provided testing function.',
+            usage: everyExample,
+            output: everyExampleOutput
+          },
+          {
+            label: `whether or not at least one item satisfies a condition`,
+            helper: 'Array.some()',
+            helperDescription: 'Returns true if at least one element in this array satisfies the provided testing function.',
+            usage: someExample,
+            output: someExampleOutput
+          }
+        ],
       }
     ],
   },
