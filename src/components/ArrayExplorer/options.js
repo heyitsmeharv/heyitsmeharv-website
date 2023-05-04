@@ -63,24 +63,24 @@ import {
 export const options = [
   {
     secondSelectText: 'I need to add',
-    label: 'Add items or other arrays',
+    label: 'add items or other arrays',
     secondOptions: [
       {
-        label: 'Elements/s to an array',
+        label: 'elements/s to an array',
         helper: 'Array.splice()',
         helperDescription: 'Adds and/or removes elements from an array.',
         usage: spliceExample,
         output: spliceExampleOutput
       },
       {
-        label: 'Elements/s to the end of an array',
+        label: 'elements/s to the end of an array',
         helper: 'Array.push()',
         helperDescription: 'Adds one or more elements to the end of an array and returns the new length of the array.',
         usage: pushExample,
         output: pushExampleOutput
       },
       {
-        label: 'Elements/s to the front of an array',
+        label: 'elements/s to the front of an array',
         helper: 'Array.unshift()',
         helperDescription: 'Adds one or more elements to the front of an array and returns the new length of the array.',
         usage: unshiftExample,
@@ -97,24 +97,24 @@ export const options = [
   },
   {
     secondSelectText: 'I need to remove',
-    label: 'Remove items',
+    label: 'remove items',
     secondOptions: [
       {
-        label: 'Elements/s from an array',
+        label: 'elements/s from an array',
         helper: 'Array.splice()',
         helperDescription: 'Adds and/or removes elements from an array.',
         usage: spliceSecondExample,
         output: spliceSecondExampleOutput
       },
       {
-        label: 'The last element of the array',
+        label: 'the last element of the array',
         helper: 'Array.pop()',
         helperDescription: 'Removes the last element from an array and returns that element.',
         usage: popExample,
         output: popExampleOutput
       },
       {
-        label: 'The first element of an array',
+        label: 'the first element of an array',
         helper: 'Array.shift()',
         helperDescription: 'Removes the first element from an array and returns that element.',
         usage: shiftExample,
@@ -132,10 +132,10 @@ export const options = [
   },
   {
     secondSelectText: `I'm trying to find`,
-    thirdSelectText: `I need to find`,
-    label: 'Find items',
+    label: 'find items',
     secondOptions: [
       {
+        thirdSelectText: `I need to find`,
         label: 'one item',
         thirdOptions: [
           {
@@ -190,6 +190,7 @@ export const options = [
         ]
       },
       {
+        thirdSelectText: `I need to find`,
         label: 'one or many items',
         thirdOptions: [
           {
@@ -219,7 +220,7 @@ export const options = [
   },
   {
     secondSelectText: 'I need to iterate by',
-    label: 'Walk over items',
+    label: 'walk over items',
     secondOptions: [
       {
         label: `executing a function I will create for each element`,
@@ -246,7 +247,7 @@ export const options = [
   },
   {
     secondSelectText: 'I need to',
-    label: 'Return a string',
+    label: 'return a string',
     secondOptions: [
       {
         label: `executing a function I will create for each element`,
@@ -273,7 +274,7 @@ export const options = [
   },
   {
     secondSelectText: 'I need to',
-    label: 'Order an array',
+    label: 'order an array',
     secondOptions: [
       {
         label: `reverse the order of the array`,
@@ -297,7 +298,7 @@ For example, "Banana" comes before "cherry". In a numeric sort, 9 comes before 8
   },
   {
     secondSelectText: 'I need to',
-    label: 'Something else',
+    label: 'something else',
     secondOptions: [
       {
         label: `find the length of the array`,

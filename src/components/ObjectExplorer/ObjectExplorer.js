@@ -78,10 +78,12 @@ const SolutionBlock = styled.pre`
 
 const Spacer = styled.br``;
 
-const ArrayExplorer = () => {
+const ObjectExplorer = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [secondSelectedOptions, setSecondSelectedOptions] = useState([]);
   const [thirdSelectedOptions, setThirdSelectedOptions] = useState([]);
+
+  console.log('secondSelectedOptions', secondSelectedOptions);
 
   const handleSelectChange = (selected, option) => {
     switch (option) {
@@ -169,4 +171,4 @@ const ArrayExplorer = () => {
   );
 }
 
-export default ArrayExplorer;
+export default ObjectExplorer;

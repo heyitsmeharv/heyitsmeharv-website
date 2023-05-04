@@ -10,7 +10,7 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
-import ArrayExplorer from "../ArrayExplorer/ArrayExplorer";
+import ObjectExplorer from "../ObjectExplorer/ObjectExplorer";
 
 // codeblocks
 import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample, someExample, reduceExample } from "../../helpers/codeblocks";
@@ -121,6 +121,9 @@ const JavaScriptArray = () => {
           <Spacer />
           <SubTitle>The anatomy of an Object</SubTitle>
           <StyledImage src={ObjectAnatomy} />
+          <SubTitle id='use-case'>Use Cases</SubTitle>
+          I have an object, I would like to...
+          <ObjectExplorer />
         </Text>
       </Container>
     </Wrapper>

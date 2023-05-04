@@ -237,7 +237,7 @@ const JavaScriptArray = () => {
           <Spacer />
           <Spacer />
           <SubTitle id='use-case'>Use Cases</SubTitle>
-          I have an array and I would like to...
+          I have an array, I would like to...
           <ArrayExplorer />
         </Text>
       </Container>
