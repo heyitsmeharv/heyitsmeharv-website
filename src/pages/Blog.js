@@ -62,6 +62,10 @@ const StyledCloseButton = styled.button`
   }
 `;
 
+/* COOL TAG COLOURS */
+// #64CBF6'
+// #8B191D
+
 export default function Blog() {
   const [search, setSearch] = useState('')
   const [blogPosts, setBlogPosts] = useState([
@@ -70,7 +74,7 @@ export default function Blog() {
       readingTime: 'less than 1 minute',
       type: 'Retrospective',
       date: '05/04/2023',
-      tags: [{ name: 'My Own Journey', background: '#4367B1' }, { name: 'Tech Blog', background: '#F4BF36' }, { name: 'First Of Many 🤞', background: '#D53745' }],
+      tags: [{ name: 'Misc', background: '#9E7BB5' }],
       intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
             The purpose of this blog is just to document my personal journey learning cool tech,
             if only to cement my own understanding and potentially help people with similar interests...`,
@@ -87,6 +91,18 @@ export default function Blog() {
         But before we get into that... 
       `,
       navigate: 'javascript-arrays'
+    },
+    {
+      title: 'JavaScript Objects',
+      readingTime: 'approx 10 minutes',
+      type: 'Discovery',
+      date: '04/05/2023',
+      tags: [{ name: 'JavaScript', background: '#F4BF36' }],
+      intro: `After writing a blog post about arrays, which you can find here. 
+      Naturally it feels like the next post needs to be about JavaScript Objects, so in this post I'll 
+      aim to try and explain what objects are, why they're needed and how you can use them. Simple enough? Let's get it...
+      `,
+      navigate: 'javascript-objects'
     }
   ]);
 
@@ -96,8 +112,8 @@ export default function Blog() {
       readingTime: 'less than 1 minute',
       type: 'Retrospective',
       date: '05/04/2023',
-      tags: [{ name: 'My Own Journey', background: '#4367B1' }, { name: 'Tech Blog', background: '#F4BF36' }, { name: 'First Of Many 🤞', background: '#D53745' }],
-      intro: ` For a long time I've wanted to write a blog about technologies I'm interested in.
+      tags: [{ name: 'Misc', background: '#9E7BB5' }],
+      intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
             The purpose of this blog is just to document my personal journey learning cool tech,
             if only to cement my own understanding and potentially help people with similar interests...`,
       navigate: 'the-start'
@@ -105,14 +121,26 @@ export default function Blog() {
     {
       title: 'JavaScript Arrays',
       readingTime: 'approx 10 minutes',
-      type: 'Retrospective',
+      type: 'Discovery',
       date: '12/04/2023',
-      tags: [{ name: 'JavaScript', background: '#F4BF36' }],
+      tags: [{ name: 'JavaScript', background: '#F4BF36' }, { name: 'Begginer', background: '#A1E238' }],
       intro: `Do you ever find yourself forgetting what helper methods would be best to manipulate your data? 
       In this post, I would like to go through the different helper functions and the use cases for manipulating your data.
       But before we get into that...
     `,
       navigate: 'javascript-arrays'
+    },
+    {
+      title: 'JavaScript Objects',
+      readingTime: 'approx 10 minutes',
+      type: 'Discovery',
+      date: '04/05/2023',
+      tags: [{ name: 'JavaScript', background: '#F4BF36' }, { name: 'Begginer', background: '#A1E238' }],
+      intro: `After writing a blog post about arrays, which you can find here. 
+      Naturally it feels like the next post needs to be about JavaScript Objects, so in this post I'll 
+      aim to try and explain what objects are, why they're needed and how you can use them. Simple enough? Let's get it...
+      `,
+      navigate: 'javascript-objects'
     }
   ];
 

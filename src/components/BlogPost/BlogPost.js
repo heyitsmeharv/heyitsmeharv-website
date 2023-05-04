@@ -61,7 +61,7 @@ const ReadingTime = styled.h1`
 
 const StyledTags = styled.div`
   border: 1px solid ${({ theme }) => theme.text};
-  color: ${({ theme }) => theme.text};
+  color: ${props => (props.textColor > 125) ? '#000' : '#FFF'};
   font-size: 1.2rem;
   font-weight: bold;
   padding: 6px 0px;
@@ -103,7 +103,13 @@ const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => 
         {readingTime}
       </ReadingTime>
       <Flex>
-        {tags?.map((x, i) => <StyledTags key={i} index={i} background={x.background}>{x.name}</StyledTags>)}
+        {tags?.map((x, i) => <StyledTags key={i} index={i} background={x.background}
+          textColor={Math.round(((parseInt(x.background.slice(1, 3), 16) * 299) +
+            (parseInt(x.background.slice(3, 5), 16) * 587) +
+            (parseInt(x.background.slice(5, 7), 16) * 114)) / 1000)
+          }>{x.name}
+        </StyledTags>
+        )}
       </Flex>
       <StyledIntro>
         {intro}
@@ -118,7 +124,7 @@ const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => 
           </StyledNavButton>
         </StyledBorder>
       </BottomBarText>
-    </Container>
+    </Container >
   );
 }
 

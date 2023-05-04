@@ -78,7 +78,7 @@ const SolutionBlock = styled.pre`
 
 const Spacer = styled.br``;
 
-const ArrayExplorer = () => {
+const ObjectExplorer = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [secondSelectedOptions, setSecondSelectedOptions] = useState([]);
   const [thirdSelectedOptions, setThirdSelectedOptions] = useState([]);
@@ -169,4 +169,4 @@ const ArrayExplorer = () => {
   );
 }
 
-export default ArrayExplorer;
+export default ObjectExplorer;

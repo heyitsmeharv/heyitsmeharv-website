@@ -24,6 +24,7 @@ import SocialMediaBar from "./components/SocialMedia/SocialMediaBar";
 // blog posts
 import TheStart from "./components/Posts/TheStart";
 import JavaScriptArray from "./components/Posts/JavaScriptArray";
+import JavaScriptObjects from "./components/Posts/JavaScriptObjects";
 
 const Wrapper = styled.div`
   display: flex;
@@ -80,6 +81,7 @@ const App = () => {
                   {/* Add blog posts here */}
                   <Route exact path='/blog/the-start' component={TheStart} />
                   <Route exact path='/blog/javascript-arrays' component={JavaScriptArray} />
+                  <Route exact path='/blog/javascript-objects' component={JavaScriptObjects} />
                 </Switch>
               </>
             );

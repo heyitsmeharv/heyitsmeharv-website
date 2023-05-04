@@ -16,12 +16,17 @@ import ArrayExplorer from "../ArrayExplorer/ArrayExplorer";
 import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample, someExample, reduceExample } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
-  padding: 1rem 4rem;
+  padding: 1rem 25%;
   line-height: 6.5rem;
   
-  @media only screen and (max-width: 500px) {
-     line-height: 5rem;
-     padding: 0;
+  @media only screen and (max-width: 1000px) {
+    line-height: 5rem;
+    padding: 0;
+  }
+
+  @media only screen and (min-width: 1001px) and (max-width: 1800px) {
+    line-height: 6.5rem;
+    padding: 1rem 20%;
   }
 `;
 
@@ -32,7 +37,7 @@ const Container = styled.div`
 `;
 
 const CodeBlock = styled.pre`
-  font-family: 'monospace';
+  font-family: 'Calibri';
   font-size: 2rem;
   background: #292929;
   color: ${({ theme }) => theme.buttonText};
@@ -100,7 +105,7 @@ const JavaScriptArray = () => {
         <Spacer />
         <Text>
           Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this blog post, we will cover the basics of JavaScript arrays, including how to create them, access and modify their elements, and use built-in methods to manipulate them.
-          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor>. Alternatively, you can go straight to the  <StyledAnchor href="#use-case">use case </StyledAnchor>section which can help you find the helper method that best suits your needs.
+          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor> Alternatively, you can go straight to the  <StyledAnchor href="#use-case">use case </StyledAnchor>section which can help you find the helper method that best suits your needs.
           <Spacer />
           <Spacer />
           <SubTitle>What is an Array?</SubTitle>
@@ -108,7 +113,7 @@ const JavaScriptArray = () => {
           <Spacer />
           <ul>
             <li>JavaScript arrays are incredibly versatile and can be used to create complex data structures and algorithms.
-            Arrays can be created using the Array constructor or by using literal notation. The most common method is using literal notation, which involves enclosing a list of values in square brackets.
+              Arrays can be created using the Array constructor or by using literal notation. The most common method is using literal notation, which involves enclosing a list of values in square brackets.
               <Spacer />
               Here is an example:
             </li>
@@ -237,7 +242,7 @@ const JavaScriptArray = () => {
           <Spacer />
           <Spacer />
           <SubTitle id='use-case'>Use Cases</SubTitle>
-          I have an array and I would like to...
+          I have an array, I would like to...
           <ArrayExplorer />
         </Text>
       </Container>

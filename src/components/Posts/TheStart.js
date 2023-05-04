@@ -12,13 +12,18 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
 const Wrapper = styled.div`
-  padding: 1rem 4rem;
+  padding: 1rem 25%;
   line-height: 6.5rem;
+  
+  @media only screen and (max-width: 1000px) {
+    line-height: 5rem;
+    padding: 0;
+  }
 
-  @media only screen and (max-width: 500px) {
-     line-height: 5rem;
-     padding: 0;
-  } 
+  @media only screen and (min-width: 1001px) and (max-width: 1800px) {
+    line-height: 6.5rem;
+    padding: 1rem 20%;
+  }
 `;
 
 const Container = styled.div`
@@ -68,6 +73,7 @@ const TheStart = () => {
           if only to cement my own understanding and potentially help people with similar interests.
           I'm hoping by the end of the year I will have got the hang of blogging with more than a handful
           of blog posts created. I'm hoping to have blogged about the following:
+          <Spacer />
           <Spacer />
           <li>Making cool software</li>
           <li>Exploring using new technologies</li>
