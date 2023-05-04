@@ -151,10 +151,12 @@ const ArrayExplorer = () => {
 
           {thirdSelectedOptions.usage && thirdSelectedOptions.output ?
             <Container>
-              <Text>Solution</Text>
+              <Text>Method</Text>
+              <Spacer />
+              <HelperText>{thirdSelectedOptions.helper}</HelperText>
+              <Spacer />
+              <Text>Description</Text>
               <SolutionBlock>
-                <Text>{thirdSelectedOptions.helper}</Text>
-                <Spacer />
                 <Text>{thirdSelectedOptions.helperDescription}</Text>
               </SolutionBlock>
               <Text>Usage</Text>
