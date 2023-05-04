@@ -13,7 +13,7 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import ObjectExplorer from "../ObjectExplorer/ObjectExplorer";
 
 // codeblocks
-import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample, someExample, reduceExample } from "../../helpers/codeblocks";
+import { objectNotations, objectNotationsTwo } from "../../helpers/codeblocks";
 
 // images
 import JavaScriptObject from "../../resources/images/blog/JavaScriptObject.png";
@@ -40,7 +40,7 @@ const Container = styled.div`
 `;
 
 const CodeBlock = styled.pre`
-  font-family: 'monospace';
+  font-family: 'Calibri';
   font-size: 2rem;
   background: #292929;
   color: ${({ theme }) => theme.buttonText};
@@ -75,6 +75,13 @@ const Text = styled.span`
 const BoldText = styled.b`
   color: ${({ theme }) => theme.text};
   font-size: 2rem;
+  font-weight: bold;
+`;
+
+const HighlightBackground = styled.span`
+  background: ${({ theme }) => theme.secondary};
+  padding: 0 5px;
+  margin: 0 5px;
   font-weight: bold;
 `;
 
@@ -123,7 +130,7 @@ const JavaScriptArray = () => {
         <Spacer />
         <Text>
           After writing a blog post about arrays, which you can find here 👉 <StyledAnchorText><StyledNavLink exact to={`/blog/javascript-arrays`}>JavaScript Arrays</StyledNavLink></StyledAnchorText>. Naturally it feels like the next post needs to be about JavaScript Objects.
-          Similar to my last post, I'll be keeping a similar format; that being explaining what objects are, why they're needed and how we can use them. Simple enough? Let's get it. Oh yeah, you can skip this if you're comfortable with JavaScript and you just want to look through the <StyledAnchor href="#use-case">use cases</StyledAnchor>.
+          Similar to my last post, I'll be keeping a similar format; that being explaining what objects are, why they're needed and how we can use them. Simple enough? Let's get it - Oh yeah, you can skip this if you're comfortable with JavaScript and you just want to look through the <StyledAnchor href="#use-case">use cases</StyledAnchor>.
           <Spacer />
           <Spacer />
           <SubTitle>What is an Object?</SubTitle>
@@ -136,6 +143,18 @@ const JavaScriptArray = () => {
           <StyledImage src={JavaScriptObject} />
           Here is a declaration of an object which I've named 'person'. This object has three 'properties' and you'll notice that each property will be a 'kvp' (key value pair). The left side being - 'key' and the right side - 'value'.
           <Spacer />
+          <Spacer />
+          <SubTitle>Object Manipulation</SubTitle>
+          I mentioned that we can change objects, but before we do, I'll show you how we can access them using the <HighlightBackground> . </HighlightBackground>(Dot) and <HighlightBackground>[   ]</HighlightBackground> (Bracket) notations.
+          <Spacer />
+          <CodeBlock>
+            {objectNotations}
+          </CodeBlock>
+          <Spacer />
+          Now if we wanted to manipulate the data, we could do so like so:
+          <CodeBlock>
+            {objectNotationsTwo}
+          </CodeBlock>
           <Spacer />
           <SubTitle id='use-case'>Use Cases</SubTitle>
           I have an object, I would like to...

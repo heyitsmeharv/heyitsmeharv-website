@@ -79,3 +79,29 @@ const sum = numbers.reduce((accumulator, currentValue) => {
 
 console.log(sum); // 15
 `;
+
+export const objectNotations = `let person = { 
+  firstName: "Adam", 
+  lastName: "Harvey", 
+  age: 29 
+};
+person.firstName; // Adam (Dot notation)
+person['firstName']; // Adam (Bracket notation)
+`;
+
+export const objectNotationsTwo = `let person = { 
+  firstName: "Adam", 
+  lastName: "Harvey", 
+  age: 29 
+};
+
+// it's that simple!
+person.age = 21;
+person['age'] = 21;
+
+person: { 
+  firstName: "Adam", 
+  lastName: "Harvey", 
+  age: 21 
+};
+`;

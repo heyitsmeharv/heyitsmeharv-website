@@ -37,7 +37,7 @@ const Container = styled.div`
 `;
 
 const CodeBlock = styled.pre`
-  font-family: 'monospace';
+  font-family: 'Calibri';
   font-size: 2rem;
   background: #292929;
   color: ${({ theme }) => theme.buttonText};
