@@ -69,6 +69,7 @@ const TheStart = () => {
           I'm hoping by the end of the year I will have got the hang of blogging with more than a handful
           of blog posts created. I'm hoping to have blogged about the following:
           <Spacer />
+          <Spacer />
           <li>Making cool software</li>
           <li>Exploring using new technologies</li>
           <li>Create Tutorials</li>

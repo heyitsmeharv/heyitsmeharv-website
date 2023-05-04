@@ -101,9 +101,6 @@ const ArrayExplorer = () => {
     }
   };
 
-  console.log('selectedOptions', selectedOptions);
-  console.log('secondSelectedOptions', secondSelectedOptions);
-
   return (
     <>
       <StyledSelect
