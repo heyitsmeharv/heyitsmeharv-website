@@ -36,7 +36,18 @@ import {
   getOwnPropertyNamesExampleOutput,
   sealExample,
   sealExampleOutput,
-
+  freezeExample,
+  freezeExampleOutput,
+  preventExtensionsExample,
+  preventExtensionsExampleOutput,
+  toStringExample,
+  toStringExampleOutput,
+  toLocaleStringExample,
+  toLocaleStringExampleOutput,
+  getPrototypeOfExample,
+  getPrototypeOfExampleOutput,
+  setPrototypeOfExample,
+  setPrototypeOfExampleOutput
 } from "./codeExamples";
 
 export const options = [
@@ -215,6 +226,74 @@ This one is a little weird, and the MDN docs are a bit misleading. It's more use
         helperDescription: 'Prevents other code from deleting properties of an object. Existing properties can still be modified.',
         usage: sealExample,
         output: sealExampleOutput
+      },
+      {
+        label: `make sure properties can't be added, deleted or modified`,
+        helper: 'Object.freeze()',
+        helperDescription: `Freezes an object: other code can't delete or change any properties.`,
+        usage: freezeExample,
+        output: freezeExampleOutput
+      },
+      {
+        label: `make sure properties can't be added`,
+        helper: 'Object.preventExtensions()',
+        helperDescription: `Prevents any extensions of an object. I can still delete properties but can't add any new ones.`,
+        usage: preventExtensionsExample,
+        output: preventExtensionsExampleOutput
+      }
+    ]
+  },
+  {
+    secondSelectText: 'I need to',
+    label: 'create a string from an object',
+    secondOptions: [
+      {
+        label: `string representation of the object`,
+        helper: 'Object.toString()',
+        helperDescription: `The toString() method returns a string representing the object. Though this is the built-in method available, it's usually more useful to use JSON.stringify()`,
+        usage: toStringExample,
+        output: toStringExampleOutput
+      },
+      {
+        label: `localized string representation of the object`,
+        helper: 'Object.toLocaleString()',
+        helperDescription: `The toLocaleString() method returns a string representing the object. This method is meant to be overridden by derived objects for locale-specific purposes. In human terms: this means if you have something that has different data based on location, such as date methods, it will give you a different time format`,
+        usage: toLocaleStringExample,
+        output: toLocaleStringExampleOutput
+      },
+      {
+        label: `make sure properties can't be added`,
+        helper: 'Object.preventExtensions()',
+        helperDescription: `Prevents any extensions of an object. I can still delete properties but can't add any new ones.`,
+        usage: preventExtensionsExample,
+        output: preventExtensionsExampleOutput
+      }
+    ]
+  },
+  {
+    secondSelectText: 'I need to',
+    label: 'manage prototypes',
+    secondOptions: [
+      {
+        label: `get a prototype of the object`,
+        helper: 'Object.getPrototypeOf()',
+        helperDescription: `Returns the prototype of the specified object. (i.e. the value of the internal [[Prototype]] property) of the specified object).`,
+        usage: getPrototypeOfExample,
+        output: getPrototypeOfExampleOutput
+      },
+      {
+        label: `set a prototype of the object`,
+        helper: 'Object.setPrototypeOf()',
+        helperDescription: `Warning: this method is really slow. Use with caution, or replace with Object.create(). Sets the prototype (i.e., the internal [[Prototype]] property).`,
+        usage: setPrototypeOfExample,
+        output: setPrototypeOfExampleOutput
+      },
+      {
+        label: `find out if the object is in the prototype chain`,
+        helper: 'Object.isPrototypeOf()',
+        helperDescription: `Returns a boolean indicating whether the object this method is called upon is in the prototype chain of the specified object.`,
+        usage: isPrototypeOfExample,
+        output: isPrototypeOfExampleOutput
       }
     ]
   }
