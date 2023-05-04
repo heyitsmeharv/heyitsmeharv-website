@@ -16,7 +16,7 @@ import ObjectExplorer from "../ObjectExplorer/ObjectExplorer";
 import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample, someExample, reduceExample } from "../../helpers/codeblocks";
 
 // images
-import ObjectAnatomy from "../../resources/images/blog/objectAnatomy.jpeg";
+import JavaScriptObject from "../../resources/images/blog/JavaScriptObject.png";
 
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -120,7 +120,7 @@ const JavaScriptArray = () => {
           <Spacer />
           <Spacer />
           <SubTitle>The anatomy of an Object</SubTitle>
-          <StyledImage src={ObjectAnatomy} />
+          <StyledImage src={JavaScriptObject} />
           <SubTitle id='use-case'>Use Cases</SubTitle>
           I have an object, I would like to...
           <ObjectExplorer />
