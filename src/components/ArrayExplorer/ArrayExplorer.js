@@ -55,16 +55,13 @@ const Text = styled.span`
   font-size: 2rem;
 `;
 
-const CodeBlock = styled.pre`
-  font-family: 'monospace';
-  font-size: 2rem;
-  background: #292929;
-  color: ${({ theme }) => theme.buttonText};
-  word-wrap: break-word;
-  padding: 1rem 2rem 1rem;
+const HelperText = styled.span`
+  color: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.text};
+  font-size: 4rem;
+  font-weight: bold;
   border-radius: 2rem;
-  overflow-x: auto;
-  line-height: 3.5rem;
+  padding: 1rem 2rem 1rem;
 `;
 
 const SolutionBlock = styled.pre`
@@ -137,10 +134,12 @@ const ArrayExplorer = () => {
             : ''}
           {secondSelectedOptions.usage && secondSelectedOptions.output ?
             <Container>
-              <Text>Solution</Text>
+              <Text>Method</Text>
+              <Spacer />
+              <HelperText>{secondSelectedOptions.helper}</HelperText>
+              <Spacer />
+              <Text>Description</Text>
               <SolutionBlock>
-                <Text>{secondSelectedOptions.helper}</Text>
-                <Spacer />
                 <Text>{secondSelectedOptions.helperDescription}</Text>
               </SolutionBlock>
               <Text>Usage</Text>

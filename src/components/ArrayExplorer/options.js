@@ -36,6 +36,28 @@ import {
   everyExampleOutput,
   someExample,
   someExampleOutput,
+  forEachExample,
+  forEachExampleOutput,
+  mapExample,
+  mapExampleOutput,
+  entriesExample,
+  entriesExampleOutput,
+  joinExample,
+  joinExampleOutput,
+  toStringExample,
+  toStringExampleOutput,
+  toLocaleStringExample,
+  toLocaleStringExampleOutput,
+  reverseExample,
+  reverseExampleOutput,
+  sortExample,
+  sortExampleOutput,
+  lengthExample,
+  lengthExampleOutput,
+  fillExample,
+  fillExampleOutput,
+  copyWithinExample,
+  copyWithinExampleOutput,
 } from "./codeExamples";
 
 export const options = [
@@ -198,20 +220,107 @@ export const options = [
   {
     secondSelectText: 'I need to iterate by',
     label: 'Walk over items',
-    secondOptions: []
+    secondOptions: [
+      {
+        label: `executing a function I will create for each element`,
+        helper: 'Array.forEach()',
+        helperDescription: 'The forEach() method executes a provided function once for each array element.',
+        usage: forEachExample,
+        output: forEachExampleOutput
+      },
+      {
+        label: `creating a new array from each element with a function I create`,
+        helper: 'Array.map()',
+        helperDescription: 'Creates a new array with the results of calling a provided function on every element in this array.',
+        usage: mapExample,
+        output: mapExampleOutput
+      },
+      {
+        label: `creating an interator object`,
+        helper: 'Array.entries()',
+        helperDescription: 'Returns a new Array Iterator object that contains the key/value pairs for each index in the array. There are a lot of uses for iterators, as well as other methods used with it in conjuction, like values and keys',
+        usage: entriesExample,
+        output: entriesExampleOutput
+      },
+    ]
   },
   {
     secondSelectText: 'I need to',
     label: 'Return a string',
-    secondOptions: []
+    secondOptions: [
+      {
+        label: `executing a function I will create for each element`,
+        helper: 'Array.join()',
+        helperDescription: 'Joins all elements of an array into a string. You can join it together as is or with something in between, elements.join(' - ') gives you foo-bar',
+        usage: joinExample,
+        output: joinExampleOutput
+      },
+      {
+        label: `return a string representing the array`,
+        helper: 'Array.toString()',
+        helperDescription: 'Returns a string representing the array and its elements.',
+        usage: toStringExample,
+        output: toStringExampleOutput
+      },
+      {
+        label: `return a localized string representing the array`,
+        helper: 'Array.toLocaleString()',
+        helperDescription: 'Returns a localized string representing the array and its elements. This is very useful for dates and currency and has some strange native abstractions, so best to consult the docs when using it',
+        usage: toLocaleStringExample,
+        output: toLocaleStringExampleOutput
+      },
+    ]
   },
   {
     secondSelectText: 'I need to',
-    label: 'Order an array', secondOptions: []
+    label: 'Order an array',
+    secondOptions: [
+      {
+        label: `reverse the order of the array`,
+        helper: 'Array.reverse()',
+        helperDescription: 'Reverses the order of the elements of an array in place — the first becomes the last, and the last becomes the first.',
+        usage: reverseExample,
+        output: reverseExampleOutput
+      },
+      {
+        label: `sort the items of the array`,
+        helper: 'Array.sort()',
+        helperDescription: `Sorts the elements of an array in place and returns the array.
+
+Important note: If compareFunction is not supplied, elements are sorted by converting them to strings and comparing strings in Unicode code point order. 
+For example, "Banana" comes before "cherry". In a numeric sort, 9 comes before 80, but because numbers are converted to strings, "80" comes before "9" in Unicode order. The docs have more information to clarify.
+        `,
+        usage: sortExample,
+        output: sortExampleOutput
+      },
+    ]
   },
   {
     secondSelectText: 'I need to',
     label: 'Something else',
-    secondOptions: []
+    secondOptions: [
+      {
+        label: `find the length of the array`,
+        helper: 'Array.length',
+        helperDescription: 'Returns the number of elements in that array.',
+        usage: lengthExample,
+        output: lengthExampleOutput
+      },
+      {
+        label: `fill all the elements of the array with a static value`,
+        helper: 'Array.fill()',
+        helperDescription: 'Fills all the elements of an array from a start index to an end index with a static value.',
+        usage: fillExample,
+        output: fillExampleOutput
+      },
+      {
+        label: `copy a sequence of array elements within the array`,
+        helper: 'Array.copyWithin()',
+        helperDescription: `Copies a sequence of array elements within the array. You can specify either just the ending element (where begin will default to zero) 
+or both the beginning and the end, comma-separated.`,
+        usage: copyWithinExample,
+        output: copyWithinExampleOutput
+      },
+    ]
   },
 ];

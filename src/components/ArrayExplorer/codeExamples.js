@@ -121,3 +121,73 @@ console.log(arr.some(biggerThan4));
 `;
 
 export const someExampleOutput = `true`;
+
+export const forEachExample = `let arr = [5, 1, 8];
+arr.forEach((element) => {
+  console.log(element)
+});`;
+
+export const forEachExampleOutput = `5
+1
+8`;
+
+export const mapExample = `let arr = [5, 1, 8];
+let map = arr.map(x => x + 1);
+console.log(map);`;
+
+export const mapExampleOutput = `[6, 2, 9]`;
+
+export const entriesExample = `let arr = [5, 1, 8];
+let iterator = arr.entries();
+console.log(iterator.next().value);`;
+
+export const entriesExampleOutput = `[0, 5]
+// the 0 is the index,
+// the 5 is the first number`;
+
+export const joinExample = `let arr = [5, 1, 8];
+console.log(arr.join());`;
+
+export const joinExampleOutput = `"5,1,8"`;
+
+export const toStringExample = `let arr = [5, 1, 8];
+console.log(arr.toString());`;
+
+export const toStringExampleOutput = `"5,1,8"`;
+
+export const toLocaleStringExample = `let arr = [5, 1, 8];
+let date = [new Date()];
+const arrString = arr.toLocaleString();
+const dateString = date.toLocaleString();
+console.log(arrString, dateString);`;
+
+export const toLocaleStringExampleOutput = `"5,1,8 04/05/2023, 6:54:49 PM"`;
+
+export const reverseExample = `let arr = [5, 1, 8];
+arr.reverse();
+console.log(arr);`;
+
+export const reverseExampleOutput = `[8, 1, 5]`;
+
+export const sortExample = `let arr = [5, 1, 8];
+arr.sort();
+console.log(arr);`;
+
+export const sortExampleOutput = `[1, 5, 8]`;
+
+export const lengthExample = `let arr = [5, 1, 8];
+console.log(arr.length);`;
+
+export const lengthExampleOutput = `3`;
+
+export const fillExample = `let arr = [5, 1, 8];
+arr.fill(2);
+console.log(arr);`;
+
+export const fillExampleOutput = `[2, 2, 2]`;
+
+export const copyWithinExample = `let arr = [5, 1, 8];
+arr.copyWithin(1);
+console.log(arr);`;
+
+export const copyWithinExampleOutput = `[5, 5, 1]`;

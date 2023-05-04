@@ -100,7 +100,7 @@ const JavaScriptArray = () => {
         <Spacer />
         <Text>
           Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this blog post, we will cover the basics of JavaScript arrays, including how to create them, access and modify their elements, and use built-in methods to manipulate them.
-          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor>. Alternatively, you can go straight to the  <StyledAnchor href="#use-case">use case </StyledAnchor>section where you can find what helper method you require depending on what you require.
+          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor>. Alternatively, you can go straight to the  <StyledAnchor href="#use-case">use case </StyledAnchor>section which can help you find the helper method that best suits your needs.
           <Spacer />
           <Spacer />
           <SubTitle>What is an Array?</SubTitle>
