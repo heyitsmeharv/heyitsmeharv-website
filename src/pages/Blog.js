@@ -95,7 +95,7 @@ export default function Blog() {
     },
     {
       title: 'JavaScript Objects',
-      readingTime: 'approx 10 minutes',
+      readingTime: 'approx 5 minutes',
       type: 'Discovery',
       date: '04/05/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36' }],
@@ -133,7 +133,7 @@ export default function Blog() {
     },
     {
       title: 'JavaScript Objects',
-      readingTime: 'approx 10 minutes',
+      readingTime: 'approx 5 minutes',
       type: 'Discovery',
       date: '04/05/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36' }, { name: 'Begginer', background: '#A1E238' }],

@@ -13,7 +13,7 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import ObjectExplorer from "../ObjectExplorer/ObjectExplorer";
 
 // codeblocks
-import { objectNotations, objectNotationsTwo } from "../../helpers/codeblocks";
+import { objects, objectNotations, objectNotationsTwo } from "../../helpers/codeblocks";
 
 // images
 import JavaScriptObject from "../../resources/images/blog/JavaScriptObject.png";
@@ -130,12 +130,19 @@ const JavaScriptArray = () => {
         <Spacer />
         <Text>
           After writing a blog post about arrays, which you can find here 👉 <StyledAnchorText><StyledNavLink exact to={`/blog/javascript-arrays`}>JavaScript Arrays</StyledNavLink></StyledAnchorText>. Naturally it feels like the next post needs to be about JavaScript Objects.
-          Similar to my last post, I'll be keeping a similar format; that being explaining what objects are, why they're needed and how we can use them. Simple enough? Let's get it - Oh yeah, you can skip this if you're comfortable with JavaScript and you just want to look through the <StyledAnchor href="#use-case">use cases</StyledAnchor>.
+          Similar to my last post, I'll be keeping a similar format; that being explaining what objects are and how we can use them. Simple enough? Let's get it - Oh yeah, you can skip this if you're comfortable with JavaScript and you just want to look through the <StyledAnchor href="#use-case">use cases</StyledAnchor>.
           <Spacer />
           <Spacer />
           <SubTitle>What is an Object?</SubTitle>
-          Well, Objects are pretty much anything that is a 'Non-Primitive' value, if you're not clear on what the difference between a 'Primitive' and 'Non-Primitive' value is? <StyledAnchor href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive" target="_blank">Read up.</StyledAnchor> 👀
+          Well, in JavaScript objects are pretty much anything 'Non Primitive'. By using the <HighlightBackground>typeof</HighlightBackground> operator we can see for ourselves what is classed as an 'object'. This includes arrays, dates, regex and even functions; 
           <Spacer />
+          <CodeBlock>
+            {objects}
+          </CodeBlock>
+          <Spacer />
+          Now I mentioned objects being 'Non Primitive' values, if you're not clear on what the difference between a 'Primitive' and 'Non-Primitive' value is? <StyledAnchor href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive" target="_blank">Read up.</StyledAnchor> 👀
+          <Spacer/>
+          <Spacer/>
           What does that actually mean? It means that they are mutable (we can change them). Before looking at how we can access an objects properties, let's take a quick look at what an object is made of.
           <Spacer />
           <Spacer />
