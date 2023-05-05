@@ -80,6 +80,13 @@ const sum = numbers.reduce((accumulator, currentValue) => {
 console.log(sum); // 15
 `;
 
+export const objects = `console.log(typeof({})); // object
+console.log(typeof([])); // object
+console.log(typeof(new Date())); // object
+console.log(typeof(/\d+/)); // object
+console.log(typeof(Math)); // object
+`;
+
 export const objectNotations = `let person = { 
   firstName: "Adam", 
   lastName: "Harvey", 
