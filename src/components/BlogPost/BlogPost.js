@@ -4,6 +4,9 @@ import styled, { css } from "styled-components";
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
+// icons
+import { Journal } from '@styled-icons/bootstrap/Journal'
+
 const Container = styled.div`
   background: ${({ theme }) => theme.secondary};
   position: relative;
@@ -59,18 +62,23 @@ const ReadingTime = styled.h1`
   font-style: italic;
 `;
 
-const StyledTags = styled.div`
-  border: 1px solid ${({ theme }) => theme.text};
-  color: ${props => (props.textColor > 125) ? '#000' : '#FFF'};
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 6px 0px;
-  margin: 0 10px;
-  width: 120px;
+// const StyledTags = styled.div`
+//   border: 1px solid ${({ theme }) => theme.text};
+//   color: ${props => (props.textColor > 125) ? '#000' : '#FFF'};
+//   font-size: 1.2rem;
+//   font-weight: bold;
+//   padding: 6px 0px;
+//   margin: 0 10px;
+//   width: 120px;
 
-  ${props => props.background && css`
-    background: ${props => props.background}
-  `}
+//   ${props => props.background && css`
+//     background: ${props => props.background}
+//   `}
+// `;
+
+const StyledTagImage = styled.img`
+  max-width: 36px;
+  max-height: 36px;
 `;
 
 const StyledIntro = styled.div`
@@ -85,6 +93,12 @@ const StyledBorder = styled.div`
     background: ${({ theme }) => theme.primary};
     transition: background .5s;
   }
+`;
+
+const StyledJournal = styled(Journal)`
+  width: 36px;
+  height: 36px;
+  fill: ${({ theme }) => theme.text};
 `;
 
 
@@ -103,13 +117,7 @@ const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => 
         {readingTime}
       </ReadingTime>
       <Flex>
-        {tags?.map((x, i) => <StyledTags key={i} index={i} background={x.background}
-          textColor={Math.round(((parseInt(x.background.slice(1, 3), 16) * 299) +
-            (parseInt(x.background.slice(3, 5), 16) * 587) +
-            (parseInt(x.background.slice(5, 7), 16) * 114)) / 1000)
-          }>{x.name}
-        </StyledTags>
-        )}
+        {tags?.map((x, i) => x.name === 'Misc' ? <StyledJournal /> : <StyledTagImage key={i} src={x.icon} />)}
       </Flex>
       <StyledIntro>
         {intro}
