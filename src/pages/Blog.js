@@ -100,10 +100,8 @@ export default function Blog() {
       type: 'Discovery',
       date: '04/05/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36', icon: JSIcon }],
-      intro: `After writing a blog post about arrays, which you can find here. 
-      Naturally it feels like the next post needs to be about JavaScript Objects, so in this post I'll 
-      aim to try and explain what objects are, why they're needed and how you can use them. Simple enough? Let's get it...
-      `,
+      intro: `After writing a blog post about arrays, which you can find here. Naturally it feels like the next post needs to be about JavaScript Objects. 
+      Similar to my last post, I'll be keeping a similar format; that being explaining what objects are and how we can use them. Simple enough? Let's get it...`,
       navigate: 'javascript-objects'
     }
   ]);
@@ -138,10 +136,8 @@ export default function Blog() {
       type: 'Discovery',
       date: '04/05/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36', icon: JSIcon }],
-      intro: `After writing a blog post about arrays, which you can find here. 
-      Naturally it feels like the next post needs to be about JavaScript Objects, so in this post I'll 
-      aim to try and explain what objects are, why they're needed and how you can use them. Simple enough? Let's get it...
-      `,
+      intro: `After writing a blog post about arrays, which you can find here. Naturally it feels like the next post needs to be about JavaScript Objects. 
+      Similar to my last post, I'll be keeping a similar format; that being explaining what objects are and how we can use them. Simple enough? Let's get it...`,
       navigate: 'javascript-objects'
     }
   ];

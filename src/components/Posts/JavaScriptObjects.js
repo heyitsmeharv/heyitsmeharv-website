@@ -7,6 +7,7 @@ import SlideInBottom from "../../animations/SlideInBottom";
 
 // icons
 import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircle';
+import JSIcon from '../../resources/images/blog/JS.png';
 
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
@@ -31,6 +32,11 @@ const Wrapper = styled.div`
     line-height: 6.5rem;
     padding: 1rem 20%;
   }
+`;
+
+const Flex = styled.div`
+  display: flex;
+  align-items: baseline;
 `;
 
 const Container = styled.div`
@@ -108,6 +114,18 @@ const StyledImage = styled.img`
   width: 100%;
 `;
 
+const StyledTag = styled.img`
+  width: 50px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: 25px;
+
+  @media only screen and (max-width: 1000px) {
+    width: 36px;
+    height: 36px;
+  }
+`;
+
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
@@ -126,7 +144,10 @@ const JavaScriptArray = () => {
         </StyledNavLink>
       </StyledNavButton>
       <Container>
-        <Title>JavaScript Objects</Title>
+        <Flex>
+          <Title>JavaScript Objects</Title>
+          <StyledTag src={JSIcon} />
+        </Flex>
         <Spacer />
         <Text>
           After writing a blog post about arrays, which you can find here 👉 <StyledAnchorText><StyledNavLink exact to={`/blog/javascript-arrays`}>JavaScript Arrays</StyledNavLink></StyledAnchorText>. Naturally it feels like the next post needs to be about JavaScript Objects.
@@ -134,15 +155,15 @@ const JavaScriptArray = () => {
           <Spacer />
           <Spacer />
           <SubTitle>What is an Object?</SubTitle>
-          Well, in JavaScript objects are pretty much anything 'Non Primitive'. By using the <HighlightBackground>typeof</HighlightBackground> operator we can see for ourselves what is classed as an 'object'. This includes arrays, dates, regex and even functions; 
+          Well, in JavaScript objects are pretty much anything 'Non Primitive'. By using the <HighlightBackground>typeof</HighlightBackground> operator we can see for ourselves what is classed as an 'object'. This includes arrays, dates, regex and even functions;
           <Spacer />
           <CodeBlock>
             {objects}
           </CodeBlock>
           <Spacer />
           Now I mentioned objects being 'Non Primitive' values, if you're not clear on what the difference between a 'Primitive' and 'Non-Primitive' value is? <StyledAnchor href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive" target="_blank">Read up.</StyledAnchor> 👀
-          <Spacer/>
-          <Spacer/>
+          <Spacer />
+          <Spacer />
           What does that actually mean? It means that they are mutable (we can change them). Before looking at how we can access an objects properties, let's take a quick look at what an object is made of.
           <Spacer />
           <Spacer />

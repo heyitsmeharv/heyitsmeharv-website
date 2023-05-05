@@ -117,7 +117,7 @@ const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => 
         {readingTime}
       </ReadingTime>
       <Flex>
-        {tags?.map((x, i) => x.name === 'Misc' ? <StyledJournal /> : <StyledTagImage key={i} src={x.icon} />)}
+        {tags?.map((x, i) => x.name === 'Misc' ? <StyledJournal key={i} /> : <StyledTagImage key={i} src={x.icon} />)}
       </Flex>
       <StyledIntro>
         {intro}

@@ -7,6 +7,7 @@ import SlideInBottom from "../../animations/SlideInBottom";
 
 // icons
 import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircle';
+import JSIcon from '../../resources/images/blog/JS.png';
 
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
@@ -34,6 +35,11 @@ const Container = styled.div`
   padding: 4rem;
   background: ${({ theme }) => theme.background};
   animation: ${SlideInBottom} 0.5s forwards;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  align-items: baseline;
 `;
 
 const CodeBlock = styled.pre`
@@ -83,6 +89,18 @@ const StyledBackIcon = styled(ChevronBackCircle)`
   width: 4rem;
 `;
 
+const StyledTag = styled.img`
+  width: 50px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: 25px;
+
+  @media only screen and (max-width: 1000px) {
+    width: 36px;
+    height: 36px;
+  }
+`;
+
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
@@ -101,7 +119,10 @@ const JavaScriptArray = () => {
         </StyledNavLink>
       </StyledNavButton>
       <Container>
-        <Title>JavaScript Arrays</Title>
+        <Flex>
+          <Title>JavaScript Arrays</Title>
+          <StyledTag src={JSIcon} />
+        </Flex>
         <Spacer />
         <Text>
           Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this blog post, we will cover the basics of JavaScript arrays, including how to create them, access and modify their elements, and use built-in methods to manipulate them.
