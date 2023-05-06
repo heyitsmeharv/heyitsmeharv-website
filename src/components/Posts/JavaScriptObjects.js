@@ -78,21 +78,11 @@ const Text = styled.span`
   font-size: 2rem;
 `;
 
-const BoldText = styled.b`
-  color: ${({ theme }) => theme.text};
-  font-size: 2rem;
-  font-weight: bold;
-`;
-
 const HighlightBackground = styled.span`
   background: ${({ theme }) => theme.secondary};
   padding: 0 5px;
   margin: 0 5px;
   font-weight: bold;
-`;
-
-const StyledListItem = styled.li`
-  color: ${({ theme }) => theme.text};
 `;
 
 const StyledAnchor = styled.a`
@@ -151,7 +141,7 @@ const JavaScriptArray = () => {
         <Spacer />
         <Text>
           After writing a blog post about arrays, which you can find here 👉 <StyledAnchorText><StyledNavLink exact to={`/blog/javascript-arrays`}>JavaScript Arrays</StyledNavLink></StyledAnchorText>. Naturally it feels like the next post needs to be about JavaScript Objects.
-          Similar to my last post, I'll be keeping a similar format; that being explaining what objects are and how we can use them. Simple enough? Let's get it - Oh yeah, you can skip this if you're comfortable with JavaScript and you just want to look through the <StyledAnchor href="#use-case">use cases</StyledAnchor>.
+          Similar to my last post, I'll be keeping to the same format; that being explaining what objects are and how we can use them. Simple enough? Let's get it - Oh yeah, you can skip this if you're comfortable with JavaScript and you just want to look through the <StyledAnchor href="#use-case">use cases</StyledAnchor>.
           <Spacer />
           <Spacer />
           <SubTitle>What is an Object?</SubTitle>
