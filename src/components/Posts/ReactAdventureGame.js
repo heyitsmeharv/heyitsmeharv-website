@@ -147,8 +147,14 @@ const ReactAdventureGame = () => {
         </Flex>
         <Spacer />
         <Text>
-          Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this blog post, we will cover the basics of JavaScript arrays, including how to create them, access and modify their elements, and use built-in methods to manipulate them.
-          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor> Alternatively, you can go straight to the  <StyledAnchor href="#use-case">use case </StyledAnchor>section which can help you find the helper method that best suits your needs.
+          I've been contemplating on whether or not to do a separate blog post to explain what the React.js framework is but I want to move away from my last posts and get stuck in with building something!
+          If you're completely new to React I would recommend having a gander at their  <StyledAnchor href="https://react.dev/" target="_blank">documentation</StyledAnchor> which is pretty good. That being said, I will be taking a 'hand holdy'
+          approach so feel free to follow along even if you're a complete beginner!
+          <Spacer />
+          I'll break this down into sections:
+          <StyledAnchor href="#project-setup"><StyledListItem>Project Setup</StyledListItem></StyledAnchor>
+          <Spacer />
+          <SubTitle id='project-setup'>Project Setup</SubTitle>
         </Text>
       </Container>
     </Wrapper>
