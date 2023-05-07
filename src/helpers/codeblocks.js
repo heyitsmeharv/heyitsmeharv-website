@@ -23,12 +23,17 @@ const reformattedArray = wordArray.map(item => {
 
 console.log(reformattedArray); // [ { word: "Defence" }, { word: "Colour" }, { word: "Offence" } ];
 `;
-export const forLoop = `for (let i = 0; i < item.length; i++) {
+export const forEachExample = `const items = ["item1", "item2", "item3"];
+const copyItems = [];
+
+for (let i = 0; i < item.length; i++) {
   copyItems.push(items[i]);
-}`;
-export const forEachExample = `items.forEach(item => {
+}
+
+items.forEach(item => {
   copyItems.push(item);
 });`;
+
 export const filterExample = `const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const oddNumbers = numbers.filter(num => {

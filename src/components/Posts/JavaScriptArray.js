@@ -1,5 +1,5 @@
 import ReactGA from 'react-ga';
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // animations
@@ -10,7 +10,7 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 import JSIcon from '../../resources/images/blog/JS.png';
 
 // components
-import { StyledNavButton, StyledNavLink } from '../Button/Button';
+import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
 import ArrayExplorer from "../ArrayExplorer/ArrayExplorer";
 
 // codeblocks
@@ -104,11 +104,43 @@ const StyledTag = styled.img`
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
+  const [isCopied, setIsCopied] = useState([
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false }
+  ]);
 
   // analytics
   useEffect(() => {
     ReactGA.pageview('/blog/javascript-arrays');
   }, []);
+
+  const handleCopy = (code, key) => {
+    const isCopiedDefault = [
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false }
+    ];
+    navigator.clipboard.writeText(code);
+
+    const newIsCopied = [...isCopied];
+    newIsCopied[key].value = true;
+    setIsCopied(newIsCopied);
+
+    setTimeout(() => setIsCopied(isCopiedDefault), 1500);
+  };
 
   return (
     <Wrapper>
@@ -180,11 +212,17 @@ const JavaScriptArray = () => {
           <Spacer />
           This can be quite handy when we want to manipulate the data into a new structure. The example below shows how we can remove the labels from each element in the array, and just show the key and value.
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(mapExample, 0)}>
+              {isCopied[0].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {mapExample}
           </CodeBlock>
           It's also common to have conditions within a map function. For example, if you needed to specifically change an element within the array, you can set a condition. Let's say we need
           to amend our data set to only have British spelling.
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(mapExample2, 1)}>
+            {isCopied[1].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {mapExample2}
           </CodeBlock>
           I know this is a bit of a tedious example, and I am by no means recommending this approach, but I just want to easily demonstrate that you can manipulate data sets with conditions.
@@ -195,12 +233,9 @@ const JavaScriptArray = () => {
           <Spacer />
           The forEach method is a cleaner way of writing a 'for loop'.
           <CodeBlock>
-            const items = ["item1", "item2", "item3"];
-            <Spacer />
-            const copyItems = [];
-            <Spacer />
-            {forLoop}
-            <Spacer />
+            <CopyButton onClick={() => handleCopy(forEachExample, 2)}>
+            {isCopied[2].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {forEachExample}
           </CodeBlock>
           <Spacer />
@@ -210,6 +245,9 @@ const JavaScriptArray = () => {
           <Spacer />
           Here is an example of filtering out all even numbers from an array:
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(filterExample, 3)}>
+            {isCopied[3].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {filterExample}
           </CodeBlock>
           In this example, the callback function checks if the current number is odd by using the modulus operator (%) to check if it's divisible by 2 with a remainder.
@@ -221,11 +259,17 @@ const JavaScriptArray = () => {
           <Spacer />
           Here is an example of the find method out to search an array for a specific element:
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(findExample, 4)}>
+            {isCopied[4].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {findExample}
           </CodeBlock>
           In this example, the callback function checks if the current number is greater than 3. The method then returns the first element in the array that satisfies this condition, which is 4.
           If no element satisfies the search condition, the method returns undefined.
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(findExample2, 5)}>
+            {isCopied[5].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {findExample2}
           </CodeBlock>
           In this example, there is no element in the array greater than 10, so the method returns undefined.
@@ -236,6 +280,9 @@ const JavaScriptArray = () => {
           <Spacer />
           Here is an example of testing if all elements in the array have a length of less than 4:
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(everyExample, 6)}>
+            {isCopied[6].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {everyExample}
           </CodeBlock>
           In this example, the callback function checks each element's length and because the length of the string 'Anakin' is bigger than 4 the return will be false despite the other elements satisfying the condition.
@@ -246,6 +293,9 @@ const JavaScriptArray = () => {
           <Spacer />
           Here is an example of testing if there are any elements in the array that are odd:
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(someExample, 7)}>
+            {isCopied[7].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {someExample}
           </CodeBlock>
           In this example, the callback function performs a calculation on each element (checks to see if the number is divisible by 2) and returns true because there is one element that does not meet the condition (7).
@@ -256,6 +306,9 @@ const JavaScriptArray = () => {
           <Spacer />
           Here is an example of using the reduce method to find the sum of an array of numbers:
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(reduceExample, 8)}>
+            {isCopied[8].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {reduceExample}
           </CodeBlock>
           In this example, the callback function takes two arguments, the accumulator and the currentValue. It returns the sum of the accumulator and the currentValue. The reduce method then accumulates the result of each iteration, starting with an initial value of 0.

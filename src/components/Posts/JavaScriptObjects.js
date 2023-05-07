@@ -1,5 +1,5 @@
 import ReactGA from 'react-ga';
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 // animations
@@ -10,7 +10,7 @@ import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircl
 import JSIcon from '../../resources/images/blog/JS.png';
 
 // components
-import { StyledNavButton, StyledNavLink } from '../Button/Button';
+import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
 import ObjectExplorer from "../ObjectExplorer/ObjectExplorer";
 
 // codeblocks
@@ -119,11 +119,32 @@ const StyledTag = styled.img`
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
+  const [isCopied, setIsCopied] = useState([
+    { value: false },
+    { value: false },
+    { value: false }
+  ]);
 
   // analytics
   useEffect(() => {
     ReactGA.pageview('/blog/javascript-objects');
   }, []);
+
+
+  const handleCopy = (code, key) => {
+    const isCopiedDefault = [
+      { value: false },
+      { value: false },
+      { value: false }
+    ];
+    navigator.clipboard.writeText(code);
+
+    const newIsCopied = [...isCopied];
+    newIsCopied[key].value = true;
+    setIsCopied(newIsCopied);
+
+    setTimeout(() => setIsCopied(isCopiedDefault), 1500);
+  };
 
   return (
     <Wrapper>
@@ -148,6 +169,9 @@ const JavaScriptArray = () => {
           Well, in JavaScript objects are pretty much anything 'Non Primitive'. By using the <HighlightBackground>typeof</HighlightBackground> operator we can see for ourselves what is classed as an 'object'. This includes arrays, dates, regex and even functions;
           <Spacer />
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(objects, 0)}>
+              {isCopied[0].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {objects}
           </CodeBlock>
           <Spacer />
@@ -166,11 +190,17 @@ const JavaScriptArray = () => {
           I mentioned that we can change objects, but before we do, I'll show you how we can access them using the <HighlightBackground> . </HighlightBackground>(Dot) and <HighlightBackground>[   ]</HighlightBackground> (Bracket) notations.
           <Spacer />
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(objectNotations, 1)}>
+              {isCopied[1].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {objectNotations}
           </CodeBlock>
           <Spacer />
           Now if we wanted to manipulate the data, we could do so like so:
           <CodeBlock>
+            <CopyButton onClick={() => handleCopy(objectNotationsTwo, 2)}>
+              {isCopied[2].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
             {objectNotationsTwo}
           </CodeBlock>
           <Spacer />

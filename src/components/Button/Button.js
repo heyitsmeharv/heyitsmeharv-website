@@ -171,3 +171,23 @@ export const ToastCloseButton = styled.button`
   border: none;
   margin-left: auto;
 `;
+
+export const CopyButton = styled.button`
+  position: absolute;
+  right: 65px;
+  margin: 5px 0;
+  padding: 1rem;
+  border-radius: 2rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  border: none;
+  outline: none;
+  background: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.text};
+  :hover {
+    cursor: pointer;
+    background: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.primary};
+  }
+`;
