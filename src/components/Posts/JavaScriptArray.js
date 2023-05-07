@@ -14,7 +14,7 @@ import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
 import ArrayExplorer from "../ArrayExplorer/ArrayExplorer";
 
 // codeblocks
-import { example, mapExample, mapExample2, forLoop, forEachExample, filterExample, findExample, findExample2, everyExample, someExample, reduceExample } from "../../helpers/codeblocks";
+import { example, mapExample, mapExample2, forEachExample, filterExample, findExample, findExample2, everyExample, someExample, reduceExample } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
