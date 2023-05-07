@@ -7,7 +7,7 @@ import SlideInBottom from "../../animations/SlideInBottom";
 
 // icons
 import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircle';
-import JSIcon from '../../resources/images/blog/JS.png';
+import { JavascriptSVG } from '../../resources/styles/icons';
 
 // components
 import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
@@ -89,7 +89,7 @@ const StyledBackIcon = styled(ChevronBackCircle)`
   width: 4rem;
 `;
 
-const StyledTag = styled.img`
+const Icon = styled.div`
   width: 50px;
   height: 50px;
   margin-left: auto;
@@ -153,7 +153,7 @@ const JavaScriptArray = () => {
       <Container>
         <Flex>
           <Title>JavaScript Arrays</Title>
-          <StyledTag src={JSIcon} />
+          <Icon><JavascriptSVG /></Icon>
         </Flex>
         <Spacer />
         <Text>
@@ -221,7 +221,7 @@ const JavaScriptArray = () => {
           to amend our data set to only have British spelling.
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(mapExample2, 1)}>
-            {isCopied[1].value === true ? 'Copied!' : 'Copy'}
+              {isCopied[1].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
             {mapExample2}
           </CodeBlock>
@@ -234,7 +234,7 @@ const JavaScriptArray = () => {
           The forEach method is a cleaner way of writing a 'for loop'.
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(forEachExample, 2)}>
-            {isCopied[2].value === true ? 'Copied!' : 'Copy'}
+              {isCopied[2].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
             {forEachExample}
           </CodeBlock>
@@ -246,7 +246,7 @@ const JavaScriptArray = () => {
           Here is an example of filtering out all even numbers from an array:
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(filterExample, 3)}>
-            {isCopied[3].value === true ? 'Copied!' : 'Copy'}
+              {isCopied[3].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
             {filterExample}
           </CodeBlock>
@@ -260,7 +260,7 @@ const JavaScriptArray = () => {
           Here is an example of the find method out to search an array for a specific element:
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(findExample, 4)}>
-            {isCopied[4].value === true ? 'Copied!' : 'Copy'}
+              {isCopied[4].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
             {findExample}
           </CodeBlock>
@@ -268,7 +268,7 @@ const JavaScriptArray = () => {
           If no element satisfies the search condition, the method returns undefined.
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(findExample2, 5)}>
-            {isCopied[5].value === true ? 'Copied!' : 'Copy'}
+              {isCopied[5].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
             {findExample2}
           </CodeBlock>
@@ -281,7 +281,7 @@ const JavaScriptArray = () => {
           Here is an example of testing if all elements in the array have a length of less than 4:
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(everyExample, 6)}>
-            {isCopied[6].value === true ? 'Copied!' : 'Copy'}
+              {isCopied[6].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
             {everyExample}
           </CodeBlock>
@@ -294,7 +294,7 @@ const JavaScriptArray = () => {
           Here is an example of testing if there are any elements in the array that are odd:
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(someExample, 7)}>
-            {isCopied[7].value === true ? 'Copied!' : 'Copy'}
+              {isCopied[7].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
             {someExample}
           </CodeBlock>
@@ -307,7 +307,7 @@ const JavaScriptArray = () => {
           Here is an example of using the reduce method to find the sum of an array of numbers:
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(reduceExample, 8)}>
-            {isCopied[8].value === true ? 'Copied!' : 'Copy'}
+              {isCopied[8].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
             {reduceExample}
           </CodeBlock>

@@ -8,14 +8,14 @@ import BlogPost from "../components/BlogPost/BlogPost";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import JSIcon from '../resources/images/blog/JS.png';
+import { JavascriptSVG, ReactjsSVG } from '../resources/styles/icons';
 
 // animations
 import SlideInTop from "../animations/SlideInTop";
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
   padding: 4rem;
   background: ${({ theme }) => theme.background};
@@ -87,7 +87,7 @@ export default function Blog() {
       readingTime: 'approx 10 minutes',
       type: 'Discovery',
       date: '12/04/2023',
-      tags: [{ name: 'JavaScript', background: '#F4BF36', icon: JSIcon }],
+      tags: [{ name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
       intro: `Do you ever find yourself forgetting what helper methods would be best to manipulate your data? 
         In this post, I would like to go through the different helper functions and the use cases for manipulating your data.
         But before we get into that... 
@@ -99,10 +99,19 @@ export default function Blog() {
       readingTime: 'approx 5 minutes',
       type: 'Discovery',
       date: '04/05/2023',
-      tags: [{ name: 'JavaScript', background: '#F4BF36', icon: JSIcon }],
+      tags: [{ name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
       intro: `After writing a blog post about arrays, which you can find here. Naturally it feels like the next post needs to be about JavaScript Objects. 
       Similar to my last post, I'll be keeping a similar format; that being explaining what objects are and how we can use them. Simple enough? Let's get it...`,
       navigate: 'javascript-objects'
+    },
+    {
+      title: 'React.js Text Based Adventure Game',
+      readingTime: 'approx 5 minutes',
+      type: 'Practical',
+      date: '07/05/2023',
+      tags: [{ name: 'React', background: '#64CBF6', icon: <ReactjsSVG /> }, { name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
+      intro: `WIP`,
+      navigate: 'react-text-based-adventure'
     }
   ]);
 
@@ -123,7 +132,7 @@ export default function Blog() {
       readingTime: 'approx 10 minutes',
       type: 'Discovery',
       date: '12/04/2023',
-      tags: [{ name: 'JavaScript', background: '#F4BF36', icon: JSIcon }],
+      tags: [{ name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
       intro: `Do you ever find yourself forgetting what helper methods would be best to manipulate your data? 
       In this post, I would like to go through the different helper functions and the use cases for manipulating your data.
       But before we get into that...
@@ -135,10 +144,19 @@ export default function Blog() {
       readingTime: 'approx 5 minutes',
       type: 'Discovery',
       date: '04/05/2023',
-      tags: [{ name: 'JavaScript', background: '#F4BF36', icon: JSIcon }],
+      tags: [{ name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
       intro: `After writing a blog post about arrays, which you can find here. Naturally it feels like the next post needs to be about JavaScript Objects. 
       Similar to my last post, I'll be keeping a similar format; that being explaining what objects are and how we can use them. Simple enough? Let's get it...`,
       navigate: 'javascript-objects'
+    },
+    {
+      title: 'React.js Text Based Adventure Game',
+      readingTime: 'approx 5 minutes',
+      type: 'Practical',
+      date: '07/05/2023',
+      tags: [{ name: 'React', background: '#64CBF6', icon: <ReactjsSVG /> }, { name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
+      intro: `WIP`,
+      navigate: 'react-text-based-adventure'
     }
   ];
 

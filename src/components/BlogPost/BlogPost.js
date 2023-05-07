@@ -76,9 +76,11 @@ const ReadingTime = styled.h1`
 //   `}
 // `;
 
-const StyledTagImage = styled.img`
-  max-width: 36px;
-  max-height: 36px;
+const StyledIcon = styled.div`
+  svg {
+    max-width: 36px;
+    max-height: 36px;
+  }
 `;
 
 const StyledIntro = styled.div`
@@ -117,7 +119,7 @@ const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => 
         {readingTime}
       </ReadingTime>
       <Flex>
-        {tags?.map((x, i) => x.name === 'Misc' ? <StyledJournal key={i} /> : <StyledTagImage key={i} src={x.icon} />)}
+        {tags?.map((x, i) => x.name === 'Misc' ? <StyledJournal key={i} /> : <StyledIcon key={i}>{x.icon}</StyledIcon>)}
       </Flex>
       <StyledIntro>
         {intro}
