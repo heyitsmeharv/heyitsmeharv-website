@@ -110,7 +110,8 @@ export default function Blog() {
       type: 'Practical',
       date: '07/05/2023',
       tags: [{ name: 'React', background: '#64CBF6', icon: <ReactjsSVG /> }, { name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
-      intro: `WIP`,
+      intro: `I've been contemplating on whether or not to do a separate blog post to explain what the React.js framework is but I want to move away from my last posts and get stuck in with building something!
+      If you're completely new to React I would recommend having a gander at their documentation...`,
       navigate: 'react-text-based-adventure'
     }
   ]);
@@ -155,7 +156,8 @@ export default function Blog() {
       type: 'Practical',
       date: '07/05/2023',
       tags: [{ name: 'React', background: '#64CBF6', icon: <ReactjsSVG /> }, { name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
-      intro: `WIP`,
+      intro: `I've been contemplating on whether or not to do a separate blog post to explain what the React.js framework is but I want to move away from my last posts and get stuck in with building something!
+      If you're completely new to React I would recommend having a gander at their documentation...`,
       navigate: 'react-text-based-adventure'
     }
   ];
