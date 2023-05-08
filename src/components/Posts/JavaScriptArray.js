@@ -193,7 +193,7 @@ const JavaScriptArray = () => {
           </ul>
           <Spacer />
           <SubTitle>Why Data Manipulation?</SubTitle>
-          JavaScript Arrays come with helper methods which help with data manipulation. The reason why we need to manipulate data can be for several reasons, this could be
+          JavaScript Arrays come with helper methods which assist with data manipulation. The reason why we need to manipulate data can be for several reasons, this could be
           because a front-end application needs it to be in a different format in order to easily display the data, or that we want the data to be more readable and understandable.
           <Spacer />
           <Spacer />
