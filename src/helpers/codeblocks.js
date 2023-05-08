@@ -117,3 +117,5 @@ person: {
   age: 21 
 };
 `;
+
+export const createReactAppCommand = `npx create-react-app text-based-adventure`;

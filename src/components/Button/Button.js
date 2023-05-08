@@ -175,7 +175,7 @@ export const ToastCloseButton = styled.button`
 export const CopyButton = styled.button`
   position: absolute;
   right: 65px;
-  margin: 5px 0;
+  margin: 8px 0;
   padding: 1rem;
   border-radius: 2rem;
   font-family: 'Raleway', sans-serif;

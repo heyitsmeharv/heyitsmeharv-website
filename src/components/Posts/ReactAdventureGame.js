@@ -13,6 +13,7 @@ import { JavascriptSVG, ReactjsSVG } from '../../resources/styles/icons';
 import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
 
 // codeblocks
+import { createReactAppCommand } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -155,6 +156,10 @@ const ReactAdventureGame = () => {
           <StyledAnchor href="#project-setup"><StyledListItem>Project Setup</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id='project-setup'>Project Setup</SubTitle>
+          <CopyButton onClick={() => handleCopy(createReactAppCommand, 0)}>
+            {isCopied[0].value === true ? 'Copied!' : 'Copy'}
+          </CopyButton>
+          <CodeBlock>{createReactAppCommand}</CodeBlock>
         </Text>
       </Container>
     </Wrapper>
