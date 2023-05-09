@@ -13,7 +13,7 @@ import { JavascriptSVG, ReactjsSVG } from '../../resources/styles/icons';
 import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
 
 // codeblocks
-import { createReactAppCommand } from "../../helpers/codeblocks";
+import { createReactAppCommand, mapGeneration } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -109,6 +109,7 @@ const Spacer = styled.br``
 
 const ReactAdventureGame = () => {
   const [isCopied, setIsCopied] = useState([
+    { value: false },
     { value: false }
   ]);
 
@@ -119,6 +120,7 @@ const ReactAdventureGame = () => {
 
   const handleCopy = (code, key) => {
     const isCopiedDefault = [
+      { value: false },
       { value: false }
     ];
     navigator.clipboard.writeText(code);
@@ -149,17 +151,26 @@ const ReactAdventureGame = () => {
         <Spacer />
         <Text>
           I've been contemplating on whether or not to do a separate blog post to explain what the React.js framework is but I want to move away from my last posts and get stuck in with building something!
-          If you're completely new to React I would recommend having a gander at their  <StyledAnchor href="https://react.dev/" target="_blank">documentation</StyledAnchor> which is pretty good. That being said, I will be taking a 'hand holdy'
-          approach so feel free to follow along even if you're a complete beginner!
+          If you're completely new to React I would recommend having a gander at their  <StyledAnchor href="https://react.dev/" target="_blank">documentation</StyledAnchor> which is pretty good.
           <Spacer />
           I'll break this down into sections:
           <StyledAnchor href="#project-setup"><StyledListItem>Project Setup</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#map-generation"><StyledListItem>Map Generation</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id='project-setup'>Project Setup</SubTitle>
           <CopyButton onClick={() => handleCopy(createReactAppCommand, 0)}>
             {isCopied[0].value === true ? 'Copied!' : 'Copy'}
           </CopyButton>
           <CodeBlock>{createReactAppCommand}</CodeBlock>
+          <Spacer />
+          <SubTitle id='map-generation'>Map Generation</SubTitle>
+          So, let's talk map generation. I had a couple of choices, I could have gone for a file import option, where I could parse a text file which letters and symbols to represent certain features such as items and enemies etc.
+          Seeing as thought this text based adventure is linear, I've opted to predefine the potential map with 'room objects' where I can randomise the order each run through.
+          <CopyButton onClick={() => handleCopy(mapGeneration, 1)}>
+            {isCopied[1].value === true ? 'Copied!' : 'Copy'}
+          </CopyButton>
+          <CodeBlock>{mapGeneration}</CodeBlock>
+          <Spacer />
         </Text>
       </Container>
     </Wrapper>
