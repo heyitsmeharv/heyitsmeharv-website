@@ -7,12 +7,13 @@ import Project from '../components/Project/Project';
 // images
 import HarvsQuizzy from '../resources/images/Harvs-Quizzy.png';
 import Coolours from '../resources/images/Coolours.png';
-import Website from '../resources/images/Website.png';
 import Harvgram from '../resources/images/Harvgram.png';
 import RockPaperScissors from '../resources/images/RockPaperScissors.png';
 
+
 // gifs
-import gif from '../resources/gifs/navigation-menu.gif';
+import NavigationMenu from '../resources/gifs/navigation-menu.gif';
+import TextBasedAdventure from '../resources/gifs/text-based-adventure.gif';
 
 // animations
 import SlideInBottom from "../animations/SlideInBottom";
@@ -36,6 +37,12 @@ const Container = styled.div`
 export default function Projects() {
   const projects = [
     {
+      name: 'Text Based Adventure',
+      image: TextBasedAdventure,
+      github: "https://github.com/heyitsmeharv/react-text-based-adventure",
+      hide: true
+    },
+    {
       name: 'Rock Paper Scissors',
       image: RockPaperScissors,
       link: "https://heyitsmeharv-rockpaperscissors.herokuapp.com/",
@@ -44,7 +51,7 @@ export default function Projects() {
     },
     {
       name: 'Navigation-Menu',
-      image: gif,
+      image: NavigationMenu,
       github: "https://github.com/heyitsmeharv/navigation-menu",
       hide: true
     },
@@ -67,14 +74,7 @@ export default function Projects() {
       image: Harvgram,
       github: "https://github.com/heyitsmeharv/harvgram",
       hide: true
-    },
-    {
-      name: 'Website',
-      image: Website,
-      link: "https://www.heyitsmeharv.com",
-      github: "https://github.com/heyitsmeharv/my-portfolio",
-      hide: true
-    },
+    }
   ];
 
   // analytics
