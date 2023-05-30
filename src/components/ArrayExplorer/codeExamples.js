@@ -62,13 +62,13 @@ console.log(arr);
 export const includesExampleOutput = `true`;
 
 export const indexOfExample = `let arr = [5, 1, 8];
-console.log(arr);
+console.log(arr.indexOf(5));
 `;
 
 export const indexOfExampleOutput = `0`;
 
 export const lastIndexOfExample = `let arr = [5, 1, 8];
-console.log(arr);
+console.log(arr.lastIndexOf(5));
 `;
 
 export const lastIndexOfExampleOutput = `0`;
