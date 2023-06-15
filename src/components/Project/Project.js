@@ -15,25 +15,26 @@ const createBox = keyframes`
 `;
 
 const StyledGithub = styled(Github)`
-  width: 50%;
-  height: 50%;
-  margin: 0 10%;
+  width: 50px;
+  height: 50px;
+  margin: 0 25px;
 `;
 
 const StyledExternalLink = styled(ExternalLink)`
-  width: 50%;
-  height: 50%;
-  margin: 0 10%;
+  width: 50px;
+  height: 50px;
+  margin: 0 25px;
 `;
 
 const Flex = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 const Container = styled.div`
   width: 100%;
   position: relative;
-  text-align: center;
+  display: inline-block;
    
   @media only screen and (min-width: 585px) {
     width: 50%;
@@ -45,6 +46,7 @@ const Container = styled.div`
 
 const Image = styled.img`
   width: 100%;
+  display: block;
   ${props => props.hovered && css`
     opacity: 0.8;
   `}
@@ -52,9 +54,10 @@ const Image = styled.img`
 
 const LinkContainer = styled.div`
   position: absolute;
-  top: 65%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 `;
 
 const StyledAnchor = styled.a`
@@ -62,8 +65,7 @@ const StyledAnchor = styled.a`
 `;
 
 const StyledName = styled.span`
-  font-size: 4rem;
-  font-weight: bold;
+  font-size: 2.5rem;
   color: ${({ theme }) => theme.text};
   @media only screen and (max-width: 585px) {
     font-size: 2rem;
