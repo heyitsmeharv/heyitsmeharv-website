@@ -40,7 +40,7 @@ import {
   CypressSVG
 } from '../../resources/styles/icons';
 
-import awscp2020 from '../../resources/images/AWS-CloudPractitioner-2020.png';
+import awscp from '../../resources/images/aws-certified-cloud-practitioner.png';
 
 const Container = styled.section`
   width: 100%;
@@ -311,7 +311,7 @@ const Skills = () => {
       </FlexWrapper>
       <FlexWrapper>
         <a target="_blank" href="https://www.credly.com/badges/445bcb6b-31b2-4c23-8ca4-adf17e871e42">
-          <Image width="100px" height="100px" src={awscp2020} />
+          <Image width="150px" height="150px" src={awscp} />
         </a>
       </FlexWrapper>
     </Container>
