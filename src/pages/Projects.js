@@ -47,7 +47,7 @@ export default function Projects() {
       image: RockPaperScissors,
       link: "https://heyitsmeharv-rockpaperscissors.herokuapp.com/",
       github: "https://github.com/heyitsmeharv/rock-paper-scissors",
-      hide: false
+      hide: true
     },
     {
       name: 'Navigation-Menu',
