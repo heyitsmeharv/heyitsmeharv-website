@@ -16,6 +16,11 @@ const Container = styled.div`
     border: .5px solid ${({ theme }) => theme.text};
   `}
 
+  ${props => props.disabled && css`
+    opacity: 0.4;
+    border: none;
+  `}
+
  @media only screen and (min-width: 500px) and (max-width: 1000px) {
     width: 100%;
     margin: 20px 0;
@@ -62,6 +67,18 @@ const ReadingTime = styled.h1`
   font-style: italic;
 `;
 
+const ComingSoonBanner = styled.div`
+  text-align: center;
+  position: absolute;
+  font-weight: bold;
+  color: ${({ theme }) => theme.text};
+  border: 2px solid ${({ theme }) => theme.text};
+  rotate: -20deg;
+  width: 100%;
+  top: 50%;
+  font-size: 3.5rem;
+`;
+
 // const StyledTags = styled.div`
 //   border: 1px solid ${({ theme }) => theme.text};
 //   color: ${props => (props.textColor > 125) ? '#000' : '#FFF'};
@@ -104,10 +121,14 @@ const StyledJournal = styled(Journal)`
 `;
 
 
-const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => {
+const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate, published }) => {
   const [hovered, setHovered] = useState(false);
   return (
-    <Container hovered={hovered} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+
+    <Container disabled={!published} hovered={hovered} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      {!published &&
+        <ComingSoonBanner>Coming Soon...</ComingSoonBanner>
+      }
       <TopBarText>
         <StyledTopBarText>{type}</StyledTopBarText >
         <StyledTopBarText>{date}</StyledTopBarText >
@@ -126,7 +147,7 @@ const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => 
       </StyledIntro>
       <BottomBarText>
         <StyledBorder>
-          <StyledNavButton>
+          <StyledNavButton disabled={!published}>
             <StyledNavLink
               exact to={`blog/${navigate}`}>
               Read more
@@ -134,7 +155,7 @@ const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate }) => 
           </StyledNavButton>
         </StyledBorder>
       </BottomBarText>
-    </Container >
+    </Container>
   );
 }
 

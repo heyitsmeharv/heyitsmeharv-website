@@ -25,6 +25,11 @@ export const StyledNavButton = styled(motion.button)`
   :hover {
     cursor: pointer;
   }
+
+  ${props => props.disabled && css`
+    cursor: not-allowed;
+    pointer-events: none;
+  `}
 `;
 
 export const StyledNavLink = styled(NavLink)` 
