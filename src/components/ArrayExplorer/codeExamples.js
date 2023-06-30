@@ -56,7 +56,7 @@ console.log(arr);
 export const sliceExampleOutput = `[1, 8]`;
 
 export const includesExample = `let arr = [5, 1, 8];
-console.log(arr);
+console.log(arr.includes(1));
 `;
 
 export const includesExampleOutput = `true`;

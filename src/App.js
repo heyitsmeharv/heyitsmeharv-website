@@ -25,6 +25,7 @@ import SocialMediaBar from "./components/SocialMedia/SocialMediaBar";
 import TheStart from "./components/Posts/TheStart";
 import JavaScriptArray from "./components/Posts/JavaScriptArray";
 import JavaScriptObjects from "./components/Posts/JavaScriptObjects";
+import ReactAdventureGame from "./components/Posts/ReactAdventureGame";
 
 const Wrapper = styled.div`
   display: flex;
@@ -82,6 +83,7 @@ const App = () => {
                   <Route exact path='/blog/the-start' component={TheStart} />
                   <Route exact path='/blog/javascript-arrays' component={JavaScriptArray} />
                   <Route exact path='/blog/javascript-objects' component={JavaScriptObjects} />
+                  <Route exact path='/blog/react-text-based-adventure' component={ReactAdventureGame} />
                 </Switch>
               </>
             );

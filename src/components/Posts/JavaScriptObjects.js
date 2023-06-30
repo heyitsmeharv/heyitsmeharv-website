@@ -7,7 +7,7 @@ import SlideInBottom from "../../animations/SlideInBottom";
 
 // icons
 import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircle';
-import JSIcon from '../../resources/images/blog/JS.png';
+import { JavascriptSVG } from '../../resources/styles/icons';
 
 // components
 import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
@@ -104,7 +104,7 @@ const StyledImage = styled.img`
   width: 100%;
 `;
 
-const StyledTag = styled.img`
+const Icon = styled.div`
   width: 50px;
   height: 50px;
   margin-left: auto;
@@ -157,7 +157,7 @@ const JavaScriptArray = () => {
       <Container>
         <Flex>
           <Title>JavaScript Objects</Title>
-          <StyledTag src={JSIcon} />
+          <Icon><JavascriptSVG /></Icon>
         </Flex>
         <Spacer />
         <Text>
