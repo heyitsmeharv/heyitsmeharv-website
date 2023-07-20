@@ -5,8 +5,8 @@ const Wrapper = styled.div`
   padding: 1rem 2rem;
   display: flex;
   justify-content: end;
-  @media only screen and (max-width: 375px) {
-    padding: 2rem 1rem;
+  @media only screen and (max-width: 585px) {
+    justify-content: center;
   }
 `;
 
