@@ -127,3 +127,46 @@ export const sendMessageText = (language) => {
   }
   return text;
 }
+
+export const aboutMe = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = "About Me"
+      break;
+    case 'ES':
+      text = "Acerca De Mí"
+      break;
+  }
+  return text;
+}
+
+export const aboutMeText = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = ` I'm a self taught programmer with multiple years of experience delivering commercialised web applications built in React.js.
+      I have an adventurous and inquisitive nature when it comes to technologies with a particular interest in cloud computing. I'm
+      qualified in Amazon's cloud based computing platform (AWS).`
+      break;
+    case 'ES':
+      text = `Soy un programador autodidacta con varios años de experiencia en la entrega de aplicaciones web comercializadas construidas en React.js.
+      Tengo una naturaleza aventurera e inquisitiva cuando se trata de tecnologías con un interés particular en la computación en la nube.Soy
+      calificado en la plataforma de computación basada en la nube de Amazon (AWS).`
+      break;
+  }
+  return text;
+}
+
+export const aliveText = (language, age) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = `I've been alive for ${age.years} years, ${age.days} days, ${age.hours} hours, ${age.minutes} minutes and ${age.seconds} seconds...`
+      break;
+    case 'ES':
+      text = `He estado vivo durante ${age.years} años, ${age.days} días, ${age.hours} horas, ${age.minutes} minutos y ${age.seconds} segundos...`
+      break;
+  }
+  return text;
+}
