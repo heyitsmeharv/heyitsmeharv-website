@@ -10,6 +10,9 @@ import { CommentSendButton, CommentCancelButton } from '../Button/Button';
 import { CheckSVG } from '../../resources/styles/icons';
 import { ErrorSVG } from '../../resources/styles/icons';
 
+// helpers
+import { nameInput, commentPrompt, cancel, submit } from "../../helpers/text";
+
 const INITIAL_HEIGHT = 46;
 
 const Container = styled.div`
@@ -66,7 +69,7 @@ const Actions = styled.div`
   transition: opacity 0.4s 0.2s ease;
 `;
 
-const CommentBox = ({ setLoading }) => {
+const CommentBox = ({ setLoading, language }) => {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
   const [isExpanded, setIsExpanded] = useState(false);
@@ -154,7 +157,7 @@ const CommentBox = ({ setLoading }) => {
       <Header className="header">
         <CommentInput
           onChange={(e) => setName(e.target.value)}
-          placeholder="Name *"
+          placeholder={nameInput(language)}
           value={name}
           name="name"
         />
@@ -166,20 +169,20 @@ const CommentBox = ({ setLoading }) => {
         onFocus={onExpand}
         onChange={onChange}
         className="comment-field"
-        placeholder="What are your thoughts?"
+        placeholder={commentPrompt(language)}
         value={comment}
         name="comment"
         id="comment-field"
       />
       <Actions className="actions">
         <CommentCancelButton className="cancel" onClick={() => onClose()}>
-          Cancel
+          {cancel(language)}
         </CommentCancelButton>
         <CommentSendButton
           onClick={() => handleSubmitComment()}
           disabled={comment.length === 0 || name.length === 0}
         >
-          Submit
+          {submit(language)}
         </CommentSendButton>
       </Actions>
       <Toast toastList={list} />

@@ -6,6 +6,9 @@ import hdate from 'human-date';
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
 
+// helpers
+import { aboutMe, aboutMeText, aliveText } from "../../helpers/text";
+
 const Container = styled.section`
   width: 100%;
   max-height: 100%;
@@ -37,7 +40,7 @@ const Separator = styled.span`
   background-color: ${({ theme }) => theme.separator};
 `;
 
-const AboutMe = () => {
+const AboutMe = ({ language }) => {
   const [age, setAge] = useState(hdate.relativeTime(new Date("09-27-1993".replace(/-/g, "/")), { returnObject: true }));
 
   useEffect(() => {
@@ -49,14 +52,12 @@ const AboutMe = () => {
 
   return (
     <Container>
-      <Title>About Me</Title>
+      <Title>{aboutMe(language)}</Title>
       <Separator />
       <Text>
-        I'm a self taught programmer with multiple years of experience delivering commercialised web applications built in React.js.
-        I have an adventurous and inquisitive nature when it comes to technologies with a particular interest in cloud computing. I'm
-        qualified in Amazon's cloud based computing platform (AWS).
+        {aboutMeText(language)}
       </Text>
-      <Text>I've been alive for {age.years} years, {age.days} days, {age.hours} hours, {age.minutes} minutes and {age.seconds} seconds...</Text>
+      <Text>{aliveText(language, age)}</Text>
     </Container>
   )
 }

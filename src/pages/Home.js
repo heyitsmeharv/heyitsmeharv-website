@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { NotificationContainer } from 'react-notifications';
+
+// context
+import { LanguageContext } from "../context/languageContext";
 
 // components
 import Introduction from "../components/Introduction/Introduction";
@@ -19,17 +22,19 @@ const Container = styled.div``;
 
 const Home = () => {
   const [open, setOpen] = useState(false);
+  const language = useContext(LanguageContext);
+
   return (
     <Container>
       <NotificationContainer />
       <Margin>
-        <Introduction open={open} setOpen={setOpen} />
+        <Introduction language={language} open={open} setOpen={setOpen} />
       </Margin>
-      <ContactMe open={open} />
-      <AboutMe />
-      <ProfessionalExperience />
-      <Skills />
-      <Comments />
+      <ContactMe language={language} open={open} />
+      <AboutMe language={language} />
+      <ProfessionalExperience language={language} />
+      <Skills language={language} />
+      <Comments language={language} />
       {/* <LikeCounter /> */}
     </Container >
   );

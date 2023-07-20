@@ -6,6 +6,9 @@ import CommentBox from './CommentBox';
 
 import Loader from '../Loader/Loader';
 
+// helpers
+import { comment, commentText } from "../../helpers/text";
+
 const Container = styled.section`
   width: 100%;
   max-height: 100%;
@@ -83,7 +86,7 @@ const Timestamp = styled.p`
   font-size: 18px; 
 `;
 
-const Comments = () => {
+const Comments = ({ language }) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -102,10 +105,10 @@ const Comments = () => {
 
   return (
     <Container>
-      <Title>Comment</Title>
+      <Title>{comment(language)}</Title>
       <Separator />
-      <Text>Feel free to leave me a comment below 👇</Text>
-      <CommentBox setLoading={setLoading} />
+      <Text>{commentText(language)}</Text>
+      <CommentBox setLoading={setLoading} language={language} />
       {comments.length !== 0 ?
         <CommentList>
           {comments.map((item, i) => {

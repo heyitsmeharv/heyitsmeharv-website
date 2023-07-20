@@ -10,6 +10,10 @@ import { ContactMeSendButton } from "../Button/Button";
 import { CheckSVG } from '../../resources/styles/icons';
 import { ErrorSVG } from '../../resources/styles/icons';
 
+// helpers
+import { contactMe, contactMeText, nameInput, emailInput, phoneInput, companyInput, messageInput, sendMessageText } from "../../helpers/text";
+
+
 const Container = styled.section`
   width: 100%;
   background: ${({ theme }) => theme.secondary};
@@ -47,7 +51,7 @@ const Separator = styled.span`
   background-color: ${({ theme }) => theme.separator};
 `;
 
-const ContactMe = ({ open }) => {
+const ContactMe = ({ language, open }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
@@ -109,23 +113,23 @@ const ContactMe = ({ open }) => {
 
   return (
     <Container open={open}>
-      <Title>Contact Me</Title>
+      <Title>{contactMe(language)}</Title>
       <Separator />
-      <Text>Contact me for more information on my own work experiences and services and any business enquiries.</Text>
+      <Text>{contactMeText(language)}</Text>
       <FlexWrapper>
-        <ContactMeInput value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Name *" />
-        <ContactMeInput error={error} value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email *" />
+        <ContactMeInput value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder={nameInput(language)} />
+        <ContactMeInput error={error} value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder={emailInput(language)} />
       </FlexWrapper>
       <FlexWrapper>
-        <ContactMeInput value={company} onChange={(e) => setCompany(e.target.value)} type="text" placeholder="Company" />
-        <ContactMeInput value={telephone} onChange={(e) => setTelephone(e.target.value)} type="text" placeholder="Telephone" />
+        <ContactMeInput value={company} onChange={(e) => setCompany(e.target.value)} type="text" placeholder={companyInput(language)} />
+        <ContactMeInput value={telephone} onChange={(e) => setTelephone(e.target.value)} type="text" placeholder={phoneInput(language)} />
       </FlexWrapper>
       <FlexWrapper>
-        <ContactMeTextArea value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder="Message *" />
+        <ContactMeTextArea value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder={messageInput(language)} />
       </FlexWrapper>
       <FlexWrapper>
         <ContactMeSendButton disabled={email.length === 0 || name.length === 0 || message.length === 0} onClick={handleOnSendEmail}>
-          Send Message
+          {sendMessageText(language)}
         </ContactMeSendButton>
       </FlexWrapper>
       <Toast toastList={list} />

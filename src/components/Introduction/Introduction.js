@@ -10,6 +10,9 @@ import SlideInBottom from "../../animations/SlideInBottom";
 // images
 import ProfileImg from "../../resources/images/profile-portrait.jpg";
 
+// helpers
+import { introductionText, contactMe, curriculumVitaeButtonText } from "../../helpers/text";
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -70,13 +73,13 @@ const StyledAnchor = styled.a`
   }
 `;
 
-const Introduction = ({ open, setOpen }) => {
+const Introduction = ({ language, open, setOpen }) => {
   return (
     <Container>
       <ProfileImage src={ProfileImg} />
       <IntroWrapper>
         <Intro>
-          Hello 👋, my name is Adam. I'm a software engineer from Oxford, England.
+          {introductionText(language)}
         </Intro>
         <ButtonWrapper>
           <ContactMeButton
@@ -84,14 +87,14 @@ const Introduction = ({ open, setOpen }) => {
             whileTap={{ scale: 0.9 }}
             onClick={() => setOpen(!open)}
           >
-            Contact Me
+            {contactMe(language)}
           </ContactMeButton>
           <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <StyledAnchor
               target="_blank"
               href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV2.pdf"
             >
-              Curriculum Vitae
+              {curriculumVitaeButtonText(language)}
             </StyledAnchor>
           </DownloadCVButton>
         </ButtonWrapper>
