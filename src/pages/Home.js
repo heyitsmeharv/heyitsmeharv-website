@@ -23,18 +23,18 @@ const Container = styled.div``;
 const Home = () => {
   const [open, setOpen] = useState(false);
   const language = useContext(LanguageContext);
-  
+
   return (
     <Container>
       <NotificationContainer />
       <Margin>
         <Introduction language={language} open={open} setOpen={setOpen} />
       </Margin>
-      <ContactMe open={open} />
-      <AboutMe />
-      <ProfessionalExperience />
-      <Skills />
-      <Comments />
+      <ContactMe language={language} open={open} />
+      <AboutMe language={language} />
+      <ProfessionalExperience language={language} />
+      <Skills language={language} />
+      <Comments language={language} />
       {/* <LikeCounter /> */}
     </Container >
   );

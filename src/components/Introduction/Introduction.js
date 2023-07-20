@@ -11,7 +11,7 @@ import SlideInBottom from "../../animations/SlideInBottom";
 import ProfileImg from "../../resources/images/profile-portrait.jpg";
 
 // helpers
-import { introductionText } from "../../helpers/text";
+import { introductionText, contactMe, curriculumVitaeButtonText } from "../../helpers/text";
 
 const Container = styled.div`
   display: flex;
@@ -87,14 +87,14 @@ const Introduction = ({ language, open, setOpen }) => {
             whileTap={{ scale: 0.9 }}
             onClick={() => setOpen(!open)}
           >
-            Contact Me
+            {contactMe(language)}
           </ContactMeButton>
           <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <StyledAnchor
               target="_blank"
               href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV2.pdf"
             >
-              Curriculum Vitae
+              {curriculumVitaeButtonText(language)}
             </StyledAnchor>
           </DownloadCVButton>
         </ButtonWrapper>
