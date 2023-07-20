@@ -3,8 +3,12 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
+// context
+import { LanguageContext } from './context/languageContext';
+
 // hooks
 import { useThemeMode } from "./hooks/useThemeMode";
+import { useLanguageMode } from "./hooks/useLanguageMode";
 
 // styles
 import { ThemeProvider } from "styled-components";
@@ -20,6 +24,7 @@ import Blog from "./pages/Blog";
 import Themes from "./components/Theme/Theme";
 import Navbar from "./components/Navbar/Navbar";
 import SocialMediaBar from "./components/SocialMedia/SocialMediaBar";
+import Languages from "./components/Language/Language";
 
 // blog posts
 import TheStart from "./components/Posts/TheStart";
@@ -42,6 +47,9 @@ const App = () => {
     ReactGA.pageview('/homepage');
   }, []);
 
+  /* ---------------------------- language toggle ----------------------------  */
+  const [language, toggleLanguage] = useLanguageMode();
+
   /* ---------------------------- theme toggle ----------------------------  */
   const [theme, toggleTheme, componentMounted] = useThemeMode();
   let themeMode;
@@ -63,34 +71,37 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={themeMode}>
-      <GlobalStyles />
-      <Wrapper>
-        <Themes theme={theme} toggleTheme={toggleTheme} />
-        <SocialMediaBar />
-      </Wrapper>
-      <Router>
-        <Route
-          render={({ location }) => {
-            return (
-              <>
-                <Navbar />
-                <Switch location={location}>
-                  <Route exact path='/' component={Home} />
-                  <Route exact path='/projects' component={Projects} />
-                  <Route exact path='/blog' component={Blog} />
-                  {/* Add blog posts here */}
-                  <Route exact path='/blog/the-start' component={TheStart} />
-                  <Route exact path='/blog/javascript-arrays' component={JavaScriptArray} />
-                  <Route exact path='/blog/javascript-objects' component={JavaScriptObjects} />
-                  <Route exact path='/blog/react-text-based-adventure' component={ReactAdventureGame} />
-                </Switch>
-              </>
-            );
-          }}
-        />
-      </Router>
-    </ThemeProvider>
+    <LanguageContext.Provider value={language}>
+      <ThemeProvider theme={themeMode}>
+        <GlobalStyles />
+        <Wrapper>
+          <Themes theme={theme} toggleTheme={toggleTheme} />
+          <SocialMediaBar />
+        </Wrapper>
+        <Router>
+          <Route
+            render={({ location }) => {
+              return (
+                <>
+                  <Navbar />
+                  <Languages language={language} toggleLanguage={toggleLanguage} />
+                  <Switch location={location}>
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/projects' component={Projects} />
+                    <Route exact path='/blog' component={Blog} />
+                    {/* Add blog posts here */}
+                    <Route exact path='/blog/the-start' component={TheStart} />
+                    <Route exact path='/blog/javascript-arrays' component={JavaScriptArray} />
+                    <Route exact path='/blog/javascript-objects' component={JavaScriptObjects} />
+                    <Route exact path='/blog/react-text-based-adventure' component={ReactAdventureGame} />
+                  </Switch>
+                </>
+              );
+            }}
+          />
+        </Router>
+      </ThemeProvider>
+    </LanguageContext.Provider>
   );
 };
 

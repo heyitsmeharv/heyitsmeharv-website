@@ -10,6 +10,9 @@ import SlideInBottom from "../../animations/SlideInBottom";
 // images
 import ProfileImg from "../../resources/images/profile-portrait.jpg";
 
+// helpers
+import { introductionText } from "../../helpers/text";
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -70,13 +73,13 @@ const StyledAnchor = styled.a`
   }
 `;
 
-const Introduction = ({ open, setOpen }) => {
+const Introduction = ({ language, open, setOpen }) => {
   return (
     <Container>
       <ProfileImage src={ProfileImg} />
       <IntroWrapper>
         <Intro>
-          Hello 👋, my name is Adam. I'm a software engineer from Oxford, England.
+          {introductionText(language)}
         </Intro>
         <ButtonWrapper>
           <ContactMeButton
