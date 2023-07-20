@@ -5,6 +5,9 @@ import { StyledButton } from '../Button/Button';
 
 import Card from '../Card/Card';
 
+// helpers
+import { skillsText, skillsListText } from "../../helpers/text";
+
 // icons
 import {
   AWSSVG,
@@ -90,7 +93,7 @@ const Image = styled.img`
   }
 `;
 
-const Skills = () => {
+const Skills = ({ language }) => {
   const [list, setList] = useState([]);
   const [filter, setFilter] = useState('all');
   const skillList = [
@@ -251,28 +254,52 @@ const Skills = () => {
     },
   ];
 
-  const buttons = [
-    {
-      label: 'All',
-      onClick: () => setFilter('all')
-    },
-    {
-      label: 'Programming languages',
-      onClick: () => setFilter('language'),
-    },
-    {
-      label: 'Web/App Development',
-      onClick: () => setFilter('webDev'),
-    },
-    {
-      label: 'Databases',
-      onClick: () => setFilter('database'),
-    },
-    {
-      label: 'Misc',
-      onClick: () => setFilter('misc'),
-    },
-  ];
+  const buttons = {
+    "EN": [
+      {
+        label: 'All',
+        onClick: () => setFilter('all')
+      },
+      {
+        label: 'Programming languages',
+        onClick: () => setFilter('language'),
+      },
+      {
+        label: 'Web/App Development',
+        onClick: () => setFilter('webDev'),
+      },
+      {
+        label: 'Databases',
+        onClick: () => setFilter('database'),
+      },
+      {
+        label: 'Misc',
+        onClick: () => setFilter('misc'),
+      },
+    ],
+    "ES": [
+      {
+        label: 'Toda',
+        onClick: () => setFilter('all')
+      },
+      {
+        label: 'Lenguajes De Programación',
+        onClick: () => setFilter('language'),
+      },
+      {
+        label: 'Desarrollo De Aplicaciones/Internet',
+        onClick: () => setFilter('webDev'),
+      },
+      {
+        label: 'Bases De Datos',
+        onClick: () => setFilter('database'),
+      },
+      {
+        label: 'Misceláneos',
+        onClick: () => setFilter('misc'),
+      },
+    ]
+  };
 
   useEffect(() => {
     setList(skillList.filter(skill => skill.tag.includes(filter)));
@@ -280,11 +307,11 @@ const Skills = () => {
 
   return (
     <Container>
-      <Title>Skills</Title>
+      <Title>{skillsText(language)}</Title>
       <Separator />
-      <Text>Here's a list of technologies I've used: </Text>
+      <Text>{skillsListText(language)}</Text>
       <FlexWrapper>
-        {buttons.map((button, i) => {
+        {buttons[language].map((button, i) => {
           return (
             <div key={i} style={{ margin: "10px" }}>
               <StyledButton

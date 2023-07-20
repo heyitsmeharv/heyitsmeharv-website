@@ -170,3 +170,108 @@ export const aliveText = (language, age) => {
   }
   return text;
 }
+
+export const experienceText = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = "Experience"
+      break;
+    case 'ES':
+      text = "Experiencia"
+      break;
+  }
+  return text;
+}
+
+export const skillsText = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = "Skills"
+      break;
+    case 'ES':
+      text = "Habilidades"
+      break;
+  }
+  return text;
+}
+
+export const skillsListText = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = "Here's a list of technologies I've used:"
+      break;
+    case 'ES':
+      text = "Aquí hay una lista de tecnologías que he usado:"
+      break;
+  }
+  return text;
+}
+
+
+export const comment = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = "Comment"
+      break;
+    case 'ES':
+      text = "Comentario"
+      break;
+  }
+  return text;
+}
+
+export const commentText = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = "Feel free to leave me a comment below 👇"
+      break;
+    case 'ES':
+      text = "Siéntase libre de dejarme un comentario a continuación 👇"
+      break;
+  }
+  return text;
+}
+
+export const commentPrompt = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = "What are your thoughts?"
+      break;
+    case 'ES':
+      text = "¿Cuáles son tus pensamientos?"
+      break;
+  }
+  return text;
+}
+
+export const cancel = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = "Cancel"
+      break;
+    case 'ES':
+      text = "Cancelar"
+      break;
+  }
+  return text;
+}
+
+export const submit = (language) => {
+  let text;
+  switch (language) {
+    case 'EN':
+      text = "Submit"
+      break;
+    case 'ES':
+      text = "Entregar"
+      break;
+  }
+  return text;
+}
