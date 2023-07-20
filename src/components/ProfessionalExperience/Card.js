@@ -24,10 +24,10 @@ const Title = styled.h1`
   animation: ${SlideInBottom} 1s forwards;
   color: ${({ theme }) => theme.text};
   font-size: 3rem;
-  line-height: 22px;
+  line-height: 38px;
   margin: 30px;
   font-weight: 600;
-  width: max-content;
+  text-align: center;
 `;
 
 const Text = styled.p`
