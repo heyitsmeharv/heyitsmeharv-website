@@ -207,8 +207,14 @@ const ReactAdventureGame = () => {
             </CopyButton>
             {mapGeneration}
           </CodeBlock>
+          I think there is a cleaner way of handling the setup but for now it serves it's inteded purpose; that being the following:
+          <StyledListItem>Clearing the state of the previous run</StyledListItem>
+          <StyledListItem>Randomise the room order</StyledListItem>
+          <StyledListItem>Randomly add enemies and items in the rooms</StyledListItem>
+          <StyledListItem>Check to see no duplicate rooms, items and enemies aren't added</StyledListItem>
+          <StyledListItem>Add in the final room at the end</StyledListItem>
           <Spacer />
-          <SubTitle id='combat'>Character</SubTitle>
+          <SubTitle id='character'>Character</SubTitle>
           <CopyButton onClick={() => handleCopy(createReactAppCommand, 2)}>
             {isCopied[2].value === true ? 'Copied!' : 'Copy'}
           </CopyButton>
