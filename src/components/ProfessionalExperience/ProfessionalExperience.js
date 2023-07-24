@@ -122,7 +122,7 @@ const ProfessionalExperience = ({ language }) => {
       {
         icon: <StyledHandShake />,
         title: 'Enfoque En El Cliente',
-        text: `Comunicado y colaborado proactivamente con las partes interesadas externas e internas.
+        text: `He comunicado y colaborado proactivamente con las partes interesadas externas e internas.
         Asistido con la entrega de soluciones al cliente desde la concepción hasta la implementación y más allá.
         Obtuvo inteligencia sobre la estrategia de los clientes y los planes futuros y aprovechó las oportunidades de ventas de
         este conocimiento.

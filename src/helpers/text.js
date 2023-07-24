@@ -5,7 +5,7 @@ export const introductionText = (language) => {
       text = "Hello 👋, my name is Adam. I'm a software engineer from Oxford, England."
       break;
     case 'ES':
-      text = "Hola 👋, mi nombre es Adam. Soy un ingeniero de software de Oxford, Inglaterra."
+      text = "Hola 👋, me llamo Adam. Soy un ingeniero de software de Oxford, Inglaterra."
       break;
   }
   return text;
@@ -44,7 +44,7 @@ export const contactMeText = (language) => {
       text = "Contact me for more information on my own work experiences and services and any business enquiries."
       break;
     case 'ES':
-      text = "Póngase en contacto conmigo para obtener más información sobre mis propias experiencias laborales y servicios y cualquier consulta comercial."
+      text = "Ponte en contacto conmigo para obtener más información sobre mis experiencias laborales y servicios, y cualquier consulta comercial."
       break;
   }
   return text;
@@ -135,7 +135,7 @@ export const aboutMe = (language) => {
       text = "About Me"
       break;
     case 'ES':
-      text = "Acerca De Mí"
+      text = "Sobre Mí"
       break;
   }
   return text;
@@ -151,8 +151,8 @@ export const aboutMeText = (language) => {
       break;
     case 'ES':
       text = `Soy un programador autodidacta con varios años de experiencia en la entrega de aplicaciones web comercializadas construidas en React.js.
-      Tengo una naturaleza aventurera e inquisitiva cuando se trata de tecnologías con un interés particular en la computación en la nube.Soy
-      calificado en la plataforma de computación basada en la nube de Amazon (AWS).`
+      Tengo una naturaleza aventurera e inquisitiva cuando se trata de tecnologías, con un interés en particular en computación en la nube. Tengo
+      la califición de computación basada en la nube de la plataforma Amazon (AWS).`
       break;
   }
   return text;
@@ -165,7 +165,7 @@ export const aliveText = (language, age) => {
       text = `I've been alive for ${age.years} years, ${age.days} days, ${age.hours} hours, ${age.minutes} minutes and ${age.seconds} seconds...`
       break;
     case 'ES':
-      text = `He estado vivo durante ${age.years} años, ${age.days} días, ${age.hours} horas, ${age.minutes} minutos y ${age.seconds} segundos...`
+      text = `Estoy vivo desde hace ${age.years} años, ${age.days} días, ${age.hours} horas, ${age.minutes} minutos y ${age.seconds} segundos...`
       break;
   }
   return text;
