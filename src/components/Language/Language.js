@@ -23,7 +23,7 @@ const LanguageButton = styled.button`
 const Language = ({ language, toggleLanguage }) => {
   const languages = [
     { name: 'english', value: 'EN', flag: '🇬🇧' },
-    { name: 'castiano', value: 'ES', flag: '🇪🇸' },
+    { name: 'castellano', value: 'ES', flag: '🇪🇸' },
   ]
   return (
     <Wrapper>
