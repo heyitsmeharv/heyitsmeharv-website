@@ -40,7 +40,9 @@ import {
   SocketIOSVG,
   ServerlessSVG,
   TerraformSVG,
-  CypressSVG
+  CypressSVG,
+  ESLintSVG,
+  PrettierSVG
 } from '../../resources/styles/icons';
 
 import awscp from '../../resources/images/aws-certified-cloud-practitioner.png';
@@ -141,6 +143,16 @@ const Skills = ({ language }) => {
       icon: <CypressSVG />,
       title: "Cypress",
       tag: ["all", "language", "webDev"]
+    },
+    {
+      icon: <ESLintSVG />,
+      title: "ESLint",
+      tag: ["all", "webDev"]
+    },
+    {
+      icon: <PrettierSVG />,
+      title: "Prettier",
+      tag: ["all", "webDev"]
     },
     {
       icon: <ElectronJSSVG />,

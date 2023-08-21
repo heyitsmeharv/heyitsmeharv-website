@@ -545,7 +545,152 @@ export const CypressSVG = () => {
       </svg>
     </StyledSvg>
   )
-}
+};
+
+export const ESLintSVG = () => {
+  return (
+    <StyledSvg viewBox="0 0 32 32">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 32 32"><title>ESLint</title>
+        <path d="M13.027,30,2.39,20.422l2.979-14L18.973,2,29.61,11.578l-2.979,14L13.027,30ZM7.883,18.642l6.342,5.7L22.337,21.7l1.781-8.344L17.775,7.644,9.663,10.3,7.883,18.642Z" fill="#4b32c3" />
+        <path d="M21.72,25.915H10.28L4.554,16,10.28,6.085H21.72L27.446,16,21.72,25.915Zm-9.426-3.491h7.413L23.419,16,19.707,9.576H12.293L8.593,16l3.7,6.424Z" fill="#8080f2" />
+      </svg>
+    </StyledSvg>
+  )
+};
+
+export const PrettierSVG = () => {
+  return (
+    <StyledSvg viewBox="0 0 32 32">
+      <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 256 256" version="1.1" preserveAspectRatio="xMidYMid">
+        <g>
+          <rect fill="#56B3B4" x="182.857143" y="48.7619048" width="24.3809524" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#EA5E5E" x="0" y="243.809524" width="73.1428571" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#BF85BF" x="146.285714" y="146.285714" width="48.7619048" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#EA5E5E" x="73.1428571" y="146.285714" width="60.952381" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#56B3B4" x="0" y="146.285714" width="60.952381" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#BF85BF" x="0" y="195.047619" width="73.1428571" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#BF85BF" x="0" y="97.5238095" width="73.1428571" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#F7BA3E" x="60.952381" y="24.3809524" width="134.095238" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#EA5E5E" x="0" y="24.3809524" width="48.7619048" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#F7BA3E" x="48.7619048" y="219.428571" width="24.3809524" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#56B3B4" x="48.7619048" y="73.1428571" width="24.3809524" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#56B3B4" x="0" y="219.428571" width="36.5714286" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#F7BA3E" x="0" y="73.1428571" width="36.5714286" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="158.47619" y="219.428571" width="24.3809524" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="85.3333333" y="219.428571" width="60.952381" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="195.047619" y="219.428571" width="60.952381" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#56B3B4" x="97.5238095" y="121.904762" width="109.714286" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#F7BA3E" x="36.5714286" y="121.904762" width="48.7619048" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#EA5E5E" x="0" y="121.904762" width="24.3809524" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#BF85BF" x="109.714286" y="48.7619048" width="60.952381" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#56B3B4" x="0" y="48.7619048" width="97.5238095" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#F7BA3E" x="36.5714286" y="170.666667" width="121.904762" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#BF85BF" x="0" y="170.666667" width="24.3809524" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#EA5E5E" x="146.285714" y="73.1428571" width="73.1428571" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#F7BA3E" x="146.285714" y="97.5238095" width="73.1428571" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#56B3B4" x="0" y="0" width="158.47619" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="170.666667" y="0" width="85.3333333" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="170.666667" y="170.666667" width="36.5714286" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="219.428571" y="170.666667" width="36.5714286" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="207.238095" y="146.285714" width="48.7619048" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="207.238095" y="24.3809524" width="48.7619048" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="219.428571" y="121.904762" width="36.5714286" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="219.428571" y="48.7619048" width="36.5714286" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="231.619048" y="73.1428571" width="24.3809524" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="231.619048" y="97.5238095" width="24.3809524" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="134.095238" y="195.047619" width="121.904762" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="85.3333333" y="195.047619" width="36.5714286" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="182.857143" y="243.809524" width="73.1428571" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="85.3333333" y="243.809524" width="85.3333333" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="85.3333333" y="73.1428571" width="48.7619048" height="12.1904762" rx="5">
+
+          </rect>
+          <rect fill="#D0D4D8" opacity="0.5" x="85.3333333" y="97.5238095" width="48.7619048" height="12.1904762" rx="5">
+
+          </rect>
+        </g>
+      </svg>
+    </StyledSvg>
+  )
+};
 
 export const CheckSVG = () => {
   return (
