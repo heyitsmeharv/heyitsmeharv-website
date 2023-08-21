@@ -36,12 +36,12 @@ export const blueTheme = {
 
 export const redTheme = {
   primary: '#6a040f',
-  secondary: '#ffba08',
+  secondary: '#b8860b',
   accent: '#000',
   text: '#fff',
   separator: '#fff',
   inputText: '#000',
   buttonText: '#fff',
-  buttonColour: '#ffba08',
+  buttonColour: '#b8860b',
   icon: '#6a040f'
 };
