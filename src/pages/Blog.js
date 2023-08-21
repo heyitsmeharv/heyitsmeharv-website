@@ -1,6 +1,6 @@
 import ReactGA from 'react-ga';
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // components
 import BlogPost from "../components/BlogPost/BlogPost";
@@ -24,6 +24,10 @@ const Container = styled.div`
   @media only screen and (max-width: 585px) {
     flex-direction: column;
   }
+
+  ${props => props.filtered && css`
+    justify-content: space-evenly;
+  `}
 `;
 
 const SearchBarWrapper = styled.div`
@@ -190,7 +194,7 @@ export default function Blog() {
         <StyledSearchBar placeholder="Search" type="text" onChange={e => setSearch(e.target.value)} value={search} />
         <StyledCloseButton onClick={() => setSearch('')}> <StyledCloseIcon /></StyledCloseButton>
       </SearchBarWrapper>
-      <Container>
+      <Container filtered={search !== ''}>
         {blogPosts.map((p, i) => {
           return <BlogPost key={i} index={i} title={p.title} readingTime={p.readingTime} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} published={p.published} />
         }).reverse()}
