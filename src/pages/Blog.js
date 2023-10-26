@@ -8,14 +8,14 @@ import BlogPost from "../components/BlogPost/BlogPost";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG } from '../resources/styles/icons';
 
 // animations
 import SlideInTop from "../animations/SlideInTop";
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 4rem;
   background: ${({ theme }) => theme.background};
@@ -24,10 +24,6 @@ const Container = styled.div`
   @media only screen and (max-width: 585px) {
     flex-direction: column;
   }
-
-  ${props => props.filtered && css`
-    justify-content: space-evenly;
-  `}
 `;
 
 const SearchBarWrapper = styled.div`
@@ -40,6 +36,7 @@ const StyledSearchBar = styled.input`
   width: 100%;
   height: 50px;
   padding: 0 45px;
+  font-size: 1.5rem;
 `;
 
 const StyledSearchIcon = styled(Search)`
@@ -112,6 +109,18 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS IAM',
+      readingTime: 'approx 6 minutes',
+      type: 'Discovery',
+      date: '26/10/2023',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
+      intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
+      this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics 
+      if you're not familiar with this service at all...`,
+      navigate: 'aws-identity-access-management',
+      published: true
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -162,6 +171,18 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS IAM',
+      readingTime: 'approx 6 minutes',
+      type: 'Discovery',
+      date: '26/10/2023',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
+      intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
+      this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics 
+      if you're not familiar with this service at all...`,
+      navigate: 'aws-identity-access-management',
+      published: true
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -194,7 +215,7 @@ export default function Blog() {
         <StyledSearchBar placeholder="Search" type="text" onChange={e => setSearch(e.target.value)} value={search} />
         <StyledCloseButton onClick={() => setSearch('')}> <StyledCloseIcon /></StyledCloseButton>
       </SearchBarWrapper>
-      <Container filtered={search !== ''}>
+      <Container>
         {blogPosts.map((p, i) => {
           return <BlogPost key={i} index={i} title={p.title} readingTime={p.readingTime} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} published={p.published} />
         }).reverse()}
