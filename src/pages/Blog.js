@@ -8,7 +8,7 @@ import BlogPost from "../components/BlogPost/BlogPost";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG } from '../resources/styles/icons';
 
 // animations
 import SlideInTop from "../animations/SlideInTop";
@@ -121,6 +121,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS EC2',
+      readingTime: 'approx ? minutes',
+      type: 'Discovery',
+      date: '27/10/2023',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
+      intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2...`,
+      navigate: 'aws-elastic-compute-cloud',
+      published: false
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -180,6 +190,16 @@ export default function Blog() {
       this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics 
       if you're not familiar with this service at all...`,
       navigate: 'aws-identity-access-management',
+      published: true
+    },
+    {
+      title: 'AWS EC2',
+      readingTime: 'approx ? minutes',
+      type: 'Discovery',
+      date: '27/10/2023',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
+      intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2...`,
+      navigate: 'aws-elastic-compute-cloud',
       published: true
     },
     {
