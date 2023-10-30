@@ -86,7 +86,9 @@ const App = () => {
               return (
                 <>
                   <Navbar />
-                  <Languages language={language} toggleLanguage={toggleLanguage} />
+                  {!(window.location.href.indexOf("projects") > 1 || window.location.href.indexOf("blog") > 1) &&
+                    <Languages language={language} toggleLanguage={toggleLanguage} />
+                  }
                   <Switch location={location}>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/projects' component={Projects} />

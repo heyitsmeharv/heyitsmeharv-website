@@ -123,6 +123,7 @@ const StyledCodeSpan = styled.code`
 
 const StyledListItem = styled.li`
   color: ${({ theme }) => theme.text};
+  margin-left: 5%;
 `;
 
 const StyledAnchor = styled.a`
