@@ -129,7 +129,7 @@ export default function Blog() {
       intro: ` In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). In short EC2 is a virtual service in the
       AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be key...`,
       navigate: 'aws-elastic-compute-cloud',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
