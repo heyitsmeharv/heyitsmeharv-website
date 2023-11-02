@@ -122,11 +122,11 @@ export default function Blog() {
     },
     {
       title: 'AWS EC2',
-      readingTime: 'approx ? minutes',
+      readingTime: 'approx 15 minutes',
       type: 'Discovery',
-      date: '27/10/2023',
+      date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
-      intro: ` In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). In short EC2 is a virtual service in the
+      intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). In short EC2 is a virtual service in the
       AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be key...`,
       navigate: 'aws-elastic-compute-cloud',
       published: true
@@ -195,9 +195,9 @@ export default function Blog() {
     },
     {
       title: 'AWS EC2',
-      readingTime: 'approx ? minutes',
+      readingTime: 'approx 15 minutes',
       type: 'Discovery',
-      date: '27/10/2023',
+      date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
       intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). In short EC2 is a virtual service in the
       AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be key...`,
