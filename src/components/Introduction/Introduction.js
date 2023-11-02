@@ -8,7 +8,7 @@ import { ContactMeButton, DownloadCVButton } from "../Button/Button";
 import SlideInBottom from "../../animations/SlideInBottom";
 
 // images
-import ProfileImg from "../../resources/images/profile-portrait.jpg";
+import ProfileImg from "../../resources/images/profile-portrait.jpeg";
 
 // helpers
 import { introductionText, contactMe, curriculumVitaeButtonText } from "../../helpers/text";

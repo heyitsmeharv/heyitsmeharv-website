@@ -32,6 +32,7 @@ import JavaScriptArray from "./components/Posts/JavaScriptArray";
 import JavaScriptObjects from "./components/Posts/JavaScriptObjects";
 import ReactAdventureGame from "./components/Posts/ReactAdventureGame";
 import AWSIdentityAccessManagement from "./components/Posts/AWSIdentityAccessManagement";
+import AWSElasticComputeCloud from "./components/Posts/AWSElasticComputeCloud"
 
 const Wrapper = styled.div`
   display: flex;
@@ -85,7 +86,9 @@ const App = () => {
               return (
                 <>
                   <Navbar />
-                  <Languages language={language} toggleLanguage={toggleLanguage} />
+                  {!(window.location.href.indexOf("projects") > 1 || window.location.href.indexOf("blog") > 1) &&
+                    <Languages language={language} toggleLanguage={toggleLanguage} />
+                  }
                   <Switch location={location}>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/projects' component={Projects} />
@@ -96,6 +99,7 @@ const App = () => {
                     <Route exact path='/blog/javascript-objects' component={JavaScriptObjects} />
                     <Route exact path='/blog/react-text-based-adventure' component={ReactAdventureGame} />
                     <Route exact path='/blog/aws-identity-access-management' component={AWSIdentityAccessManagement} />
+                    <Route exact path='/blog/aws-elastic-compute-cloud' component={AWSElasticComputeCloud} />
                   </Switch>
                 </>
               );
