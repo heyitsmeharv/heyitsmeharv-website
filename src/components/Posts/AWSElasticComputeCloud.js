@@ -13,7 +13,10 @@ import { AWSSVG, AWSEC2SVG } from '../../resources/styles/icons';
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
 // images
-import InstanceNamingConvention from "../../resources/images/blog/AWSElasticComputeCloud/instance-type-name.jpg";
+import InstanceNamingConvention from "../../resources/images/blog/AWSElasticComputeCloud/instance-type-name.jpeg";
+import SecurityGroup from "../../resources/images/blog/AWSElasticComputeCloud/security_group.jpeg";
+import SecurityGroup2 from "../../resources/images/blog/AWSElasticComputeCloud/security_group_2.jpeg";
+import SecurityGroup3 from "../../resources/images/blog/AWSElasticComputeCloud/security_group_3.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -187,7 +190,7 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <Spacer />
           <SubTitle>Configuration</SubTitle>
-          What does this EC2 instance consist of? Well it's just a server, albeit sitting in one of Amazon's many data centers that we can rent. When we are renting this service, we're asked to choose
+          What does this EC2 instance consist of? Well it's just a server, albeit sitting in one of Amazon's many data centers that we can purchase. When we are "purchasing" this service, we're asked to choose
           how we would like it to be configured. This can vary from the list below:
           <StyledListItem><BoldText>Operating System (OS)</BoldText>: Windows, Mac OS, Linux</StyledListItem>
           <StyledListItem><BoldText>CPU</BoldText>: How much compute power and cores.</StyledListItem>
@@ -233,7 +236,6 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>Science modeling & machine learning.</StyledListItem>
           <StyledListItem>Dedicated gaming servers.</StyledListItem>
           <Spacer />
-          <Spacer />
           <SubTitleSmall>Memory Optimized</SubTitleSmall>
           Memory optimized instances are designed to deliver fast performance for workloads that process large data sets in memory.
           <Spacer />
@@ -243,30 +245,84 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>In memory databases optimized for business intelligence (BI).</StyledListItem>
           <StyledListItem>Applications performing real-time processing of big unstructured data.</StyledListItem>
           <Spacer />
-          <Spacer />
-          <SubTitleSmall>Memory Optimized</SubTitleSmall>
-          <Spacer />
-          <Spacer />
-          <SubTitleSmall>Accelerated Computing</SubTitleSmall>
-          Accelerated computing instances use hardware accelerators, or co-processors, to perform some functions, such as floating point number calculations, graphics processing, or data pattern matching,
-          more efficiently than is possible in software running on CPUs. These instances enable more parallelism for higher throughput on compute-intensive workloads.
-          If you require high processing capability, you'll benefit from using accelerated computing instances, which provide access to hardware-based compute accelerators
-          such as Graphics Processing Units (GPUs), Field Programmable Gate Arrays (FPGAs), or AWS Inferentia.
-          <Spacer />
-          <Spacer />
           <SubTitleSmall>Storage Optimized</SubTitleSmall>
           Storage optimized instances are designed for workloads that require high, sequential read and write access to very large data sets on local storage. They are optimized to deliver tens of thousands of low-latency,
           random I/O operations per second (IOPS) to applications.
           <Spacer />
+          Use cases:
+          <StyledListItem>High frequency online transaction processing (OLTP) systems.</StyledListItem>
+          <StyledListItem>Relational databases.</StyledListItem>
+          <StyledListItem>NoSQL databases.</StyledListItem>
+          <StyledListItem>Cache for in-memory databases (for example, Redis).</StyledListItem>
+          <StyledListItem>Data warehousing applications.</StyledListItem>
+          <StyledListItem>Distributed file systems.</StyledListItem>
           <Spacer />
-          <SubTitleSmall>Instance Features</SubTitleSmall>
-
+          <SubTitle>Security Groups</SubTitle>
+          Security groups are used for controlling traffic in and out of an EC2 server, it's essentially how we handle the security aspect i.e. what the instance is allowed to talk to. It's worth mentioning that security
+          groups only contain <BoldText>allow rules</BoldText>. These rules can reference an IP address or by other security groups.
+          <StyledImage src={SecurityGroup} />
+          As you can see here the security group is acting as a "firewall" making sure that the traffic going in and out is what you expect.
+          They don't just regulate the traffic coming in and out but also port ranges and IP ranges (IPv4, IPv6).
+          <StyledImage src={SecurityGroup2} />
+          <SubTitleSmall>Good to Know</SubTitleSmall>
+          <StyledListItem>Security groups can be attached to multiple instances.</StyledListItem>
+          <StyledListItem>Locked down to a region/VPC combination.</StyledListItem>
+          <StyledListItem>Lives outside the EC2.</StyledListItem>
+          <StyledListItem>If your application is not accessible due to time out, then it's most likely a security group issue.</StyledListItem>
+          <StyledListItem>The source IP address 0.0.0.0/0 refers to everything.</StyledListItem>
+          <StyledListItem>All inbound traffic is blocked by default.</StyledListItem>
+          <StyledListItem>All outbound traffic is allowed by default.</StyledListItem>
           <Spacer />
+          <SubTitleSmall>Referencing Other Security Groups</SubTitleSmall>
+          This is a simple diagram depicting how referencing multiple EC2 instances and how attaching different security groups would work.
+          <StyledImage src={SecurityGroup3} />
           <Spacer />
-          <SubTitleSmall>Measuring Instance Performance</SubTitleSmall>
-          
+          <SubTitle>Ports</SubTitle>
+          I think it would be beneficial to list the classic ports and what they mean now that we have explained the traffic flow. Not all connections are the same, you can connect to an EC2 instance through different types of transportation.
+          <StyledListItem>22 = SSH (Secure Shell) - Log into a linux instance.</StyledListItem>
+          <StyledListItem>21 = FTP (File Transfer Protocol) - Upload files into a file share.</StyledListItem>
+          <StyledListItem>22 = SFTP (Secure File Transfer Protocol) - Upload files using SSH.</StyledListItem>
+          <StyledListItem>80 = HTTP (Web Traffic) - Access unsecure websites.</StyledListItem>
+          <StyledListItem>443 = HTTPS (Web Traffic) - Access secure websites.</StyledListItem>
+          <StyledListItem>3389 = RDP (Remote Desktop Protocol) - Log into a windows instance.</StyledListItem>
           <Spacer />
+          <SubTitle>EC2 Purchasing Options</SubTitle>
+          Earlier in the post I mentioned "purchasing", well when you purchase a EC2 server you have different options to choose from. These options are suited for particular scenarios which you should consider based
+          on your business/individual needs. Let's explore these options and why you might want to choose them.
+          <SubTitleSmall>On-Demand Instance</SubTitleSmall>
+          With On-Demand Instances, you pay for compute capacity by the second with no long-term commitments. You have full control over the instance's lifecycle—you decide when to launch, stop, hibernate, start, reboot, or terminate it.
+          <StyledListItem>Pay for what you use.</StyledListItem>
+          <StyledListItem>Has the highest cost but no upfront payment.</StyledListItem>
+          <StyledListItem>No long term commitment.</StyledListItem>
+          <StyledListItem>Recommended for short-term and un-interrupted workloads, where you can predict how the application will behave.</StyledListItem>
           <Spacer />
+          <SubTitleSmall>Reserved Instance</SubTitleSmall>
+          Reserved Instances provide you with significant savings on your Amazon EC2 costs compared to On-Demand Instance pricing. Reserved Instances are not physical instances, but rather a billing discount applied to the use of On-Demand Instances in your account.
+          These On-Demand Instances must match certain attributes, such as instance type and Region, in order to benefit from the billing discount.
+          <StyledListItem>Heavily discounted compared to On-Demand instances.</StyledListItem>
+          <StyledListItem>Reservation period - 1 year (+discount) or 3 years (+++discount).</StyledListItem>
+          <StyledListItem>Payment options - No upfront (+), Partial upfront (++) or All upfront (+++).</StyledListItem>
+          <StyledListItem>You can buy and sell in the reserved instance marketplace.</StyledListItem>
+          <StyledListItem>Recommended for steady-state usage applications (databases).</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Spot Instance</SubTitleSmall>
+          A Spot Instance is an instance that uses spare EC2 capacity that is available for less than the On-Demand price. Because Spot Instances enable you to request unused EC2 instances at steep discounts,
+          you can lower your Amazon EC2 costs significantly. The hourly price for a Spot Instance is called a Spot price. The Spot price of each instance type in each Availability Zone is set by Amazon EC2, and
+          is adjusted gradually based on the long-term supply of and demand for Spot Instances. Your Spot Instance runs whenever capacity is available.
+          <StyledListItem>The MOST cost-efficient instance in AWS.</StyledListItem>
+          <StyledListItem>You could lose the server at any point if your max price is less than the current spot price.</StyledListItem>
+          <StyledListItem>Useful for workloads that are resilient to failure.</StyledListItem>
+          <StyledListItem>Well-suited for data analysis, batch jobs, background processing, and optional tasks.</StyledListItem>
+          <StyledListItem>Not suitable for critical jobs or databases.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Dedicated Hosts</SubTitleSmall>
+          Dedicated Hosts support different configurations (physical cores, sockets, and VCPUs) that allow you to run instances of different families and sizes.
+          When you allocate a Dedicated Host in your account, you can choose a configuration that supports either a single instance type, or multiple instance types within the same instance family. 
+          The number of instances that you can run on a host depends on the configuration you choose.
+          <StyledListItem>The MOST expensive option.</StyledListItem>
+          <StyledListItem>Useful for software that has complicated licensing models.</StyledListItem>
+          <StyledListItem>For companies that have strong regulatory or compliance needs.</StyledListItem>
+          <StyledListItem>Purchase options - On-Demand or Reserved.</StyledListItem>
         </Text>
       </Container>
     </Wrapper>

@@ -13,14 +13,12 @@ import { AWSSVG, AWSIAMSVG } from '../../resources/styles/icons';
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
 // images
-import IAMPolicyInheritance from "../../resources/images/blog/AWSIdentityAccessManagement/iam_inheritance.jpg";
-import IAMPolicyInheritance2 from "../../resources/images/blog/AWSIdentityAccessManagement/iam_inheritance2.jpg";
-import IAMPolicyInheritance3 from "../../resources/images/blog/AWSIdentityAccessManagement/iam_inheritance3.jpg";
-import IAMPolicyInheritance4 from "../../resources/images/blog/AWSIdentityAccessManagement/iam_inheritance4.jpg";
-
+import IAMPolicyInheritance from "../../resources/images/blog/AWSIdentityAccessManagement/iam.jpeg";
+import IAMPolicyInheritance2 from "../../resources/images/blog/AWSIdentityAccessManagement/iam_2.jpeg";
+import IAMPolicyInheritance3 from "../../resources/images/blog/AWSIdentityAccessManagement/iam_3.jpeg";
+import IAMPolicyInheritance4 from "../../resources/images/blog/AWSIdentityAccessManagement/iam_4.jpeg";
+import IAMRole from "../../resources/images/blog/AWSIdentityAccessManagement/iam_5.jpeg";
 import IAMPolicyExample from "../../resources/images/blog/AWSIdentityAccessManagement/policy_example.png";
-
-import IAMRole from "../../resources/images/blog/AWSIdentityAccessManagement/iam_role.jpg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -208,23 +206,17 @@ const AWSIdentityAccessManagement = () => {
           this group has a different <BoldText>policy</BoldText> attached.
           <Spacer />
           <Spacer />
-          <OverflowContainer>
-            <StyledImage width="800px" height="400px" src={IAMPolicyInheritance2} />
-          </OverflowContainer>
+          <StyledImage src={IAMPolicyInheritance2} />
           <Spacer />
           Because it's not mandatory for a user to be apart of a group, you can assign inline policies specifically for that user detailing their access.
           <Spacer />
           <Spacer />
-          <OverflowContainer>
-            <StyledImage width="1000px" height="400px" src={IAMPolicyInheritance3} />
-          </OverflowContainer>
+          <StyledImage src={IAMPolicyInheritance3} />
           <Spacer />
           Finally, it's also important to note that users can be put into more than one group, meaning they would inherit both <BoldText>policies</BoldText>.
           <Spacer />
           <Spacer />
-          <OverflowContainer>
-            <StyledImage width="1000px" height="400px" src={IAMPolicyInheritance4} />
-          </OverflowContainer>
+          <StyledImage src={IAMPolicyInheritance4} />
           <Spacer />
           <SubTitle>IAM Policies Structure</SubTitle>
           Here is an example of a policy written in YAML but they also can be written in JSON format.
@@ -245,7 +237,7 @@ const AWSIdentityAccessManagement = () => {
               for that to happen we need to create and assign <BoldText>roles</BoldText>. An example would be for an EC2 server requesting access to an AWS service, In order for that to happen the EC2 server will need a role attached which states in can
               perform actions using the specified service.
             </Text>
-            <StyledImage ml="25px" width="800px" src={IAMRole} />
+            <StyledImage ml="25px" src={IAMRole} />
           </FlexTop>
         </Text>
       </Container>
