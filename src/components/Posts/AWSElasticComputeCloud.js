@@ -17,6 +17,10 @@ import InstanceNamingConvention from "../../resources/images/blog/AWSElasticComp
 import SecurityGroup from "../../resources/images/blog/AWSElasticComputeCloud/security_group.jpeg";
 import SecurityGroup2 from "../../resources/images/blog/AWSElasticComputeCloud/security_group_2.jpeg";
 import SecurityGroup3 from "../../resources/images/blog/AWSElasticComputeCloud/security_group_3.jpeg";
+import IPv4 from "../../resources/images/blog/AWSElasticComputeCloud/IPv4.jpeg";
+import Cluster from "../../resources/images/blog/AWSElasticComputeCloud/cluster.jpeg";
+import Spread from "../../resources/images/blog/AWSElasticComputeCloud/spread.jpeg";
+import Partition from "../../resources/images/blog/AWSElasticComputeCloud/partition.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -184,7 +188,18 @@ const AWSElasticComputeCloud = () => {
         </Flex>
         <Spacer />
         <Text>
-          <SubTitle>What is an EC2?</SubTitle>
+          I'll be touching on these core subjects which covers the majority of EC2's capability:
+          <StyledAnchor href="#what-is-ec2"><StyledListItem>EC2 Overview</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#sg"><StyledListItem>Security and traffic flow using security groups (SG)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#rent"><StyledListItem>Options for renting virtual machines</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#ip"><StyledListItem>Public and Private IP Addresses</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#placement-group"><StyledListItem>Placement Groups</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#eni"><StyledListItem>Elastic Network Interfaces (ENI)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#ebs"><StyledListItem>Storing data on virtual drives (EBS)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#elb"><StyledListItem>Distributing load across machines (ELB)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#asg"><StyledListItem>Scaling the services using an auto-scaling group (ASG)</StyledListItem></StyledAnchor>
+          <Spacer />
+          <SubTitle id="what-is-ec2">What is an EC2?</SubTitle>
           In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). In short EC2 is a virtual service in the
           AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be handy.
           <Spacer />
@@ -195,7 +210,7 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem><BoldText>Operating System (OS)</BoldText>: Windows, Mac OS, Linux</StyledListItem>
           <StyledListItem><BoldText>CPU</BoldText>: How much compute power and cores.</StyledListItem>
           <StyledListItem><BoldText>RAM</BoldText>: How much random access memory.</StyledListItem>
-          <StyledListItem><BoldText>Storage</BoldText>: Network and/or hardware.</StyledListItem>
+          <StyledListItem><BoldText>Storage</BoldText>: Network (EBS & EFS) and/or hardware.</StyledListItem>
           <StyledListItem><BoldText>Network</BoldText>: Type of connectivity.</StyledListItem>
           <StyledListItem><BoldText>Firewall Rules</BoldText>: Security groups.</StyledListItem>
           <Spacer />
@@ -257,7 +272,7 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>Data warehousing applications.</StyledListItem>
           <StyledListItem>Distributed file systems.</StyledListItem>
           <Spacer />
-          <SubTitle>Security Groups</SubTitle>
+          <SubTitle id="sg">Security Groups</SubTitle>
           Security groups are used for controlling traffic in and out of an EC2 server, it's essentially how we handle the security aspect i.e. what the instance is allowed to talk to. It's worth mentioning that security
           groups only contain <BoldText>allow rules</BoldText>. These rules can reference an IP address or by other security groups.
           <StyledImage src={SecurityGroup} />
@@ -286,7 +301,7 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>443 = HTTPS (Web Traffic) - Access secure websites.</StyledListItem>
           <StyledListItem>3389 = RDP (Remote Desktop Protocol) - Log into a windows instance.</StyledListItem>
           <Spacer />
-          <SubTitle>EC2 Purchasing Options</SubTitle>
+          <SubTitle id="rent">EC2 Purchasing Options</SubTitle>
           Earlier in the post I mentioned "purchasing", well when you purchase a EC2 server you have different options to choose from. These options are suited for particular scenarios which you should consider based
           on your business/individual needs. Let's explore these options and why you might want to choose them.
           <SubTitleSmall>On-Demand Instance</SubTitleSmall>
@@ -317,12 +332,49 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <SubTitleSmall>Dedicated Hosts</SubTitleSmall>
           Dedicated Hosts support different configurations (physical cores, sockets, and VCPUs) that allow you to run instances of different families and sizes.
-          When you allocate a Dedicated Host in your account, you can choose a configuration that supports either a single instance type, or multiple instance types within the same instance family. 
+          When you allocate a Dedicated Host in your account, you can choose a configuration that supports either a single instance type, or multiple instance types within the same instance family.
           The number of instances that you can run on a host depends on the configuration you choose.
           <StyledListItem>The MOST expensive option.</StyledListItem>
           <StyledListItem>Useful for software that has complicated licensing models.</StyledListItem>
           <StyledListItem>For companies that have strong regulatory or compliance needs.</StyledListItem>
           <StyledListItem>Purchase options - On-Demand or Reserved.</StyledListItem>
+          <Spacer />
+          <SubTitle id="ip">Public vs Private IP</SubTitle>
+          Amazon EC2 and Amazon VPC support both the IPv4 and IPv6 addressing protocols. In this blog post we'll be sticking to IPv4 addresses which look like this - 127.0.0.1 (four numbers separated by three dots).
+          Each number could range from 0 to 255 so this could look like anything from '[0-255].[0-255].[0-255].[0-255]'. IPv4 allows for 3.7 billion different addresses in the public space and it's almost running out!
+          <Spacer />
+          Lets go through how IPv4 addresses work in a public and private scenario.
+          <StyledImage src={IPv4} />
+          For public servers, be it EC2 or not, it will have an IPv4 address and using this address these servers can communicate to one another. For private networks, they will have a private IP range and all the computers
+          within that private network can communicate to each other using the private IP. In order to access other servers the private network would need to go through an Internet Gateway which has a public IP address assigned.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Public IP Addresses</SubTitleSmall>
+          <StyledListItem>Server can be identified via the internet.</StyledListItem>
+          <StyledListItem>Must be unique across the whole web (servers cannot share a public IP address).</StyledListItem>
+          <StyledListItem>IP addresses can be geo-located (you can find out where that server lives).</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Private IP Addresses</SubTitleSmall>
+          <StyledListItem>Server can only be identified on a private network.</StyledListItem>
+          <StyledListItem>Must be unique across the private network.</StyledListItem>
+          <StyledListItem>Only a specified range of IPs can be used as a private IP.</StyledListItem>
+          <StyledListItem>Servers in a private network communicate out using a internet gateway (proxy).</StyledListItem>
+          <Spacer />
+          <SubTitle id="placement-group">Placement Groups</SubTitle>
+          We've talked about what an EC2 instance is, how to configure it, what your options are on purchase and how they communicate. Let's talk about placement strategy! When deploying an EC2 instance you can specify a group
+          to put them in. These strategies consist of:
+          <StyledListItem><BoldText>Cluster</BoldText> - cluster instances are a low-latency group in a single availability zone.</StyledListItem>
+          <StyledImage src={Cluster} />
+          Cluster groups can be great for big data jobs and for applications which need low latency and high network throughput. However, if the rack fails, all instances fail at the same time.
+          <StyledListItem><BoldText>Spread</BoldText> - spreads instances across underlying hardware (max 7 instances per group and per availability zone) for critical applications.</StyledListItem>
+          <StyledImage src={Spread} />
+          Spread groups can span across availability zone (AZ). That means there's a reduced risk of simultaneous failure. Instances are isolated from each other as there on separate hardware.
+          <StyledListItem><BoldText>Partition</BoldText> - spreads instances across many different partitions (which rely on different sets of racks) within an AZ. Can scale to hundreds of EC2s per group.</StyledListItem>
+          <StyledImage src={Partition} />
+          You can have up to seven partitions per availability zone (AZ) which can span across multiple AZs in the same region. You can have up to hundreds of instances that can access the same partition information as metadata.
+          <Spacer />
+          <SubTitle id="eni">Elastic Network Interfaces (ENI)</SubTitle>
+
         </Text>
       </Container>
     </Wrapper>
