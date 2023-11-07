@@ -378,6 +378,12 @@ const AWSElasticComputeCloud = () => {
           Let's talk about Elastic Network Interfaces which are a logical component that represents a virtual network card. This is what give EC2 instances access to the network. It's worth noting that they are also used outside
           of EC2 instances.
           <StyledImage src={ElasticNetworkInterface} />
+          You can create ENI's independently and attach them on the fly on EC2 instances, however they are bound to a specific availability zone (AZ). The ENI consists of the following attributes:
+          <StyledListItem>Primary private IPv4, one or more secondary IPv4.</StyledListItem>
+          <StyledListItem>One Elastic IP (IPv4) per private IPv4.</StyledListItem>
+          <StyledListItem>One Public IPv4.</StyledListItem>
+          <StyledListItem>One or more security groups.</StyledListItem>
+          <StyledListItem>A MAC address.</StyledListItem>
         </Text>
       </Container>
     </Wrapper>
