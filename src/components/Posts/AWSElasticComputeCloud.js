@@ -21,6 +21,7 @@ import IPv4 from "../../resources/images/blog/AWSElasticComputeCloud/IPv4.jpeg";
 import Cluster from "../../resources/images/blog/AWSElasticComputeCloud/cluster.jpeg";
 import Spread from "../../resources/images/blog/AWSElasticComputeCloud/spread.jpeg";
 import Partition from "../../resources/images/blog/AWSElasticComputeCloud/partition.jpeg";
+import ElasticNetworkInterface from "../../resources/images/blog/AWSElasticComputeCloud/elastic_network_interface.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -374,7 +375,9 @@ const AWSElasticComputeCloud = () => {
           You can have up to seven partitions per availability zone (AZ) which can span across multiple AZs in the same region. You can have up to hundreds of instances that can access the same partition information as metadata.
           <Spacer />
           <SubTitle id="eni">Elastic Network Interfaces (ENI)</SubTitle>
-
+          Let's talk about Elastic Network Interfaces which are a logical component that represents a virtual network card. This is what give EC2 instances access to the network. It's worth noting that they are also used outside
+          of EC2 instances.
+          <StyledImage src={ElasticNetworkInterface} />
         </Text>
       </Container>
     </Wrapper>
