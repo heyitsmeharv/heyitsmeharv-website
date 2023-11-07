@@ -122,7 +122,7 @@ export default function Blog() {
     },
     {
       title: 'AWS EC2',
-      readingTime: 'approx 15 minutes',
+      readingTime: 'approx 25 minutes',
       type: 'Discovery',
       date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
@@ -195,7 +195,7 @@ export default function Blog() {
     },
     {
       title: 'AWS EC2',
-      readingTime: 'approx 15 minutes',
+      readingTime: 'approx 25 minutes',
       type: 'Discovery',
       date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],

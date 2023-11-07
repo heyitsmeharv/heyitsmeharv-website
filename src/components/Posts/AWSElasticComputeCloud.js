@@ -17,6 +17,16 @@ import InstanceNamingConvention from "../../resources/images/blog/AWSElasticComp
 import SecurityGroup from "../../resources/images/blog/AWSElasticComputeCloud/security_group.jpeg";
 import SecurityGroup2 from "../../resources/images/blog/AWSElasticComputeCloud/security_group_2.jpeg";
 import SecurityGroup3 from "../../resources/images/blog/AWSElasticComputeCloud/security_group_3.jpeg";
+import AMI from "../../resources/images/blog/AWSElasticComputeCloud/ami_example.jpeg";
+import IPv4 from "../../resources/images/blog/AWSElasticComputeCloud/IPv4.jpeg";
+import Cluster from "../../resources/images/blog/AWSElasticComputeCloud/cluster_example.jpeg";
+import Spread from "../../resources/images/blog/AWSElasticComputeCloud/spread_example.jpeg";
+import Partition from "../../resources/images/blog/AWSElasticComputeCloud/partition_example.jpeg";
+import ElasticNetworkInterface from "../../resources/images/blog/AWSElasticComputeCloud/elastic_network_interface_example.jpeg";
+import Snapshot from "../../resources/images/blog/AWSElasticComputeCloud/snapshot_example.jpeg";
+import Hibernate from "../../resources/images/blog/AWSElasticComputeCloud/hibernate_example.jpeg";
+import Encryption from "../../resources/images/blog/AWSElasticComputeCloud/encryption_example.jpeg";
+import ElasticFileSystem from "../../resources/images/blog/AWSElasticComputeCloud/elastic_file_system_example.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -184,7 +194,20 @@ const AWSElasticComputeCloud = () => {
         </Flex>
         <Spacer />
         <Text>
-          <SubTitle>What is an EC2?</SubTitle>
+          I'll be touching on these core subjects which covers the majority of EC2's capability:
+          <StyledAnchor href="#what-is-ec2"><StyledListItem>EC2 Overview</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#sg"><StyledListItem>Security and traffic flow using security groups (SG)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#rent"><StyledListItem>Options for renting virtual machines</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#ami"><StyledListItem>Amazon Machine Images (AMI)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#ip"><StyledListItem>Public and Private IP Addresses</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#placement-group"><StyledListItem>Placement Groups</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#eni"><StyledListItem>Networking (ENI)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#ebs"><StyledListItem>Storing data on virtual drives with (EBS)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#efs"><StyledListItem>Create and configure shared file systems (EFS)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#elb"><StyledListItem>Distributing load across machines (ELB)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#asg"><StyledListItem>Scaling the services using an auto-scaling group (ASG)</StyledListItem></StyledAnchor>
+          <Spacer />
+          <SubTitle id="what-is-ec2">What is an EC2?</SubTitle>
           In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). In short EC2 is a virtual service in the
           AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be handy.
           <Spacer />
@@ -195,7 +218,7 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem><BoldText>Operating System (OS)</BoldText>: Windows, Mac OS, Linux</StyledListItem>
           <StyledListItem><BoldText>CPU</BoldText>: How much compute power and cores.</StyledListItem>
           <StyledListItem><BoldText>RAM</BoldText>: How much random access memory.</StyledListItem>
-          <StyledListItem><BoldText>Storage</BoldText>: Network and/or hardware.</StyledListItem>
+          <StyledListItem><BoldText>Storage</BoldText>: Network (EBS & EFS) and/or hardware.</StyledListItem>
           <StyledListItem><BoldText>Network</BoldText>: Type of connectivity.</StyledListItem>
           <StyledListItem><BoldText>Firewall Rules</BoldText>: Security groups.</StyledListItem>
           <Spacer />
@@ -257,7 +280,7 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>Data warehousing applications.</StyledListItem>
           <StyledListItem>Distributed file systems.</StyledListItem>
           <Spacer />
-          <SubTitle>Security Groups</SubTitle>
+          <SubTitle id="sg">Security Groups</SubTitle>
           Security groups are used for controlling traffic in and out of an EC2 server, it's essentially how we handle the security aspect i.e. what the instance is allowed to talk to. It's worth mentioning that security
           groups only contain <BoldText>allow rules</BoldText>. These rules can reference an IP address or by other security groups.
           <StyledImage src={SecurityGroup} />
@@ -286,7 +309,7 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>443 = HTTPS (Web Traffic) - Access secure websites.</StyledListItem>
           <StyledListItem>3389 = RDP (Remote Desktop Protocol) - Log into a windows instance.</StyledListItem>
           <Spacer />
-          <SubTitle>EC2 Purchasing Options</SubTitle>
+          <SubTitle id="rent">EC2 Purchasing Options</SubTitle>
           Earlier in the post I mentioned "purchasing", well when you purchase a EC2 server you have different options to choose from. These options are suited for particular scenarios which you should consider based
           on your business/individual needs. Let's explore these options and why you might want to choose them.
           <SubTitleSmall>On-Demand Instance</SubTitleSmall>
@@ -317,12 +340,118 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <SubTitleSmall>Dedicated Hosts</SubTitleSmall>
           Dedicated Hosts support different configurations (physical cores, sockets, and VCPUs) that allow you to run instances of different families and sizes.
-          When you allocate a Dedicated Host in your account, you can choose a configuration that supports either a single instance type, or multiple instance types within the same instance family. 
+          When you allocate a Dedicated Host in your account, you can choose a configuration that supports either a single instance type, or multiple instance types within the same instance family.
           The number of instances that you can run on a host depends on the configuration you choose.
           <StyledListItem>The MOST expensive option.</StyledListItem>
           <StyledListItem>Useful for software that has complicated licensing models.</StyledListItem>
           <StyledListItem>For companies that have strong regulatory or compliance needs.</StyledListItem>
           <StyledListItem>Purchase options - On-Demand or Reserved.</StyledListItem>
+          <Spacer />
+          <SubTitle id="ami">Amazon Machine Image (AMI)</SubTitle>
+          AMI's are a customization of an EC2 instance. Much like user data scripts, AMI's are used to pre-package any software you want on your EC2 instance. This could be from operating systems to monitoring software etc. This is
+          advantageous as it can result in faster boot times. You can also purchase Public AMI's from the marketplace if you don't want/need to create and maintain your own.
+          <StyledImage src={AMI} />
+          <Spacer />
+          <SubTitle id="ip">Public vs Private IP</SubTitle>
+          Amazon EC2 and Amazon VPC support both the IPv4 and IPv6 addressing protocols. In this blog post we'll be sticking to IPv4 addresses which look like this - 127.0.0.1 (four numbers separated by three dots).
+          Each number could range from 0 to 255 so this could look like anything from '[0-255].[0-255].[0-255].[0-255]'. IPv4 allows for 3.7 billion different addresses in the public space and it's almost running out!
+          <Spacer />
+          Lets go through how IPv4 addresses work in a public and private scenario.
+          <StyledImage src={IPv4} />
+          For public servers, be it EC2 or not, it will have an IPv4 address and using this address these servers can communicate to one another. For private networks, they will have a private IP range and all the computers
+          within that private network can communicate to each other using the private IP. In order to access other servers the private network would need to go through an Internet Gateway which has a public IP address assigned.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Public IP Addresses</SubTitleSmall>
+          <StyledListItem>Server can be identified via the internet.</StyledListItem>
+          <StyledListItem>Must be unique across the whole web (servers cannot share a public IP address).</StyledListItem>
+          <StyledListItem>IP addresses can be geo-located (you can find out where that server lives).</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Private IP Addresses</SubTitleSmall>
+          <StyledListItem>Server can only be identified on a private network.</StyledListItem>
+          <StyledListItem>Must be unique across the private network.</StyledListItem>
+          <StyledListItem>Only a specified range of IPs can be used as a private IP.</StyledListItem>
+          <StyledListItem>Servers in a private network communicate out using a internet gateway (proxy).</StyledListItem>
+          <Spacer />
+          <SubTitle id="placement-group">Placement Groups</SubTitle>
+          We've talked about what an EC2 instance is, how to configure it, what your options are on purchase and how they communicate. Let's talk about placement strategy! When deploying an EC2 instance you can specify a group
+          to put them in. These strategies consist of:
+          <StyledListItem><BoldText>Cluster</BoldText> - cluster instances are a low-latency group in a single availability zone.</StyledListItem>
+          <StyledImage src={Cluster} />
+          Cluster groups can be great for big data jobs and for applications which need low latency and high network throughput. However, if the rack fails, all instances fail at the same time.
+          <StyledListItem><BoldText>Spread</BoldText> - spreads instances across underlying hardware (max 7 instances per group and per availability zone) for critical applications.</StyledListItem>
+          <StyledImage src={Spread} />
+          Spread groups can span across availability zone (AZ). That means there's a reduced risk of simultaneous failure. Instances are isolated from each other as there on separate hardware.
+          <StyledListItem><BoldText>Partition</BoldText> - spreads instances across many different partitions (which rely on different sets of racks) within an AZ. Can scale to hundreds of EC2s per group.</StyledListItem>
+          <StyledImage src={Partition} />
+          You can have up to seven partitions per availability zone (AZ) which can span across multiple AZs in the same region. You can have up to hundreds of instances that can access the same partition information as metadata.
+          <Spacer />
+          <Spacer />
+          <SubTitle id="eni">Elastic Network Interfaces (ENI)</SubTitle>
+          Let's talk about Elastic Network Interfaces which are a logical component that represents a virtual network card. This is what give EC2 instances access to the network. It's worth noting that they are also used outside
+          of EC2 instances.
+          <StyledImage src={ElasticNetworkInterface} />
+          You can create ENI's independently and attach them on the fly on EC2 instances, however they are bound to the availability zone (AZ) that the ENI has been created in. The ENI can have the following attributes:
+          <StyledListItem>Primary private IPv4, one or more secondary IPv4.</StyledListItem>
+          <StyledListItem>One Elastic IP (IPv4) per private IPv4.</StyledListItem>
+          <StyledListItem>One Public IPv4.</StyledListItem>
+          <StyledListItem>One or more security groups.</StyledListItem>
+          <StyledListItem>A MAC address.</StyledListItem>
+          <Spacer />
+          <SubTitle id="ebs">Elastic Block Store (EBS)</SubTitle>
+          An EBS volume is a network drive that you can attach to an EC2 instance whilst they run. It allows the instance to persist data, even after their termination. It is essentially a "network USB stick". EBS volumes can be
+          be removed and attached to EC2 instances, they're not limited to the first instance they're associated with. Much like a ENI the EBS is also bound to an AZ, however we can use the snapshot feature which will allow you to
+          get around this limitation.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Snapshots</SubTitleSmall>
+          Snapshots are a backup of an EBS volume at a point in time which you aren't required to detach the volume to snapshot it.
+          <StyledImage src={Snapshot} />
+          For snapshotting there are different features which are suited for particular use-cases. Let's go through them:
+          <StyledListItem><BoldText>Archive</BoldText> - Moving a snapshot to the archive tier is 75% cheaper and takes within 24 to 72 hours for restoring the archive.</StyledListItem>
+          <StyledListItem><BoldText>Recycle Bin</BoldText> - Setup rules to retain deleted snapshots so you can recover them after an accidental deletion. The retention could be from 1 day to 1 year.</StyledListItem>
+          <StyledListItem><BoldText>Fast Snapshot Restore</BoldText> - Force full initialisation of the snapshot to have no latency on the first use. This is the most costly feature.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Hibernate</SubTitleSmall>
+          EC2 hibernate is a feature which allows the preservation of instance memory. What does this actually mean? Well when we terminate an instance, any Elastic Block Store volumes (EBS) attached at the root will be destroyed.
+          When we stop an instance the EBS volume is kept intact for when it starts up again. So you might be asking, what is the point of the hibernation feature? Well, whenever an EC2 instance starts it has a couple of tasks to
+          complete before it's ready, that includes the operating system boot time and any user data scripts which can take time! This is where hibernation comes in as it preserves the in-memory (RAM) state so the boot up time is much
+          faster. The only catch is that the EBS volume <BoldText>needs to be encrypted</BoldText> and <BoldText>big enough to store the memory</BoldText>.
+          <StyledImage src={Hibernate} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Instance Store</SubTitleSmall>
+          It's worth mentioning that there is an alternative to "network drives" if you're needing better I/O performance. EC2 Instance Store is a high-performance hardware disk (physically attached to the hardware), this has better performance
+          but there is a risk of data loss if the hardware fails. If you were to need this you'd want to backup the storage regularly to prevent risk of data loss.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Volume Types</SubTitleSmall>
+          There are six types of EBS volumes to choose from, each suited for a particular task/scenario.
+          <StyledListItem><BoldText>gp2 / gp3 (SSD)</BoldText>: General purpose SSD volume that balances price and performance for a wide variety of workloads.</StyledListItem>
+          <StyledListItem><BoldText>io1 / io2 (SSD)</BoldText>: Highest-performance SSD volume for mission-critical low-latency or high throughput workloads.</StyledListItem>
+          <StyledListItem><BoldText>st1 (HDD)</BoldText>: Low cost HDD volume designed for frequently accessed, throughput-intensive workloads.</StyledListItem>
+          <StyledListItem><BoldText>sc1 (HDD)</BoldText>: Lowest cost HDD volume designed for less frequently accessed workloads.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Multi-Attach (io1 / io2)</SubTitleSmall>
+          The multi-attach feature is only for the io1/io2 family. This feature allows the same EBS volume to be attached to multiple EC2 instances in the same AZ. It can be attached up to 16 instances at a time. Use cases for this feature
+          would be to achieve higher application availability.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Encryption</SubTitleSmall>
+          You have the option to encrypt any EBS volumes using KMS (AES-256) keys. Any snapshots of encrypted volumes are encrypted. Here's an example for when an EBS volume already exists (unencrypted) and you want to encrypt it.
+          <StyledImage src={Encryption} />
+          <Spacer />
+          <Spacer />
+          <SubTitle id="efs">Elastic File System (EFS)</SubTitle>
+          An Elastic File System is a network file system which is highly available, scalable and it can be mounted on many EC2 instances in different AZs if needed. The use cases for using this feature would be for content management, 
+          web serving, and/or data sharing. This feature is only compatible with linux based AMIs.
+          <StyledImage src={ElasticFileSystem} />
+          <Spacer />
+          <Spacer />
+          <SubTitle id="elb">Elastic Load Balancers (ELB)</SubTitle>
+          <Spacer />
+          <Spacer />
+          <SubTitle id="asg">Auto Scaling Groups (ASG)</SubTitle>
         </Text>
       </Container>
     </Wrapper>
