@@ -22,10 +22,11 @@ import IPv4 from "../../resources/images/blog/AWSElasticComputeCloud/IPv4.jpeg";
 import Cluster from "../../resources/images/blog/AWSElasticComputeCloud/cluster_example.jpeg";
 import Spread from "../../resources/images/blog/AWSElasticComputeCloud/spread_example.jpeg";
 import Partition from "../../resources/images/blog/AWSElasticComputeCloud/partition_example.jpeg";
-import ElasticNetworkInterface from "../../resources/images/blog/AWSElasticComputeCloud/elastic_network_interface.jpeg";
+import ElasticNetworkInterface from "../../resources/images/blog/AWSElasticComputeCloud/elastic_network_interface_example.jpeg";
 import Snapshot from "../../resources/images/blog/AWSElasticComputeCloud/snapshot_example.jpeg";
 import Hibernate from "../../resources/images/blog/AWSElasticComputeCloud/hibernate_example.jpeg";
 import Encryption from "../../resources/images/blog/AWSElasticComputeCloud/encryption_example.jpeg";
+import ElasticFileSystem from "../../resources/images/blog/AWSElasticComputeCloud/elastic_file_system_example.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -442,6 +443,9 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <Spacer />
           <SubTitle id="efs">Elastic File System (EFS)</SubTitle>
+          An Elastic File System is a network file system which is highly available, scalable and it can be mounted on many EC2 instances in different AZs if needed. The use cases for using this feature would be for content management, 
+          web serving, and/or data sharing. This feature is only compatible with linux based AMIs.
+          <StyledImage src={ElasticFileSystem} />
           <Spacer />
           <Spacer />
           <SubTitle id="elb">Elastic Load Balancers (ELB)</SubTitle>
