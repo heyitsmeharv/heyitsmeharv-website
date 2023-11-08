@@ -27,6 +27,7 @@ import Snapshot from "../../resources/images/blog/AWSElasticComputeCloud/snapsho
 import Hibernate from "../../resources/images/blog/AWSElasticComputeCloud/hibernate_example.jpeg";
 import Encryption from "../../resources/images/blog/AWSElasticComputeCloud/encryption_example.jpeg";
 import ElasticFileSystem from "../../resources/images/blog/AWSElasticComputeCloud/elastic_file_system_example.jpeg";
+import ElasticLoadBalancer from "../../resources/images/blog/AWSElasticComputeCloud/elastic_load_balancer_example.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -449,6 +450,9 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <Spacer />
           <SubTitle id="elb">Elastic Load Balancers (ELB)</SubTitle>
+          What is load balancing? Well Load balancers are servers that forward traffic to multiple different servers. Their purpose is essentially to control the flow of user traffic to an instance, if you have hundreds of users trying to 
+          access a server, the load balancer is there to make sure that load is spread across multiple servers to handle the traffic.
+          <StyledImage src={ElasticLoadBalancer} />
           <Spacer />
           <Spacer />
           <SubTitle id="asg">Auto Scaling Groups (ASG)</SubTitle>
