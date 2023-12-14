@@ -28,6 +28,9 @@ import Hibernate from "../../resources/images/blog/AWSElasticComputeCloud/hibern
 import Encryption from "../../resources/images/blog/AWSElasticComputeCloud/encryption_example.jpeg";
 import ElasticFileSystem from "../../resources/images/blog/AWSElasticComputeCloud/elastic_file_system_example.jpeg";
 import ElasticLoadBalancer from "../../resources/images/blog/AWSElasticComputeCloud/elastic_load_balancer_example.jpeg";
+import AutoScalingGroup from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_example.jpeg";
+import AutoScalingGroupLaunchTemplate from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_launch_template_example.jpeg";
+
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -444,18 +447,45 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <Spacer />
           <SubTitle id="efs">Elastic File System (EFS)</SubTitle>
-          An Elastic File System is a network file system which is highly available, scalable and it can be mounted on many EC2 instances in different AZs if needed. The use cases for using this feature would be for content management, 
+          An Elastic File System is a network file system which is highly available, scalable and it can be mounted on many EC2 instances in different AZs if needed. The use cases for using this feature would be for content management,
           web serving, and/or data sharing. This feature is only compatible with linux based AMIs.
           <StyledImage src={ElasticFileSystem} />
           <Spacer />
           <Spacer />
           <SubTitle id="elb">Elastic Load Balancers (ELB)</SubTitle>
-          What is load balancing? Well Load balancers are servers that forward traffic to multiple different servers. Their purpose is essentially to control the flow of user traffic to an instance, if you have hundreds of users trying to 
+          What is load balancing? Well Load balancers are servers that forward traffic to multiple different servers. Their purpose is essentially to control the flow of user traffic to an instance, if you have hundreds of users trying to
           access a server, the load balancer is there to make sure that load is spread across multiple servers to handle the traffic.
           <StyledImage src={ElasticLoadBalancer} />
           <Spacer />
           <Spacer />
           <SubTitle id="asg">Auto Scaling Groups (ASG)</SubTitle>
+          Auto Scaling Groups are for automating the scaling and management of EC2 instances. The size of an Auto Scaling Group depends on the number of instances that you set as the desired capacity. You can adjust its size to meet demand,
+          either manually or by using automatic scaling. An Auto Scaling Group starts by launching enough instances to meet its desired capacity. It maintains this number of instances by performing periodic health checks on the instances in
+          the group. The Auto Scaling Group continues to maintain a fixed number of instances even if an instance becomes unhealthy. If an instance becomes unhealthy, the group terminates the unhealthy instance and launches another instance
+          to replace it.
+          <Spacer />
+          <Spacer />
+          <StyledImage src={AutoScalingGroup} />
+          <SubTitleSmall>Key features</SubTitleSmall>
+          Here's a list of things you can essentially achieve with ASG's:
+          <StyledListItem>Scale out (add EC2 instances) to match an increased load.</StyledListItem>
+          <StyledListItem>Scale in (remove EC2 instances) to match a decreased load.</StyledListItem>
+          <StyledListItem>Set a minimum and maximum number of EC2 instances running.</StyledListItem>
+          <StyledListItem>Automatically register new instances to a load balancer.</StyledListItem>
+          <StyledListItem>Re-create an EC2 instance in case a previous one is terminated.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Auto Scaling Group Attributes</SubTitleSmall>
+          <FlexCenter>
+            <StyledImage mr="25px" width="400px" height="400px" src={AutoScalingGroupLaunchTemplate} />
+            <Text>
+              You might be wondering how you can set up an Auto Scaling Group for your collection of EC2 instance. You can do this by creating a <BoldText>Launch Template</BoldText>. This will specify information such as the
+              AMI ID, instance type, key pair, security groups, and block device mapping for your instances.
+            </Text>
+          </FlexCenter>
+          <Spacer />
+          <SubTitleSmall>CloudWatch Alarms & Scaling</SubTitleSmall>
+          I've not talked about CloudWatch yet but I think this is a fundamental feature of ASG's that I'd like to talk about. That being you can scale ASG's based on CloudWatch Alarms. An alarm could be as simple as monitoring 
+          a metric such as the average CPU. With that example we could create a scaling policy based on the alarm i.e. if the average CPU limit for the overall ASG instances hits above 75%, we can ask the ASG to deploy more instances (scale out).
         </Text>
       </Container>
     </Wrapper>

@@ -35,9 +35,10 @@ const Navbar = () => {
 
   return (
     <Wrapper>
-      {items[language].map(item => {
+      {items[language].map((item, index) => {
         return (
           <StyledNavButton
+            key={index}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             isActive={item.isActive}
