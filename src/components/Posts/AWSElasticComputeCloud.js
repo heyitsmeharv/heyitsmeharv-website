@@ -28,6 +28,9 @@ import Hibernate from "../../resources/images/blog/AWSElasticComputeCloud/hibern
 import Encryption from "../../resources/images/blog/AWSElasticComputeCloud/encryption_example.jpeg";
 import ElasticFileSystem from "../../resources/images/blog/AWSElasticComputeCloud/elastic_file_system_example.jpeg";
 import ElasticLoadBalancer from "../../resources/images/blog/AWSElasticComputeCloud/elastic_load_balancer_example.jpeg";
+import HealthCheck from "../../resources/images/blog/AWSElasticComputeCloud/health_check_example.jpeg";
+import LoadBalancerSecurityGroup from "../../resources/images/blog/AWSElasticComputeCloud/load_balancer_sg_example.jpeg";
+
 import AutoScalingGroup from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_example.jpeg";
 import AutoScalingGroupLaunchTemplate from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_launch_template_example.jpeg";
 
@@ -208,7 +211,7 @@ const AWSElasticComputeCloud = () => {
           <StyledAnchor href="#eni"><StyledListItem>Networking (ENI)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#ebs"><StyledListItem>Storing data on virtual drives with (EBS)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#efs"><StyledListItem>Create and configure shared file systems (EFS)</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#elb"><StyledListItem>Distributing load across machines (ELB)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#lb"><StyledListItem>Distributing load across machines (LB)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#asg"><StyledListItem>Scaling the services using an auto-scaling group (ASG)</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="what-is-ec2">What is an EC2?</SubTitle>
@@ -304,8 +307,9 @@ const AWSElasticComputeCloud = () => {
           This is a simple diagram depicting how referencing multiple EC2 instances and how attaching different security groups would work.
           <StyledImage src={SecurityGroup3} />
           <Spacer />
-          <SubTitle>Ports</SubTitle>
-          I think it would be beneficial to list the classic ports and what they mean now that we have explained the traffic flow. Not all connections are the same, you can connect to an EC2 instance through different types of transportation.
+          <SubTitleSmall>Ports</SubTitleSmall>
+          Now that we have explained the traffic flow it might be useful to go through some common port numbers and what they mean.
+          Not all connections are the same, you can connect to an EC2 instance through different types of transportation.
           <StyledListItem>22 = SSH (Secure Shell) - Log into a linux instance.</StyledListItem>
           <StyledListItem>21 = FTP (File Transfer Protocol) - Upload files into a file share.</StyledListItem>
           <StyledListItem>22 = SFTP (Secure File Transfer Protocol) - Upload files using SSH.</StyledListItem>
@@ -452,10 +456,44 @@ const AWSElasticComputeCloud = () => {
           <StyledImage src={ElasticFileSystem} />
           <Spacer />
           <Spacer />
-          <SubTitle id="elb">Elastic Load Balancers (ELB)</SubTitle>
+          <SubTitle id="lb">Load Balancers (LB)</SubTitle>
           What is load balancing? Well Load balancers are servers that forward traffic to multiple different servers. Their purpose is essentially to control the flow of user traffic to an instance, if you have hundreds of users trying to
           access a server, the load balancer is there to make sure that load is spread across multiple servers to handle the traffic.
-          <StyledImage src={ElasticLoadBalancer} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Why would we want to use a load balancer?</SubTitleSmall>
+          There are actually a lot of advantages to using a load balancer as it does do a lot of heavy lifting for us when it comes to scaling our EC2 usage. As I've already mentioned it helps spread the load accross multiple instances but it can
+          also do the following:
+          <StyledListItem>Acts as a single point of access (DNS) to your application.</StyledListItem>
+          <StyledListItem>Carries out health checks to the instances.</StyledListItem>
+          <StyledListItem>Provides SSL (HTTPS) to your websites.</StyledListItem>
+          <StyledListItem>Enforces stickiness with cookies.</StyledListItem>
+          <StyledListItem>Separates public and private traffic.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Health Checks</SubTitleSmall>
+          Health checks are an important feature of load balancing. Before the load balancer can forward traffic through to the EC2 instance, it needs to know if the instance itself is healthy and stable. It can know this by sending regular pings to the server
+          on a desired port and route. If the request sent gets a response (200), it knows that the instance is healthy and ready to recieve traffic, otherwise it's marked as unhealthy and traffic will not be forwarded.
+          <StyledImage src={HealthCheck} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Types of Load Balancers</SubTitleSmall>
+          There are three kinds of managed load balancers which allow different types of traffic:
+          <StyledListItem><BoldText>Application Load Balancer</BoldText> - HTTP, HTTPS, WebSocket</StyledListItem>
+          <StyledListItem><BoldText>Network Load Balancer</BoldText> - TCP, TLS, UDP</StyledListItem>
+          <StyledListItem><BoldText>Gateway Load Balancer</BoldText> - IP</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Load Balancers and Security Groups</SubTitleSmall>
+          Let's map out the flow showing how users would connect to a load balancer to then be forwarded onto the instance. There are two things to note, one being that the load balancer will have it's own security group in which it could allow users to connect on
+          ports 80 (HTTP) and 443 (HTTPS). Secondly, the EC2 instance will have a separate security group which can reference the one created for the load balancer which means that it will only accept traffic which has originated from the load balancer.
+          <StyledImage src={LoadBalancerSecurityGroup} />
+          <Spacer />
+          <SubTitleSmall>Application Load Balancer</SubTitleSmall>
+          Appliation load balancers (ALB) are suited for micro services & container based applications (Docker and Amazon ECS). ALB's have the capability to route to different target groups based on pathing. This routing can be based on:
+          <StyledListItem>Path URL (example.com/users or example.com/posts).</StyledListItem>
+          <StyledListItem>Hostname in URL (one.example.com or two.example.com).</StyledListItem>
+          <StyledListItem>Query String Headers (example.com/users?id=123).</StyledListItem>
+
+          {/* <StyledImage src={ElasticLoadBalancer} /> */}
           <Spacer />
           <Spacer />
           <SubTitle id="asg">Auto Scaling Groups (ASG)</SubTitle>
@@ -484,7 +522,7 @@ const AWSElasticComputeCloud = () => {
           </FlexCenter>
           <Spacer />
           <SubTitleSmall>CloudWatch Alarms & Scaling</SubTitleSmall>
-          I've not talked about CloudWatch yet but I think this is a fundamental feature of ASG's that I'd like to talk about. That being you can scale ASG's based on CloudWatch Alarms. An alarm could be as simple as monitoring 
+          I've not talked about CloudWatch yet but I think this is a fundamental feature of ASG's that I'd like to talk about. That being you can scale ASG's based on CloudWatch Alarms. An alarm could be as simple as monitoring
           a metric such as the average CPU. With that example we could create a scaling policy based on the alarm i.e. if the average CPU limit for the overall ASG instances hits above 75%, we can ask the ASG to deploy more instances (scale out).
         </Text>
       </Container>
