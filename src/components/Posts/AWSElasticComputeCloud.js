@@ -506,7 +506,6 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>The port of the client is inserted in the header X-Forwarded-Port.</StyledListItem>
           <StyledListItem>The protocal of the client is inserted in the header X-Forwarded-Proto.</StyledListItem>
           <Spacer />
-          <Spacer />
           <SubTitle id="asg">Auto Scaling Groups (ASG)</SubTitle>
           Auto Scaling Groups are for automating the scaling and management of EC2 instances. The size of an Auto Scaling Group depends on the number of instances that you set as the desired capacity. You can adjust its size to meet demand,
           either manually or by using automatic scaling. An Auto Scaling Group starts by launching enough instances to meet its desired capacity. It maintains this number of instances by performing periodic health checks on the instances in
