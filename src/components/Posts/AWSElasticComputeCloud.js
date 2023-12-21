@@ -27,10 +27,10 @@ import Snapshot from "../../resources/images/blog/AWSElasticComputeCloud/snapsho
 import Hibernate from "../../resources/images/blog/AWSElasticComputeCloud/hibernate_example.jpeg";
 import Encryption from "../../resources/images/blog/AWSElasticComputeCloud/encryption_example.jpeg";
 import ElasticFileSystem from "../../resources/images/blog/AWSElasticComputeCloud/elastic_file_system_example.jpeg";
-import ElasticLoadBalancer from "../../resources/images/blog/AWSElasticComputeCloud/elastic_load_balancer_example.jpeg";
 import HealthCheck from "../../resources/images/blog/AWSElasticComputeCloud/health_check_example.jpeg";
 import LoadBalancerSecurityGroup from "../../resources/images/blog/AWSElasticComputeCloud/load_balancer_sg_example.jpeg";
-
+import ApplicationLoadBalancerHTTP from "../../resources/images/blog/AWSElasticComputeCloud/application_load_balancer_http_example.jpeg";
+import ApplicationLoadBalancerQuery from "../../resources/images/blog/AWSElasticComputeCloud/application_load_balancer_query_param_example.jpeg";
 import AutoScalingGroup from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_example.jpeg";
 import AutoScalingGroupLaunchTemplate from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_launch_template_example.jpeg";
 
@@ -476,6 +476,10 @@ const AWSElasticComputeCloud = () => {
           <StyledImage src={HealthCheck} />
           <Spacer />
           <Spacer />
+          <SubTitleSmall>Target Groups</SubTitleSmall>
+          You can point a load balancer to multiple different target groups. A target group could be an EC2 instance, ECS task, Lambda function and IP addresses (private).
+          <Spacer />
+          <Spacer />
           <SubTitleSmall>Types of Load Balancers</SubTitleSmall>
           There are three kinds of managed load balancers which allow different types of traffic:
           <StyledListItem><BoldText>Application Load Balancer</BoldText> - HTTP, HTTPS, WebSocket</StyledListItem>
@@ -492,8 +496,15 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>Path URL (example.com/users or example.com/posts).</StyledListItem>
           <StyledListItem>Hostname in URL (one.example.com or two.example.com).</StyledListItem>
           <StyledListItem>Query String Headers (example.com/users?id=123).</StyledListItem>
-
-          {/* <StyledImage src={ElasticLoadBalancer} /> */}
+          <Spacer />
+          <StyledImage src={ApplicationLoadBalancerHTTP} />
+          <StyledImage src={ApplicationLoadBalancerQuery} />
+          <SubTitleSmall>Good to Know</SubTitleSmall>
+          <StyledListItem>Fixed hostname (xxx.region.elb.amazonaws.com).</StyledListItem>
+          <StyledListItem>The application servers don't see the IP of the client directly.</StyledListItem>
+          <StyledListItem>The IP of the client is inserted in the header X-Forwarded-For.</StyledListItem>
+          <StyledListItem>The port of the client is inserted in the header X-Forwarded-Port.</StyledListItem>
+          <StyledListItem>The protocal of the client is inserted in the header X-Forwarded-Proto.</StyledListItem>
           <Spacer />
           <Spacer />
           <SubTitle id="asg">Auto Scaling Groups (ASG)</SubTitle>
