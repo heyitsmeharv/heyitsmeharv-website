@@ -3,28 +3,13 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 // components
-import BlogPost from "../components/BlogPost/BlogPost";
+import Pagination from "../components/Pagination/Pagination";
 
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG } from '../resources/styles/icons';
 
-// animations
-import SlideInTop from "../animations/SlideInTop";
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  padding: 4rem;
-  background: ${({ theme }) => theme.background};
-  animation: ${SlideInTop} 0.5s forwards;
-  text-align: center;
-  @media only screen and (max-width: 585px) {
-    flex-direction: column;
-  }
-`;
 
 const SearchBarWrapper = styled.div`
   display: flex;
@@ -132,6 +117,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Databases',
+      readingTime: 'TBD',
+      type: 'Discovery',
+      date: '20/12/2023',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
+      intro: `...`,
+      navigate: 'aws-databases',
+      published: false
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -205,6 +200,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Databases',
+      readingTime: 'TBD',
+      type: 'Discovery',
+      date: '20/12/2023',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
+      intro: `...`,
+      navigate: 'aws-databases',
+      published: false
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -237,11 +242,7 @@ export default function Blog() {
         <StyledSearchBar placeholder="Search" type="text" onChange={e => setSearch(e.target.value)} value={search} />
         <StyledCloseButton onClick={() => setSearch('')}> <StyledCloseIcon /></StyledCloseButton>
       </SearchBarWrapper>
-      <Container>
-        {blogPosts.map((p, i) => {
-          return <BlogPost key={i} index={i} title={p.title} readingTime={p.readingTime} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} published={p.published} />
-        }).reverse()}
-      </Container>
+      <Pagination itemsPerPage={6} items={blogPosts} />
     </>
   );
 }
