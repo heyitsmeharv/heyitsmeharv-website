@@ -31,6 +31,8 @@ import HealthCheck from "../../resources/images/blog/AWSElasticComputeCloud/heal
 import LoadBalancerSecurityGroup from "../../resources/images/blog/AWSElasticComputeCloud/load_balancer_sg_example.jpeg";
 import ApplicationLoadBalancerHTTP from "../../resources/images/blog/AWSElasticComputeCloud/application_load_balancer_http_example.jpeg";
 import ApplicationLoadBalancerQuery from "../../resources/images/blog/AWSElasticComputeCloud/application_load_balancer_query_param_example.jpeg";
+import NetworkLoadBalancer from "../../resources/images/blog/AWSElasticComputeCloud/network_load_balancer_example.jpeg";
+import GatewayLoadBalancer from "../../resources/images/blog/AWSElasticComputeCloud/gateway_load_balancer_example.jpeg";
 import AutoScalingGroup from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_example.jpeg";
 import AutoScalingGroupLaunchTemplate from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_launch_template_example.jpeg";
 
@@ -211,7 +213,7 @@ const AWSElasticComputeCloud = () => {
           <StyledAnchor href="#eni"><StyledListItem>Networking (ENI)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#ebs"><StyledListItem>Storing data on virtual drives with (EBS)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#efs"><StyledListItem>Create and configure shared file systems (EFS)</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#lb"><StyledListItem>Distributing load across machines (LB)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#elb"><StyledListItem>Distributing load across machines (ELB)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#asg"><StyledListItem>Scaling the services using an auto-scaling group (ASG)</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="what-is-ec2">What is an EC2?</SubTitle>
@@ -456,7 +458,7 @@ const AWSElasticComputeCloud = () => {
           <StyledImage src={ElasticFileSystem} />
           <Spacer />
           <Spacer />
-          <SubTitle id="lb">Load Balancers (LB)</SubTitle>
+          <SubTitle id="elb">Elastic Load Balancers (ELB)</SubTitle>
           What is load balancing? Well Load balancers are servers that forward traffic to multiple different servers. Their purpose is essentially to control the flow of user traffic to an instance, if you have hundreds of users trying to
           access a server, the load balancer is there to make sure that load is spread across multiple servers to handle the traffic.
           <Spacer />
@@ -472,24 +474,25 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <SubTitleSmall>Health Checks</SubTitleSmall>
           Health checks are an important feature of load balancing. Before the load balancer can forward traffic through to the EC2 instance, it needs to know if the instance itself is healthy and stable. It can know this by sending regular pings to the server
-          on a desired port and route. If the request sent gets a response (200), it knows that the instance is healthy and ready to recieve traffic, otherwise it's marked as unhealthy and traffic will not be forwarded.
+          on a desired port and route. If the request sent gets a response (200), it knows that the instance is healthy and ready to recieve traffic, otherwise it's marked as unhealthy and traffic will not be forwarded. Health checks are supported for the 
+          <BoldText>TCP</BoldText>, <BoldText>HTTP</BoldText> and <BoldText>HTTPS</BoldText> protocols.
           <StyledImage src={HealthCheck} />
           <Spacer />
           <Spacer />
           <SubTitleSmall>Target Groups</SubTitleSmall>
-          You can point a load balancer to multiple different target groups. A target group could be an EC2 instance, ECS task, Lambda function and IP addresses (private).
+          You can point a load balancer to multiple different target groups. A target group could be an EC2 instance, ECS task, Lambda function and IP addresses (private). It's possible for an network load balancer to sit infront of an application load balancer 
+          so you're able to have the fixed IP addresses and the rule handling around HTTP traffic. 
           <Spacer />
-          <Spacer />
+          <Spacer /> 
+          <SubTitleSmall>Load Balancers and Security Groups</SubTitleSmall>
+          Let's map out the flow showing how users would connect to a load balancer to then be forwarded onto the instance. There are two things to note, one being that the load balancer will have it's own security group in which it could allow users to connect on
+          ports 80 (HTTP) and 443 (HTTPS). Secondly, the EC2 instance will have a separate security group which can reference the one created for the load balancer which means that it will only accept traffic which has originated from the load balancer.
+          <StyledImage src={LoadBalancerSecurityGroup} />
           <SubTitleSmall>Types of Load Balancers</SubTitleSmall>
           There are three kinds of managed load balancers which allow different types of traffic:
           <StyledListItem><BoldText>Application Load Balancer</BoldText> - HTTP, HTTPS, WebSocket</StyledListItem>
           <StyledListItem><BoldText>Network Load Balancer</BoldText> - TCP, TLS, UDP</StyledListItem>
           <StyledListItem><BoldText>Gateway Load Balancer</BoldText> - IP</StyledListItem>
-          <Spacer />
-          <SubTitleSmall>Load Balancers and Security Groups</SubTitleSmall>
-          Let's map out the flow showing how users would connect to a load balancer to then be forwarded onto the instance. There are two things to note, one being that the load balancer will have it's own security group in which it could allow users to connect on
-          ports 80 (HTTP) and 443 (HTTPS). Secondly, the EC2 instance will have a separate security group which can reference the one created for the load balancer which means that it will only accept traffic which has originated from the load balancer.
-          <StyledImage src={LoadBalancerSecurityGroup} />
           <Spacer />
           <SubTitleSmall>Application Load Balancer</SubTitleSmall>
           Appliation load balancers (ALB) are suited for micro services & container based applications (Docker and Amazon ECS). ALB's have the capability to route to different target groups based on pathing. This routing can be based on:
@@ -504,7 +507,18 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>The application servers don't see the IP of the client directly.</StyledListItem>
           <StyledListItem>The IP of the client is inserted in the header X-Forwarded-For.</StyledListItem>
           <StyledListItem>The port of the client is inserted in the header X-Forwarded-Port.</StyledListItem>
-          <StyledListItem>The protocal of the client is inserted in the header X-Forwarded-Proto.</StyledListItem>
+          <StyledListItem>The protocol of the client is inserted in the header X-Forwarded-Proto.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Network Load Balancer</SubTitleSmall>
+          Network load balancers allows TCP and UDP traffic. This load balancer is for high performance and is capable of handling million requests per second. NLB's only have one static IP per AZ but you're able to assign elastic IP. 
+          <StyledImage src={NetworkLoadBalancer} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Gateway Load Balancer</SubTitleSmall>
+          Gateway load balancers are great for when you want to screen your traffic for any potentially harmful software. Before the traffic can reach it's destination the gateway load balancer can filter traffic through instances which 
+          could act as a firewall or inspection system. The traffic operates on port 6081 with the GENEVE protocol.
+          <StyledImage src={GatewayLoadBalancer} />
+          <Spacer />
           <Spacer />
           <SubTitle id="asg">Auto Scaling Groups (ASG)</SubTitle>
           Auto Scaling Groups are for automating the scaling and management of EC2 instances. The size of an Auto Scaling Group depends on the number of instances that you set as the desired capacity. You can adjust its size to meet demand,
