@@ -34,7 +34,8 @@ import ApplicationLoadBalancerQuery from "../../resources/images/blog/AWSElastic
 import NetworkLoadBalancer from "../../resources/images/blog/AWSElasticComputeCloud/network_load_balancer_example.jpeg";
 import GatewayLoadBalancer from "../../resources/images/blog/AWSElasticComputeCloud/gateway_load_balancer_example.jpeg";
 import CrossloadBalancing from "../../resources/images/blog/AWSElasticComputeCloud/cross_load_balancing_example.jpeg";
-
+import SSLTLS from "../../resources/images/blog/AWSElasticComputeCloud/ssl_tls_example.jpeg";
+import ServerNameIndicationExample from "../../resources/images/blog/AWSElasticComputeCloud/sni_example.jpeg";
 import AutoScalingGroup from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_example.jpeg";
 import AutoScalingGroupLaunchTemplate from "../../resources/images/blog/AWSElasticComputeCloud/auto_scaling_group_launch_template_example.jpeg";
 
@@ -555,6 +556,18 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <Spacer />
           <StyledImage src={CrossloadBalancing} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>SSL & TLS</SubTitleSmall>
+          An SSL certificate allows traffic between users and load balancers to be encrypted in transit. SSL refers to <BoldText>Secrure Socket Layer</BoldText> and TLS refers to <BoldText>Transport Layer Security</BoldText> which is a newer version of SSL.
+          You can purchase a SSL/TLS certificate from any certificate authority such as ACM (Amazon Certificate Manager) or namecheap and GoDaddy. Once you have purchased a certificate you will have to renew after the expiration date.
+          <StyledImage src={SSLTLS} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Server Name Indication</SubTitleSmall>
+          What would happen if a user needs to reach a specific website which is hosted on a server with multiple other sites? Well, SNI solves this problem of loading multiple SSL/TLS certificates onto one server. This is only compatible for Application load balancers 
+          and Network load balancers and it requires the user to indicate the hostname in the inital SSL/TLS handshake. The server will return the desired certificate or return the default set.  
+          <StyledImage src={ServerNameIndicationExample} />
           <Spacer />
           <Spacer />
           <SubTitle id="asg">Auto Scaling Groups (ASG)</SubTitle>
