@@ -159,7 +159,10 @@ const AWSIdentityAccessManagement = () => {
 
   // analytics
   useEffect(() => {
-    ReactGA.pageview('/blog/aws-identity-access-management');
+    const isLocal = window.location.hostname === "localhost" ? true : false;
+    if (!isLocal) {
+      ReactGA.pageview('/blog/aws-identity-access-management');
+    }
   }, []);
 
   return (

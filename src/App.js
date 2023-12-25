@@ -2,6 +2,7 @@ import ReactGA from 'react-ga';
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
+import { nanoid } from "nanoid"
 
 // context
 import { LanguageContext } from './context/languageContext';
@@ -38,15 +39,21 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 `;
 
-ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS, {
+  gaOptions: {
+    userId: nanoid()
+  }
+});
 
 const App = () => {
   // analytics
   useEffect(() => {
-    ReactGA.pageview('/homepage');
+    const isLocal = window.location.hostname === "localhost" ? true : false;
+    if (!isLocal) {
+      ReactGA.pageview('/homepage');
+    }
   }, []);
 
   /* ---------------------------- language toggle ----------------------------  */

@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -102,11 +103,25 @@ const ContactMe = ({ language, open }) => {
       if (response.ok) {
         createToast('Success');
         handleOnReset();
+        ReactGA.event({
+          category: 'Contact Me',
+          action: 'Successfully sent an email',
+          label: 'Send Message'
+        });
       } else {
         createToast('Fail');
         setError(true);
+        ReactGA.event({
+          category: 'Contact Me',
+          action: 'Failed to send an email',
+          label: 'Send Message'
+        });
       }
     }).catch(error => {
+      ReactGA.exception({
+        description: 'Failed to send email',
+        fatal: true
+      });
       console.log(`Unable to send email: ${error}`);
     });
   }

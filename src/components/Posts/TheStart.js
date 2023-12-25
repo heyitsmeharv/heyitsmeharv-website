@@ -53,7 +53,10 @@ const TheStart = () => {
 
   // analytics
   useEffect(() => {
-    ReactGA.pageview('/blog/the-start');
+    const isLocal = window.location.hostname === "localhost" ? true : false;
+    if (!isLocal) {
+      ReactGA.pageview('/blog/the-start');
+    }
   }, []);
 
   return (

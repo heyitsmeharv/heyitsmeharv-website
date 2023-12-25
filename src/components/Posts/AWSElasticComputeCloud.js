@@ -195,7 +195,10 @@ const AWSElasticComputeCloud = () => {
 
   // analytics
   useEffect(() => {
-    ReactGA.pageview('/blog/aws-elastic-compute-cloud');
+    const isLocal = window.location.hostname === "localhost" ? true : false;
+    if (!isLocal) {
+      ReactGA.pageview('/blog/aws-elastic-compute-cloud');
+    }
   }, []);
 
   return (

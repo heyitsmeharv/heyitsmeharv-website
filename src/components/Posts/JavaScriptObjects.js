@@ -119,17 +119,20 @@ const Icon = styled.div`
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
+
+  // analytics
+  useEffect(() => {
+    const isLocal = window.location.hostname === "localhost" ? true : false;
+    if (!isLocal) {
+      ReactGA.pageview('/blog/javascript-arrays');
+    }
+  }, []);
+
   const [isCopied, setIsCopied] = useState([
     { value: false },
     { value: false },
     { value: false }
   ]);
-
-  // analytics
-  useEffect(() => {
-    ReactGA.pageview('/blog/javascript-objects');
-  }, []);
-
 
   const handleCopy = (code, key) => {
     const isCopiedDefault = [

@@ -79,7 +79,10 @@ export default function Projects() {
 
   // analytics
   useEffect(() => {
-    ReactGA.pageview('/projects');
+    const isLocal = window.location.hostname === "localhost" ? true : false;
+    if (!isLocal) {
+      ReactGA.pageview('/projects');
+    }
   }, []);
 
   return (

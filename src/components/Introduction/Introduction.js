@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import React from "react";
 import styled from "styled-components";
 
@@ -90,16 +91,23 @@ const Introduction = ({ language, open, setOpen }) => {
             {contactMe(language)}
           </ContactMeButton>
           <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-            <StyledAnchor
+            <ReactGA.OutboundLink
+              eventLabel="Curriculum Vitae"
+              to="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV2.pdf"
               target="_blank"
-              href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV2.pdf"
-            >
-              {curriculumVitaeButtonText(language)}
-            </StyledAnchor>
+              >
+              <StyledAnchor
+                target="_blank"
+                href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV2.pdf"
+              >
+                {curriculumVitaeButtonText(language)}
+              </StyledAnchor>
+            </ReactGA.OutboundLink>
+
           </DownloadCVButton>
         </ButtonWrapper>
-      </IntroWrapper>
-    </Container>
+      </IntroWrapper >
+    </Container >
   );
 };
 

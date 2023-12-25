@@ -121,6 +121,14 @@ const Icon = styled.div`
 const Spacer = styled.br``
 
 const ReactAdventureGame = () => {
+  // analytics
+  useEffect(() => {
+    const isLocal = window.location.hostname === "localhost" ? true : false;
+    if (!isLocal) {
+      ReactGA.pageview('/blog/react-text-based-adventure');
+    }
+  }, []);
+
   const [isCopied, setIsCopied] = useState([
     { value: false },
     { value: false },
@@ -128,11 +136,6 @@ const ReactAdventureGame = () => {
     { value: false },
     { value: false },
   ]);
-
-  // analytics
-  useEffect(() => {
-    ReactGA.pageview('/blog/react-text-based-adventure');
-  }, []);
 
   const handleCopy = (code, key) => {
     const isCopiedDefault = [
