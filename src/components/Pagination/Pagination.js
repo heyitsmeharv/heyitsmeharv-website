@@ -12,7 +12,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding: 4rem;
+  padding: 4rem 4rem 2rem 4rem;
   background: ${({ theme }) => theme.background};
   animation: ${SlideInTop} 0.5s forwards;
   text-align: center;
