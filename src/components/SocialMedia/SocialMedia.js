@@ -13,19 +13,9 @@ import {
 
 const socialMediaButtons = [
   {
-    icon: <StyledFacebookCircle />,
-    link: "https://www.facebook.com/adam.harvey.73/",
-    animation: "Facebook",
-  },
-  {
     icon: <StyledLinkedinSquare />,
     link: "https://www.linkedin.com/in/heyitsmeharv/",
     animation: "LinkedIn",
-  },
-  {
-    icon: <StyledTwitter />,
-    link: "https://twitter.com/heyitsmeharv",
-    animation: "Twitter",
   },
   {
     icon: <StyledGithub />,

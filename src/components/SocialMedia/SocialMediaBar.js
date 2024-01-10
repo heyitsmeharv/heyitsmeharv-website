@@ -21,9 +21,7 @@ const Wrapper = styled.div`
 
 const socialMediaButtons = [
   { icon: <StyledGithub />, link: "https://github.com/heyitsmeharv" },
-  { icon: <StyledLinkedinSquare />, link: "https://www.linkedin.com/in/heyitsmeharv/" },
-  { icon: <StyledTwitter />, link: "https://twitter.com/heyitsmeharv" },
-  { icon: <StyledFacebookCircle />, link: "https://www.facebook.com/adam.harvey.73/" },
+  { icon: <StyledLinkedinSquare />, link: "https://www.linkedin.com/in/heyitsmeharv/" }
 ];
 
 const SocialMediaBar = () => {

@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 
 const LanguageButton = styled.button`
   border: none;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin: 0 1rem;
   background: none;
   :hover {
