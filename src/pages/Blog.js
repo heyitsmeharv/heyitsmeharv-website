@@ -124,7 +124,7 @@ export default function Blog() {
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
       intro: `...`,
       navigate: 'aws-databases',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
@@ -207,7 +207,7 @@ export default function Blog() {
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
       intro: `...`,
       navigate: 'aws-databases',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',

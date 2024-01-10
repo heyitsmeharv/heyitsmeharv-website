@@ -33,7 +33,8 @@ import JavaScriptArray from "./components/Posts/JavaScriptArray";
 import JavaScriptObjects from "./components/Posts/JavaScriptObjects";
 import ReactAdventureGame from "./components/Posts/ReactAdventureGame";
 import AWSIdentityAccessManagement from "./components/Posts/AWSIdentityAccessManagement";
-import AWSElasticComputeCloud from "./components/Posts/AWSElasticComputeCloud"
+import AWSElasticComputeCloud from "./components/Posts/AWSElasticComputeCloud";
+import AWSDatabases from "./components/Posts/AWSDatabases";
 
 const Wrapper = styled.div`
   display: flex;
@@ -107,6 +108,7 @@ const App = () => {
                     <Route exact path='/blog/react-text-based-adventure' component={ReactAdventureGame} />
                     <Route exact path='/blog/aws-identity-access-management' component={AWSIdentityAccessManagement} />
                     <Route exact path='/blog/aws-elastic-compute-cloud' component={AWSElasticComputeCloud} />
+                    <Route exact path='/blog/aws-databases' component={AWSDatabases} />
                   </Switch>
                 </>
               );
