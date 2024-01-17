@@ -123,8 +123,7 @@ const Spacer = styled.br``
 const ReactAdventureGame = () => {
   // analytics
   useEffect(() => {
-    const isLocal = window.location.hostname === "localhost" ? true : false;
-    if (!isLocal) {
+    if (window.location.hostname !== "localhost") {
       ReactGA.pageview('/blog/react-text-based-adventure');
     }
   }, []);

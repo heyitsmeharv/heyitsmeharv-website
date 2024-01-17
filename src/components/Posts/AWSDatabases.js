@@ -167,8 +167,7 @@ const AWSDatabases = () => {
 
   // analytics
   useEffect(() => {
-    const isLocal = window.location.hostname === "localhost" ? true : false;
-    if (!isLocal) {
+    if (window.location.hostname !== "localhost") {
       ReactGA.pageview('/blog/aws-databases');
     }
   }, []);
@@ -191,7 +190,29 @@ const AWSDatabases = () => {
         </Flex>
         <Spacer />
         <Text>
-          <SubTitle id="rds">Amazon RDS</SubTitle>
+          <SubTitle id="rds">Amazon Relational Database Service (RDS)</SubTitle>
+          This service allows you to create a database in the cloud. You can choose from the following:
+          <StyledListItem>Microsoft SQL Server</StyledListItem>
+          <StyledListItem>MySQL</StyledListItem>
+          <StyledListItem>Postgres</StyledListItem>
+          <StyledListItem>MariaDB</StyledListItem>
+          <StyledListItem>Oracle</StyledListItem>
+          <Spacer />
+          This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services such as:
+          <StyledListItem>Automated provisioning, OS patching</StyledListItem>
+          <StyledListItem>Continuous backups and point in time restore</StyledListItem>
+          <StyledListItem>Monitoring dashboards</StyledListItem>
+          <StyledListItem>Read replicas for improved read performance</StyledListItem>
+          <StyledListItem>Multi AZ setup for disaster recovery</StyledListItem>
+          <StyledListItem>Maintenance windows for upgrades</StyledListItem>
+          <StyledListItem>Scaling capability</StyledListItem>
+          <StyledListItem>Storage backed by EBS</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Auto Scaling Storage</SubTitleSmall>
+          This feature helps increase the storage on an RDS instance when it's running out of free space and it will do it automatically. You do have to set the 'Maximum Storage Threshold'. This feature can help with 
+          unpredictable workloads and supports all RDS database instances.
+          <Spacer />
+          <Spacer />
           <SubTitle id="aurora">Amazon Aurora</SubTitle>
           <SubTitle id="elasticache">Elasticache</SubTitle>
         </Text>

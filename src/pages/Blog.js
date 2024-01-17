@@ -122,7 +122,8 @@ export default function Blog() {
       type: 'Discovery',
       date: '20/12/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
-      intro: `...`,
+      intro: `This service allows you to create a database in the cloud. You can choose from the following: Microsoft SQL Server, MySQL, Postgres, MariaDB, Oracle,
+      This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services such as...`,
       navigate: 'aws-databases',
       published: true
     },
@@ -205,7 +206,8 @@ export default function Blog() {
       type: 'Discovery',
       date: '20/12/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
-      intro: `...`,
+      intro: `This service allows you to create a database in the cloud. You can choose from the following: Microsoft SQL Server, MySQL, Postgres, MariaDB, Oracle,
+      This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services such as...`,
       navigate: 'aws-databases',
       published: true
     },
@@ -232,8 +234,7 @@ export default function Blog() {
 
   // analytics
   useEffect(() => {
-    const isLocal = window.location.hostname === "localhost" ? true : false;
-    if (!isLocal) {
+    if (window.location.hostname !== "localhost") {
       ReactGA.pageview('/blog');
     }
   }, []);

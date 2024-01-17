@@ -51,8 +51,7 @@ ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS, {
 const App = () => {
   // analytics
   useEffect(() => {
-    const isLocal = window.location.hostname === "localhost" ? true : false;
-    if (!isLocal) {
+    if (window.location.hostname !== "localhost") {
       ReactGA.pageview('/homepage');
     }
   }, []);
