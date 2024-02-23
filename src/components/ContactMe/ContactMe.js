@@ -95,7 +95,8 @@ const ContactMe = ({ language, open }) => {
     fetch('https://heyitsmeharv-backend.herokuapp.com/email/send', {
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
       method: "POST",
       body: JSON.stringify(emailObj)
@@ -118,6 +119,8 @@ const ContactMe = ({ language, open }) => {
         });
       }
     }).catch(error => {
+      createToast('Fail');
+      setError(true);
       ReactGA.exception({
         description: 'Failed to send email',
         fatal: true
