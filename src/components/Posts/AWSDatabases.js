@@ -12,6 +12,12 @@ import { AWSSVG, AWSRDSSVG } from '../../resources/styles/icons';
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
 
+// images
+import AutoScaling from "../../resources/images/blog/AWSDatabases/db_auto_scaling.jpeg";
+import ReadReplicas from "../../resources/images/blog/AWSDatabases/db_read_replica.jpeg";
+import MultiAZ from "../../resources/images/blog/AWSDatabases/db_multi_az.jpeg";
+import MultiAZBackground from "../../resources/images/blog/AWSDatabases/db_multi_az_background.jpeg";
+
 const Wrapper = styled.div`
   padding: 1rem 25%;
   line-height: 6.5rem;
@@ -198,7 +204,7 @@ const AWSDatabases = () => {
           <StyledListItem>MariaDB</StyledListItem>
           <StyledListItem>Oracle</StyledListItem>
           <Spacer />
-          This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services such as:
+          This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services:
           <StyledListItem>Automated provisioning, OS patching</StyledListItem>
           <StyledListItem>Continuous backups and point in time restore</StyledListItem>
           <StyledListItem>Monitoring dashboards</StyledListItem>
@@ -208,9 +214,32 @@ const AWSDatabases = () => {
           <StyledListItem>Scaling capability</StyledListItem>
           <StyledListItem>Storage backed by EBS</StyledListItem>
           <Spacer />
+          If you would like the option to have access to your RDS instance then there is 'RDS Custom' which allows you access to the underlying database and OS so you can configure and install patches yourself if that's a use case you require.
+          <Spacer />
+          <Spacer />
           <SubTitleSmall>Auto Scaling Storage</SubTitleSmall>
-          This feature helps increase the storage on an RDS instance when it's running out of free space and it will do it automatically. You do have to set the 'Maximum Storage Threshold'. This feature can help with 
+          This feature helps increase the storage on an RDS instance when it's running out of free space and it will do it automatically. You do have to set the 'Maximum Storage Threshold'. This feature can help with
           unpredictable workloads and supports all RDS database instances.
+          <StyledImage src={AutoScaling} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Read Replicas</SubTitleSmall>
+          RDS allows up to 15 read replicas within the same availability zone, across multiple availability zones or even cross region. It's also possible to take a replica read instance and make it the main RDS instance. The replication 
+          is <BoldText>ASYNC</BoldText>, meaning that the data will eventually be consistent. You can only query (SELECT) data from a read replica not do any manipulations such as INSERT, UPDATE, or DELETE queries. 
+          <StyledImage src={ReadReplicas} />
+          It's important to note that there is a network cost for transferring data into another availability zone; the only use-case where that doesn't apply is if it's within the same region and your transferring to a read 
+          replica instance.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>RDS Multi AZ</SubTitleSmall>
+          Multi AZ is mainly used for disaster recovery. The application will read/write to the main RDS instance via one DNS name, and that instance will be making a <BoldText>SYNC</BoldText> replication, meaning a real time exchange of 
+          information to a standby instance in another availability zone. That means every change that the application is sending to the main instance, the main instance will have to update the standby instance. If there is a problem with 
+          the main instance then there will be an automatic failover to the standby instance. This failover could happen due to network issues or instance/storage failure, if any of these events occur the standby instance would be promoted 
+          to the main instance. It's possible to setup read replicas for Multi AZ.
+          <StyledImage src={MultiAZ} />
+          There isn't any downtime for this process to happen, nor you need to modify your application RDS handles this process in the background when configured. Here is a brief explanation of what happens.
+          MultiAZBackground
+          <StyledImage src={MultiAZBackground} />
           <Spacer />
           <Spacer />
           <SubTitle id="aurora">Amazon Aurora</SubTitle>
