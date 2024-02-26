@@ -17,6 +17,10 @@ import AutoScaling from "../../resources/images/blog/AWSDatabases/db_auto_scalin
 import ReadReplicas from "../../resources/images/blog/AWSDatabases/db_read_replica.jpeg";
 import MultiAZ from "../../resources/images/blog/AWSDatabases/db_multi_az.jpeg";
 import MultiAZBackground from "../../resources/images/blog/AWSDatabases/db_multi_az_background.jpeg";
+import HighAvailability from "../../resources/images/blog/AWSDatabases/db_high_availability.jpeg";
+import AuroraCluster from "../../resources/images/blog/AWSDatabases/db_aurora_cluster.jpeg";
+import AuroraCustomEndpoint from "../../resources/images/blog/AWSDatabases/db_aurora_custom_endpoint.jpeg";
+
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -224,25 +228,53 @@ const AWSDatabases = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Read Replicas</SubTitleSmall>
-          RDS allows up to 15 read replicas within the same availability zone, across multiple availability zones or even cross region. It's also possible to take a replica read instance and make it the main RDS instance. The replication 
-          is <BoldText>ASYNC</BoldText>, meaning that the data will eventually be consistent. You can only query (SELECT) data from a read replica not do any manipulations such as INSERT, UPDATE, or DELETE queries. 
+          RDS allows up to 15 read replicas within the same availability zone, across multiple availability zones or even cross region. It's also possible to take a replica read instance and make it the main RDS instance. The replication
+          is <BoldText>ASYNC</BoldText>, meaning that the data will eventually be consistent. You can only query (SELECT) data from a read replica not do any manipulations such as INSERT, UPDATE, or DELETE queries.
           <StyledImage src={ReadReplicas} />
-          It's important to note that there is a network cost for transferring data into another availability zone; the only use-case where that doesn't apply is if it's within the same region and your transferring to a read 
+          It's important to note that there is a network cost for transferring data into another availability zone; the only use-case where that doesn't apply is if it's within the same region and your transferring to a read
           replica instance.
           <Spacer />
           <Spacer />
           <SubTitleSmall>RDS Multi AZ</SubTitleSmall>
-          Multi AZ is mainly used for disaster recovery. The application will read/write to the main RDS instance via one DNS name, and that instance will be making a <BoldText>SYNC</BoldText> replication, meaning a real time exchange of 
-          information to a standby instance in another availability zone. That means every change that the application is sending to the main instance, the main instance will have to update the standby instance. If there is a problem with 
-          the main instance then there will be an automatic failover to the standby instance. This failover could happen due to network issues or instance/storage failure, if any of these events occur the standby instance would be promoted 
+          Multi AZ is mainly used for disaster recovery. The application will read/write to the main RDS instance via one DNS name, and that instance will be making a <BoldText>SYNC</BoldText> replication, meaning a real time exchange of
+          information to a standby instance in another availability zone. That means every change that the application is sending to the main instance, the main instance will have to update the standby instance. If there is a problem with
+          the main instance then there will be an automatic failover to the standby instance. This failover could happen due to network issues or instance/storage failure, if any of these events occur the standby instance would be promoted
           to the main instance. It's possible to setup read replicas for Multi AZ.
           <StyledImage src={MultiAZ} />
-          There isn't any downtime for this process to happen, nor you need to modify your application RDS handles this process in the background when configured. Here is a brief explanation of what happens.
+          There isn't any downtime for this process to happen, nor you need to modify your application as RDS handles this process in the background when configured. Here is a brief explanation of what happens.
           MultiAZBackground
           <StyledImage src={MultiAZBackground} />
           <Spacer />
           <Spacer />
           <SubTitle id="aurora">Amazon Aurora</SubTitle>
+          Aurora is a cloud optimized database which has significant performance improvements over RDS. It has a capacity of up to 128 TB (terabytes) and grows in increments of 10 GB (gigabytes). Aurora can have up to 15 replicas and it's failover
+          is instantaneous (30 seconds) but it all comes at a cost as it's roughly 20% more than an RDS instance.
+          <StyledImage src={HighAvailability} />
+          Aurora has high availability and reading scaling as it copies the data across three availability zones with six copies and the storage is striped across 100's of volumes every time you write to the database.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Aurora DB Cluster</SubTitleSmall>
+          Below shows how you would interact with an Aurora instance and how the clusters work. You will be given two endpoints, read and write, the write endpoint will always connect to the main instance which is the only instance to write to the storage,
+          whereas the read endpoint connects to the read replicas. 
+          <StyledImage src={AuroraCluster} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Aurora Custom Endpoints</SubTitleSmall>
+          If you wish to run analytics on the database without effecting performance you can define a subset of Aurora instances to point towards a custom endpoint.
+          <StyledImage src={AuroraCustomEndpoint} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Features of Aurora</SubTitleSmall>
+          <StyledListItem>Automatic fail-over</StyledListItem>
+          <StyledListItem>Backup and Recovery</StyledListItem>
+          <StyledListItem>Isolation and Security</StyledListItem>
+          <StyledListItem>Industry Compliance</StyledListItem>
+          <StyledListItem>Push-button Scaling</StyledListItem>
+          <StyledListItem>Automated Patching with Zero Downtime</StyledListItem>
+          <StyledListItem>Advanced Monitoring</StyledListItem>
+          <StyledListItem>Backtrack: restore data at any point in time without using backups</StyledListItem>
+          <Spacer />
+          <Spacer />
           <SubTitle id="elasticache">Elasticache</SubTitle>
         </Text>
       </Container>
