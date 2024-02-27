@@ -22,6 +22,7 @@ import AuroraCluster from "../../resources/images/blog/AWSDatabases/db_aurora_cl
 import AuroraCustomEndpoint from "../../resources/images/blog/AWSDatabases/db_aurora_custom_endpoint.jpeg";
 import AuroraServerless from "../../resources/images/blog/AWSDatabases/db_aurora_serverless.jpeg";
 import AuroraGlobal from "../../resources/images/blog/AWSDatabases/db_aurora_global.jpeg";
+import AuroraMachineLearning from "../../resources/images/blog/AWSDatabases/db_aurora_ml.jpeg";
 
 
 const Wrapper = styled.div`
@@ -251,8 +252,20 @@ const AWSDatabases = () => {
           <SubTitle id="aurora">Amazon Aurora</SubTitle>
           Aurora is a cloud optimized database which has significant performance improvements over RDS. It has a capacity of up to 128 TB (terabytes) and grows in increments of 10 GB (gigabytes). Aurora can have up to 15 replicas and it's failover
           is instantaneous (30 seconds) but it all comes at a cost as it's roughly 20% more than an RDS instance.
-          <StyledImage src={HighAvailability} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Features of Aurora</SubTitleSmall>
+          <StyledListItem>Automatic fail-over</StyledListItem>
+          <StyledListItem>Backup and Recovery</StyledListItem>
+          <StyledListItem>Isolation and Security</StyledListItem>
+          <StyledListItem>Industry Compliance</StyledListItem>
+          <StyledListItem>Push-button Scaling</StyledListItem>
+          <StyledListItem>Automated Patching with Zero Downtime</StyledListItem>
+          <StyledListItem>Advanced Monitoring</StyledListItem>
+          <StyledListItem>Backtrack: restore data at any point in time without using backups</StyledListItem>
+          <Spacer />
           Aurora has high availability and reading scaling as it copies the data across three availability zones with six copies and the storage is striped across 100's of volumes every time you write to the database.
+          <StyledImage src={HighAvailability} />
           <Spacer />
           <Spacer />
           <SubTitleSmall>Aurora DB Cluster</SubTitleSmall>
@@ -272,21 +285,13 @@ const AWSDatabases = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Aurora Global</SubTitleSmall>
-          Global Aurora has cross region read replicas which is good for disaster recovery.
+          Global Aurora has cross region read replicas which is good for disaster recovery. It takes less than a second to replicate data into another region.
           <StyledImage src={AuroraGlobal} />
-          
-          
           <Spacer />
           <Spacer />
-          <SubTitleSmall>Features of Aurora</SubTitleSmall>
-          <StyledListItem>Automatic fail-over</StyledListItem>
-          <StyledListItem>Backup and Recovery</StyledListItem>
-          <StyledListItem>Isolation and Security</StyledListItem>
-          <StyledListItem>Industry Compliance</StyledListItem>
-          <StyledListItem>Push-button Scaling</StyledListItem>
-          <StyledListItem>Automated Patching with Zero Downtime</StyledListItem>
-          <StyledListItem>Advanced Monitoring</StyledListItem>
-          <StyledListItem>Backtrack: restore data at any point in time without using backups</StyledListItem>
+          <SubTitleSmall>Aurora Machine Learning</SubTitleSmall>
+          You can integrate Aurora with machine learning services (AWS Sagemaker and AWS Comprehend) to make predictions with your applications via SQL. Good use cases for this would be to check for fraud detection and product recommendations.
+          <StyledImage src={AuroraMachineLearning} />
           <Spacer />
           <Spacer />
           <SubTitle id="elasticache">Elasticache</SubTitle>
