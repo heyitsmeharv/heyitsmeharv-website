@@ -20,6 +20,8 @@ import MultiAZBackground from "../../resources/images/blog/AWSDatabases/db_multi
 import HighAvailability from "../../resources/images/blog/AWSDatabases/db_high_availability.jpeg";
 import AuroraCluster from "../../resources/images/blog/AWSDatabases/db_aurora_cluster.jpeg";
 import AuroraCustomEndpoint from "../../resources/images/blog/AWSDatabases/db_aurora_custom_endpoint.jpeg";
+import AuroraServerless from "../../resources/images/blog/AWSDatabases/db_aurora_serverless.jpeg";
+import AuroraGlobal from "../../resources/images/blog/AWSDatabases/db_aurora_global.jpeg";
 
 
 const Wrapper = styled.div`
@@ -262,6 +264,18 @@ const AWSDatabases = () => {
           <SubTitleSmall>Aurora Custom Endpoints</SubTitleSmall>
           If you wish to run analytics on the database without effecting performance you can define a subset of Aurora instances to point towards a custom endpoint.
           <StyledImage src={AuroraCustomEndpoint} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Aurora Serverless</SubTitleSmall>
+          Aurora Serverless is an automated database which auto scales based on usage. This could be good for infrequent, intermittent or unpredictable workloads.
+          <StyledImage src={AuroraServerless} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Aurora Global</SubTitleSmall>
+          Global Aurora has cross region read replicas which is good for disaster recovery.
+          <StyledImage src={AuroraGlobal} />
+          
+          
           <Spacer />
           <Spacer />
           <SubTitleSmall>Features of Aurora</SubTitleSmall>
