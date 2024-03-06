@@ -249,6 +249,18 @@ const AWSDatabases = () => {
           <StyledImage src={MultiAZBackground} />
           <Spacer />
           <Spacer />
+          <SubTitleSmall>RDS Backups</SubTitleSmall>
+          RDS has the ability to backup instances either automatically or manually. You can do a full backup of the database daily with the ability to restore to any point in time from oldest to five minutes ago. Transaction logs are backed up by RDS every five minutes. There is a
+          retention period up to 35 days for automatic backups but can last as long as you want if backed up manually. <BoldText>Automated backups can be disabled.</BoldText> Do note that a stopped RDS instance still costs money as you're still paying for the existing storage.
+          If you plan on stopping it for a long period of time, you should snapshot and restore instead.
+          <Spacer />
+          <Spacer />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>RDS Restore</SubTitleSmall>
+          RDS has the ability to restore an instance by creating a backup of the existing database which is stored in S3, that is then used on a new RDS instance running MySQL.
+          <Spacer />
+          <Spacer />
           <SubTitle id="aurora">Amazon Aurora</SubTitle>
           Aurora is a cloud optimized database which has significant performance improvements over RDS. It has a capacity of up to 128 TB (terabytes) and grows in increments of 10 GB (gigabytes). Aurora can have up to 15 replicas and it's failover
           is instantaneous (30 seconds) but it all comes at a cost as it's roughly 20% more than an RDS instance.
@@ -270,7 +282,7 @@ const AWSDatabases = () => {
           <Spacer />
           <SubTitleSmall>Aurora DB Cluster</SubTitleSmall>
           Below shows how you would interact with an Aurora instance and how the clusters work. You will be given two endpoints, read and write, the write endpoint will always connect to the main instance which is the only instance to write to the storage,
-          whereas the read endpoint connects to the read replicas. 
+          whereas the read endpoint connects to the read replicas.
           <StyledImage src={AuroraCluster} />
           <Spacer />
           <Spacer />
@@ -292,6 +304,30 @@ const AWSDatabases = () => {
           <SubTitleSmall>Aurora Machine Learning</SubTitleSmall>
           You can integrate Aurora with machine learning services (AWS Sagemaker and AWS Comprehend) to make predictions with your applications via SQL. Good use cases for this would be to check for fraud detection and product recommendations.
           <StyledImage src={AuroraMachineLearning} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Aurora Backups</SubTitleSmall>
+          Aurora has the ability to backup instances either automatically or manually. You can do a full backup of the database daily with the ability to restore to any point in time. There is a
+          retention period up to 35 days for automatic backups but can last as long as you want if backed up manually. <BoldText>Automated backups can't be disabled.</BoldText>
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Aurora Restore</SubTitleSmall>
+          Aurora has the ability to restore an instance by creating a backup of the existing database using Percona XtraBackup which is stored in S3, that is then used on a new Aurora cluster running MySQL.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Aurora Cloning</SubTitleSmall>
+          Another feature of Aurora is that you can clone an existing database cluster from an existing one. This is faster than snapshot & restore and uses copy-on-write protocol. This feature is useful for creating a staging environment
+          from a production database without impacting the live service.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>RDS & Aurora Security</SubTitleSmall>
+          Both RDS and Aurora have:
+          <StyledListItem>At-rest encryption: Main and replica encryptions use AWS KMS which must be defined at launch time otherwise the main instance and read replicas can't be encrypted.</StyledListItem>
+          <StyledListItem>In-flight encryption: TLS-ready by default, user the AWS TLS root certificates client-side.</StyledListItem> 
+          <StyledListItem>IAM Authentication: IAM roles to connect to your database instead of username/password.</StyledListItem>
+          <StyledListItem>Security Groups: Control network access to your RDS/Aurora database.</StyledListItem>
+          <StyledListItem>No SSH available: Except on RDS Custom.</StyledListItem>
+          <StyledListItem>Audit Logs: Can be enabled and sent to CloudWatch Logs for longer retention. </StyledListItem>
           <Spacer />
           <Spacer />
           <SubTitle id="elasticache">Elasticache</SubTitle>
