@@ -49,13 +49,56 @@ const StyledCloseButton = styled.button`
   }
 `;
 
+const StyledPillButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledPillButton = styled.button`
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  background-color: ${props => props.colour}; 
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 10px;
+  :hover {
+    cursor: pointer;
+    border: .5px solid ${({ theme }) => theme.text};
+  }
+
+  ${props => props.active && css`
+    color: white;
+    font-weight: bold;
+  `}
+`;
+
 /* COOL TAG COLOURS */
 // #64CBF6
 // #8B191D
 // #23262E
 
 export default function Blog() {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState([]);
+  const [filterButtons, setFilterButtons] = useState([
+    {
+      name: "AWS",
+      colour: "#FF9900",
+      active: false,
+    },
+    {
+      name: "JavaScript",
+      colour: "#F4BF36",
+      active: false,
+    },
+    {
+      name: "React",
+      colour: "#64CBF6",
+      active: false,
+    },
+  ]);
   const [blogPosts, setBlogPosts] = useState([
     {
       title: 'The Start',
@@ -230,6 +273,25 @@ export default function Blog() {
     }
   }, [search]);
 
+  useEffect(() => {
+    if (filter.length) {
+      const arr = [];
+      blogPosts.map(x => {
+        return filter.forEach(i => {
+          x.tags.map(y => {
+            if (y.name === i) {
+              arr.push(x);
+            }
+          });
+        });
+      });
+
+      setBlogPosts(arr);
+    } else {
+      setBlogPosts(defaultArr)
+    }
+  }, [filter]);
+
   // analytics
   useEffect(() => {
     const isLocal = window.location.hostname === "localhost" ? true : false;
@@ -238,6 +300,25 @@ export default function Blog() {
     }
   }, []);
 
+  const handlePillButtonClick = button => {
+    const newFilterButtons = [...filterButtons];
+    const index = newFilterButtons.indexOf(button);
+    newFilterButtons[index].active = !newFilterButtons[index].active;
+    setFilterButtons(newFilterButtons);
+
+    const newFilter = [...filter];
+    const isFiltered = newFilter.forEach(x => {
+      filterButtons.forEach(i => i.name === x.name);
+    });
+
+    if (isFiltered) {
+      newFilter.splice(filterButtons[index].name, 1)
+    } else {
+      newFilter.push(filterButtons[index].name);
+    }
+    setFilter(newFilter);
+  }
+
   return (
     <>
       <SearchBarWrapper>
@@ -245,6 +326,21 @@ export default function Blog() {
         <StyledSearchBar placeholder="Search" type="text" onChange={e => setSearch(e.target.value)} value={search} />
         <StyledCloseButton onClick={() => setSearch('')}> <StyledCloseIcon /></StyledCloseButton>
       </SearchBarWrapper>
+      {filter}
+      <StyledPillButtonWrapper>
+        {filterButtons.map((button, key) => {
+          return (
+            <StyledPillButton
+              key={key}
+              colour={button.colour}
+              active={button.active}
+              onClick={() => handlePillButtonClick(button)}
+            >
+              {button.name}
+            </StyledPillButton>
+          );
+        })}
+      </StyledPillButtonWrapper>
       <Pagination itemsPerPage={6} items={blogPosts} />
     </>
   );
