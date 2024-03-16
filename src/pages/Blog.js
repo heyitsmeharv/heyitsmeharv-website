@@ -49,13 +49,55 @@ const StyledCloseButton = styled.button`
   }
 `;
 
+const StyledPillButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledPillButton = styled.button`
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  background-color: ${props => props.colour}; 
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 10px;
+  :hover {
+    cursor: pointer;
+    border: .5px solid ${({ theme }) => theme.text};
+  }
+
+  ${props => props.active && css`
+    color: white;
+    font-weight: bold;
+  `}
+`;
+
 /* COOL TAG COLOURS */
 // #64CBF6
 // #8B191D
 // #23262E
 
 export default function Blog() {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
+  const [filterButtons, setFilterButtons] = useState([
+    {
+      name: "AWS",
+      colour: "#FF9900",
+      active: false,
+    },
+    {
+      name: "JavaScript",
+      colour: "#F4BF36",
+      active: false,
+    },
+    {
+      name: "React",
+      colour: "#64CBF6",
+      active: false,
+    },
+  ]);
   const [blogPosts, setBlogPosts] = useState([
     {
       title: 'The Start',
@@ -226,7 +268,7 @@ export default function Blog() {
     if (search !== '') {
       setBlogPosts(blogPosts.filter(x => x.title.toLowerCase().includes(search.toLowerCase()) || x.type.toLowerCase().includes(search.toLowerCase())));
     } else {
-      setBlogPosts(defaultArr)
+      setBlogPosts(defaultArr);
     }
   }, [search]);
 
@@ -238,6 +280,41 @@ export default function Blog() {
     }
   }, []);
 
+  const handlePillButtonClick = button => {
+    const newFilterButtons = [...filterButtons];
+    const index = newFilterButtons.indexOf(button);
+    newFilterButtons[index].active = !newFilterButtons[index].active;
+    setFilterButtons(newFilterButtons);
+
+    const arr = [];
+
+    const filterActive = filterButtons.some(x => x.active === true);
+
+    if (filterActive) {
+      filterButtons.forEach(x => {
+        blogPosts.forEach(y => {
+          y.tags.forEach(tag => {
+            if (tag.name === x.name && x.active === true) {
+              console.log(y);
+              if (!arr.includes(y)) {
+                arr.push(y);
+              }
+              console.log(arr);
+            } else if (tag.name === x.name && x.active === false) {
+              const index = arr.indexOf(x => x === y);
+              if (index !== -1) {
+                arr.splice(index, 1);
+              }
+            }
+          });
+        });
+      });
+      setBlogPosts(arr);
+    } else {
+      setBlogPosts(defaultArr);
+    }
+  };
+
   return (
     <>
       <SearchBarWrapper>
@@ -245,6 +322,20 @@ export default function Blog() {
         <StyledSearchBar placeholder="Search" type="text" onChange={e => setSearch(e.target.value)} value={search} />
         <StyledCloseButton onClick={() => setSearch('')}> <StyledCloseIcon /></StyledCloseButton>
       </SearchBarWrapper>
+      <StyledPillButtonWrapper>
+        {filterButtons.map((button, key) => {
+          return (
+            <StyledPillButton
+              key={key}
+              colour={button.colour}
+              active={button.active}
+              onClick={() => handlePillButtonClick(button)}
+            >
+              {button.name}
+            </StyledPillButton>
+          );
+        })}
+      </StyledPillButtonWrapper>
       <Pagination itemsPerPage={6} items={blogPosts} />
     </>
   );
