@@ -81,7 +81,6 @@ const StyledPillButton = styled.button`
 
 export default function Blog() {
   const [search, setSearch] = useState('');
-  const [filter, setFilter] = useState([]);
   const [filterButtons, setFilterButtons] = useState([
     {
       name: "AWS",
@@ -269,28 +268,9 @@ export default function Blog() {
     if (search !== '') {
       setBlogPosts(blogPosts.filter(x => x.title.toLowerCase().includes(search.toLowerCase()) || x.type.toLowerCase().includes(search.toLowerCase())));
     } else {
-      setBlogPosts(defaultArr)
+      setBlogPosts(defaultArr);
     }
   }, [search]);
-
-  useEffect(() => {
-    if (filter.length) {
-      const arr = [];
-      blogPosts.map(x => {
-        return filter.forEach(i => {
-          x.tags.map(y => {
-            if (y.name === i) {
-              arr.push(x);
-            }
-          });
-        });
-      });
-
-      setBlogPosts(arr);
-    } else {
-      setBlogPosts(defaultArr)
-    }
-  }, [filter]);
 
   // analytics
   useEffect(() => {
@@ -306,18 +286,34 @@ export default function Blog() {
     newFilterButtons[index].active = !newFilterButtons[index].active;
     setFilterButtons(newFilterButtons);
 
-    const newFilter = [...filter];
-    const isFiltered = newFilter.forEach(x => {
-      filterButtons.forEach(i => i.name === x.name);
-    });
+    const arr = [];
 
-    if (isFiltered) {
-      newFilter.splice(filterButtons[index].name, 1)
+    const filterActive = filterButtons.some(x => x.active === true);
+
+    if (filterActive) {
+      filterButtons.forEach(x => {
+        blogPosts.forEach(y => {
+          y.tags.forEach(tag => {
+            if (tag.name === x.name && x.active === true) {
+              console.log(y);
+              if (!arr.includes(y)) {
+                arr.push(y);
+              }
+              console.log(arr);
+            } else if (tag.name === x.name && x.active === false) {
+              const index = arr.indexOf(x => x === y);
+              if (index !== -1) {
+                arr.splice(index, 1);
+              }
+            }
+          });
+        });
+      });
+      setBlogPosts(arr);
     } else {
-      newFilter.push(filterButtons[index].name);
+      setBlogPosts(defaultArr);
     }
-    setFilter(newFilter);
-  }
+  };
 
   return (
     <>
@@ -326,7 +322,6 @@ export default function Blog() {
         <StyledSearchBar placeholder="Search" type="text" onChange={e => setSearch(e.target.value)} value={search} />
         <StyledCloseButton onClick={() => setSearch('')}> <StyledCloseIcon /></StyledCloseButton>
       </SearchBarWrapper>
-      {filter}
       <StyledPillButtonWrapper>
         {filterButtons.map((button, key) => {
           return (
