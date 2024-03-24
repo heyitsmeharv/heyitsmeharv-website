@@ -26,6 +26,7 @@ import AuroraServerless from "../../resources/images/blog/AWSDatabases/db_aurora
 import AuroraGlobal from "../../resources/images/blog/AWSDatabases/db_aurora_global.jpeg";
 import AuroraMachineLearning from "../../resources/images/blog/AWSDatabases/db_aurora_ml.jpeg";
 import ElastiCache from "../../resources/images/blog/AWSDatabases/db_elasticache.jpeg";
+import ElastiCacheSecurity from "../../resources/images/blog/AWSDatabases/db_elasticache_security.jpeg";
 
 
 const Wrapper = styled.div`
@@ -216,6 +217,7 @@ const AWSDatabases = () => {
         </Flex>
         <Spacer />
         <Text>
+          I'll be briefly covering databases which AWS provide as well as the key features that each service offer. I've also listed <StyledAnchor href="#skip">ports at the end</StyledAnchor> to be familiar with.
           <SubTitle id="rds">Amazon Relational Database Service (RDS)</SubTitle>
           This service allows you to create a database in the cloud. You can choose from the following:
           <StyledListItem>Microsoft SQL Server</StyledListItem>
@@ -352,7 +354,27 @@ const AWSDatabases = () => {
           ElastiCache is an in memory database which helps high performance and low latency (Redis or Memcached). This also helps makes applications stateless and reduces the load off of database for read intensive workloads. Like RDS and Aurora, AWS takes
           care of the OS maintenance/patching, optimisations, setup, configuration, monitoring, failure recovery and backups. Using ElastiCache does involve a lot of application code changes.
           <StyledImage src={ElastiCache} />
+          <SubTitleSmall>Redis vs Memcached</SubTitleSmall>
           <Table columns={columns} data={data} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Cache Security</SubTitleSmall>
+          Elasticache supports IAM Authentication for Redis - the IAM policies are only used for AWS API-level security.
+          <StyledImage src={ElastiCacheSecurity} />
+          <SubTitle id="skip">List of Ports</SubTitle>
+          <StyledListItem>FTP: 21</StyledListItem>
+          <StyledListItem>SSH: 22</StyledListItem>
+          <StyledListItem>SFTP: 22</StyledListItem>
+          <StyledListItem>HTTP: 80</StyledListItem>
+          <StyledListItem>HTTPS: 443</StyledListItem>
+          <StyledListItem>PostgreSQL: 5432</StyledListItem>
+          <StyledListItem>MySQL: 3306</StyledListItem>
+          <StyledListItem>Maria DB: 3306</StyledListItem>
+          <StyledListItem>Oracle RDS: 1521</StyledListItem>
+          <StyledListItem>MSSQL Server: 1433</StyledListItem>
+          <StyledListItem>Aurora (PostgerSQL): 5432</StyledListItem>
+          <StyledListItem>Aurora (MySQL): 3306</StyledListItem>
+
         </Text>
       </Container>
     </Wrapper>
