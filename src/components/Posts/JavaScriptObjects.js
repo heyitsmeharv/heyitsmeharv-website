@@ -122,8 +122,7 @@ const JavaScriptArray = () => {
 
   // analytics
   useEffect(() => {
-    const isLocal = window.location.hostname === "localhost" ? true : false;
-    if (!isLocal) {
+    if (window.location.hostname !== "localhost") {
       ReactGA.pageview('/blog/javascript-arrays');
     }
   }, []);

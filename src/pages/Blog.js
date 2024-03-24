@@ -114,7 +114,7 @@ export default function Blog() {
     {
       title: 'JavaScript Arrays',
       readingTime: 'approx 10 minutes',
-      type: 'Discovery',
+      type: 'Theory',
       date: '12/04/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
       intro: `Do you ever find yourself forgetting what helper methods would be best to manipulate your data? 
@@ -127,7 +127,7 @@ export default function Blog() {
     {
       title: 'JavaScript Objects',
       readingTime: 'approx 5 minutes',
-      type: 'Discovery',
+      type: 'Theory',
       date: '04/05/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
       intro: `After writing a blog post about arrays, which you can find here. Naturally it feels like the next post needs to be about JavaScript Objects. 
@@ -138,7 +138,7 @@ export default function Blog() {
     {
       title: 'AWS IAM',
       readingTime: 'approx 6 minutes',
-      type: 'Discovery',
+      type: 'Theory',
       date: '26/10/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
@@ -150,7 +150,7 @@ export default function Blog() {
     {
       title: 'AWS EC2',
       readingTime: 'approx 25 minutes',
-      type: 'Discovery',
+      type: 'Theory',
       date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
       intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). 
@@ -161,12 +161,13 @@ export default function Blog() {
     {
       title: 'AWS Databases',
       readingTime: 'TBD',
-      type: 'Discovery',
+      type: 'Theory',
       date: '20/12/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
-      intro: `...`,
+      intro: `This service allows you to create a database in the cloud. You can choose from the following: Microsoft SQL Server, MySQL, Postgres, MariaDB, Oracle,
+      This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services such as...`,
       navigate: 'aws-databases',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
@@ -197,7 +198,7 @@ export default function Blog() {
     {
       title: 'JavaScript Arrays',
       readingTime: 'approx 10 minutes',
-      type: 'Discovery',
+      type: 'Theory',
       date: '12/04/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
       intro: `Do you ever find yourself forgetting what helper methods would be best to manipulate your data? 
@@ -210,7 +211,7 @@ export default function Blog() {
     {
       title: 'JavaScript Objects',
       readingTime: 'approx 5 minutes',
-      type: 'Discovery',
+      type: 'Theory',
       date: '04/05/2023',
       tags: [{ name: 'JavaScript', background: '#F4BF36', icon: <JavascriptSVG /> }],
       intro: `After writing a blog post about arrays, which you can find here. Naturally it feels like the next post needs to be about JavaScript Objects. 
@@ -221,7 +222,7 @@ export default function Blog() {
     {
       title: 'AWS IAM',
       readingTime: 'approx 6 minutes',
-      type: 'Discovery',
+      type: 'Theory',
       date: '26/10/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
@@ -233,7 +234,7 @@ export default function Blog() {
     {
       title: 'AWS EC2',
       readingTime: 'approx 25 minutes',
-      type: 'Discovery',
+      type: 'Theory',
       date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
       intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). 
@@ -244,12 +245,13 @@ export default function Blog() {
     {
       title: 'AWS Databases',
       readingTime: 'TBD',
-      type: 'Discovery',
+      type: 'Theory',
       date: '20/12/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
-      intro: `...`,
+      intro: `This service allows you to create a database in the cloud. You can choose from the following: Microsoft SQL Server, MySQL, Postgres, MariaDB, Oracle,
+      This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services such as...`,
       navigate: 'aws-databases',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
@@ -274,8 +276,7 @@ export default function Blog() {
 
   // analytics
   useEffect(() => {
-    const isLocal = window.location.hostname === "localhost" ? true : false;
-    if (!isLocal) {
+    if (window.location.hostname !== "localhost") {
       ReactGA.pageview('/blog');
     }
   }, []);
