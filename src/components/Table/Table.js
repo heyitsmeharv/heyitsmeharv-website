@@ -1,0 +1,56 @@
+import React from 'react';
+import styled from 'styled-components';
+
+const StyledTable = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+`;
+
+const StyledTableHeading = styled.th`
+  color: ${({ theme }) => theme.text};
+  border: 2px solid ${({ theme }) => theme.secondary};
+  font-weight: bold;
+  text-align: left;
+  padding: 1rem;
+
+`;
+
+const StyledTableData = styled.td`
+  color: ${({ theme }) => theme.text};
+  border: 2px solid ${({ theme }) => theme.secondary};
+  text-align: left;
+  padding: 2rem;
+`;
+
+const Table = ({ columns, data, categoryValues }) => {
+  const renderTableHeader = () => {
+    return (
+      <tr>
+        {columns.map(column => (
+          <StyledTableHeading key={column}>{column}</StyledTableHeading>
+        ))}
+      </tr>
+    );
+  }
+
+  const renderTableData = () => {
+    return data.map((item, index) => {
+      return (
+        <tr key={index}>
+          {columns.map(column => (
+            <StyledTableData key={column}>{item[column]}</StyledTableData>
+          ))}
+        </tr>
+      );
+    });
+  }
+
+  return (
+    <StyledTable className="table">
+      <thead>{renderTableHeader()}</thead>
+      <tbody>{renderTableData()}</tbody>
+    </StyledTable>
+  );
+}
+
+export default Table;

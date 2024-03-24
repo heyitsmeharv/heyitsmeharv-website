@@ -11,6 +11,7 @@ import { AWSSVG, AWSRDSSVG } from '../../resources/styles/icons';
 
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
+import Table from '../../components/Table/Table';
 
 // images
 import AutoScaling from "../../resources/images/blog/AWSDatabases/db_auto_scaling.jpeg";
@@ -18,11 +19,13 @@ import ReadReplicas from "../../resources/images/blog/AWSDatabases/db_read_repli
 import MultiAZ from "../../resources/images/blog/AWSDatabases/db_multi_az.jpeg";
 import MultiAZBackground from "../../resources/images/blog/AWSDatabases/db_multi_az_background.jpeg";
 import HighAvailability from "../../resources/images/blog/AWSDatabases/db_high_availability.jpeg";
+import Proxy from "../../resources/images/blog/AWSDatabases/db_proxy.jpeg";
 import AuroraCluster from "../../resources/images/blog/AWSDatabases/db_aurora_cluster.jpeg";
 import AuroraCustomEndpoint from "../../resources/images/blog/AWSDatabases/db_aurora_custom_endpoint.jpeg";
 import AuroraServerless from "../../resources/images/blog/AWSDatabases/db_aurora_serverless.jpeg";
 import AuroraGlobal from "../../resources/images/blog/AWSDatabases/db_aurora_global.jpeg";
 import AuroraMachineLearning from "../../resources/images/blog/AWSDatabases/db_aurora_ml.jpeg";
+import ElastiCache from "../../resources/images/blog/AWSDatabases/db_elasticache.jpeg";
 
 
 const Wrapper = styled.div`
@@ -185,6 +188,16 @@ const AWSDatabases = () => {
     }
   }, []);
 
+  const columns = ['', 'Redis', 'Memcached'];
+  const data = [
+    { Comparison: '', Redis: 'Multi AZ with Auto-Failover', Memcached: 'Multi-node for partitioning of data (sharding)' },
+    { Comparison: '', Redis: 'Read Replicas to scale reads and have high availability', Memcached: 'No high availability (replication)' },
+    { Comparison: '', Redis: 'Data durability using AOF persistence', Memcached: 'Non persistent' },
+    { Comparison: '', Redis: 'Backup and restore features', Memcached: 'No backups or restore' },
+    { Comparison: '', Redis: 'Supports Sets and Sorted sets', Memcached: 'Multi-threaded architecture' },
+
+  ];
+
   return (
     <Wrapper>
       <StyledNavButton>
@@ -207,7 +220,7 @@ const AWSDatabases = () => {
           This service allows you to create a database in the cloud. You can choose from the following:
           <StyledListItem>Microsoft SQL Server</StyledListItem>
           <StyledListItem>MySQL</StyledListItem>
-          <StyledListItem>Postgres</StyledListItem>
+          <StyledListItem>PostgreSQL</StyledListItem>
           <StyledListItem>MariaDB</StyledListItem>
           <StyledListItem>Oracle</StyledListItem>
           <Spacer />
@@ -255,10 +268,15 @@ const AWSDatabases = () => {
           If you plan on stopping it for a long period of time, you should snapshot and restore instead.
           <Spacer />
           <Spacer />
-          <Spacer />
-          <Spacer />
           <SubTitleSmall>RDS Restore</SubTitleSmall>
           RDS has the ability to restore an instance by creating a backup of the existing database which is stored in S3, that is then used on a new RDS instance running MySQL.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>RDS Proxy</SubTitleSmall>
+          This allows apps to pool and share database connections already established. Instead of having individual applications connect to the RDS instance, they will instead connect to the proxy which will pool the connections together into less connections to the RDS instance.
+          You would want to do this to improve the database efficiency by reducing the strain on the RDS resources such as CPU and RAM. This feature auto-scales and is multi-AZ so you won't need to manage capacity which in turn reduces the failover time by up to 66%. This
+          feature enforces IAM authentication, so users can only connect to the RDS instance using the correct credentials, and it's never publicly available as it can only be accessed from a VPC. This supports RDS (MySQL, PostgreSQL, MariaDB, MSSQL Server) and Aurora (MySQL and PostgreSQL).
+          <StyledImage src={Proxy} />
           <Spacer />
           <Spacer />
           <SubTitle id="aurora">Amazon Aurora</SubTitle>
@@ -323,7 +341,7 @@ const AWSDatabases = () => {
           <SubTitleSmall>RDS & Aurora Security</SubTitleSmall>
           Both RDS and Aurora have:
           <StyledListItem>At-rest encryption: Main and replica encryptions use AWS KMS which must be defined at launch time otherwise the main instance and read replicas can't be encrypted.</StyledListItem>
-          <StyledListItem>In-flight encryption: TLS-ready by default, user the AWS TLS root certificates client-side.</StyledListItem> 
+          <StyledListItem>In-flight encryption: TLS-ready by default, user the AWS TLS root certificates client-side.</StyledListItem>
           <StyledListItem>IAM Authentication: IAM roles to connect to your database instead of username/password.</StyledListItem>
           <StyledListItem>Security Groups: Control network access to your RDS/Aurora database.</StyledListItem>
           <StyledListItem>No SSH available: Except on RDS Custom.</StyledListItem>
@@ -331,6 +349,10 @@ const AWSDatabases = () => {
           <Spacer />
           <Spacer />
           <SubTitle id="elasticache">Elasticache</SubTitle>
+          ElastiCache is an in memory database which helps high performance and low latency (Redis or Memcached). This also helps makes applications stateless and reduces the load off of database for read intensive workloads. Like RDS and Aurora, AWS takes
+          care of the OS maintenance/patching, optimisations, setup, configuration, monitoring, failure recovery and backups. Using ElastiCache does involve a lot of application code changes.
+          <StyledImage src={ElastiCache} />
+          <Table columns={columns} data={data} />
         </Text>
       </Container>
     </Wrapper>
