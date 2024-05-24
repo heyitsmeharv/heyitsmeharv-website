@@ -196,7 +196,6 @@ const AWSDatabases = () => {
     { Comparison: '', Redis: 'Data durability using AOF persistence', Memcached: 'Non persistent' },
     { Comparison: '', Redis: 'Backup and restore features', Memcached: 'No backups or restore' },
     { Comparison: '', Redis: 'Supports Sets and Sorted sets', Memcached: 'Multi-threaded architecture' },
-
   ];
 
   return (

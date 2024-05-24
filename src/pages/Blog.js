@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination/Pagination";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG } from '../resources/styles/icons';
 
 
 const SearchBarWrapper = styled.div`
@@ -170,6 +170,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Route53',
+      readingTime: '~',
+      type: 'Theory',
+      date: '24/05/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
+      intro: `...`,
+      navigate: 'aws-route53',
+      published: false
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -252,6 +262,16 @@ export default function Blog() {
       This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services such as...`,
       navigate: 'aws-databases',
       published: true
+    },
+    {
+      title: 'AWS Route53',
+      readingTime: '~',
+      type: 'Theory',
+      date: '24/05/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
+      intro: `...`,
+      navigate: 'aws-route53',
+      published: false
     },
     {
       title: 'React.js Text Based Adventure Game',
