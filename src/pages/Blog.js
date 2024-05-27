@@ -171,7 +171,7 @@ export default function Blog() {
     },
     {
       title: 'AWS Route53',
-      readingTime: '~',
+      readingTime: 'approx 12 minutes',
       type: 'Theory',
       date: '24/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
@@ -266,7 +266,7 @@ export default function Blog() {
     },
     {
       title: 'AWS Route53',
-      readingTime: '~',
+      readingTime: 'approx 12 minutes',
       type: 'Theory',
       date: '24/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],

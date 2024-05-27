@@ -24,6 +24,9 @@ import Route53AliasExample from "../../resources/images/blog/AWSRoute53/route53_
 import Route53SimpleRouting from "../../resources/images/blog/AWSRoute53/route53_simple_routing.jpeg";
 import Route53WeightedRouting from "../../resources/images/blog/AWSRoute53/route53_weighted_routing.jpeg";
 import Route53IPRouting from "../../resources/images/blog/AWSRoute53/route53_ip_routing.jpeg";
+import Route53MultiValueRouting from "../../resources/images/blog/AWSRoute53/route53_multi_value_routing.jpeg";
+import Route53HealthCheck from "../../resources/images/blog/AWSRoute53/route53_health_check.jpeg";
+import Route53MonitorEndpoint from "../../resources/images/blog/AWSRoute53/route53_monitor_endpoint.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -331,7 +334,23 @@ const AWSRoute53 = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Routing Policies - Multi Value based Routing</SubTitleSmall>
-          
+          This policy should be used when you're routing traffic to multiple resources. There are 8 records returned for each multi-value query. This policy can be associated with health checks.
+          <StyledImage src={Route53MultiValueRouting} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Health Checks</SubTitleSmall>
+          <StyledImage src={Route53HealthCheck} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Health Checks - Monitor an Endpoint</SubTitleSmall>
+          <StyledImage src={Route53MonitorEndpoint} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Health Checks - Calculated Health Checks</SubTitleSmall>
+          <StyledImage src={Route53MonitorEndpoint} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Failover</SubTitleSmall>
         </Text>
       </Container>
     </Wrapper>
