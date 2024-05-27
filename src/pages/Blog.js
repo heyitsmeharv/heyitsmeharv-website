@@ -175,7 +175,8 @@ export default function Blog() {
       type: 'Theory',
       date: '24/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
-      intro: `...`,
+      intro: `Amazon Route 53 is a scalable and highly available Domain Name System (DNS). It is designed to route end-user requests to internet applications hosted on AWS infrastructure,
+      as well as external resources. Overall, Amazon Route 53 is a robust solution for DNS management...`,
       navigate: 'aws-route53',
       published: false
     },
@@ -269,7 +270,8 @@ export default function Blog() {
       type: 'Theory',
       date: '24/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
-      intro: `...`,
+      intro: `Amazon Route 53 is a scalable and highly available Domain Name System (DNS). It is designed to route end-user requests to internet applications hosted on AWS infrastructure,
+      as well as external resources. Overall, Amazon Route 53 is a robust solution for DNS management...`,
       navigate: 'aws-route53',
       published: false
     },
