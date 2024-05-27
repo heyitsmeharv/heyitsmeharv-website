@@ -47,6 +47,11 @@ const StyledBackIcon = styled(ChevronBackCircle)`
   width: 4rem;
 `;
 
+const StyledListItem = styled.li`
+  color: ${({ theme }) => theme.text};
+  margin-left: 5%;
+`;
+
 const Spacer = styled.br``
 
 const TheStart = () => {
@@ -77,11 +82,11 @@ const TheStart = () => {
           of blog posts created. I'm hoping to have blogged about the following:
           <Spacer />
           <Spacer />
-          <li>Making cool software</li>
-          <li>Exploring using new technologies</li>
-          <li>Create Tutorials</li>
-          <li>Solidifying my own understanding</li>
-          <li>Following conferences and events</li>
+          <StyledListItem>Making cool software</StyledListItem>
+          <StyledListItem>Exploring using new technologies</StyledListItem>
+          <StyledListItem>Create Tutorials</StyledListItem>
+          <StyledListItem>Solidifying my own understanding</StyledListItem>
+          <StyledListItem>Following conferences and events</StyledListItem>
           <Spacer />
           I don't have a list of blog posts I want to write about, but I'm hoping that now I have created a space for
           myself to blog, I'll be more inclined to write... Watch this space!
