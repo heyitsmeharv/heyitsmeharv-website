@@ -18,7 +18,11 @@ import DNSExample from "../../resources/images/blog/AWSRoute53/route53_dns_examp
 import DNSBreakdown from "../../resources/images/blog/AWSRoute53/route53_dns_breakdown.jpeg";
 import DNSWorking from "../../resources/images/blog/AWSRoute53/route53_dns_working.jpeg";
 import Route53Example from "../../resources/images/blog/AWSRoute53/route53_example.jpeg";
-
+import Route53PublicHostedZone from "../../resources/images/blog/AWSRoute53/route53_public_hosted_zone.jpeg";
+import Route53PrivateHostedZone from "../../resources/images/blog/AWSRoute53/route53_private_hosted_zone.jpeg";
+import Route53AliasExample from "../../resources/images/blog/AWSRoute53/route53_alias_example.jpeg";
+import Route53SimpleRouting from "../../resources/images/blog/AWSRoute53/route53_simple_routing.jpeg";
+import Route53WeightedRouting from "../../resources/images/blog/AWSRoute53/route53_weighted_routing.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -218,6 +222,8 @@ const AWSRoute53 = () => {
           <StyledListItemIndent><BoldText>Failover Routing</BoldText>: Configures active-passive failover setups to ensure high availability.</StyledListItemIndent>
           <StyledListItemIndent><BoldText>Geolocation Routing</BoldText>: Directs traffic based on the geographic location of users.</StyledListItemIndent>
           <StyledListItemIndent><BoldText>Geoproximity Routing</BoldText>: Routes traffic based on the proximity of users to resources and can bias routing towards certain locations.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>IP-Based Routing</BoldText>: Routes traffic based on the IP address of the user, allowing for precise control over request handling.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Multivalue Answer Routing</BoldText>: Returns multiple values, such as IP addresses, and can be used with health checks to ensure traffic is directed to healthy resources.</StyledListItemIndent>
           <StyledListItem><BoldText>Health Checks and Monitoring</BoldText>: Route 53 can monitor the health and performance of resources and redirect traffic if a resource becomes unavailable. It uses health checks to determine resource availability and can be integrated with CloudWatch for detailed monitoring.</StyledListItem>
           <StyledListItem><BoldText>Domain Name Management</BoldText>: Route 53 allows full control over DNS records, including A, AAAA, CNAME, MX, PTR, SRV, and TXT records, among others. Users can manage these records through the AWS Management Console, AWS CLI, or API.</StyledListItem>
           <StyledListItem><BoldText>Integration with AWS Services</BoldText>: Route 53 integrates seamlessly with other AWS services like Elastic Load Balancing (ELB), Amazon S3, and CloudFront, making it easier to manage and optimize your applications.</StyledListItem>
@@ -268,7 +274,62 @@ const AWSRoute53 = () => {
           <Spacer />
           <SubTitleSmall>Hosted Zones</SubTitleSmall>
           Hosted Zones are essentially a container for records that define how to route traffic to a domain and its subdomains. There are two types of Hosted Zones, <BoldText>Public Hosted Zones</BoldText> and <BoldText>Private Hosted Zones</BoldText>.
-          Public Hosted Zones contains records that specify how to route traffic on the internet (public domain names). Private Hosted Zones contains records that specify how to route traffic within one or more VPCs (private domain names).
+          <StyledImage src={Route53PublicHostedZone} />
+          Public Hosted Zones contains records that specify how to route traffic on the internet (public domain names).
+          <StyledImage src={Route53PrivateHostedZone} />
+          Private Hosted Zones contains records that specify how to route traffic within one or more VPCs (private domain names).
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>TTL (Time To Live)</SubTitleSmall>
+          TTL is mandatory for each record type apart from Alias. As mentioned before TTL is the time that the DNS resolvers will cache the record for. A high TTL would be days which would result in less traffic on Route 53 but there's a higher
+          chance of retrieving outdated records. A low TTL would be seconds which results in more traffic, and therefore it's more expensive, but there's a slim chance of the record being outdated.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>CNAME vs Alias</SubTitleSmall>
+          AWS Resources whether it is a Load Balancer or an API Gateway it will have an AWS hostname exposed. An example would be '1b1-1234.us.east-2.elb.amazon.com'. CNAME allows you to point to another hostname but it's important to note that the hostname must not be a root domain. For example 
+          app.mydomain.com would work but mydomain.com would not. Alias's are specific to Route 53 and works with root domains as well as non-root domains, they are always of type A/AAAA. An alias is used to point a hostname to an AWS resource (app.mydomain.com => 1b1-1234.us.east-2.elb.amazon.com).
+          It's worth mentioning that Alias's are free of charge and they have native health check capabilities.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Alias Records</SubTitleSmall>
+          A good thing to know about Alias records is that they automatically recognise changes in the resources IP address so you won't need to edit the record in Route 53. As noted before you can't set a TTL for this record.
+          <StyledImage src={Route53AliasExample} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Routing Policies - Simple Routing</SubTitleSmall>
+          This policy is typically used to route traffic to a single resource, but you can specify multiple values in the same record. If there are multiple values, a random one is chosen by the client. If Alias is enabled, you should
+          specify only one AWS resource. You can't associate with health checks with this policy.
+          <StyledImage src={Route53SimpleRouting} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Routing Policies - Weighted Routing</SubTitleSmall>
+          This policy is pretty self explanatory in that you can control the percentage i.e. weight of requests to each resource. Each record will need a weight assigned which doesn't need to sum up to 100. The DNS records will need to be 
+          the same name and type in order for this policy to work. If a record is assigned 0 then traffic will not be sent to that resource, if they are all set to 0 then it will be distributed equally. You can associate health checks with this policy. 
+          Good use cases for this would be testing new application versions and load balancing between regions. 
+          <StyledImage src={Route53WeightedRouting} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Routing Policies - Latency-based Routing</SubTitleSmall>
+          This is another self explanatory policy where users are directed to resources that have the least latency. A user from the UK could be directed to a load balancer in the US if that is deemed to have the lowest latency. This can 
+          be associated with health checks and has failover capacity.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Routing Policies - Geolocation based Routing</SubTitleSmall>
+          This is different from Latency-based - as it's based on the users location. So regardless if it's a better connection elsewhere you'll be routed to a specified record for a location. There should be a default record set in case 
+          there's no match on the user's location. Good use cases would be website localization and restrict content distribution. This policy can be associated with health checks.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Routing Policies - Geoproximity based Routing</SubTitleSmall>
+          This policy is based on users proximity to the resource. Traffic is distributed based on how close users are to the resource. The resource can be assigned a bias which can be used to direct/shift more or less traffic to it.
+          You can specify a latitude and longitude for non AWS resources. You must use Route 53 Traffic Flow to use this policy.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Routing Policies - IP-based Routing</SubTitleSmall>
+          Routing is based on the clients IP addresses.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Routing Policies - Multi Value based Routing</SubTitleSmall>
+          
         </Text>
       </Container>
     </Wrapper>
