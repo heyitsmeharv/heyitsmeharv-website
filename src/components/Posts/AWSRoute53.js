@@ -23,6 +23,7 @@ import Route53PrivateHostedZone from "../../resources/images/blog/AWSRoute53/rou
 import Route53AliasExample from "../../resources/images/blog/AWSRoute53/route53_alias_example.jpeg";
 import Route53SimpleRouting from "../../resources/images/blog/AWSRoute53/route53_simple_routing.jpeg";
 import Route53WeightedRouting from "../../resources/images/blog/AWSRoute53/route53_weighted_routing.jpeg";
+import Route53IPRouting from "../../resources/images/blog/AWSRoute53/route53_ip_routing.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -325,7 +326,8 @@ const AWSRoute53 = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Routing Policies - IP-based Routing</SubTitleSmall>
-          Routing is based on the clients IP addresses.
+          This policy is based on the clients IP addresses. You provide a CIDR block for your clients and the corresponding endpoints/locations. You should use this policy for when you want to route end users from a particular ISP to a specific endpoint.
+          <StyledImage src={Route53IPRouting} />
           <Spacer />
           <Spacer />
           <SubTitleSmall>Routing Policies - Multi Value based Routing</SubTitleSmall>
