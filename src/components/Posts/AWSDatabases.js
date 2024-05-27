@@ -189,13 +189,13 @@ const AWSDatabases = () => {
     }
   }, []);
 
-  const columns = ['', 'Redis', 'Memcached'];
+  const columns = ['Redis', 'Memcached'];
   const data = [
-    { Comparison: '', Redis: 'Multi AZ with Auto-Failover', Memcached: 'Multi-node for partitioning of data (sharding)' },
-    { Comparison: '', Redis: 'Read Replicas to scale reads and have high availability', Memcached: 'No high availability (replication)' },
-    { Comparison: '', Redis: 'Data durability using AOF persistence', Memcached: 'Non persistent' },
-    { Comparison: '', Redis: 'Backup and restore features', Memcached: 'No backups or restore' },
-    { Comparison: '', Redis: 'Supports Sets and Sorted sets', Memcached: 'Multi-threaded architecture' },
+    { Redis: 'Multi AZ with Auto-Failover', Memcached: 'Multi-node for partitioning of data (sharding)' },
+    { Redis: 'Read Replicas to scale reads and have high availability', Memcached: 'No high availability (replication)' },
+    { Redis: 'Data durability using AOF persistence', Memcached: 'Non persistent' },
+    { Redis: 'Backup and restore features', Memcached: 'No backups or restore' },
+    { Redis: 'Supports Sets and Sorted sets', Memcached: 'Multi-threaded architecture' },
   ];
 
   return (
