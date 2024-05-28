@@ -36,6 +36,8 @@ import AWSIdentityAccessManagement from "./components/Posts/AWSIdentityAccessMan
 import AWSElasticComputeCloud from "./components/Posts/AWSElasticComputeCloud";
 import AWSDatabases from "./components/Posts/AWSDatabases";
 import AWSRoute53 from "./components/Posts/AWSRoute53";
+import AWSS3 from "./components/Posts/AWSS3";
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -110,6 +112,7 @@ const App = () => {
                     <Route exact path='/blog/aws-elastic-compute-cloud' component={AWSElasticComputeCloud} />
                     <Route exact path='/blog/aws-databases' component={AWSDatabases} />
                     <Route exact path='/blog/aws-route53' component={AWSRoute53} />
+                    <Route exact path='/blog/aws-s3' component={AWSS3} />
                   </Switch>
                 </>
               );
