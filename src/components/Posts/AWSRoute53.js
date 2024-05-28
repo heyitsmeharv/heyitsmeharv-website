@@ -27,6 +27,9 @@ import Route53IPRouting from "../../resources/images/blog/AWSRoute53/route53_ip_
 import Route53MultiValueRouting from "../../resources/images/blog/AWSRoute53/route53_multi_value_routing.jpeg";
 import Route53HealthCheck from "../../resources/images/blog/AWSRoute53/route53_health_check.jpeg";
 import Route53MonitorEndpoint from "../../resources/images/blog/AWSRoute53/route53_monitor_endpoint.jpeg";
+import Route53CalculatedHealthChecks from "../../resources/images/blog/AWSRoute53/route53_calculated_health_checks.jpeg";
+import Route53HealthCheckPrivateHostedZone from "../../resources/images/blog/AWSRoute53/route53_health_check_private_hosted_zone.jpeg";
+import Route53FailOverRouting from "../../resources/images/blog/AWSRoute53/route53_failover_routing.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -307,19 +310,24 @@ const AWSRoute53 = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Routing Policies - Weighted Routing</SubTitleSmall>
-          This policy is pretty self explanatory in that you can control the percentage i.e. weight of requests to each resource. Each record will need a weight assigned which doesn't need to sum up to 100. The DNS records will need to be 
-          the same name and type in order for this policy to work. If a record is assigned 0 then traffic will not be sent to that resource, if they are all set to 0 then it will be distributed equally. You can associate health checks with this policy. 
-          Good use cases for this would be testing new application versions and load balancing between regions. 
+          This policy is pretty self explanatory in that you can control the percentage i.e. weight of requests to each resource. Each record will need a weight assigned which doesn't need to sum up to 100. The DNS records will need to be
+          the same name and type in order for this policy to work. If a record is assigned 0 then traffic will not be sent to that resource, if they are all set to 0 then it will be distributed equally. You can associate health checks with this policy.
+          Good use cases for this would be testing new application versions and load balancing between regions.
           <StyledImage src={Route53WeightedRouting} />
           <Spacer />
           <Spacer />
           <SubTitleSmall>Routing Policies - Latency-based Routing</SubTitleSmall>
-          This is another self explanatory policy where users are directed to resources that have the least latency. A user from the UK could be directed to a load balancer in the US if that is deemed to have the lowest latency. This can 
+          This is another self explanatory policy where users are directed to resources that have the least latency. A user from the UK could be directed to a load balancer in the US if that is deemed to have the lowest latency. This can
           be associated with health checks and has failover capacity.
           <Spacer />
           <Spacer />
+          <SubTitleSmall>Routing Policies - Failover Routing</SubTitleSmall>
+          There are two instances, a primary and secondary, if the primary instance is deemed unhealthy then the secondary instance is used.
+          <StyledImage src={Route53FailOverRouting} />
+          <Spacer />
+          <Spacer />
           <SubTitleSmall>Routing Policies - Geolocation based Routing</SubTitleSmall>
-          This is different from Latency-based - as it's based on the users location. So regardless if it's a better connection elsewhere you'll be routed to a specified record for a location. There should be a default record set in case 
+          This is different from Latency-based - as it's based on the users location. So regardless if it's a better connection elsewhere you'll be routed to a specified record for a location. There should be a default record set in case
           there's no match on the user's location. Good use cases would be website localization and restrict content distribution. This policy can be associated with health checks.
           <Spacer />
           <Spacer />
@@ -339,18 +347,33 @@ const AWSRoute53 = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Health Checks</SubTitleSmall>
+          HTTP Health Checks are only for public resources and the reason you would want to assign health checks to to these resources is to have automated DNS failover. There are three options on what you can monitor with health checks:
+          <StyledListItem>Endpoint monitoring (application, server or other AWS resources)</StyledListItem>
+          <StyledListItem>Calculated health check - A health check that monitors another health check</StyledListItem>
+          <StyledListItem>CloudWatch Alarms - You can monitor an alarm which could be any custom metric (helpful for private resources)</StyledListItem>
           <StyledImage src={Route53HealthCheck} />
           <Spacer />
           <Spacer />
           <SubTitleSmall>Health Checks - Monitor an Endpoint</SubTitleSmall>
+          There are about 15 global health checkers that will check the endpoint health.
+          <StyledListItem>You can configure the healthy/unhealthy threshold which the default is set to 3.</StyledListItem>
+          <StyledListItem>The interval is 30 seconds but can be adjusted to 10 seconds but would incur a higher cost.</StyledListItem>
+          <StyledListItem>The supported protocols are: HTTP, HTTPS and TCP.</StyledListItem>
+          <StyledListItem>If there is 18% or more healthy responses, Route53 will consider it healthy, otherwise it's deemed unhealthy.</StyledListItem>
+          <StyledListItem>Health checks pass only when the endpoint responds with 200 to 300 status codes.</StyledListItem>
+          <StyledListItem>If the response from the checker returns text, the first 5120 bytes will be checked for a pass or fail.</StyledListItem>
           <StyledImage src={Route53MonitorEndpoint} />
           <Spacer />
           <Spacer />
           <SubTitleSmall>Health Checks - Calculated Health Checks</SubTitleSmall>
-          <StyledImage src={Route53MonitorEndpoint} />
+          With calculated health checks you can combine the results up to 256 child health checks into a single health check. You can specify how many child health checks need to pass to make the parent pass its health check. This uses
+          logic gates such as OR, AND, or NOT.
+          <StyledImage src={Route53CalculatedHealthChecks} />
           <Spacer />
           <Spacer />
-          <SubTitleSmall>Failover</SubTitleSmall>
+          <SubTitleSmall>Health Checks - Private Hosted Zones</SubTitleSmall>
+          Because the Route53 health checkers live outside of the VPC they can't access private resources. To get around this you can associate a health checker to a CloudWatch alarm which can monitor a metric of private resources.
+          <StyledImage src={Route53HealthCheckPrivateHostedZone} />
         </Text>
       </Container>
     </Wrapper>
