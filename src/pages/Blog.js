@@ -178,7 +178,7 @@ export default function Blog() {
       intro: `Amazon Route 53 is a scalable and highly available Domain Name System (DNS). It is designed to route end-user requests to internet applications hosted on AWS infrastructure,
       as well as external resources. Overall, Amazon Route 53 is a robust solution for DNS management...`,
       navigate: 'aws-route53',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
@@ -273,7 +273,7 @@ export default function Blog() {
       intro: `Amazon Route 53 is a scalable and highly available Domain Name System (DNS). It is designed to route end-user requests to internet applications hosted on AWS infrastructure,
       as well as external resources. Overall, Amazon Route 53 is a robust solution for DNS management...`,
       navigate: 'aws-route53',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
