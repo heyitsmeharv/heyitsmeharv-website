@@ -15,7 +15,7 @@ import Table from '../../components/Table/Table';
 
 // images
 import S3Objects from "../../resources/images/blog/AWSS3/s3_objects.jpeg";
-
+import S3Versions from "../../resources/images/blog/AWSS3/s3_versions.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -226,6 +226,9 @@ const AWSRoute53 = () => {
           <StyledAnchor href="#s3-introduction"><StyledListItem>S3 Introduction</StyledListItem></StyledAnchor>
           <StyledAnchor href="#buckets-objects"><StyledListItem>Buckets and Objects</StyledListItem></StyledAnchor>
           <StyledAnchor href="#bucket-policies"><StyledListItem>Policies</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#bucket-versioning"><StyledListItem>Versioning</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#bucket-replication"><StyledListItem>Replication</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#storage-classes"><StyledListItem>Storage Classes</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="s3-introduction">Amazon S3</SubTitle>
@@ -248,18 +251,18 @@ const AWSRoute53 = () => {
           <SubTitle id="buckets-objects">Buckets and Objects</SubTitle>
           <Spacer />
           <SubTitleSmall>Buckets</SubTitleSmall>
-          In Amazon S3, a <BoldText>bucket</BoldText> is a container for storing objects (files and their metadata). Buckets are created within a specific AWS region and must have unique names globally. 
+          In Amazon S3, a <BoldText>bucket</BoldText> is a container for storing objects (files and their metadata). Buckets are created within a specific AWS region and must have unique names globally.
           The naming convention must adhere to certain rules, such as being between 3 and 63 characters, and not containing uppercase characters or underscores, not an IP, must start with a lowercase letter or number,
           must not start with the prefix xn-- or end with the suffix -s3alias.
           <Spacer />
           <Spacer />
           <SubTitleSmall>Objects</SubTitleSmall>
-          Buckets can store an unlimited number of objects, each of which can be up to 5 terabytes in size. If you're uploading more than 5GB of data, you must use "multi-part upload" Objects are identified within a 
+          Buckets can store an unlimited number of objects, each of which can be up to 5 terabytes in size. If you're uploading more than 5GB of data, you must use "multi-part upload" Objects are identified within a
           bucket using a unique key (object name). There is no concept of directories in S3, just long names with slashes ('/') separating them.
           <StyledImage src={S3Objects} />
           <HeadingSmall>Object Tags</HeadingSmall>
-          Object tags are key-value pairs associated with an S3 object, used to organize, manage, and control access to objects. Tags are particularly useful for categorizing and managing objects based on different criteria, 
-          such as department, project, or data sensitivity. An S3 object can have up to 10 tags. 
+          Object tags are key-value pairs associated with an S3 object, used to organize, manage, and control access to objects. Tags are particularly useful for categorizing and managing objects based on different criteria,
+          such as department, project, or data sensitivity. An S3 object can have up to 10 tags.
           <Spacer />
           <Spacer />
           <HeadingSmall>Key features of Object Tags:</HeadingSmall>
@@ -287,7 +290,7 @@ const AWSRoute53 = () => {
           <StyledListItem><BoldTextSmall>Search and Organization</BoldTextSmall>: Using metadata to store searchable attributes about objects.</StyledListItem>
           <Spacer />
           <SubTitle id="bucket-policies">Policies</SubTitle>
-          Bucket policies in Amazon S3 are JSON-based access policy statements that define permissions for the bucket and its objects. These policies provide a way to control access to the bucket and its contents at a granular level. 
+          Bucket policies in Amazon S3 are JSON-based access policy statements that define permissions for the bucket and its objects. These policies provide a way to control access to the bucket and its contents at a granular level.
           You can refer to my previous post that goes into detail on 👉 <StyledAnchorText><StyledNavLink exact to={`/blog/aws-identity-access-management`}>IAM policies</StyledNavLink></StyledAnchorText>.
           <Spacer />
           <Spacer />
@@ -304,6 +307,49 @@ const AWSRoute53 = () => {
           <Table columns={columns} data={data} />
           <Spacer />
           Note that the IAM principal can access an S3 object if the IAM permissions <BoldText>ALLOW</BoldText> it or the resource policy <BoldText>ALLOWS</BoldText> it and there's no explicit <BoldText>DENY</BoldText>.
+          <Spacer />
+          <Spacer />
+          <SubTitle id="bucket-versioning">Versioning</SubTitle>
+          Versioning is a feature that happens on the bucket level and allows you to maintain multiple versions of an object in a bucket, providing a mechanism to recover from both unintended user actions and application failures. When versioning is enabled for an S3 bucket,
+          each object within the bucket can have multiple versions. Each version is assigned a unique version ID. The latest version of an object does not have a version ID (null version) if the bucket was not versioned at the time of the object's creation.
+          <StyledImage src={S3Versions} />
+          <Spacer />
+          <HeadingSmall>Here's what happens for each operation on a bucket:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Upload</BoldTextSmall>: Each time you upload an object to a versioning-enabled bucket, S3 assigns a new version ID to the object.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Delete</BoldTextSmall>: When you delete an object, S3 inserts a delete marker (a placeholder object with a unique version ID) instead of permanently removing the object. The object remains in the bucket with older versions intact.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Restore</BoldTextSmall>: To restore a previous version, you can either delete the delete marker or copy the specific version back into place.</StyledListItem>
+          <Spacer />
+          <HeadingSmall>Benefits of Versioning:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Data Protection</BoldTextSmall>: Protects against accidental overwrites and deletions. If an object is deleted or overwritten, previous versions can be restored.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Backup and Recovery</BoldTextSmall>: Facilitates easy recovery from unintended deletions and application failures.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Audit and Compliance</BoldTextSmall>: Keeps a complete history of object modifications, which can be crucial for auditing and compliance.</StyledListItem>
+          <Spacer />
+          <SubTitle id="bucket-replication">Replication</SubTitle>
+          Replication enables automatic, asynchronous copying of objects across S3 buckets in different AWS Regions (Cross-Region Replication) or within the same region (Same-Region Replication). You define replication rules to specify which objects and object versions should be replicated and to where.
+          The configuration includes specifying the source bucket, destination bucket, and replication rules. You can configure multiple rules for different objects within the same bucket.
+          <Spacer />
+          <Spacer />
+          <StyledListItem><BoldText>Cross-Region Replication (CRR):</BoldText></StyledListItem>
+          <StyledListItemIndent>Replicates objects to a bucket in a different AWS Region.</StyledListItemIndent>
+          <StyledListItemIndent>Enhances data availability and disaster recovery capabilities.</StyledListItemIndent>
+          <StyledListItemIndent>Helps meet compliance requirements by keeping a copy of data in a different geographical location.</StyledListItemIndent>
+          <StyledListItem><BoldText>Same-Region Replication (SRR):</BoldText></StyledListItem>
+          <StyledListItemIndent>Replicates objects to a bucket within the same AWS Region.</StyledListItemIndent>
+          <StyledListItemIndent>Useful for maintaining copies of data for compliance or data redundancy within the same region.</StyledListItemIndent>
+          <Spacer />
+          <HeadingSmall>Benefits of Replication:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Disaster Recovery</BoldTextSmall>: Ensures data is available in multiple locations, providing a fallback option if the primary region is unavailable.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Data Compliance</BoldTextSmall>: Helps meet compliance and regulatory requirements by storing data copies in specific locations.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Low-Latency Access</BoldTextSmall>: Provides low-latency access to data by storing copies closer to the end-users in different regions.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Data Durability and Redundancy</BoldTextSmall>: Enhances data durability and redundancy by storing multiple copies across regions or within the same region.</StyledListItem>
+          <Spacer />
+          <HeadingSmall>Managing Replication:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Replication Time Control (RTC)</BoldTextSmall>: Provides a predictable replication time backed by an SLA, ensuring that 99.99% of objects are replicated within 15 minutes.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Object Versioning</BoldTextSmall>: Both source and destination buckets should have versioning enabled to support replication.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Permissions</BoldTextSmall>: The source bucket's AWS Identity and Access Management (IAM) role must have the necessary permissions to read from the source bucket and write to the destination bucket.</StyledListItem>
+          <Spacer />
+          <SubTitle id="storage-classes">Storage Classes</SubTitle>
+          
         </Text>
       </Container>
     </Wrapper>
