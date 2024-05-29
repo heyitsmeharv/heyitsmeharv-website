@@ -16,6 +16,9 @@ import Table from '../../components/Table/Table';
 // images
 import S3Objects from "../../resources/images/blog/AWSS3/s3_objects.jpeg";
 import S3Versions from "../../resources/images/blog/AWSS3/s3_versions.jpeg";
+import S3LifecycleRule from "../../resources/images/blog/AWSS3/s3_lifecycle_rule.jpeg";
+import S3RequesterPaysBucket from "../../resources/images/blog/AWSS3/s3_requester_pays_bucket.jpeg";
+import S3EventDestination from "../../resources/images/blog/AWSS3/s3_event_destination.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -186,7 +189,7 @@ const Icon = styled.div`
 
 const Spacer = styled.br``
 
-const AWSRoute53 = () => {
+const AWS3 = () => {
 
   // analytics
   useEffect(() => {
@@ -229,6 +232,9 @@ const AWSRoute53 = () => {
           <StyledAnchor href="#bucket-versioning"><StyledListItem>Versioning</StyledListItem></StyledAnchor>
           <StyledAnchor href="#bucket-replication"><StyledListItem>Replication</StyledListItem></StyledAnchor>
           <StyledAnchor href="#storage-classes"><StyledListItem>Storage Classes</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#lifecycle-rules"><StyledListItem>Lifecycle Rules</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#requester-pays"><StyledListItem>Requester Pays</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#event-notifications"><StyledListItem>Event Notifications</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="s3-introduction">Amazon S3</SubTitle>
@@ -408,14 +414,68 @@ const AWSRoute53 = () => {
           <Spacer />
           <SubTitleSmall>Choosing the Right Storage Class</SubTitleSmall>
           When choosing an S3 storage class, consider the following factors:
-          <StyledListItemIndent><BoldText>Access Frequency</BoldText>: How often you need to access the data.</StyledListItemIndent>
-          <StyledListItemIndent><BoldText>Retrieval Time</BoldText>: The acceptable time frame for retrieving data.</StyledListItemIndent>
-          <StyledListItemIndent><BoldText>Durability and Availability Requirements</BoldText>: The level of redundancy and availability you need.</StyledListItemIndent>
-          <StyledListItemIndent><BoldText>Cost</BoldText>: The cost trade-offs between storage, retrieval, and transfer.</StyledListItemIndent>
+          <StyledListItem><BoldText>Access Frequency</BoldText>: How often you need to access the data.</StyledListItem>
+          <StyledListItem><BoldText>Retrieval Time</BoldText>: The acceptable time frame for retrieving data.</StyledListItem>
+          <StyledListItem><BoldText>Durability and Availability Requirements</BoldText>: The level of redundancy and availability you need.</StyledListItem>
+          <StyledListItem><BoldText>Cost</BoldText>: The cost trade-offs between storage, retrieval, and transfer.</StyledListItem>
+          <Spacer />
+          <SubTitle id="lifecycle-rules">Lifecycle Rules</SubTitle>
+          Lifecycle rules allow you to manage your objects so that they are stored cost-effectively throughout their lifecycle. Lifecycle rules enable you to define actions that AWS S3 applies to groups of objects,
+          including transitioning objects between storage classes and deleting objects after a specified period. A lifecycle configuration is a set of rules that define actions S3 applies to objects during their lifetime.
+          Each rule specifies an action to perform on a set of objects defined by a prefix (object name prefix) or tag filters.
+          <StyledImage src={S3LifecycleRule} />
+          <Spacer />
+          Lifecycle actions can include transitioning objects to different storage classes, expiring objects, and aborting incomplete multipart uploads.
+          <Spacer />
+          <Spacer />
+          <StyledListItem><BoldText>Transition Actions</BoldText>: Move objects to a different storage class based on the age of the object. For example:</StyledListItem>
+          <StyledListItemIndent>Transition objects to the S3 Standard-IA storage class 30 days after creation.</StyledListItemIndent>
+          <StyledListItemIndent>Move objects to S3 Glacier Flexible Retrieval after 60 days.</StyledListItemIndent>
+          <StyledListItemIndent>Transition objects to S3 Glacier Deep Archive for long-term storage after 180 days.</StyledListItemIndent>
+          <StyledListItem><BoldText>Expiration Actions</BoldText>: Permanently delete objects after a specified period. For example:</StyledListItem>
+          <StyledListItemIndent>Expire objects 365 days after creation.</StyledListItemIndent>
+          <StyledListItem><BoldText>Abort Incomplete Multipart Uploads</BoldText>: Configure a rule to abort incomplete multipart uploads after a specified number of days. This helps to avoid incurring storage costs for incomplete multipart uploads.</StyledListItem>
+          <Spacer />
+          Rules can be created for a certain prefix (example: s3://mybucket/mp3/*) and created for certain object tags (example: Department: Finance).
+          <Spacer />
+          <Spacer />
+          <SubTitle id="requester-pays">Requester Pays</SubTitle>
+          In general, bucket owners pay for all of the storage and data transfer costs associated with their bucket. With Requester Pays buckets, the requester instead of the bucket owner pays the cost of the request and the data download from the bucket.
+          This feature is helpful when you want to share large datasets with other accounts. The requester must be authenticated in AWS for this feature to work.
+          <StyledImage src={S3RequesterPaysBucket} />
+          <Spacer />
+          <SubTitle id="event-notifications">Event Notifications</SubTitle>
+          Event Notifications allow you to automatically trigger actions in response to changes in your S3 buckets. These notifications can be configured to send messages to Amazon Simple Notification Service (SNS), 
+          Amazon Simple Queue Service (SQS), or invoke AWS Lambda functions when specific events occur in your S3 bucket. Event notifications typically deliver events in seconds but can sometimes take a minute or longer. S3 supports various 
+          types of events, including:
+          <StyledListItem>s3:ObjectCreated:*: Triggered when an object is created.</StyledListItem>
+          <StyledListItem>s3:ObjectCreated:Put: Triggered specifically for PUT operations.</StyledListItem>
+          <StyledListItem>s3:ObjectCreated:Post: Triggered for POST operations.</StyledListItem>
+          <StyledListItem>s3:ObjectCreated:Copy: Triggered for COPY operations.</StyledListItem>
+          <StyledListItem>s3:ObjectCreated:CompleteMultipartUpload: Triggered when a multipart upload is completed.</StyledListItem>
+          <StyledListItem>s3:ObjectRemoved:*: Triggered when an object is deleted.</StyledListItem>
+          <StyledListItem>s3:ObjectRemoved:Delete: Triggered specifically for DELETE operations.</StyledListItem>
+          <StyledListItem>s3:ObjectRemoved:DeleteMarkerCreated: Triggered when a delete marker is created.</StyledListItem>
+          <StyledListItem>s3:ObjectRestore:Post: Triggered when a restore is initiated for an object in the S3 Glacier storage class.</StyledListItem>
+          <StyledListItem>s3:ObjectRestore:Completed: Triggered when the restore is completed.</StyledListItem>
+          <StyledListItem>s3:Replication:*: Various events related to replication, such as s3:Replication:OperationFailedReplication, s3:Replication:OperationMissedThreshold</StyledListItem>
+          <Spacer />
+          <StyledImage src={S3EventDestination} />
+          <Spacer />
+          <SubTitleSmall>Example Use Cases</SubTitleSmall>
+          <StyledListItem><BoldText>Image Processing</BoldText>: Automatically trigger a Lambda function to process images (e.g., generate thumbnails) when new images are uploaded to an S3 bucket.</StyledListItem>
+          <StyledListItem><BoldText>Data Ingestion</BoldText>: Send a message to an SQS queue for further processing when new data files are uploaded.</StyledListItem>
+          <StyledListItem><BoldText>Monitoring and Alerting</BoldText>: Use SNS to send notifications or alerts when specific events occur in your S3 bucket.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Considerations</SubTitleSmall>
+          <StyledListItem><BoldText>Permissions</BoldText>: Ensure that the S3 bucket has the appropriate permissions to invoke Lambda functions, send messages to SNS topics, or SQS queues.</StyledListItem>
+          <StyledListItem><BoldText>Event Delivery Retry</BoldText>: AWS retries event notifications if the destination (Lambda, SQS, SNS) is temporarily unavailable.</StyledListItem>
+          <StyledListItem><BoldText>Configuration Limits</BoldText>: Each bucket can have up to 1,000 event notifications. Consider consolidating configurations if needed.</StyledListItem>
+          <Spacer />
         </Text>
       </Container>
     </Wrapper>
   );
 }
 
-export default AWSRoute53;
+export default AWS3;
