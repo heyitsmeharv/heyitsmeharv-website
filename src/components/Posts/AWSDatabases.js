@@ -217,6 +217,9 @@ const AWSDatabases = () => {
         <Spacer />
         <Text>
           I'll be briefly covering databases which AWS provide as well as the key features that each service offer. I've also listed <StyledAnchor href="#skip">ports at the end</StyledAnchor> to be familiar with.
+          <Spacer />
+          <Spacer />
+
           <SubTitle id="rds">Amazon Relational Database Service (RDS)</SubTitle>
           This service allows you to create a database in the cloud. You can choose from the following:
           <StyledListItem>Microsoft SQL Server</StyledListItem>
