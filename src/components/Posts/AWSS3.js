@@ -217,7 +217,7 @@ const AWS3 = () => {
       </StyledNavButton>
       <Container>
         <Flex>
-          <Title>AWS S3</Title>
+          <Title>Amazon Simple Storage Service (S3)</Title>
           <IconWrapper>
             <Icon><AWSSVG /></Icon>
             <Icon><AWSS3SVG /></Icon>
@@ -237,7 +237,7 @@ const AWS3 = () => {
           <StyledAnchor href="#event-notifications"><StyledListItem>Event Notifications</StyledListItem></StyledAnchor>
 
           <Spacer />
-          <SubTitle id="s3-introduction">Amazon S3</SubTitle>
+          <SubTitle id="s3-introduction">Amazon Simple Storage Service</SubTitle>
           Amazon Simple Storage Service (Amazon S3) is a highly scalable, durable, and secure object storage service. Amazon S3 is widely used across industries for its reliability,
           scalability, and security, making it a foundational service for storing and managing data in the cloud.
           <Spacer />

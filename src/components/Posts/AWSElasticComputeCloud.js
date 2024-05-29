@@ -210,7 +210,7 @@ const AWSElasticComputeCloud = () => {
       </StyledNavButton>
       <Container>
         <Flex>
-          <Title>AWS Elastic Compute Cloud (EC2)</Title>
+          <Title>Amazon Elastic Compute Cloud (EC2)</Title>
           <IconWrapper>
             <Icon><AWSSVG /></Icon>
             <Icon><AWSEC2SVG /></Icon>
