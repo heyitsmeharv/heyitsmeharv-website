@@ -294,11 +294,11 @@ const AWSRoute53 = () => {
           You can refer to my previous post that goes into detail on 👉 <StyledAnchorText><StyledNavLink exact to={`/blog/aws-identity-access-management`}>IAM policies</StyledNavLink></StyledAnchorText>.
           <Spacer />
           <Spacer />
-          <HeadingSmall>User-Based</HeadingSmall>
+          <SubTitleSmall>User-Based</SubTitleSmall>
           User-based policies, also known as identity-based policies, are attached to IAM (Identity and Access Management) identities such as users, groups, or roles. These policies define what actions an identity can perform on which resources.
           <StyledListItem>IAM Policies - which API call should be allowed for a specific user from IAM.</StyledListItem>
           <Spacer />
-          <HeadingSmall>Resource-Based Policies</HeadingSmall>
+          <SubTitleSmall>Resource-Based Policies</SubTitleSmall>
           Resource-based policies are directly attached to AWS resources. These policies specify who (which IAM users, roles, or AWS accounts) can access the resource and what actions they can perform.
           <StyledListItem>Bucket Policies - bucket wide rules from the S3 console - allows cross account.</StyledListItem>
           <StyledListItem>Object Access Control List (ACL) - finer grain (can be disabled).</StyledListItem>
@@ -314,15 +314,15 @@ const AWSRoute53 = () => {
           each object within the bucket can have multiple versions. Each version is assigned a unique version ID. The latest version of an object does not have a version ID (null version) if the bucket was not versioned at the time of the object's creation.
           <StyledImage src={S3Versions} />
           <Spacer />
-          <HeadingSmall>Here's what happens for each operation on a bucket:</HeadingSmall>
-          <StyledListItem><BoldTextSmall>Upload</BoldTextSmall>: Each time you upload an object to a versioning-enabled bucket, S3 assigns a new version ID to the object.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Delete</BoldTextSmall>: When you delete an object, S3 inserts a delete marker (a placeholder object with a unique version ID) instead of permanently removing the object. The object remains in the bucket with older versions intact.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Restore</BoldTextSmall>: To restore a previous version, you can either delete the delete marker or copy the specific version back into place.</StyledListItem>
+          <SubTitleSmall>Here's what happens for each operation on a bucket:</SubTitleSmall>
+          <StyledListItem><BoldText>Upload</BoldText>: Each time you upload an object to a versioning-enabled bucket, S3 assigns a new version ID to the object.</StyledListItem>
+          <StyledListItem><BoldText>Delete</BoldText>: When you delete an object, S3 inserts a delete marker (a placeholder object with a unique version ID) instead of permanently removing the object. The object remains in the bucket with older versions intact.</StyledListItem>
+          <StyledListItem><BoldText>Restore</BoldText>: To restore a previous version, you can either delete the delete marker or copy the specific version back into place.</StyledListItem>
           <Spacer />
-          <HeadingSmall>Benefits of Versioning:</HeadingSmall>
-          <StyledListItem><BoldTextSmall>Data Protection</BoldTextSmall>: Protects against accidental overwrites and deletions. If an object is deleted or overwritten, previous versions can be restored.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Backup and Recovery</BoldTextSmall>: Facilitates easy recovery from unintended deletions and application failures.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Audit and Compliance</BoldTextSmall>: Keeps a complete history of object modifications, which can be crucial for auditing and compliance.</StyledListItem>
+          <SubTitleSmall>Benefits of Versioning:</SubTitleSmall>
+          <StyledListItem><BoldText>Data Protection</BoldText>: Protects against accidental overwrites and deletions. If an object is deleted or overwritten, previous versions can be restored.</StyledListItem>
+          <StyledListItem><BoldText>Backup and Recovery</BoldText>: Facilitates easy recovery from unintended deletions and application failures.</StyledListItem>
+          <StyledListItem><BoldText>Audit and Compliance</BoldText>: Keeps a complete history of object modifications, which can be crucial for auditing and compliance.</StyledListItem>
           <Spacer />
           <SubTitle id="bucket-replication">Replication</SubTitle>
           Replication enables automatic, asynchronous copying of objects across S3 buckets in different AWS Regions (Cross-Region Replication) or within the same region (Same-Region Replication). You define replication rules to specify which objects and object versions should be replicated and to where.
@@ -337,19 +337,81 @@ const AWSRoute53 = () => {
           <StyledListItemIndent>Replicates objects to a bucket within the same AWS Region.</StyledListItemIndent>
           <StyledListItemIndent>Useful for maintaining copies of data for compliance or data redundancy within the same region.</StyledListItemIndent>
           <Spacer />
-          <HeadingSmall>Benefits of Replication:</HeadingSmall>
-          <StyledListItem><BoldTextSmall>Disaster Recovery</BoldTextSmall>: Ensures data is available in multiple locations, providing a fallback option if the primary region is unavailable.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Data Compliance</BoldTextSmall>: Helps meet compliance and regulatory requirements by storing data copies in specific locations.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Low-Latency Access</BoldTextSmall>: Provides low-latency access to data by storing copies closer to the end-users in different regions.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Data Durability and Redundancy</BoldTextSmall>: Enhances data durability and redundancy by storing multiple copies across regions or within the same region.</StyledListItem>
+          <SubTitleSmall>Benefits of Replication:</SubTitleSmall>
+          <StyledListItem><BoldText>Disaster Recovery</BoldText>: Ensures data is available in multiple locations, providing a fallback option if the primary region is unavailable.</StyledListItem>
+          <StyledListItem><BoldText>Data Compliance</BoldText>: Helps meet compliance and regulatory requirements by storing data copies in specific locations.</StyledListItem>
+          <StyledListItem><BoldText>Low-Latency Access</BoldText>: Provides low-latency access to data by storing copies closer to the end-users in different regions.</StyledListItem>
+          <StyledListItem><BoldText>Data Durability and Redundancy</BoldText>: Enhances data durability and redundancy by storing multiple copies across regions or within the same region.</StyledListItem>
           <Spacer />
-          <HeadingSmall>Managing Replication:</HeadingSmall>
-          <StyledListItem><BoldTextSmall>Replication Time Control (RTC)</BoldTextSmall>: Provides a predictable replication time backed by an SLA, ensuring that 99.99% of objects are replicated within 15 minutes.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Object Versioning</BoldTextSmall>: Both source and destination buckets should have versioning enabled to support replication.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Permissions</BoldTextSmall>: The source bucket's AWS Identity and Access Management (IAM) role must have the necessary permissions to read from the source bucket and write to the destination bucket.</StyledListItem>
+          <SubTitleSmall>Managing Replication:</SubTitleSmall>
+          <StyledListItem><BoldText>Replication Time Control (RTC)</BoldText>: Provides a predictable replication time backed by an SLA, ensuring that 99.99% of objects are replicated within 15 minutes.</StyledListItem>
+          <StyledListItem><BoldText>Object Versioning</BoldText>: Both source and destination buckets should have versioning enabled to support replication.</StyledListItem>
+          <StyledListItem><BoldText>Permissions</BoldText>: The source bucket's AWS Identity and Access Management (IAM) role must have the necessary permissions to read from the source bucket and write to the destination bucket.</StyledListItem>
           <Spacer />
           <SubTitle id="storage-classes">Storage Classes</SubTitle>
-          
+          Amazon S3 offers several storage classes, each designed to address different use cases in terms of cost, access frequency, and durability requirements. Here's an overview of the available S3 storage classes:
+          <Spacer />
+          <Spacer />
+          <StyledListItem><BoldText>Standard - General Purpose</BoldText></StyledListItem>
+          <StyledListItemIndent><BoldText>Use Case</BoldText>: General-purpose storage for frequently accessed data.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Durability</BoldText>: 99.999999999% (11 nines) durability.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Availability</BoldText>: 99.99% availability over a given year.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Features</BoldText>: Low latency and high throughput, suitable for a wide range of use cases including big data analytics, mobile and gaming applications, and content distribution.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Retrieval Fee</BoldText>: None.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>Intelligent Tiering</BoldText></StyledListItem>
+          <StyledListItemIndent><BoldText>Use Case</BoldText>: Data with unknown or changing access patterns.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Durability</BoldText>: 99.999999999% (11 nines) durability.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Availability</BoldText>: 99.9% availability over a given year.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Features</BoldText>: Automatically moves objects between two access tiers (frequent and infrequent access) when access patterns change. Optimizes costs without performance impact or operational overhead.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Retrieval Fee</BoldText>: None.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>Standard-Infrequent Access (IA)</BoldText></StyledListItem>
+          <StyledListItemIndent><BoldText>Use Case</BoldText>: Data that is accessed less frequently but requires rapid access when needed.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Durability</BoldText>: 99.999999999% (11 nines) durability.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Availability</BoldText>: 99.9% availability over a given year.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Features</BoldText>: Lower storage cost compared to S3 Standard but with a retrieval fee. Ideal for backups, disaster recovery, and long-term storage of less frequently accessed data.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Retrieval Fee</BoldText>: Per GB retrieved.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>One Zone-Infrequent Access</BoldText></StyledListItem>
+          <StyledListItemIndent><BoldText>Use Case</BoldText>: Infrequently accessed data that does not require multiple availability zone resilience.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Durability</BoldText>: 99.999999999% (11 nines) durability.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Availability</BoldText>: 99.5% availability over a given year.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Features</BoldText>: Lower cost option compared to Standard-IA. Suitable for data that can be easily recreated or for non-critical data stored in a specific availability zone.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Retrieval Fee</BoldText>: Per GB retrieved.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>Glacier Instant Retrieval</BoldText></StyledListItem>
+          <StyledListItemIndent><BoldText>Use Case</BoldText>: Archival storage for rarely accessed data with immediate access needs.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Durability</BoldText>: 99.999999999% (11 nines) durability.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Availability</BoldText>: 99.9% availability over a given year.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Features</BoldText>: Low-cost storage with milliseconds access time. Ideal for medical images, news media assets, and user-generated content that is rarely accessed but needs to be available quickly when requested. <BoldText>Minimum storage duration of 90 days.</BoldText></StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Retrieval Fee</BoldText>: Per GB retrieved.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>Glacier Flexible Retrieval</BoldText></StyledListItem>
+          <StyledListItemIndent><BoldText>Use Case</BoldText>: Long-term archival storage with occasional, flexible retrieval needs.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Durability</BoldText>: 99.999999999% (11 nines) durability.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Availability</BoldText>: 99.99% - Suitable for archival storage where data is rarely accessed.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Features</BoldText>: Low-cost storage with three retrieval options (<BoldText>Minimum storage duration of 90 days.</BoldText>):</StyledListItemIndent>
+          <StyledListItemIndentExtra><BoldText>Expedited</BoldText>: 1-5 minutes retrieval time.</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra><BoldText>Standard</BoldText>: 3-5 hours retrieval time.</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra><BoldText>Bulk</BoldText>:  5-12 hours retrieval time. Ideal for backup and disaster recovery use cases.</StyledListItemIndentExtra>
+          <StyledListItemIndent><BoldText>Retrieval Fee</BoldText>: Per GB retrieved.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>Glacier Deep Archive</BoldText></StyledListItem>
+          <StyledListItemIndent><BoldText>Use Case</BoldText>: Long-term archival storage with infrequent access and long retrieval times.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Durability</BoldText>: 99.999999999% (11 nines) durability.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Availability</BoldText>: 99.99% - Suitable for data that is rarely accessed and for which retrieval time of 12 hours is acceptable.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Features</BoldText>: Lowest storage cost among all S3 classes. Retrieval options include (<BoldText>Minimum storage duration of 180 days.</BoldText>):</StyledListItemIndent>
+          <StyledListItemIndentExtra><BoldText>Standard</BoldText>: 12 hours retrieval time.</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra><BoldText>Bulk</BoldText>: 48 hours retrieval time. Ideal for data that needs to be preserved for 7-10 years or more.</StyledListItemIndentExtra>
+          <StyledListItemIndent><BoldText>Retrieval Fee</BoldText>: Per GB retrieved.</StyledListItemIndent>
+          <Spacer />
+          <SubTitleSmall>Choosing the Right Storage Class</SubTitleSmall>
+          When choosing an S3 storage class, consider the following factors:
+          <StyledListItemIndent><BoldText>Access Frequency</BoldText>: How often you need to access the data.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Retrieval Time</BoldText>: The acceptable time frame for retrieving data.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Durability and Availability Requirements</BoldText>: The level of redundancy and availability you need.</StyledListItemIndent>
+          <StyledListItemIndent><BoldText>Cost</BoldText>: The cost trade-offs between storage, retrieval, and transfer.</StyledListItemIndent>
         </Text>
       </Container>
     </Wrapper>
