@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination/Pagination";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG } from '../resources/styles/icons';
 
 
 const SearchBarWrapper = styled.div`
@@ -181,6 +181,17 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS S3',
+      readingTime: 'approx 20 mins',
+      type: 'Theory',
+      date: '28/05/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }],
+      intro: `Amazon Simple Storage Service (Amazon S3) is a highly scalable, durable, and secure object storage service. Amazon S3 is widely used across industries for its reliability,
+      scalability, and security, making it a foundational service for storing and managing data in the cloud....`,
+      navigate: 'aws-s3',
+      published: true
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -273,6 +284,17 @@ export default function Blog() {
       intro: `Amazon Route 53 is a scalable and highly available Domain Name System (DNS). It is designed to route end-user requests to internet applications hosted on AWS infrastructure,
       as well as external resources. Overall, Amazon Route 53 is a robust solution for DNS management...`,
       navigate: 'aws-route53',
+      published: true
+    },
+    {
+      title: 'AWS S3',
+      readingTime: 'approx 20 mins',
+      type: 'Theory',
+      date: '28/05/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }],
+      intro: `Amazon Simple Storage Service (Amazon S3) is a highly scalable, durable, and secure object storage service. Amazon S3 is widely used across industries for its reliability,
+      scalability, and security, making it a foundational service for storing and managing data in the cloud....`,
+      navigate: 'aws-s3',
       published: true
     },
     {
