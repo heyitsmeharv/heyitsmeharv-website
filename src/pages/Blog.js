@@ -107,7 +107,7 @@ const Button = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${({ theme }) => theme.primary}; 
+    background-color: ${({ theme }) => theme.secondary}; 
   }
 `;
 
