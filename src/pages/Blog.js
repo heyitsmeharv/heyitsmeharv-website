@@ -74,12 +74,51 @@ const StyledPillButton = styled.button`
   `}
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 200px);
+  background-color: #f8f9fa;
+  color: #343a40;
+`;
+
+const Message = styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+`;
+
+const Description = styled.p`
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 600px;
+`;
+
+const Button = styled.button`
+  padding: 0.8rem 1.5rem;
+  font-size: 1.5rem;
+  background-color: ${({ theme }) => theme.primary}; 
+  color: ${({ theme }) => theme.text}; 
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.primary}; 
+  }
+`;
+
+
 /* COOL TAG COLOURS */
 // #64CBF6
 // #8B191D
 // #23262E
 
 export default function Blog() {
+  const [isEmpty, setIsEmpty] = useState(false);
   const [search, setSearch] = useState('');
   const [filterButtons, setFilterButtons] = useState([
     {
@@ -313,8 +352,12 @@ export default function Blog() {
   useEffect(() => {
     if (search !== '') {
       setBlogPosts(blogPosts.filter(x => x.title.toLowerCase().includes(search.toLowerCase()) || x.type.toLowerCase().includes(search.toLowerCase())));
+      if (blogPosts.length === 0) {
+        setIsEmpty(true)
+      }
     } else {
-      setBlogPosts(defaultArr);
+      setIsEmpty(false)
+      setBlogPosts(defaultArr.reverse());
     }
   }, [search]);
 
@@ -354,9 +397,9 @@ export default function Blog() {
           });
         });
       });
-      setBlogPosts(arr);
+      setBlogPosts(arr.reverse());
     } else {
-      setBlogPosts(defaultArr);
+      setBlogPosts(defaultArr.reverse());
     }
   };
 
@@ -381,7 +424,14 @@ export default function Blog() {
           );
         })}
       </StyledPillButtonWrapper>
-      <Pagination itemsPerPage={6} items={blogPosts} />
+      {!isEmpty ?
+        <Pagination itemsPerPage={6} items={blogPosts} />
+        : <Container>
+          <Message>0 Results Found</Message>
+          <Description>Sorry, but there's no match for your search.</Description>
+          <Button onClick={() => setSearch('')}>Clear</Button>
+        </Container>
+      }
     </>
   );
 }
