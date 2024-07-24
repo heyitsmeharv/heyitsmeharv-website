@@ -103,7 +103,6 @@ const Introduction = ({ language, open, setOpen }) => {
                 {curriculumVitaeButtonText(language)}
               </StyledAnchor>
             </ReactGA.OutboundLink>
-
           </DownloadCVButton>
         </ButtonWrapper>
       </IntroWrapper >

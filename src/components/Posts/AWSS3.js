@@ -235,6 +235,7 @@ const AWS3 = () => {
           <StyledAnchor href="#lifecycle-rules"><StyledListItem>Lifecycle Rules</StyledListItem></StyledAnchor>
           <StyledAnchor href="#requester-pays"><StyledListItem>Requester Pays</StyledListItem></StyledAnchor>
           <StyledAnchor href="#event-notifications"><StyledListItem>Event Notifications</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#performance"><StyledListItem>Performance</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="s3-introduction">Amazon Simple Storage Service</SubTitle>
@@ -321,14 +322,14 @@ const AWS3 = () => {
           <StyledImage src={S3Versions} />
           <Spacer />
           <SubTitleSmall>Here's what happens for each operation on a bucket:</SubTitleSmall>
-          <StyledListItem><BoldText>Upload</BoldText>: Each time you upload an object to a versioning-enabled bucket, S3 assigns a new version ID to the object.</StyledListItem>
-          <StyledListItem><BoldText>Delete</BoldText>: When you delete an object, S3 inserts a delete marker (a placeholder object with a unique version ID) instead of permanently removing the object. The object remains in the bucket with older versions intact.</StyledListItem>
-          <StyledListItem><BoldText>Restore</BoldText>: To restore a previous version, you can either delete the delete marker or copy the specific version back into place.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Upload</BoldTextSmall>: Each time you upload an object to a versioning-enabled bucket, S3 assigns a new version ID to the object.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Delete</BoldTextSmall>: When you delete an object, S3 inserts a delete marker (a placeholder object with a unique version ID) instead of permanently removing the object. The object remains in the bucket with older versions intact.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Restore</BoldTextSmall>: To restore a previous version, you can either delete the delete marker or copy the specific version back into place.</StyledListItem>
           <Spacer />
           <SubTitleSmall>Benefits of Versioning:</SubTitleSmall>
-          <StyledListItem><BoldText>Data Protection</BoldText>: Protects against accidental overwrites and deletions. If an object is deleted or overwritten, previous versions can be restored.</StyledListItem>
-          <StyledListItem><BoldText>Backup and Recovery</BoldText>: Facilitates easy recovery from unintended deletions and application failures.</StyledListItem>
-          <StyledListItem><BoldText>Audit and Compliance</BoldText>: Keeps a complete history of object modifications, which can be crucial for auditing and compliance.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Data Protection</BoldTextSmall>: Protects against accidental overwrites and deletions. If an object is deleted or overwritten, previous versions can be restored.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Backup and Recovery</BoldTextSmall>: Facilitates easy recovery from unintended deletions and application failures.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Audit and Compliance</BoldTextSmall>: Keeps a complete history of object modifications, which can be crucial for auditing and compliance.</StyledListItem>
           <Spacer />
           <SubTitle id="bucket-replication">Replication</SubTitle>
           Replication enables automatic, asynchronous copying of objects across S3 buckets in different AWS Regions (Cross-Region Replication) or within the same region (Same-Region Replication). You define replication rules to specify which objects and object versions should be replicated and to where.
@@ -344,15 +345,15 @@ const AWS3 = () => {
           <StyledListItemIndent>Useful for maintaining copies of data for compliance or data redundancy within the same region.</StyledListItemIndent>
           <Spacer />
           <SubTitleSmall>Benefits of Replication:</SubTitleSmall>
-          <StyledListItem><BoldText>Disaster Recovery</BoldText>: Ensures data is available in multiple locations, providing a fallback option if the primary region is unavailable.</StyledListItem>
-          <StyledListItem><BoldText>Data Compliance</BoldText>: Helps meet compliance and regulatory requirements by storing data copies in specific locations.</StyledListItem>
-          <StyledListItem><BoldText>Low-Latency Access</BoldText>: Provides low-latency access to data by storing copies closer to the end-users in different regions.</StyledListItem>
-          <StyledListItem><BoldText>Data Durability and Redundancy</BoldText>: Enhances data durability and redundancy by storing multiple copies across regions or within the same region.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Disaster Recovery</BoldTextSmall>: Ensures data is available in multiple locations, providing a fallback option if the primary region is unavailable.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Data Compliance</BoldTextSmall>: Helps meet compliance and regulatory requirements by storing data copies in specific locations.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Low-Latency Access</BoldTextSmall>: Provides low-latency access to data by storing copies closer to the end-users in different regions.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Data Durability and Redundancy</BoldTextSmall>: Enhances data durability and redundancy by storing multiple copies across regions or within the same region.</StyledListItem>
           <Spacer />
           <SubTitleSmall>Managing Replication:</SubTitleSmall>
-          <StyledListItem><BoldText>Replication Time Control (RTC)</BoldText>: Provides a predictable replication time backed by an SLA, ensuring that 99.99% of objects are replicated within 15 minutes.</StyledListItem>
-          <StyledListItem><BoldText>Object Versioning</BoldText>: Both source and destination buckets should have versioning enabled to support replication.</StyledListItem>
-          <StyledListItem><BoldText>Permissions</BoldText>: The source bucket's AWS Identity and Access Management (IAM) role must have the necessary permissions to read from the source bucket and write to the destination bucket.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Replication Time Control (RTC)</BoldTextSmall>: Provides a predictable replication time backed by an SLA, ensuring that 99.99% of objects are replicated within 15 minutes.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Object Versioning</BoldTextSmall>: Both source and destination buckets should have versioning enabled to support replication.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Permissions</BoldTextSmall>: The source bucket's AWS Identity and Access Management (IAM) role must have the necessary permissions to read from the source bucket and write to the destination bucket.</StyledListItem>
           <Spacer />
           <SubTitle id="storage-classes">Storage Classes</SubTitle>
           Amazon S3 offers several storage classes, each designed to address different use cases in terms of cost, access frequency, and durability requirements. Here's an overview of the available S3 storage classes:
@@ -414,10 +415,10 @@ const AWS3 = () => {
           <Spacer />
           <SubTitleSmall>Choosing the Right Storage Class</SubTitleSmall>
           When choosing an S3 storage class, consider the following factors:
-          <StyledListItem><BoldText>Access Frequency</BoldText>: How often you need to access the data.</StyledListItem>
-          <StyledListItem><BoldText>Retrieval Time</BoldText>: The acceptable time frame for retrieving data.</StyledListItem>
-          <StyledListItem><BoldText>Durability and Availability Requirements</BoldText>: The level of redundancy and availability you need.</StyledListItem>
-          <StyledListItem><BoldText>Cost</BoldText>: The cost trade-offs between storage, retrieval, and transfer.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Access Frequency</BoldTextSmall>: How often you need to access the data.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Retrieval Time</BoldTextSmall>: The acceptable time frame for retrieving data.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Durability and Availability Requirements</BoldTextSmall>: The level of redundancy and availability you need.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Cost</BoldTextSmall>: The cost trade-offs between storage, retrieval, and transfer.</StyledListItem>
           <Spacer />
           <SubTitle id="lifecycle-rules">Lifecycle Rules</SubTitle>
           Lifecycle rules allow you to manage your objects so that they are stored cost-effectively throughout their lifecycle. Lifecycle rules enable you to define actions that AWS S3 applies to groups of objects,
@@ -444,9 +445,10 @@ const AWS3 = () => {
           This feature is helpful when you want to share large datasets with other accounts. The requester must be authenticated in AWS for this feature to work.
           <StyledImage src={S3RequesterPaysBucket} />
           <Spacer />
+          <Spacer />
           <SubTitle id="event-notifications">Event Notifications</SubTitle>
-          Event Notifications allow you to automatically trigger actions in response to changes in your S3 buckets. These notifications can be configured to send messages to Amazon Simple Notification Service (SNS), 
-          Amazon Simple Queue Service (SQS), or invoke AWS Lambda functions when specific events occur in your S3 bucket. Event notifications typically deliver events in seconds but can sometimes take a minute or longer. S3 supports various 
+          Event Notifications allow you to automatically trigger actions in response to changes in your S3 buckets. These notifications can be configured to send messages to Amazon Simple Notification Service (SNS),
+          Amazon Simple Queue Service (SQS), or invoke AWS Lambda functions when specific events occur in your S3 bucket. Event notifications typically deliver events in seconds but can sometimes take a minute or longer. S3 supports various
           types of events, including:
           <StyledListItem>s3:ObjectCreated:*: Triggered when an object is created.</StyledListItem>
           <StyledListItem>s3:ObjectCreated:Put: Triggered specifically for PUT operations.</StyledListItem>
@@ -463,15 +465,64 @@ const AWS3 = () => {
           <StyledImage src={S3EventDestination} />
           <Spacer />
           <SubTitleSmall>Example Use Cases</SubTitleSmall>
-          <StyledListItem><BoldText>Image Processing</BoldText>: Automatically trigger a Lambda function to process images (e.g., generate thumbnails) when new images are uploaded to an S3 bucket.</StyledListItem>
-          <StyledListItem><BoldText>Data Ingestion</BoldText>: Send a message to an SQS queue for further processing when new data files are uploaded.</StyledListItem>
-          <StyledListItem><BoldText>Monitoring and Alerting</BoldText>: Use SNS to send notifications or alerts when specific events occur in your S3 bucket.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Image Processing</BoldTextSmall>: Automatically trigger a Lambda function to process images (e.g., generate thumbnails) when new images are uploaded to an S3 bucket.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Data Ingestion</BoldTextSmall>: Send a message to an SQS queue for further processing when new data files are uploaded.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Monitoring and Alerting</BoldTextSmall>: Use SNS to send notifications or alerts when specific events occur in your S3 bucket.</StyledListItem>
           <Spacer />
           <SubTitleSmall>Considerations</SubTitleSmall>
-          <StyledListItem><BoldText>Permissions</BoldText>: Ensure that the S3 bucket has the appropriate permissions to invoke Lambda functions, send messages to SNS topics, or SQS queues.</StyledListItem>
-          <StyledListItem><BoldText>Event Delivery Retry</BoldText>: AWS retries event notifications if the destination (Lambda, SQS, SNS) is temporarily unavailable.</StyledListItem>
-          <StyledListItem><BoldText>Configuration Limits</BoldText>: Each bucket can have up to 1,000 event notifications. Consider consolidating configurations if needed.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Permissions</BoldTextSmall>: Ensure that the S3 bucket has the appropriate permissions to invoke Lambda functions, send messages to SNS topics, or SQS queues.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Event Delivery Retry</BoldTextSmall>: AWS retries event notifications if the destination (Lambda, SQS, SNS) is temporarily unavailable.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Configuration Limits</BoldTextSmall>: Each bucket can have up to 1,000 event notifications. Consider consolidating configurations if needed.</StyledListItem>
           <Spacer />
+          <SubTitle id="performance">Performance</SubTitle>
+          The baseline performance of Amazon S3 includes several key aspects:
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Throughput and Latency</SubTitleSmall>
+          <HeadingSmall>High Throughput</HeadingSmall>
+          Amazon S3 is designed to provide high throughput, allowing for large-scale data transfers. The service supports thousands of requests per second, making it suitable for big data analytics, media processing,
+          and backup and restore applications.
+          <Spacer />
+          <HeadingSmall>Low Latency</HeadingSmall>
+          S3 offers low-latency access to data, with typical read and write latencies in the range of a few milliseconds. This ensures quick retrieval and storage operations, which is essential for time-sensitive applications.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Request Rate and Performance Guidelines</SubTitleSmall>
+          <HeadingSmall>Request Rate Limits</HeadingSmall>
+          Amazon S3 can handle up to 3,500 PUT/POST/DELETE requests per second and 5,500 GET requests per second per prefix in a bucket. By using multiple prefixes, you can scale these limits further.
+          <Spacer />
+          <HeadingSmall>Performance Best Practices:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Prefix Utilization</BoldTextSmall>: Distribute objects across multiple prefixes to optimize performance. This avoids request rate limits being concentrated on a single prefix.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Multipart Upload</BoldTextSmall>: For large files, use multipart upload to improve upload speed and reliability.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Parallelization</BoldTextSmall>: Utilize parallel GETs to increase the speed of large object retrievals.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Object Key Naming</BoldTextSmall>: Use random or sequential key names to improve request distribution across S3's infrastructure.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Data Transfer</SubTitleSmall>
+          <HeadingSmall>Upload Performance:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Single PUT</BoldTextSmall>: For small objects, use single PUT requests.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Multipart Upload</BoldTextSmall>: For objects larger than 100 MB, it is recommended to use multipart upload, which enables faster and more efficient uploads.</StyledListItem>
+          <HeadingSmall>Download Performance:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Range GET</BoldTextSmall>: Use Range GETs to retrieve partial data from objects, which can enhance download performance and save bandwidth.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Consistency Model</SubTitleSmall>
+          <HeadingSmall>Read-after-Write Consistency</HeadingSmall>
+          Amazon S3 offers read-after-write consistency for PUTs of new objects in your S3 bucket in all regions.
+          <HeadingSmall>Eventual Consistency</HeadingSmall>
+          Overwrite PUTS and DELETES (PUTS that overwrite an existing object and DELETES of objects) are eventually consistent.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Scalability and Concurrency</SubTitleSmall>
+          Amazon S3 automatically scales to handle the load, so there are no hard limits on the number of objects you can store or the total amount of storage you can consume. This scalability supports concurrent 
+          access and operations on your data, allowing multiple users and applications to interact with the storage simultaneously.
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Network Considerations</SubTitleSmall>
+          <HeadingSmall>Transfer Acceleration</HeadingSmall>
+          <HeadingSmall>Direct Connect</HeadingSmall>
+          <Spacer />
+          <SubTitleSmall>Monitoring and Optimization</SubTitleSmall>
+          <HeadingSmall>S3 Storage Lens</HeadingSmall>
+          <HeadingSmall>CloudWatch Metrics</HeadingSmall>
         </Text>
       </Container>
     </Wrapper>
