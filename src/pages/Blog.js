@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination/Pagination";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG } from '../resources/styles/icons';
 
 
 const SearchBarWrapper = styled.div`
@@ -231,6 +231,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Cloudfront',
+      readingTime: 'N/A',
+      type: 'Theory',
+      date: '24/07/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
+      intro: `....`,
+      navigate: 'aws-cloudfront',
+      published: false
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -335,6 +345,16 @@ export default function Blog() {
       scalability, and security, making it a foundational service for storing and managing data in the cloud....`,
       navigate: 'aws-s3',
       published: true
+    },
+    {
+      title: 'AWS Cloudfront',
+      readingTime: 'N/A',
+      type: 'Theory',
+      date: '24/07/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
+      intro: `....`,
+      navigate: 'aws-cloudfront',
+      published: false
     },
     {
       title: 'React.js Text Based Adventure Game',
