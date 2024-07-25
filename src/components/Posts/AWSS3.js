@@ -19,6 +19,9 @@ import S3Versions from "../../resources/images/blog/AWSS3/s3_versions.jpeg";
 import S3LifecycleRule from "../../resources/images/blog/AWSS3/s3_lifecycle_rule.jpeg";
 import S3RequesterPaysBucket from "../../resources/images/blog/AWSS3/s3_requester_pays_bucket.jpeg";
 import S3EventDestination from "../../resources/images/blog/AWSS3/s3_event_destination.jpeg";
+import S3MultiPartUpload from "../../resources/images/blog/AWSS3/s3_multi_part_upload.jpeg";
+import S3TransferAcceleration from "../../resources/images/blog/AWSS3/s3_transfer_acceleration.jpeg";
+
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -187,7 +190,10 @@ const Icon = styled.div`
   }
 `;
 
-const Spacer = styled.br``
+const Spacer = styled.br`
+  display: block;
+  margin: 10px 0;
+`;
 
 const AWS3 = () => {
 
@@ -491,22 +497,31 @@ const AWS3 = () => {
           <HeadingSmall>Request Rate Limits</HeadingSmall>
           Amazon S3 can handle up to 3,500 PUT/POST/DELETE requests per second and 5,500 GET requests per second per prefix in a bucket. By using multiple prefixes, you can scale these limits further.
           <Spacer />
-          <HeadingSmall>Performance Best Practices:</HeadingSmall>
-          <StyledListItem><BoldTextSmall>Prefix Utilization</BoldTextSmall>: Distribute objects across multiple prefixes to optimize performance. This avoids request rate limits being concentrated on a single prefix.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Multipart Upload</BoldTextSmall>: For large files, use multipart upload to improve upload speed and reliability.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Parallelization</BoldTextSmall>: Utilize parallel GETs to increase the speed of large object retrievals.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Object Key Naming</BoldTextSmall>: Use random or sequential key names to improve request distribution across S3's infrastructure.</StyledListItem>
+          <HeadingSmall>Prefix Utilization</HeadingSmall>
+          There are no limits to the number of prefixes in a bucket. Distribute objects across multiple prefixes to optimize performance. This avoids request rate limits being concentrated on a single prefix.
+          <Spacer />
+          <HeadingSmall>Multipart Upload</HeadingSmall>
+          For large files, use multipart upload to improve upload speed and reliability. It's recommended for files bigger than 100MB and it's a must use for files that are bigger than 5GB.
+          <StyledImage src={S3MultiPartUpload} />
+          <Spacer />
+          <HeadingSmall>Transfer Acceleration</HeadingSmall>
+          Increases transfer speed by transferring files to an AWS edge location which will forward the data to the S3 bucket in the target region. This feature is also compatible with multi-part upload.
+          <StyledImage src={S3TransferAcceleration} />
           <Spacer />
           <SubTitleSmall>Data Transfer</SubTitleSmall>
+          <Spacer />
           <HeadingSmall>Upload Performance:</HeadingSmall>
           <StyledListItem><BoldTextSmall>Single PUT</BoldTextSmall>: For small objects, use single PUT requests.</StyledListItem>
           <StyledListItem><BoldTextSmall>Multipart Upload</BoldTextSmall>: For objects larger than 100 MB, it is recommended to use multipart upload, which enables faster and more efficient uploads.</StyledListItem>
+          <Spacer />
           <HeadingSmall>Download Performance:</HeadingSmall>
           <StyledListItem><BoldTextSmall>Range GET</BoldTextSmall>: Use Range GETs to retrieve partial data from objects, which can enhance download performance and save bandwidth.</StyledListItem>
           <Spacer />
           <SubTitleSmall>Consistency Model</SubTitleSmall>
+          <Spacer />
           <HeadingSmall>Read-after-Write Consistency</HeadingSmall>
           Amazon S3 offers read-after-write consistency for PUTs of new objects in your S3 bucket in all regions.
+          <Spacer />
           <HeadingSmall>Eventual Consistency</HeadingSmall>
           Overwrite PUTS and DELETES (PUTS that overwrite an existing object and DELETES of objects) are eventually consistent.
           <Spacer />
@@ -517,12 +532,12 @@ const AWS3 = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Network Considerations</SubTitleSmall>
-          <HeadingSmall>Transfer Acceleration</HeadingSmall>
-          <HeadingSmall>Direct Connect</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Transfer Acceleration</BoldTextSmall>: S3 Transfer Acceleration can speed up content transfers to and from S3 buckets over long distances by leveraging Amazon CloudFront’s globally distributed edge locations.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Direct Connect</BoldTextSmall>: For more predictable performance and lower latency, AWS Direct Connect provides dedicated network connections from your premises to AWS.</StyledListItem>
           <Spacer />
           <SubTitleSmall>Monitoring and Optimization</SubTitleSmall>
-          <HeadingSmall>S3 Storage Lens</HeadingSmall>
-          <HeadingSmall>CloudWatch Metrics</HeadingSmall>
+          <StyledListItem><BoldTextSmall>S3 Storage Lens</BoldTextSmall>: Provides visibility into storage usage and activity trends, helping optimize performance and costs.</StyledListItem>
+          <StyledListItem><BoldTextSmall>CloudWatch Metrics</BoldTextSmall>: Use CloudWatch to monitor S3 performance and set up alerts for unusual activity.</StyledListItem>
         </Text>
       </Container>
     </Wrapper>
