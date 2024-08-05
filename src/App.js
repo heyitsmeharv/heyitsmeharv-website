@@ -37,7 +37,7 @@ import AWSElasticComputeCloud from "./components/Posts/AWSElasticComputeCloud";
 import AWSDatabases from "./components/Posts/AWSDatabases";
 import AWSRoute53 from "./components/Posts/AWSRoute53";
 import AWSS3 from "./components/Posts/AWSS3";
-import AWSCloudfront from "./components/Posts/AWSCloudfront";
+import AWSCloudFront from "./components/Posts/AWSCloudFront";
 
 
 const Wrapper = styled.div`
@@ -114,7 +114,7 @@ const App = () => {
                     <Route exact path='/blog/aws-databases' component={AWSDatabases} />
                     <Route exact path='/blog/aws-route53' component={AWSRoute53} />
                     <Route exact path='/blog/aws-s3' component={AWSS3} />
-                    <Route exact path='/blog/aws-cloudfront' component={AWSCloudfront} />
+                    <Route exact path='/blog/aws-cloudfront' component={AWSCloudFront} />
                   </Switch>
                 </>
               );
