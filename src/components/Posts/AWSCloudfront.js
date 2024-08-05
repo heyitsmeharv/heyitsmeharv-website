@@ -16,6 +16,9 @@ import Table from '../Table/Table';
 // images
 import CloudFrontHighLevelOverview from "../../resources/images/blog/AWSCloudFront/cloudfront_high_level_overview.jpeg";
 import CloudFrontS3Origin from "../../resources/images/blog/AWSCloudFront/cloudfront_s3_origin.jpeg";
+import CloudFrontALBOrigin from "../../resources/images/blog/AWSCloudFront/cloudfront_alb_origin.jpeg";
+import CloudFrontCacheInvalidation from "../../resources/images/blog/AWSCloudFront/cloudfront_cache_invalidation.jpeg";
+import CloudFrontGlobalAccelerator from "../../resources/images/blog/AWSCloudFront/cloudfront_global_accelerator.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -258,9 +261,59 @@ const AWSCloudFront = () => {
           <SubTitle id="s3-as-origin">S3 as an Origin</SubTitle>
           Here is an example detailing how Cloudfront uses an S3 bucket at an origin. The S3 bucket will use a Origin Access Control (OAC) along with a bucket policy to permit distributions through the S3 bucket.
           <StyledImage src={CloudFrontS3Origin} />
-          <SubTitle id="s3-as-origin">ALB as an Origin</SubTitle>
-          {/* <StyledImage src={CloudFrontS3Origin} /> */}
+          <SubTitle id="alb-as-origin">ALB as an Origin</SubTitle>
+          It's possible for CloudFront to access any HTTP backend like an EC2 instance or a load balancer. There is no private VPC connectivity within CloudFront so security groups must be setup to allow traffic between edge locations 
+          and the instance you want to connect to.
+          <StyledImage src={CloudFrontALBOrigin} />
           <Spacer />
+          <SubTitle id="geo-restriction">Geo-Restriction</SubTitle>
+          AWS CloudFront Geo-Restriction, also known as geo-blocking, allows you to control the distribution of your content based on the geographic location of your viewers. This feature enables you to restrict access to your content to specific countries or regions, enhancing content security, 
+          ensuring compliance with regional regulations, and managing content distribution rights.
+          <Spacer />
+          <HeadingSmall>Key features:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Whitelist or Blacklist Countries</BoldTextSmall>: You can specify a list of countries where your content is allowed (whitelist) or specify countries where access is denied (blacklist).</StyledListItem>
+          <StyledListItem><BoldTextSmall>Custom Error Pages</BoldTextSmall>: You can configure custom error pages to be displayed when a user from a restricted location tries to access your content.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Edge Locations</BoldTextSmall>: CloudFront uses its global network of edge locations to determine the geographic location of the request and enforce geo-restrictions accordingly.</StyledListItem>
+          <Spacer />
+          <HeadingSmall>How it works:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Request from Viewer</BoldTextSmall>: A viewer requests content from your CloudFront distribution.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Geo-Location Determination</BoldTextSmall>: CloudFront determines the geographic location of the request using the viewer's IP address.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Geo-Restriction Check</BoldTextSmall>: CloudFront checks the geo-restriction settings for your distribution to see if the viewer's location is allowed to access the content.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Content Delivery or Denial</BoldTextSmall>: CloudFront continuously monitors and manages the edge locations to ensure optimal performance and availability.</StyledListItem>
+          <StyledListItemIndent>If the viewer's location is allowed, CloudFront serves the requested content from the nearest edge location.</StyledListItemIndent>
+          <StyledListItemIndent>If the viewer's location is restricted, CloudFront returns an HTTP 403 (Forbidden) status code, optionally displaying a custom error page if configured.</StyledListItemIndent>
+          <Spacer />
+          <SubTitle id="price-classes">Pricing</SubTitle>
+          There are three price classes for CloudFront. Essentially the lower number of edge locations you use, the less it will cost to distribute your content. These classes are: 
+          <StyledListItem><BoldTextSmall>Price Class All</BoldTextSmall>: All regions - best performance.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Price Class 200</BoldTextSmall>: Most regions, but excludes the most expensive regions.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Price Class 100</BoldTextSmall>: Only the least expensive regions.</StyledListItem>
+          <Spacer />
+          <SubTitle id="cache-invalidation">Cache Invalidation</SubTitle>
+          AWS CloudFront cache invalidation is a feature that allows you to remove objects from CloudFront edge caches before they expire. This is useful when you need to ensure that viewers receive the most up-to-date content, such as 
+          after updating a website, modifying static assets, or fixing errors in distributed content. You can invalidate all files with a '*'.
+          <Spacer />
+          <StyledImage src={CloudFrontCacheInvalidation} />
+          <Spacer />
+          <SubTitle id="global-accelerator">Global Accelerator</SubTitle>
+          AWS Global Accelerator is a networking service that improves the availability and performance of your applications with global users. It uses the AWS global network to optimize the path to your application, providing two static IP addresses that act as a fixed entry point to your
+          application endpoints (e.g., EC2 instances, Load Balancers, or Elastic IPs) in multiple AWS Regions. This helps reduce latency, improve availability, and provide seamless failover.
+          <Spacer />
+          <StyledImage src={CloudFrontGlobalAccelerator} />
+          <Spacer />
+          <HeadingSmall>Key features:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Global Network</BoldTextSmall>: Uses the AWS global network, which is optimized for performance and reliability, to route user traffic.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Static IP Addresses</BoldTextSmall>: Provides two static IP addresses that act as a fixed entry point for your application, simplifying DNS management and improving resilience.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Traffic Distribution</BoldTextSmall>: Routes user traffic to the nearest healthy endpoint based on performance, geography, or user-defined policies.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Health Checks</BoldTextSmall>: Continuously monitors the health of your application endpoints and routes traffic only to healthy endpoints.</StyledListItem>
+          <StyledListItem><BoldTextSmall>DDoS Protection</BoldTextSmall>: Integrated with AWS Shield, providing protection against DDoS attacks.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Custom Routing</BoldTextSmall>: Allows you to configure traffic routing policies, such as weighted routing, to distribute traffic according to your need.</StyledListItem>
+          <Spacer />
+          <HeadingSmall>How it works:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Static IP Allocation</BoldTextSmall>: When you create an accelerator, Global Accelerator assigns two static IP addresses (or you can bring your own IPs) that serve as the entry points for your application traffic.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Endpoint Grouping</BoldTextSmall>: You define endpoint groups, which are collections of endpoints (e.g., EC2 instances, load balancers) in different AWS regions.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Traffic Routing</BoldTextSmall>: Global Accelerator uses the AWS global network to route incoming traffic to the optimal endpoint based on health, geography, and performance.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Health Monitoring</BoldTextSmall>: Continuously monitors the health of endpoints and automatically re-routes traffic to healthy endpoints as needed.</StyledListItem>
         </Text>
       </Container>
     </Wrapper>

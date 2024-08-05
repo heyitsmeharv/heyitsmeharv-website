@@ -231,14 +231,15 @@ export default function Blog() {
       published: true
     },
     {
-      title: 'AWS Cloudfront',
-      readingTime: 'N/A',
+      title: 'AWS CloudFront',
+      readingTime: '7 mins',
       type: 'Theory',
       date: '24/07/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
-      intro: `....`,
+      intro: `Amazon CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds. 
+      CloudFront integrates with other AWS services to give developers and businesses an easy way to distribute content to end users with minimal delay...`,
       navigate: 'aws-cloudfront',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
@@ -347,14 +348,15 @@ export default function Blog() {
       published: true
     },
     {
-      title: 'AWS Cloudfront',
-      readingTime: 'N/A',
+      title: 'AWS CloudFront',
+      readingTime: '7 mins',
       type: 'Theory',
       date: '24/07/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
-      intro: `....`,
+      intro: `Amazon CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds. 
+      CloudFront integrates with other AWS services to give developers and businesses an easy way to distribute content to end users with minimal delay...`,
       navigate: 'aws-cloudfront',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
