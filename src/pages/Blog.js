@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination/Pagination";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG } from '../resources/styles/icons';
 
 
 const SearchBarWrapper = styled.div`
@@ -235,11 +235,21 @@ export default function Blog() {
       readingTime: '7 mins',
       type: 'Theory',
       date: '24/07/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
       intro: `Amazon CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds. 
       CloudFront integrates with other AWS services to give developers and businesses an easy way to distribute content to end users with minimal delay...`,
       navigate: 'aws-cloudfront',
       published: true
+    },
+    {
+      title: 'AWS SQS',
+      readingTime: 'N/A',
+      type: 'Theory',
+      date: '05/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
+      intro: `...`,
+      navigate: 'aws-sqs',
+      published: false
     },
     {
       title: 'React.js Text Based Adventure Game',
@@ -352,11 +362,21 @@ export default function Blog() {
       readingTime: '7 mins',
       type: 'Theory',
       date: '24/07/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
       intro: `Amazon CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds. 
       CloudFront integrates with other AWS services to give developers and businesses an easy way to distribute content to end users with minimal delay...`,
       navigate: 'aws-cloudfront',
       published: true
+    },
+    {
+      title: 'AWS SQS',
+      readingTime: 'N/A',
+      type: 'Theory',
+      date: '05/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
+      intro: `...`,
+      navigate: 'aws-sqs',
+      published: false
     },
     {
       title: 'React.js Text Based Adventure Game',
