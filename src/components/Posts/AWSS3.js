@@ -21,6 +21,7 @@ import S3RequesterPaysBucket from "../../resources/images/blog/AWSS3/s3_requeste
 import S3EventDestination from "../../resources/images/blog/AWSS3/s3_event_destination.jpeg";
 import S3MultiPartUpload from "../../resources/images/blog/AWSS3/s3_multi_part_upload.jpeg";
 import S3TransferAcceleration from "../../resources/images/blog/AWSS3/s3_transfer_acceleration.jpeg";
+import S3StorageLens from "../../resources/images/blog/AWSS3/s3_storage_lens.jpeg";
 
 
 const Wrapper = styled.div`
@@ -242,6 +243,10 @@ const AWS3 = () => {
           <StyledAnchor href="#requester-pays"><StyledListItem>Requester Pays</StyledListItem></StyledAnchor>
           <StyledAnchor href="#event-notifications"><StyledListItem>Event Notifications</StyledListItem></StyledAnchor>
           <StyledAnchor href="#performance"><StyledListItem>Performance</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#s3-select"><StyledListItem>S3 Select & Glacier Select</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#batch-operations"><StyledListItem>Batch Operations</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#storage-lens"><StyledListItem>Storage Lens</StyledListItem></StyledAnchor>
+
 
           <Spacer />
           <SubTitle id="s3-introduction">Amazon Simple Storage Service</SubTitle>
@@ -532,12 +537,56 @@ const AWS3 = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Network Considerations</SubTitleSmall>
-          <StyledListItem><BoldTextSmall>Transfer Acceleration</BoldTextSmall>: S3 Transfer Acceleration can speed up content transfers to and from S3 buckets over long distances by leveraging Amazon CloudFront’s globally distributed edge locations.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Transfer Acceleration</BoldTextSmall>: S3 Transfer Acceleration can speed up content transfers to and from S3 buckets over long distances by leveraging Amazon CloudFront's globally distributed edge locations.</StyledListItem>
           <StyledListItem><BoldTextSmall>Direct Connect</BoldTextSmall>: For more predictable performance and lower latency, AWS Direct Connect provides dedicated network connections from your premises to AWS.</StyledListItem>
           <Spacer />
           <SubTitleSmall>Monitoring and Optimization</SubTitleSmall>
           <StyledListItem><BoldTextSmall>S3 Storage Lens</BoldTextSmall>: Provides visibility into storage usage and activity trends, helping optimize performance and costs.</StyledListItem>
           <StyledListItem><BoldTextSmall>CloudWatch Metrics</BoldTextSmall>: Use CloudWatch to monitor S3 performance and set up alerts for unusual activity.</StyledListItem>
+          <Spacer />
+          <SubTitle id="s3-select">S3 Select & Glacier Select</SubTitle>
+          S3 Select is a feature of Amazon S3 that allows you to retrieve a subset of data from an object using simple SQL expressions. This means you can perform SQL-like queries (server-side) directly on the data stored 
+          in S3 without having to download the entire object. If you have a CSV file stored in S3 and only need records where a specific column meets a certain condition, you can use S3 Select to fetch just those records 
+          instead of downloading the entire file.
+          <Spacer />
+          <HeadingSmall>Key features:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Query Archived Data</BoldTextSmall>: Perform SQL queries on data stored in Glacier without having to restore the entire object.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Efficient Data Retrieval</BoldTextSmall>: Enables selective retrieval of data, which can save time and reduce retrieval costs.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Supports CSV and JSON Formats</BoldTextSmall>: Allows querying of data stored in these formats.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Improves Access to Archived Data</BoldTextSmall>: Makes it easier to access specific pieces of archived data without full retrieval.</StyledListItem>
+          <Spacer />
+          <SubTitle id="batch-operations">Batch Operations</SubTitle>
+          Amazon S3 Batch Operations allows you to manage and perform large-scale batch operations on the objects stored in your S3 buckets. It simplifies the process of performing repetitive or 
+          bulk actions across many objects, helping you automate and scale these tasks.
+          <Spacer />
+          <HeadingSmall>Common Operations:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Copy Operations</BoldTextSmall>: Copy objects to another bucket or within the same bucket, useful for data migration or backup tasks.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Tagging</BoldTextSmall>: Add, remove, or replace tags on a large number of objects to manage and organize them more effectively.</StyledListItem>
+          <StyledListItem><BoldTextSmall>ACL Updates</BoldTextSmall>: Change access permissions for a large set of objects to manage access control.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Object Restore from Glacier</BoldTextSmall>: Initiate restore operations for objects stored in S3 Glacier.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Metadata Updates</BoldTextSmall>: Modify metadata for a group of objects.</StyledListItem>
+          <Spacer />
+          <SubTitle id="storage-lens">Storage Lens</SubTitle>
+          Amazon S3 Storage Lens is a feature that provides visibility into your S3 storage usage and activity trends. It delivers comprehensive insights through interactive dashboards, making it easier to understand, analyze, and optimize your S3 storage. 
+          S3 Storage Lens aggregates data across your entire organization or specific accounts and regions, offering both summary and granular views of your storage.
+          <Spacer />
+          <HeadingSmall>Key features:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Unified Metrics and Recommendations</BoldTextSmall>: S3 Storage Lens provides metrics across multiple dimensions (e.g., bucket, account, region) and actionable recommendations to optimize costs and improve data protection.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Interactive Dashboards</BoldTextSmall>: Pre-configured, interactive dashboards give you a comprehensive view of your storage usage and activity. You can also create custom dashboards to focus on specific metrics.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Data Aggregation</BoldTextSmall>: Aggregates storage usage and activity metrics across your organization, making it easier to manage and optimize large-scale storage environments.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Detailed Insights</BoldTextSmall>: Metrics include information on storage usage, object counts, request activity, and more, enabling you to understand patterns and make informed decisions.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Integration with AWS Services</BoldTextSmall>: Integrates with other AWS services such as AWS Organizations, allowing you to collect metrics and insights at the organizational level.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Cost Optimization</BoldTextSmall>: Provides recommendations to reduce costs, such as identifying infrequently accessed data that could be moved to a lower-cost storage class.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Data Protection and Management</BoldTextSmall>: Offers insights into potential data protection issues and recommendations to enhance security and compliance.</StyledListItem>
+          <Spacer />
+          <HeadingSmall>Common Metrics:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Storage Usage</BoldTextSmall>: Total bytes stored, breakdown by storage class, and trends over time.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Object Counts</BoldTextSmall>: Number of objects stored, including breakdowns by storage class.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Request Activity</BoldTextSmall>: Number of GET, PUT, DELETE, and other requests, helping you understand access patterns.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Cost Efficiency</BoldTextSmall>: Identifies potential savings by highlighting infrequently accessed data and suggesting appropriate storage classes.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Data Protection</BoldTextSmall>: Highlights objects without versioning or with public access, providing recommendations to improve data security.</StyledListItem>
+          <Spacer />
+          <StyledImage src={S3StorageLens} />
         </Text>
       </Container>
     </Wrapper>
