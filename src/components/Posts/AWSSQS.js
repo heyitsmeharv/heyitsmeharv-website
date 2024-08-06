@@ -18,6 +18,7 @@ import SQSCommunicationPatterns from "../../resources/images/blog/AWSSQS/sqs_com
 import SQSQueueExample from "../../resources/images/blog/AWSSQS/sqs_queue_example.jpeg";
 import SQSWithASG from "../../resources/images/blog/AWSSQS/sqs_with_asg.jpeg";
 import SQSDecoupleExample from "../../resources/images/blog/AWSSQS/sqs_decouple_example.jpeg";
+import SQSFIFOExample from "../../resources/images/blog/AWSSQS/sqs_fifo_example.jpeg";
 
 
 
@@ -202,15 +203,6 @@ const AWSSQS = () => {
     }
   }, []);
 
-  const columns = ['Key', 'User', 'Resource'];
-  const data = [
-    { Key: 'Attachment Point', User: 'Attached to IAM identities (users, groups, roles).', Resource: 'Attached directly to AWS resources' },
-    { Key: 'Scope and Usage', User: 'Define what actions an identity can perform across various resources and services.', Resource: 'Define who can perform actions on a specific resource, often enabling cross-account access.' },
-    { Key: 'Cross-Account Access', User: 'Typically used within a single AWS account.', Resource: 'Can easily specify permissions for principals from other AWS accounts.' },
-    { Key: 'Policy Management', User: 'Managed in IAM and can be reused across different identities.', Resource: 'Managed directly on the resource, providing granular control by the resource owner.' },
-    { Key: 'Combining Policies', User: 'Can be combined with resource-based policies to fine-tune access control.', Resource: 'Can be combined with user-based policies to specify permissions more explicitly.' },
-  ];
-
   return (
     <Wrapper>
       <StyledNavButton>
@@ -234,6 +226,7 @@ const AWSSQS = () => {
           <StyledAnchor href="#what-is-a-queue?"><StyledListItem>What's a Queue?</StyledListItem></StyledAnchor>
           <StyledAnchor href="#sqs-security"><StyledListItem>Security</StyledListItem></StyledAnchor>
           <StyledAnchor href="#standard-queue"><StyledListItem>Standard Queue</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#fifo-queue"><StyledListItem>FIFO Queue</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="sqs-introduction">Amazon Simple Queue Service</SubTitle>
           Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
@@ -253,6 +246,15 @@ const AWSSQS = () => {
           <SubTitleSmall>Consumers</SubTitleSmall>
           Consumers are instances that could be EC2 or AWS Lambda or any server. This instance polls for SQS messages that can receive up to 10 messages at a time. Once the message has been processed (whatever custom code runs on the 
           server) the consumer will then delete the message using the DeleteMessage API.
+          <Spacer />
+          <SubTitleSmall>Message Visibility Timeout</SubTitleSmall>
+          After a message is polled by a consumer; it becomes invisible to other consumers. By default, the 'message visibility timeout' is 30 seconds which means the message has 30 seconds to be processed. If the message is not processed 
+          within the visibility timeout, it will be processed twice. If the message is in the middle of being processed by a consumer but hasn't finished before the timeout, it's possible for the consumer to call the ChangeMessageVisibility 
+          API to get more time. It's possible to change the timeout but keep in mind that if it's too high (hours) the consumer can crash and re-processing will take time. Alternatively if it's too low (seconds), the chances of duplicate messages 
+          will be higher.
+          <SubTitleSmall>Long Polling</SubTitleSmall>
+          When a consumer requests messages from the queue, it can optionally 'wait' for messages to arrive if there are none in the queue - this is called Long Polling. Long Polling decreases the number of API calls made to SQS while increasing 
+          the efficiency and latency of an application. The wait time can be anywhere between 1-20 seconds.
           <Spacer />
           <SubTitle id="sqs-security">Security</SubTitle>
           <Spacer />
@@ -289,7 +291,12 @@ const AWSSQS = () => {
           queue and the second tier can poll the message and insert it into an S3 bucket.
           <Spacer />
           <StyledImage src={SQSDecoupleExample} />
-
+          <Spacer />
+          <SubTitle id="fifo-queue">FIFO Queue</SubTitle>
+          FIFO - First In First Out. This means that it prioritises sending messages in the order of which the queue receives those messages.
+          <StyledImage src={SQSFIFOExample} />
+          <Spacer />
+          This type of queue is limited to 300 msg/s without batching, 3000 msg/s with batching. It does however remove duplicate messages from being sent.
         </Text>
       </Container>
     </Wrapper>

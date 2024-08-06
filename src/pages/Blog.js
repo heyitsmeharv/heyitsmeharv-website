@@ -232,7 +232,7 @@ export default function Blog() {
     },
     {
       title: 'AWS CloudFront',
-      readingTime: '7 mins',
+      readingTime: 'approx 7 mins',
       type: 'Theory',
       date: '24/07/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
@@ -243,13 +243,14 @@ export default function Blog() {
     },
     {
       title: 'AWS SQS',
-      readingTime: 'N/A',
+      readingTime: 'approx 4 mins',
       type: 'Theory',
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
-      intro: `...`,
+      intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
+      distributed systems, and serverless applications. When we start deploying multiple applications, they will inevitably need to communicate with one another...`,
       navigate: 'aws-sqs',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
@@ -359,7 +360,7 @@ export default function Blog() {
     },
     {
       title: 'AWS CloudFront',
-      readingTime: '7 mins',
+      readingTime: 'approx 7 mins',
       type: 'Theory',
       date: '24/07/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
@@ -370,13 +371,14 @@ export default function Blog() {
     },
     {
       title: 'AWS SQS',
-      readingTime: 'N/A',
+      readingTime: 'approx 4 mins',
       type: 'Theory',
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
-      intro: `...`,
+      intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
+      distributed systems, and serverless applications. When we start deploying multiple applications, they will inevitably need to communicate with one another...`,
       navigate: 'aws-sqs',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
