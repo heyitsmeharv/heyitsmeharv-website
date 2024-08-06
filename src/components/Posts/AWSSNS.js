@@ -16,8 +16,8 @@ import Table from '../Table/Table';
 // images
 import SNSPubSub from "../../resources/images/blog/AWSSNS/sns_pub_sub.jpeg";
 import SNSSubscribers from "../../resources/images/blog/AWSSNS/sns_subscribers.jpeg";
-
-
+import SNSSQSFanOut from "../../resources/images/blog/AWSSNS/sns_sqs_fan_out.jpeg";
+import SNSMessageFiltering from "../../resources/images/blog/AWSSNS/sns_message_filtering.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -191,12 +191,12 @@ const Spacer = styled.br`
   margin: 10px 0;
 `;
 
-const AWSSQS = () => {
+const AWSSNS = () => {
 
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/aws-s3');
+      ReactGA.pageview('/blog/aws-sns');
     }
   }, []);
 
@@ -223,7 +223,7 @@ const AWSSQS = () => {
           <StyledAnchor href="#how-to-publish"><StyledListItem>How To Publish</StyledListItem></StyledAnchor>
           <StyledAnchor href="#security"><StyledListItem>Security</StyledListItem></StyledAnchor>
           <StyledAnchor href="#fan-out"><StyledListItem>SNS and SQS: Fan Out</StyledListItem></StyledAnchor>
-
+          <StyledAnchor href="#message-filtering"><StyledListItem>Message Filtering</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="sns-introduction">Amazon Simple Notification Service</SubTitle>
           Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. What if you wanted to send 
@@ -256,12 +256,17 @@ const AWSSQS = () => {
           <StyledListItemIndent>Useful for allowing other services (S3...) to write to an SNS Topic.</StyledListItemIndent>
           <Spacer />
           <SubTitle id="fan-out">SNS and SQS: Fan Out</SubTitle>
-
-         
+          The idea of this method is to push once to an SNS topic which could have as many SQS queues subscribed as you want. This is a fully decoupled approach which helps prevent data loss. The SQS queue will need it's access 
+          policy to allow for SNS to write to it. This also works for cross region delivery so you can have SQS queues from other regions.
+          <StyledImage src={SNSSQSFanOut} />
+          <Spacer />
+          <SubTitle id="message-filtering">Message Filtering</SubTitle>
+          It's possible to setup message filtering to control the flow of message. Message filtering is defined via JSON policy, if a subscription doesn't have a filter policy it will automatically receive all messages.
+          <StyledImage src={SNSMessageFiltering} />
         </Text>
       </Container>
     </Wrapper>
   );
 }
 
-export default AWSSQS;
+export default AWSSNS;

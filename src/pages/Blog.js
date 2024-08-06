@@ -243,7 +243,7 @@ export default function Blog() {
     },
     {
       title: 'AWS SQS',
-      readingTime: 'approx 4 mins',
+      readingTime: 'approx 5 mins',
       type: 'Theory',
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
@@ -382,7 +382,7 @@ export default function Blog() {
     },
     {
       title: 'AWS SQS',
-      readingTime: 'approx 4 mins',
+      readingTime: 'approx 5 mins',
       type: 'Theory',
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],

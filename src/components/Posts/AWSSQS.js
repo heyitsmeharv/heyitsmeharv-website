@@ -199,7 +199,7 @@ const AWSSQS = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/aws-s3');
+      ReactGA.pageview('/blog/aws-sqs');
     }
   }, []);
 
