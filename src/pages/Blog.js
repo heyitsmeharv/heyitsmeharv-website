@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination/Pagination";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG, AWSSNSSVG } from '../resources/styles/icons';
 
 
 const SearchBarWrapper = styled.div`
@@ -243,13 +243,24 @@ export default function Blog() {
     },
     {
       title: 'AWS SQS',
-      readingTime: 'approx 4 mins',
+      readingTime: 'approx 5 mins',
       type: 'Theory',
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
       intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
       distributed systems, and serverless applications. When we start deploying multiple applications, they will inevitably need to communicate with one another...`,
       navigate: 'aws-sqs',
+      published: true
+    },
+    {
+      title: 'AWS SNS',
+      readingTime: 'approx 4 mins',
+      type: 'Theory',
+      date: '06/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Notification Service', background: '#FF9900', icon: <AWSSNSSVG /> }],
+      intro: `Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. 
+      What if you wanted to send one message to many endpoints? Instead of having a direct integration with each endpoint/service...`,
+      navigate: 'aws-sns',
       published: true
     },
     {
@@ -371,13 +382,24 @@ export default function Blog() {
     },
     {
       title: 'AWS SQS',
-      readingTime: 'approx 4 mins',
+      readingTime: 'approx 5 mins',
       type: 'Theory',
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
       intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
       distributed systems, and serverless applications. When we start deploying multiple applications, they will inevitably need to communicate with one another...`,
       navigate: 'aws-sqs',
+      published: true
+    },
+    {
+      title: 'AWS SNS',
+      readingTime: 'approx 4 mins',
+      type: 'Theory',
+      date: '06/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Notification Service', background: '#FF9900', icon: <AWSSNSSVG /> }],
+      intro: `Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. 
+      What if you wanted to send one message to many endpoints? Instead of having a direct integration with each endpoint/service...`,
+      navigate: 'aws-sns',
       published: true
     },
     {
