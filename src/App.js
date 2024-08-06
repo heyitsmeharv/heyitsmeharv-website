@@ -39,6 +39,7 @@ import AWSRoute53 from "./components/Posts/AWSRoute53";
 import AWSS3 from "./components/Posts/AWSS3";
 import AWSCloudFront from "./components/Posts/AWSCloudFront";
 import AWSSQS from "./components/Posts/AWSSQS";
+import AWSSNS from "./components/Posts/AWSSNS";
 
 
 const Wrapper = styled.div`
@@ -117,6 +118,7 @@ const App = () => {
                     <Route exact path='/blog/aws-s3' component={AWSS3} />
                     <Route exact path='/blog/aws-cloudfront' component={AWSCloudFront} />
                     <Route exact path='/blog/aws-sqs' component={AWSSQS} />
+                    <Route exact path='/blog/aws-sns' component={AWSSNS} />
                   </Switch>
                 </>
               );
