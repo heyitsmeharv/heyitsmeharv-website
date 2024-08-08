@@ -265,7 +265,7 @@ export default function Blog() {
     },
     {
       title: 'AWS Containers',
-      readingTime: '~',
+      readingTime: 'approx 10 mins',
       type: 'Theory',
       date: '06/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
@@ -415,7 +415,7 @@ export default function Blog() {
     },
     {
       title: 'AWS Containers',
-      readingTime: '~',
+      readingTime: 'approx 10 mins',
       type: 'Theory',
       date: '06/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
