@@ -269,7 +269,8 @@ export default function Blog() {
       type: 'Theory',
       date: '06/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
-      intro: `...`,
+      intro: `Docker is an open-source platform designed to automate the deployment, scaling, and management of applications within lightweight, portable containers. Containers package an application with all its dependencies 
+      (libraries, binaries, etc.), ensuring that it runs consistently across different environments. Apps are packed in containers that can be run on any OS...`,
       navigate: 'aws-containers',
       published: true
     },
@@ -418,7 +419,8 @@ export default function Blog() {
       type: 'Theory',
       date: '06/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
-      intro: `...`,
+      intro: `Docker is an open-source platform designed to automate the deployment, scaling, and management of applications within lightweight, portable containers. Containers package an application with all its dependencies 
+      (libraries, binaries, etc.), ensuring that it runs consistently across different environments. Apps are packed in containers that can be run on any OS...`,
       navigate: 'aws-containers',
       published: true
     },
