@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination/Pagination";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG, AWSSNSSVG, AWSECSSVG, AWSEKSSVG, AWSFargateSVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG, AWSSNSSVG, AWSECSSVG, AWSEKSSVG, AWSFargateSVG, AWSVPCSVG } from '../resources/styles/icons';
 
 
 const SearchBarWrapper = styled.div`
@@ -275,6 +275,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS VPC',
+      readingTime: '~',
+      type: 'Theory',
+      date: '11/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Network', background: '#FF9900', icon: <AWSVPCSVG /> }],
+      intro: ``,
+      navigate: 'aws-vpc',
+      published: true
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -422,6 +432,16 @@ export default function Blog() {
       intro: `Docker is an open-source platform designed to automate the deployment, scaling, and management of applications within lightweight, portable containers. Containers package an application with all its dependencies 
       (libraries, binaries, etc.), ensuring that it runs consistently across different environments. Apps are packed in containers that can be run on any OS...`,
       navigate: 'aws-containers',
+      published: true
+    },
+    {
+      title: 'AWS VPC',
+      readingTime: '~',
+      type: 'Theory',
+      date: '11/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Network', background: '#FF9900', icon: <AWSVPCSVG /> }],
+      intro: ``,
+      navigate: 'aws-vpc',
       published: true
     },
     {

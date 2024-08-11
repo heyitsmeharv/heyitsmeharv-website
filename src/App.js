@@ -41,6 +41,7 @@ import AWSCloudFront from "./components/Posts/AWSCloudFront";
 import AWSSQS from "./components/Posts/AWSSQS";
 import AWSSNS from "./components/Posts/AWSSNS";
 import AWSContainers from "./components/Posts/AWSContainers";
+import AWSVPC from "./components/Posts/AWSVPC";
 
 
 const Wrapper = styled.div`
@@ -121,6 +122,7 @@ const App = () => {
                     <Route exact path='/blog/aws-sqs' component={AWSSQS} />
                     <Route exact path='/blog/aws-sns' component={AWSSNS} />
                     <Route exact path='/blog/aws-containers' component={AWSContainers} />
+                    <Route exact path='/blog/aws-vpc' component={AWSVPC} />
                   </Switch>
                 </>
               );
