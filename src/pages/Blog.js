@@ -279,7 +279,7 @@ export default function Blog() {
       readingTime: '~',
       type: 'Theory',
       date: '11/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Network', background: '#FF9900', icon: <AWSVPCSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
       intro: ``,
       navigate: 'aws-vpc',
       published: true
@@ -439,7 +439,7 @@ export default function Blog() {
       readingTime: '~',
       type: 'Theory',
       date: '11/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Network', background: '#FF9900', icon: <AWSVPCSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
       intro: ``,
       navigate: 'aws-vpc',
       published: true

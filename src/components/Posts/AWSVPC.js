@@ -224,7 +224,7 @@ const AWSVPC = () => {
       </StyledNavButton>
       <Container>
         <Flex>
-          <Title>Amazon Virtual Private Network (VPC)</Title>
+          <Title>Amazon Virtual Private Cloud (VPC)</Title>
           <IconWrapper>
             <Icon><AWSSVG /></Icon>
             <Icon><AWSVPCSVG /></Icon>
@@ -232,12 +232,46 @@ const AWSVPC = () => {
         </Flex>
         <Spacer />
         <Text>
-          In this post we'll be diving into Amazon Virtual Private Network (VPC).
+          In this post we'll be diving into Amazon Virtual Private Cloud (VPC).
           <StyledAnchor href="#vpc-introduction"><StyledListItem>Amazon Virtual Private Network</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#cidr"><StyledListItem>Classless Inter-Domain Routing - CIDR</StyledListItem></StyledAnchor>
+
           <Spacer />
-          <SubTitle id="vpc-introduction">Amazon Virtual Private Network (VPC)</SubTitle>
+          <SubTitle id="vpc-introduction">Amazon Virtual Private Cloud (VPC)</SubTitle>
           Amazon Virtual Private Cloud (Amazon VPC) is a service that allows you to create and manage a virtual network in the AWS cloud. This virtual network closely resembles a traditional network that you might operate 
           in your own data center but with the scalable infrastructure of AWS.
+          <Spacer />
+          <SubTitle id="cidr">Classless Inter-Domain Routing - CIDR</SubTitle>
+          CIDR, or Classless Inter-Domain Routing, is a method used for allocating IP addresses and routing internet traffic 
+          <StyledListItem><BoldTextSmall>IP Addressing</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>IP addresses are numerical labels assigned to devices connected to a network, like computers, servers, or mobile devices. They come in two versions: IPv4 and IPv6. CIDR works with both, but it's most commonly associated with IPv4.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>CIDR Notation</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>CIDR notation is a way to specify IP addresses and their associated routing prefix. It consists of an IP address, followed by a slash (/), and then a number that represents the number of significant bits in the network portion of the address.</StyledListItemIndent>
+          <StyledListItemIndent>For example: 192.168.1.0/24</StyledListItemIndent>
+          <StyledListItemIndentExtra>192.168.1.0 is the IP address.</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra>/24 indicates that the first 24 bits of the IP address are the network part, leaving the remaining bits for host addresses.</StyledListItemIndentExtra>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Subnetting</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>CIDR allows for the creation of subnets by varying the length of the network prefix. It allows part of the underlying IP to get additional next values from the base IP.</StyledListItemIndent>
+          <StyledListItemIndent>It's possible to split IP addresses from /0 to /32</StyledListItemIndent>
+          <StyledListItemIndentExtra>/0 - 0.0.0.0</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra>/8 - 255.0.0.0</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra>/16 - 255.255.0.0</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra>/24 - 255.255.255.0</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra>/32 - 255.255.255.255</StyledListItemIndentExtra>
+          <StyledListItemIndent>For example</StyledListItemIndent>
+          <StyledListItemIndentExtra>CIDR block 192.168.1.0/24 provides 256 IP addresses (from 192.168.1.0 to 192.168.1.255).</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra>If you use 192.168.1.0/25, it splits the range into two smaller blocks, each with 128 IP addresses (192.168.1.0 to 192.168.1.127 and 192.168.1.128 to 192.168.1.255).</StyledListItemIndentExtra>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Efficient IP Address Allocation</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>CIDR helps reduce the waste of IP addresses by allowing network administrators to allocate IP blocks more precisely according to need, rather than being forced to use large, predefined blocks.</StyledListItemIndent>
+          <StyledListItemIndent>For example, instead of giving a company an entire Class B network (with 65,536 addresses) when they might only need 2,000 addresses, CIDR allows them to get exactly the number they need, such as a /21 block with 2,048 addresses.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Routing</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>CIDR also simplifies routing by allowing multiple IP addresses or networks to be aggregated into a single routing entry, a process known as "route aggregation" or "supernetting."</StyledListItemIndent>
+          <StyledListItemIndent>For instance, multiple networks like 192.168.0.0/24 and 192.168.1.0/24 can be combined into a single 192.168.0.0/23 route, reducing the size of routing tables.</StyledListItemIndent>
+          <Spacer />
 
 
 
