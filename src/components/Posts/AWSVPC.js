@@ -14,14 +14,7 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import Table from '../../components/Table/Table';
 
 // images
-import S3Objects from "../../resources/images/blog/AWSS3/s3_objects.jpeg";
-import S3Versions from "../../resources/images/blog/AWSS3/s3_versions.jpeg";
-import S3LifecycleRule from "../../resources/images/blog/AWSS3/s3_lifecycle_rule.jpeg";
-import S3RequesterPaysBucket from "../../resources/images/blog/AWSS3/s3_requester_pays_bucket.jpeg";
-import S3EventDestination from "../../resources/images/blog/AWSS3/s3_event_destination.jpeg";
-import S3MultiPartUpload from "../../resources/images/blog/AWSS3/s3_multi_part_upload.jpeg";
-import S3TransferAcceleration from "../../resources/images/blog/AWSS3/s3_transfer_acceleration.jpeg";
-import S3StorageLens from "../../resources/images/blog/AWSS3/s3_storage_lens.jpeg";
+import VPCOctects from "../../resources/images/blog/AWSVPC/vpc_octets_memo.jpeg"
 
 
 const Wrapper = styled.div`
@@ -205,15 +198,6 @@ const AWSVPC = () => {
     }
   }, []);
 
-  const columns = ['Key', 'User', 'Resource'];
-  const data = [
-    { Key: 'Attachment Point', User: 'Attached to IAM identities (users, groups, roles).', Resource: 'Attached directly to AWS resources' },
-    { Key: 'Scope and Usage', User: 'Define what actions an identity can perform across various resources and services.', Resource: 'Define who can perform actions on a specific resource, often enabling cross-account access.' },
-    { Key: 'Cross-Account Access', User: 'Typically used within a single AWS account.', Resource: 'Can easily specify permissions for principals from other AWS accounts.' },
-    { Key: 'Policy Management', User: 'Managed in IAM and can be reused across different identities.', Resource: 'Managed directly on the resource, providing granular control by the resource owner.' },
-    { Key: 'Combining Policies', User: 'Can be combined with resource-based policies to fine-tune access control.', Resource: 'Can be combined with user-based policies to specify permissions more explicitly.' },
-  ];
-
   return (
     <Wrapper>
       <StyledNavButton>
@@ -238,11 +222,11 @@ const AWSVPC = () => {
 
           <Spacer />
           <SubTitle id="vpc-introduction">Amazon Virtual Private Cloud (VPC)</SubTitle>
-          Amazon Virtual Private Cloud (Amazon VPC) is a service that allows you to create and manage a virtual network in the AWS cloud. This virtual network closely resembles a traditional network that you might operate 
+          Amazon Virtual Private Cloud (Amazon VPC) is a service that allows you to create and manage a virtual network in the AWS cloud. This virtual network closely resembles a traditional network that you might operate
           in your own data center but with the scalable infrastructure of AWS.
           <Spacer />
           <SubTitle id="cidr">Classless Inter-Domain Routing - CIDR</SubTitle>
-          CIDR, or Classless Inter-Domain Routing, is a method used for allocating IP addresses and routing internet traffic 
+          CIDR, or Classless Inter-Domain Routing, is a method used for allocating IP addresses and routing internet traffic
           <StyledListItem><BoldTextSmall>IP Addressing</BoldTextSmall></StyledListItem>
           <StyledListItemIndent>IP addresses are numerical labels assigned to devices connected to a network, like computers, servers, or mobile devices. They come in two versions: IPv4 and IPv6. CIDR works with both, but it's most commonly associated with IPv4.</StyledListItemIndent>
           <Spacer />
@@ -272,9 +256,34 @@ const AWSVPC = () => {
           <StyledListItemIndent>CIDR also simplifies routing by allowing multiple IP addresses or networks to be aggregated into a single routing entry, a process known as "route aggregation" or "supernetting."</StyledListItemIndent>
           <StyledListItemIndent>For instance, multiple networks like 192.168.0.0/24 and 192.168.1.0/24 can be combined into a single 192.168.0.0/23 route, reducing the size of routing tables.</StyledListItemIndent>
           <Spacer />
-
-
-
+          <SubTitleSmall>Understanding CIDR - Subnet Mask</SubTitleSmall>
+          <FlexCenter>
+            <Text>
+              192.168.0.0 / 32 => allows for 1 IP => 192.168.0.0
+              <Spacer />
+              192.168.0.0 / 31 => allows for 2 IP 192.168.0.0 => 192.168.0.1
+              <Spacer />
+              192.168.0.0 / 30 => allows for 4 IP 192.168.0.0 => 192.168.0.3
+              <Spacer />
+              192.168.0.0 / 29 => allows for 8 IP 192.168.0.0 => 192.168.0.7
+              <Spacer />
+              192.168.0.0 / 28 => allows for 16 IP 192.168.0.0 => 192.168.0.15
+              <Spacer />
+              192.168.0.0 / 27 => allows for 32 IP 192.168.0.0 => 192.168.0.31
+              <Spacer />
+              192.168.0.0 / 26 => allows for 64 IP 192.168.0.0 => 192.168.0.63
+              <Spacer />
+              192.168.0.0 / 25 => allows for 128 IP 192.168.0.0 => 192.168.0.127
+              <Spacer />
+              192.168.0.0 / 24 => allows for 256 IP 192.168.0.0 => 192.168.0.255
+              <Spacer />
+              192.168.0.0 / 16 => allows for 65,536 IP 192.168.0.0 => 192.168.255.255
+              <Spacer />
+              192.168.0.0 / 0 => allows for ALL IPs 0.0.0.0 => 255.255.255.255
+            </Text>
+            <StyledImage mr="25px" width="400px" height="400px" src={VPCOctects} />
+          </FlexCenter>
+          
           {/* <Spacer />
           <Spacer />
           <SubTitleSmall>Use Cases</SubTitleSmall>
