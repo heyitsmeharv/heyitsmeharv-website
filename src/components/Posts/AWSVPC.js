@@ -21,6 +21,15 @@ import VPCInternetGateway from "../../resources/images/blog/AWSVPC/vpc_internet_
 import VPCBastionHost from "../../resources/images/blog/AWSVPC/vpc_bastion_host.jpeg"
 import VPCNATGateWay from "../../resources/images/blog/AWSVPC/vpc_nat_gateway.jpeg"
 import VPCNATGateWayHA from "../../resources/images/blog/AWSVPC/vpc_nat_gateway_ha.jpeg"
+import VPCSGNACLS from "../../resources/images/blog/AWSVPC/vpc_sg_nacls.jpeg"
+import VPCNACL from "../../resources/images/blog/AWSVPC/vpc_nacl.jpeg"
+import VPCEphemeralPorts from "../../resources/images/blog/AWSVPC/vpc_ephemeral_ports.jpeg"
+import VPCNACLEphemeralPorts from "../../resources/images/blog/AWSVPC/vpc_nacl_ephemeral_ports.jpeg"
+import VPCPeering from "../../resources/images/blog/AWSVPC/vpc_peering.jpeg"
+import VPCEndpoint from "../../resources/images/blog/AWSVPC/vpc_endpoint.jpeg"
+import VPCEndpointPrivateLink from "../../resources/images/blog/AWSVPC/vpc_endpoint_private_link.jpeg"
+import VPCGatewayEndpoint from "../../resources/images/blog/AWSVPC/vpc_gateway_endpoints.jpeg"
+import VPCInterfaceEndpoint from "../../resources/images/blog/AWSVPC/vpc_interface_endpoints.jpeg"
 
 
 const Wrapper = styled.div`
@@ -214,8 +223,17 @@ const AWSVPC = () => {
     { '': 'Private IPv4', 'NAT Gateway': '️✔️', 'NAT Instance': '️✔️' },
     { '': 'Security Groups', 'NAT Gateway': '❌', 'NAT Instance': '️✔️' },
     { '': 'Use as Bastion Host', 'NAT Gateway': '❌', 'NAT Instance': '️✔️' },
-
   ];
+
+  const columns2 = ['Security Group', 'NACL'];
+  const data2 = [
+    { 'Security Group': 'Operates at the instance level', 'NACL': 'Operates at the subnet level' },
+    { 'Security Group': 'Supports allow rules only', 'NACL': 'Supports allow rules and deny rules' },
+    { 'Security Group': 'Stateful: return traffic is automatically allowed, regardless of any rules', 'NACL': 'Stateless: return traffic must be explicitly allowed by rules (ephemeral ports)' },
+    { 'Security Group': 'All rules are evaluated before deciding whether to allow traffic', 'NACL': 'Rules are evaluated in order (lowest to highest) when deciding whether to allow traffic, first match wins' },
+    { 'Security Group': 'Applies to an EC2 instance when specified by someone', 'NACL': `Automatically applies to all EC2 instances in the subnet that it's associated with` },
+  ];
+
 
   return (
     <Wrapper>
@@ -243,6 +261,8 @@ const AWSVPC = () => {
           <StyledAnchor href="#vpc-igw"><StyledListItem>Internet Gateway (IGW)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#vpc-bastion-hosts"><StyledListItem>Bastion Hosts</StyledListItem></StyledAnchor>
           <StyledAnchor href="#nat-gateway"><StyledListItem>NAT Gateway</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#sg-nacls"><StyledListItem>Security Groups & NACLs</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#vpc-peering"><StyledListItem>VPC Peering</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="vpc-introduction">Amazon Virtual Private Cloud (VPC)</SubTitle>
@@ -367,6 +387,100 @@ const AWSVPC = () => {
           <Spacer />
           <SubTitleSmall>NAT Gateway vs NAT Instance</SubTitleSmall>
           <Table columns={columns} data={data} />
+          <Spacer />
+          <SubTitle id="sg-nacls">Security Groups & NACLs</SubTitle>
+          A Network Access Control List (NACL) in AWS is a security layer that acts as a virtual firewall for controlling inbound and outbound traffic at the subnet level within a Virtual Private Cloud (VPC). NACLs provide an
+          additional layer of security by allowing or denying specific traffic to and from subnets in a VPC.
+          <Spacer />
+          <SubTitleSmall>Subnet-Level Control</SubTitleSmall>
+          NACLs operate at the subnet level, meaning they control traffic entering and leaving each subnet in your VPC. Every subnet in a VPC must be associated with a NACL.
+          If you don't explicitly associate a subnet with a NACL, it automatically associates with the VPC's default NACL.
+          <Spacer />
+          <SubTitleSmall>Stateless</SubTitleSmall>
+          NACLs are stateless, meaning they evaluate each request independently, without remembering any previous requests. This means that if you allow inbound traffic,
+          you must also explicitly allow the corresponding outbound traffic if needed, and vice versa.
+          <Spacer />
+          <SubTitleSmall>Rules and Priorities</SubTitleSmall>
+          NACLs consist of numbered rules that are evaluated in order, starting from the lowest number. Each rule specifies whether to allow or deny traffic based on:
+          <StyledListItem>Protocol (e.g., TCP, UDP, ICMP)</StyledListItem>
+          <StyledListItem>Source and destination IP address</StyledListItem>
+          <StyledListItem>Port range</StyledListItem>
+          <StyledListItem>Traffic direction (inbound or outbound)</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Default NACL</SubTitleSmall>
+          The default NACL allows all inbound and outbound traffic. If you create a custom NACL, it initially denies all traffic until you explicitly add rules to allow specific traffic.
+          <Spacer />
+          <SubTitleSmall>Deny by Default</SubTitleSmall>
+          When no rule matches the traffic, the default action is to deny that traffic. This makes NACLs a restrictive layer of security, only allowing explicitly permitted traffic.
+          <Spacer />
+          <SubTitleSmall>Multiple Rules</SubTitleSmall>
+          You can define multiple rules within a NACL, and they are evaluated in the order of the rule number. The first rule that matches the traffic takes precedence, so careful planning of rule order is important.
+          <Spacer />
+          <StyledImage src={VPCNACL} />
+          <Spacer />
+          <SubTitleSmall>Differences Between NACLs and Security Groups:</SubTitleSmall>
+          <StyledListItem><BoldTextSmall>Scope:</BoldTextSmall> NACLs are applied at the subnet level, affecting all instances within the subnet, whereas security groups are applied at the instance level.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Statefulness:</BoldTextSmall> NACLs are stateless, requiring separate rules for inbound and outbound traffic. Security groups are stateful, meaning that if you allow traffic in one direction, the response traffic is automatically allowed.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Rule Evaluation:</BoldTextSmall> NACLs evaluate rules in order, from lowest to highest numbered rule, and stop at the first match. Security groups evaluate all rules without a specific order.</StyledListItem>
+          <Spacer />
+          <Table columns={columns2} data={data2} />
+          <Spacer />
+          <StyledImage src={VPCSGNACLS} />
+          <Spacer />
+          <SubTitleSmall>Ephemeral Ports</SubTitleSmall>
+          Ephemeral ports are temporary, short-lived ports automatically assigned by a host's operating system for client-side communication with a server. These ports are used when a client initiates a connection to a server, typically in the context of TCP/IP or UDP protocols. Once the connection
+          is closed, the ephemeral port is returned to the pool of available ports and can be reused for future connections.
+          <StyledListItem>Clients connect on a defined port, and expect a response on an ephemeral port.</StyledListItem>
+          <StyledListItem>Different Operating Systems use different port ranges, examples:</StyledListItem>
+          <StyledListItemIndent>IANA & Windows 10 -> 49152 - 65535</StyledListItemIndent>
+          <StyledListItemIndent>Linux -> 32768 - 60999</StyledListItemIndent>
+          <StyledImage src={VPCEphemeralPorts} />
+          Here is an overview of how Ephemeral ports work with NACLs
+          <StyledImage src={VPCNACLEphemeralPorts} />
+          <SubTitle id="vpc-peering">VPC Peering</SubTitle>
+          VPC Peering in AWS is a networking connection that allows you to route traffic between two Virtual Private Clouds (VPCs) using private IP addresses, as if they were part of the same network. VPC peering is often used to enable communication between VPCs within the same AWS account or across
+          different AWS accounts, without using public internet or a VPN.
+          <Spacer />
+          <SubTitleSmall>Cross-Account and Cross-Region Peering</SubTitleSmall>
+          You can establish a VPC Peering connection between VPCs in different AWS accounts, enabling secure cross-account communication. Additionally, AWS supports cross-region peering, allowing VPCs in different regions to connect to each other.
+          <Spacer />
+          <SubTitleSmall>One-to-One Connection</SubTitleSmall>
+          VPC Peering is a one-to-one connection between two VPCs. Each VPC Peering connection is limited to two VPCs, but you can create multiple peering connections if you need to connect more than two VPCs.
+          <Spacer />
+          <SubTitleSmall>No Transitive Peering</SubTitleSmall>
+          VPC Peering connections are non-transitive, meaning that if VPC A is peered with VPC B, and VPC B is peered with VPC C, VPC A cannot automatically communicate with VPC C. Each peering connection must be explicitly established.
+          <Spacer />
+          <SubTitleSmall>No Overlapping CIDR Blocks</SubTitleSmall>
+          The IP address ranges (CIDR blocks) of the VPCs involved in the peering connection must not overlap. Overlapping IP ranges would cause routing conflicts and are not allowed in VPC peering.
+          <Spacer />
+          <SubTitleSmall>Security Controls</SubTitleSmall>
+          Even with a VPC Peering connection, you can still use security groups and network access control lists (NACLs) to control the flow of traffic between the VPCs, ensuring that only authorized communication occurs.
+          <Spacer />
+          <StyledImage src={VPCPeering} />
+          <Spacer />
+          <SubTitle id="vpc-endpoint">VPC Endpoint</SubTitle>
+          A VPC Endpoint in AWS is a feature that enables you to privately connect your VPC to supported AWS services and VPC endpoint services (hosted by other AWS accounts) without requiring an internet gateway, NAT device, VPN connection, or AWS Direct Connect. VPC Endpoints allow you to establish
+          secure connections to these services within the AWS network, ensuring that traffic between your VPC and these services does not leave the AWS network.
+          <Spacer />
+          <StyledImage src={VPCEndpoint} />
+          <Spacer />
+          <StyledImage src={VPCEndpointPrivateLink} />
+          <Spacer />
+          <SubTitleSmall>Types of Endpoints</SubTitleSmall>
+          <StyledListItem><BoldTextSmall>Interface Endpoints</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Interface Endpoints use AWS PrivateLink and create an Elastic Network Interface (ENI) with a private IP address in your subnet. This ENI serves as an entry point for traffic destined for a specific service.</StyledListItemIndent>
+          <StyledListItemIndent>Interface Endpoints are used to connect to services like Amazon S3, AWS Systems Manager, DynamoDB, and many others.</StyledListItemIndent>
+          <StyledListItemIndent>They provide private connectivity to these services while using the standard AWS VPC security mechanisms such as security groups and NACLs.</StyledListItemIndent>
+          <StyledListItemIndent>£ per hour + £ per GB of data processed.</StyledListItemIndent>
+          <Spacer />
+          <StyledImage src={VPCInterfaceEndpoint} />
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Gateway Endpoints</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Gateway Endpoints are used specifically for S3 and DynamoDB. They add an entry in your route table, which directs traffic destined for these services through the endpoint without requiring an ENI.</StyledListItemIndent>
+          <StyledListItemIndent>Gateway Endpoints are highly available, automatically scaling as needed without requiring additional configuration or maintenance.</StyledListItemIndent>
+          <StyledListItemIndent>Free.</StyledListItemIndent>
+          <Spacer />
+          <StyledImage src={VPCGatewayEndpoint} />
           <Spacer />
         </Text>
       </Container>
