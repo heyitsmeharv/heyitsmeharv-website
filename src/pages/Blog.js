@@ -280,7 +280,8 @@ export default function Blog() {
       type: 'Theory',
       date: '11/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
-      intro: ``,
+      intro: `A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources, such as EC2 instances, within a virtual network that you define. A VPC allows you to 
+      customize your network environment, including selecting your own IP address range, creating subnets, configuring route tables, and setting up gateways...`,
       navigate: 'aws-vpc',
       published: true
     },
@@ -440,7 +441,8 @@ export default function Blog() {
       type: 'Theory',
       date: '11/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
-      intro: ``,
+      intro: `A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources, such as EC2 instances, within a virtual network that you define. A VPC allows you to 
+      customize your network environment, including selecting your own IP address range, creating subnets, configuring route tables, and setting up gateways...`,
       navigate: 'aws-vpc',
       published: true
     },

@@ -10,7 +10,7 @@ const StyledTableHeading = styled.th`
   color: ${({ theme }) => theme.text};
   border: 2px solid ${({ theme }) => theme.secondary};
   font-weight: bold;
-  text-align: left;
+  text-align: center;
   padding: 1rem;
 
 `;
@@ -18,7 +18,7 @@ const StyledTableHeading = styled.th`
 const StyledTableData = styled.td`
   color: ${({ theme }) => theme.text};
   border: 2px solid ${({ theme }) => theme.secondary};
-  text-align: left;
+  text-align: center;
   padding: 2rem;
 `;
 

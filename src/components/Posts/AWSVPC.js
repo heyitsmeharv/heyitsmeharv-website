@@ -19,6 +19,8 @@ import VPCDefault from "../../resources/images/blog/AWSVPC/vpc_default.jpeg"
 import VPCSubnets from "../../resources/images/blog/AWSVPC/vpc_subnets.jpeg"
 import VPCInternetGateway from "../../resources/images/blog/AWSVPC/vpc_internet_gateway.jpeg"
 import VPCBastionHost from "../../resources/images/blog/AWSVPC/vpc_bastion_host.jpeg"
+import VPCNATGateWay from "../../resources/images/blog/AWSVPC/vpc_nat_gateway.jpeg"
+import VPCNATGateWayHA from "../../resources/images/blog/AWSVPC/vpc_nat_gateway_ha.jpeg"
 
 
 const Wrapper = styled.div`
@@ -202,6 +204,19 @@ const AWSVPC = () => {
     }
   }, []);
 
+  const columns = ['', 'NAT Gateway', 'NAT Instance'];
+  const data = [
+    { '': 'Availability', 'NAT Gateway': 'Highly available within AZ (create in another AZ)', 'NAT Instance': 'Use a script to manage failover between instances' },
+    { '': 'Bandwidth', 'NAT Gateway': 'Up to 100GBps', 'NAT Instance': 'Depends on EC2 instance type' },
+    { '': 'Maintenance', 'NAT Gateway': 'Managed by AWS', 'NAT Instance': 'Managed by you' },
+    { '': 'Cost', 'NAT Gateway': 'Per hour & amount of data transferred', 'NAT Instance': 'Per hour, EC2 instance type and size + network costs' },
+    { '': 'Public IPv4', 'NAT Gateway': '️✔️', 'NAT Instance': '️✔️' },
+    { '': 'Private IPv4', 'NAT Gateway': '️✔️', 'NAT Instance': '️✔️' },
+    { '': 'Security Groups', 'NAT Gateway': '❌', 'NAT Instance': '️✔️' },
+    { '': 'Use as Bastion Host', 'NAT Gateway': '❌', 'NAT Instance': '️✔️' },
+
+  ];
+
   return (
     <Wrapper>
       <StyledNavButton>
@@ -223,16 +238,16 @@ const AWSVPC = () => {
           In this post we'll be diving into Amazon Virtual Private Cloud (VPC).
           <StyledAnchor href="#vpc-introduction"><StyledListItem>Amazon Virtual Private Network</StyledListItem></StyledAnchor>
           <StyledAnchor href="#cidr"><StyledListItem>Classless Inter-Domain Routing - CIDR</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#vpc-in-aws"><StyledListItem>Classless Inter-Domain Routing - CIDR</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#vpc-in-aws"><StyledListItem>VPC in AWS</StyledListItem></StyledAnchor>
           <StyledAnchor href="#subnets"><StyledListItem>Subnets</StyledListItem></StyledAnchor>
           <StyledAnchor href="#vpc-igw"><StyledListItem>Internet Gateway (IGW)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#vpc-bastion-hosts"><StyledListItem>Bastion Hosts</StyledListItem></StyledAnchor>
-
+          <StyledAnchor href="#nat-gateway"><StyledListItem>NAT Gateway</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="vpc-introduction">Amazon Virtual Private Cloud (VPC)</SubTitle>
-          Amazon Virtual Private Cloud (Amazon VPC) is a service that allows you to create and manage a virtual network in the AWS cloud. This virtual network closely resembles a traditional network that you might operate
-          in your own data center but with the scalable infrastructure of AWS.
+          A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources, such as EC2 instances, within a virtual network that you define. A VPC allows
+          you to customize your network environment, including selecting your own IP address range, creating subnets, configuring route tables, and setting up gateways.
           <Spacer />
           <SubTitle id="cidr">Classless Inter-Domain Routing - CIDR</SubTitle>
           CIDR, or Classless Inter-Domain Routing, is a method used for allocating IP addresses and routing internet traffic
@@ -301,7 +316,8 @@ const AWSVPC = () => {
           <Spacer />
           <StyledImage src={VPCDefault} />
           <Spacer />
-          <SubTitle id="subnets">VPC in AWS</SubTitle>
+          <SubTitle id="subnets">Subnets</SubTitle>
+          You can divide your VPC into subnets, which are subsets of your VPC's IP address range. Subnets can be public (accessible from the internet) or private (isolated from the internet).
           <StyledListItem>AWS Reserves 5 IP addresses (first 4 and the last 1) in each subnet.</StyledListItem>
           <StyledListItemIndent>10.0.0.0 - Network Address</StyledListItemIndent>
           <StyledListItemIndent>10.0.0.1 - reserved by AWS for the VPC router</StyledListItemIndent>
@@ -309,13 +325,14 @@ const AWSVPC = () => {
           <StyledListItemIndent>10.0.0.3 - reserved by AWS for future use</StyledListItemIndent>
           <StyledListItemIndent>10.0.0.255 - Network Broadcast Address. AWS does not support broadcast in a VPC, therefore the address is reserved.</StyledListItemIndent>
           <Spacer />
-          Make sure you take into account the reserved IP addresses when selecting the CIDR ranges. For example if you need 29 IP addresses for EC2 instances: 
+          Make sure you take into account the reserved IP addresses when selecting the CIDR ranges. For example if you need 29 IP addresses for EC2 instances:
           <StyledListItem>You can't choose a subnet of size /27 (32 IP addresses, 32 - 5 = 27)</StyledListItem>
           <StyledListItem>You need to choose a subnet of size /26 (64 IP addresses, 64 - 5 = 59)</StyledListItem>
           <Spacer />
           <StyledImage src={VPCSubnets} />
           <Spacer />
           <SubTitle id="vpc-igw">Internet Gateway (IGW)</SubTitle>
+          For your VPC to have internet access, you can attach an Internet Gateway, which enables communication between instances in your VPC and the internet.
           <StyledListItem>Allows resources (e.g. EC2 instances) in a VPC to connect to the internet.</StyledListItem>
           <StyledListItem>Must be created separately from the VPC.</StyledListItem>
           <StyledListItem>Only one VPC can be attached to one IGW and vice versa.</StyledListItem>
@@ -324,12 +341,32 @@ const AWSVPC = () => {
           <StyledImage src={VPCInternetGateway} />
           <Spacer />
           <SubTitle id="vpc-bastion-hosts">Bastion Hosts</SubTitle>
+          A bastion host is a specialized server used to provide controlled, secure access to a private network from an external network, typically the internet. It acts as a gateway
+          between the public and private network, often used in environments like AWS where private instances in a Virtual Private Cloud (VPC) need to be accessed securely from outside the network.
           <StyledListItem>We can use a Bastion Host to SSH into our private EC2 instances.</StyledListItem>
           <StyledListItem>The Bastion is in the public subnet which is then connected to all other private subnets.</StyledListItem>
           <StyledListItem>Bastion Host security group must allow inbound from the internet on port 22 from restricted CIDR.</StyledListItem>
           <StyledListItem>Security Group of the EC2 instances must allow the Security Group of the Bastion Host, or the private IP of the Bastion host.</StyledListItem>
           <Spacer />
           <StyledImage src={VPCBastionHost} />
+          <Spacer />
+          <SubTitle id="nat-gateway">NAT Gateway</SubTitle>
+          This allows instances in a private subnet to access the internet without exposing the instances themselves to incoming internet traffic.
+          <StyledListItem>Pay per hour for usage and bandwidth.</StyledListItem>
+          <StyledListItem>NAT Gateways are created in a specific availability zone and uses an Elastic IP.</StyledListItem>
+          <StyledListItem>Can't be used by an EC2 instance in the same subnet (only from other subnets).</StyledListItem>
+          <StyledListItem>Requires a IGW (Private Subnet => NATGW => IGW).</StyledListItem>
+          <StyledListItem>No Security Groups to manage.</StyledListItem>
+          <Spacer />
+          <StyledImage src={VPCNATGateWay} />
+          <Spacer />
+          <SubTitleSmall>NAT Gateway with High Availability</SubTitleSmall>
+          To increase fault tolerance you can create multiple NAT Gateways across multiple AZs.
+          <Spacer />
+          <StyledImage src={VPCNATGateWayHA} />
+          <Spacer />
+          <SubTitleSmall>NAT Gateway vs NAT Instance</SubTitleSmall>
+          <Table columns={columns} data={data} />
           <Spacer />
         </Text>
       </Container>
