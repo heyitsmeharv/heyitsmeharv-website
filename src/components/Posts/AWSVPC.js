@@ -30,6 +30,11 @@ import VPCEndpoint from "../../resources/images/blog/AWSVPC/vpc_endpoint.jpeg"
 import VPCEndpointPrivateLink from "../../resources/images/blog/AWSVPC/vpc_endpoint_private_link.jpeg"
 import VPCGatewayEndpoint from "../../resources/images/blog/AWSVPC/vpc_gateway_endpoints.jpeg"
 import VPCInterfaceEndpoint from "../../resources/images/blog/AWSVPC/vpc_interface_endpoints.jpeg"
+import VPCFlowLogSyntax from "../../resources/images/blog/AWSVPC/vpc_flow_log_syntax.jpeg"
+import VPCFlowLogs from "../../resources/images/blog/AWSVPC/vpc_flow_logs.jpeg"
+import VPCSiteToSiteVPN from "../../resources/images/blog/AWSVPC/vpc_site_to_site_vpn.jpeg"
+import VPCSiteToSitePublicPrivateIP from "../../resources/images/blog/AWSVPC/vpc_site_to_site_public_private_ip.jpeg"
+import VPCSiteToSiteCloudHub from "../../resources/images/blog/AWSVPC/vpc_site_to_site_cloud_hub.jpeg"
 
 
 const Wrapper = styled.div`
@@ -263,6 +268,10 @@ const AWSVPC = () => {
           <StyledAnchor href="#nat-gateway"><StyledListItem>NAT Gateway</StyledListItem></StyledAnchor>
           <StyledAnchor href="#sg-nacls"><StyledListItem>Security Groups & NACLs</StyledListItem></StyledAnchor>
           <StyledAnchor href="#vpc-peering"><StyledListItem>VPC Peering</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#vpc-endpoint"><StyledListItem>VPC Endpoint</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#vpc-flow-logs"><StyledListItem>VPC Flow Logs</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#site-to-site-vpn"><StyledListItem>Site-to-Site VPN</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#direct-connect"><StyledListItem>Direct Connect (DX)</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="vpc-introduction">Amazon Virtual Private Cloud (VPC)</SubTitle>
@@ -482,6 +491,40 @@ const AWSVPC = () => {
           <Spacer />
           <StyledImage src={VPCGatewayEndpoint} />
           <Spacer />
+          <SubTitle id="vpc-flow-logs">VPC Flow Logs</SubTitle>
+          VPC Flow Logs are a feature in AWS that enables you to capture and monitor the network traffic going to and from network interfaces in your VPC. Flow logs can be sent to S3, CloudWatch Logs and Kinesis Data Firehose.
+          <StyledImage src={VPCFlowLogSyntax} />
+          <StyledImage src={VPCFlowLogs} />
+          <Spacer />
+          <SubTitle id="site-to-site-vpn">Site-to-Site VPN</SubTitle>
+          A site-to-site VPN (Virtual Private Network) connection is a secure connection that allows different networks, typically in different geographical locations, to communicate with each other over the internet as if
+          they were part of the same local network.
+          <StyledImage src={VPCSiteToSiteVPN} />
+          <Spacer />
+          <SubTitleSmall>Components of a Site-to-Site VPN</SubTitleSmall>
+          <StyledListItem><BoldTextSmall>Virtual Private Gateway (VGW)</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>VPN concentrator on the AWS side of the VPN connection.</StyledListItemIndent>
+          <StyledListItemIndent>VGW is created and attached to the VPC from which you want to create the Site-to-Site VPN connection.</StyledListItemIndent>
+          <StyledListItemIndent>Possible to customise the ASN (Autonomous System Number).</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Customer Gateway (CGW)</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Software application or physical device on customer side of VPN connection.</StyledListItemIndent>
+          <Spacer />
+          <SubTitleSmall>Site-to-Site VPN Connections</SubTitleSmall>
+          If the Customer Gateway has a private IP address you can use the public IP of the NAT device, otherwise you can use the public IP address of the Customer Gateway for the site-to-site connection.
+          <StyledListItemIndent>Enable Route Propagation for the VPG in the route table that is associated with your subnets.</StyledListItemIndent>
+          <StyledListItemIndent>If you need to ping your EC2 instance from on-premise, make sure you add ICMP protocol on the inbound of your security group.</StyledListItemIndent>
+          <StyledImage src={VPCSiteToSitePublicPrivateIP} />
+          <Spacer />
+          <SubTitleSmall>VPN CloudHub</SubTitleSmall>
+          AWS VPN CloudHub is a feature of the AWS Site-to-Site VPN service that allows you to securely connect multiple remote sites (such as branch offices) to each other and to your AWS environment using a hub-and-spoke model. It's 
+          particularly useful when you need to connect multiple sites that do not have direct connections to each other, creating a simple, cost-effective, and scalable solution for multi-site connectivity.
+          <Spacer />
+          <StyledImage src={VPCSiteToSiteCloudHub} />
+          <Spacer />
+          To set it up, connect multiple VPN connections on the same VGW, setup dynamic routing and configure route tables.
+          <SubTitle id="direct-connect">Direct Connect (DX)</SubTitle>
+
         </Text>
       </Container>
     </Wrapper>
