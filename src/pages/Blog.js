@@ -182,7 +182,7 @@ export default function Blog() {
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
       this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics 
-      if you're not familiar with this service at all...`,
+      if you're not familiar...`,
       navigate: 'aws-identity-access-management',
       published: true
     },
@@ -343,7 +343,7 @@ export default function Blog() {
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
       this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics 
-      if you're not familiar with this service at all...`,
+      if you're not familiar...`,
       navigate: 'aws-identity-access-management',
       published: true
     },

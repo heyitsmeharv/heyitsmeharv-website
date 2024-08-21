@@ -35,7 +35,8 @@ import VPCFlowLogs from "../../resources/images/blog/AWSVPC/vpc_flow_logs.jpeg"
 import VPCSiteToSiteVPN from "../../resources/images/blog/AWSVPC/vpc_site_to_site_vpn.jpeg"
 import VPCSiteToSitePublicPrivateIP from "../../resources/images/blog/AWSVPC/vpc_site_to_site_public_private_ip.jpeg"
 import VPCSiteToSiteCloudHub from "../../resources/images/blog/AWSVPC/vpc_site_to_site_cloud_hub.jpeg"
-
+import VPCDirectConnect from "../../resources/images/blog/AWSVPC/vpc_direct_connect.jpeg"
+import VPCDirectConnectGateWay from "../../resources/images/blog/AWSVPC/vpc_direct_connect_gateway.jpeg"
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -523,7 +524,12 @@ const AWSVPC = () => {
           <StyledImage src={VPCSiteToSiteCloudHub} />
           <Spacer />
           To set it up, connect multiple VPN connections on the same VGW, setup dynamic routing and configure route tables.
+          <Spacer />
           <SubTitle id="direct-connect">Direct Connect (DX)</SubTitle>
+          AWS Direct Connect is a cloud service solution that enables you to establish a dedicated, private network connection between your on-premises data center or office and AWS. This connection bypasses the public internet, 
+          providing a more reliable and consistent network experience with higher bandwidth and lower latency compared to internet-based connections.
+          <StyledImage src={VPCDirectConnect} />
+          <StyledImage src={VPCDirectConnectGateWay} />
 
         </Text>
       </Container>
