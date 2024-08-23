@@ -37,6 +37,12 @@ import VPCSiteToSitePublicPrivateIP from "../../resources/images/blog/AWSVPC/vpc
 import VPCSiteToSiteCloudHub from "../../resources/images/blog/AWSVPC/vpc_site_to_site_cloud_hub.jpeg"
 import VPCDirectConnect from "../../resources/images/blog/AWSVPC/vpc_direct_connect.jpeg"
 import VPCDirectConnectGateWay from "../../resources/images/blog/AWSVPC/vpc_direct_connect_gateway.jpeg"
+import VPCDirectConnectEncryption from "../../resources/images/blog/AWSVPC/vpc_direct_connect_encryption.jpeg"
+import VPCDirectConnectResilience from "../../resources/images/blog/AWSVPC/vpc_direct_connect_resilience.jpeg"
+import VPCDirectConnectBackup from "../../resources/images/blog/AWSVPC/vpc_direct_connect_backup.jpeg"
+import VPCTransitGateway from "../../resources/images/blog/AWSVPC/vpc_transit_gateway.jpeg"
+import VPCTransitGatewayECMP from "../../resources/images/blog/AWSVPC/vpc_transit_gateway_ecmp.jpeg"
+
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -273,6 +279,7 @@ const AWSVPC = () => {
           <StyledAnchor href="#vpc-flow-logs"><StyledListItem>VPC Flow Logs</StyledListItem></StyledAnchor>
           <StyledAnchor href="#site-to-site-vpn"><StyledListItem>Site-to-Site VPN</StyledListItem></StyledAnchor>
           <StyledAnchor href="#direct-connect"><StyledListItem>Direct Connect (DX)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#transit-gateway"><StyledListItem>Transit Gateway</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="vpc-introduction">Amazon Virtual Private Cloud (VPC)</SubTitle>
@@ -518,7 +525,7 @@ const AWSVPC = () => {
           <StyledImage src={VPCSiteToSitePublicPrivateIP} />
           <Spacer />
           <SubTitleSmall>VPN CloudHub</SubTitleSmall>
-          AWS VPN CloudHub is a feature of the AWS Site-to-Site VPN service that allows you to securely connect multiple remote sites (such as branch offices) to each other and to your AWS environment using a hub-and-spoke model. It's 
+          AWS VPN CloudHub is a feature of the AWS Site-to-Site VPN service that allows you to securely connect multiple remote sites (such as branch offices) to each other and to your AWS environment using a hub-and-spoke model. It's
           particularly useful when you need to connect multiple sites that do not have direct connections to each other, creating a simple, cost-effective, and scalable solution for multi-site connectivity.
           <Spacer />
           <StyledImage src={VPCSiteToSiteCloudHub} />
@@ -526,10 +533,52 @@ const AWSVPC = () => {
           To set it up, connect multiple VPN connections on the same VGW, setup dynamic routing and configure route tables.
           <Spacer />
           <SubTitle id="direct-connect">Direct Connect (DX)</SubTitle>
-          AWS Direct Connect is a cloud service solution that enables you to establish a dedicated, private network connection between your on-premises data center or office and AWS. This connection bypasses the public internet, 
+          AWS Direct Connect is a cloud service solution that enables you to establish a dedicated, private network connection between your on-premises data center or office and AWS. This connection bypasses the public internet,
           providing a more reliable and consistent network experience with higher bandwidth and lower latency compared to internet-based connections.
+          <Spacer />
           <StyledImage src={VPCDirectConnect} />
+          <Spacer />
+          If you want to setup a Direct Connect to one or more VPCs in different regions (same account), you must use a Direct Connect Gateway.
+          <Spacer />
           <StyledImage src={VPCDirectConnectGateWay} />
+          <Spacer />
+          <SubTitleSmall>Connection Types</SubTitleSmall>
+          <StyledListItem><BoldTextSmall>Dedicated Connections</BoldTextSmall>1Gbps, 10Gbps and 100Gbps capacity</StyledListItem>
+          <StyledListItemIndent>Physical ethernet port dedicated to a customer.</StyledListItemIndent>
+          <StyledListItemIndent>Request made to AWS first, then completed by AWS Direct Connect Partners.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Hosted Connections</BoldTextSmall>50Mbps, 500Mbps to 10Gbps</StyledListItem>
+          <StyledListItemIndent>Connection request made via AWS Direct Connect Partners.</StyledListItemIndent>
+          <StyledListItemIndent>Capacity added or removed on demand.</StyledListItemIndent>
+          <Spacer />
+          Lead times are often longer than one month to establish a new connection.
+          <Spacer />
+          <SubTitleSmall>Encryption</SubTitleSmall>
+          Data in transit is not encrypted but is private. If you want to add an extra layer of security you should use Direct Connect with a VPN.
+          <Spacer />
+          <StyledImage src={VPCDirectConnectEncryption} />
+          <Spacer />
+          <SubTitleSmall>Resiliency</SubTitleSmall>
+          Here are two architecture designs on how to implement resiliency for critical workloads.
+          <Spacer />
+          <StyledImage src={VPCDirectConnectResilience} />
+          <Spacer />
+          <SubTitleSmall>Site-to-Site VPN connection as a backup</SubTitleSmall>
+          In case Direct Connect fails, you can set up a backup Direct Connect connection which would be expensive, or a Site-to-Site VPN connection.
+          <Spacer />
+          <StyledImage src={VPCDirectConnectBackup} />
+          <Spacer />
+          <SubTitle id="transit-gateway">Transit Gateway</SubTitle>
+          AWS Transit Gateway (TGW) is a service that simplifies the management of network connectivity at scale by acting as a central hub to connect Amazon Virtual Private Clouds (VPCs), on-premises networks, 
+          and even other AWS services. It effectively centralizes the management of network traffic within and between these different environments. Supports IP Multicast which isn't supported by any other AWS Service.
+          <Spacer />
+          <StyledImage src={VPCTransitGateway} />
+          <Spacer />
+          <SubTitleSmall>Site-to-Site VPN ECMP</SubTitleSmall>
+          ECMP (Equal Cost Multi-Path) routing is a routing strategy to allow for forwarding packets over multiple best paths increasing the bandwidth of your connection to AWS.
+          <Spacer />
+          <StyledImage src={VPCTransitGatewayECMP} />
+          <Spacer />
 
         </Text>
       </Container>
