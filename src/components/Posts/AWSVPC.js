@@ -42,6 +42,8 @@ import VPCDirectConnectResilience from "../../resources/images/blog/AWSVPC/vpc_d
 import VPCDirectConnectBackup from "../../resources/images/blog/AWSVPC/vpc_direct_connect_backup.jpeg"
 import VPCTransitGateway from "../../resources/images/blog/AWSVPC/vpc_transit_gateway.jpeg"
 import VPCTransitGatewayECMP from "../../resources/images/blog/AWSVPC/vpc_transit_gateway_ecmp.jpeg"
+import VPCTransitGatewayMA from "../../resources/images/blog/AWSVPC/vpc_transit_gateway_multiple_accounts.jpeg"
+import VPCTrafficMirroring from "../../resources/images/blog/AWSVPC/vpc_traffic_mirroring.jpeg"
 
 
 const Wrapper = styled.div`
@@ -280,6 +282,7 @@ const AWSVPC = () => {
           <StyledAnchor href="#site-to-site-vpn"><StyledListItem>Site-to-Site VPN</StyledListItem></StyledAnchor>
           <StyledAnchor href="#direct-connect"><StyledListItem>Direct Connect (DX)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#transit-gateway"><StyledListItem>Transit Gateway</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#traffic-mirroring"><StyledListItem>Traffic Mirroring</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="vpc-introduction">Amazon Virtual Private Cloud (VPC)</SubTitle>
@@ -569,7 +572,7 @@ const AWSVPC = () => {
           <StyledImage src={VPCDirectConnectBackup} />
           <Spacer />
           <SubTitle id="transit-gateway">Transit Gateway</SubTitle>
-          AWS Transit Gateway (TGW) is a service that simplifies the management of network connectivity at scale by acting as a central hub to connect Amazon Virtual Private Clouds (VPCs), on-premises networks, 
+          AWS Transit Gateway (TGW) is a service that simplifies the management of network connectivity at scale by acting as a central hub to connect Amazon Virtual Private Clouds (VPCs), on-premises networks,
           and even other AWS services. It effectively centralizes the management of network traffic within and between these different environments. Supports IP Multicast which isn't supported by any other AWS Service.
           <Spacer />
           <StyledImage src={VPCTransitGateway} />
@@ -578,6 +581,17 @@ const AWSVPC = () => {
           ECMP (Equal Cost Multi-Path) routing is a routing strategy to allow for forwarding packets over multiple best paths increasing the bandwidth of your connection to AWS.
           <Spacer />
           <StyledImage src={VPCTransitGatewayECMP} />
+          <Spacer />
+          <SubTitleSmall>Direct Connect between Multiple Accounts</SubTitleSmall>
+          <Spacer />
+          <StyledImage src={VPCTransitGatewayMA} />
+          <Spacer />
+          <SubTitle id="traffic-mirroring">Traffic Mirroring</SubTitle>
+          AWS Traffic Mirroring is a feature within Amazon Virtual Private Cloud (VPC) that allows you to capture and inspect network traffic flowing to and from the Elastic Network Interfaces (ENIs)
+          of your Amazon EC2 instances. It helps you improve security, troubleshoot issues, and monitor your network more effectively by providing the ability to mirror (or copy) the traffic to security appliances,
+          monitoring tools, or for analysis by other services.
+          <Spacer />
+          <StyledImage src={VPCTrafficMirroring} />
           <Spacer />
 
         </Text>
