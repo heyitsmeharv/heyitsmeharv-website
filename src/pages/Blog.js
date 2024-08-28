@@ -276,7 +276,7 @@ export default function Blog() {
     },
     {
       title: 'AWS VPC',
-      readingTime: '~',
+      readingTime: 'approx 30 mins',
       type: 'Theory',
       date: '11/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
@@ -437,7 +437,7 @@ export default function Blog() {
     },
     {
       title: 'AWS VPC',
-      readingTime: '~',
+      readingTime: 'approx 30 mins',
       type: 'Theory',
       date: '11/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
