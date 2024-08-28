@@ -40,11 +40,18 @@ import VPCDirectConnectGateWay from "../../resources/images/blog/AWSVPC/vpc_dire
 import VPCDirectConnectEncryption from "../../resources/images/blog/AWSVPC/vpc_direct_connect_encryption.jpeg"
 import VPCDirectConnectResilience from "../../resources/images/blog/AWSVPC/vpc_direct_connect_resilience.jpeg"
 import VPCDirectConnectBackup from "../../resources/images/blog/AWSVPC/vpc_direct_connect_backup.jpeg"
+import VPCDX from "../../resources/images/blog/AWSVPC/vpc_dx.jpeg"
 import VPCTransitGateway from "../../resources/images/blog/AWSVPC/vpc_transit_gateway.jpeg"
 import VPCTransitGatewayECMP from "../../resources/images/blog/AWSVPC/vpc_transit_gateway_ecmp.jpeg"
 import VPCTransitGatewayMA from "../../resources/images/blog/AWSVPC/vpc_transit_gateway_multiple_accounts.jpeg"
+import VPCTransitGatewayOverview from "../../resources/images/blog/AWSVPC/vpc_transit_gateway_overview.jpeg"
 import VPCTrafficMirroring from "../../resources/images/blog/AWSVPC/vpc_traffic_mirroring.jpeg"
-
+import VPCIPv6 from "../../resources/images/blog/AWSVPC/vpc_ipv6.jpeg"
+import VPCEgressOnlyIG from "../../resources/images/blog/AWSVPC/vpc_egress_only_internet_gateway.jpeg"
+import VPCIPv6Routing from "../../resources/images/blog/AWSVPC/vpc_ipv6_routing.jpeg"
+import VPCNetworkingCosts from "../../resources/images/blog/AWSVPC/vpc_networking_costs.jpeg"
+import VPCEgressTrafficNetworkingCosts from "../../resources/images/blog/AWSVPC/vpc_egress_traffic_networking_costs.jpeg"
+import VPCNetworkFirewall from "../../resources/images/blog/AWSVPC/vpc_network_firewall.jpeg"
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -283,11 +290,16 @@ const AWSVPC = () => {
           <StyledAnchor href="#direct-connect"><StyledListItem>Direct Connect (DX)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#transit-gateway"><StyledListItem>Transit Gateway</StyledListItem></StyledAnchor>
           <StyledAnchor href="#traffic-mirroring"><StyledListItem>Traffic Mirroring</StyledListItem></StyledAnchor>
-
+          <StyledAnchor href="#IPv6"><StyledListItem>IPv6 in VPC</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#networking-costs"><StyledListItem>Networking Costs in AWS</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#network-protection"><StyledListItem>AWS Network Firewall</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#vpc-summary"><StyledListItem>VPC Summary</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="vpc-introduction">Amazon Virtual Private Cloud (VPC)</SubTitle>
           A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources, such as EC2 instances, within a virtual network that you define. A VPC allows
           you to customize your network environment, including selecting your own IP address range, creating subnets, configuring route tables, and setting up gateways.
+          <Spacer />
+          <StyledImage src={VPCTransitGatewayOverview} />
           <Spacer />
           <SubTitle id="cidr">Classless Inter-Domain Routing - CIDR</SubTitle>
           CIDR, or Classless Inter-Domain Routing, is a method used for allocating IP addresses and routing internet traffic
@@ -343,6 +355,15 @@ const AWSVPC = () => {
           192.168.0.0 / 16 => allows for 65,536 IP 192.168.0.0 => 192.168.255.255
           <Spacer />
           192.168.0.0 / 0 => allows for ALL IPs 0.0.0.0 => 255.255.255.255
+          <Spacer />
+          <SubTitleSmall>Public vs Private IP (IPv4)</SubTitleSmall>
+          The Internet Assigned Numbers Authority (IANA) established certain blocks of IPv4 addresses for the use of private (LAN) and public (Internet) addresses.
+          <StyledListItem><BoldText>Private IP</BoldText> can only have certain values:</StyledListItem>
+          <StyledListItemIndent>10.0.0.0 - 10.255.255.255 (10.0.0.0/8) -> Big networks</StyledListItemIndent>
+          <StyledListItemIndent>172.16.0.0 - 172.31.255.255 (172.16.0.0/12) -> AWS default VPC range</StyledListItemIndent>
+          <StyledListItemIndent>192.168.0.0 - 192.168.255.255 (192.168.0.0/16) -> Home networks</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>Public IP</BoldText> The rest of the IP addresses on the internet are public.</StyledListItem>
           <Spacer />
           <SubTitle id="vpc-in-aws">VPC in AWS</SubTitle>
           <StyledListItem>You can have multiple VPCs in an AWS region (max 5 per region).</StyledListItem>
@@ -546,11 +567,11 @@ const AWSVPC = () => {
           <StyledImage src={VPCDirectConnectGateWay} />
           <Spacer />
           <SubTitleSmall>Connection Types</SubTitleSmall>
-          <StyledListItem><BoldTextSmall>Dedicated Connections</BoldTextSmall>1Gbps, 10Gbps and 100Gbps capacity</StyledListItem>
+          <StyledListItem><BoldTextSmall>Dedicated Connections</BoldTextSmall>: 1Gbps, 10Gbps and 100Gbps capacity</StyledListItem>
           <StyledListItemIndent>Physical ethernet port dedicated to a customer.</StyledListItemIndent>
           <StyledListItemIndent>Request made to AWS first, then completed by AWS Direct Connect Partners.</StyledListItemIndent>
           <Spacer />
-          <StyledListItem><BoldTextSmall>Hosted Connections</BoldTextSmall>50Mbps, 500Mbps to 10Gbps</StyledListItem>
+          <StyledListItem><BoldTextSmall>Hosted Connections</BoldTextSmall>: 50Mbps, 500Mbps to 10Gbps</StyledListItem>
           <StyledListItemIndent>Connection request made via AWS Direct Connect Partners.</StyledListItemIndent>
           <StyledListItemIndent>Capacity added or removed on demand.</StyledListItemIndent>
           <Spacer />
@@ -571,6 +592,10 @@ const AWSVPC = () => {
           <Spacer />
           <StyledImage src={VPCDirectConnectBackup} />
           <Spacer />
+          <SubTitleSmall>Direct Connection Overview</SubTitleSmall>
+          <Spacer />
+          <StyledImage src={VPCDX} />
+          <Spacer />
           <SubTitle id="transit-gateway">Transit Gateway</SubTitle>
           AWS Transit Gateway (TGW) is a service that simplifies the management of network connectivity at scale by acting as a central hub to connect Amazon Virtual Private Clouds (VPCs), on-premises networks,
           and even other AWS services. It effectively centralizes the management of network traffic within and between these different environments. Supports IP Multicast which isn't supported by any other AWS Service.
@@ -586,6 +611,10 @@ const AWSVPC = () => {
           <Spacer />
           <StyledImage src={VPCTransitGatewayMA} />
           <Spacer />
+          <SubTitleSmall>Transit Gateway Overview</SubTitleSmall>
+          <Spacer />
+          <StyledImage src={VPCTransitGatewayOverview} />
+          <Spacer />
           <SubTitle id="traffic-mirroring">Traffic Mirroring</SubTitle>
           AWS Traffic Mirroring is a feature within Amazon Virtual Private Cloud (VPC) that allows you to capture and inspect network traffic flowing to and from the Elastic Network Interfaces (ENIs)
           of your Amazon EC2 instances. It helps you improve security, troubleshoot issues, and monitor your network more effectively by providing the ability to mirror (or copy) the traffic to security appliances,
@@ -593,7 +622,80 @@ const AWSVPC = () => {
           <Spacer />
           <StyledImage src={VPCTrafficMirroring} />
           <Spacer />
-
+          <SubTitle id="ipv6">IPv6 in VPC</SubTitle>
+          IPv6 is the successor of IPv4 as IPv4 addresses will be exhausted soon. Every IPv6 address in AWS is a public IP address. An example of a IPv6 address would be - 2001:db8:3333:4444:cccc:dddd:eeee:8888. The difference 
+          being that the range can include hexadecimals (0000 to ffff). You can enable IPv6 to operate in dual-stack mode. EC2 instances will get at least a private IPv4 and a public IPv6 address which can communicate using either 
+          addresses to the internet through an Internet Gateway. Note that IPv4 addresses cannot be disabled for your VPC and subnets.
+          <Spacer />
+          <StyledImage src={VPCIPv6} />
+          <Spacer />
+          <SubTitleSmall>Egress-only Internet Gateway</SubTitleSmall>
+          Egress-only Internet Gateways allows instances in a VPC outbound connections over IPv6 while preventing the internet to initiate an IPv6 connection to the instances. This is used for IPv6 only - 
+          It's similar to a NAT Gateway but for IPv6 addresses.
+          <Spacer />
+          <StyledImage src={VPCEgressOnlyIG} />
+          <Spacer />
+          <SubTitleSmall>IPv6 Routing</SubTitleSmall>
+          Here is an example on how routing works with IPv6:
+          <Spacer />
+          <StyledImage src={VPCIPv6Routing} />
+          <Spacer />
+          <SubTitle id="networking-costs">Networking Costs in AWS</SubTitle>
+          <Spacer />
+          <SubTitleSmall>Networking Costs per GB - Simplified</SubTitleSmall>
+          <Spacer />
+          Use Private IP instead of Public IP for savings and better network performance. Use the same AZ for maximum savings at the cost of high availability.
+          <Spacer />
+          <StyledImage src={VPCNetworkingCosts} />
+          <Spacer />
+          <SubTitleSmall>Minimizing egress traffic network costs</SubTitleSmall>
+          <StyledListItem><BoldTextSmall>Egress traffic: </BoldTextSmall>outbound traffic (from AWS to outside)</StyledListItem>
+          <StyledListItem><BoldTextSmall>Ingress traffic: </BoldTextSmall>inbound traffic (from outside to AWS which is typically free)</StyledListItem>
+          <Spacer />
+          Try to keep as much traffic within AWS to minimize costs. Direct Connect location that are co-located in the same AWS region result in lower cost for egress network.
+          <Spacer />
+          <StyledImage src={VPCEgressTrafficNetworkingCosts} />
+          <Spacer />
+          <SubTitle id="network-protection">AWS Network Firewall</SubTitle>
+          AWS Network Firewall is a managed service designed to provide network protection for your VPC. It allows you to implement essential security controls, such as traffic filtering and monitoring, 
+          to safeguard your cloud infrastructure.
+          <Spacer />
+          <StyledImage src={VPCNetworkFirewall} />
+          <Spacer />
+          <HeadingSmall>Key features:</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Traffic Filtering</BoldTextSmall>: AWS Network Firewall enables you to create rules that allow, block, or monitor traffic based on criteria such as IP addresses, ports, protocols, and domains. This helps prevent unauthorized access and mitigate threats.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Managed Rules</BoldTextSmall>: You can use pre-configured rule groups provided by AWS or third-party vendors, which are regularly updated to protect against the latest threats. These managed rules simplify the setup process and ensure you have up-to-date protection.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Custom Rules</BoldTextSmall>: In addition to managed rules, you can create custom rule groups tailored to your specific security requirements. This gives you granular control over your network traffic.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Stateful and Stateless Rules</BoldTextSmall>: AWS Network Firewall supports both stateful and stateless rule processing. Stateful rules track the state of network connections, while stateless rules evaluate each packet in isolation. This flexibility allows for more nuanced traffic control.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Logging and Monitoring</BoldTextSmall>: The service provides detailed logging and monitoring capabilities, allowing you to track and analyze network traffic in real-time. Logs can be sent to Amazon S3, CloudWatch Logs, or Kinesis Data Firehose for further analysis.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Centralized Management</BoldTextSmall>: You can centrally manage and deploy firewalls across multiple VPCs using AWS Firewall Manager, making it easier to maintain consistent security policies in large environments.</StyledListItem>
+          <Spacer />
+          <SubTitle id="vpc-summary">VPC Summary</SubTitle>
+          <StyledListItem><BoldTextSmall>CIDR</BoldTextSmall>: IP Range</StyledListItem>
+          <StyledListItem><BoldTextSmall>VPC</BoldTextSmall>: Define a list of IPv4 and IPv6 CIDR</StyledListItem>
+          <StyledListItem><BoldTextSmall>Subnets</BoldTextSmall>: Tied to an AZ, CIDR range defined</StyledListItem>
+          <StyledListItem><BoldTextSmall>Internet Gateway</BoldTextSmall>: At VPC level, provide IPv4 and IPv6 internet access</StyledListItem>
+          <StyledListItem><BoldTextSmall>Route Tables</BoldTextSmall>: Must be edited to add routes from subnets to the IGW, VPC Peering Connections, VPC Endpoints</StyledListItem>
+          <StyledListItem><BoldTextSmall>Bastion Host</BoldTextSmall>: Public EC2 instance to SSH into that has SSH connectivity to EC2 instances in private subnets</StyledListItem>
+          <StyledListItem><BoldTextSmall>NAT Instances</BoldTextSmall>: Gives internet access to EC2 instances in private subnets. Old, must be setup in a public subnet, disable source / destination check flag</StyledListItem>
+          <StyledListItem><BoldTextSmall>NAT Gateway</BoldTextSmall>: Managed by AWS, provides scalable internet access to private EC2 instances, when the target is an IPv4 address</StyledListItem>
+          <StyledListItem><BoldTextSmall>NACL</BoldTextSmall>: Stateless, subnet rules for inbound and outbound</StyledListItem>
+          <StyledListItem><BoldTextSmall>Security Groups</BoldTextSmall>: Stateful, operate at the EC2 instance level</StyledListItem>
+          <StyledListItem><BoldTextSmall>VPC Peering</BoldTextSmall>: Connect two VPCs with non overlapping CIDR, non transitive</StyledListItem>
+          <StyledListItem><BoldTextSmall>VPC Endpoints</BoldTextSmall>: Provide private access to AWS services (S3, DynamoDB) within a VPC</StyledListItem>
+          <StyledListItem><BoldTextSmall>VPC Flow Logs</BoldTextSmall>: Can be setup at the VPC / Subnet / ENI level, for ACCEPT and REJECT traffic, helps identify attacks, analyze using Athena or Cloudwatch Logs Insights</StyledListItem>
+          <StyledListItem><BoldTextSmall>Site-to-Site VPN</BoldTextSmall>: Setup a customer gateway on DC, a virtual private gateway on VPC, and site-to-site VPN over public internet</StyledListItem>
+          <StyledListItem><BoldTextSmall>AWS VPN CloudHub</BoldTextSmall>: Hub-and-spoke VPN model to connect your sites</StyledListItem>
+          <StyledListItem><BoldTextSmall>Direct Connect</BoldTextSmall>: Setup a virtual private gateway on VPC, and establish a direct private connection to an AWS Direct Location</StyledListItem>
+          <StyledListItem><BoldTextSmall>Direct Connect Gateway</BoldTextSmall>: Setup a Direct Connect to many VPCs in different AWS regions</StyledListItem>
+          <StyledListItem><BoldTextSmall>AWS PrivateLink / VPC Endpoint Services</BoldTextSmall>:</StyledListItem>
+          <StyledListItemIndent>Connect services privately from your VPC to customers VPC</StyledListItemIndent>
+          <StyledListItemIndent>Doesn't need VPC peering, public internet, NAT gateway, route tables</StyledListItemIndent>
+          <StyledListItemIndent>Must be used with network load balancer & ENI</StyledListItemIndent>
+          <StyledListItem><BoldTextSmall>ClassicLink</BoldTextSmall>: Connect EC2-Classic EC2 instances privately to your VPC</StyledListItem>
+          <StyledListItem><BoldTextSmall>Transit Gateway</BoldTextSmall>: Transitive peering connections for VPC, VPN & DX</StyledListItem>
+          <StyledListItem><BoldTextSmall>Traffic Mirroring</BoldTextSmall>: Copy network traffic from ENIs for further analysis</StyledListItem>
+          <StyledListItem><BoldTextSmall>Egress-only Internet Gateway</BoldTextSmall>: Like NAT gateway but for IPv6</StyledListItem>
         </Text>
       </Container>
     </Wrapper>
