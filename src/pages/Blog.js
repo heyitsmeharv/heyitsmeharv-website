@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination/Pagination";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG, AWSSNSSVG, AWSECSSVG, AWSEKSSVG, AWSFargateSVG, AWSVPCSVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG, AWSSNSSVG, AWSECSSVG, AWSEKSSVG, AWSFargateSVG, AWSVPCSVG, AWSKinesisSVG } from '../resources/styles/icons';
 
 
 const SearchBarWrapper = styled.div`
@@ -264,6 +264,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Kinesis',
+      readingTime: 'approx ~ mins',
+      type: 'Theory',
+      date: '28/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
+      intro: `...`,
+      navigate: 'aws-kinesis',
+      published: true
+    },
+    {
       title: 'AWS Containers',
       readingTime: 'approx 10 mins',
       type: 'Theory',
@@ -422,6 +432,16 @@ export default function Blog() {
       intro: `Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. 
       What if you wanted to send one message to many endpoints? Instead of having a direct integration with each endpoint/service...`,
       navigate: 'aws-sns',
+      published: true
+    },
+    {
+      title: 'AWS Kinesis',
+      readingTime: 'approx ~ mins',
+      type: 'Theory',
+      date: '28/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
+      intro: `...`,
+      navigate: 'aws-kinesis',
       published: true
     },
     {
