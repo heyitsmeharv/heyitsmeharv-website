@@ -16,6 +16,7 @@ import Table from '../../components/Table/Table';
 // images
 import KinesisDataStreams from "../../resources/images/blog/AWSKinesis/kinesis_data_streams.jpeg"
 import KinesisDataStreamsEncryption from "../../resources/images/blog/AWSKinesis/kinesis_data_streams_encryption.jpeg"
+import KinesisFirehose from "../../resources/images/blog/AWSKinesis/kinesis_data_firehose.jpeg"
 
 
 const Wrapper = styled.div`
@@ -296,6 +297,9 @@ const AWSKenisis = () => {
           <StyledImage src={KinesisDataStreamsEncryption} />          
           <Spacer />
           <SubTitle id="kinesis-data-firehose">Kinesis Data Firehose</SubTitle>
+          <Spacer />
+          <StyledImage src={KinesisFirehose} />
+          <Spacer />
 
           <Spacer />
           <SubTitle id="kinesis-data-analytics">Kinesis Data Analytics</SubTitle>
