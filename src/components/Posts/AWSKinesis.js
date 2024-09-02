@@ -17,6 +17,9 @@ import Table from '../../components/Table/Table';
 import KinesisDataStreams from "../../resources/images/blog/AWSKinesis/kinesis_data_streams.jpeg"
 import KinesisDataStreamsEncryption from "../../resources/images/blog/AWSKinesis/kinesis_data_streams_encryption.jpeg"
 import KinesisFirehose from "../../resources/images/blog/AWSKinesis/kinesis_data_firehose.jpeg"
+import KinesisDataOrdering from "../../resources/images/blog/AWSKinesis/kinesis_data_ordering.jpeg"
+import SQSDataOrdering from "../../resources/images/blog/AWSSQS/sqs_data_ordering.jpeg"
+import SQSDataOrderingGroupId from "../../resources/images/blog/AWSSQS/sqs_data_ordering_group_id.jpeg"
 
 
 const Wrapper = styled.div`
@@ -209,6 +212,28 @@ const AWSKenisis = () => {
     { 'Feature': 'Best For', 'Provisioned Mode': 'Predictable traffic, cost control', 'On-Demand Mode': 'Unpredictable, variable traffic, ease of use' },
   ];
 
+  const columns2 = ['Kinesis Data Streams', 'Kinesis Data Firehose'];
+  const data2 = [
+    { 'Kinesis Data Streams': 'Streaming service for ingest at scale', 'Kinesis Data Firehose': 'Load streaming data into S3 / Redshift / OpenSearch / 3rd Party/ custom HTTP' },
+    { 'Kinesis Data Streams': 'Write custom code (producer / consumer)', 'Kinesis Data Firehose': 'Fully managed' },
+    { 'Kinesis Data Streams': 'Real-time (~200ms)', 'Kinesis Data Firehose': 'Near real-time' },
+    { 'Kinesis Data Streams': 'Manage scaling (shard splitting / merging)', 'Kinesis Data Firehose': 'Automatic scaling' },
+    { 'Kinesis Data Streams': 'Data storage up to 365 days', 'Kinesis Data Firehose': 'No data storage' },
+    { 'Kinesis Data Streams': 'Supports replay capacity', 'Kinesis Data Firehose': `Doesn't support replay capacity` },
+  ];
+
+  const columns3 = ['Kinesis', 'SNS', 'SQS'];
+  const data3 = [
+    { 'Kinesis': 'Standard: pull data 2MB per shard', 'SNS': 'Push data to many subscribers', 'SQS': 'Consumer "pull data"' },
+    { 'Kinesis': 'Enhanced-fan out: push data 2MB per shard per consumer', 'SNS': 'Up to 12,500,000 subscribers', 'SQS': 'Data is deleted after being consumed' },
+    { 'Kinesis': 'Possibility of replay data', 'SNS': 'Data is not persisted (lost if not delivered)', 'SQS': 'Can have many workers (consumers) as we want' },
+    { 'Kinesis': 'Meant for real-time big data, analytics and ETL', 'SNS': 'Pub / Sub', 'SQS': 'No need to provision throughput' },
+    { 'Kinesis': 'Ordering at the shard level', 'SNS': 'Up to 100,000 topics', 'SQS': 'Ordering guarantees only on FIFO queues' },
+    { 'Kinesis': 'Data expires after X days', 'SNS': 'No need to provision throughput', 'SQS': 'Individual message delay capability' },
+    { 'Kinesis': 'Provisioned mode or on-demand capacity mode', 'SNS': 'Integrates with SQS for fan-out architecture pattern', 'SQS': '' },
+    { 'Kinesis': '', 'SNS': 'FIFO capability for SQS FIFO', 'SQS': '' },
+  ];
+
   return (
     <Wrapper>
       <StyledNavButton>
@@ -232,10 +257,11 @@ const AWSKenisis = () => {
           <StyledAnchor href="#kinesis-data-streams"><StyledListItem>Kinesis Data Streams</StyledListItem></StyledAnchor>
           <StyledAnchor href="#kinesis-data-firehose"><StyledListItem>Kinesis Data Firehose</StyledListItem></StyledAnchor>
           <StyledAnchor href="#kinesis-data-analytics"><StyledListItem>Kinesis Data Analytics</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#kinesis-video-streams"><StyledListItem>Kinesis Video Streams</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#data-ordering-for-kinesis-vs-sqs-fifo"><StyledListItem>Data Ordering for Kinesis vs SQS FIFO</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#kinesis-vs-sqs-vs-sns"><StyledListItem>Kinesis vs SQS vs SNS</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="kinesis-overview">Kinesis Overview</SubTitle>
-          Amazon Kinesis is designed to handle real-time data streaming and processing. It allows you to collect, process, and analyze large streams of data in real-time, making it ideal for use cases that require 
+          Amazon Kinesis is designed to handle real-time data streaming and processing. It allows you to collect, process, and analyze large streams of data in real-time, making it ideal for use cases that require
           immediate insights or actions based on incoming data. Here's an overview of the main components and features of Amazon Kinesis:
           <Spacer />
           <SubTitleSmall>Kinesis Data Streams</SubTitleSmall>
@@ -294,19 +320,77 @@ const AWSKenisis = () => {
           <Spacer />
           <SubTitleSmall>Kinesis Data Streams Security</SubTitleSmall>
           <Spacer />
-          <StyledImage src={KinesisDataStreamsEncryption} />          
+          <StyledImage src={KinesisDataStreamsEncryption} />
           <Spacer />
           <SubTitle id="kinesis-data-firehose">Kinesis Data Firehose</SubTitle>
           <Spacer />
           <StyledImage src={KinesisFirehose} />
+          Amazon Kinesis Data Firehose is a fully managed service that makes it easy to reliably load and transform streaming data into data lakes, data stores, and analytics services. It is designed to handle real-time data streams,
+          delivering them to destinations such as Amazon S3, Amazon Redshift, Amazon Elasticsearch Service (now Amazon OpenSearch Service), and third-party services like Splunk. Here's an overview of Amazon Kinesis Data Firehose:
           <Spacer />
-
+          <StyledListItem><BoldTextSmall>Real-Time Data Ingestion</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Kinesis Data Firehose enables you to continuously capture, transform, and load streaming data. It supports large-scale data ingestion and delivery in real-time, typically within seconds.</StyledListItemIndent>
           <Spacer />
-          <SubTitle id="kinesis-data-analytics">Kinesis Data Analytics</SubTitle>
-
+          <StyledListItem><BoldTextSmall>Fully Managed Service</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Firehose automatically scales to match the throughput of your data streams. There is no need to manage the underlying infrastructure, as the service handles all aspects of scaling, provisioning, and maintenance.</StyledListItemIndent>
           <Spacer />
-          <SubTitle id="kinesis-video-streams">Kinesis Video Streams</SubTitle>
-
+          <StyledListItem><BoldTextSmall>Data Transformation</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>You can configure Firehose to process and transform the data before delivery. This can be done using AWS Lambda functions to perform operations such as format conversion, data enrichment, or compression.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Data Buffering</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Firehose buffers data before delivering it to the destination. You can configure the size of the buffer (in MB) and the time interval for data delivery (in seconds). This helps optimize the delivery process by balancing throughput and latency.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Support for Multiple Destinations</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Firehose can deliver data to several AWS services and third-party platforms such as S3, Redshift, OpenSearch and Splunk.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Automatic Data Compression and Encryption</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Firehose supports compression of data before delivery, which reduces storage costs and improves transfer efficiency. It also provides options for encrypting data at rest using AWS Key Management Service (KMS).</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Error Handling and Retry Mechanism</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Firehose has built-in mechanisms for handling data delivery failures. If the delivery to the destination fails, it automatically retries. Failed records can be sent to an Amazon S3 bucket for later analysis.</StyledListItemIndent>
+          <Spacer />
+          <SubTitleSmall>Kinesis Data Streams vs Firehose</SubTitleSmall>
+          <Spacer />
+          <Table columns={columns2} data={data2} />
+          <Spacer />
+          {/* <SubTitle id="kinesis-data-analytics">Kinesis Data Analytics</SubTitle> */}
+          {/* <Spacer /> */}
+          <SubTitle id="data-ordering-for-kinesis-vs-sqs-fifo">Data Ordering for Kinesis vs SQS FIFO</SubTitle>
+          <Spacer />
+          <SubTitleSmall>Ordering Data into Kinesis</SubTitleSmall>
+          Imagine you have 100 trucks on the road sending their GPS position on a regular basis. By using a 'Partition Key' (truck_id) you can consume the data in order for each truck so that tracking their movement is accurate. The same key
+          will always go to the same shard.
+          <Spacer />
+          <StyledImage src={KinesisDataOrdering} />
+          <Spacer />
+          <SubTitleSmall>Ordering Data into Kinesis</SubTitleSmall>
+          For SQS standard, there is no ordering. For SQS FIFO, if you don't use a 'Group ID', messages are consumed in the order they are sent, with only one consumer.
+          <Spacer />
+          <StyledImage src={SQSDataOrdering} />
+          <Spacer />
+          You can use 'Group ID' (similar to Partition Key in Kinesis) to scale the number of consumers but messages will be grouped when they are related to each other.
+          <Spacer />
+          <StyledImage src={SQSDataOrderingGroupId} />
+          <Spacer />
+          <SubTitleSmall>Kinesis vs SQS ordering</SubTitleSmall>
+          Lets assume there are 100 trucks, 5 kinesis shards and 1 SQS FIFO
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Kinesis Data Streams</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>On average you'll have 20 trucks per shard</StyledListItemIndent>
+          <StyledListItemIndent>Trucks will have their data ordered within each shard</StyledListItemIndent>
+          <StyledListItemIndent>The maximum amount of consumers in parallel we can have is 5</StyledListItemIndent>
+          <StyledListItemIndent>Can receive up to 5MB/s of data</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>SQS FIFO</BoldTextSmall></StyledListItem>
+          <StyledListItemIndent>Only one SQS FIFO queue</StyledListItemIndent>
+          <StyledListItemIndent>You will have 100 Group IDs</StyledListItemIndent>
+          <StyledListItemIndent>You can have up to 100 consumers (due to 100 group ids)</StyledListItemIndent>
+          <StyledListItemIndent>You can have up to 300 messages per second (or 3000 if using batching)</StyledListItemIndent>
+          <Spacer />
+          <SubTitle id="kinesis-vs-sqs-vs-sns">Kinesis vs SQS vs SNS</SubTitle>
+          <Spacer />
+          <Table columns={columns3} data={data3} />
+          <Spacer />
         </Text>
       </Container>
     </Wrapper>
