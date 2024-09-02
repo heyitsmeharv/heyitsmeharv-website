@@ -221,7 +221,7 @@ export default function Blog() {
     },
     {
       title: 'AWS S3',
-      readingTime: 'approx 20 mins',
+      readingTime: 'approx 25 mins',
       type: 'Study',
       date: '28/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }],
@@ -393,7 +393,7 @@ export default function Blog() {
     },
     {
       title: 'AWS S3',
-      readingTime: 'approx 20 mins',
+      readingTime: 'approx 25 mins',
       type: 'Study',
       date: '28/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }],
