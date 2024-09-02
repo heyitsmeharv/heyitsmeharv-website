@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination/Pagination";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG, AWSSNSSVG, AWSECSSVG, AWSEKSSVG, AWSFargateSVG, AWSVPCSVG } from '../resources/styles/icons';
+import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG, AWSSNSSVG, AWSECSSVG, AWSEKSSVG, AWSFargateSVG, AWSVPCSVG, AWSKinesisSVG } from '../resources/styles/icons';
 
 
 const SearchBarWrapper = styled.div`
@@ -177,7 +177,7 @@ export default function Blog() {
     {
       title: 'AWS IAM',
       readingTime: 'approx 6 minutes',
-      type: 'Theory',
+      type: 'Study',
       date: '26/10/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
@@ -189,7 +189,7 @@ export default function Blog() {
     {
       title: 'AWS EC2',
       readingTime: 'approx 25 minutes',
-      type: 'Theory',
+      type: 'Study',
       date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
       intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). 
@@ -200,7 +200,7 @@ export default function Blog() {
     {
       title: 'AWS Databases',
       readingTime: 'approx 15 minutes',
-      type: 'Theory',
+      type: 'Study',
       date: '20/12/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
       intro: `This service allows you to create a database in the cloud. You can choose from the following: Microsoft SQL Server, MySQL, Postgres, MariaDB, Oracle,
@@ -211,7 +211,7 @@ export default function Blog() {
     {
       title: 'AWS Route53',
       readingTime: 'approx 16 minutes',
-      type: 'Theory',
+      type: 'Study',
       date: '24/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
       intro: `Amazon Route 53 is a scalable and highly available Domain Name System (DNS). It is designed to route end-user requests to internet applications hosted on AWS infrastructure,
@@ -222,7 +222,7 @@ export default function Blog() {
     {
       title: 'AWS S3',
       readingTime: 'approx 20 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '28/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }],
       intro: `Amazon Simple Storage Service (Amazon S3) is a highly scalable, durable, and secure object storage service. Amazon S3 is widely used across industries for its reliability,
@@ -233,7 +233,7 @@ export default function Blog() {
     {
       title: 'AWS CloudFront',
       readingTime: 'approx 7 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '24/07/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
       intro: `Amazon CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds. 
@@ -244,7 +244,7 @@ export default function Blog() {
     {
       title: 'AWS SQS',
       readingTime: 'approx 5 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
       intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
@@ -255,7 +255,7 @@ export default function Blog() {
     {
       title: 'AWS SNS',
       readingTime: 'approx 4 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '06/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Notification Service', background: '#FF9900', icon: <AWSSNSSVG /> }],
       intro: `Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. 
@@ -264,9 +264,20 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Kinesis',
+      readingTime: 'approx 6 mins',
+      type: 'Study',
+      date: '28/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
+      intro: `Amazon Kinesis is designed to handle real-time data streaming and processing. It allows you to collect, process, and analyze large streams of data in real-time, making it ideal for use cases that require 
+      immediate insights or actions based on incoming data. Here's an overview of the main components and features of Amazon Kinesis...`,
+      navigate: 'aws-kinesis',
+      published: true
+    },
+    {
       title: 'AWS Containers',
       readingTime: 'approx 10 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '06/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
       intro: `Docker is an open-source platform designed to automate the deployment, scaling, and management of applications within lightweight, portable containers. Containers package an application with all its dependencies 
@@ -277,7 +288,7 @@ export default function Blog() {
     {
       title: 'AWS VPC',
       readingTime: 'approx 30 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '11/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
       intro: `A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources, such as EC2 instances, within a virtual network that you define. A VPC allows you to 
@@ -338,7 +349,7 @@ export default function Blog() {
     {
       title: 'AWS IAM',
       readingTime: 'approx 6 minutes',
-      type: 'Theory',
+      type: 'Study',
       date: '26/10/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
@@ -350,7 +361,7 @@ export default function Blog() {
     {
       title: 'AWS EC2',
       readingTime: 'approx 25 minutes',
-      type: 'Theory',
+      type: 'Study',
       date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
       intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). 
@@ -361,7 +372,7 @@ export default function Blog() {
     {
       title: 'AWS Databases',
       readingTime: 'approx 15 minutes',
-      type: 'Theory',
+      type: 'Study',
       date: '20/12/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
       intro: `This service allows you to create a database in the cloud. You can choose from the following: Microsoft SQL Server, MySQL, Postgres, MariaDB, Oracle,
@@ -372,7 +383,7 @@ export default function Blog() {
     {
       title: 'AWS Route53',
       readingTime: 'approx 16 minutes',
-      type: 'Theory',
+      type: 'Study',
       date: '24/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
       intro: `Amazon Route 53 is a scalable and highly available Domain Name System (DNS). It is designed to route end-user requests to internet applications hosted on AWS infrastructure,
@@ -383,7 +394,7 @@ export default function Blog() {
     {
       title: 'AWS S3',
       readingTime: 'approx 20 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '28/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }],
       intro: `Amazon Simple Storage Service (Amazon S3) is a highly scalable, durable, and secure object storage service. Amazon S3 is widely used across industries for its reliability,
@@ -394,7 +405,7 @@ export default function Blog() {
     {
       title: 'AWS CloudFront',
       readingTime: 'approx 7 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '24/07/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
       intro: `Amazon CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds. 
@@ -405,7 +416,7 @@ export default function Blog() {
     {
       title: 'AWS SQS',
       readingTime: 'approx 5 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
       intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
@@ -416,7 +427,7 @@ export default function Blog() {
     {
       title: 'AWS SNS',
       readingTime: 'approx 4 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '06/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Notification Service', background: '#FF9900', icon: <AWSSNSSVG /> }],
       intro: `Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. 
@@ -425,9 +436,20 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Kinesis',
+      readingTime: 'approx 6 mins',
+      type: 'Study',
+      date: '28/08/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
+      intro: `Amazon Kinesis is designed to handle real-time data streaming and processing. It allows you to collect, process, and analyze large streams of data in real-time, making it ideal for use cases that require 
+      immediate insights or actions based on incoming data. Here's an overview of the main components and features of Amazon Kinesis...`,
+      navigate: 'aws-kinesis',
+      published: true
+    },
+    {
       title: 'AWS Containers',
       readingTime: 'approx 10 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '06/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
       intro: `Docker is an open-source platform designed to automate the deployment, scaling, and management of applications within lightweight, portable containers. Containers package an application with all its dependencies 
@@ -438,7 +460,7 @@ export default function Blog() {
     {
       title: 'AWS VPC',
       readingTime: 'approx 30 mins',
-      type: 'Theory',
+      type: 'Study',
       date: '11/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
       intro: `A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources, such as EC2 instances, within a virtual network that you define. A VPC allows you to 
