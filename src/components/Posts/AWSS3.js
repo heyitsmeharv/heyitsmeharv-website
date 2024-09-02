@@ -22,7 +22,11 @@ import S3EventDestination from "../../resources/images/blog/AWSS3/s3_event_desti
 import S3MultiPartUpload from "../../resources/images/blog/AWSS3/s3_multi_part_upload.jpeg";
 import S3TransferAcceleration from "../../resources/images/blog/AWSS3/s3_transfer_acceleration.jpeg";
 import S3StorageLens from "../../resources/images/blog/AWSS3/s3_storage_lens.jpeg";
-
+import S3EncryptionSSES3 from "../../resources/images/blog/AWSS3/s3_encryption_sse_s3.jpeg";
+import S3EncryptionSSEKMS from "../../resources/images/blog/AWSS3/s3_encryption_sse_kms.jpeg";
+import S3EncryptionSSEC from "../../resources/images/blog/AWSS3/s3_encryption_sse_c.jpeg";
+import CORS from "../../resources/images/blog/AWSS3/s3_cors.jpeg";
+import S3CORS from "../../resources/images/blog/AWSS3/s3_with_cors.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -246,7 +250,11 @@ const AWS3 = () => {
           <StyledAnchor href="#s3-select"><StyledListItem>S3 Select & Glacier Select</StyledListItem></StyledAnchor>
           <StyledAnchor href="#batch-operations"><StyledListItem>Batch Operations</StyledListItem></StyledAnchor>
           <StyledAnchor href="#storage-lens"><StyledListItem>Storage Lens</StyledListItem></StyledAnchor>
-
+          <StyledAnchor href="#s3-encryption"><StyledListItem>S3 Encryption</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#cors"><StyledListItem>CORS</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#mfa-delete"><StyledListItem>MFA Delete</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#s3-access-logs"><StyledListItem>S3 Access Logs</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#pre-signed-urls"><StyledListItem>Pre-Signed URLs</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="s3-introduction">Amazon Simple Storage Service</SubTitle>
@@ -532,7 +540,7 @@ const AWS3 = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Scalability and Concurrency</SubTitleSmall>
-          Amazon S3 automatically scales to handle the load, so there are no hard limits on the number of objects you can store or the total amount of storage you can consume. This scalability supports concurrent 
+          Amazon S3 automatically scales to handle the load, so there are no hard limits on the number of objects you can store or the total amount of storage you can consume. This scalability supports concurrent
           access and operations on your data, allowing multiple users and applications to interact with the storage simultaneously.
           <Spacer />
           <Spacer />
@@ -545,8 +553,8 @@ const AWS3 = () => {
           <StyledListItem><BoldTextSmall>CloudWatch Metrics</BoldTextSmall>: Use CloudWatch to monitor S3 performance and set up alerts for unusual activity.</StyledListItem>
           <Spacer />
           <SubTitle id="s3-select">S3 Select & Glacier Select</SubTitle>
-          S3 Select is a feature of Amazon S3 that allows you to retrieve a subset of data from an object using simple SQL expressions. This means you can perform SQL-like queries (server-side) directly on the data stored 
-          in S3 without having to download the entire object. If you have a CSV file stored in S3 and only need records where a specific column meets a certain condition, you can use S3 Select to fetch just those records 
+          S3 Select is a feature of Amazon S3 that allows you to retrieve a subset of data from an object using simple SQL expressions. This means you can perform SQL-like queries (server-side) directly on the data stored
+          in S3 without having to download the entire object. If you have a CSV file stored in S3 and only need records where a specific column meets a certain condition, you can use S3 Select to fetch just those records
           instead of downloading the entire file.
           <Spacer />
           <HeadingSmall>Key features:</HeadingSmall>
@@ -556,7 +564,7 @@ const AWS3 = () => {
           <StyledListItem><BoldTextSmall>Improves Access to Archived Data</BoldTextSmall>: Makes it easier to access specific pieces of archived data without full retrieval.</StyledListItem>
           <Spacer />
           <SubTitle id="batch-operations">Batch Operations</SubTitle>
-          Amazon S3 Batch Operations allows you to manage and perform large-scale batch operations on the objects stored in your S3 buckets. It simplifies the process of performing repetitive or 
+          Amazon S3 Batch Operations allows you to manage and perform large-scale batch operations on the objects stored in your S3 buckets. It simplifies the process of performing repetitive or
           bulk actions across many objects, helping you automate and scale these tasks.
           <Spacer />
           <HeadingSmall>Common Operations:</HeadingSmall>
@@ -567,7 +575,7 @@ const AWS3 = () => {
           <StyledListItem><BoldTextSmall>Metadata Updates</BoldTextSmall>: Modify metadata for a group of objects.</StyledListItem>
           <Spacer />
           <SubTitle id="storage-lens">Storage Lens</SubTitle>
-          Amazon S3 Storage Lens is a feature that provides visibility into your S3 storage usage and activity trends. It delivers comprehensive insights through interactive dashboards, making it easier to understand, analyze, and optimize your S3 storage. 
+          Amazon S3 Storage Lens is a feature that provides visibility into your S3 storage usage and activity trends. It delivers comprehensive insights through interactive dashboards, making it easier to understand, analyze, and optimize your S3 storage.
           S3 Storage Lens aggregates data across your entire organization or specific accounts and regions, offering both summary and granular views of your storage.
           <Spacer />
           <HeadingSmall>Key features:</HeadingSmall>
@@ -587,6 +595,117 @@ const AWS3 = () => {
           <StyledListItem><BoldTextSmall>Data Protection</BoldTextSmall>: Highlights objects without versioning or with public access, providing recommendations to improve data security.</StyledListItem>
           <Spacer />
           <StyledImage src={S3StorageLens} />
+          <Spacer />
+          <SubTitle id="s3-encryption">S3 Encryption</SubTitle>
+          You can encrypt objects in S3 buckets using one of 4 methods:
+          <StyledListItem><BoldTextSmall>Server-Side Encryption (SSE)</BoldTextSmall>:</StyledListItem>
+          <StyledListItemIndent><BoldTextSmall>Server-Side Encryption with Amazon S3-Managed Keys (SSE-S3)</BoldTextSmall> - Enabled by default</StyledListItemIndent>
+          <StyledListItemIndentExtra>Encrypts S3 objects using keys handled, managed, and owned by AWS.</StyledListItemIndentExtra>
+          <StyledListItemIndent><BoldTextSmall>Server-Side Encryption with KMS Keys stored in AWS KMS (SSE-KMS)</BoldTextSmall></StyledListItemIndent>
+          <StyledListItemIndentExtra>Leverage AWS Key Management Service (AWS KMS) to manage encryption keys</StyledListItemIndentExtra>
+          <StyledListItemIndent><BoldTextSmall>Server-Side Encryption with Customer-Provided Keys (SSE-C)</BoldTextSmall></StyledListItemIndent>
+          <StyledListItemIndentExtra>When you want to manage your own encryption keys.</StyledListItemIndentExtra>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Client-Side Encryption</BoldTextSmall></StyledListItem>
+          <Spacer />
+          <HeadingSmall>Server-Side Encryption (SSE)</HeadingSmall>
+          <Spacer />
+          <StyledImage src={S3EncryptionSSES3} />
+          <Spacer />
+          <StyledListItem>Encryption using keys handled, managed, and owned by AWS</StyledListItem>
+          <StyledListItem>Object is encrypted server-side</StyledListItem>
+          <StyledListItem>Encryption type is AES-256</StyledListItem>
+          <StyledListItem>Must set header "x-amz-server-side-encryption":"AES256"</StyledListItem>
+          <StyledListItem>Enabled by default for new buckets & new objects</StyledListItem>
+          <Spacer />
+          <HeadingSmall>SSE-KMS</HeadingSmall>
+          <Spacer />
+          <StyledImage src={S3EncryptionSSEKMS} />
+          <Spacer />
+          <StyledListItem>Encryption using keys handled, managed by AWS KMS (Key Management Service)</StyledListItem>
+          <StyledListItem>Object is encrypted server-side</StyledListItem>
+          <StyledListItem>User control + audit key using CloudTrail</StyledListItem>
+          <StyledListItem>Must set header "x-amz-server-side-encryption":"aws:kms"</StyledListItem>
+          <Spacer />
+          <HeadingSmall>SSE-C</HeadingSmall>
+          <Spacer />
+          <StyledImage src={S3EncryptionSSEC} />
+          <Spacer />
+          <StyledListItem>Server-Side encryption using keys fully managed by the customer outside of AWS</StyledListItem>
+          <StyledListItem>Amazon S3 does not store the encryption key you provide</StyledListItem>
+          <StyledListItem>HTTPS must be used</StyledListItem>
+          <StyledListItem>Encryption key must be provided in HTTP headers for every HTTP request made</StyledListItem>
+          <Spacer />
+          <SubTitle id="cors">CORS</SubTitle>
+          CORS, which stands for Cross-Origin Resource Sharing, is a security feature implemented in web browsers to control how web applications can request resources (like APIs, fonts, images, etc.) from a different domain
+          (origin) than the one from which the application was served.
+          <Spacer />
+          Before diving into CORS, it's important to understand the Same-Origin Policy (SOP), which is a fundamental security concept for web browsers. The Same-Origin Policy restricts how a web page can make requests to a different domain
+          (origin) than its own. An "origin" is defined by the combination of the protocol (http/https), domain (example.com), and port (if specified). For example:
+          <StyledListItem>https://example.com and https://example.com (same origin)</StyledListItem>
+          <StyledListItem>https://example.com and https://api.example.com (different origins)</StyledListItem>
+          <StyledListItem>https://example.com:3000 and https://example.com:4000 (different origins)</StyledListItem>
+          <Spacer />
+          Under SOP, a web page cannot fetch resources from a different origin unless explicitly allowed by the server hosting the resource. This is where CORS comes in.
+          <Spacer />
+          <HeadingSmall>How CORS works</HeadingSmall>
+          CORS allows a server to specify which origins are permitted to access its resources. This is done through HTTP headers that are included in the server's response to the client (typically a web browser).
+          <Spacer />
+          <HeadingSmall>CORS HTTP Headers</HeadingSmall>
+          Here are some of the key HTTP headers used in CORS:
+          <StyledListItem><BoldTextSmall>Access-Control-Allow-Origin</BoldTextSmall>:</StyledListItem>
+          <StyledListItemIndent>Specifies which origin(s) can access the resource. For example, Access-Control-Allow-Origin: https://example.com allows https://example.com to access the resource. Using * as the value allows access from any origin.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Access-Control-Allow-Methods</BoldTextSmall>:</StyledListItem>
+          <StyledListItemIndent>Specifies which HTTP methods (GET, POST, PUT, DELETE, etc.) are allowed when accessing the resource. For example, Access-Control-Allow-Methods: GET, POST.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Access-Control-Allow-Headers</BoldTextSmall>:</StyledListItem>
+          <StyledListItemIndent>Specifies which headers can be used when making the actual request. For example, Access-Control-Allow-Headers: Content-Type, Authorization.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Access-Control-Allow-Credentials</BoldTextSmall>:</StyledListItem>
+          <StyledListItemIndent>Indicates whether or not the response to the request can be exposed to the client when credentials (such as cookies or HTTP authentication) are included. For example, Access-Control-Allow-Credentials: true.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldTextSmall>Access-Control-Max-Age</BoldTextSmall>:</StyledListItem>
+          <StyledListItemIndent>Specifies how long the results of a preflight request (see below) can be cached. For example, Access-Control-Max-Age: 3600 means the result can be cached for one hour.</StyledListItemIndent>
+          <Spacer />
+          <HeadingSmall>Simple Requests vs. Preflight Requests</HeadingSmall>
+          <StyledListItem><BoldTextSmall>Simple Requests</BoldTextSmall>: If the request method is GET, POST, or HEAD, and the request does not include any custom headers or use a non-simple content type (like application/json), the browser sends the request directly with
+            the necessary CORS headers.</StyledListItem>
+          <StyledListItem><BoldTextSmall>Preflight Requests</BoldTextSmall>: For requests that are not simple (e.g., using PUT or DELETE methods, or including custom headers), the browser first sends an "OPTIONS" request to the server to check if the actual request is safe
+            to send. This is called a "preflight request." The server then responds with the appropriate CORS headers, and if allowed, the actual request is sent.</StyledListItem>
+          <Spacer />
+          <HeadingSmall>Why CORS Is Important</HeadingSmall>
+          CORS is crucial for web security as it helps prevent unauthorized access to resources from different origins, protecting sensitive information and maintaining the integrity of web applications. However, it also enables legitimate use cases where resources need to
+          be shared across different domains, such as APIs being consumed by web applications hosted on different domains.
+          <Spacer />
+          <HeadingSmall>Example Scenario</HeadingSmall>
+          Consider a web application hosted on https://app.example.com that needs to access an API hosted on https://api.example.com. Without CORS, the browser would block this request due to the Same-Origin Policy. By configuring CORS on https://api.example.com to allow
+          requests from https://app.example.com, the browser will permit the cross-origin request, enabling the web application to access the API.
+          <Spacer />
+          <StyledImage src={CORS} />
+          <Spacer />
+          <HeadingSmall>S3 with CORS</HeadingSmall>
+          <Spacer />
+          <StyledImage src={S3CORS} />
+          <Spacer />
+          <SubTitle id="mfa-delete">MFA Delete</SubTitle>
+          MFA Delete is an additional security feature in S3 that helps protect your data by requiring multi-factor authentication (MFA) for certain operations on versioned buckets. When MFA Delete is enabled, users are required to provide an
+          authentication code from a physical or virtual MFA device in addition to their usual credentials when attempting to perform specific actions on S3 bucket versions.
+          <StyledListItem>MFA Delete specifically applies to two actions in a versioned S3 bucket:</StyledListItem>
+          <StyledListItemIndent><BoldTextSmall>Permanently Deleting an Object Version</BoldTextSmall>: When you delete an object in a versioned bucket, S3 creates a delete marker, but the object version remains unless explicitly deleted. With MFA Delete,
+            deleting a specific version of an object requires MFA.</StyledListItemIndent>
+          <StyledListItemIndent><BoldTextSmall>Suspending Versioning on a Bucket</BoldTextSmall>: Disabling or suspending versioning also requires MFA when MFA Delete is enabled.</StyledListItemIndent>
+          <Spacer />
+          <SubTitle id="s3-access-logs">S3 Access Logs</SubTitle>
+          S3 Access Logs is a feature that allows you to track and record all the requests made to your S3 bucket. This includes requests for objects, such as GET, PUT, DELETE, and HEAD operations, as well as requests for bucket-level actions like creating or deleting a bucket.
+          These logs provide detailed information about each request, which can be useful for security audits, troubleshooting, and analyzing usage patterns.
+          <Spacer />
+          <SubTitle id="pre-signed-urls">Pre-Signed URLs</SubTitle>
+          AWS Pre-Signed URLs are URLs generated by AWS that grant temporary access to specific objects in an Amazon S3 bucket without requiring AWS credentials. These URLs are particularly useful for sharing private content, allowing users to download or upload files securely
+          without exposing your S3 bucket to public access.
+          <Spacer />
+          <SubTitle id="s3-glacier-vault-lock-">Pre-Signed URLs</SubTitle>
+
         </Text>
       </Container>
     </Wrapper>
