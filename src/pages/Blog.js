@@ -265,7 +265,7 @@ export default function Blog() {
     },
     {
       title: 'AWS Kinesis',
-      readingTime: 'approx ~ mins',
+      readingTime: 'approx 6 mins',
       type: 'Study',
       date: '28/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
@@ -437,7 +437,7 @@ export default function Blog() {
     },
     {
       title: 'AWS Kinesis',
-      readingTime: 'approx ~ mins',
+      readingTime: 'approx 6 mins',
       type: 'Study',
       date: '28/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
