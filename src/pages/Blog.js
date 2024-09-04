@@ -8,7 +8,31 @@ import Pagination from "../components/Pagination/Pagination";
 // icons
 import { StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
-import { JavascriptSVG, ReactjsSVG, AWSSVG, AWSIAMSVG, AWSEC2SVG, AWSRDSSVG, AWSRoute53SVG, AWSS3SVG, AWSCloudfrontSVG, AWSSQSSVG, AWSSNSSVG, AWSECSSVG, AWSEKSSVG, AWSFargateSVG, AWSVPCSVG, AWSKinesisSVG } from '../resources/styles/icons';
+import {
+  JavascriptSVG,
+  ReactjsSVG,
+  AWSSVG,
+  AWSIAMSVG,
+  AWSEC2SVG,
+  AWSRDSSVG,
+  AWSRoute53SVG,
+  AWSS3SVG,
+  AWSCloudfrontSVG,
+  AWSSQSSVG,
+  AWSSNSSVG,
+  AWSECSSVG,
+  AWSEKSSVG,
+  AWSFargateSVG,
+  AWSVPCSVG,
+  AWSKinesisSVG,
+  AWSAthenaSVG,
+  AWSRedshiftSVG,
+  AWSOpenSearchSVG,
+  AWSEMRSVG,
+  AWSQuickSightSVG,
+  AWSGlueSVG,
+  AWSLakeFormationSVG
+} from '../resources/styles/icons';
 
 
 const SearchBarWrapper = styled.div`
@@ -297,6 +321,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Data and Analytics',
+      readingTime: '~',
+      type: 'Study',
+      date: '04/09/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }],
+      intro: `...`,
+      navigate: 'aws-data-analytics',
+      published: true
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -466,6 +500,16 @@ export default function Blog() {
       intro: `A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources, such as EC2 instances, within a virtual network that you define. A VPC allows you to 
       customize your network environment, including selecting your own IP address range, creating subnets, configuring route tables, and setting up gateways...`,
       navigate: 'aws-vpc',
+      published: true
+    },
+    {
+      title: 'AWS Data and Analytics',
+      readingTime: '~',
+      type: 'Study',
+      date: '04/09/2024',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }],
+      intro: `...`,
+      navigate: 'aws-data-analytics',
       published: true
     },
     {
