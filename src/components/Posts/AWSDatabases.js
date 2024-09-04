@@ -33,7 +33,8 @@ import DynamoDBDAXvsElastiCache from "../../resources/images/blog/AWSDatabases/d
 import DynamoDBStreams from "../../resources/images/blog/AWSDatabases/db_dynamodb_streams.jpeg";
 import DynamoDBGlobalTables from "../../resources/images/blog/AWSDatabases/db_dynamodb_global_tables.jpeg";
 import DynamoDBTTL from "../../resources/images/blog/AWSDatabases/db_dynamodb_ttl.jpeg";
-
+import RDSInvokeLambda from "../../resources/images/blog/AWSDatabases/db_rds_lambda_invoke.jpeg";
+import RDSEventNotifications from "../../resources/images/blog/AWSDatabases/db_rds_event_notification.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -230,7 +231,7 @@ const AWSDatabases = () => {
       </StyledNavButton>
       <Container>
         <Flex>
-          <Title>AWS Databases (RDS, Aurora, Elasticache)</Title>
+          <Title>AWS Databases</Title>
           <IconWrapper>
             <Icon><AWSSVG /></Icon>
             <Icon><AWSRDSSVG /></Icon>
@@ -317,6 +318,24 @@ const AWSDatabases = () => {
           You would want to do this to improve the database efficiency by reducing the strain on the RDS resources such as CPU and RAM. This feature auto-scales and is multi-AZ so you won't need to manage capacity which in turn reduces the failover time by up to 66%. This
           feature enforces IAM authentication, so users can only connect to the RDS instance using the correct credentials, and it's never publicly available as it can only be accessed from a VPC. This supports RDS (MySQL, PostgreSQL, MariaDB, MSSQL Server) and Aurora (MySQL and PostgreSQL).
           <StyledImage src={Proxy} />
+          <Spacer />
+          <SubTitleSmall>Invoking Lambda from RDS & Aurora</SubTitleSmall>
+          <StyledListItem>Invoke Lambda functions from within your DB instance</StyledListItem>
+          <StyledListItem>Allows you to process data events from within a database</StyledListItem>
+          <StyledListItem>Supported for RDS for PostgreSQL and Aurora MySQL</StyledListItem>
+          <StyledListItem>Must allow outbound traffic to your lambda function from within your DB instance (Public, NAT GW, VPC Endpoints)</StyledListItem>
+          <StyledListItem>DB instance must have the required permissions to invoke the lambda function (Lambda Resource-based Policy & IAM Policy)</StyledListItem>
+          <Spacer />
+          <StyledImage src={RDSInvokeLambda} />
+          <Spacer />
+          <SubTitleSmall>RDS Event Notifications</SubTitleSmall>
+          <StyledListItem>Notifications that tells information about the DB instance itself (created, stopped, started)</StyledListItem>
+          <StyledListItem>You don't have any information about the data itself</StyledListItem>
+          <StyledListItem>Subscribe to following event categories: DB instance, DB snapshot, DB Parameter Group, DB Security Group, RDS Proxy, Custom Engine Version</StyledListItem>
+          <StyledListItem>Near real-time events (up to 5 minutes)</StyledListItem>
+          <StyledListItem>Send notifications to SNS or subscribe to events using EventBridge</StyledListItem>
+          <Spacer />
+          <StyledImage src={RDSEventNotifications} />
           <Spacer />
           <SubTitleSmall>RDS Summary</SubTitleSmall>
           <StyledListItem>Managed PostgreSQL / MySQL / Oracle / SQL Server / DB2 / MariaDB / Custom</StyledListItem>
