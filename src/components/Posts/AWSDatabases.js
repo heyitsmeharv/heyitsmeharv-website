@@ -30,6 +30,9 @@ import ElastiCacheSecurity from "../../resources/images/blog/AWSDatabases/db_ela
 import NeptuneStreams from "../../resources/images/blog/AWSDatabases/db_neptune_streams.jpeg";
 import DynamoDBDAX from "../../resources/images/blog/AWSDatabases/db_dynamodb_dax.jpeg";
 import DynamoDBDAXvsElastiCache from "../../resources/images/blog/AWSDatabases/db_dynamodb_dax_vs_elasticache.jpeg";
+import DynamoDBStreams from "../../resources/images/blog/AWSDatabases/db_dynamodb_streams.jpeg";
+import DynamoDBGlobalTables from "../../resources/images/blog/AWSDatabases/db_dynamodb_global_tables.jpeg";
+import DynamoDBTTL from "../../resources/images/blog/AWSDatabases/db_dynamodb_ttl.jpeg";
 
 
 const Wrapper = styled.div`
@@ -208,6 +211,13 @@ const AWSDatabases = () => {
     { Redis: 'Data durability using AOF persistence', Memcached: 'Non persistent' },
     { Redis: 'Backup and restore features', Memcached: 'No backups or restore' },
     { Redis: 'Supports Sets and Sorted sets', Memcached: 'Multi-threaded architecture' },
+  ];
+
+  const columns2 = ['DynamoDB', 'Kinesis Data Streams'];
+  const data2 = [
+    { DynamoDB: '24 hours retention', "Kinesis Data Streams": '1 year retention' },
+    { DynamoDB: 'Limited number of consumers', "Kinesis Data Streams": 'High number of consumers' },
+    { DynamoDB: 'Process using AWS Lambda Triggers or DynamoDB Stream Kinesis adaptor', "Kinesis Data Streams": 'Process using AWS Lambda, Kinesis Data Analytics, Kinesis Data Firehose, AWS Glue Streaming ETL...' },
   ];
 
   return (
@@ -399,6 +409,7 @@ const AWSDatabases = () => {
           care of the OS maintenance/patching, optimisations, setup, configuration, monitoring, failure recovery and backups. Using ElastiCache does involve a lot of application code changes.
           <StyledImage src={ElastiCache} />
           <SubTitleSmall>Redis vs Memcached</SubTitleSmall>
+          <Spacer />
           <Table columns={columns} data={data} />
           <Spacer />
           <SubTitleSmall>Cache Security</SubTitleSmall>
@@ -459,7 +470,62 @@ const AWSDatabases = () => {
           <Spacer />
           <StyledImage src={DynamoDBDAXvsElastiCache} />
           <Spacer />
-          <HeadingSmall>DynamoDB Accelerator (DAX) vs ElastiCache</HeadingSmall>
+          <HeadingSmall>Stream Processing</HeadingSmall>
+          <StyledListItem>Ordered stream of item-level modifications (create/update/delete) in a table</StyledListItem>
+          <StyledListItem>Use cases:</StyledListItem>
+          <StyledListItemIndent>React to changes in real-time (welcome email to users)</StyledListItemIndent>
+          <StyledListItemIndent>Real-time usage analytics</StyledListItemIndent>
+          <StyledListItemIndent>Insert into derivative tables</StyledListItemIndent>
+          <StyledListItemIndent>Implement cross-region replication</StyledListItemIndent>
+          <StyledListItemIndent>Invoke AWS Lambda on changes to your DynamoDB table</StyledListItemIndent>
+          <Spacer />
+          <Table columns={columns2} data={data2} />
+          <Spacer />
+          <HeadingSmall>DynamoDB Streams</HeadingSmall>
+          <Spacer />
+          <StyledImage src={DynamoDBStreams} />
+          <Spacer />
+          <HeadingSmall>DynamoDB Global Tables</HeadingSmall>
+          <Spacer />
+          <StyledImage src={DynamoDBGlobalTables} />
+          <Spacer />
+          <StyledListItem>Make a DynamoDB table accessible with low latency in multiple-regions</StyledListItem>
+          <StyledListItem>Active-Active replication</StyledListItem>
+          <StyledListItem>Applications can read and write to the table in any region</StyledListItem>
+          <StyledListItem>Must enable DynamoDB Streams as a pre-requisite</StyledListItem>
+          <Spacer />
+          <HeadingSmall>DynamoDB - Time To Live (TTL)</HeadingSmall>
+          Automatically delete items after an expiry timestamp.
+          <Spacer />
+          <StyledImage src={DynamoDBTTL} />
+          <Spacer />
+          <StyledListItem>Use cases: reduce stored data by keeping only current items, adhere to regulatory obligations, web session handling</StyledListItem>
+          <Spacer />
+          <HeadingSmall>DynamoDB - Backups for disaster recovery</HeadingSmall>
+          <StyledListItem>Continuous backups using point-in-time recovery (PITR)</StyledListItem>
+          <StyledListItemIndent>Optionally enabled for the last 35 days</StyledListItemIndent>
+          <StyledListItemIndent>Point-in-time recovery to any time within the backup window</StyledListItemIndent>
+          <StyledListItemIndent>The recovery process creates a new table</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem>On-demand backups</StyledListItem>
+          <StyledListItemIndent>Full backups for long-term retention, until explicitely deleted</StyledListItemIndent>
+          <StyledListItemIndent>Doesn't affect performance or latency</StyledListItemIndent>
+          <StyledListItemIndent>Can be configured and managed in AWS Backup (enabled cross-region copy)</StyledListItemIndent>
+          <Spacer />
+          <SubTitleSmall>DynamoDB - Integration with Amazon S3</SubTitleSmall>
+          <StyledListItem><BoldText>Export to S3 (must enable PITR)</BoldText></StyledListItem>
+          <StyledListItemIndent>Works for any point in time in the last 35 days</StyledListItemIndent>
+          <StyledListItemIndent>Doesn't affect the read capacity of your table</StyledListItemIndent>
+          <StyledListItemIndent>Perform data analysis on top of DynamoDB</StyledListItemIndent>
+          <StyledListItemIndent>Retain snapshots for auditing</StyledListItemIndent>
+          <StyledListItemIndent>ETL on top of S3 data before importing back into DynamoDB</StyledListItemIndent>
+          <StyledListItemIndent>Export in DynamoDB JSON or ION format (data serialization language by amazon)</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>Import from S3</BoldText></StyledListItem>
+          <StyledListItemIndent>Import CSV, DynamoDB JSON, or ION format</StyledListItemIndent>
+          <StyledListItemIndent>Doesn't consume any write capacity</StyledListItemIndent>
+          <StyledListItemIndent>Creates a new table</StyledListItemIndent>
+          <StyledListItemIndent>Import errors are logged in CloudWatch Logs</StyledListItemIndent>
           <Spacer />
           <SubTitleSmall>DynamoDB Summary</SubTitleSmall>
           <StyledListItem>AWS propriety technology, managed serverless NoSQL database, millisecond latency</StyledListItem>
