@@ -199,7 +199,7 @@ export default function Blog() {
     },
     {
       title: 'AWS Databases',
-      readingTime: 'approx 15 minutes',
+      readingTime: 'approx 20 minutes',
       type: 'Study',
       date: '20/12/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
@@ -371,7 +371,7 @@ export default function Blog() {
     },
     {
       title: 'AWS Databases',
-      readingTime: 'approx 15 minutes',
+      readingTime: 'approx 20 minutes',
       type: 'Study',
       date: '20/12/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
