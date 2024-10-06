@@ -496,7 +496,7 @@ export default function Blog() {
       }
     } else {
       setIsEmpty(false)
-      setBlogPosts(defaultArr.reverse());
+      setBlogPosts(defaultArr);
     }
   }, [search]);
 
