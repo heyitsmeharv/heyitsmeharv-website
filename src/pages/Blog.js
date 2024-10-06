@@ -525,6 +525,13 @@ export default function Blog() {
     }
   ];
 
+  // analytics
+  useEffect(() => {
+    if (window.location.hostname !== "localhost") {
+      ReactGA.pageview('/blog');
+    }
+  }, []);
+
   useEffect(() => {
     if (search !== '') {
       setBlogPosts(blogPosts.filter(x => x.title.toLowerCase().includes(search.toLowerCase()) || x.type.toLowerCase().includes(search.toLowerCase())));
@@ -537,45 +544,33 @@ export default function Blog() {
     }
   }, [search]);
 
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog');
-    }
-  }, []);
-
   const handlePillButtonClick = button => {
     const newFilterButtons = [...filterButtons];
     const index = newFilterButtons.indexOf(button);
     newFilterButtons[index].active = !newFilterButtons[index].active;
     setFilterButtons(newFilterButtons);
 
-    const arr = [];
-
     const filterActive = filterButtons.some(x => x.active === true);
 
+    const arr = [];
+
     if (filterActive) {
-      filterButtons.forEach(x => {
-        blogPosts.forEach(y => {
-          y.tags.forEach(tag => {
-            if (tag.name === x.name && x.active === true) {
-              console.log(y);
-              if (!arr.includes(y)) {
-                arr.push(y);
-              }
-              console.log(arr);
-            } else if (tag.name === x.name && x.active === false) {
-              const index = arr.indexOf(x => x === y);
-              if (index !== -1) {
-                arr.splice(index, 1);
+      defaultArr.map(post => {
+        post.tags.map(tag => {
+          filterButtons.map(filterButton => {
+            if (filterButton.active) {
+              if (tag.name === filterButton.name) {
+                if (!arr.includes(post)) {
+                  arr.push(post);
+                }
               }
             }
-          });
-        });
-      });
-      setBlogPosts(arr.reverse());
+          })
+        })
+      })
+      setBlogPosts(arr);
     } else {
-      setBlogPosts(defaultArr.reverse());
+      setBlogPosts(defaultArr);
     }
   };
 
