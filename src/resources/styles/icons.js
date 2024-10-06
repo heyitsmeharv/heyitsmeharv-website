@@ -700,11 +700,11 @@ export const AWSIAMSVG = () => {
     <StyledSvg viewBox="0 0 80 80">
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
-          <stop stop-color="#BD0816" offset="0%"></stop>
-          <stop stop-color="#FF5252" offset="100%"></stop>
+          <stop stopColor="#BD0816" offset="0%"></stop>
+          <stop stopColor="#FF5252" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_AWS-Single-Sign-On_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_AWS-Single-Sign-On_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Security-Identity-Compliance" fill="url(#linearGradient-1)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -719,11 +719,11 @@ export const AWSEC2SVG = () => {
     <StyledSvg viewBox="0 0 80 80">
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-2">
-          <stop stop-color="#C8511B" offset="0%"></stop>
-          <stop stop-color="#FF9900" offset="100%"></stop>
+          <stop stopColor="#C8511B" offset="0%"></stop>
+          <stop stopColor="#FF9900" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-EC2_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-EC2_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Compute" fill="url(#linearGradient-2)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -740,11 +740,11 @@ export const AWSRDSSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-3">
-          <stop stop-color="#2E27AD" offset="0%"></stop>
-          <stop stop-color="#527FFF" offset="100%"></stop>
+          <stop stopColor="#2E27AD" offset="0%"></stop>
+          <stop stopColor="#527FFF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-RDS_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-RDS_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Database" fill="url(#linearGradient-3)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -759,11 +759,11 @@ export const AWSRoute53SVG = () => {
     <StyledSvg viewBox="0 0 80 80">
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-4">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Route-53_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Route-53_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Networking-Content-Delivery" fill="url(#linearGradient-4)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -778,11 +778,11 @@ export const AWSS3SVG = () => {
     <StyledSvg viewBox="0 0 80 80">
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-5">
-          <stop stop-color="#1B660F" offset="0%"></stop>
-          <stop stop-color="#6CAE3E" offset="100%"></stop>
+          <stop stopColor="#1B660F" offset="0%"></stop>
+          <stop stopColor="#6CAE3E" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Simple-Storage-Service_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Simple-Storage-Service_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Rectangle" fill="url(#linearGradient-5)">
           <rect x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -799,11 +799,11 @@ export const AWSCloudfrontSVG = () => {
     <StyledSvg viewBox="0 0 80 80">
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-6">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-CloudFront_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-CloudFront_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Networking-Content-Delivery" fill="url(#linearGradient-6)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -820,11 +820,11 @@ export const AWSSQSSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-7">
-          <stop stop-color="#B0084D" offset="0%"></stop>
-          <stop stop-color="#FF4F8B" offset="100%"></stop>
+          <stop stopColor="#B0084D" offset="0%"></stop>
+          <stop stopColor="#FF4F8B" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_AWS-Simple-Queue-Service_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_AWS-Simple-Queue-Service_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Application-Integration" fill="url(#linearGradient-7)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -841,11 +841,11 @@ export const AWSSNSSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-8">
-          <stop stop-color="#B0084D" offset="0%"></stop>
-          <stop stop-color="#FF4F8B" offset="100%"></stop>
+          <stop stopColor="#B0084D" offset="0%"></stop>
+          <stop stopColor="#FF4F8B" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_AWS-Simple-Notification-Service_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_AWS-Simple-Notification-Service_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Application-Integration" fill="url(#linearGradient-8)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -862,11 +862,11 @@ export const AWSECSSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-9">
-          <stop stop-color="#C8511B" offset="0%"></stop>
-          <stop stop-color="#FF9900" offset="100%"></stop>
+          <stop stopColor="#C8511B" offset="0%"></stop>
+          <stop stopColor="#FF9900" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Elastic-Container-Service_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Elastic-Container-Service_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Containers" fill="url(#linearGradient-9)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -883,11 +883,11 @@ export const AWSEKSSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-10">
-          <stop stop-color="#C8511B" offset="0%"></stop>
-          <stop stop-color="#FF9900" offset="100%"></stop>
+          <stop stopColor="#C8511B" offset="0%"></stop>
+          <stop stopColor="#FF9900" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Elastic-Container-Kubernetes_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Elastic-Container-Kubernetes_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Containers" fill="url(#linearGradient-10)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -904,11 +904,11 @@ export const AWSFargateSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-11">
-          <stop stop-color="#C8511B" offset="0%"></stop>
-          <stop stop-color="#FF9900" offset="100%"></stop>
+          <stop stopColor="#C8511B" offset="0%"></stop>
+          <stop stopColor="#FF9900" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_AWS-Fargate_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_AWS-Fargate_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Compute" fill="url(#linearGradient-11)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -927,11 +927,11 @@ export const AWSVPCSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-12">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Virtual-Private-Cloud_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Virtual-Private-Cloud_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Networking-Content-Delivery" fill="url(#linearGradient-12)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -948,11 +948,11 @@ export const AWSKinesisSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-13">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Kinesis_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Kinesis_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Analytics" fill="url(#linearGradient-13)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -969,11 +969,11 @@ export const AWSAthenaSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-14">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Athena_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Athena_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Analytics" fill="url(#linearGradient-14)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -990,11 +990,11 @@ export const AWSRedshiftSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-15">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Redshiftct_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Redshiftct_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Analytics" fill="url(#linearGradient-15)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -1011,11 +1011,11 @@ export const AWSOpenSearchSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-16">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Elasticsearch-Service_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Elasticsearch-Service_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Analytics" fill="url(#linearGradient-16)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -1032,11 +1032,11 @@ export const AWSEMRSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-17">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-EMR_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-EMR_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Analytics" transform="translate(0.504212, 0.000000)" fill="url(#linearGradient-17)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -1053,11 +1053,11 @@ export const AWSQuickSightSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-18">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-QuickSight_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-QuickSight_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Analytics" transform="translate(0.121366, 0.000000)" fill="url(#linearGradient-18)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -1074,11 +1074,11 @@ export const AWSGlueSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-19">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_AWS-Glue_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_AWS-Glue_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Analytics" fill="url(#linearGradient-19)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -1095,11 +1095,11 @@ export const AWSLakeFormationSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-20">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_AWS-Lake-Formation_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_AWS-Lake-Formation_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Analytics" fill="url(#linearGradient-20)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
@@ -1116,11 +1116,11 @@ export const AWSMSKSVG = () => {
       <desc>Created with Sketch.</desc>
       <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-21">
-          <stop stop-color="#4D27A8" offset="0%"></stop>
-          <stop stop-color="#A166FF" offset="100%"></stop>
+          <stop stopColor="#4D27A8" offset="0%"></stop>
+          <stop stopColor="#A166FF" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Icon-Architecture/64/Arch_Amazon-Managed-Streaming-for-Kafka_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Icon-Architecture/64/Arch_Amazon-Managed-Streaming-for-Kafka_64" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Icon-Architecture-BG/64/Analytics" fill="url(#linearGradient-21)">
           <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
         </g>
