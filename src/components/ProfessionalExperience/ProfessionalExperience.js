@@ -47,34 +47,30 @@ const Separator = styled.span`
 const StyledHandShake = styled(Handshake)`
   background: ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.secondary};
-  border: 2px solid;
   border-radius: 50%;
   padding: 20px;
   width: 80px;
   height: 80px;
 `;
 const StyledCogs = styled(Cogs)`
-   background: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.secondary};
-  border: 2px solid;
   border-radius: 50%;
   padding: 20px;
   width: 80px;
   height: 80px;
 `;
 const StyledPeopleCommunity = styled(PeopleCommunity)`
-   background: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.secondary};
-  border: 2px solid;
   border-radius: 50%;
   padding: 20px;
   width: 80px;
   height: 80px;
 `;
 const StyledListCheck = styled(ListCheck)`
-   background: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.secondary};
-  border: 2px solid;
   border-radius: 50%;
   padding: 20px;
   width: 80px;
