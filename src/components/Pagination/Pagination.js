@@ -73,7 +73,7 @@ const Pagination = ({ itemsPerPage, items }) => {
       <Container>
         {displayItems.map((p, i) => {
           return <BlogPost key={i} index={i} title={p.title} readingTime={p.readingTime} type={p.type} date={p.date} tags={p.tags} intro={p.intro} navigate={p.navigate} published={p.published} />
-        }).reverse()}
+        })}
       </Container>
       <PaginationWrapper>
         {Array.from({ length: totalPages }, (_, index) => index + 1).map(

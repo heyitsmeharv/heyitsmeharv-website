@@ -194,7 +194,7 @@ const Spacer = styled.br`
   margin: 10px 0;
 `;
 
-const AWSKenisis = () => {
+const AWSKinesis = () => {
 
   // analytics
   useEffect(() => {
@@ -397,4 +397,4 @@ const AWSKenisis = () => {
   );
 }
 
-export default AWSKenisis;
+export default AWSKinesis;
