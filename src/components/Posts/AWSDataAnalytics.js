@@ -241,17 +241,11 @@ const AWSDataAnalytics = () => {
         </Flex>
         <Spacer />
         <Text>
-          In this post we'll be diving into Amazon Kinesis.
-          <StyledAnchor href="#kinesis-overview"><StyledListItem>Kinesis Overview</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#kinesis-data-streams"><StyledListItem>Kinesis Data Streams</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#kinesis-data-firehose"><StyledListItem>Kinesis Data Firehose</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#kinesis-data-analytics"><StyledListItem>Kinesis Data Analytics</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#data-ordering-for-kinesis-vs-sqs-fifo"><StyledListItem>Data Ordering for Kinesis vs SQS FIFO</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#kinesis-vs-sqs-vs-sns"><StyledListItem>Kinesis vs SQS vs SNS</StyledListItem></StyledAnchor>
+          In this post we'll be diving into Amazon's services for Data Analytics.
+          <StyledAnchor href="#aws-athena"><StyledListItem>AWS Athena</StyledListItem></StyledAnchor>
           <Spacer />
-          <SubTitle id="kinesis-overview">Kinesis Overview</SubTitle>
-          Amazon Kinesis is designed to handle real-time data streaming and processing. It allows you to collect, process, and analyze large streams of data in real-time, making it ideal for use cases that require
-          immediate insights or actions based on incoming data. Here's an overview of the main components and features of Amazon Kinesis:
+          <SubTitle id="aws-athena">AWS Athena</SubTitle>
+          
           <Spacer />
           <SubTitleSmall>Kinesis Data Streams</SubTitleSmall>
 
