@@ -54,6 +54,7 @@ const OverflowContainer = styled.div`
 const Flex = styled.div`
   display: flex;
   align-items: baseline;
+  flex-direction: column;
 `;
 
 const FlexCenter = styled.div`
@@ -76,7 +77,6 @@ const FlexTop = styled.div`
 
 const IconWrapper = styled.div`
   display: flex;
-  margin-left: auto;
 `;
 
 const CodeBlock = styled.pre`
