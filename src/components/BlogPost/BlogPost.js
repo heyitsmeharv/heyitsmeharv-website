@@ -36,6 +36,7 @@ const Flex = styled.div`
   display: flex;
   justify-content: center;
   margin: 20px 0;
+  flex-flow: wrap;
 `
 
 const TopBarText = styled.div`

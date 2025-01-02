@@ -31,7 +31,8 @@ import {
   AWSEMRSVG,
   AWSQuickSightSVG,
   AWSGlueSVG,
-  AWSLakeFormationSVG
+  AWSLakeFormationSVG,
+  AWSMSKSVG,
 } from '../resources/styles/icons';
 
 
@@ -325,7 +326,7 @@ export default function Blog() {
       readingTime: '~',
       type: 'Study',
       date: '04/09/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG />}],
       intro: `...`,
       navigate: 'aws-data-analytics',
       published: true
@@ -507,7 +508,7 @@ export default function Blog() {
       readingTime: '~',
       type: 'Study',
       date: '04/09/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG />}],
       intro: `...`,
       navigate: 'aws-data-analytics',
       published: true
