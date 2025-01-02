@@ -54,7 +54,6 @@ const OverflowContainer = styled.div`
 const Flex = styled.div`
   display: flex;
   align-items: baseline;
-  flex-direction: column;
 `;
 
 const FlexCenter = styled.div`
@@ -77,6 +76,7 @@ const FlexTop = styled.div`
 
 const IconWrapper = styled.div`
   display: flex;
+  margin: auto;
 `;
 
 const CodeBlock = styled.pre`
@@ -226,7 +226,7 @@ const AWSDataAnalytics = () => {
         </StyledNavLink>
       </StyledNavButton>
       <Container>
-        <Flex>
+        <FlexTop>
           <Title>Amazon Data and Analytics</Title>
           <IconWrapper>
             <Icon><AWSSVG /></Icon>
@@ -238,7 +238,7 @@ const AWSDataAnalytics = () => {
             <Icon><AWSGlueSVG /></Icon>
             <Icon><AWSLakeFormationSVG /></Icon>
           </IconWrapper>
-        </Flex>
+        </FlexTop>
         <Spacer />
         <Text>
           In this post we'll be diving into Amazon's services for Data Analytics.
