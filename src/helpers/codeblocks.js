@@ -401,3 +401,17 @@ export const roomHelper = `export const Rooms = [
     explored: false
   },
 ]`
+
+export const partitionsInAthena = `CREATE EXTERNAL TABLE sales (
+  product_id STRING,
+  amount DOUBLE
+)
+PARTITIONED BY (year STRING, month STRING)
+STORED AS PARQUET
+LOCATION 's3://my-bucket/sales/';
+`;
+
+export const columnarFormat = `CREATE TABLE sales_parquet
+STORED AS PARQUET
+AS SELECT * FROM sales;
+`;

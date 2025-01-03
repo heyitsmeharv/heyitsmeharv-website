@@ -23,7 +23,10 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import Table from '../../components/Table/Table';
 
 // images
-import KinesisDataStreams from "../../resources/images/blog/AWSKinesis/kinesis_data_streams.jpeg"
+import FederatedQueries from "../../resources/images/blog/AWSDataAnalytics/federated_queries.jpeg"
+
+// codeblocks
+import { partitionsInAthena, columnarFormat } from "../../helpers/codeblocks";
 
 
 const Wrapper = styled.div`
@@ -76,7 +79,6 @@ const FlexTop = styled.div`
 
 const IconWrapper = styled.div`
   display: flex;
-  margin: auto;
 `;
 
 const CodeBlock = styled.pre`
@@ -89,6 +91,19 @@ const CodeBlock = styled.pre`
   border-radius: 2rem;
   overflow-x: auto;
   line-height: 3.5rem;
+`;
+
+const CodeBlockIndent = styled.pre`
+  font-family: 'Calibri';
+  font-size: 2rem;
+  background: #292929;
+  color: ${({ theme }) => theme.buttonText};
+  word-wrap: break-word;
+  padding: 1rem 2rem 1rem;
+  border-radius: 2rem;
+  overflow-x: auto;
+  line-height: 3.5rem;
+  margin-left: 10%;
 `;
 
 const Title = styled.h1`
@@ -105,6 +120,7 @@ const SubTitle = styled.h1`
 const SubTitleSmall = styled.h1`
   font-size: 2rem;
   font-weight: bold;
+  margin: 2% auto;
 `;
 
 const HeadingSmall = styled.h1`
@@ -243,11 +259,101 @@ const AWSDataAnalytics = () => {
         <Text>
           In this post we'll be diving into Amazon's services for Data Analytics.
           <StyledAnchor href="#aws-athena"><StyledListItem>AWS Athena</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-redshfit"><StyledListItem>AWS Redshift</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-athena">AWS Athena</SubTitle>
-          
+          AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL.
+          It is designed for simplicity and cost-efficiency, making it a popular choice for data analytics. Athena supports formats including <BoldText>CSV, JSON, ORC, Avro</BoldText> and <BoldText>Parquet</BoldText>.
+          Athena is commonly used with AWS Quicksights for reporting and dashboards.
           <Spacer />
-          <SubTitleSmall>Kinesis Data Streams</SubTitleSmall>
+          <SubTitleSmall>Partitioning in AWS Athena</SubTitleSmall>
+          Partitioning is a method of dividing a dataset into smaller, more manageable pieces based on one or more columns. Each partition is stored as a separate folder in Amazon S3.
+          When queries are executed, Athena scans only the relevant partitions instead of the entire dataset, significantly improving performance and reducing costs.
+          <Spacer />
+          <SubTitleSmall>How Partitioning Works</SubTitleSmall>
+          <StyledListItem>Folder-Based Structure:</StyledListItem>
+          <StyledListItemIndent>Data is typically organized in S3 folders based on the partition key(s).</StyledListItemIndent>
+          <StyledListItemIndent>Example: If your data is partitioned by year and month, the folder structure might look like this:</StyledListItemIndent>
+          <CodeBlockIndent>
+            s3://my-bucket/sales/year=2024/month=01/
+            <Spacer />
+            s3://my-bucket/sales/year=2024/month=02/
+          </CodeBlockIndent>
+          <Spacer />
+          <StyledListItem>Defining Partitions in Athena:</StyledListItem>
+          <StyledListItemIndent>Use the PARTITIONED BY clause when creating a table to define which columns should be used as partitions.</StyledListItemIndent>
+          <StyledListItemIndent>Example:</StyledListItemIndent>
+          <CodeBlockIndent>
+            {partitionsInAthena}
+          </CodeBlockIndent>
+          <Spacer />
+          <StyledListItem>Adding Partitions:</StyledListItem>
+          <StyledListItemIndent>After data is added to S3, partitions must be registered with the table.</StyledListItemIndent>
+          <StyledListItemIndent>Use ALTER TABLE to manually add partitions:</StyledListItemIndent>
+          <CodeBlockIndent>
+            ALTER TABLE sales ADD PARTITION (year='2023', month='01') LOCATION 's3://my-bucket/sales/year=2023/month=01/';
+          </CodeBlockIndent>
+          <Spacer />
+          <SubTitleSmall>Benefits of Partitioning</SubTitleSmall>
+          Improved Query Performance: Filters like WHERE year = '2023' AND month = '01' ensure Athena scans only the relevant folders.
+          Reduced Query Costs: Since costs are based on the volume of data scanned, reducing unnecessary scans saves money.
+          <Spacer />
+          <SubTitleSmall>Optimization in AWS Athena</SubTitleSmall>
+          Optimization involves structuring your data and queries to make the best use of Athena’s capabilities. Key optimization strategies include:
+          <StyledListItem>Use Columnar File Formats</StyledListItem>
+          <StyledListItemIndent>File formats like Parquet and ORC store data in a columnar layout, meaning only the columns required by the query are read.
+          They also support compression and better data skipping, reducing the amount of data scanned.</StyledListItemIndent>
+          <StyledListItemIndent>Example:</StyledListItemIndent>
+          <CodeBlockIndent>
+            {columnarFormat}
+          </CodeBlockIndent>
+          <Spacer />
+          <StyledListItem>Use Glue Data Catalog for Schema Management</StyledListItem>
+          <StyledListItemIndent>Leverage AWS Glue to manage schemas and enable automatic schema discovery.</StyledListItemIndent>
+          <StyledListItemIndent>Use AWS Glue to convert your data to Parquet or ORC.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem>Compress Your Data</StyledListItem>
+          <StyledListItemIndent>Compressing files (e.g., using Gzip, Snappy) reduces storage costs and the volume of data scanned.</StyledListItemIndent>
+          <StyledListItemIndent>Some formats like Parquet and ORC support built-in compression.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem>Use Partition Pruning</StyledListItem>
+          <StyledListItemIndent>Write queries that leverage partition keys in WHERE clauses to avoid scanning all partitions.</StyledListItemIndent>
+          <StyledListItemIndent>Use functions like LIMIT when exploring data.</StyledListItemIndent>
+          <StyledListItemIndent>Join smaller datasets first in complex queries.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem>Optimize Data Layout</StyledListItem>
+          <StyledListItemIndent>Avoid very small files, as they can cause overhead during query execution.</StyledListItemIndent>
+          <StyledListItemIndent>Aim for file sizes between 128 MB and 1 GB.</StyledListItemIndent>
+          <Spacer />
+          <SubTitleSmall>Federated Query</SubTitleSmall>
+          Federated queries in AWS Athena allow you to query data across multiple data sources, not just Amazon S3. This feature enables you to use Athena as a
+          single interface to analyze data stored in various systems such as relational databases, NoSQL databases, and custom data stores, in addition to files in S3.
+          <Spacer />
+          <Spacer />
+          <StyledImage src={FederatedQueries} />
+          <Spacer />
+          <SubTitleSmall>How Federated Queries Work</SubTitleSmall>
+          <StyledListItem>Connectors</StyledListItem>
+          <StyledListItemIndent>Athena uses data source connectors to interact with different data systems.</StyledListItemIndent>
+          <StyledListItemIndent>Connectors are based on the AWS Lambda service, which acts as a bridge between Athena and the external data source.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem>SQL Interface</StyledListItem>
+          <StyledListItemIndent>You write SQL queries in Athena, just as you would for querying data in S3.</StyledListItemIndent>
+          <StyledListItemIndent>Athena fetches data from the external source via the connector and processes it for your query.</StyledListItemIndent>
+          <Spacer />
+          <SubTitleSmall>Benefits of Federated Queries</SubTitleSmall>
+          <StyledListItem>Unified Analytics:</StyledListItem>
+          <StyledListItemIndent>Analyze data across disparate systems without the need to copy or ETL (Extract, Transform, Load) data into S3.</StyledListItemIndent>
+          <StyledListItem>Simplified Data Access:</StyledListItem>
+          <StyledListItemIndent>Use a single SQL interface to query various data sources, reducing complexity for data analysts.</StyledListItemIndent>
+          <Spacer />
+          <SubTitleSmall>Limitations</SubTitleSmall>
+          <StyledListItem>Federated queries can have higher latency compared to querying S3 directly.</StyledListItem>
+          <StyledListItem>Not all SQL functions and operations may be supported for all data sources.</StyledListItem>
+          <StyledListItem>Data source permissions must be carefully managed to ensure security.</StyledListItem>
+          <Spacer />
+          <SubTitle id="aws-redshfit">AWS Redshift</SubTitle>
+
 
         </Text>
       </Container>
