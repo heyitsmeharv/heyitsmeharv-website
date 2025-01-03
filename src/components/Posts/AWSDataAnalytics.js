@@ -23,7 +23,8 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import Table from '../../components/Table/Table';
 
 // images
-import FederatedQueries from "../../resources/images/blog/AWSDataAnalytics/federated_queries.jpeg"
+import FederatedQueries from "../../resources/images/blog/AWSDataAnalytics/data_analytics_federated_queries.jpeg"
+import RedshiftCluster from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_cluster.jpeg"
 
 // codeblocks
 import { partitionsInAthena, columnarFormat } from "../../helpers/codeblocks";
@@ -114,7 +115,6 @@ const Title = styled.h1`
 const SubTitle = styled.h1`
   font-size: 3rem;
   font-weight: bold;
-  font-style: italic;
 `;
 
 const SubTitleSmall = styled.h1`
@@ -257,9 +257,17 @@ const AWSDataAnalytics = () => {
         </FlexTop>
         <Spacer />
         <Text>
-          In this post we'll be diving into Amazon's services for Data Analytics.
-          <StyledAnchor href="#aws-athena"><StyledListItem>AWS Athena</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-redshfit"><StyledListItem>AWS Redshift</StyledListItem></StyledAnchor>
+          In this post we'll be diving into Amazon's services for Data Analytics which includes:
+          <StyledAnchor href="#aws-athena"><StyledListItem>Athena</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-redshfit"><StyledListItem>Redshift</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-opensearch"><StyledListItem>OpenSearch</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-emr"><StyledListItem>EMR</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-quicksight"><StyledListItem>Quicksight</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-glue"><StyledListItem>Glue</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-lake-formation"><StyledListItem>Lake Formation</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-kinesis-data-analytics"><StyledListItem>Kinesis Data Analytics</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-msk"><StyledListItem>MSK - Managed Streaming Service for Apache Kafka</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-big-data-ingestion-pipeline"><StyledListItem>Big Data Ingestion Pipeline</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-athena">AWS Athena</SubTitle>
           AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL.
@@ -353,8 +361,24 @@ const AWSDataAnalytics = () => {
           <StyledListItem>Data source permissions must be carefully managed to ensure security.</StyledListItem>
           <Spacer />
           <SubTitle id="aws-redshfit">AWS Redshift</SubTitle>
-
-
+          AWS Redshift is a fully managed, petabyte-scale cloud data warehouse service provided by Amazon Web Services.
+          It is designed to make it simple and cost-effective to analyze all your data using standard SQL and existing business intelligence (BI) tools.
+          <StyledListItem>Redshift uses columnar storage, data compression, and zone maps to minimize the amount of data read from disk.</StyledListItem>
+          <StyledListItem>Leverages Massively Parallel Processing (MPP) architecture to split workloads across multiple nodes.</StyledListItem>
+          <StyledListItem>Offers query optimization techniques, such as materialized views and result caching, for faster performance.</StyledListItem>
+          <SubTitleSmall>Scalability</SubTitleSmall>
+          <StyledListItem>Provisioned:</StyledListItem>
+          <StyledListItemIndent>Scale clusters vertically (change node types) or horizontally (add more nodes) to accommodate growing data needs.</StyledListItemIndent>
+          <StyledListItem>Serverless:</StyledListItem>
+          <StyledListItemIndent>Automatically provisions resources based on workload, ideal for unpredictable or spiky workloads.</StyledListItemIndent>
+          <SubTitleSmall>Redshift Cluster</SubTitleSmall>
+          Here is a basic overview of how Redshift Clusters are designed. They are made up of leader/compute nodes. The leader node coordinates query execution and manages metadata where 
+          the compute nodes perform the actual data processing and return results to the leader node.
+          <Spacer />
+          <Spacer />
+          <StyledImage src={RedshiftCluster} />
+          <SubTitleSmall>Snapshots and Disaster Recovery</SubTitleSmall>
+          
         </Text>
       </Container>
     </Wrapper>
