@@ -25,6 +25,7 @@ import Table from '../../components/Table/Table';
 // images
 import FederatedQueries from "../../resources/images/blog/AWSDataAnalytics/data_analytics_federated_queries.jpeg"
 import RedshiftCluster from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_cluster.jpeg"
+import RedshiftSnapshot from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_snapshot.jpeg"
 
 // codeblocks
 import { partitionsInAthena, columnarFormat } from "../../helpers/codeblocks";
@@ -269,7 +270,7 @@ const AWSDataAnalytics = () => {
           <StyledAnchor href="#aws-msk"><StyledListItem>MSK - Managed Streaming Service for Apache Kafka</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-big-data-ingestion-pipeline"><StyledListItem>Big Data Ingestion Pipeline</StyledListItem></StyledAnchor>
           <Spacer />
-          <SubTitle id="aws-athena">AWS Athena</SubTitle>
+          <SubTitle id="aws-athena">Athena</SubTitle>
           AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL.
           It is designed for simplicity and cost-efficiency, making it a popular choice for data analytics. Athena supports formats including <BoldText>CSV, JSON, ORC, Avro</BoldText> and <BoldText>Parquet</BoldText>.
           Athena is commonly used with AWS Quicksights for reporting and dashboards.
@@ -360,7 +361,7 @@ const AWSDataAnalytics = () => {
           <StyledListItem>Not all SQL functions and operations may be supported for all data sources.</StyledListItem>
           <StyledListItem>Data source permissions must be carefully managed to ensure security.</StyledListItem>
           <Spacer />
-          <SubTitle id="aws-redshfit">AWS Redshift</SubTitle>
+          <SubTitle id="aws-redshfit">Redshift</SubTitle>
           AWS Redshift is a fully managed, petabyte-scale cloud data warehouse service provided by Amazon Web Services.
           It is designed to make it simple and cost-effective to analyze all your data using standard SQL and existing business intelligence (BI) tools.
           <StyledListItem>Redshift uses columnar storage, data compression, and zone maps to minimize the amount of data read from disk.</StyledListItem>
@@ -378,7 +379,23 @@ const AWSDataAnalytics = () => {
           <Spacer />
           <StyledImage src={RedshiftCluster} />
           <SubTitleSmall>Snapshots and Disaster Recovery</SubTitleSmall>
-          
+          Snapshots are backups of your Amazon Redshift cluster stored in Amazon S3. There are two types of snapshots:
+          <StyledListItem>Automated Snapshots:</StyledListItem>
+          <StyledListItemIndent>Created automatically by Redshift based on the backup retention period configured for your cluster.</StyledListItemIndent>
+          <StyledListItemIndent>Occur every 8 hours or after 5 GB of data changes, whichever comes first.</StyledListItemIndent>
+          <StyledListItemIndent>Retained for a configurable period (default is 1 day, maximum is 35 days).</StyledListItemIndent>
+          <StyledListItemIndent>.</StyledListItemIndent>
+          <StyledListItem>Manual Snapshots:</StyledListItem>
+          <StyledListItemIndent>Created explicitly by the user.</StyledListItemIndent>
+          <StyledListItemIndent>Retained until deleted manually (not subject to automated deletion).</StyledListItemIndent>
+          <SubTitleSmall>How Snapshots Work</SubTitleSmall>
+          Snapshots are incremental, meaning only changes since the last snapshot are stored, reducing storage costs.
+          Snapshots are region-specific but can be copied to another AWS region for disaster recovery purposes.
+          <Spacer />
+          <Spacer />
+          <StyledImage src={RedshiftSnapshot} />
+          <SubTitle id="aws-opensearch">Open Search</SubTitle>
+
         </Text>
       </Container>
     </Wrapper>
