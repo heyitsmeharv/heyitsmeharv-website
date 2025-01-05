@@ -26,6 +26,7 @@ import Table from '../../components/Table/Table';
 import FederatedQueries from "../../resources/images/blog/AWSDataAnalytics/data_analytics_federated_queries.jpeg"
 import RedshiftCluster from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_cluster.jpeg"
 import RedshiftSnapshot from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_snapshot.jpeg"
+import RedshiftSpectrum from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_spectrum.jpeg"
 
 // codeblocks
 import { partitionsInAthena, columnarFormat } from "../../helpers/codeblocks";
@@ -384,7 +385,6 @@ const AWSDataAnalytics = () => {
           <StyledListItemIndent>Created automatically by Redshift based on the backup retention period configured for your cluster.</StyledListItemIndent>
           <StyledListItemIndent>Occur every 8 hours or after 5 GB of data changes, whichever comes first.</StyledListItemIndent>
           <StyledListItemIndent>Retained for a configurable period (default is 1 day, maximum is 35 days).</StyledListItemIndent>
-          <StyledListItemIndent>.</StyledListItemIndent>
           <StyledListItem>Manual Snapshots:</StyledListItem>
           <StyledListItemIndent>Created explicitly by the user.</StyledListItemIndent>
           <StyledListItemIndent>Retained until deleted manually (not subject to automated deletion).</StyledListItemIndent>
@@ -394,7 +394,20 @@ const AWSDataAnalytics = () => {
           <Spacer />
           <Spacer />
           <StyledImage src={RedshiftSnapshot} />
+          <Spacer />
+          <Spacer />
+          <SubTitleSmall>Redshift Spectrum</SubTitleSmall>
+          Spectrum allows you to run SQL queries directly against exabytes of data stored in Amazon S3. A Redshift cluster is required to start the query, which is 
+          submitted to thousands of spectrum nodes.
+          <Spacer />
+          <Spacer />  
+          <StyledImage src={RedshiftSpectrum} />
+          <Spacer />
+          <Spacer />
           <SubTitle id="aws-opensearch">Open Search</SubTitle>
+          AWS OpenSearch Service (formerly Amazon Elasticsearch Service) is a fully managed service that makes it easy to deploy, operate, and scale OpenSearch or Elasticsearch clusters 
+          in the AWS Cloud. OpenSearch is a search and analytics engine, enabling fast, interactive search experiences and powerful data visualization capabilities.
+
 
         </Text>
       </Container>
