@@ -27,6 +27,9 @@ import FederatedQueries from "../../resources/images/blog/AWSDataAnalytics/data_
 import RedshiftCluster from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_cluster.jpeg"
 import RedshiftSnapshot from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_snapshot.jpeg"
 import RedshiftSpectrum from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_spectrum.jpeg"
+import OpenSearchDynamoDB from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_dynamodb.jpeg"
+import OpenSearchCloudWatch from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_cloudwatch.jpeg"
+import OpenSearchKinesis from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_kinesis.jpeg"
 
 // codeblocks
 import { partitionsInAthena, columnarFormat } from "../../helpers/codeblocks";
@@ -339,7 +342,6 @@ const AWSDataAnalytics = () => {
           Federated queries in AWS Athena allow you to query data across multiple data sources, not just Amazon S3. This feature enables you to use Athena as a
           single interface to analyze data stored in various systems such as relational databases, NoSQL databases, and custom data stores, in addition to files in S3.
           <Spacer />
-          <Spacer />
           <StyledImage src={FederatedQueries} />
           <Spacer />
           <SubTitleSmall>How Federated Queries Work</SubTitleSmall>
@@ -377,7 +379,6 @@ const AWSDataAnalytics = () => {
           Here is a basic overview of how Redshift Clusters are designed. They are made up of leader/compute nodes. The leader node coordinates query execution and manages metadata where 
           the compute nodes perform the actual data processing and return results to the leader node.
           <Spacer />
-          <Spacer />
           <StyledImage src={RedshiftCluster} />
           <SubTitleSmall>Snapshots and Disaster Recovery</SubTitleSmall>
           Snapshots are backups of your Amazon Redshift cluster stored in Amazon S3. There are two types of snapshots:
@@ -392,23 +393,34 @@ const AWSDataAnalytics = () => {
           Snapshots are incremental, meaning only changes since the last snapshot are stored, reducing storage costs.
           Snapshots are region-specific but can be copied to another AWS region for disaster recovery purposes.
           <Spacer />
-          <Spacer />
           <StyledImage src={RedshiftSnapshot} />
-          <Spacer />
           <Spacer />
           <SubTitleSmall>Redshift Spectrum</SubTitleSmall>
           Spectrum allows you to run SQL queries directly against exabytes of data stored in Amazon S3. A Redshift cluster is required to start the query, which is 
           submitted to thousands of spectrum nodes.
-          <Spacer />
           <Spacer />  
           <StyledImage src={RedshiftSpectrum} />
           <Spacer />
-          <Spacer />
-          <SubTitle id="aws-opensearch">Open Search</SubTitle>
+          <SubTitle id="aws-opensearch">OpenSearch</SubTitle>
           AWS OpenSearch Service (formerly Amazon Elasticsearch Service) is a fully managed service that makes it easy to deploy, operate, and scale OpenSearch or Elasticsearch clusters 
           in the AWS Cloud. OpenSearch is a search and analytics engine, enabling fast, interactive search experiences and powerful data visualization capabilities.
-
-
+          <Spacer />
+          Here are some design patterns including OpenSearch:
+          <SubTitleSmall>DynamoDB Design Pattern</SubTitleSmall> 
+          OpenSearch can be used to allow an application to search for a specific item (e.g. a partial search for the item name), returning the item id. It can then use DynamoDB to retrieve the item using the id retrieved from 
+          OpenSearch. This is a common pattern where you can still have DynamoDB as your main source of data utilising OpenSearch to provide the search capability. 
+          <StyledImage src={OpenSearchDynamoDB} />
+          <SubTitleSmall>CloudWatch Logs Design Pattern</SubTitleSmall>
+          A way to ingest CloudWatch Logs using OpenSearch by using a CloudWatch Log Subscription filter sending data in real time to a lambda function which is managed by AWS and then the lambda function in real time sends the data to OpenSearch.
+          Alternatively, you can use Kinesis Data Firehose to send the data but this would be in near real time.
+          <StyledImage src={OpenSearchCloudWatch} />
+          <SubTitleSmall>Kinesis Data Streams & Kinesis Data Firehose Design Pattern</SubTitleSmall>
+          To send data streams into OpenSearch there are two ways to do so. The first strategy involves sending data into Kinesis Data Firehose near real time with the option to do any data transformation via lambdas then sending the data into OpenSearch. 
+          Alternatively, you can use lambda to read the data stream in real time to then send to OpenSearch.
+          <StyledImage src={OpenSearchKinesis} />
+          <Spacer />
+          <SubTitle id="aws-emr">EMR</SubTitle>
+          
         </Text>
       </Container>
     </Wrapper>
