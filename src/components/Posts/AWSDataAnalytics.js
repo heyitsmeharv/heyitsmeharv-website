@@ -266,7 +266,7 @@ const AWSDataAnalytics = () => {
           <StyledAnchor href="#aws-athena"><StyledListItem>Athena</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-redshfit"><StyledListItem>Redshift</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-opensearch"><StyledListItem>OpenSearch</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-emr"><StyledListItem>EMR</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-emr"><StyledListItem>EMR (Elastic MapReduce)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-quicksight"><StyledListItem>Quicksight</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-glue"><StyledListItem>Glue</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-lake-formation"><StyledListItem>Lake Formation</StyledListItem></StyledAnchor>
@@ -315,7 +315,7 @@ const AWSDataAnalytics = () => {
           Optimization involves structuring your data and queries to make the best use of Athena’s capabilities. Key optimization strategies include:
           <StyledListItem>Use Columnar File Formats</StyledListItem>
           <StyledListItemIndent>File formats like Parquet and ORC store data in a columnar layout, meaning only the columns required by the query are read.
-          They also support compression and better data skipping, reducing the amount of data scanned.</StyledListItemIndent>
+            They also support compression and better data skipping, reducing the amount of data scanned.</StyledListItemIndent>
           <StyledListItemIndent>Example:</StyledListItemIndent>
           <CodeBlockIndent>
             {columnarFormat}
@@ -376,7 +376,7 @@ const AWSDataAnalytics = () => {
           <StyledListItem>Serverless:</StyledListItem>
           <StyledListItemIndent>Automatically provisions resources based on workload, ideal for unpredictable or spiky workloads.</StyledListItemIndent>
           <SubTitleSmall>Redshift Cluster</SubTitleSmall>
-          Here is a basic overview of how Redshift Clusters are designed. They are made up of leader/compute nodes. The leader node coordinates query execution and manages metadata where 
+          Here is a basic overview of how Redshift Clusters are designed. They are made up of leader/compute nodes. The leader node coordinates query execution and manages metadata where
           the compute nodes perform the actual data processing and return results to the leader node.
           <Spacer />
           <StyledImage src={RedshiftCluster} />
@@ -396,31 +396,31 @@ const AWSDataAnalytics = () => {
           <StyledImage src={RedshiftSnapshot} />
           <Spacer />
           <SubTitleSmall>Redshift Spectrum</SubTitleSmall>
-          Spectrum allows you to run SQL queries directly against exabytes of data stored in Amazon S3. A Redshift cluster is required to start the query, which is 
+          Spectrum allows you to run SQL queries directly against exabytes of data stored in Amazon S3. A Redshift cluster is required to start the query, which is
           submitted to thousands of spectrum nodes.
-          <Spacer />  
+          <Spacer />
           <StyledImage src={RedshiftSpectrum} />
           <Spacer />
           <SubTitle id="aws-opensearch">OpenSearch</SubTitle>
-          AWS OpenSearch Service (formerly Amazon Elasticsearch Service) is a fully managed service that makes it easy to deploy, operate, and scale OpenSearch or Elasticsearch clusters 
+          AWS OpenSearch Service (formerly Amazon Elasticsearch Service) is a fully managed service that makes it easy to deploy, operate, and scale OpenSearch or Elasticsearch clusters
           in the AWS Cloud. OpenSearch is a search and analytics engine, enabling fast, interactive search experiences and powerful data visualization capabilities.
           <Spacer />
           Here are some design patterns including OpenSearch:
-          <SubTitleSmall>DynamoDB Design Pattern</SubTitleSmall> 
-          OpenSearch can be used to allow an application to search for a specific item (e.g. a partial search for the item name), returning the item id. It can then use DynamoDB to retrieve the item using the id retrieved from 
-          OpenSearch. This is a common pattern where you can still have DynamoDB as your main source of data utilising OpenSearch to provide the search capability. 
+          <SubTitleSmall>DynamoDB Design Pattern</SubTitleSmall>
+          OpenSearch can be used to allow an application to search for a specific item (e.g. a partial search for the item name), returning the item id. It can then use DynamoDB to retrieve the item using the id retrieved from
+          OpenSearch. This is a common pattern where you can still have DynamoDB as your main source of data utilising OpenSearch to provide the search capability.
           <StyledImage src={OpenSearchDynamoDB} />
           <SubTitleSmall>CloudWatch Logs Design Pattern</SubTitleSmall>
           A way to ingest CloudWatch Logs using OpenSearch by using a CloudWatch Log Subscription filter sending data in real time to a lambda function which is managed by AWS and then the lambda function in real time sends the data to OpenSearch.
           Alternatively, you can use Kinesis Data Firehose to send the data but this would be in near real time.
           <StyledImage src={OpenSearchCloudWatch} />
           <SubTitleSmall>Kinesis Data Streams & Kinesis Data Firehose Design Pattern</SubTitleSmall>
-          To send data streams into OpenSearch there are two ways to do so. The first strategy involves sending data into Kinesis Data Firehose near real time with the option to do any data transformation via lambdas then sending the data into OpenSearch. 
+          To send data streams into OpenSearch there are two ways to do so. The first strategy involves sending data into Kinesis Data Firehose near real time with the option to do any data transformation via lambdas then sending the data into OpenSearch.
           Alternatively, you can use lambda to read the data stream in real time to then send to OpenSearch.
           <StyledImage src={OpenSearchKinesis} />
           <Spacer />
-          <SubTitle id="aws-emr">EMR</SubTitle>
-          
+          <SubTitle id="aws-emr">EMR (Elastic MapReduce)</SubTitle>
+
         </Text>
       </Container>
     </Wrapper>
