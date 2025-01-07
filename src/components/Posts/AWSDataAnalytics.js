@@ -420,7 +420,8 @@ const AWSDataAnalytics = () => {
           <StyledImage src={OpenSearchKinesis} />
           <Spacer />
           <SubTitle id="aws-emr">EMR (Elastic MapReduce)</SubTitle>
-
+          EMR is designed to process vast amounts of data using distributed computing frameworks like Apache Hadoop, Apache Spark, and others. 
+          AWS EMR simplifies the processing, analysis, and transformation of big data, allowing organizations to derive insights from large datasets quickly and cost-effectively.
         </Text>
       </Container>
     </Wrapper>
