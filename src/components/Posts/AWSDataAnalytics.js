@@ -30,6 +30,8 @@ import RedshiftSpectrum from "../../resources/images/blog/AWSDataAnalytics/data_
 import OpenSearchDynamoDB from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_dynamodb.jpeg"
 import OpenSearchCloudWatch from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_cloudwatch.jpeg"
 import OpenSearchKinesis from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_kinesis.jpeg"
+import QuickSightDashboard from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_dashboard.png"
+import QuickSightDataSources from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_data_sources.jpeg"
 
 // codeblocks
 import { partitionsInAthena, columnarFormat } from "../../helpers/codeblocks";
@@ -420,7 +422,7 @@ const AWSDataAnalytics = () => {
           <StyledImage src={OpenSearchKinesis} />
           <Spacer />
           <SubTitle id="aws-emr">EMR (Elastic MapReduce)</SubTitle>
-          EMR is designed to process vast amounts of data using distributed computing frameworks like Apache Hadoop, Apache Spark, and others. It uses a cluster of nodes which could be made up of hundreds of EC2 instances for distributed computing, and the nodes 
+          EMR is designed to process vast amounts of data using distributed computing frameworks like Apache Hadoop, Apache Spark, and others. It uses a cluster of nodes which could be made up of hundreds of EC2 instances for distributed computing, and the nodes
           are divided into three main types, each serving a distinct role in the cluster. EMR simplifies the processing, analysis, and transformation of big data, allowing organizations to derive insights from large datasets quickly and cost-effectively.
           <SubTitleSmall>Node Types in AWS EMR</SubTitleSmall>
           <StyledListItem><BoldText>Master Node</BoldText>: Manages the cluster, including the distribution of tasks and monitoring cluster health.</StyledListItem>
@@ -432,6 +434,16 @@ const AWSDataAnalytics = () => {
           <StyledListItem><BoldText>Task Nodes</BoldText>: Use Spot Instances to minimize costs for transient compute needs..</StyledListItem>
           <Spacer />
           <SubTitle id="aws-quicksight">QuickSight</SubTitle>
+          Amazon QuickSight is a cloud-scale business intelligence (BI) service that you can use to deliver easy-to-understand insights to the people who you work with, wherever they are. QuickSight connects to your data in the
+          cloud and combines data from many different sources. In a single data dashboard, QuickSight can include AWS data, third-party data, big data, spreadsheet data, SaaS data, B2B data, and more. As a fully managed cloud-based service,
+          QuickSight provides enterprise-grade security, global availability, and built-in redundancy. It also provides the user-management tools that you need to scale from 10 users to 10,000, all with no infrastructure to deploy or manage.
+          <SubTitleSmall>QuickSight Integrations</SubTitleSmall>
+          <StyledImage src={QuickSightDataSources} />
+          <SubTitleSmall>Dashboard & Analysis</SubTitleSmall>
+          Define users (standard versions) and Groups (enterprise version). Note that users and groups are not stored in IAM and only exist within QuickSight. The dashboards are a read-only snapshot of the analysis you can share. The data is imported as
+          SPICE data which allows for really fast data analysis. The powerful aspect of QuickSight dashboards is that you can share them with users and groups.
+          <StyledImage src={QuickSightDashboard} />
+          <SubTitle id="aws-glue">Glue</SubTitle>
 
         </Text>
       </Container>
