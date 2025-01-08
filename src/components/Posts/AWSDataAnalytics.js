@@ -277,7 +277,7 @@ const AWSDataAnalytics = () => {
           <SubTitle id="aws-athena">Athena</SubTitle>
           AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL.
           It is designed for simplicity and cost-efficiency, making it a popular choice for data analytics. Athena supports formats including <BoldText>CSV, JSON, ORC, Avro</BoldText> and <BoldText>Parquet</BoldText>.
-          Athena is commonly used with AWS Quicksights for reporting and dashboards.
+          Athena is commonly used with AWS Quicksight for reporting and dashboards.
           <Spacer />
           <SubTitleSmall>Partitioning in AWS Athena</SubTitleSmall>
           Partitioning is a method of dividing a dataset into smaller, more manageable pieces based on one or more columns. Each partition is stored as a separate folder in Amazon S3.
@@ -420,8 +420,19 @@ const AWSDataAnalytics = () => {
           <StyledImage src={OpenSearchKinesis} />
           <Spacer />
           <SubTitle id="aws-emr">EMR (Elastic MapReduce)</SubTitle>
-          EMR is designed to process vast amounts of data using distributed computing frameworks like Apache Hadoop, Apache Spark, and others. 
-          AWS EMR simplifies the processing, analysis, and transformation of big data, allowing organizations to derive insights from large datasets quickly and cost-effectively.
+          EMR is designed to process vast amounts of data using distributed computing frameworks like Apache Hadoop, Apache Spark, and others. It uses a cluster of nodes which could be made up of hundreds of EC2 instances for distributed computing, and the nodes 
+          are divided into three main types, each serving a distinct role in the cluster. EMR simplifies the processing, analysis, and transformation of big data, allowing organizations to derive insights from large datasets quickly and cost-effectively.
+          <SubTitleSmall>Node Types in AWS EMR</SubTitleSmall>
+          <StyledListItem><BoldText>Master Node</BoldText>: Manages the cluster, including the distribution of tasks and monitoring cluster health.</StyledListItem>
+          <StyledListItem><BoldText>Core Nodes</BoldText>: Execute tasks and store data within the Hadoop Distributed File System (HDFS).</StyledListItem>
+          <StyledListItem><BoldText>Task Nodes</BoldText>: Perform computational tasks but do not store data in HDFS.</StyledListItem>
+          <SubTitleSmall>Purchasing Options & Best Practices</SubTitleSmall>
+          <StyledListItem><BoldText>Master Node</BoldText>: Use On-Demand or Reserved Instances to ensure high availability and stability since the master node is critical to cluster operations.</StyledListItem>
+          <StyledListItem><BoldText>Core Nodes</BoldText>: Use Reserved Instances for predictable workloads requiring persistent storage (Spot Instances can be considered with a fault-tolerant design e.g., enabling replication in HDFS).</StyledListItem>
+          <StyledListItem><BoldText>Task Nodes</BoldText>: Use Spot Instances to minimize costs for transient compute needs..</StyledListItem>
+          <Spacer />
+          <SubTitle id="aws-quicksight">QuickSight</SubTitle>
+
         </Text>
       </Container>
     </Wrapper>
