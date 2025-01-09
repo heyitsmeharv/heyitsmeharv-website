@@ -444,7 +444,8 @@ const AWSDataAnalytics = () => {
           SPICE data which allows for really fast data analysis. The powerful aspect of QuickSight dashboards is that you can share them with users and groups.
           <StyledImage src={QuickSightDashboard} />
           <SubTitle id="aws-glue">Glue</SubTitle>
-
+          AWS Glue is a serverless data integration service that makes it easy for analytics users to discover, prepare, move, and integrate data from multiple sources. You can use it for analytics, machine learning, and application development. 
+          It also includes additional productivity and data ops tooling for authoring, running jobs, and implementing business workflows. 
         </Text>
       </Container>
     </Wrapper>
