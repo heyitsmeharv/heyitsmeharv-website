@@ -32,6 +32,8 @@ import OpenSearchCloudWatch from "../../resources/images/blog/AWSDataAnalytics/d
 import OpenSearchKinesis from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_kinesis.jpeg"
 import QuickSightDashboard from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_dashboard.png"
 import QuickSightDataSources from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_data_sources.jpeg"
+import Glue from "../../resources/images/blog/AWSDataAnalytics/data_analytics_glue.jpeg"
+
 
 // codeblocks
 import { partitionsInAthena, columnarFormat } from "../../helpers/codeblocks";
@@ -444,8 +446,15 @@ const AWSDataAnalytics = () => {
           SPICE data which allows for really fast data analysis. The powerful aspect of QuickSight dashboards is that you can share them with users and groups.
           <StyledImage src={QuickSightDashboard} />
           <SubTitle id="aws-glue">Glue</SubTitle>
-          AWS Glue is a serverless data integration service that makes it easy for analytics users to discover, prepare, move, and integrate data from multiple sources. You can use it for analytics, machine learning, and application development. 
-          It also includes additional productivity and data ops tooling for authoring, running jobs, and implementing business workflows. 
+          AWS Glue is a serverless data integration service that makes it easy for analytics users to discover, prepare, move, and integrate data from multiple sources. You can use it for analytics, machine learning, and application development.
+          It also includes additional productivity and data ops tooling for authoring, running jobs, and implementing business workflows.
+          <StyledImage src={Glue} />
+          <Spacer />
+          <SubTitle id="aws-lake-formation">Lake Formation</SubTitle>
+          AWS Lake Formation is a fully managed service that simplifies the process of creating, securing, and managing data lakes. A data lake is a centralized repository that stores structured and unstructured data at any scale, enabling you
+          to analyze and process data using different tools and frameworks. Lake Formation helps automate and streamline the creation of data lakes, making it easier to collect, organize, secure, and share data for analytics and machine learning.
+
+
         </Text>
       </Container>
     </Wrapper>
