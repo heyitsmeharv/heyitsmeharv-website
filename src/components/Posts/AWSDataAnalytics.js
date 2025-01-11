@@ -33,7 +33,7 @@ import OpenSearchKinesis from "../../resources/images/blog/AWSDataAnalytics/data
 import QuickSightDashboard from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_dashboard.png"
 import QuickSightDataSources from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_data_sources.jpeg"
 import Glue from "../../resources/images/blog/AWSDataAnalytics/data_analytics_glue.jpeg"
-
+import LakeFormation from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_lake_formation.jpeg"
 
 // codeblocks
 import { partitionsInAthena, columnarFormat } from "../../helpers/codeblocks";
@@ -232,16 +232,6 @@ const AWSDataAnalytics = () => {
     }
   }, []);
 
-  const columns = ['Feature', 'Provisioned Mode', 'On-Demand Mode'];
-  const data = [
-    { 'Feature': 'Capacity Management', 'Provisioned Mode': 'Manual (based on shard count)', 'On-Demand Mode': 'Automatic (scales in response to traffic)' },
-    { 'Feature': 'Throughput', 'Provisioned Mode': 'Depends on the number of shards', 'On-Demand Mode': 'Up to 200 MB/s write and 400 MB/s read automatically' },
-    { 'Feature': 'Scalability', 'Provisioned Mode': 'Requires manual intervention', 'On-Demand Mode': 'Fully automatic, no manual intervention required' },
-    { 'Feature': 'Cost', 'Provisioned Mode': 'Based on the number of shards', 'On-Demand Mode': 'Based on the data throughput (pay for what you use)' },
-    { 'Feature': 'Best For', 'Provisioned Mode': 'Predictable traffic, cost control', 'On-Demand Mode': 'Unpredictable, variable traffic, ease of use' },
-  ];
-
-
   return (
     <Wrapper>
       <StyledNavButton>
@@ -274,9 +264,6 @@ const AWSDataAnalytics = () => {
           <StyledAnchor href="#aws-quicksight"><StyledListItem>Quicksight</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-glue"><StyledListItem>Glue</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-lake-formation"><StyledListItem>Lake Formation</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-kinesis-data-analytics"><StyledListItem>Kinesis Data Analytics</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-msk"><StyledListItem>MSK - Managed Streaming Service for Apache Kafka</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-big-data-ingestion-pipeline"><StyledListItem>Big Data Ingestion Pipeline</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-athena">Athena</SubTitle>
           AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL.
@@ -453,8 +440,7 @@ const AWSDataAnalytics = () => {
           <SubTitle id="aws-lake-formation">Lake Formation</SubTitle>
           AWS Lake Formation is a fully managed service that simplifies the process of creating, securing, and managing data lakes. A data lake is a centralized repository that stores structured and unstructured data at any scale, enabling you
           to analyze and process data using different tools and frameworks. Lake Formation helps automate and streamline the creation of data lakes, making it easier to collect, organize, secure, and share data for analytics and machine learning.
-
-
+          <StyledImage src={LakeFormation} />
         </Text>
       </Container>
     </Wrapper>
