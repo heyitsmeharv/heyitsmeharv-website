@@ -323,13 +323,14 @@ export default function Blog() {
     },
     {
       title: 'AWS Data and Analytics',
-      readingTime: '~',
+      readingTime: 'approx 8 mins',
       type: 'Study',
       date: '04/09/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG />}],
-      intro: `...`,
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG /> }],
+      intro: `AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL. It is designed for simplicity and cost-efficiency, 
+      making it a popular choice for data analytics. Athena supports formats including CSV, JSON, ORC, Avro and Parquet. Athena is commonly used with AWS Quicksight for reporting and dashboards...`,
       navigate: 'aws-data-analytics',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
@@ -505,13 +506,14 @@ export default function Blog() {
     },
     {
       title: 'AWS Data and Analytics',
-      readingTime: '~',
+      readingTime: 'approx 8 mins',
       type: 'Study',
       date: '04/09/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG />}],
-      intro: `...`,
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG /> }],
+      intro: `AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL. It is designed for simplicity and cost-efficiency, 
+      making it a popular choice for data analytics. Athena supports formats including CSV, JSON, ORC, Avro and Parquet. Athena is commonly used with AWS Quicksight for reporting and dashboards...`,
       navigate: 'aws-data-analytics',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
