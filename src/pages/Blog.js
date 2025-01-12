@@ -33,6 +33,9 @@ import {
   AWSGlueSVG,
   AWSLakeFormationSVG,
   AWSMSKSVG,
+  AWSLambdaSVG,
+  AWSAPIGatewaySVG,
+  AWSStepFunctionsSVG
 } from '../resources/styles/icons';
 
 
@@ -333,6 +336,15 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Serverless',
+      readingTime: '...',
+      type: 'Study',
+      date: '12/01/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Lambda', background: '#FF9900', icon: <AWSLambdaSVG /> }, { name: 'API Gateway', background: '#FF9900', icon: <AWSAPIGatewaySVG /> }, { name: 'Step Functions', background: '#FF9900', icon: <AWSStepFunctionsSVG /> }],
+      intro: `...`,
+      published: false
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -514,6 +526,15 @@ export default function Blog() {
       making it a popular choice for data analytics. Athena supports formats including CSV, JSON, ORC, Avro and Parquet. Athena is commonly used with AWS Quicksight for reporting and dashboards...`,
       navigate: 'aws-data-analytics',
       published: true
+    },
+    {
+      title: 'AWS Serverless',
+      readingTime: '...',
+      type: 'Study',
+      date: '12/01/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Lambda', background: '#FF9900', icon: <AWSLambdaSVG /> }, { name: 'API Gateway', background: '#FF9900', icon: <AWSAPIGatewaySVG /> }, { name: 'Step Functions', background: '#FF9900', icon: <AWSStepFunctionsSVG /> }],
+      intro: `...`,
+      published: false
     },
     {
       title: 'React.js Text Based Adventure Game',
