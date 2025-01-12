@@ -206,7 +206,7 @@ const AWSServerless = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/aws-lambda');
+      ReactGA.pageview('/blog/aws-serverless');
     }
   }, []);
 
