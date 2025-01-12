@@ -44,6 +44,7 @@ import AWSContainers from "./components/Posts/AWSContainers";
 import AWSVPC from "./components/Posts/AWSVPC";
 import AWSKinesis from "./components/Posts/AWSKinesis";
 import AWSDataAnalytics from "./components/Posts/AWSDataAnalytics";
+import AWSServerless from "./components/Posts/AWSServerless";
 
 
 const Wrapper = styled.div`
@@ -127,6 +128,7 @@ const App = () => {
                     <Route exact path='/blog/aws-containers' component={AWSContainers} />
                     <Route exact path='/blog/aws-vpc' component={AWSVPC} />
                     <Route exact path='/blog/aws-data-analytics' component={AWSDataAnalytics} />
+                    <Route exact path='/blog/aws-serverless' component={AWSServerless} />
                   </Switch>
                 </>
               );
