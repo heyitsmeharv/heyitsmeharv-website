@@ -124,6 +124,7 @@ const Title = styled.h1`
 const SubTitle = styled.h1`
   font-size: 3rem;
   font-weight: bold;
+  margin: 2% auto;
 `;
 
 const SubTitleSmall = styled.h1`

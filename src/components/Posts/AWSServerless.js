@@ -14,7 +14,7 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import Table from '../Table/Table';
 
 // images
-// import FederatedQueries from "../../resources/images/blog/AWSDataAnalytics/data_analytics_federated_queries.jpeg"
+import LambdaConcurrency from "../../resources/images/blog/AWSServerless/aws_serverless_lambda_concurrency.jpeg"
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -102,6 +102,7 @@ const Title = styled.h1`
 const SubTitle = styled.h1`
   font-size: 3rem;
   font-weight: bold;
+  margin: 2% auto;
 `;
 
 const SubTitleSmall = styled.h1`
@@ -210,6 +211,15 @@ const AWSServerless = () => {
     }
   }, []);
 
+  const columns = ['Execution', 'Deployment'];
+  const data = [
+    { Execution: 'Memory Allocation 128 MB - 10GB (1 MB Increments)', Deployment: 'Lambda function deployment size (compressed .zip): 50 MB' },
+    { Execution: 'Maximum execution time: 900 seconds (15 minutes)', Deployment: 'Size of uncompressed deployment (code + dependencies): 250 MB' },
+    { Execution: 'Environment variables (4 KB)', Deployment: 'Can use the /tmp directory to load other files at startup' },
+    { Execution: 'Disk capacity in the function container (512 MB to 10 GB)', Deployment: 'Environment variables (4 KB)' },
+    { Execution: 'Concurrency exectutions: 1000 (can be increased)' },
+  ];
+
   return (
     <Wrapper>
       <StyledNavButton>
@@ -219,22 +229,46 @@ const AWSServerless = () => {
         </StyledNavLink>
       </StyledNavButton>
       <Container>
-        <FlexTop>
-          <Title>Amazon Serverless with AWS Lambda, AWS API Gateway and AWS Step Functions</Title>
+        <Flex>
+          <Title>Amazon Serverless</Title>
           <IconWrapper>
             <Icon><AWSSVG /></Icon>
             <Icon><AWSLambdaSVG /></Icon>
             <Icon><AWSAPIGatewaySVG /></Icon>
             <Icon><AWSStepFunctionsSVG /></Icon>
           </IconWrapper>
-        </FlexTop>
+        </Flex>
         <Spacer />
         <Text>
-          In this post we'll be diving into Amazon's:
+          In this post we'll be diving into Amazon's serverless solutions including AWS Lambda, AWS API Gateway and AWS Step Functions.
+          <StyledAnchor href="#what-is-serverless"><StyledListItem>What Is Serverless?</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-lambda"><StyledListItem>Lambda</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-api-gateway"><StyledListItem>API Gateway</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-step-functions"><StyledListItem>Step Functions</StyledListItem></StyledAnchor>
           <Spacer />
+          <SubTitle id="what-is-serverless">What Is Serverless?</SubTitle>
+          Before we explore any AWS services that are classed as serverless, let's first outline what constitutes as 'Serverless'. Serverless was
+          a term that was pioneered by AWS Lambda but now includes anything that's managed: databases, messaging, storage, etc. <BoldText>Serverless
+          doesn't mean there are no servers</BoldText>, it means you don't have to manage, provision, or see them. Serverless is a new paradigm in which
+          developers don't have to manage servers anymore.
           <SubTitle id="aws-lambda">Lambda</SubTitle>
-    
+          AWS Lambda, a serverless compute service, executes your code in response to events, handling compute resources for you. It is a virtual function which is
+          limited by time that runs on demand and scales automatically. You pay per request and compute time of the lambda function. Lambda is integrated with many programming
+          languages including:
+          <StyledListItem>Node.js (JavaScript)</StyledListItem>
+          <StyledListItem>Python</StyledListItem>
+          <StyledListItem>Java</StyledListItem>
+          <StyledListItem>C# (.NET Core)/Powershell</StyledListItem>
+          <StyledListItem>Ruby</StyledListItem>
+          <StyledListItem>Custom Runtime API (Rust or GoLang)</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>Limitations</SubTitleSmall>
+          <Table data={data} columns={columns} />
+          <Spacer />
+          <SubTitleSmall>Lambda Concurrency and Throttling</SubTitleSmall>
+          Concurrency limit is up to 1000 concurrent executions
+          <StyledImage src={LambdaConcurrency} />
+
         </Text>
       </Container>
     </Wrapper>
