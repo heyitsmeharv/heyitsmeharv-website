@@ -15,6 +15,9 @@ import Table from '../Table/Table';
 
 // images
 import LambdaConcurrency from "../../resources/images/blog/AWSServerless/aws_serverless_lambda_concurrency.jpeg"
+import LambdaThrottle from "../../resources/images/blog/AWSServerless/aws_serverless_lambda_throttle.jpeg"
+import LambdaSnapShot from "../../resources/images/blog/AWSServerless/aws_serverless_lambda_snapshot.jpeg"
+
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -220,6 +223,14 @@ const AWSServerless = () => {
     { Execution: 'Concurrency exectutions: 1000 (can be increased)' },
   ];
 
+  const columns2 = ['Cold Start', 'Provisioned Concurrency'];
+  const data2 = [
+    { 'Cold Start': 'New instance: Code is loaded and code is outside the handler run (init)', 'Provisioned Concurrency': 'Concurrency is allocated before the function in invoked (in advance)' },
+    { 'Cold Start': 'If the init is large (code, dependencies, SDK) it can take some time', 'Provisioned Concurrency': 'Cold start never happens and all invocations have low latency' },
+    { 'Cold Start': 'First request served by new instances has higher latency than the rest', 'Provisioned Concurrency': 'Application Auto Scaling can manage concurrency (schedule or target utilisation' },
+  ];
+
+
   return (
     <Wrapper>
       <StyledNavButton>
@@ -268,6 +279,24 @@ const AWSServerless = () => {
           <SubTitleSmall>Lambda Concurrency and Throttling</SubTitleSmall>
           Concurrency limit is up to 1000 concurrent executions
           <StyledImage src={LambdaConcurrency} />
+          It's possible to set a reserve concurrency at the function level that guarantees a specific number of concurrent executions for the Lambda function. 
+          It ensures that the function always has the capacity to handle a certain number of requests, regardless of the overall load on your AWS account.
+          Each invocation over the concurrency limit will trigger a "Throttle".
+          <StyledListItem>Synchronous invocation returns a throttleError - 429</StyledListItem>
+          <StyledListItem>Asynchronous invocation results in a retry and then sent to a DLQ</StyledListItem>
+          <Spacer />
+          <StyledImage src={LambdaThrottle} />
+          If the function doesn't have enough concurrency available to process all events, additional events are throttled. For throttling errors (429) and 
+          system errors (500-series), Lambda returns the event to the queue and attempts to run the function again for up to 6 hours. The retry interval increases 
+          exponentially from 1 second to a maximum of 5 minutes.
+          <SubTitleSmall>Cold Starts and Provisioned Concurrency</SubTitleSmall>
+          <Table data={data2} columns={columns2} />
+          <SubTitleSmall>Lambda SnapStart</SubTitleSmall>
+          SnapStart is a feature designed to significantly reduce the cold start latency for Lambda functions. SnapStart works by pre-initializing the function's 
+          execution environment and caching a snapshot of it, which can be reused when scaling the function to handle new requests. This feature is compatable with 
+          Java, Python and .NET languages and increases performance up to 10x at no extra cost. 
+          <StyledImage src={LambdaSnapShot} />
+          <SubTitleSmall>Lambda@Edge and Cloudfront Functions</SubTitleSmall>
 
         </Text>
       </Container>
