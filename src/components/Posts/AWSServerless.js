@@ -118,6 +118,7 @@ const HeadingSmall = styled.h1`
   font-size: 1.8rem;
   font-weight: bold;
   font-style: italic;
+  margin: 2% auto;
 `;
 
 const Text = styled.span`
@@ -230,6 +231,18 @@ const AWSServerless = () => {
     { 'Cold Start': 'First request served by new instances has higher latency than the rest', 'Provisioned Concurrency': 'Application Auto Scaling can manage concurrency (schedule or target utilisation' },
   ];
 
+  const columns3 = ['Feature', 'Lambda@Edge', 'CloudFront Functions'];
+  const data3 = [
+    { Feature: 'Runtime', 'Lambda@Edge': 'Supports multiple runtimes (Python, Node.js, etc.)', 'CloudFront Functions': 'JavaScript' },
+    { Feature: 'Number of Requests', 'Lambda@Edge': 'Thousands of requests per second.', 'CloudFront Functions': 'Millions of requests per second.' },
+    { Feature: 'CloudFront Triggers', 'Lambda@Edge': 'Viewer requests/response and Origin requests/response', 'CloudFront Functions': 'Viewer requests/response.' },
+    { Feature: 'Max Execution Time', 'Lambda@Edge': '5 - 10 seconds', 'CloudFront Functions': '< 1 ms.' },
+    { Feature: 'Max Memory', 'Lambda@Edge': '128 MB up to 10 GB.', 'CloudFront Functions': '2.' },
+    { Feature: 'Total Package Size', 'Lambda@Edge': '1 MB - 50 MB.', 'CloudFront Functions': '10 KB' },
+    { Feature: 'Network Access, File System Access', 'Lambda@Edge': 'Yes.', 'CloudFront Functions': 'No.' },
+    { Feature: 'Access to the Request Body', 'Lambda@Edge': 'Yes.', 'CloudFront Functions': 'No.' },
+    { Feature: 'Performance', 'Lambda@Edge': 'Can handle heavier tasks, like image processing.', 'CloudFront Functions': 'Ideal for fast, simple tasks like header edits.' }
+  ];
 
   return (
     <Wrapper>
@@ -279,24 +292,49 @@ const AWSServerless = () => {
           <SubTitleSmall>Lambda Concurrency and Throttling</SubTitleSmall>
           Concurrency limit is up to 1000 concurrent executions
           <StyledImage src={LambdaConcurrency} />
-          It's possible to set a reserve concurrency at the function level that guarantees a specific number of concurrent executions for the Lambda function. 
+          It's possible to set a reserve concurrency at the function level that guarantees a specific number of concurrent executions for the Lambda function.
           It ensures that the function always has the capacity to handle a certain number of requests, regardless of the overall load on your AWS account.
           Each invocation over the concurrency limit will trigger a "Throttle".
           <StyledListItem>Synchronous invocation returns a throttleError - 429</StyledListItem>
           <StyledListItem>Asynchronous invocation results in a retry and then sent to a DLQ</StyledListItem>
           <Spacer />
           <StyledImage src={LambdaThrottle} />
-          If the function doesn't have enough concurrency available to process all events, additional events are throttled. For throttling errors (429) and 
-          system errors (500-series), Lambda returns the event to the queue and attempts to run the function again for up to 6 hours. The retry interval increases 
+          If the function doesn't have enough concurrency available to process all events, additional events are throttled. For throttling errors (429) and
+          system errors (500-series), Lambda returns the event to the queue and attempts to run the function again for up to 6 hours. The retry interval increases
           exponentially from 1 second to a maximum of 5 minutes.
           <SubTitleSmall>Cold Starts and Provisioned Concurrency</SubTitleSmall>
           <Table data={data2} columns={columns2} />
           <SubTitleSmall>Lambda SnapStart</SubTitleSmall>
-          SnapStart is a feature designed to significantly reduce the cold start latency for Lambda functions. SnapStart works by pre-initializing the function's 
-          execution environment and caching a snapshot of it, which can be reused when scaling the function to handle new requests. This feature is compatable with 
-          Java, Python and .NET languages and increases performance up to 10x at no extra cost. 
+          SnapStart is a feature designed to significantly reduce the cold start latency for Lambda functions. SnapStart works by pre-initializing the function's
+          execution environment and caching a snapshot of it, which can be reused when scaling the function to handle new requests. This feature is compatable with
+          Java, Python and .NET languages and increases performance up to 10x at no extra cost.
           <StyledImage src={LambdaSnapShot} />
-          <SubTitleSmall>Lambda@Edge and Cloudfront Functions</SubTitleSmall>
+          <SubTitleSmall>Lambda@Edge and CloudFront Functions</SubTitleSmall>
+          Lambda@Edge is an extension of AWS Lambda that allows you to run serverless code at AWS's globally distributed edge locations. It is designed for more complex
+          and flexible use cases, offering deep integration with Amazon CloudFront.
+          <HeadingSmall>How Lambda@Edge Works:</HeadingSmall>
+          <StyledListItem>You associate a Lambda function with a specific CloudFront event (e.g., viewer request, origin response).</StyledListItem>
+          <StyledListItem>When a CloudFront request matches the event, the Lambda function is executed at the nearest edge location.</StyledListItem>
+          <StyledListItem>The function can modify, redirect, or respond to the request before sending it back to the viewer or origin.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>CloudFront Functions</SubTitleSmall>
+          CloudFront Functions is a lightweight, serverless edge compute service optimized for high-performance, low-latency tasks. It is more restricted than
+          Lambda@Edge but is designed for ultra-low latency use cases.
+          <SubTitleSmall>Lambda@Edge vs CloudFront Functions</SubTitleSmall>
+          <Table data={data3} columns={columns3} />
+          <SubTitleSmall>Use Cases:</SubTitleSmall>
+          <StyledListItem>Choose Lambda@Edge:</StyledListItem>
+          <StyledListItemIndent>If you need complex logic (e.g., dynamic content, authentication).</StyledListItemIndent>
+          <StyledListItemIndent>When you require advanced runtimes and libraries.</StyledListItemIndent>
+          <StyledListItemIndent>For full access to request and response data in all CloudFront phases.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem>Choose CloudFront Functions:</StyledListItem>
+          <StyledListItemIndent>If you need ultra-low latency for lightweight tasks (e.g., simple redirects or header manipulations).</StyledListItemIndent>
+          <StyledListItemIndent>For cost-sensitive, high-traffic scenarios.</StyledListItemIndent>
+          <StyledListItemIndent>When you don’t require advanced runtimes or deeper context access.</StyledListItemIndent>
+          <Spacer />
+          <SubTitle id="aws-api-gateway">API Gateway</SubTitle>
+
 
         </Text>
       </Container>
