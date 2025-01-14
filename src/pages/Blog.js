@@ -341,7 +341,8 @@ export default function Blog() {
       type: 'Study',
       date: '12/01/2025',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Lambda', background: '#FF9900', icon: <AWSLambdaSVG /> }, { name: 'API Gateway', background: '#FF9900', icon: <AWSAPIGatewaySVG /> }, { name: 'Step Functions', background: '#FF9900', icon: <AWSStepFunctionsSVG /> }],
-      intro: `...`,
+      intro: `Before we explore any AWS services that are classed as serverless, let's first outline what constitutes as 'Serverless'. Serverless was a term that was pioneered by AWS Lambda but now includes anything that's managed: databases, messaging, storage, etc. Serverless
+      doesn't mean there are no servers, it means you don't have to manage, provision, or see them...`,
       published: false
     },
     {
@@ -533,7 +534,8 @@ export default function Blog() {
       type: 'Study',
       date: '12/01/2025',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Lambda', background: '#FF9900', icon: <AWSLambdaSVG /> }, { name: 'API Gateway', background: '#FF9900', icon: <AWSAPIGatewaySVG /> }, { name: 'Step Functions', background: '#FF9900', icon: <AWSStepFunctionsSVG /> }],
-      intro: `...`,
+      intro: `Before we explore any AWS services that are classed as serverless, let's first outline what constitutes as 'Serverless'. Serverless was a term that was pioneered by AWS Lambda but now includes anything that's managed: databases, messaging, storage, etc. Serverless
+      doesn't mean there are no servers, it means you don't have to manage, provision, or see them...`,
       published: false
     },
     {
