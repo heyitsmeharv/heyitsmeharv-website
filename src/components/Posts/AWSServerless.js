@@ -17,6 +17,8 @@ import Table from '../Table/Table';
 import LambdaConcurrency from "../../resources/images/blog/AWSServerless/aws_serverless_lambda_concurrency.jpeg"
 import LambdaThrottle from "../../resources/images/blog/AWSServerless/aws_serverless_lambda_throttle.jpeg"
 import LambdaSnapShot from "../../resources/images/blog/AWSServerless/aws_serverless_lambda_snapshot.jpeg"
+import APIGatewayExample from "../../resources/images/blog/AWSServerless/aws_serverless_api_gateway_example.jpeg"
+import StepFunctionExample from "../../resources/images/blog/AWSServerless/aws_serverless_step_function_example.jpeg"
 
 
 const Wrapper = styled.div`
@@ -334,8 +336,30 @@ const AWSServerless = () => {
           <StyledListItemIndent>When you don’t require advanced runtimes or deeper context access.</StyledListItemIndent>
           <Spacer />
           <SubTitle id="aws-api-gateway">API Gateway</SubTitle>
-
-
+          API Gateway enables developers to create, publish, secure, monitor, and manage APIs at scale. It acts as an interface between your backend services
+          (e.g., AWS Lambda functions, EC2 instances, DynamoDB tables) and client applications, providing a single entry point for applications to access data,
+          business logic, or functionality from your backend services.
+          <HeadingSmall>Integration Types:</HeadingSmall>
+          <StyledListItem>Lambda Function: Trigger Lambda for serverless processing.</StyledListItem>
+          <StyledListItem>HTTP Endpoint: Forward requests to external HTTP/HTTPS endpoints.</StyledListItem>
+          <StyledListItem>AWS Service: Directly integrate with AWS services like S3, DynamoDB, or Step Functions.</StyledListItem>
+          <HeadingSmall>API Types:</HeadingSmall>
+          <StyledListItem>REST APIs: Designed for web and mobile applications with full support for HTTP requests (GET, POST, DELETE, etc.).</StyledListItem>
+          <StyledListItem>HTTP Endpoint: Forward requests to external HTTP/HTTPS endpoints.</StyledListItem>
+          <StyledListItem>WebSocket APIs: Enables real-time communication using the WebSocket protocol.</StyledListItem>
+          <HeadingSmall>Endpoints:</HeadingSmall>
+          <StyledListItem>Edge-Optimized: Uses Amazon CloudFront to reduce latency for global users.</StyledListItem>
+          <StyledListItem>Regional: Designed for use in a specific region to reduce inter-region latency.</StyledListItem>
+          <StyledListItem>Private: Access APIs only within a VPC.</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>API Gateway Serverless API example</SubTitleSmall>
+          <StyledImage src={APIGatewayExample} />
+          <Spacer />
+          <SubTitle id="aws-step-functions">Step Functions</SubTitle>
+          AWS Step Functions is a serverless orchestration service that allows you to coordinate and manage multiple AWS services and components into 
+          workflow-based applications. It helps developers build scalable, resilient, and predictable applications by breaking tasks into smaller, 
+          manageable steps and defining their execution order.
+          <StyledImage src={StepFunctionExample} />
         </Text>
       </Container>
     </Wrapper>
