@@ -35,7 +35,12 @@ import {
   AWSMSKSVG,
   AWSLambdaSVG,
   AWSAPIGatewaySVG,
-  AWSStepFunctionsSVG
+  AWSStepFunctionsSVG,
+  AWSRegoknitionSVG,
+  AWSPollySVG,
+  AWSLexSVG,
+  AWSComprehendSVG,
+  AWSSageMakerSVG
 } from '../resources/styles/icons';
 
 
@@ -347,6 +352,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Machine Learning',
+      readingTime: 'approx 6 mins',
+      type: 'Study',
+      date: '15/01/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Rekognition', background: '#FF9900', icon: <AWSRegoknitionSVG /> }, { name: 'Polly', background: '#FF9900', icon: <AWSPollySVG /> }, { name: 'Lex', background: '#FF9900', icon: <AWSLexSVG /> }, { name: 'Comprehend', background: '#FF9900', icon: <AWSComprehendSVG /> }, { name: 'SageMaker', background: '#FF9900', icon: <AWSSageMakerSVG /> }],
+      intro: `...`,
+      navigate: 'aws-machine-learning',
+      published: false
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -539,6 +554,16 @@ export default function Blog() {
       doesn't mean there are no servers, it means you don't have to manage, provision, or see them...`,
       navigate: 'aws-serverless',
       published: true
+    },
+    {
+      title: 'AWS Machine Learning',
+      readingTime: 'approx 6 mins',
+      type: 'Study',
+      date: '15/01/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Rekognition', background: '#FF9900', icon: <AWSRegoknitionSVG /> }, { name: 'Polly', background: '#FF9900', icon: <AWSPollySVG /> }, { name: 'Lex', background: '#FF9900', icon: <AWSLexSVG /> }, { name: 'Comprehend', background: '#FF9900', icon: <AWSComprehendSVG /> }, { name: 'SageMaker', background: '#FF9900', icon: <AWSSageMakerSVG /> }],
+      intro: `...`,
+      navigate: 'aws-machine-learning',
+      published: false
     },
     {
       title: 'React.js Text Based Adventure Game',
