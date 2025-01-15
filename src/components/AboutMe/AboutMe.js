@@ -57,7 +57,7 @@ const AboutMe = ({ language }) => {
       <Text>
         {aboutMeText(language)}
       </Text>
-      <Text>{aliveText(language, age)}</Text>
+      {/* <Text>{aliveText(language, age)}</Text> */}
     </Container>
   )
 }

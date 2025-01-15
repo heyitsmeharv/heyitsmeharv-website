@@ -34,7 +34,7 @@ const Home = () => {
       <AboutMe language={language} />
       <ProfessionalExperience language={language} />
       <Skills language={language} />
-      <Comments language={language} />
+      {/* <Comments language={language} /> */}
       {/* <LikeCounter /> */}
     </Container >
   );
