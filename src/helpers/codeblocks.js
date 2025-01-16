@@ -415,3 +415,9 @@ export const columnarFormat = `CREATE TABLE sales_parquet
 STORED AS PARQUET
 AS SELECT * FROM sales;
 `;
+
+export const SSMLExample = `<speak>
+Hello, <emphasis level="strong">world!</emphasis>
+Welcome to <break time="1s"/> Amazon Polly.
+</speak>
+`;
