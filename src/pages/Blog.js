@@ -353,13 +353,15 @@ export default function Blog() {
     },
     {
       title: 'AWS Machine Learning',
-      readingTime: 'approx 6 mins',
+      readingTime: 'approx 5 mins',
       type: 'Study',
       date: '15/01/2025',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Rekognition', background: '#FF9900', icon: <AWSRegoknitionSVG /> }, { name: 'Polly', background: '#FF9900', icon: <AWSPollySVG /> }, { name: 'Lex', background: '#FF9900', icon: <AWSLexSVG /> }, { name: 'Comprehend', background: '#FF9900', icon: <AWSComprehendSVG /> }, { name: 'SageMaker', background: '#FF9900', icon: <AWSSageMakerSVG /> }],
-      intro: `...`,
+      intro: `
+      Amazon Rekognition is a cloud-based image and video analysis service that makes it easy to add advanced computer vision capabilities to your applications. Amazon Rekognition includes a simple, easy-to-use API that can quickly analyze 
+      any image or video file that’s stored in Amazon S3...`,
       navigate: 'aws-machine-learning',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
@@ -557,13 +559,15 @@ export default function Blog() {
     },
     {
       title: 'AWS Machine Learning',
-      readingTime: 'approx 6 mins',
+      readingTime: 'approx 5 mins',
       type: 'Study',
       date: '15/01/2025',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Rekognition', background: '#FF9900', icon: <AWSRegoknitionSVG /> }, { name: 'Polly', background: '#FF9900', icon: <AWSPollySVG /> }, { name: 'Lex', background: '#FF9900', icon: <AWSLexSVG /> }, { name: 'Comprehend', background: '#FF9900', icon: <AWSComprehendSVG /> }, { name: 'SageMaker', background: '#FF9900', icon: <AWSSageMakerSVG /> }],
-      intro: `...`,
+      intro: `
+      Amazon Rekognition is a cloud-based image and video analysis service that makes it easy to add advanced computer vision capabilities to your applications. Amazon Rekognition includes a simple, easy-to-use API that can quickly analyze 
+      any image or video file that’s stored in Amazon S3...`,
       navigate: 'aws-machine-learning',
-      published: false
+      published: true
     },
     {
       title: 'React.js Text Based Adventure Game',
