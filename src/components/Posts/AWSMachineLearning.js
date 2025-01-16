@@ -21,7 +21,10 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import Table from '../Table/Table';
 
 // images
-// import LambdaConcurrency from "../../resources/images/blog/AWSMachineLearning/aws_serverless_lambda_concurrency.jpeg"
+import Rekognition from "../../resources/images/blog/AWSMachineLearning/aws_machine_learning_rekognition.jpeg"
+
+// codeblocks
+import { SSMLExample } from "../../helpers/codeblocks.js";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -251,10 +254,56 @@ const AWSMachineLearning = () => {
         <Text>
           In this post we'll be diving into Amazon's machine learning solutions.
           <StyledAnchor href="#aws-rekognition"><StyledListItem>Rekognition</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-transcribe"><StyledListItem>Transcribe</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-polly"><StyledListItem>Polly</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-translate"><StyledListItem>Translate</StyledListItem></StyledAnchor>
+
           <Spacer />
           <SubTitle id="aws-rekognition">Rekognition</SubTitle>
+          Amazon Rekognition is a cloud-based image and video analysis service that makes it easy to add advanced computer vision capabilities
+          to your applications. Amazon Rekognition includes a simple, easy-to-use API that can quickly analyze any image or video file that’s stored in Amazon S3.
+          <HeadingSmall>How Does It Work?</HeadingSmall>
+          <StyledListItem>Image/Video Input: Upload images or videos directly or via S3 integration.</StyledListItem>
+          <StyledListItem>API Calls: Use Rekognition’s RESTful APIs to analyze the media (e.g., DetectLabels, RecognizeCelebrities, DetectFaces).</StyledListItem>
+          <StyledListItem>Analysis: Rekognition processes the media and returns JSON-formatted responses containing detected features.</StyledListItem>
+          <StyledListItem>Custom Training (Custom Labels): For unique requirements, train a model using your dataset to recognize specific objects.</StyledListItem>
+          <HeadingSmall>How Can Rekogniton Be Used?</HeadingSmall>
+          Rekognition gives the user the capability of finding <BoldText>objects</BoldText>, <BoldText>people</BoldText>, <BoldText>text</BoldText>, <BoldText>scenes</BoldText>, <BoldText>images</BoldText> and
+          <BoldText> videos</BoldText>. Facial analysis and facial searches can be used for user verification.
+          <HeadingSmall>Content Moderation</HeadingSmall>
+          Rekognition has the ability to detect content that is innapropriate, unwanted or offensive (images and videos). Users have the ability to set a <BoldText>Minimum Confidence Threshold</BoldText> for
+          items that will be flagged. Flagged content that is sensitive can be put up for a manual review using Amazon Augmented AI (A2I).
+          <StyledImage width="200px" ml="30%" src={Rekognition} />
+          <SubTitle id="aws-transcribe">Transcribe</SubTitle>
+          AWS Transcribe is a service that provides automatic speech-to-text (ASR) capabilities. It allows you to convert audio and video recordings into text, making it easy to process and analyze spoken content.
+          <HeadingSmall>How Does It Work?</HeadingSmall>
+          <StyledListItem>Audio Input: Upload pre-recorded audio/video files to an S3 bucket or stream audio in real-time using the API.</StyledListItem>
+          <StyledListItem>Transcription Job: Initiate a transcription job using the AWS Management Console, CLI, or SDKs.</StyledListItem>
+          <StyledListItem>Speech-to-Text Processing: AWS Transcribe uses machine learning models to process audio and generate a transcript.</StyledListItem>
+          <StyledListItem>Output: The transcription is returned in JSON format, including features like timestamps, speaker labels, and confidence scores.</StyledListItem>
+          <Spacer />
+          <SubTitle id="aws-polly">Polly</SubTitle>
+          Amazon Polly is a cloud-based text-to-speech (TTS) service that converts text into natural-sounding speech. Using advanced deep learning models, Polly supports multiple languages and a wide variety
+          of lifelike voices, allowing developers to add speech synthesis capabilities to their applications.
+          <HeadingSmall>Lexicons & SSML (Speech Synthesis Markup Language)</HeadingSmall>
+          It's possible to customise the pronunciation of words with lexicons for example with acronyms like 'AWS' can be converted to 'Amazon Web Services'. SSML enables more customisation where you can adjust
+          speech rate, volume, or pitch. Add pauses, emphasize words, or control phonetic pronunciations.
+          <Spacer />
+          <CodeBlock>
+            {SSMLExample}
+          </CodeBlock>
+          <Spacer />
+          <SubTitle id="aws-translate">Translate</SubTitle>
+          AWS Translate is a service that provides language translation for text. It uses advanced neural machine translation models to deliver fast, high-quality, and cost-effective translations in real time 
+          or batch mode. With support for dozens of languages, AWS Translate makes it easy for developers to localize content and enable cross-lingual communication.
+          <HeadingSmall>How Does It Work?</HeadingSmall>
+          <StyledListItem>Input Text: Provide text input via the AWS Management Console, CLI, SDK, or API.</StyledListItem>
+          <StyledListItem>Source and Target Languages: Specify the source language (or allow automatic detection) and the desired target language.</StyledListItem>
+          <StyledListItem>Translation: AWS Translate uses neural models to process the input text and generate a translation.</StyledListItem>
+          <StyledListItem>Output: The translated text is returned, preserving the format of the original content.</StyledListItem>
+          <Spacer />
 
-          {/* <StyledImage src={StepFunctionExample} /> */}
+
         </Text>
       </Container>
     </Wrapper>
