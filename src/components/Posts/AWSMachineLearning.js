@@ -22,6 +22,12 @@ import Table from '../Table/Table';
 
 // images
 import Rekognition from "../../resources/images/blog/AWSMachineLearning/aws_machine_learning_rekognition.jpeg"
+import LexConnectExample from "../../resources/images/blog/AWSMachineLearning/aws_machine_learning_lex_connect.jpeg"
+import SageMakerExample from "../../resources/images/blog/AWSMachineLearning/aws_machine_learning_sagemaker.jpeg"
+import ForcastExample from "../../resources/images/blog/AWSMachineLearning/aws_machine_learning_forecast.jpeg"
+import KendraExample from "../../resources/images/blog/AWSMachineLearning/aws_machine_learning_kendra.jpeg"
+import PersonalizeExample from "../../resources/images/blog/AWSMachineLearning/aws_machine_learning_personalize.jpeg"
+
 
 // codeblocks
 import { SSMLExample } from "../../helpers/codeblocks.js";
@@ -221,13 +227,14 @@ const AWSMachineLearning = () => {
     }
   }, []);
 
-  const columns = ['Execution', 'Deployment'];
+  const columns = ['Capability', 'Description'];
   const data = [
-    { Execution: 'Memory Allocation 128 MB - 10GB (1 MB Increments)', Deployment: 'Lambda function deployment size (compressed .zip): 50 MB' },
-    { Execution: 'Maximum execution time: 900 seconds (15 minutes)', Deployment: 'Size of uncompressed deployment (code + dependencies): 250 MB' },
-    { Execution: 'Environment variables (4 KB)', Deployment: 'Can use the /tmp directory to load other files at startup' },
-    { Execution: 'Disk capacity in the function container (512 MB to 10 GB)', Deployment: 'Environment variables (4 KB)' },
-    { Execution: 'Concurrency exectutions: 1000 (can be increased)' },
+    { Capability: 'Language Detection', Description: 'Identifies the dominant language in text (e.g., English, French, Spanish).' },
+    { Capability: 'Sentiment Analysis', Description: 'Determines if text sentiment is positive, negative, neutral, or mixed.' },
+    { Capability: 'Entity Recognition', Description: 'Detects entities like names, dates, and organizations in text.' },
+    { Capability: 'Keyphrase Extraction', Description: 'Extracts phrases that represent key ideas in the text.' },
+    { Capability: 'Custom Classification', Description: 'Allows you to create models for categorizing text based on your business needs.' },
+    { Capability: 'PII Detection', Description: 'Identifies sensitive data like Social Security Numbers or email addresses.' }
   ];
 
   return (
@@ -257,7 +264,14 @@ const AWSMachineLearning = () => {
           <StyledAnchor href="#aws-transcribe"><StyledListItem>Transcribe</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-polly"><StyledListItem>Polly</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-translate"><StyledListItem>Translate</StyledListItem></StyledAnchor>
-
+          <StyledAnchor href="#aws-lex-and-connect"><StyledListItem>Lex & Connect</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-comprehend"><StyledListItem>Comprehend</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-sagemaker"><StyledListItem>SageMaker</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-forecast"><StyledListItem>Forecast</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-kendra"><StyledListItem>Kendra</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-personalize"><StyledListItem>Personalize</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-text-extract"><StyledListItem>Text Extract</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#machine-learning-summary"><StyledListItem>Machine Learning Summary</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-rekognition">Rekognition</SubTitle>
           Amazon Rekognition is a cloud-based image and video analysis service that makes it easy to add advanced computer vision capabilities
@@ -294,7 +308,7 @@ const AWSMachineLearning = () => {
           </CodeBlock>
           <Spacer />
           <SubTitle id="aws-translate">Translate</SubTitle>
-          AWS Translate is a service that provides language translation for text. It uses advanced neural machine translation models to deliver fast, high-quality, and cost-effective translations in real time 
+          AWS Translate is a service that provides language translation for text. It uses advanced neural machine translation models to deliver fast, high-quality, and cost-effective translations in real time
           or batch mode. With support for dozens of languages, AWS Translate makes it easy for developers to localize content and enable cross-lingual communication.
           <HeadingSmall>How Does It Work?</HeadingSmall>
           <StyledListItem>Input Text: Provide text input via the AWS Management Console, CLI, SDK, or API.</StyledListItem>
@@ -302,8 +316,64 @@ const AWSMachineLearning = () => {
           <StyledListItem>Translation: AWS Translate uses neural models to process the input text and generate a translation.</StyledListItem>
           <StyledListItem>Output: The translated text is returned, preserving the format of the original content.</StyledListItem>
           <Spacer />
-
-
+          <SubTitle id="aws-lex-and-connect">Lex & Connect</SubTitle>
+          Amazon Lex is a fully managed service for building conversational interfaces using voice and text. With Lex, developers can create chatbots and virtual assistants for applications, using natural
+          language understanding (NLU) and automatic speech recognition (ASR) to enable intuitive interactions.
+          <Spacer />
+          Lex is often used with Amazon Connect which is a cloud-based contact center service that enables businesses to provide scalable and cost-effective customer service solutions. It allows organizations
+          to set up virtual call centers quickly, integrate with other AWS services, and deliver personalized, automated, and data-driven customer experiences.
+          <StyledImage mt="10px" src={LexConnectExample} />
+          <SubTitle id="aws-comprehend">Comprehend</SubTitle>
+          Amazon Comprehend is a natural language processing (NLP) service powered by machine learning that helps you extract insights and patterns from unstructured text. It enables organizations to perform 
+          sentiment analysis, entity recognition, language detection, keyphrase extraction, and more without requiring machine learning expertise.
+          <HeadingSmall>Comprehend Capabilities</HeadingSmall>
+          <Table data={data} columns={columns} />
+          <Spacer />
+          <HeadingSmall>How Does It Work?</HeadingSmall>
+          <StyledListItem>Input Text: Provide text through the AWS Management Console, CLI, or SDK.</StyledListItem>
+          <StyledListItem>Select NLP Task: Choose tasks like sentiment analysis, entity detection, or custom classification.</StyledListItem>
+          <StyledListItem>Processing: Amazon Comprehend uses pre-trained or custom ML models to analyze the text.</StyledListItem>
+          <StyledListItem>Output: Results are returned in JSON format, detailing the extracted insights.</StyledListItem>
+          <Spacer />
+          <SubTitle id="aws-sagemaker">SageMaker</SubTitle>
+          Amazon SageMaker is a fully managed machine learning (ML) service that provides developers and data scientists with the tools to build, train, and deploy machine learning models at scale. 
+          SageMaker simplifies the entire ML workflow, from data preparation to model deployment, enabling faster experimentation and reducing the complexity of building ML solutions.
+          <StyledImage mt="10px" src={SageMakerExample} />
+          <SubTitle id="aws-forecast">Forecast</SubTitle>
+          Amazon Forecast is a fully managed service that uses machine learning (ML) to generate highly accurate forecasts for time-series data. It enables businesses to predict future outcomes 
+          such as product demand, inventory levels, workforce planning, and more, using historical data and additional related variables. The service is designed to be easy to use, even for users without ML expertise.
+          <StyledImage mt="20px" src={ForcastExample} />
+          <SubTitle id="aws-kendra">Kendra</SubTitle>
+          Amazon Kendra is an intelligent search service powered by machine learning (ML) that allows organizations to index and search vast amounts of unstructured and structured data. It provides highly relevant search 
+          results to user queries using natural language processing (NLP) and deep learning algorithms. Kendra helps organizations improve productivity and information discovery by enabling users to find the right 
+          answers quickly from multiple data sources, even when the data is fragmented across platforms.
+          <StyledImage mt="20px" src={KendraExample} />
+          <SubTitle id="aws-personalize">Personalize</SubTitle>
+          Amazon Personalize is a machine learning (ML)-powered recommendation service designed to create personalized user experiences by delivering tailored product, content, and service recommendations. 
+          Amazon Personalize helps businesses increase engagement, drive sales, and improve user satisfaction by leveraging ML to analyze user behavior and predict preferences.
+          <StyledImage mt="20px" src={PersonalizeExample} />
+          <SubTitle id="aws-text-extract">Text Extract</SubTitle>
+          Amazon Textract is a fully managed machine learning service designed to extract text, handwriting, and structured data (such as tables and forms) from scanned documents, images, and PDFs. 
+          It goes beyond traditional Optical Character Recognition (OCR) by not only identifying text but also understanding the context and structure of the document. Textract enables businesses to 
+          automate the extraction of meaningful data from documents, reducing manual effort and improving operational efficiency.
+          <HeadingSmall>How Does It Work?</HeadingSmall>
+          <StyledListItem>Input Documents: Upload images, PDFs, or scanned documents to Amazon Textract via the console or API.</StyledListItem>
+          <StyledListItem>Analysis: Textract analyzes the document to identify text, forms, and tables.</StyledListItem>
+          <StyledListItem>Output: The extracted data is returned in structured JSON format, ready for downstream processing.</StyledListItem>
+          <StyledListItem>Integration: Use the output with other services or applications for further processing, such as indexing, analysis, or automation.</StyledListItem>
+          <Spacer />
+          <SubTitle id="machine-learning-summary">Machine Learning Summary</SubTitle>
+          <StyledListItem>Rekognition: Face detection, labeling, celebrity recognition.</StyledListItem>
+          <StyledListItem>Transcribe: Audio to text.</StyledListItem>
+          <StyledListItem>Polly: Text to audio.</StyledListItem>
+          <StyledListItem>Translate: Translations.</StyledListItem>
+          <StyledListItem>Lex: Conversational chatbots.</StyledListItem>
+          <StyledListItem>Connect: Cloud contact center.</StyledListItem>
+          <StyledListItem>Comprehend: Natural language processing.</StyledListItem>
+          <StyledListItem>SageMaker: Machine learning for developers and data scientists.</StyledListItem>
+          <StyledListItem>Forecast: Build highly accurate forecasts.</StyledListItem>
+          <StyledListItem>Kendra: ML-powered search engine.</StyledListItem>
+          <StyledListItem>Personalize: Real-time personalisation recommendations.</StyledListItem>
         </Text>
       </Container>
     </Wrapper>
