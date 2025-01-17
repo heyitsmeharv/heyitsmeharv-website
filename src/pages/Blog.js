@@ -40,7 +40,10 @@ import {
   AWSPollySVG,
   AWSLexSVG,
   AWSComprehendSVG,
-  AWSSageMakerSVG
+  AWSSageMakerSVG,
+  AWSCloudWatchSVG,
+  AWSCloudTrailSVG,
+  AWSConfigSVG
 } from '../resources/styles/icons';
 
 
@@ -364,6 +367,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Monitoring & Audit',
+      readingTime: '-',
+      type: 'Study',
+      date: '17/01/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudWatch', background: '#FF9900', icon: <AWSCloudWatchSVG /> }, { name: 'CloudTrail', background: '#FF9900', icon: <AWSCloudTrailSVG /> }, { name: 'Config', background: '#FF9900', icon: <AWSConfigSVG /> }],
+      intro: ``,
+      navigate: 'aws-monitoring-audit',
+      published: false
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -568,6 +581,16 @@ export default function Blog() {
       any image or video file that’s stored in Amazon S3...`,
       navigate: 'aws-machine-learning',
       published: true
+    },
+    {
+      title: 'AWS Monitoring & Audit',
+      readingTime: '-',
+      type: 'Study',
+      date: '17/01/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudWatch', background: '#FF9900', icon: <AWSCloudWatchSVG /> }, { name: 'CloudTrail', background: '#FF9900', icon: <AWSCloudTrailSVG /> }, { name: 'Config', background: '#FF9900', icon: <AWSConfigSVG /> }],
+      intro: ``,
+      navigate: 'aws-monitoring-audit',
+      published: false
     },
     {
       title: 'React.js Text Based Adventure Game',
