@@ -46,6 +46,7 @@ import AWSKinesis from "./components/Posts/AWSKinesis";
 import AWSDataAnalytics from "./components/Posts/AWSDataAnalytics";
 import AWSServerless from "./components/Posts/AWSServerless";
 import AWSMachineLearning from "./components/Posts/AWSMachineLearning";
+import AWSMonitoringAudit from "./components/Posts/AWSMonitoringAudit";
 
 
 const Wrapper = styled.div`
@@ -131,6 +132,7 @@ const App = () => {
                     <Route exact path='/blog/aws-data-analytics' component={AWSDataAnalytics} />
                     <Route exact path='/blog/aws-serverless' component={AWSServerless} />
                     <Route exact path='/blog/aws-machine-learning' component={AWSMachineLearning} />
+                    <Route exact path='/blog/aws-monitoring-audit' component={AWSMonitoringAudit} />
                   </Switch>
                 </>
               );
