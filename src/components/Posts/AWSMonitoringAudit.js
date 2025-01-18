@@ -19,7 +19,7 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import Table from '../Table/Table';
 
 // images
-// import Rekognition from "../../resources/images/blog/AWSMachineLearning/aws_machine_learning_rekognition.jpeg"
+import CloudWatchMetric from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_metrics.jpeg"
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -216,14 +216,14 @@ const AWSMonitoringAudit = () => {
     }
   }, []);
 
-  const columns = ['Capability', 'Description'];
+  const columns = ['Feature', 'Description'];
   const data = [
-    { Capability: 'Language Detection', Description: 'Identifies the dominant language in text (e.g., English, French, Spanish).' },
-    { Capability: 'Sentiment Analysis', Description: 'Determines if text sentiment is positive, negative, neutral, or mixed.' },
-    { Capability: 'Entity Recognition', Description: 'Detects entities like names, dates, and organizations in text.' },
-    { Capability: 'Keyphrase Extraction', Description: 'Extracts phrases that represent key ideas in the text.' },
-    { Capability: 'Custom Classification', Description: 'Allows you to create models for categorizing text based on your business needs.' },
-    { Capability: 'PII Detection', Description: 'Identifies sensitive data like Social Security Numbers or email addresses.' }
+    { Feature: 'Metrics', Description: 'Tracks CPU, memory, network utilization, and custom metrics from your applications.' },
+    { Feature: 'Logs', Description: 'Centralizes log collection and analysis with search and filtering capabilities.' },
+    { Feature: 'Alarms', Description: 'Notifies users or triggers actions based on metric thresholds.' },
+    { Feature: 'Dashboards', Description: 'Custom visualizations for real-time monitoring.' },
+    { Feature: 'Custom Anomaly Detection', Description: 'Automatically identifies metric patterns and deviations.' },
+    { Feature: 'Synthetic Monitoring', Description: 'Tests application endpoints proactively with canary scripts.' }
   ];
 
   return (
@@ -250,6 +250,22 @@ const AWSMonitoringAudit = () => {
           <StyledAnchor href="#aws-cloudwatch"><StyledListItem>CloudWatch</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-cloudwatch">CloudWatch</SubTitle>
+          Amazon CloudWatch is a monitoring and observability service provided by AWS that collects and tracks metrics, monitors logs, and generates alerts for your applications and infrastructure.
+          It enables you to gain actionable insights into system performance, optimize resource utilization, and troubleshoot operational issues in real time.
+          CloudWatch supports a variety of AWS resources and custom applications, making it a centralized solution for monitoring and managing your cloud infrastructure.
+          <HeadingSmall>CloudWatch Features</HeadingSmall>
+          <Table data={data} columns={columns} />
+          <Spacer />
+          <SubTitleSmall>CloudWatch Metrics</SubTitleSmall>
+          Amazon CloudWatch Metrics are fundamental data points collected over time about the performance, usage, or health of your AWS resources and custom applications. 
+          Metrics provide critical insights for monitoring and optimizing infrastructure and applications.
+          Each metric is uniquely identified by its namespace, metric name, and dimensions, and is stored for analysis and visualization.
+          <Spacer />
+          Here is an example on how you can continually stream CloudWatch metrics to a destination of your choice, with near-real-time delivery and low latency.
+          <StyledImage src={CloudWatchMetric} />
+          <Spacer />
+          <SubTitleSmall>CloudWatch Logs</SubTitleSmall>
+
         </Text>
       </Container>
     </Wrapper>
