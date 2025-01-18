@@ -372,7 +372,8 @@ export default function Blog() {
       type: 'Study',
       date: '17/01/2025',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudWatch', background: '#FF9900', icon: <AWSCloudWatchSVG /> }, { name: 'CloudTrail', background: '#FF9900', icon: <AWSCloudTrailSVG /> }, { name: 'Config', background: '#FF9900', icon: <AWSConfigSVG /> }],
-      intro: ``,
+      intro: `Amazon CloudWatch is a monitoring and observability service provided by AWS that collects and tracks metrics, monitors logs, and generates alerts for your applications and infrastructure. 
+      It enables you to gain actionable insights into system performance, optimize resource utilization, and troubleshoot operational issues in real time...`,
       navigate: 'aws-monitoring-audit',
       published: false
     },
@@ -588,7 +589,8 @@ export default function Blog() {
       type: 'Study',
       date: '17/01/2025',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudWatch', background: '#FF9900', icon: <AWSCloudWatchSVG /> }, { name: 'CloudTrail', background: '#FF9900', icon: <AWSCloudTrailSVG /> }, { name: 'Config', background: '#FF9900', icon: <AWSConfigSVG /> }],
-      intro: ``,
+      intro: `Amazon CloudWatch is a monitoring and observability service provided by AWS that collects and tracks metrics, monitors logs, and generates alerts for your applications and infrastructure. 
+      It enables you to gain actionable insights into system performance, optimize resource utilization, and troubleshoot operational issues in real time...`,
       navigate: 'aws-monitoring-audit',
       published: false
     },
