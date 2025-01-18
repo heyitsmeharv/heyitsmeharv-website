@@ -121,12 +121,12 @@ const Container = styled.div`
 `;
 
 const Message = styled.h1`
-  font-size: 2.5rem;
+  font-size: 5rem;
   margin-bottom: 1rem;
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
   max-width: 600px;

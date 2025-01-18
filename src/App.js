@@ -20,6 +20,7 @@ import { GlobalStyles } from "./resources/styles/global";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
+import NotFound from "./pages/NotFound";
 
 // components
 import Themes from "./components/Theme/Theme";
@@ -133,6 +134,7 @@ const App = () => {
                     <Route exact path='/blog/aws-serverless' component={AWSServerless} />
                     <Route exact path='/blog/aws-machine-learning' component={AWSMachineLearning} />
                     <Route exact path='/blog/aws-monitoring-audit' component={AWSMonitoringAudit} />
+                    <Route component={NotFound} />
                   </Switch>
                 </>
               );
