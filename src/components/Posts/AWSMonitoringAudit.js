@@ -257,7 +257,7 @@ const AWSMonitoringAudit = () => {
           <Table data={data} columns={columns} />
           <Spacer />
           <SubTitleSmall>CloudWatch Metrics</SubTitleSmall>
-          Amazon CloudWatch Metrics are fundamental data points collected over time about the performance, usage, or health of your AWS resources and custom applications. 
+          CloudWatch Metrics are fundamental data points collected over time about the performance, usage, or health of your AWS resources and custom applications.
           Metrics provide critical insights for monitoring and optimizing infrastructure and applications.
           Each metric is uniquely identified by its namespace, metric name, and dimensions, and is stored for analysis and visualization.
           <Spacer />
@@ -265,7 +265,7 @@ const AWSMonitoringAudit = () => {
           <StyledImage src={CloudWatchMetric} />
           <Spacer />
           <SubTitleSmall>CloudWatch Logs</SubTitleSmall>
-
+          CloudWatch Logs is a fully managed service that enables you to monitor, store, and access log files from AWS services, custom applications, and on-premises systems.
         </Text>
       </Container>
     </Wrapper>
