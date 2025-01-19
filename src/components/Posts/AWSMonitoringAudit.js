@@ -20,6 +20,12 @@ import Table from '../Table/Table';
 
 // images
 import CloudWatchMetric from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_metrics.jpeg"
+import CloudWatchSubscriptions from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_subscriptions.jpeg"
+import CloudWatchCrossAccountSubscriptions from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_cross_account_subscriptions.jpeg"
+import CloudWatchCrossAccountAggregation from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_cross_account_aggregation.jpeg"
+
+// codeblocks
+import { cloudwatchlogsInsights } from "../../helpers/codeblocks.js";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -236,7 +242,7 @@ const AWSMonitoringAudit = () => {
       </StyledNavButton>
       <Container>
         <FlexTop>
-          <Title>Amazon Machine Learning</Title>
+          <Title>Amazon Monitoring & Audit</Title>
           <IconWrapper>
             <Icon><AWSSVG /></Icon>
             <Icon><AWSCloudWatchSVG /></Icon>
@@ -266,6 +272,45 @@ const AWSMonitoringAudit = () => {
           <Spacer />
           <SubTitleSmall>CloudWatch Logs</SubTitleSmall>
           CloudWatch Logs is a fully managed service that enables you to monitor, store, and access log files from AWS services, custom applications, and on-premises systems.
+          <HeadingSmall>Core Components of CloudWatch Logs</HeadingSmall>
+          <StyledListItem>Log Groups: A logical grouping of log streams with shared retention, access policies, and tags.</StyledListItem>
+          <StyledListItem>Log Streams: A sequence of log events from a single source, such as an application or a Lambda function.</StyledListItem>
+          <StyledListItem>Log Events: Individual entries in a log stream, containing a timestamp and raw data.</StyledListItem>
+          <StyledListItem>Log Retention: Configurable from 1 day to indefinite retention for each log group.</StyledListItem>
+          <Spacer />
+          Logs are encrypted by default although you can setup KMS-based encryption with your own keys. Logs can be send to:
+          <StyledListItem>S3 (exports) - Can take up to 12 hours to become available for export using the CreateExportTask API</StyledListItem>
+          <StyledListItem>Kinesis Data Streams</StyledListItem>
+          <StyledListItem>Kinesis Data Firehose</StyledListItem>
+          <StyledListItem>AWS Lambda</StyledListItem>
+          <StyledListItem>OpenSearch</StyledListItem>
+          <Spacer />
+          <HeadingSmall>CloudWatch Logs Insights</HeadingSmall>
+          CloudWatch Logs Insights is used for querying log data. It uses a purpose-built query language that supports filtering, aggregation, and visualization. Insights is a feature which essentially
+          fetches desired event fields, filter based on conditions, calculate aggregate statistics. Here is an example on how you can use insights to find errors in logs:
+          <Spacer />
+          <CodeBlock>
+            {cloudwatchlogsInsights}
+          </CodeBlock>
+          <Spacer />
+          Insights is a query engine not a real-time engine.
+          <HeadingSmall>CloudWatch Logs Subscriptions</HeadingSmall>
+          If you want real-time processing and analysis you should use CloudWatch Logs Subscriptions. Subscription filters can be used to filter which log events are delivered to destinations.
+          Kinesis Data Streams, Kinesis Data Firehose or Lambda are the potential destinations.
+          <StyledImage src={CloudWatchSubscriptions} />
+          <HeadingSmall>CloudWatch Logs Aggregation Multi-Account & Multi-Region</HeadingSmall>
+          It is possible to aggregate data from different CloudWatch Logs into different accounts and different regions into a common destination such as the Kinesis Data Stream in one specific account.
+          <StyledImage src={CloudWatchCrossAccountAggregation} />
+          <HeadingSmall>CloudWatch Logs Cross-Account Subscriptions</HeadingSmall>
+          So, let's say you have a sender account and the recipient accounts. So you create a CloudWatch Log subscription filter, and then this gets sent into a subscription destination, which is a virtual representant
+          of the Kinesis Data Stream in the recipient accounts. Then you attach a destination access policy to allow the first account to actually send data into this destination. Then you create an IAM role in the recipient account,
+          which has the permission to send records into your Kinesis Data Stream, and you make sure that this role can be assumed by the first account.
+          <StyledImage src={CloudWatchCrossAccountSubscriptions} />
+          <SubTitleSmall>CloudWatch Agent & CloudWatch Logs Agent</SubTitleSmall>
+          Amazon CloudWatch provides two agents for collecting and sending data to CloudWatch: the CloudWatch Agent and the older CloudWatch Logs Agent. These agents are used to collect logs and metrics from Amazon EC2 instances,
+          on-premises servers, and other sources.
+          <HeadingSmall>CloudWatch Logs For EC2</HeadingSmall>
+          
         </Text>
       </Container>
     </Wrapper>
