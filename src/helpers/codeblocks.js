@@ -421,3 +421,9 @@ Hello, <emphasis level="strong">world!</emphasis>
 Welcome to <break time="1s"/> Amazon Polly.
 </speak>
 `;
+
+export const cloudwatchlogsInsights = `fields @timestamp, @message
+| filter @message like /error/
+| sort @timestamp desc
+| limit 20
+`;
