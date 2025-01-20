@@ -23,6 +23,7 @@ import CloudWatchMetric from "../../resources/images/blog/AWSMonitoringAudit/aws
 import CloudWatchSubscriptions from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_subscriptions.jpeg"
 import CloudWatchCrossAccountSubscriptions from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_cross_account_subscriptions.jpeg"
 import CloudWatchCrossAccountAggregation from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_cross_account_aggregation.jpeg"
+import CloudWatchLogsAgentEC2 from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_agent_ec2.jpeg"
 
 // codeblocks
 import { cloudwatchlogsInsights } from "../../helpers/codeblocks.js";
@@ -310,7 +311,26 @@ const AWSMonitoringAudit = () => {
           Amazon CloudWatch provides two agents for collecting and sending data to CloudWatch: the CloudWatch Agent and the older CloudWatch Logs Agent. These agents are used to collect logs and metrics from Amazon EC2 instances,
           on-premises servers, and other sources.
           <HeadingSmall>CloudWatch Logs For EC2</HeadingSmall>
-          
+          By default, no logs are going from your EC2 instance to CloudWatch. For that this to happen, you need to create and start an agent which is a small program on your EC2 instances that will push the log files that you want.
+          The EC2 instance must have an IAM role that allows it to send the log to CloudWatch Logs. The agents can also be setup on on-premises servers.
+          <StyledImage src={CloudWatchLogsAgentEC2} />
+          <HeadingSmall>CloudWatch Logs Agent & Unified Agent</HeadingSmall>
+          There are two different agents you can find in CloudWatch. You have the CloudWatch Logs Agent, which is the older one and the CloudWatch Unified Agent, which is the newer one.
+          <StyledListItem>CloudWatch Logs Agent</StyledListItem>
+          <StyledListItemIndent>Older version of the agent</StyledListItemIndent>
+          <StyledListItemIndent>Can only send logs to CloudWatch Logs</StyledListItemIndent>
+          <StyledListItem>CloudWatch Unified Agents</StyledListItem>
+          <StyledListItemIndent>Collect additional system level metrics such as RAM, processed, etc...</StyledListItemIndent>
+          <StyledListItemIndent>Centralised configuration using SSM Parameter Store</StyledListItemIndent>
+          <Spacer />
+          <HeadingSmall>CloudWatch Unified Agent - Metrics</HeadingSmall>
+          These are the specific metrics in which you can capture on a linux server/EC2 instance:
+          <StyledListItem></StyledListItem>
+          <StyledListItem></StyledListItem>
+          <StyledListItem></StyledListItem>
+          <StyledListItem></StyledListItem>
+          <StyledListItem></StyledListItem>
+          <StyledListItem></StyledListItem>
         </Text>
       </Container>
     </Wrapper>
