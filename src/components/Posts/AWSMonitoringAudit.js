@@ -325,12 +325,15 @@ const AWSMonitoringAudit = () => {
           <Spacer />
           <HeadingSmall>CloudWatch Unified Agent - Metrics</HeadingSmall>
           These are the specific metrics in which you can capture on a linux server/EC2 instance:
-          <StyledListItem></StyledListItem>
-          <StyledListItem></StyledListItem>
-          <StyledListItem></StyledListItem>
-          <StyledListItem></StyledListItem>
-          <StyledListItem></StyledListItem>
-          <StyledListItem></StyledListItem>
+          <StyledListItem>CPU (active, guest, idle, system, user, steal)</StyledListItem>
+          <StyledListItem>Disk Metrics (free, used, total), Disk IO (writes, reads, bytes, iops)</StyledListItem>
+          <StyledListItem>RAM (free, inactive, used, total, cached)</StyledListItem>
+          <StyledListItem>Netstat (number of TCP and UDP connections, net packets, bytes)</StyledListItem>
+          <StyledListItem>Processes (total, dead, blocked, idle, running, sleep)</StyledListItem>
+          <StyledListItem>Swap Space (free, used, used %)</StyledListItem>
+          <Spacer />
+          <SubTitleSmall>CloudWatch Alarms</SubTitleSmall>
+          
         </Text>
       </Container>
     </Wrapper>
