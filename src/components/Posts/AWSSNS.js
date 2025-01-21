@@ -198,7 +198,7 @@ const AWSSNS = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('blog/aws-sns');
+      logPageView();
     }
   }, []);
 

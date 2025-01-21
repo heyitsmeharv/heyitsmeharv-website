@@ -221,7 +221,7 @@ const AWSMonitoringAudit = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView("blog/aws-monitoring-audit");
+      logPageView();
     }
   }, []);
 

@@ -162,7 +162,7 @@ const AWSIdentityAccessManagement = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView("blog/aws-identity-access-management");
+      logPageView();
     }
   }, []);
 

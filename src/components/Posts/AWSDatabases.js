@@ -203,7 +203,7 @@ const AWSDatabases = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView("blog/aws-databases");
+      logPageView();
     }
   }, []);
 

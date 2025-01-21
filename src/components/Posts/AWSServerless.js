@@ -215,7 +215,7 @@ const AWSServerless = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('blog/aws-serverless');
+      logPageView();
     }
   }, []);
 

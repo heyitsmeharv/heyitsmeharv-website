@@ -126,7 +126,7 @@ const ReactAdventureGame = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('blog/react-text-based-adventure');
+      logPageView();
     }
   }, []);
 

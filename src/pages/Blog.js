@@ -612,7 +612,7 @@ export default function Blog() {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('blog');
+      logPageView();
     }
   }, []);
 

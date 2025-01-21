@@ -201,7 +201,7 @@ const AWSSQS = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('blog/aws-sqs');
+      logPageView();
     }
   }, []);
 

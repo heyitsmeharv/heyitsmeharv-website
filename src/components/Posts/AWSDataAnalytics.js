@@ -231,7 +231,7 @@ const AWSDataAnalytics = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView("blog/aws-data-analytics");
+      logPageView();
     }
   }, []);
 
