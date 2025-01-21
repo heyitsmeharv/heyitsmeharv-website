@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
+
+// helpers
+import { logPageView } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -196,7 +198,7 @@ const AWSSNS = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/aws-sns');
+      logPageView('blog/aws-sns');
     }
   }, []);
 

@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
+
+// helpers
+import { logPageView } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -197,7 +199,7 @@ const AWSCloudFront = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/aws-cloudfront');
+      logPageView("blog/aws-cloudfront");
     }
   }, []);
 
@@ -253,12 +255,12 @@ const AWSCloudFront = () => {
           Here is an example detailing how Cloudfront uses an S3 bucket at an origin. The S3 bucket will use a Origin Access Control (OAC) along with a bucket policy to permit distributions through the S3 bucket.
           <StyledImage src={CloudFrontS3Origin} />
           <SubTitle id="alb-as-origin">ALB as an Origin</SubTitle>
-          It's possible for CloudFront to access any HTTP backend like an EC2 instance or a load balancer. There is no private VPC connectivity within CloudFront so security groups must be setup to allow traffic between edge locations 
+          It's possible for CloudFront to access any HTTP backend like an EC2 instance or a load balancer. There is no private VPC connectivity within CloudFront so security groups must be setup to allow traffic between edge locations
           and the instance you want to connect to.
           <StyledImage src={CloudFrontALBOrigin} />
           <Spacer />
           <SubTitle id="geo-restriction">Geo-Restriction</SubTitle>
-          AWS CloudFront Geo-Restriction, also known as geo-blocking, allows you to control the distribution of your content based on the geographic location of your viewers. This feature enables you to restrict access to your content to specific countries or regions, enhancing content security, 
+          AWS CloudFront Geo-Restriction, also known as geo-blocking, allows you to control the distribution of your content based on the geographic location of your viewers. This feature enables you to restrict access to your content to specific countries or regions, enhancing content security,
           ensuring compliance with regional regulations, and managing content distribution rights.
           <Spacer />
           <HeadingSmall>Key features:</HeadingSmall>
@@ -275,13 +277,13 @@ const AWSCloudFront = () => {
           <StyledListItemIndent>If the viewer's location is restricted, CloudFront returns an HTTP 403 (Forbidden) status code, optionally displaying a custom error page if configured.</StyledListItemIndent>
           <Spacer />
           <SubTitle id="price-classes">Pricing</SubTitle>
-          There are three price classes for CloudFront. Essentially the lower number of edge locations you use, the less it will cost to distribute your content. These classes are: 
+          There are three price classes for CloudFront. Essentially the lower number of edge locations you use, the less it will cost to distribute your content. These classes are:
           <StyledListItem><BoldTextSmall>Price Class All</BoldTextSmall>: All regions - best performance.</StyledListItem>
           <StyledListItem><BoldTextSmall>Price Class 200</BoldTextSmall>: Most regions, but excludes the most expensive regions.</StyledListItem>
           <StyledListItem><BoldTextSmall>Price Class 100</BoldTextSmall>: Only the least expensive regions.</StyledListItem>
           <Spacer />
           <SubTitle id="cache-invalidation">Cache Invalidation</SubTitle>
-          AWS CloudFront cache invalidation is a feature that allows you to remove objects from CloudFront edge caches before they expire. This is useful when you need to ensure that viewers receive the most up-to-date content, such as 
+          AWS CloudFront cache invalidation is a feature that allows you to remove objects from CloudFront edge caches before they expire. This is useful when you need to ensure that viewers receive the most up-to-date content, such as
           after updating a website, modifying static assets, or fixing errors in distributed content. You can invalidate all files with a '*'.
           <Spacer />
           <StyledImage src={CloudFrontCacheInvalidation} />

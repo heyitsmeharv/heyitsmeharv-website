@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
+
+// helpers
+import { logPageView } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -213,7 +215,7 @@ const AWSServerless = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/aws-serverless');
+      logPageView('blog/aws-serverless');
     }
   }, []);
 
@@ -356,8 +358,8 @@ const AWSServerless = () => {
           <StyledImage src={APIGatewayExample} />
           <Spacer />
           <SubTitle id="aws-step-functions">Step Functions</SubTitle>
-          AWS Step Functions is a serverless orchestration service that allows you to coordinate and manage multiple AWS services and components into 
-          workflow-based applications. It helps developers build scalable, resilient, and predictable applications by breaking tasks into smaller, 
+          AWS Step Functions is a serverless orchestration service that allows you to coordinate and manage multiple AWS services and components into
+          workflow-based applications. It helps developers build scalable, resilient, and predictable applications by breaking tasks into smaller,
           manageable steps and defining their execution order.
           <StyledImage src={StepFunctionExample} />
         </Text>

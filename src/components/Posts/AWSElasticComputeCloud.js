@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
+
+// helpers
+import { logPageView } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -196,7 +198,7 @@ const AWSElasticComputeCloud = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/aws-elastic-compute-cloud');
+      logPageView("blog/aws-elastic-compute-cloud");
     }
   }, []);
 
@@ -489,16 +491,16 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <SubTitleSmall>Health Checks</SubTitleSmall>
           Health checks are an important feature of load balancing. Before the load balancer can forward traffic through to the EC2 instance, it needs to know if the instance itself is healthy and stable. It can know this by sending regular pings to the server
-          on a desired port and route. If the request sent gets a response (200), it knows that the instance is healthy and ready to recieve traffic, otherwise it's marked as unhealthy and traffic will not be forwarded. Health checks are supported for the 
+          on a desired port and route. If the request sent gets a response (200), it knows that the instance is healthy and ready to recieve traffic, otherwise it's marked as unhealthy and traffic will not be forwarded. Health checks are supported for the
           <BoldText>TCP</BoldText>, <BoldText>HTTP</BoldText> and <BoldText>HTTPS</BoldText> protocols.
           <StyledImage src={HealthCheck} />
           <Spacer />
           <Spacer />
           <SubTitleSmall>Target Groups</SubTitleSmall>
-          You can point a load balancer to multiple different target groups. A target group could be an EC2 instance, ECS task, Lambda function and IP addresses (private). It's possible for an network load balancer to sit infront of an application load balancer 
-          so you're able to have the fixed IP addresses and the rule handling around HTTP traffic. 
+          You can point a load balancer to multiple different target groups. A target group could be an EC2 instance, ECS task, Lambda function and IP addresses (private). It's possible for an network load balancer to sit infront of an application load balancer
+          so you're able to have the fixed IP addresses and the rule handling around HTTP traffic.
           <Spacer />
-          <Spacer /> 
+          <Spacer />
           <SubTitleSmall>Load Balancers and Security Groups</SubTitleSmall>
           Let's map out the flow showing how users would connect to a load balancer to then be forwarded onto the instance. There are two things to note, one being that the load balancer will have it's own security group in which it could allow users to connect on
           ports 80 (HTTP) and 443 (HTTPS). Secondly, the EC2 instance will have a separate security group which can reference the one created for the load balancer which means that it will only accept traffic which has originated from the load balancer.
@@ -525,18 +527,18 @@ const AWSElasticComputeCloud = () => {
           <StyledListItem>The protocol of the client is inserted in the header X-Forwarded-Proto.</StyledListItem>
           <Spacer />
           <SubTitleSmall>Network Load Balancer</SubTitleSmall>
-          Network load balancers allows TCP and UDP traffic. This load balancer is for high performance and is capable of handling million requests per second. NLB's only have one static IP per AZ but you're able to assign elastic IP. 
+          Network load balancers allows TCP and UDP traffic. This load balancer is for high performance and is capable of handling million requests per second. NLB's only have one static IP per AZ but you're able to assign elastic IP.
           <StyledImage src={NetworkLoadBalancer} />
           <Spacer />
           <Spacer />
           <SubTitleSmall>Gateway Load Balancer</SubTitleSmall>
-          Gateway load balancers are great for when you want to screen your traffic for any potentially harmful software. Before the traffic can reach it's destination the gateway load balancer can filter traffic through instances which 
+          Gateway load balancers are great for when you want to screen your traffic for any potentially harmful software. Before the traffic can reach it's destination the gateway load balancer can filter traffic through instances which
           could act as a firewall or inspection system. The traffic operates on port 6081 with the GENEVE protocol.
           <StyledImage src={GatewayLoadBalancer} />
           <Spacer />
           <Spacer />
           <SubTitleSmall>Sticky Sessions</SubTitleSmall>
-          Sticky sessions exist to make sure that users are always directed to the same instance behind the load balancer. Sticky sessions are compatable with Application and Network load balancers. Sticky sessions work by attaching a cookie 
+          Sticky sessions exist to make sure that users are always directed to the same instance behind the load balancer. Sticky sessions are compatable with Application and Network load balancers. Sticky sessions work by attaching a cookie
           to the user's session. You can configure the cookie to control the expiry date. It's worth mentioning that enabling sticky sessions could lead to an imbalance to the load across the instances.
           <Spacer />
           There are two types of cookies to choose from:
@@ -553,7 +555,7 @@ const AWSElasticComputeCloud = () => {
           <StyledListItemIndentExtra>Called 'AWSALB'</StyledListItemIndentExtra>
           <Spacer />
           <SubTitleSmall>Cross-Zone Load Balancing</SubTitleSmall>
-          It's possible to distribute traffic across multiple AZ's. The difference being between load balancers is that the Application load balancer is enabled by default and is free but for the Network load balancer you are charged and it's 
+          It's possible to distribute traffic across multiple AZ's. The difference being between load balancers is that the Application load balancer is enabled by default and is free but for the Network load balancer you are charged and it's
           disabled by default.
           <Spacer />
           <Spacer />
@@ -567,8 +569,8 @@ const AWSElasticComputeCloud = () => {
           <Spacer />
           <Spacer />
           <SubTitleSmall>Server Name Indication</SubTitleSmall>
-          What would happen if a user needs to reach a specific website which is hosted on a server with multiple other sites? Well, SNI solves this problem of loading multiple SSL/TLS certificates onto one server. This is only compatible for Application load balancers 
-          and Network load balancers and it requires the user to indicate the hostname in the inital SSL/TLS handshake. The server will return the desired certificate or return the default set.  
+          What would happen if a user needs to reach a specific website which is hosted on a server with multiple other sites? Well, SNI solves this problem of loading multiple SSL/TLS certificates onto one server. This is only compatible for Application load balancers
+          and Network load balancers and it requires the user to indicate the hostname in the inital SSL/TLS handshake. The server will return the desired certificate or return the default set.
           <StyledImage src={ServerNameIndicationExample} />
           <Spacer />
           <Spacer />

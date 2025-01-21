@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useEffect } from 'react';
 import styled from "styled-components";
+
+// helpers
+import { logPageView, logException } from "../helpers/analytics";
 
 // animations
 import SlideInLeft from "../animations/SlideInLeft";
@@ -33,7 +35,8 @@ const NotFoundPage = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/notfound');
+      logPageView('notfound');
+      logException('looking for a blog that does not exist', false);
     }
   }, []);
 

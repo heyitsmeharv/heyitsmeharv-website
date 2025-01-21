@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
+
+// helpers
+import { logPageView } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -223,7 +225,7 @@ const AWSMachineLearning = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/aws-machine-learning');
+      logPageView("blog/aws-machine-learning");
     }
   }, []);
 
@@ -324,7 +326,7 @@ const AWSMachineLearning = () => {
           to set up virtual call centers quickly, integrate with other AWS services, and deliver personalized, automated, and data-driven customer experiences.
           <StyledImage mt="10px" src={LexConnectExample} />
           <SubTitle id="aws-comprehend">Comprehend</SubTitle>
-          Amazon Comprehend is a natural language processing (NLP) service powered by machine learning that helps you extract insights and patterns from unstructured text. It enables organizations to perform 
+          Amazon Comprehend is a natural language processing (NLP) service powered by machine learning that helps you extract insights and patterns from unstructured text. It enables organizations to perform
           sentiment analysis, entity recognition, language detection, keyphrase extraction, and more without requiring machine learning expertise.
           <HeadingSmall>Comprehend Capabilities</HeadingSmall>
           <Table data={data} columns={columns} />
@@ -336,25 +338,25 @@ const AWSMachineLearning = () => {
           <StyledListItem>Output: Results are returned in JSON format, detailing the extracted insights.</StyledListItem>
           <Spacer />
           <SubTitle id="aws-sagemaker">SageMaker</SubTitle>
-          Amazon SageMaker is a fully managed machine learning (ML) service that provides developers and data scientists with the tools to build, train, and deploy machine learning models at scale. 
+          Amazon SageMaker is a fully managed machine learning (ML) service that provides developers and data scientists with the tools to build, train, and deploy machine learning models at scale.
           SageMaker simplifies the entire ML workflow, from data preparation to model deployment, enabling faster experimentation and reducing the complexity of building ML solutions.
           <StyledImage mt="10px" src={SageMakerExample} />
           <SubTitle id="aws-forecast">Forecast</SubTitle>
-          Amazon Forecast is a fully managed service that uses machine learning (ML) to generate highly accurate forecasts for time-series data. It enables businesses to predict future outcomes 
+          Amazon Forecast is a fully managed service that uses machine learning (ML) to generate highly accurate forecasts for time-series data. It enables businesses to predict future outcomes
           such as product demand, inventory levels, workforce planning, and more, using historical data and additional related variables. The service is designed to be easy to use, even for users without ML expertise.
           <StyledImage mt="20px" src={ForcastExample} />
           <SubTitle id="aws-kendra">Kendra</SubTitle>
-          Amazon Kendra is an intelligent search service powered by machine learning (ML) that allows organizations to index and search vast amounts of unstructured and structured data. It provides highly relevant search 
-          results to user queries using natural language processing (NLP) and deep learning algorithms. Kendra helps organizations improve productivity and information discovery by enabling users to find the right 
+          Amazon Kendra is an intelligent search service powered by machine learning (ML) that allows organizations to index and search vast amounts of unstructured and structured data. It provides highly relevant search
+          results to user queries using natural language processing (NLP) and deep learning algorithms. Kendra helps organizations improve productivity and information discovery by enabling users to find the right
           answers quickly from multiple data sources, even when the data is fragmented across platforms.
           <StyledImage mt="20px" src={KendraExample} />
           <SubTitle id="aws-personalize">Personalize</SubTitle>
-          Amazon Personalize is a machine learning (ML)-powered recommendation service designed to create personalized user experiences by delivering tailored product, content, and service recommendations. 
+          Amazon Personalize is a machine learning (ML)-powered recommendation service designed to create personalized user experiences by delivering tailored product, content, and service recommendations.
           Amazon Personalize helps businesses increase engagement, drive sales, and improve user satisfaction by leveraging ML to analyze user behavior and predict preferences.
           <StyledImage mt="20px" src={PersonalizeExample} />
           <SubTitle id="aws-text-extract">Text Extract</SubTitle>
-          Amazon Textract is a fully managed machine learning service designed to extract text, handwriting, and structured data (such as tables and forms) from scanned documents, images, and PDFs. 
-          It goes beyond traditional Optical Character Recognition (OCR) by not only identifying text but also understanding the context and structure of the document. Textract enables businesses to 
+          Amazon Textract is a fully managed machine learning service designed to extract text, handwriting, and structured data (such as tables and forms) from scanned documents, images, and PDFs.
+          It goes beyond traditional Optical Character Recognition (OCR) by not only identifying text but also understanding the context and structure of the document. Textract enables businesses to
           automate the extraction of meaningful data from documents, reducing manual effort and improving operational efficiency.
           <HeadingSmall>How Does It Work?</HeadingSmall>
           <StyledListItem>Input Documents: Upload images, PDFs, or scanned documents to Amazon Textract via the console or API.</StyledListItem>

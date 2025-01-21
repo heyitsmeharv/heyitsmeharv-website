@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+
+// helpers
+import { logPageView } from "../helpers/analytics";
 
 import Project from '../components/Project/Project';
 
@@ -80,7 +82,7 @@ export default function Projects() {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/projects');
+      logPageView('projects');
     }
   }, []);
 
