@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
 // helpers
-import { initGA, logPageView} from "./helpers/analytics";
+import { initGA, logPageView } from "./helpers/analytics";
 
 // context
 import { LanguageContext } from './context/languageContext';
@@ -63,10 +63,13 @@ const Wrapper = styled.div`
 const App = () => {
   // analytics
   const [userId] = useUser();
+  console.log(userId);
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
       initGA();
-      ReactGA.set({ userId });
+      if (userId === null) {
+        ReactGA.set({ userId });
+      }
       logPageView();
     }
   }, []);
