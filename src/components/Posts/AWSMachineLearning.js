@@ -225,7 +225,7 @@ const AWSMachineLearning = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView("blog/aws-machine-learning");
+      logPageView();
     }
   }, []);
 

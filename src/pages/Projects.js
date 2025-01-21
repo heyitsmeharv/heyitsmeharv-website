@@ -82,7 +82,7 @@ export default function Projects() {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('projects');
+      logPageView();
     }
   }, []);
 

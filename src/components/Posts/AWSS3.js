@@ -212,7 +212,7 @@ const AWS3 = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView("blog/aws-s3");
+      logPageView();
     }
   }, []);
 

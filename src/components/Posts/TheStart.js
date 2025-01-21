@@ -61,7 +61,7 @@ const TheStart = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('blog/the-start');
+      logPageView();
     }
   }, []);
 

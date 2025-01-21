@@ -232,7 +232,7 @@ const AWSVPC = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('blog/aws-vpc');
+      logPageView();
     }
   }, []);
 

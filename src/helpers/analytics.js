@@ -5,9 +5,9 @@ export const initGA = () => {
 };
 
 // Track a pageview
-export const logPageView = ({ url }) => {
-  ReactGA.set({ page: url });
-  ReactGA.pageview(url);
+export const logPageView = () => {
+  ReactGA.set({ page: window.location.pathname  });
+  ReactGA.pageview(window.location.pathname );
 };
 
 // Track custom events

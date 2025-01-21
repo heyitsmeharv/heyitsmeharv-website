@@ -67,7 +67,7 @@ const App = () => {
     if (window.location.hostname !== "localhost") {
       initGA();
       ReactGA.set({ userId });
-      logPageView("homepage");
+      logPageView();
     }
   }, []);
 

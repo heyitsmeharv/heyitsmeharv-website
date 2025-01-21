@@ -195,7 +195,7 @@ const AWSRoute53 = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView("blog/aws-route53");
+      logPageView();
     }
   }, []);
 

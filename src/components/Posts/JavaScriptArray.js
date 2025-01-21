@@ -111,7 +111,7 @@ const JavaScriptArray = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('blog/javascript-arrays');
+      logPageView();
     }
   }, []);
 

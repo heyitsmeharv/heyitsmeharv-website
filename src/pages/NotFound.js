@@ -35,7 +35,6 @@ const NotFoundPage = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView('notfound');
       logException('looking for a blog that does not exist', false);
     }
   }, []);

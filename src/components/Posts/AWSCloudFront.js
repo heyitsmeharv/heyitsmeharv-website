@@ -199,7 +199,7 @@ const AWSCloudFront = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      logPageView("blog/aws-cloudfront");
+      logPageView();
     }
   }, []);
 
