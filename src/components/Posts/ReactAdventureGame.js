@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
+// helpers
+import { logPageView } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -124,7 +126,7 @@ const ReactAdventureGame = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/react-text-based-adventure');
+      logPageView('blog/react-text-based-adventure');
     }
   }, []);
 

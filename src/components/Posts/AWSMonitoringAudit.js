@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
+
+// helpers
+import { logPageView } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -219,7 +221,7 @@ const AWSMonitoringAudit = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/aws-monitoring-audit');
+      logPageView("blog/aws-monitoring-audit");
     }
   }, []);
 
@@ -333,7 +335,7 @@ const AWSMonitoringAudit = () => {
           <StyledListItem>Swap Space (free, used, used %)</StyledListItem>
           <Spacer />
           <SubTitleSmall>CloudWatch Alarms</SubTitleSmall>
-          CloudWatch Alarms are designed to trigger actions based on metrics, which are numerical data points collected from AWS resources and custom applications. Alarms evaluate these metrics over time and compare them to predefined 
+          CloudWatch Alarms are designed to trigger actions based on metrics, which are numerical data points collected from AWS resources and custom applications. Alarms evaluate these metrics over time and compare them to predefined
           thresholds to determine if action is needed.
         </Text>
       </Container>

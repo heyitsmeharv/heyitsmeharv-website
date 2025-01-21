@@ -1,6 +1,8 @@
-import ReactGA from 'react-ga';
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
+// helpers
+import { logPageView } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -109,7 +111,7 @@ const JavaScriptArray = () => {
   // analytics
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/blog/javascript-arrays');
+      logPageView('blog/javascript-arrays');
     }
   }, []);
 

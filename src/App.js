@@ -1,15 +1,19 @@
 import ReactGA from 'react-ga';
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
-import { nanoid } from "nanoid"
+
+// helpers
+import { initGA, logPageView} from "./helpers/analytics";
 
 // context
 import { LanguageContext } from './context/languageContext';
+import { UserContext } from './context/userContext';
 
 // hooks
 import { useThemeMode } from "./hooks/useThemeMode";
 import { useLanguageMode } from "./hooks/useLanguageMode";
+import { useUser } from "./hooks/useUser";
 
 // styles
 import { ThemeProvider } from "styled-components";
@@ -56,19 +60,17 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS, {
-  gaOptions: {
-    userId: nanoid()
-  }
-});
-
 const App = () => {
   // analytics
+  const [userId] = useUser();
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
-      ReactGA.pageview('/homepage');
+      initGA();
+      ReactGA.set({ userId });
+      logPageView("homepage");
     }
   }, []);
+
 
   /* ---------------------------- language toggle ----------------------------  */
   const [language, toggleLanguage] = useLanguageMode();
@@ -94,55 +96,57 @@ const App = () => {
   }
 
   return (
-    <LanguageContext.Provider value={language}>
-      <ThemeProvider theme={themeMode}>
-        <GlobalStyles />
-        <Wrapper>
-          <Themes theme={theme} toggleTheme={toggleTheme} />
-          <SocialMediaBar />
-        </Wrapper>
-        <Router>
-          <Route
-            render={({ location }) => {
-              return (
-                <>
-                  <Navbar />
-                  {!(window.location.href.indexOf("projects") > 1 || window.location.href.indexOf("blog") > 1) &&
-                    <Languages language={language} toggleLanguage={toggleLanguage} />
-                  }
-                  <Switch location={location}>
-                    <Route exact path='/' component={Home} />
-                    <Route exact path='/projects' component={Projects} />
-                    <Route exact path='/blog' component={Blog} />
-                    {/* Add blog posts here */}
-                    <Route exact path='/blog/the-start' component={TheStart} />
-                    <Route exact path='/blog/javascript-arrays' component={JavaScriptArray} />
-                    <Route exact path='/blog/javascript-objects' component={JavaScriptObjects} />
-                    <Route exact path='/blog/react-text-based-adventure' component={ReactAdventureGame} />
-                    <Route exact path='/blog/aws-identity-access-management' component={AWSIdentityAccessManagement} />
-                    <Route exact path='/blog/aws-elastic-compute-cloud' component={AWSElasticComputeCloud} />
-                    <Route exact path='/blog/aws-databases' component={AWSDatabases} />
-                    <Route exact path='/blog/aws-route53' component={AWSRoute53} />
-                    <Route exact path='/blog/aws-s3' component={AWSS3} />
-                    <Route exact path='/blog/aws-cloudfront' component={AWSCloudFront} />
-                    <Route exact path='/blog/aws-sqs' component={AWSSQS} />
-                    <Route exact path='/blog/aws-sns' component={AWSSNS} />
-                    <Route exact path='/blog/aws-kinesis' component={AWSKinesis} />
-                    <Route exact path='/blog/aws-containers' component={AWSContainers} />
-                    <Route exact path='/blog/aws-vpc' component={AWSVPC} />
-                    <Route exact path='/blog/aws-data-analytics' component={AWSDataAnalytics} />
-                    <Route exact path='/blog/aws-serverless' component={AWSServerless} />
-                    <Route exact path='/blog/aws-machine-learning' component={AWSMachineLearning} />
-                    <Route exact path='/blog/aws-monitoring-audit' component={AWSMonitoringAudit} />
-                    <Route component={NotFound} />
-                  </Switch>
-                </>
-              );
-            }}
-          />
-        </Router>
-      </ThemeProvider>
-    </LanguageContext.Provider>
+    <UserContext.Provider>
+      <LanguageContext.Provider value={language}>
+        <ThemeProvider theme={themeMode}>
+          <GlobalStyles />
+          <Wrapper>
+            <Themes theme={theme} toggleTheme={toggleTheme} />
+            <SocialMediaBar />
+          </Wrapper>
+          <Router>
+            <Route
+              render={({ location }) => {
+                return (
+                  <>
+                    <Navbar />
+                    {!(window.location.href.indexOf("projects") > 1 || window.location.href.indexOf("blog") > 1) &&
+                      <Languages language={language} toggleLanguage={toggleLanguage} />
+                    }
+                    <Switch location={location}>
+                      <Route exact path='/' component={Home} />
+                      <Route exact path='/projects' component={Projects} />
+                      <Route exact path='/blog' component={Blog} />
+                      {/* Add blog posts here */}
+                      <Route exact path='/blog/the-start' component={TheStart} />
+                      <Route exact path='/blog/javascript-arrays' component={JavaScriptArray} />
+                      <Route exact path='/blog/javascript-objects' component={JavaScriptObjects} />
+                      <Route exact path='/blog/react-text-based-adventure' component={ReactAdventureGame} />
+                      <Route exact path='/blog/aws-identity-access-management' component={AWSIdentityAccessManagement} />
+                      <Route exact path='/blog/aws-elastic-compute-cloud' component={AWSElasticComputeCloud} />
+                      <Route exact path='/blog/aws-databases' component={AWSDatabases} />
+                      <Route exact path='/blog/aws-route53' component={AWSRoute53} />
+                      <Route exact path='/blog/aws-s3' component={AWSS3} />
+                      <Route exact path='/blog/aws-cloudfront' component={AWSCloudFront} />
+                      <Route exact path='/blog/aws-sqs' component={AWSSQS} />
+                      <Route exact path='/blog/aws-sns' component={AWSSNS} />
+                      <Route exact path='/blog/aws-kinesis' component={AWSKinesis} />
+                      <Route exact path='/blog/aws-containers' component={AWSContainers} />
+                      <Route exact path='/blog/aws-vpc' component={AWSVPC} />
+                      <Route exact path='/blog/aws-data-analytics' component={AWSDataAnalytics} />
+                      <Route exact path='/blog/aws-serverless' component={AWSServerless} />
+                      <Route exact path='/blog/aws-machine-learning' component={AWSMachineLearning} />
+                      <Route exact path='/blog/aws-monitoring-audit' component={AWSMonitoringAudit} />
+                      <Route component={NotFound} />
+                    </Switch>
+                  </>
+                );
+              }}
+            />
+          </Router>
+        </ThemeProvider>
+      </LanguageContext.Provider>
+    </UserContext.Provider>
   );
 };
 
