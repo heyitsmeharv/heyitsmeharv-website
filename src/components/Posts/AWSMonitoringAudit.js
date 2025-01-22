@@ -26,6 +26,7 @@ import CloudWatchSubscriptions from "../../resources/images/blog/AWSMonitoringAu
 import CloudWatchCrossAccountSubscriptions from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_cross_account_subscriptions.jpeg"
 import CloudWatchCrossAccountAggregation from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_cross_account_aggregation.jpeg"
 import CloudWatchLogsAgentEC2 from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_agent_ec2.jpeg"
+import CloudWatchAlarmsTargets from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_alarm_targets.jpeg"
 
 // codeblocks
 import { cloudwatchlogsInsights } from "../../helpers/codeblocks.js";
@@ -337,6 +338,23 @@ const AWSMonitoringAudit = () => {
           <SubTitleSmall>CloudWatch Alarms</SubTitleSmall>
           CloudWatch Alarms are designed to trigger actions based on metrics, which are numerical data points collected from AWS resources and custom applications. Alarms evaluate these metrics over time and compare them to predefined
           thresholds to determine if action is needed.
+          <HeadingSmall>CloudWatch Alarms Targets</HeadingSmall>
+          CloudWatch Alarms have three states:
+          <StyledListItem>OK - means the alarm has not been triggered.</StyledListItem>
+          <StyledListItem>INSUFFICIENT_DATA - means there's not enough data for the alarm to determine a state.</StyledListItem>
+          <StyledListItem>ALARM - means that your threshold has been breached and therefore a notification will be sent.</StyledListItem>
+          <Spacer />
+          The period is how long you want the alarm to evaluate for on the metric. For example, 10 seconds, 30 seconds, or multiple of 60 seconds.
+          <Spacer />
+          Now, alarms have three main targets:
+          <StyledListItem>EC2 instances - stopping, terminating, rebooting, or recovering any instance.</StyledListItem>
+          <StyledListItem>Auto-Scaling - scale out or scale in.</StyledListItem>
+          <StyledListItem>SNS - send a notification.</StyledListItem>
+          <Spacer />
+          <StyledImage src={CloudWatchAlarmsTargets} />
+          <Spacer />
+          <HeadingSmall>CloudWatch Alarms - Composite Alarms</HeadingSmall>
+
         </Text>
       </Container>
     </Wrapper>
