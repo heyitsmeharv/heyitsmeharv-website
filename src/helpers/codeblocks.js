@@ -427,3 +427,9 @@ export const cloudwatchlogsInsights = `fields @timestamp, @message
 | sort @timestamp desc
 | limit 20
 `;
+
+export const cloudwatchlogsAlarmStatus = `aws cloudwatch set-alarm-state 
+--alarm-name "myalarm" 
+--state-value ALARM 
+--state-reason "testing purposes"
+`;
