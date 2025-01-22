@@ -27,9 +27,11 @@ import CloudWatchCrossAccountSubscriptions from "../../resources/images/blog/AWS
 import CloudWatchCrossAccountAggregation from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_cross_account_aggregation.jpeg"
 import CloudWatchLogsAgentEC2 from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_agent_ec2.jpeg"
 import CloudWatchAlarmsTargets from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_alarm_targets.jpeg"
+import CloudWatchCompositeAlarms from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_composite_alarms.jpeg"
+import CloudWatchMetricFilterAlarm from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_metric_filter_alarm.jpeg"
 
 // codeblocks
-import { cloudwatchlogsInsights } from "../../helpers/codeblocks.js";
+import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -258,6 +260,7 @@ const AWSMonitoringAudit = () => {
         <Text>
           In this post we'll be diving into Amazon's monitoring and auditing solutions.
           <StyledAnchor href="#aws-cloudwatch"><StyledListItem>CloudWatch</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-eventbridge"><StyledListItem>EventBridge</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-cloudwatch">CloudWatch</SubTitle>
           Amazon CloudWatch is a monitoring and observability service provided by AWS that collects and tracks metrics, monitors logs, and generates alerts for your applications and infrastructure.
@@ -354,7 +357,20 @@ const AWSMonitoringAudit = () => {
           <StyledImage src={CloudWatchAlarmsTargets} />
           <Spacer />
           <HeadingSmall>CloudWatch Alarms - Composite Alarms</HeadingSmall>
-
+          The difference between alarms and composite alarms is that CloudWatch alarms are used on a single metric whereas composite alarms are capable of monitoring the states of multiple other alarms using AND or OR conditions. Composite
+          alarms are suited for more complex alarms.
+          <StyledImage src={CloudWatchCompositeAlarms} />
+          <Spacer />
+          Alarms can be created based on CloudWatch Logs Metric Filters.
+          <StyledImage src={CloudWatchMetricFilterAlarm} />
+          <Spacer />
+          It's worth noting that you can test alarms and notifications through the CLI by setting the state to 'ALARM'.
+          <Spacer />
+          <CodeBlock>
+            {cloudwatchlogsAlarmStatus}
+          </CodeBlock>
+          <Spacer />
+          <SubTitle id="aws-eventbridge">EventBridge</SubTitle>
         </Text>
       </Container>
     </Wrapper>
