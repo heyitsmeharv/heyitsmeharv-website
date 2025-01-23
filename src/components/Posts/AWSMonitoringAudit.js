@@ -371,6 +371,8 @@ const AWSMonitoringAudit = () => {
           </CodeBlock>
           <Spacer />
           <SubTitle id="aws-eventbridge">EventBridge</SubTitle>
+          Amazon EventBridge is a serverless event bus service that simplifies the process of connecting applications using events. It helps in building event-driven architectures by allowing you to ingest, filter, transform, and route events 
+          between services, both within AWS and from external SaaS applications.
         </Text>
       </Container>
     </Wrapper>
