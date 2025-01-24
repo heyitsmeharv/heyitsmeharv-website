@@ -30,6 +30,7 @@ import CloudWatchAlarmsTargets from "../../resources/images/blog/AWSMonitoringAu
 import CloudWatchCompositeAlarms from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_composite_alarms.jpeg"
 import CloudWatchMetricFilterAlarm from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_metric_filter_alarm.jpeg"
 import EventBridgeSchedule from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_event_bridge_schedule.jpeg"
+import EventBridgeRules from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_event_bridge_rules.jpeg"
 
 
 // codeblocks
@@ -263,6 +264,8 @@ const AWSMonitoringAudit = () => {
           In this post we'll be diving into Amazon's monitoring and auditing solutions.
           <StyledAnchor href="#aws-cloudwatch"><StyledListItem>CloudWatch</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-eventbridge"><StyledListItem>EventBridge</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-cloudtrail"><StyledListItem>CloudTrail</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-config"><StyledListItem>Config</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-cloudwatch">CloudWatch</SubTitle>
           Amazon CloudWatch is a monitoring and observability service provided by AWS that collects and tracks metrics, monitors logs, and generates alerts for your applications and infrastructure.
@@ -372,13 +375,37 @@ const AWSMonitoringAudit = () => {
             {cloudwatchlogsAlarmStatus}
           </CodeBlock>
           <Spacer />
+          <SubTitleSmall>CloudWatch Insights</SubTitleSmall>
+          Amazon CloudWatch Logs Insights is a powerful, fully managed tool designed to help you analyze, query, and visualize log data from AWS services and applications. It simplifies the process of searching and extracting meaningful insights from massive volumes of log data,
+          enabling quick troubleshooting and operational insights.
+          <HeadingSmall>Container Insights</HeadingSmall>
+          CloudWatch container insights is a way to collect, aggregate, and summarize metrics and logs from your containers. It's available for containers that you run on Amazon ECS, on Amazon EKS, on Kubernetes platform directly on EC2 or on Fargate, both for ECS and EKS.
+          So the idea is that we can very easily extract the metrics and the logs out of our containers into a very detailed and granular dashboard from within CloudWatch. If you are using CloudWatch container insights on Kubernetes, would it be for Amazon EKS
+          or Kubernetes running on EC2 - The way CloudWatch insights work is that it's using a containerized version of the CloudWatch agents to discover containers.
+          <HeadingSmall>Lambda Insights</HeadingSmall>
+          Lambda Insights is about monitoring and troubleshooting solution for your serverless applications running on AWS Lambda. So again, it's going to collect, aggregate, and summarize system level metric, including CPU time, memory, disk, and network, and also information around your cold starts,
+          and your Lambda worker shutdowns. It's provided for your Lambda function as a Lambda layer. The idea is that it runs next to your Lambda and it's going to create, again, a specified dashboard called Lambda insights to monitor the performance of your Lambda functions.
+          <HeadingSmall>Contributor Insights</HeadingSmall>
+          Contributor Insights is used to analyse logs and create time series that display contributed data.
+          <HeadingSmall>Application Insights</HeadingSmall>
+          <HeadingSmall>CloudWatch Insights and Operational Visibility</HeadingSmall>
           <SubTitle id="aws-eventbridge">EventBridge</SubTitle>
-          Amazon EventBridge is a serverless event bus service that simplifies the process of connecting applications using events. It helps in building event-driven architectures by allowing you to ingest, filter, transform, and route events 
-          between services, both within AWS and from external SaaS applications. There are lots of things you can do with Amazon EventBridge such as scheduling cron jobs every hour which triggers a lambda function. You can also do things based of 
+          Amazon EventBridge is a serverless event bus service that simplifies the process of connecting applications using events. It helps in building event-driven architectures by allowing you to ingest, filter, transform, and route events
+          between services, both within AWS and from external SaaS applications. There are lots of things you can do with Amazon EventBridge such as scheduling cron jobs every hour which triggers a lambda function. You can also do things based of
           events like notifying yourself whenever there's been login activity for a root user.
           <StyledImage src={EventBridgeSchedule} />
           <SubTitleSmall>EventBridge Rules</SubTitleSmall>
-
+          Here is an overview of how EventBridge can integrate with other AWS services with both sources and destinations.
+          <StyledImage src={EventBridgeRules} />
+          <SubTitleSmall>EventBridge Schema Registry</SubTitleSmall>
+          EventBridge offers a schema registry to discover, track, and generate code bindings for event schemas. EventBridge operates with event buses that receive and process events. You can have multiple event buses:
+          <StyledListItem>Default Event Bus - Automatically available for all AWS accounts.</StyledListItem>
+          <StyledListItem>Custom Event Bus - Created for your own applications.</StyledListItem>
+          <StyledListItem>Partner Event Bus - Used for SaaS integrations.</StyledListItem>
+          EventBridge can analyse the events in the bus and infer from the schema, the schema registry allows you to generate code for your application, that will know in advance how data is structured in the event bus.
+          <Spacer />
+          <SubTitle id="aws-cloudtrail">CloudTrail</SubTitle>
+          <SubTitle id="aws-config">Config</SubTitle>
         </Text>
       </Container>
     </Wrapper>
