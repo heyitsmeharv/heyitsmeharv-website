@@ -29,6 +29,8 @@ import CloudWatchLogsAgentEC2 from "../../resources/images/blog/AWSMonitoringAud
 import CloudWatchAlarmsTargets from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_alarm_targets.jpeg"
 import CloudWatchCompositeAlarms from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_composite_alarms.jpeg"
 import CloudWatchMetricFilterAlarm from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_metric_filter_alarm.jpeg"
+import EventBridgeSchedule from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_event_bridge_schedule.jpeg"
+
 
 // codeblocks
 import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -372,7 +374,11 @@ const AWSMonitoringAudit = () => {
           <Spacer />
           <SubTitle id="aws-eventbridge">EventBridge</SubTitle>
           Amazon EventBridge is a serverless event bus service that simplifies the process of connecting applications using events. It helps in building event-driven architectures by allowing you to ingest, filter, transform, and route events 
-          between services, both within AWS and from external SaaS applications.
+          between services, both within AWS and from external SaaS applications. There are lots of things you can do with Amazon EventBridge such as scheduling cron jobs every hour which triggers a lambda function. You can also do things based of 
+          events like notifying yourself whenever there's been login activity for a root user.
+          <StyledImage src={EventBridgeSchedule} />
+          <SubTitleSmall>EventBridge Rules</SubTitleSmall>
+
         </Text>
       </Container>
     </Wrapper>
