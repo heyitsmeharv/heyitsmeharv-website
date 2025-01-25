@@ -29,6 +29,7 @@ import CloudWatchLogsAgentEC2 from "../../resources/images/blog/AWSMonitoringAud
 import CloudWatchAlarmsTargets from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_alarm_targets.jpeg"
 import CloudWatchCompositeAlarms from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_composite_alarms.jpeg"
 import CloudWatchMetricFilterAlarm from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_metric_filter_alarm.jpeg"
+import CloudWatchContributorInsights from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_contributor_insights.jpeg"
 import EventBridgeSchedule from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_event_bridge_schedule.jpeg"
 import EventBridgeRules from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_event_bridge_rules.jpeg"
 
@@ -386,9 +387,25 @@ const AWSMonitoringAudit = () => {
           Lambda Insights is about monitoring and troubleshooting solution for your serverless applications running on AWS Lambda. So again, it's going to collect, aggregate, and summarize system level metric, including CPU time, memory, disk, and network, and also information around your cold starts,
           and your Lambda worker shutdowns. It's provided for your Lambda function as a Lambda layer. The idea is that it runs next to your Lambda and it's going to create, again, a specified dashboard called Lambda insights to monitor the performance of your Lambda functions.
           <HeadingSmall>Contributor Insights</HeadingSmall>
-          Contributor Insights is used to analyse logs and create time series that display contributed data.
+          Contributor Insights is used to analyse logs and create time series that display contributed data. This could be used to identify heavy traffic from users to understand who is impacting system performance via VPC logs or DNS logs. Looking at the VPC flow log, which is the log
+          of all the network request made within your VPC, which is then passed to CloudWatch logs and then analyzed by the CloudWatch contributor insights. From that, we can find the top 10 IP addresses that are generating traffic and understand if they are good actors or bad actors.
+          <Spacer />
+          <StyledImage src={CloudWatchContributorInsights} />
+          <Spacer />
           <HeadingSmall>Application Insights</HeadingSmall>
+          CloudWatch application insights provides automated dashboards that will show potential problems with monitored applications to help isolate ongoing issues. So your applications can be running on Amazon EC2 linked to other AWS resources such as EBS, RDS, ELB, ASG, Lambda, SQS, DynamoDB,
+          S3 buckets, maybe your ECS cluster, your EKS cluster, SNS topics, or your API gateway. In case there is an issue with your application, CloudWatch applications insights is going to put together an automated dashboard that shows you the potential issue with some services using SageMaker machine learning service internally.
+          All the alerts and findings will be sent to Amazon EventBridge and SSM OpsCenter so that you can be alerted in case there is an issue detected with your application.
           <HeadingSmall>CloudWatch Insights and Operational Visibility</HeadingSmall>
+          <StyledListItem><BoldText>CloudWatch Container Insights</BoldText></StyledListItem>
+          <StyledListItemIndent>Metrics and logs from ECS, EKS, Kubernetes on EC2, and Fargate, needs agent for Kubernetes.</StyledListItemIndent>
+          <StyledListItem><BoldText>CloudWatch Lambda Insights</BoldText></StyledListItem>
+          <StyledListItemIndent>Detailed metrics to troubleshoot serverless applications.</StyledListItemIndent>
+          <StyledListItem><BoldText>CloudWatch Contributors Insights</BoldText></StyledListItem>
+          <StyledListItemIndent>Find the 'Top-N' contributors through CloudWatch Logs.</StyledListItemIndent>
+          <StyledListItem><BoldText>CloudWatch Application Insights</BoldText></StyledListItem>
+          <StyledListItemIndent>Create automated dashboards to troubleshoot your application and related AWS services.</StyledListItemIndent>
+          <Spacer />
           <SubTitle id="aws-eventbridge">EventBridge</SubTitle>
           Amazon EventBridge is a serverless event bus service that simplifies the process of connecting applications using events. It helps in building event-driven architectures by allowing you to ingest, filter, transform, and route events
           between services, both within AWS and from external SaaS applications. There are lots of things you can do with Amazon EventBridge such as scheduling cron jobs every hour which triggers a lambda function. You can also do things based of
@@ -402,6 +419,7 @@ const AWSMonitoringAudit = () => {
           <StyledListItem>Default Event Bus - Automatically available for all AWS accounts.</StyledListItem>
           <StyledListItem>Custom Event Bus - Created for your own applications.</StyledListItem>
           <StyledListItem>Partner Event Bus - Used for SaaS integrations.</StyledListItem>
+          <Spacer />
           EventBridge can analyse the events in the bus and infer from the schema, the schema registry allows you to generate code for your application, that will know in advance how data is structured in the event bus.
           <Spacer />
           <SubTitle id="aws-cloudtrail">CloudTrail</SubTitle>
