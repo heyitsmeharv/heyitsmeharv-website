@@ -32,6 +32,7 @@ import CloudWatchMetricFilterAlarm from "../../resources/images/blog/AWSMonitori
 import CloudWatchContributorInsights from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_contributor_insights.jpeg"
 import EventBridgeSchedule from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_event_bridge_schedule.jpeg"
 import EventBridgeRules from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_event_bridge_rules.jpeg"
+import CloudTrail from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cloud_trail.jpeg"
 
 
 // codeblocks
@@ -423,6 +424,11 @@ const AWSMonitoringAudit = () => {
           EventBridge can analyse the events in the bus and infer from the schema, the schema registry allows you to generate code for your application, that will know in advance how data is structured in the event bus.
           <Spacer />
           <SubTitle id="aws-cloudtrail">CloudTrail</SubTitle>
+          AWS CloudTrail is a service that enables governance, compliance, and operational and risk auditing of your AWS account. It records all API calls and activities within your AWS environment and delivers log files to an S3 bucket.
+          <Spacer />
+          <StyledImage src={CloudTrail} />
+          <Spacer />
+
           <SubTitle id="aws-config">Config</SubTitle>
         </Text>
       </Container>
