@@ -33,7 +33,8 @@ import CloudWatchContributorInsights from "../../resources/images/blog/AWSMonito
 import EventBridgeSchedule from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_event_bridge_schedule.jpeg"
 import EventBridgeRules from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_event_bridge_rules.jpeg"
 import CloudTrail from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cloud_trail.jpeg"
-
+import CloudTrailEventBridge from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cloud_trail_event_bridge.jpeg"
+import CloudTrailEventBridge2 from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cloud_trail_event_bridge2.jpeg"
 
 // codeblocks
 import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -428,8 +429,27 @@ const AWSMonitoringAudit = () => {
           <Spacer />
           <StyledImage src={CloudTrail} />
           <Spacer />
-
+          <SubTitleSmall>CloudTrail Events</SubTitleSmall>
+          <HeadingSmall>Management Events</HeadingSmall>
+          Logs operations that change the configuration of AWS resources (e.g., creating or deleting EC2 instances). By default, trails are configured to log management events. Can separate Read Events from Write Events.
+          <Spacer />
+          <HeadingSmall>Data Events</HeadingSmall>
+          Tracks resource-specific operations, such as S3 object-level activities (e.g., uploads, downloads) and Lambda function invocations. By default, data events are not logged (high volumes).
+          <Spacer />
+          <SubTitleSmall>CloudTrail Insights</SubTitleSmall>
+          Detects unusual activity, such as spikes in resource creation or sudden changes in API usage patterns.
+          <SubTitleSmall>Events Retention</SubTitleSmall>
+          Provides a 90-day history of management events by default in the CloudTrail console. Users can create trails for long-term logging by using S3 and Athena.
+          <SubTitleSmall>CloudTrail With EventBridge</SubTitleSmall>
+          <Spacer />
+          <StyledImage src={CloudTrailEventBridge} />
+          <Spacer />
+          <Spacer />
+          <StyledImage src={CloudTrailEventBridge2} />
+          <Spacer />
           <SubTitle id="aws-config">Config</SubTitle>
+          AWS Config is a fully managed service that enables you to assess, audit, and evaluate the configurations of your AWS resources. It helps you maintain compliance with internal policies, regulatory standards, and best practices 
+          by continuously monitoring and recording resource configuration changes.
         </Text>
       </Container>
     </Wrapper>
