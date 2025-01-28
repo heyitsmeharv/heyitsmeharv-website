@@ -19,6 +19,11 @@ import {
   AWSRDSSVG,
   AWSRoute53SVG,
   AWSS3SVG,
+  AWSSnowSVG,
+  AWSFSXSVG,
+  AWSStorageGatewaySVG,
+  AWSTransferFamilySVG,
+  AWSDataSyncSVG,
   AWSCloudfrontSVG,
   AWSSQSSVG,
   AWSSNSSVG,
@@ -231,7 +236,7 @@ export default function Blog() {
       date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
       intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). 
-      In short EC2 is a virtual service in the AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be handy....`,
+      In short EC2 is a virtual service in the AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be handy...`,
       navigate: 'aws-elastic-compute-cloud',
       published: true
     },
@@ -264,9 +269,19 @@ export default function Blog() {
       date: '28/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }],
       intro: `Amazon Simple Storage Service (Amazon S3) is a highly scalable, durable, and secure object storage service. Amazon S3 is widely used across industries for its reliability,
-      scalability, and security, making it a foundational service for storing and managing data in the cloud....`,
+      scalability, and security, making it a foundational service for storing and managing data in the cloud...`,
       navigate: 'aws-s3',
       published: true
+    },
+    {
+      title: 'AWS Storage Extras',
+      readingTime: 'approx ~ mins',
+      type: 'Study',
+      date: '28/01/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Snow', background: '#FF9900', icon: <AWSSnowSVG /> }, { name: 'FSX', background: '#FF9900', icon: <AWSFSXSVG /> }, { name: 'Storage Gateway', background: '#FF9900', icon: <AWSStorageGatewaySVG /> }, { name: 'Transfer Family', background: '#FF9900', icon: <AWSTransferFamilySVG /> }, { name: 'Data Sync', background: '#FF9900', icon: <AWSDataSyncSVG /> }],
+      intro: `...`,
+      navigate: 'aws-storage-extras',
+      published: false
     },
     {
       title: 'AWS CloudFront',
@@ -448,7 +463,7 @@ export default function Blog() {
       date: '02/11/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
       intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). 
-      In short EC2 is a virtual service in the AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be handy....`,
+      In short EC2 is a virtual service in the AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be handy...`,
       navigate: 'aws-elastic-compute-cloud',
       published: true
     },
@@ -481,9 +496,19 @@ export default function Blog() {
       date: '28/05/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }],
       intro: `Amazon Simple Storage Service (Amazon S3) is a highly scalable, durable, and secure object storage service. Amazon S3 is widely used across industries for its reliability,
-      scalability, and security, making it a foundational service for storing and managing data in the cloud....`,
+      scalability, and security, making it a foundational service for storing and managing data in the cloud...`,
       navigate: 'aws-s3',
       published: true
+    },
+    {
+      title: 'AWS Storage Extras',
+      readingTime: 'approx ~ mins',
+      type: 'Study',
+      date: '28/01/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Snow', background: '#FF9900', icon: <AWSSnowSVG /> }, { name: 'FSX', background: '#FF9900', icon: <AWSFSXSVG /> }, { name: 'Storage Gateway', background: '#FF9900', icon: <AWSStorageGatewaySVG /> }, { name: 'Transfer Family', background: '#FF9900', icon: <AWSTransferFamilySVG /> }, { name: 'Data Sync', background: '#FF9900', icon: <AWSDataSyncSVG /> }],
+      intro: `...`,
+      navigate: 'aws-storage-extras',
+      published: false
     },
     {
       title: 'AWS CloudFront',

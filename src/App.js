@@ -42,6 +42,7 @@ import AWSElasticComputeCloud from "./components/Posts/AWSElasticComputeCloud";
 import AWSDatabases from "./components/Posts/AWSDatabases";
 import AWSRoute53 from "./components/Posts/AWSRoute53";
 import AWSS3 from "./components/Posts/AWSS3";
+import AWSStorageExtras from "./components/Posts/AWSStorageExtras";
 import AWSCloudFront from "./components/Posts/AWSCloudFront";
 import AWSSQS from "./components/Posts/AWSSQS";
 import AWSSNS from "./components/Posts/AWSSNS";
@@ -130,6 +131,7 @@ const App = () => {
                       <Route exact path='/blog/aws-databases' component={AWSDatabases} />
                       <Route exact path='/blog/aws-route53' component={AWSRoute53} />
                       <Route exact path='/blog/aws-s3' component={AWSS3} />
+                      <Route exact path='/blog/aws-storage-extras' component={AWSStorageExtras} />
                       <Route exact path='/blog/aws-cloudfront' component={AWSCloudFront} />
                       <Route exact path='/blog/aws-sqs' component={AWSSQS} />
                       <Route exact path='/blog/aws-sns' component={AWSSNS} />
