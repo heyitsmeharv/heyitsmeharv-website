@@ -35,6 +35,9 @@ import EventBridgeRules from "../../resources/images/blog/AWSMonitoringAudit/aws
 import CloudTrail from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cloud_trail.jpeg"
 import CloudTrailEventBridge from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cloud_trail_event_bridge.jpeg"
 import CloudTrailEventBridge2 from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cloud_trail_event_bridge2.jpeg"
+import ConfigEventRulesRemediation from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_config_event_rules_remediation.jpeg"
+import ConfigEventBridge from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_config_event_bridge.jpeg"
+import ConfigEventBridge2 from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_config_event_bridge2.jpeg"
 
 // codeblocks
 import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -269,6 +272,7 @@ const AWSMonitoringAudit = () => {
           <StyledAnchor href="#aws-eventbridge"><StyledListItem>EventBridge</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-cloudtrail"><StyledListItem>CloudTrail</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-config"><StyledListItem>Config</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#overview"><StyledListItem>Overview</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-cloudwatch">CloudWatch</SubTitle>
           Amazon CloudWatch is a monitoring and observability service provided by AWS that collects and tracks metrics, monitors logs, and generates alerts for your applications and infrastructure.
@@ -448,8 +452,55 @@ const AWSMonitoringAudit = () => {
           <StyledImage src={CloudTrailEventBridge2} />
           <Spacer />
           <SubTitle id="aws-config">Config</SubTitle>
-          AWS Config is a fully managed service that enables you to assess, audit, and evaluate the configurations of your AWS resources. It helps you maintain compliance with internal policies, regulatory standards, and best practices 
+          AWS Config is a fully managed service that enables you to assess, audit, and evaluate the configurations of your AWS resources. It helps you maintain compliance with internal policies, regulatory standards, and best practices
           by continuously monitoring and recording resource configuration changes.
+          <SubTitleSmall>Config Rules</SubTitleSmall>
+          Config Rules are used to evaluate the compliance of resources against custom or managed policies. Any non-compliant resources will be flagged and you will be notified. There can be over 75 AWS managed config rules or you can make custom
+          rules using AWS Lambda. Please note that config rules do not prevent actions from happening only raises them as non compliant.
+          <HeadingSmall>Remediation</HeadingSmall>
+          You can set Remediation Retries if the resource is still non-compliant after auto-remediation. Automate remediation of non-compliant resources using SSM Automation Documents.
+          <Spacer />
+          <StyledImage src={ConfigEventRulesRemediation} />
+          <Spacer />
+          <HeadingSmall>Notifications</HeadingSmall>
+          You can use EventBridge to trigger notifications when AWS resources are non-compliant.
+          <Spacer />
+          <StyledImage src={ConfigEventBridge} />
+          <Spacer />
+          It's also possible to send all events including all states and configurations not just non-compliant resources by using SNS filtering.
+          <Spacer />
+          <StyledImage src={ConfigEventBridge2} />
+          <Spacer />
+          <SubTitle id="overview">CloudWatch vs CloudTrail vs Config</SubTitle>
+          <StyledListItem><BoldText>CloudWatch</BoldText></StyledListItem>
+          <StyledListItemIndent>Performance monitoring (metrics, CPU, network, etc) & dashboards.</StyledListItemIndent>
+          <StyledListItemIndent>Event & Alerting.</StyledListItemIndent>
+          <StyledListItemIndent>Log aggregation & Analysis.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>CloudTrail</BoldText></StyledListItem>
+          <StyledListItemIndent>Record API calls made within your AWS account by everyone.</StyledListItemIndent>
+          <StyledListItemIndent>Can define trails by specific resources.</StyledListItemIndent>
+          <StyledListItemIndent>Global service.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>Config</BoldText></StyledListItem>
+          <StyledListItemIndent>Record configuration changes.</StyledListItemIndent>
+          <StyledListItemIndent>Evaluate resources against compliance rules.</StyledListItemIndent>
+          <StyledListItemIndent>Get timeline of changes and compliance.</StyledListItemIndent>
+          <Spacer />
+          <SubTitleSmall>Elastic Load Balancer</SubTitleSmall>
+          <StyledListItem><BoldText>CloudWatch</BoldText></StyledListItem>
+          <StyledListItemIndent>Monitor incoming connections metric.</StyledListItemIndent>
+          <StyledListItemIndent>Visualise error codes as a percentage over time.</StyledListItemIndent>
+          <StyledListItemIndent>Make a dashboard to get an idea of your load balancer performance.</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>Config</BoldText></StyledListItem>
+          <StyledListItemIndent>Track security group rules for the load balancer.</StyledListItemIndent>
+          <StyledListItemIndent>Track configuration changes for the load balancer.</StyledListItemIndent>
+          <StyledListItemIndent>Ensure an SSL certificate is always assigned to the load balancer (compliance).</StyledListItemIndent>
+          <Spacer />
+          <StyledListItem><BoldText>CloudTrail</BoldText></StyledListItem>
+          <StyledListItemIndent>Track who made any changes to the load balancer with API calls.</StyledListItemIndent>
+          <Spacer />
         </Text>
       </Container>
     </Wrapper>
