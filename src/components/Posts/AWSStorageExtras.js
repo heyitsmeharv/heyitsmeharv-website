@@ -222,14 +222,10 @@ const AWSStorageExtras = () => {
     }
   }, []);
 
-  const columns = ['Feature', 'Description'];
+  const columns = ['Device', 'Compute', 'Memory', 'Storage'];
   const data = [
-    { Feature: 'Metrics', Description: 'Tracks CPU, memory, network utilization, and custom metrics from your applications.' },
-    { Feature: 'Logs', Description: 'Centralizes log collection and analysis with search and filtering capabilities.' },
-    { Feature: 'Alarms', Description: 'Notifies users or triggers actions based on metric thresholds.' },
-    { Feature: 'Dashboards', Description: 'Custom visualizations for real-time monitoring.' },
-    { Feature: 'Custom Anomaly Detection', Description: 'Automatically identifies metric patterns and deviations.' },
-    { Feature: 'Synthetic Monitoring', Description: 'Tests application endpoints proactively with canary scripts.' }
+    { Device: 'Snowball Edge Storage Optimised', Compute: '104 vCPUs.', Memory: '416 GB', Storage: '210 TB' },
+    { Device: 'Snowball Edge Compute Optimised', Compute: '104 vCPUs.', Memory: '416 GB', Storage: '28 TB' },
   ];
 
   return (
@@ -257,7 +253,12 @@ const AWSStorageExtras = () => {
           In this post we'll be diving into Amazon's storage extras.
           <StyledAnchor href="#aws-snowball"><StyledListItem>Snowball</StyledListItem></StyledAnchor>
           <Spacer />
-
+          <SubTitle id="aws-snowball">Snowball</SubTitle>
+          AWS Snowball is a service designed to facilitate secure, large-scale data transfer into and out of AWS. It is ideal for migrating large datasets where traditional methods (like the internet) would take too long or be cost-prohibitive.
+          Snowball is a portable device to collect and process data at the edge, and migrate data into and out of AWS.
+          <Spacer />
+          <Table columns={columns} data={data} />
+          <Spacer />
         </Text>
       </Container>
     </Wrapper>
