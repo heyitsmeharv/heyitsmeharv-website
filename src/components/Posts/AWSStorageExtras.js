@@ -23,6 +23,8 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import Table from '../Table/Table';
 
 // images
+import SnowballGlacier from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_snowball_glacier.jpeg";
+
 
 // codeblocks
 
@@ -258,6 +260,11 @@ const AWSStorageExtras = () => {
           Snowball is a portable device to collect and process data at the edge, and migrate data into and out of AWS.
           <Spacer />
           <Table columns={columns} data={data} />
+          <Spacer />
+          <SubTitleSmall>Snowball into Glacier</SubTitleSmall>
+          Snowball cannot import to Glacier directly so S3 must be used first, in combination with an S3 lifecycle policy.
+          <Spacer />
+          <StyledImage src={SnowballGlacier} />
           <Spacer />
         </Text>
       </Container>
