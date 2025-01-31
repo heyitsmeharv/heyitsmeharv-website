@@ -9,7 +9,7 @@ import SlideInBottom from "../../animations/SlideInBottom";
 
 // icons
 import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircle';
-import { AWSSVG, AWSIAMSVG } from '../../resources/styles/icons';
+import { AWSSVG, AWSIAMSVG, AWSOrganisationsSVG, AWSControlTowerSVG } from '../../resources/styles/icons';
 
 // components
 import { StyledNavButton, StyledNavLink } from '../Button/Button';
@@ -25,7 +25,7 @@ import IAMPolicyExample from "../../resources/images/blog/AWSIdentityAccessManag
 const Wrapper = styled.div`
   padding: 1rem 25%;
   line-height: 6.5rem;
-  
+
   @media only screen and (max-width: 1000px) {
     line-height: 5rem;
     padding: 0;
@@ -72,7 +72,6 @@ const FlexTop = styled.div`
 
 const IconWrapper = styled.div`
   display: flex;
-  margin-left: auto;
 `;
 
 const CodeBlock = styled.pre`
@@ -87,6 +86,19 @@ const CodeBlock = styled.pre`
   line-height: 3.5rem;
 `;
 
+const CodeBlockIndent = styled.pre`
+  font-family: 'Calibri';
+  font-size: 2rem;
+  background: #292929;
+  color: ${({ theme }) => theme.buttonText};
+  word-wrap: break-word;
+  padding: 1rem 2rem 1rem;
+  border-radius: 2rem;
+  overflow-x: auto;
+  line-height: 3.5rem;
+  margin-left: 10%;
+`;
+
 const Title = styled.h1`
   font-size: 4rem;
   font-weight: bold;
@@ -95,12 +107,20 @@ const Title = styled.h1`
 const SubTitle = styled.h1`
   font-size: 3rem;
   font-weight: bold;
-  font-style: italic;
+  margin: 2% auto;
 `;
 
 const SubTitleSmall = styled.h1`
   font-size: 2rem;
   font-weight: bold;
+  margin: 2% auto;
+`;
+
+const HeadingSmall = styled.h1`
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-style: italic;
+  margin: 2% auto;
 `;
 
 const Text = styled.span`
@@ -114,6 +134,12 @@ const BoldText = styled.b`
   font-weight: bold;
 `;
 
+const BoldTextSmall = styled.b`
+  color: ${({ theme }) => theme.text};
+  font-size: 1.8rem;
+  font-weight: bold;
+`;
+
 const StyledCodeSpan = styled.code`
   background-color: #f1f1f1;
   color: crimson;
@@ -121,13 +147,35 @@ const StyledCodeSpan = styled.code`
   margin: 0 5px;
 `;
 
+const UnStyledListItem = styled.li`
+  list-style-type: none;
+  color: ${({ theme }) => theme.text};
+  margin-left: 5%;
+`;
+
 const StyledListItem = styled.li`
   color: ${({ theme }) => theme.text};
   margin-left: 5%;
 `;
 
+const StyledListItemIndent = styled.li`
+  color: ${({ theme }) => theme.text};
+  margin-left: 10%;
+`;
+
+const StyledListItemIndentExtra = styled.li`
+  color: ${({ theme }) => theme.text};
+  margin-left: 15%;
+`;
+
 const StyledAnchor = styled.a`
   color: ${({ theme }) => theme.text};
+`;
+
+const StyledAnchorText = styled.span`
+  color: ${({ theme }) => theme.text};
+  font-style: italic;
+  font-weight: bold;
 `;
 
 const StyledBackIcon = styled(ChevronBackCircle)`
@@ -155,7 +203,10 @@ const Icon = styled.div`
   }
 `;
 
-const Spacer = styled.br``
+const Spacer = styled.br`
+  display: block;
+  margin: 10px 0;
+`;
 
 const AWSIdentityAccessManagement = () => {
 
@@ -180,6 +231,8 @@ const AWSIdentityAccessManagement = () => {
           <IconWrapper>
             <Icon><AWSSVG /></Icon>
             <Icon><AWSIAMSVG /></Icon>
+            <Icon><AWSOrganisationsSVG /></Icon>
+            <Icon><AWSControlTowerSVG /></Icon>
           </IconWrapper>
         </Flex>
         <Spacer />
