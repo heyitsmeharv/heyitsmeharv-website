@@ -34,9 +34,8 @@ import VolumeGateway from "../../resources/images/blog/AWSStorageExtras/aws_stor
 import TapeGateway from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_tape_gateway.jpeg";
 import StorageGateway from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_storage_gateway.jpeg";
 import TransferFamily from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_transfer_family.jpeg";
-
-// codeblocks
-
+import NFSSMBToAWS from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_data_sync_nfs_smb_aws.jpeg";
+import AWSStorageServices from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_datasync_aws_storage_services.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -375,10 +374,31 @@ const AWSStorageExtras = () => {
           <StyledImage src={TransferFamily} />
           <Spacer />
           <SubTitle id="aws-data-sync">Data Sync</SubTitle>
-          Amazon DataSync is a fully managed data transfer service that helps organizations automate, accelerate, and securely move large amounts of data between on-premises storage, AWS services, and between 
+          Amazon DataSync is a fully managed data transfer service that helps organizations automate, accelerate, and securely move large amounts of data between on-premises storage, AWS services, and between
           AWS regions or accounts. It eliminates the need for manual data migration processes, making it easy to move files efficiently while ensuring security and integrity.
+          <HeadingSmall>NFS/SMB to AWS (S3, EFS, FSx...)</HeadingSmall>
+          <Spacer />
+          <StyledImage src={NFSSMBToAWS} />
+          <Spacer />
+          <HeadingSmall>Transfer between AWS storage services</HeadingSmall>
+          <Spacer />
+          <StyledImage src={AWSStorageServices} />
+          <Spacer />
           <SubTitle id="storage-options-comparison">Storage Options Comparison</SubTitle>
-
+          <StyledListItem><BoldTextSmall>S3</BoldTextSmall>: Object Storage</StyledListItem>
+          <StyledListItem><BoldTextSmall>S3 Glacier</BoldTextSmall>: Object Archival</StyledListItem>
+          <StyledListItem><BoldTextSmall>EBS Volumes</BoldTextSmall>: Network storage for one EC2 instance at a time</StyledListItem>
+          <StyledListItem><BoldTextSmall>Instance Storage</BoldTextSmall>: Physical storage for your EC2 instance (High IOPS)</StyledListItem>
+          <StyledListItem><BoldTextSmall>EFS</BoldTextSmall>: Network File System for Linux instances, POSIX filesystem</StyledListItem>
+          <StyledListItem><BoldTextSmall>FSx for Windows</BoldTextSmall>: Network File System for Windows servers</StyledListItem>
+          <StyledListItem><BoldTextSmall>FSx for Lustre</BoldTextSmall>: High Performance Computing Linux file system</StyledListItem>
+          <StyledListItem><BoldTextSmall>FSx for NetApp ONTAP</BoldTextSmall>: High OS Compatibility</StyledListItem>
+          <StyledListItem><BoldTextSmall>FSx for OpenZFS</BoldTextSmall>: Managed ZFS file system</StyledListItem>
+          <StyledListItem><BoldTextSmall>Storage Gateway</BoldTextSmall>: S3 & FSx File Gateway, Volume Gateway (cached and stored), Tape Gateway</StyledListItem>
+          <StyledListItem><BoldTextSmall>Transfer Family</BoldTextSmall>: FTP, FTPS, SFTP interface on top of S3 or EFS</StyledListItem>
+          <StyledListItem><BoldTextSmall>DataSync</BoldTextSmall>: Schedule data sync from on premises to AWS, or AWS to AWS</StyledListItem>
+          <StyledListItem><BoldTextSmall>Snowcone / Snowball / Snowmobile</BoldTextSmall>: Move large amount of data to the cloud, physically</StyledListItem>
+          <StyledListItem><BoldTextSmall>Database</BoldTextSmall>: For specific workloads, usually with indexing and querying</StyledListItem>
         </Text>
       </Container>
     </Wrapper>
