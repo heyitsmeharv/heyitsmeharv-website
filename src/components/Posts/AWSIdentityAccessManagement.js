@@ -240,7 +240,6 @@ const AWSIdentityAccessManagement = () => {
           This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping this will serve at least somewhat of a refresher or a quick reference guide
           for those familiar with the IAM service; if not getting to grips with the basics if you're not familiar with this service at all.
           <Spacer />
-          <Spacer />
           Let's start with outlining some useful information:
           <StyledListItem><BoldText>IAM</BoldText>: Identity and Access Management is a Global Service (i.e. isn't region specific).</StyledListItem>
           <StyledListItem><BoldText>Root Account</BoldText>: Created by default which shouldn't be used or shared.</StyledListItem>
@@ -262,16 +261,13 @@ const AWSIdentityAccessManagement = () => {
           Now let's say we have another group in the organisation called 'Operations'. The users in this group will have different set of permissions than the users in 'Developers' because
           this group has a different <BoldText>policy</BoldText> attached.
           <Spacer />
-          <Spacer />
           <StyledImage src={IAMPolicyInheritance2} />
           <Spacer />
           Because it's not mandatory for a user to be apart of a group, you can assign inline policies specifically for that user detailing their access.
           <Spacer />
-          <Spacer />
           <StyledImage src={IAMPolicyInheritance3} />
           <Spacer />
           Finally, it's also important to note that users can be put into more than one group, meaning they would inherit both <BoldText>policies</BoldText>.
-          <Spacer />
           <Spacer />
           <StyledImage src={IAMPolicyInheritance4} />
           <Spacer />
@@ -296,6 +292,10 @@ const AWSIdentityAccessManagement = () => {
             </Text>
             <StyledImage ml="25px" src={IAMRole} />
           </FlexTop>
+          <Spacer />
+          <SubTitle>AWS Organizations</SubTitle>
+          AWS Organizations is a service that helps businesses centrally manage and govern multiple AWS accounts within a single organization. It provides features for consolidated billing, policy-based account management, security, and automation,
+          making it easier for enterprises to scale their AWS usage securely and efficiently.
         </Text>
       </Container>
     </Wrapper>
