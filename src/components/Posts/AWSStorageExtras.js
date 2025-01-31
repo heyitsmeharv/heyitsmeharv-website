@@ -33,6 +33,7 @@ import StorageGatewayS3 from "../../resources/images/blog/AWSStorageExtras/aws_s
 import VolumeGateway from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_volume_gateway.jpeg";
 import TapeGateway from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_tape_gateway.jpeg";
 import StorageGateway from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_storage_gateway.jpeg";
+import TransferFamily from "../../resources/images/blog/AWSStorageExtras/aws_storage_extras_transfer_family.jpeg";
 
 // codeblocks
 
@@ -370,8 +371,12 @@ const AWSStorageExtras = () => {
           Amazon Transfer Family is a fully managed secure file transfer service that enables businesses to transfer files into and out of AWS using standard file transfer protocols such as SFTP
           (Secure File Transfer Protocol), FTPS (File Transfer Protocol over SSL/TLS), and FTP (File Transfer Protocol). It provides seamless integration with Amazon S3 and Amazon EFS, enabling organizations
           to move, process, and store files efficiently in the AWS cloud.
+          <Spacer />
+          <StyledImage src={TransferFamily} />
+          <Spacer />
           <SubTitle id="aws-data-sync">Data Sync</SubTitle>
-
+          Amazon DataSync is a fully managed data transfer service that helps organizations automate, accelerate, and securely move large amounts of data between on-premises storage, AWS services, and between 
+          AWS regions or accounts. It eliminates the need for manual data migration processes, making it easy to move files efficiently while ensuring security and integrity.
           <SubTitle id="storage-options-comparison">Storage Options Comparison</SubTitle>
 
         </Text>
