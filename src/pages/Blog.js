@@ -15,6 +15,8 @@ import {
   ReactjsSVG,
   AWSSVG,
   AWSIAMSVG,
+  AWSOrganisationsSVG,
+  AWSControlTowerSVG,
   AWSEC2SVG,
   AWSRDSSVG,
   AWSRoute53SVG,
@@ -50,7 +52,7 @@ import {
   AWSSageMakerSVG,
   AWSCloudWatchSVG,
   AWSCloudTrailSVG,
-  AWSConfigSVG
+  AWSConfigSVG  
 } from '../resources/styles/icons';
 
 
@@ -222,7 +224,7 @@ export default function Blog() {
       readingTime: 'approx 6 minutes',
       type: 'Study',
       date: '26/10/2023',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
       this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics 
       if you're not familiar...`,
@@ -439,7 +441,7 @@ export default function Blog() {
       readingTime: 'approx 6 minutes',
       type: 'Study',
       date: '26/10/2023',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
       this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics 
       if you're not familiar...`,
