@@ -21,6 +21,9 @@ import IAMPolicyInheritance3 from "../../resources/images/blog/AWSIdentityAccess
 import IAMPolicyInheritance4 from "../../resources/images/blog/AWSIdentityAccessManagement/iam_4.jpeg";
 import IAMRole from "../../resources/images/blog/AWSIdentityAccessManagement/iam_5.jpeg";
 import IAMPolicyExample from "../../resources/images/blog/AWSIdentityAccessManagement/policy_example.png";
+import OrganisationsExample from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_organisations.jpeg";
+import OrganisationSCPHeirarchyExample from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_organisations_scp.jpeg";
+import OrganisationalUnitsExample from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_organisational_units.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -296,6 +299,30 @@ const AWSIdentityAccessManagement = () => {
           <SubTitle>AWS Organizations</SubTitle>
           AWS Organizations is a service that helps businesses centrally manage and govern multiple AWS accounts within a single organization. It provides features for consolidated billing, policy-based account management, security, and automation,
           making it easier for enterprises to scale their AWS usage securely and efficiently.
+          <Spacer />
+          <StyledImage src={OrganisationsExample} />
+          <Spacer />
+          <SubTitle>Organisational Units (OU) - Examples</SubTitle>
+          <Spacer />
+          <StyledImage src={OrganisationalUnitsExample} />
+          <Spacer />
+          <SubTitle>Organisation SCP Heirarchy</SubTitle>
+          <Spacer />
+          <StyledImage src={OrganisationSCPHeirarchyExample} />
+          <UnStyledListItem><BoldText>Management Account</BoldText>:</UnStyledListItem>
+          <StyledListItemIndent>Can do anything no SCP's apply</StyledListItemIndent>
+          <UnStyledListItem><BoldText>Account A</BoldText>:</UnStyledListItem>
+          <StyledListItemIndent>Can do anything other than:</StyledListItemIndent>
+          <StyledListItemIndentExtra>S3 - Excplicit DENY from Sandbox OU</StyledListItemIndentExtra>
+          <StyledListItemIndentExtra>EC2 - Excplicit DENY</StyledListItemIndentExtra>
+          <UnStyledListItem><BoldText>Account B & C</BoldText>:</UnStyledListItem>
+          <StyledListItemIndent>Can do anything other than:</StyledListItemIndent>
+          <StyledListItemIndentExtra>S3 - Excplicit DENY from Sandbox OU</StyledListItemIndentExtra>
+          <UnStyledListItem><BoldText>Account D</BoldText>:</UnStyledListItem>
+          <StyledListItemIndent>Can access EC2</StyledListItemIndent>
+          <UnStyledListItem><BoldText>Prod OU and Account E & F</BoldText>:</UnStyledListItem>
+          <StyledListItemIndent>Can do anything no SCP's apply</StyledListItemIndent>
+          <Spacer />
         </Text>
       </Container>
     </Wrapper>
