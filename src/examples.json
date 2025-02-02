@@ -1,15 +1,10 @@
 {
     "Version": "2012-10-17",
     "Statement": [
-      {
-          "Effect": "Allow",
-          "Action": ["s3:PutObject", "s3:GetObject"],
-          "Resources": "arn:aws:s3:::2025-financial-data/*",
-          "Condition": {
-              "StringEquals": {
-                  "aws:PrincipalOrgId": ["o-yyyyyyyyyy"]
-              }
-          }
-      }
+        {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": "*"
+        }
     ]
 }

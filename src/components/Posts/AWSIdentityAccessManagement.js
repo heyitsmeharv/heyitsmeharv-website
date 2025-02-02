@@ -32,8 +32,11 @@ import IAMForS3 from "../../resources/images/blog/AWSIdentityAccessManagement/aw
 import IAMPrincipalOrgId from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_principal_org_id.jpeg";
 import IAMPrincipalOrgId2 from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_principal_org_id2.jpeg";
 import IAMRolesResourcePolicies from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_roles_resource_policies.jpeg";
+import IAMPermissionBoundary from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_permission_boundary.jpeg";
+import IAMPermissionBoundaryExample from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_permission_boundary_example.jpeg";
 import IAMIdentityCenter from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_identity_center.jpeg";
-
+import IAMIdentityCenter2 from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_identity_center2.jpeg";
+import PolicyEvaluationSingleAccountRole from "../../resources/images/blog/AWSIdentityAccessManagement/PolicyEvaluationSingleAccountRole.png";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -316,7 +319,7 @@ const AWSIdentityAccessManagement = () => {
           <Spacer />
           <StyledImage src={OrganisationalUnitsExample} />
           <Spacer />
-          <SubTitle>Organisation SCP Heirarchy</SubTitle>
+          <SubTitle>Organisation SCP (Service Control Policy) Heirarchy</SubTitle>
           <Spacer />
           <StyledImage src={OrganisationSCPHeirarchyExample} />
           <UnStyledListItem><BoldText>Management Account</BoldText>:</UnStyledListItem>
@@ -359,10 +362,25 @@ const AWSIdentityAccessManagement = () => {
           The difference between IAM roles and resource-based policies when it comes to calling API's over different accounts can either happen by attaching a resource-based policy to a resource (e.g. S3 bucket policy) or by using a role as a proxy.
           It's worth noting that when you assume a role, you give up your original permissions and take the permissions assigned to the role, when using a resource-based policy, the user doesn't have to give up their permissions.
           <StyledImage src={IAMRolesResourcePolicies} />
-          <SubTitle>AWS IAM Identity Center</SubTitle>
+          <SubTitle>IAM Permission Boundaries</SubTitle>
+          IAM Permission Boundaries are only supported for users and roles and not groups. Permission Boundaries can be used in combination of AWS Organisation SCP's (Service Control Policy) and identity-based policy (whatever is attached to the group).
+          <StyledImage src={IAMPermissionBoundary} />
+          Permission Boundaries are a way to limit the maximum permissions that an IAM user or role can be granted. They act as a restrictive guardrail, ensuring that even if a user or role is assigned broader permissions through policies, they cannot exceed the permissions defined by the boundary.
+          <Spacer />
+          Here is an example of a Permission Boundary policy:
+          <StyledImage src={IAMPermissionBoundaryExample} />
+          This means that no matter what permissions the role gets, it will never be able to do anything outside of S3. If an admin attaches an IAM policy allowing ec2:*, the permission boundary prevents the role from using EC2. Permission Boundaries can be used to
+          delegate IAM role creation without losing control over what permissions they can have and prevent privilege escalation, ensuring users/roles don't exceed intended access.
+          <Spacer />
+          <SubTitle>IAM Policy Evaluation Logic</SubTitle>
+          The following flow chart provides details about how a policy evaluation decision is made for an IAM role within a single account.
+          <StyledImage src={PolicyEvaluationSingleAccountRole} />
+          <SubTitle>IAM Identity Center</SubTitle>
           AWS IAM Identity Center (formerly known as AWS Single Sign-On) is a centralised cloud service designed to simplify managing user identities and permissions across AWS accounts and integrated business applications. The identity providers (users) could
           be stored in either the built-in identity store in IAM Identity Center or you can connect to a third party identity provider like Okta.
           <StyledImage src={IAMIdentityCenter} />
+          You can assign group permissions by assigning the group to a policy and then attaching that policy to an OU.
+          <StyledImage src={IAMIdentityCenter2} />
 
         </Text>
       </Container>
