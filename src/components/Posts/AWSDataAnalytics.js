@@ -441,7 +441,7 @@ const AWSDataAnalytics = () => {
           <StyledImage src={Glue} />
           <Spacer />
           <SubTitle id="aws-lake-formation">Lake Formation</SubTitle>
-          AWS Lake Formation is a fully managed service that simplifies the process of creating, securing, and managing data lakes. A data lake is a centralized repository that stores structured and unstructured data at any scale, enabling you
+          AWS Lake Formation is a fully managed service that simplifies the process of creating, securing, and managing data lakes. A data lake is a centralised repository that stores structured and unstructured data at any scale, enabling you
           to analyze and process data using different tools and frameworks. Lake Formation helps automate and streamline the creation of data lakes, making it easier to collect, organize, secure, and share data for analytics and machine learning.
           <StyledImage src={LakeFormation} />
         </Text>

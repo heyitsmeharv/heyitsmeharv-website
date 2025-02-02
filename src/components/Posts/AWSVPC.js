@@ -625,14 +625,14 @@ const AWSVPC = () => {
           <StyledImage src={VPCTrafficMirroring} />
           <Spacer />
           <SubTitle id="ipv6">IPv6 in VPC</SubTitle>
-          IPv6 is the successor of IPv4 as IPv4 addresses will be exhausted soon. Every IPv6 address in AWS is a public IP address. An example of a IPv6 address would be - 2001:db8:3333:4444:cccc:dddd:eeee:8888. The difference 
-          being that the range can include hexadecimals (0000 to ffff). You can enable IPv6 to operate in dual-stack mode. EC2 instances will get at least a private IPv4 and a public IPv6 address which can communicate using either 
+          IPv6 is the successor of IPv4 as IPv4 addresses will be exhausted soon. Every IPv6 address in AWS is a public IP address. An example of a IPv6 address would be - 2001:db8:3333:4444:cccc:dddd:eeee:8888. The difference
+          being that the range can include hexadecimals (0000 to ffff). You can enable IPv6 to operate in dual-stack mode. EC2 instances will get at least a private IPv4 and a public IPv6 address which can communicate using either
           addresses to the internet through an Internet Gateway. Note that IPv4 addresses cannot be disabled for your VPC and subnets.
           <Spacer />
           <StyledImage src={VPCIPv6} />
           <Spacer />
           <SubTitleSmall>Egress-only Internet Gateway</SubTitleSmall>
-          Egress-only Internet Gateways allows instances in a VPC outbound connections over IPv6 while preventing the internet to initiate an IPv6 connection to the instances. This is used for IPv6 only - 
+          Egress-only Internet Gateways allows instances in a VPC outbound connections over IPv6 while preventing the internet to initiate an IPv6 connection to the instances. This is used for IPv6 only -
           It's similar to a NAT Gateway but for IPv6 addresses.
           <Spacer />
           <StyledImage src={VPCEgressOnlyIG} />
@@ -659,7 +659,7 @@ const AWSVPC = () => {
           <StyledImage src={VPCEgressTrafficNetworkingCosts} />
           <Spacer />
           <SubTitle id="network-protection">AWS Network Firewall</SubTitle>
-          AWS Network Firewall is a managed service designed to provide network protection for your VPC. It allows you to implement essential security controls, such as traffic filtering and monitoring, 
+          AWS Network Firewall is a managed service designed to provide network protection for your VPC. It allows you to implement essential security controls, such as traffic filtering and monitoring,
           to safeguard your cloud infrastructure.
           <Spacer />
           <StyledImage src={VPCNetworkFirewall} />
@@ -670,7 +670,7 @@ const AWSVPC = () => {
           <StyledListItem><BoldTextSmall>Custom Rules</BoldTextSmall>: In addition to managed rules, you can create custom rule groups tailored to your specific security requirements. This gives you granular control over your network traffic.</StyledListItem>
           <StyledListItem><BoldTextSmall>Stateful and Stateless Rules</BoldTextSmall>: AWS Network Firewall supports both stateful and stateless rule processing. Stateful rules track the state of network connections, while stateless rules evaluate each packet in isolation. This flexibility allows for more nuanced traffic control.</StyledListItem>
           <StyledListItem><BoldTextSmall>Logging and Monitoring</BoldTextSmall>: The service provides detailed logging and monitoring capabilities, allowing you to track and analyze network traffic in real-time. Logs can be sent to Amazon S3, CloudWatch Logs, or Kinesis Data Firehose for further analysis.</StyledListItem>
-          <StyledListItem><BoldTextSmall>Centralized Management</BoldTextSmall>: You can centrally manage and deploy firewalls across multiple VPCs using AWS Firewall Manager, making it easier to maintain consistent security policies in large environments.</StyledListItem>
+          <StyledListItem><BoldTextSmall>centralised Management</BoldTextSmall>: You can centrally manage and deploy firewalls across multiple VPCs using AWS Firewall Manager, making it easier to maintain consistent security policies in large environments.</StyledListItem>
           <Spacer />
           <SubTitle id="vpc-summary">VPC Summary</SubTitle>
           <StyledListItem><BoldTextSmall>CIDR</BoldTextSmall>: IP Range</StyledListItem>

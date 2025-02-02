@@ -277,7 +277,7 @@ const AWSMonitoringAudit = () => {
           <SubTitle id="aws-cloudwatch">CloudWatch</SubTitle>
           Amazon CloudWatch is a monitoring and observability service provided by AWS that collects and tracks metrics, monitors logs, and generates alerts for your applications and infrastructure.
           It enables you to gain actionable insights into system performance, optimize resource utilization, and troubleshoot operational issues in real time.
-          CloudWatch supports a variety of AWS resources and custom applications, making it a centralized solution for monitoring and managing your cloud infrastructure.
+          CloudWatch supports a variety of AWS resources and custom applications, making it a centralised solution for monitoring and managing your cloud infrastructure.
           <HeadingSmall>CloudWatch Features</HeadingSmall>
           <Table data={data} columns={columns} />
           <Spacer />

@@ -30,6 +30,9 @@ import IAMConditionRestrictTags from "../../resources/images/blog/AWSIdentityAcc
 import IAMConditionEnforceMFA from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_condition_enforce_mfa.jpeg";
 import IAMForS3 from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_for_s3.jpeg";
 import IAMPrincipalOrgId from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_principal_org_id.jpeg";
+import IAMPrincipalOrgId2 from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_principal_org_id2.jpeg";
+import IAMRolesResourcePolicies from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_roles_resource_policies.jpeg";
+import IAMIdentityCenter from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_identity_center.jpeg";
 
 
 const Wrapper = styled.div`
@@ -332,12 +335,16 @@ const AWSIdentityAccessManagement = () => {
           <Spacer />
           <SubTitle>IAM Conditions</SubTitle>
           <HeadingSmall>Restrict via IP Address</HeadingSmall>
+          Here is an example on how to write a policy that will restrict any API calls if any IP address are listed.
           <StyledImage src={IAMConditionRestrictIP} />
           <HeadingSmall>Restrict via Region</HeadingSmall>
+          Here is an example on how to write a policy that will restrict any API calls made to the listed regions.
           <StyledImage src={IAMConditionRestrictRegion} />
           <HeadingSmall>Restrict based on Tags</HeadingSmall>
+          Here is an example on how to write a policy that will allow users to start and stop EC2 instances that are in a particular group or if the instance itself is tagged with a certain string.
           <StyledImage src={IAMConditionRestrictTags} />
           <HeadingSmall>Enforce MFA</HeadingSmall>
+          Here is an example on how to write a policy that will allow users to do anything in EC2 but will restrict users from stopping or terminating EC2 instances if MFA is not present.
           <StyledImage src={IAMConditionEnforceMFA} />
           <Spacer />
           <SubTitle>IAM For S3</SubTitle>
@@ -345,9 +352,18 @@ const AWSIdentityAccessManagement = () => {
           'arn:aws:s3:::test' (bucket level) and the 's3:PutObject, s3:GettObject, s3:DeleteObject' apply to the object inside the bucket 'arn:aws:s3:::test/*' (object level).
           <StyledImage src={IAMForS3} />
           <SubTitle>Principal Org Id</SubTitle>
-          'aws:PrincipalOrgId' can be used in any resource policy to restrict access to accounts that are members of an AWS Organisation
+          'aws:PrincipalOrgId' can be used in any resource policy to restrict access to accounts that are members of an AWS Organisation.
           <StyledImage src={IAMPrincipalOrgId} />
-          <StyledImage src={IAMPrincipalOrgId} />
+          <StyledImage src={IAMPrincipalOrgId2} />
+          <SubTitle>IAM Roles vs Resource-Based Policies</SubTitle>
+          The difference between IAM roles and resource-based policies when it comes to calling API's over different accounts can either happen by attaching a resource-based policy to a resource (e.g. S3 bucket policy) or by using a role as a proxy.
+          It's worth noting that when you assume a role, you give up your original permissions and take the permissions assigned to the role, when using a resource-based policy, the user doesn't have to give up their permissions.
+          <StyledImage src={IAMRolesResourcePolicies} />
+          <SubTitle>AWS IAM Identity Center</SubTitle>
+          AWS IAM Identity Center (formerly known as AWS Single Sign-On) is a centralised cloud service designed to simplify managing user identities and permissions across AWS accounts and integrated business applications. The identity providers (users) could
+          be stored in either the built-in identity store in IAM Identity Center or you can connect to a third party identity provider like Okta.
+          <StyledImage src={IAMIdentityCenter} />
+
         </Text>
       </Container>
     </Wrapper>
