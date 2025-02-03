@@ -37,6 +37,7 @@ import IAMPermissionBoundaryExample from "../../resources/images/blog/AWSIdentit
 import IAMIdentityCenter from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_identity_center.jpeg";
 import IAMIdentityCenter2 from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_identity_center2.jpeg";
 import PolicyEvaluationSingleAccountRole from "../../resources/images/blog/AWSIdentityAccessManagement/PolicyEvaluationSingleAccountRole.png";
+import ControlTowerExample from "../../resources/images/blog/AWSIdentityAccessManagement/aws_iam_control_tower.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -381,7 +382,11 @@ const AWSIdentityAccessManagement = () => {
           <StyledImage src={IAMIdentityCenter} />
           You can assign group permissions by assigning the group to a policy and then attaching that policy to an OU.
           <StyledImage src={IAMIdentityCenter2} />
-
+          <SubTitle>Control Tower</SubTitle>
+          AWS Control Tower is a managed service that simplifies setting up and governing a secure, multi-account AWS environment following best practices. It uses AWS Landing Zone principles to enforce security, compliance, and governance across multiple AWS accounts.
+          <HeadingSmall>Guardrails</HeadingSmall>
+          Guardrails in AWS Control Tower are pre-configured governance rules that help maintain security, compliance, and best practices across AWS accounts. These guardrails ensure that AWS environments adhere to organizational policies without manual intervention.
+          <StyledImage src={ControlTowerExample} />
         </Text>
       </Container>
     </Wrapper>
