@@ -221,7 +221,7 @@ export default function Blog() {
     },
     {
       title: 'AWS IAM',
-      readingTime: 'approx 6 minutes',
+      readingTime: 'approx 8 minutes',
       type: 'Study',
       date: '26/10/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
@@ -438,7 +438,7 @@ export default function Blog() {
     },
     {
       title: 'AWS IAM',
-      readingTime: 'approx 6 minutes',
+      readingTime: 'approx 8 minutes',
       type: 'Study',
       date: '26/10/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
