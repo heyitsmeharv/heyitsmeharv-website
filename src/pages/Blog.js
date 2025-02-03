@@ -52,7 +52,7 @@ import {
   AWSSageMakerSVG,
   AWSCloudWatchSVG,
   AWSCloudTrailSVG,
-  AWSConfigSVG  
+  AWSConfigSVG
 } from '../resources/styles/icons';
 
 
@@ -387,6 +387,16 @@ export default function Blog() {
       published: true
     },
     {
+      title: 'AWS Security & Encryption',
+      readingTime: 'approx ~ mins',
+      type: 'Study',
+      date: '03/02/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }],
+      intro: `...`,
+      navigate: 'aws-security-encryption',
+      published: false
+    },
+    {
       title: 'React.js Text Based Adventure Game',
       readingTime: 'N/A',
       type: 'Practical',
@@ -602,6 +612,16 @@ export default function Blog() {
       It enables you to gain actionable insights into system performance, optimize resource utilization, and troubleshoot operational issues in real time...`,
       navigate: 'aws-monitoring-audit',
       published: true
+    },
+    {
+      title: 'AWS Security & Encryption',
+      readingTime: 'approx ~ mins',
+      type: 'Study',
+      date: '03/02/2025',
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }],
+      intro: `...`,
+      navigate: 'aws-security-encryption',
+      published: false
     },
     {
       title: 'React.js Text Based Adventure Game',
