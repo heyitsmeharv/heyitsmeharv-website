@@ -27,7 +27,7 @@ import { StyledNavButton, StyledNavLink } from '../Button/Button';
 import Table from '../Table/Table';
 
 // images
-// import CloudWatchMetric from "../../resources/images/blog/AWSMonitoringAudit/aws_monitoring_audit_cw_metrics.jpeg"
+import TLSSSLExample from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ssl_tls.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -271,7 +271,9 @@ const AWSSecurityEncryption = () => {
           Encryption is necessary to protect sensitive information being sent or recieved over a network from being hijacked or leaked. The information (data)
           is encrypted before sending and decrpyting after recieving.
           <HeadingSmall>Encryption in Flight (TLS/SSL)</HeadingSmall>
-
+          <Spacer />
+          <StyledImage src={TLSSSLExample} />
+          <Spacer />
           <SubTitle id="aws-kms">KMS (Key Managed Service)</SubTitle>
           <Spacer />
         </Text>
