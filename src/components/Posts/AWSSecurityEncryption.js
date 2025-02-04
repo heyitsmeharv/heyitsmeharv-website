@@ -28,6 +28,7 @@ import Table from '../Table/Table';
 
 // images
 import TLSSSLExample from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ssl_tls.jpeg";
+import ServerSideEncryption from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_server_rest.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -273,6 +274,10 @@ const AWSSecurityEncryption = () => {
           <HeadingSmall>Encryption in Flight (TLS/SSL)</HeadingSmall>
           <Spacer />
           <StyledImage src={TLSSSLExample} />
+          <Spacer />
+          <HeadingSmall>Server-side encryption at rest</HeadingSmall>
+          <Spacer />
+          <StyledImage src={ServerSideEncryption} />
           <Spacer />
           <SubTitle id="aws-kms">KMS (Key Managed Service)</SubTitle>
           <Spacer />
