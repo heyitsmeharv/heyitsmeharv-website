@@ -285,6 +285,8 @@ const AWSSecurityEncryption = () => {
           <StyledImage src={ClientSideEncryption} />
           <Spacer />
           <SubTitle id="aws-kms">KMS (Key Managed Service)</SubTitle>
+          AWS Key Management Service (AWS KMS) is a managed service that enables you to create, manage, and control cryptographic keys across AWS services and applications.
+          It helps with securing data using encryption and provides centralized key management with fine-grained access control.
           <Spacer />
         </Text>
       </Container>
