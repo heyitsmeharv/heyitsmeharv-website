@@ -266,12 +266,12 @@ const AWSSecurityEncryption = () => {
         <Spacer />
         <Text>
           In this post we'll be diving into Amazon's security and encryption solutions.
-          <StyledAnchor href="#aws-encryption-overview"><StyledListItem>Encrption Overview</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-encryption-overview"><StyledListItem>Encryption Overview</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-kms"><StyledListItem>KMS (Key Managed Service)</StyledListItem></StyledAnchor>
           <Spacer />
-          <SubTitle id="aws-encryption-overview">Encrption Overview</SubTitle>
-          Encryption is necessary to protect sensitive information being sent or recieved over a network from being hijacked or leaked. The information (data)
-          is encrypted before sending and decrpyting after recieving.
+          <SubTitle id="aws-encryption-overview">Encryption Overview</SubTitle>
+          Encryption is necessary to protect sensitive information being sent or received over a network from being hijacked or leaked. The information (data)
+          is encrypted before sending and decrypting after receiving.
           <HeadingSmall>Encryption in Flight (TLS/SSL)</HeadingSmall>
           <Spacer />
           <StyledImage src={TLSSSLExample} />
