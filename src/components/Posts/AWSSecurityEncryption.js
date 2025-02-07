@@ -287,7 +287,19 @@ const AWSSecurityEncryption = () => {
           <SubTitle id="aws-kms">KMS (Key Managed Service)</SubTitle>
           AWS Key Management Service (AWS KMS) is a managed service that enables you to create, manage, and control cryptographic keys across AWS services and applications.
           It helps with securing data using encryption and provides centralized key management with fine-grained access control.
+          <HeadingSmall>KMS Key Main Types</HeadingSmall>
+          <UnStyledListItem>Symmetric (AES-256 keys)</UnStyledListItem>
+          <StyledListItem>Single encryption key that is used to Encrypt and Decrypt</StyledListItem>
+          <StyledListItem>AWS services that are integrated with KMS use Symmetric CMKs</StyledListItem>
+          <StyledListItem>You never get access to the KMS Key unencrypted (must call KMS API to use)</StyledListItem>
           <Spacer />
+          <UnStyledListItem>Asymmetric (RSA & ECC key pairs)</UnStyledListItem>
+          <StyledListItem>Public (Encrypt) and Private Key (Decrypt) pair</StyledListItem>
+          <StyledListItem>Used for Encrypt/Decrypt, or Sign/Verify operations</StyledListItem>
+          <StyledListItem>The public key is downloadable, but you can't access the Private Key unencrypted</StyledListItem>
+          <StyledListItem>Use case: encryption outside of AWS by users who can't call the KMS API</StyledListItem>
+          <Spacer />
+          <HeadingSmall>KMS Key Types</HeadingSmall>
         </Text>
       </Container>
     </Wrapper >
