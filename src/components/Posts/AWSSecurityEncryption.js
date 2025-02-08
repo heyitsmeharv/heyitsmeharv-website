@@ -30,6 +30,7 @@ import Table from '../Table/Table';
 import TLSSSLExample from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ssl_tls.jpeg";
 import ServerSideEncryption from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_server_rest.jpeg";
 import ClientSideEncryption from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_client.jpeg";
+import CrossAccountSnapshot from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_cross_account_snapshot.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -268,6 +269,8 @@ const AWSSecurityEncryption = () => {
           In this post we'll be diving into Amazon's security and encryption solutions.
           <StyledAnchor href="#aws-encryption-overview"><StyledListItem>Encryption Overview</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-kms"><StyledListItem>KMS (Key Managed Service)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-multi-region-keys"><StyledListItem>KMS Multi-Region Keys</StyledListItem></StyledAnchor>
+
           <Spacer />
           <SubTitle id="aws-encryption-overview">Encryption Overview</SubTitle>
           Encryption is necessary to protect sensitive information being sent or received over a network from being hijacked or leaked. The information (data)
@@ -299,7 +302,35 @@ const AWSSecurityEncryption = () => {
           <StyledListItem>The public key is downloadable, but you can't access the Private Key unencrypted</StyledListItem>
           <StyledListItem>Use case: encryption outside of AWS by users who can't call the KMS API</StyledListItem>
           <Spacer />
-          <HeadingSmall>KMS Key Types</HeadingSmall>
+          <HeadingSmall>Copying Snapshots Across Regions</HeadingSmall>
+          <Spacer />
+          <StyledImage src={CrossAccountSnapshot} />
+          <Spacer />
+          <HeadingSmall>Types of KMS Keys</HeadingSmall>
+          <StyledListItem>AWS Owned Keys (free): SSE-S3, SSE-SQS, SSE-DDB (default key)</StyledListItem>
+          <StyledListItem>AWS Managed Key: free (aws/servicename, example: aws/rds or aws/ebs)</StyledListItem>
+          <StyledListItem>Customer managed keys created in KMS: $1 / month</StyledListItem>
+          <StyledListItem>Customer managed keys imported: $1 / month</StyledListItem>
+          <StyledListItem>Pay for API call to KMS ($0.03 / 1000 calls)</StyledListItem>
+          <Spacer />
+          <HeadingSmall>Automatic Key Rotation</HeadingSmall>
+          <StyledListItem>AWS-Managed KMS Key: every 1 year</StyledListItem>
+          <StyledListItem>Customer-Managed KMS Key: (must be enabled) automatic & on-demand</StyledListItem>
+          <StyledListItem>Imported KMS Key: only manual rotation possible using alias</StyledListItem>
+          <Spacer />
+          <HeadingSmall>KMS Key Policies</HeadingSmall>
+          KMS policies work very similar to S3 policies however the difference is that you can't control access without the.
+          <UnStyledListItem>Default KMS Key Policy</UnStyledListItem>
+          <StyledListItem>Created if you don't provide a specific KMS Key Policy</StyledListItem>
+          <StyledListItem>Complete access to the key for everyone in the AWS account</StyledListItem>
+          <Spacer />
+          <UnStyledListItem>Custom KMS Key Policy</UnStyledListItem>
+          <StyledListItem>Define users, roles that can access the KMS key</StyledListItem>
+          <StyledListItem>Define who can administer the key</StyledListItem>
+          <StyledListItem>Useful for cross-account access of your KMS key</StyledListItem>
+          <Spacer />
+          <SubTitle id="aws-multi-region-keys">KMS Multi-Region Keys</SubTitle>
+          
         </Text>
       </Container>
     </Wrapper >
