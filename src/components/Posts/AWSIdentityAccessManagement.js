@@ -356,7 +356,7 @@ const AWSIdentityAccessManagement = () => {
           'arn:aws:s3:::test' (bucket level) and the 's3:PutObject, s3:GettObject, s3:DeleteObject' apply to the object inside the bucket 'arn:aws:s3:::test/*' (object level).
           <StyledImage src={IAMForS3} />
           <SubTitle>Principal Org Id</SubTitle>
-          'aws:PrincipalOrgId' can be used in any resource policy to restrict access to accounts that are members of an AWS Organisation.
+          'aws:PrincipalOrgId' can be used in any resource policy to allow access to accounts that are members of an AWS Organisation.
           <StyledImage src={IAMPrincipalOrgId} />
           <StyledImage src={IAMPrincipalOrgId2} />
           <SubTitle>IAM Roles vs Resource-Based Policies</SubTitle>
