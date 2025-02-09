@@ -31,6 +31,7 @@ import TLSSSLExample from "../../resources/images/blog/AWSSecurityEncryption/aws
 import ServerSideEncryption from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_server_rest.jpeg";
 import ClientSideEncryption from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_client.jpeg";
 import CrossAccountSnapshot from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_cross_account_snapshot.jpeg";
+import MultiRegionKeys from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_multi_region_keys.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -330,7 +331,10 @@ const AWSSecurityEncryption = () => {
           <StyledListItem>Useful for cross-account access of your KMS key</StyledListItem>
           <Spacer />
           <SubTitle id="aws-multi-region-keys">KMS Multi-Region Keys</SubTitle>
-          
+          A multi region key is where a primary key is replicated into other regions. The key material is replicated which means the id of the key will be the same across all regions.
+          <Spacer />
+          <StyledImage src={MultiRegionKeys} />
+          <Spacer />
         </Text>
       </Container>
     </Wrapper >
