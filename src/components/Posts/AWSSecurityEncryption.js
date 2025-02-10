@@ -32,6 +32,7 @@ import ServerSideEncryption from "../../resources/images/blog/AWSSecurityEncrypt
 import ClientSideEncryption from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_client.jpeg";
 import CrossAccountSnapshot from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_cross_account_snapshot.jpeg";
 import MultiRegionKeys from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_multi_region_keys.jpeg";
+import DynamoDBKMSMultiRegion from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_dynamo_db_kms_multi_region_client_encryption.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -334,6 +335,10 @@ const AWSSecurityEncryption = () => {
           A multi region key is where a primary key is replicated into other regions. The key material is replicated which means the id of the key will be the same across all regions.
           <Spacer />
           <StyledImage src={MultiRegionKeys} />
+          <Spacer />
+          <HeadingSmall>DynamoDB Global Tables and KMS Multi-Region Keys CLient-Side Encryption</HeadingSmall>
+          <Spacer />
+          <StyledImage src={DynamoDBKMSMultiRegion} />
           <Spacer />
         </Text>
       </Container>
