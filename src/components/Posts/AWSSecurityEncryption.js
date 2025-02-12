@@ -273,7 +273,8 @@ const AWSSecurityEncryption = () => {
           <StyledAnchor href="#aws-encryption-overview"><StyledListItem>Encryption Overview</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-kms"><StyledListItem>KMS (Key Managed Service)</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-multi-region-keys"><StyledListItem>KMS Multi-Region Keys</StyledListItem></StyledAnchor>
-
+          <StyledAnchor href="#aws-s3-replication-encryption"><StyledListItem>S3 Replication Encryption</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-ami-sharing-via-kms"><StyledListItem>AMI Sharing Process Encrypted via KMS</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-encryption-overview">Encryption Overview</SubTitle>
           Encryption is necessary to protect sensitive information being sent or received over a network from being hijacked or leaked. The information (data)
@@ -345,6 +346,23 @@ const AWSSecurityEncryption = () => {
           <Spacer />
           <StyledImage src={AuroraDBKMSMultiRegion} />
           <Spacer />
+          <SubTitle id="aws-s3-replication-encryption">S3 Replication Encryption</SubTitle>
+          When setting up Amazon S3 Replication with encryption, there are several key considerations to ensure data security and compliance. Here's a breakdown of the most important factors:
+          <UnStyledListItem><BoldText>Source and Destination Encryption Compatibility</BoldText></UnStyledListItem>
+          <StyledListItem>Unencrypted objects and objects encrypted with SSE-S3 are replicated by default.</StyledListItem>
+          <StyledListItem>If the source bucket has Server-Side Encryption (SSE) enabled, ensure the destination bucket supports the same or compatible encryption settings.</StyledListItem>
+          <StyledListItem>If using SSE-KMS for encryption, both source and destination buckets must have the correct AWS KMS keys.</StyledListItem>
+          <StyledListItem>The IAM role used for replication must have decrypt permissions on the source KMS key and encrypt permissions on the destination KMS key.</StyledListItem>
+          <Spacer />
+          <UnStyledListItem><BoldText>Enabling Replication with Encrypted Objects</BoldText></UnStyledListItem>
+          <StyledListItem>Newly written objects (after enabling replication) will be replicated with encryption settings intact.</StyledListItem>
+          <StyledListItem>Existing objects will not be replicated unless Batch Replication is used.</StyledListItem>
+          <Spacer />
+          <UnStyledListItem><BoldText>Changing Encryption During Replication</BoldText></UnStyledListItem>
+          <StyledListItem>If an object in the source bucket is re-encrypted (e.g., changing from SSE-S3 to SSE-KMS), the replication does not automatically re-replicate it. You may need Batch Replication.</StyledListItem>
+          <Spacer />
+          <SubTitle id="aws-ami-sharing-via-kms">AMI Sharing Process Encrypted via KMS</SubTitle>
+
         </Text>
       </Container>
     </Wrapper >
