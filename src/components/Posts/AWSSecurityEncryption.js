@@ -34,6 +34,7 @@ import CrossAccountSnapshot from "../../resources/images/blog/AWSSecurityEncrypt
 import MultiRegionKeys from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_multi_region_keys.jpeg";
 import DynamoDBKMSMultiRegion from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_dynamo_db_kms_multi_region_client_encryption.jpeg";
 import AuroraDBKMSMultiRegion from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_aurora_db_kms_multi_region_client_encryption.jpeg";
+import AMISharingKMS from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ami_kms.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -362,7 +363,9 @@ const AWSSecurityEncryption = () => {
           <StyledListItem>If an object in the source bucket is re-encrypted (e.g., changing from SSE-S3 to SSE-KMS), the replication does not automatically re-replicate it. You may need Batch Replication.</StyledListItem>
           <Spacer />
           <SubTitle id="aws-ami-sharing-via-kms">AMI Sharing Process Encrypted via KMS</SubTitle>
-
+          <Spacer />
+          <StyledImage src={AMISharingKMS} />
+          <Spacer />
         </Text>
       </Container>
     </Wrapper >
