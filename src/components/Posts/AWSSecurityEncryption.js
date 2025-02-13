@@ -276,6 +276,8 @@ const AWSSecurityEncryption = () => {
           <StyledAnchor href="#aws-multi-region-keys"><StyledListItem>KMS Multi-Region Keys</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-s3-replication-encryption"><StyledListItem>S3 Replication Encryption</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-ami-sharing-via-kms"><StyledListItem>AMI Sharing Process Encrypted via KMS</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-ssm-parameter-store"><StyledListItem>SSM Parameter Store Overview</StyledListItem></StyledAnchor>
+
           <Spacer />
           <SubTitle id="aws-encryption-overview">Encryption Overview</SubTitle>
           Encryption is necessary to protect sensitive information being sent or received over a network from being hijacked or leaked. The information (data)
@@ -363,9 +365,18 @@ const AWSSecurityEncryption = () => {
           <StyledListItem>If an object in the source bucket is re-encrypted (e.g., changing from SSE-S3 to SSE-KMS), the replication does not automatically re-replicate it. You may need Batch Replication.</StyledListItem>
           <Spacer />
           <SubTitle id="aws-ami-sharing-via-kms">AMI Sharing Process Encrypted via KMS</SubTitle>
+          It's possible to launch an EC2 instance using an AMI from one account into a different account by following these steps:
+          <StyledListItem><BoldText>Grant Launch Permission</BoldText>- Modify the AMI properties in Account A to allow Account B to launch it.</StyledListItem>
+          <StyledListItem><BoldText>Share the KMS Key</BoldText>- Update the key policy to grant Account B access to the encrypted AMI.</StyledListItem>
+          <StyledListItem><BoldText>Set Up IAM in Account B</BoldText>- Create an IAM role or user with permissions to use both the AMI and KMS key, including access to DescribeKey, ReEncrypt, CreateGrant, and Decrypt API calls.</StyledListItem>
+          <StyledListItem><BoldText>Launch the EC2 Instance</BoldText>- Once permissions are in place, Account B can launch an instance from the shared AMI. Optionally, Account B can re-encrypt the instance's volumes with its own KMS key.</StyledListItem>
+          <Spacer />
+          This process ensures secure AMI sharing and proper encryption management across AWS accounts.
           <Spacer />
           <StyledImage src={AMISharingKMS} />
           <Spacer />
+          <SubTitle id="aws-ssm-parameter-store">SSM Parameter Store Overview</SubTitle>
+
         </Text>
       </Container>
     </Wrapper >
