@@ -93,12 +93,12 @@ const Introduction = ({ language, open, setOpen }) => {
           <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <ReactGA.OutboundLink
               eventLabel="Curriculum Vitae"
-              to="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV2.pdf"
+              to="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV.pdf"
               target="_blank"
               >
               <StyledAnchor
                 target="_blank"
-                href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV2.pdf"
+                href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV.pdf"
               >
                 {curriculumVitaeButtonText(language)}
               </StyledAnchor>
