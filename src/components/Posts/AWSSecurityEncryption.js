@@ -35,6 +35,7 @@ import MultiRegionKeys from "../../resources/images/blog/AWSSecurityEncryption/a
 import DynamoDBKMSMultiRegion from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_dynamo_db_kms_multi_region_client_encryption.jpeg";
 import AuroraDBKMSMultiRegion from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_aurora_db_kms_multi_region_client_encryption.jpeg";
 import AMISharingKMS from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ami_kms.jpeg";
+import SSMParameterStore from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ssm_parameter_store.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -234,14 +235,13 @@ const AWSSecurityEncryption = () => {
     }
   }, []);
 
-  const columns = ['Feature', 'Description'];
+  const columns = ['Feature', 'SSM Parameter Store', 'AWS Secrets Manager'];
   const data = [
-    { Feature: 'Metrics', Description: 'Tracks CPU, memory, network utilization, and custom metrics from your applications.' },
-    { Feature: 'Logs', Description: 'Centralizes log collection and analysis with search and filtering capabilities.' },
-    { Feature: 'Alarms', Description: 'Notifies users or triggers actions based on metric thresholds.' },
-    { Feature: 'Dashboards', Description: 'Custom visualizations for real-time monitoring.' },
-    { Feature: 'Custom Anomaly Detection', Description: 'Automatically identifies metric patterns and deviations.' },
-    { Feature: 'Synthetic Monitoring', Description: 'Tests application endpoints proactively with canary scripts.' }
+    { Feature: 'Use Case', 'SSM Parameter Store': 'Configuration & secrets', 'AWS Secrets Manager': 'Primarily secrets' },
+    { Feature: 'Encryption', 'SSM Parameter Store': 'KMS (optional)', 'AWS Secrets Manager': 'KMS (mandatory)' },
+    { Feature: 'Rotation', 'SSM Parameter Store': 'Manual or Lambda', 'AWS Secrets Manager': 'Automated rotation' },
+    { Feature: 'Versioning', 'SSM Parameter Store': 'Yes', 'AWS Secrets Manager': 'Yes' },
+    { Feature: 'Pricing', 'SSM Parameter Store': 'Free (except for API calls)', 'AWS Secrets Manager': 'Paid service' }
   ];
 
   return (
@@ -277,6 +277,7 @@ const AWSSecurityEncryption = () => {
           <StyledAnchor href="#aws-s3-replication-encryption"><StyledListItem>S3 Replication Encryption</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-ami-sharing-via-kms"><StyledListItem>AMI Sharing Process Encrypted via KMS</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-ssm-parameter-store"><StyledListItem>SSM Parameter Store Overview</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-secrets-manager"><StyledListItem>AWS Secrets Manager</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="aws-encryption-overview">Encryption Overview</SubTitle>
@@ -375,8 +376,28 @@ const AWSSecurityEncryption = () => {
           <Spacer />
           <StyledImage src={AMISharingKMS} />
           <Spacer />
-          <SubTitle id="aws-ssm-parameter-store">SSM Parameter Store Overview</SubTitle>
-
+          <SubTitle id="aws-ssm-parameter-store">SSM Parameter Store</SubTitle>
+          AWS Systems Manager Parameter Store is a secure, scalable, and centralized storage solution for managing configuration data and sensitive information such as:
+          <StyledListItem><BoldText>Database connection strings</BoldText></StyledListItem>
+          <StyledListItem><BoldText>API keys</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Passwords</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Application configurations</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Environment variables</BoldText></StyledListItem>
+          <Spacer />
+          <StyledImage src={SSMParameterStore} />
+          <Spacer />
+          <SubTitle id="aws-secrets-manager">AWS Secrets Manager</SubTitle>
+          AWS Secrets Manager is a fully managed service that helps you securely store, manage, and automatically rotate secrets such as:
+          <StyledListItem><BoldText>Database credentials (RDS, Redshift, etc.)</BoldText></StyledListItem>
+          <StyledListItem><BoldText>API keys</BoldText></StyledListItem>
+          <StyledListItem><BoldText>OAuth tokens</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Application credentials</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Encryption keys</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Other sensitive configuration data</BoldText></StyledListItem>
+          <Spacer />
+          AWS Secrets Manager provides a secure, scalable, and automated solution for managing sensitive credentials and secrets. It is ideal for applications requiring automatic secret rotation, centralized secret storage, and strict security policies.
+          <HeadingSmall>AWS Secrets Manager vs SSM Parameter Store</HeadingSmall>
+          <Table data={data} columns={columns} />
         </Text>
       </Container>
     </Wrapper >
