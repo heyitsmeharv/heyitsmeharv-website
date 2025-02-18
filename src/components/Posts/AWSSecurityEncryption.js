@@ -36,6 +36,7 @@ import DynamoDBKMSMultiRegion from "../../resources/images/blog/AWSSecurityEncry
 import AuroraDBKMSMultiRegion from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_aurora_db_kms_multi_region_client_encryption.jpeg";
 import AMISharingKMS from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ami_kms.jpeg";
 import SSMParameterStore from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ssm_parameter_store.jpeg";
+import MultiRegionSecrets from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_multi_region_secrets.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -398,6 +399,10 @@ const AWSSecurityEncryption = () => {
           AWS Secrets Manager provides a secure, scalable, and automated solution for managing sensitive credentials and secrets. It is ideal for applications requiring automatic secret rotation, centralized secret storage, and strict security policies.
           <HeadingSmall>AWS Secrets Manager vs SSM Parameter Store</HeadingSmall>
           <Table data={data} columns={columns} />
+          <HeadingSmall>Multi-Region Secrets</HeadingSmall>
+          <Spacer />
+          <StyledImage src={MultiRegionSecrets} />
+          <Spacer />
         </Text>
       </Container>
     </Wrapper >
