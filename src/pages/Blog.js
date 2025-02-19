@@ -401,7 +401,8 @@ export default function Blog() {
       type: 'Study',
       date: '03/02/2025',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'KMS', background: '#FF9900', icon: <AWSKMSSVG /> }, { name: 'SSM', background: '#FF9900', icon: <AWSSSMSVG /> }, { name: 'Secrets Manager', background: '#FF9900', icon: <AWSSecretsManagerSVG /> }, { name: 'ACM', background: '#FF9900', icon: <AWSCertificateManagerSVG /> }, { name: 'Sheild', background: '#FF9900', icon: <AWSSheildSVG /> }, { name: 'Firewall', background: '#FF9900', icon: <AWSFirewallSVG /> }, { name: 'WAF', background: '#FF9900', icon: <AWSWAFSVG /> }, { name: 'Inspector', background: '#FF9900', icon: <AWSInspectorSVG /> }, { name: 'Macie', background: '#FF9900', icon: <AWSMacieSVG /> }],
-      intro: `...`,
+      intro: `Encryption is necessary to protect sensitive information being sent or received over a network from being hijacked or leaked. The information (data)
+      is encrypted before sending and decrypting after receiving...`,
       navigate: 'aws-security-encryption',
       published: false
     },
@@ -628,7 +629,8 @@ export default function Blog() {
       type: 'Study',
       date: '03/02/2025',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'KMS', background: '#FF9900', icon: <AWSKMSSVG /> }, { name: 'SSM', background: '#FF9900', icon: <AWSSSMSVG /> }, { name: 'Secrets Manager', background: '#FF9900', icon: <AWSSecretsManagerSVG /> }, { name: 'ACM', background: '#FF9900', icon: <AWSCertificateManagerSVG /> }, { name: 'Sheild', background: '#FF9900', icon: <AWSSheildSVG /> }, { name: 'Firewall', background: '#FF9900', icon: <AWSFirewallSVG /> }, { name: 'WAF', background: '#FF9900', icon: <AWSWAFSVG /> }, { name: 'Inspector', background: '#FF9900', icon: <AWSInspectorSVG /> }, { name: 'Macie', background: '#FF9900', icon: <AWSMacieSVG /> }],
-      intro: `...`,
+      intro: `Encryption is necessary to protect sensitive information being sent or received over a network from being hijacked or leaked. The information (data)
+      is encrypted before sending and decrypting after receiving...`,
       navigate: 'aws-security-encryption',
       published: false
     },

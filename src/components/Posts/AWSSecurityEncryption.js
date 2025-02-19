@@ -406,7 +406,10 @@ const AWSSecurityEncryption = () => {
           <StyledImage src={MultiRegionSecrets} />
           <Spacer />
           <SubTitle id="aws-certificate-manager">AWS Certificate Manager (ACM)</SubTitle>
-          
+          AWS Certificate Manager (ACM) is a managed service that simplifies the process of provisioning, managing, and deploying SSL/TLS certificates for use with AWS services and internal resources. These certificates help secure network communications 
+          by encrypting data and ensuring the integrity of transmitted information.
+
+
 
 
         </Text>
