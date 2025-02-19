@@ -279,6 +279,7 @@ const AWSSecurityEncryption = () => {
           <StyledAnchor href="#aws-ami-sharing-via-kms"><StyledListItem>AMI Sharing Process Encrypted via KMS</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-ssm-parameter-store"><StyledListItem>SSM Parameter Store Overview</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-secrets-manager"><StyledListItem>AWS Secrets Manager</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-certificate-manager"><StyledListItem>AWS Certificate Manager (ACM)</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="aws-encryption-overview">Encryption Overview</SubTitle>
@@ -400,9 +401,14 @@ const AWSSecurityEncryption = () => {
           <HeadingSmall>AWS Secrets Manager vs SSM Parameter Store</HeadingSmall>
           <Table data={data} columns={columns} />
           <HeadingSmall>Multi-Region Secrets</HeadingSmall>
+          Secrets Manager can replicate secrets across multiple AWS regions by keeping read replicas in sync with the primary secret. It also provides the ability to promote a read replica secret to a standalone secret.
           <Spacer />
           <StyledImage src={MultiRegionSecrets} />
           <Spacer />
+          <SubTitle id="aws-certificate-manager">AWS Certificate Manager (ACM)</SubTitle>
+          
+
+
         </Text>
       </Container>
     </Wrapper >
