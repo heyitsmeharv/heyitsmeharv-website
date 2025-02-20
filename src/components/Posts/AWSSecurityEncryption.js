@@ -37,6 +37,8 @@ import AuroraDBKMSMultiRegion from "../../resources/images/blog/AWSSecurityEncry
 import AMISharingKMS from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ami_kms.jpeg";
 import SSMParameterStore from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ssm_parameter_store.jpeg";
 import MultiRegionSecrets from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_multi_region_secrets.jpeg";
+import AWSACM from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_acm.jpeg";
+
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -408,7 +410,9 @@ const AWSSecurityEncryption = () => {
           <SubTitle id="aws-certificate-manager">AWS Certificate Manager (ACM)</SubTitle>
           AWS Certificate Manager (ACM) is a managed service that simplifies the process of provisioning, managing, and deploying SSL/TLS certificates for use with AWS services and internal resources. These certificates help secure network communications 
           by encrypting data and ensuring the integrity of transmitted information.
-
+          <Spacer />
+          <StyledImage src={AWSACM} />
+          <Spacer />
 
 
 
