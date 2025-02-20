@@ -44,17 +44,20 @@ const Text = styled.span`
   font-size: 2rem;
 `;
 
-const StyledBackIcon = styled(ChevronBackCircle)`
-  color: ${({ theme }) => theme.secondary};
-  width: 4rem;
-`;
-
 const StyledListItem = styled.li`
   color: ${({ theme }) => theme.text};
   margin-left: 5%;
 `;
 
-const Spacer = styled.br``
+const StyledBackIcon = styled(ChevronBackCircle)`
+  color: ${({ theme }) => theme.secondary};
+  width: 4rem;
+`;
+
+const Spacer = styled.br`
+  display: block;
+  margin: 10px 0;
+`;
 
 const TheStart = () => {
 
