@@ -38,7 +38,8 @@ import AMISharingKMS from "../../resources/images/blog/AWSSecurityEncryption/aws
 import SSMParameterStore from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_ssm_parameter_store.jpeg";
 import MultiRegionSecrets from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_multi_region_secrets.jpeg";
 import AWSACM from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_acm.jpeg";
-
+import AWSACMImportingPublicCertificates from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_acm_importing_public_certs.jpeg";
+import AWSACMIntegrationWithALB from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_acm_integration_with_alb.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -408,14 +409,26 @@ const AWSSecurityEncryption = () => {
           <StyledImage src={MultiRegionSecrets} />
           <Spacer />
           <SubTitle id="aws-certificate-manager">AWS Certificate Manager (ACM)</SubTitle>
-          AWS Certificate Manager (ACM) is a managed service that simplifies the process of provisioning, managing, and deploying SSL/TLS certificates for use with AWS services and internal resources. These certificates help secure network communications 
+          AWS Certificate Manager (ACM) is a managed service that simplifies the process of provisioning, managing, and deploying SSL/TLS certificates for use with AWS services and internal resources. These certificates help secure network communications
           by encrypting data and ensuring the integrity of transmitted information.
           <Spacer />
           <StyledImage src={AWSACM} />
           <Spacer />
-
-
-
+          <HeadingSmall>Requesting Public Certificates</HeadingSmall>
+          To request a public certificate in AWS Certificate Manager (ACM), start by navigating to the ACM console and selecting the option to request a certificate. Choose a public certificate and enter the required domain names, including any wildcard domains if needed.
+          Select a validation method—either DNS validation, which involves adding a CNAME record to your DNS provider, or email validation, which requires approving an email sent to the domain owner. Submit the request and complete the validation process based on your chosen method.
+          Once validated, ACM issues the certificate, which can be used with AWS services like ELB, CloudFront, and API Gateway. ACM manages the certificate lifecycle, including automatic renewals for DNS-validated certificates, while email validation requires manual approval for renewals. Public certificates from ACM cannot be exported for external use.
+          <HeadingSmall>Importing Public Certificates</HeadingSmall>
+          There is no automatic renewal for certificates, you must import a new certificate before expiry. You can generate certificates outside of ACM and import them into the service. ACM sends daily expiration events starting 45 days prior to expiration. The number of days can be configured.
+          AWS Config has a managed rule named acm-certificate-expiration-check to check for expiring certificates.
+          <Spacer />
+          <StyledImage src={AWSACMImportingPublicCertificates} />
+          <Spacer />
+          <HeadingSmall>Integration with ALB</HeadingSmall>
+          AWS Certificate Manager (ACM) integrates with Application Load Balancers (ALB) to provide secure SSL/TLS termination for web applications. This integration simplifies the management of SSL certificates by automating issuance, renewal, and deployment.
+          <Spacer />
+          <StyledImage src={AWSACMIntegrationWithALB} />
+          <Spacer />
         </Text>
       </Container>
     </Wrapper >
