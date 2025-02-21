@@ -429,6 +429,19 @@ const AWSSecurityEncryption = () => {
           <Spacer />
           <StyledImage src={AWSACMIntegrationWithALB} />
           <Spacer />
+          <HeadingSmall>API Gateway - Endpoint Types</HeadingSmall>
+          <UnStyledListItem><BoldText>Edge-Optimised (default)</BoldText>:</UnStyledListItem>
+          <StyledListItem>Requests are routed through the CloudFront edge locations (improves latency)</StyledListItem>
+          <StyledListItem>The API Gateway still lives in only one region</StyledListItem>
+          <UnStyledListItem><BoldText>Regional</BoldText>:</UnStyledListItem>
+          <StyledListItem>For clients within the same region</StyledListItem>
+          <StyledListItem>Could manually combine with CloudFront (more control over the caching strategies and the distribution</StyledListItem>
+          <UnStyledListItem><BoldText>Private</BoldText>:</UnStyledListItem>
+          <StyledListItem>Can only be accessed from your VPC using an interface VPC endpoint (ENI)</StyledListItem>
+          <StyledListItem>Use a resource policy to define access</StyledListItem>
+          <Spacer />
+          <HeadingSmall>Integration with API Gateway</HeadingSmall>
+
         </Text>
       </Container>
     </Wrapper >
