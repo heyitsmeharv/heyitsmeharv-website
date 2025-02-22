@@ -40,6 +40,7 @@ import MultiRegionSecrets from "../../resources/images/blog/AWSSecurityEncryptio
 import AWSACM from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_acm.jpeg";
 import AWSACMImportingPublicCertificates from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_acm_importing_public_certs.jpeg";
 import AWSACMIntegrationWithALB from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_acm_integration_with_alb.jpeg";
+import AWSACMIntegrationWithAPIGateway from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_acm_integration_with_api_gateway.jpeg";
 
 // codeblocks
 // import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
@@ -431,17 +432,19 @@ const AWSSecurityEncryption = () => {
           <Spacer />
           <HeadingSmall>API Gateway - Endpoint Types</HeadingSmall>
           <UnStyledListItem><BoldText>Edge-Optimised (default)</BoldText>:</UnStyledListItem>
-          <StyledListItem>Requests are routed through the CloudFront edge locations (improves latency)</StyledListItem>
-          <StyledListItem>The API Gateway still lives in only one region</StyledListItem>
+          <StyledListItemIndent>Requests are routed through the CloudFront edge locations (improves latency)</StyledListItemIndent>
+          <StyledListItemIndent>The API Gateway still lives in only one region</StyledListItemIndent>
           <UnStyledListItem><BoldText>Regional</BoldText>:</UnStyledListItem>
-          <StyledListItem>For clients within the same region</StyledListItem>
-          <StyledListItem>Could manually combine with CloudFront (more control over the caching strategies and the distribution</StyledListItem>
+          <StyledListItemIndent>For clients within the same region</StyledListItemIndent>
+          <StyledListItemIndent>Could manually combine with CloudFront (more control over the caching strategies and the distribution</StyledListItemIndent>
           <UnStyledListItem><BoldText>Private</BoldText>:</UnStyledListItem>
-          <StyledListItem>Can only be accessed from your VPC using an interface VPC endpoint (ENI)</StyledListItem>
-          <StyledListItem>Use a resource policy to define access</StyledListItem>
+          <StyledListItemIndent>Can only be accessed from your VPC using an interface VPC endpoint (ENI)</StyledListItemIndent>
+          <StyledListItemIndent>Use a resource policy to define access</StyledListItemIndent>
           <Spacer />
           <HeadingSmall>Integration with API Gateway</HeadingSmall>
-
+          <Spacer>
+            <StyledImage src={AWSACMIntegrationWithAPIGateway} />
+          </Spacer>
         </Text>
       </Container>
     </Wrapper >
