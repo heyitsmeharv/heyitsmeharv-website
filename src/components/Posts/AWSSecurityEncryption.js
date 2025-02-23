@@ -284,6 +284,7 @@ const AWSSecurityEncryption = () => {
           <StyledAnchor href="#aws-ssm-parameter-store"><StyledListItem>SSM Parameter Store Overview</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-secrets-manager"><StyledListItem>AWS Secrets Manager</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-certificate-manager"><StyledListItem>AWS Certificate Manager (ACM)</StyledListItem></StyledAnchor>
+          <StyledAnchor href="#aws-waf"><StyledListItem>AWS Web Application Firewall</StyledListItem></StyledAnchor>
 
           <Spacer />
           <SubTitle id="aws-encryption-overview">Encryption Overview</SubTitle>
@@ -442,9 +443,22 @@ const AWSSecurityEncryption = () => {
           <StyledListItemIndent>Use a resource policy to define access</StyledListItemIndent>
           <Spacer />
           <HeadingSmall>Integration with API Gateway</HeadingSmall>
-          <Spacer>
-            <StyledImage src={AWSACMIntegrationWithAPIGateway} />
-          </Spacer>
+          <UnStyledListItem><BoldText>Edge-Optimised Endpoints</BoldText>:</UnStyledListItem>
+          <StyledListItemIndent>These endpoints use CloudFront distributions, so the ACM certificate should be provisioned in the US East (N. Virginia) region</StyledListItemIndent>
+          <UnStyledListItem><BoldText>Regional Endpoints</BoldText>:</UnStyledListItem>
+          <StyledListItemIndent>The ACM certificate must reside in the same AWS region where your API Gateway is deployed.</StyledListItemIndent>
+          <Spacer />
+          <StyledImage src={AWSACMIntegrationWithAPIGateway} />
+          <Spacer />
+          <SubTitle id="aws-awf">AWS Web Application Firewall</SubTitle>
+          AWS WAF (Web Application Firewall) is a cloud-native security service that helps protect your web applications from common web exploits and vulnerabilities. It works by letting you define customizable rules to filter incoming traffic and block malicious requests before they reach your backend infrastructure.
+          It's possible to deploy on:
+          <StyledListItem>Application Load Balancer</StyledListItem>
+          <StyledListItem>API Gateway</StyledListItem>
+          <StyledListItem>CloudFront</StyledListItem>
+          <StyledListItem>AppSync GraphQL API</StyledListItem>
+          <StyledListItem>Cognito User Pool</StyledListItem>
+
         </Text>
       </Container>
     </Wrapper >
