@@ -15,7 +15,7 @@ import {
   AWSSSMSVG,
   AWSSecretsManagerSVG,
   AWSCertificateManagerSVG,
-  AWSSheildSVG,
+  AWSShieldSVG,
   AWSFirewallSVG,
   AWSWAFSVG,
   AWSInspectorSVG,
@@ -43,10 +43,8 @@ import AWSACMIntegrationWithALB from "../../resources/images/blog/AWSSecurityEnc
 import AWSACMIntegrationWithAPIGateway from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_acm_integration_with_api_gateway.jpeg";
 import AWSWAFFixedIP from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_waf_fixed_ip.jpeg";
 import AWSGuardDuty from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_guard_duty.jpeg";
-
-
-// codeblocks
-// import { cloudwatchlogsInsights, cloudwatchlogsAlarmStatus } from "../../helpers/codeblocks.js";
+import AWSInspector from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_inspector.jpeg";
+import AWSMacie from "../../resources/images/blog/AWSSecurityEncryption/aws_security_encryption_macie.jpeg";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -269,7 +267,7 @@ const AWSSecurityEncryption = () => {
             <Icon><AWSSSMSVG /></Icon>
             <Icon><AWSSecretsManagerSVG /></Icon>
             <Icon><AWSCertificateManagerSVG /></Icon>
-            <Icon><AWSSheildSVG /></Icon>
+            <Icon><AWSShieldSVG /></Icon>
             <Icon><AWSFirewallSVG /></Icon>
             <Icon><AWSWAFSVG /></Icon>
             <Icon><AWSInspectorSVG /></Icon>
@@ -292,7 +290,7 @@ const AWSSecurityEncryption = () => {
           <StyledAnchor href="#aws-firewall-manager"><StyledListItem>AWS Firewall Manager</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-guard-duty"><StyledListItem>AWS Guard Duty</StyledListItem></StyledAnchor>
           <StyledAnchor href="#aws-inspector"><StyledListItem>AWS Inspector</StyledListItem></StyledAnchor>
-
+          <StyledAnchor href="#aws-macie"><StyledListItem>AWS Macie</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="aws-encryption-overview">Encryption Overview</SubTitle>
           Encryption is necessary to protect sensitive information being sent or received over a network from being hijacked or leaked. The information (data)
@@ -501,6 +499,15 @@ const AWSSecurityEncryption = () => {
           <Spacer />
           <SubTitle id="aws-inspector">AWS Inspector</SubTitle>
           AWS Inspector is an automated security assessment service designed to help you improve the security and compliance of applications deployed on AWS. It identifies vulnerabilities and deviations from security best practices across your AWS environment by analyzing your resource configurations and software.
+          Inspector continuously examines your AWS resources—such as EC2 instances, container images, and potentially other services—to identify potential security vulnerabilities, misconfigurations, and deviations from best practices.
+          <Spacer />
+          <StyledImage src={AWSInspector} />
+          <Spacer />
+          <SubTitle id="aws-macie">AWS Macie</SubTitle>
+          AWS Macie automatically identifies and categorizes sensitive data such as personally identifiable information (PII), financial data, or intellectual property, helping you understand what data you have and where it resides in your Amazon S3 buckets. By continuously monitoring your S3 storage for sensitive data, Macie helps you maintain compliance with data privacy regulations and internal security policies.
+          <Spacer />
+          <StyledImage src={AWSMacie} />
+          <Spacer />
         </Text>
       </Container>
     </Wrapper >

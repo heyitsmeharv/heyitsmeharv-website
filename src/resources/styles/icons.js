@@ -1658,7 +1658,7 @@ export const AWSWAFSVG = () => {
   )
 }
 
-export const AWSSheildSVG = () => {
+export const AWSShieldSVG = () => {
   return (
     <StyledSvg viewBox="0 0 80 80">
       <title>Icon-Architecture/64/Arch_AWS-Shield_64</title>
