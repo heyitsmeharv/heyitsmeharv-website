@@ -51,8 +51,7 @@ const PaginationButton = styled(motion.button)`
   `};
 `;
 
-const Pagination = ({ itemsPerPage, items }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+const Pagination = ({ currentPage, setCurrentPage, itemsPerPage, items }) => {
   const [displayItems, setDisplayItems] = useState([]);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);

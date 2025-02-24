@@ -174,6 +174,7 @@ const Button = styled.button`
 export default function Blog() {
   const [isEmpty, setIsEmpty] = useState(false);
   const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
   const [filterButtons, setFilterButtons] = useState([
     {
       name: "AWS",
@@ -667,6 +668,7 @@ export default function Blog() {
   }, [search]);
 
   const handlePillButtonClick = button => {
+    setCurrentPage(1);
     const newFilterButtons = [...filterButtons];
     const index = newFilterButtons.indexOf(button);
     newFilterButtons[index].active = !newFilterButtons[index].active;
@@ -718,7 +720,7 @@ export default function Blog() {
         })}
       </StyledPillButtonWrapper>
       {!isEmpty ?
-        <Pagination itemsPerPage={6} items={blogPosts} />
+        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={6} items={blogPosts} />
         : <Container>
           <Message>0 Results Found</Message>
           <Description>Sorry, but there's no match for your search.</Description>
