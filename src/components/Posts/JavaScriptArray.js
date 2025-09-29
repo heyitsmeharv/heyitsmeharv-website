@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-// helpers
-import { logPageView } from "../../helpers/analytics";
+
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -107,14 +106,6 @@ const Icon = styled.div`
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
-  }, []);
-
   const [isCopied, setIsCopied] = useState([
     { value: false },
     { value: false },
@@ -172,7 +163,7 @@ const JavaScriptArray = () => {
           <Spacer />
           <ul>
             <li>JavaScript arrays are incredibly versatile and can be used to create complex data structures and algorithms.
-            Arrays can be created using the Array constructor or by using literal notation. The most common method is using literal notation, which involves enclosing a list of values in square brackets.
+              Arrays can be created using the Array constructor or by using literal notation. The most common method is using literal notation, which involves enclosing a list of values in square brackets.
               <Spacer />
               Here is an example:
             </li>

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-// helpers
-import { logPageView } from "../../helpers/analytics";
+
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -228,14 +227,6 @@ const Spacer = styled.br`
 `;
 
 const AWSVPC = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
-  }, []);
-
   const columns = ['', 'NAT Gateway', 'NAT Instance'];
   const data = [
     { '': 'Availability', 'NAT Gateway': 'Highly available within AZ (create in another AZ)', 'NAT Instance': 'Use a script to manage failover between instances' },

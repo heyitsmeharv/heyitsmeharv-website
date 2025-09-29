@@ -1,25 +1,51 @@
-import ReactGA from 'react-ga';
+// const GA_ID = process.env.REACT_APP_GOOGLE_ANALYTICS;
 
-export const initGA = () => {
-  ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
+const hasGtag = () => typeof window !== 'undefined' && typeof window.gtag === 'function';
+const g = (...args) => { if (hasGtag()) window.gtag(...args); };
+
+export const isConsentGranted = () => {
+  try { return localStorage.getItem('consent') === 'accepted'; } catch { return false; }
 };
 
-// Track a pageview
-export const logPageView = () => {
-  ReactGA.set({ page: window.location.pathname  });
-  ReactGA.pageview(window.location.pathname );
-};
+export const Analytics = {
+  pageview: ({ path, title, location }) => {
+    if (!isConsentGranted()) return;
+    g('event', 'page_view', {
+      page_title: title ?? document.title,
+      page_location: location ?? window.location.href,
+      page_path: path
+    });
+  },
 
-// Track custom events
-export const logEvent = (category = '', action = '', label = '') => {
-  if (category && action) {
-    ReactGA.event({ category, action, label });
-  }
-};
+  event: (name, params = {}) => {
+    if (!isConsentGranted()) return;
+    g('event', name, params);
+  },
 
-// Track exceptions
-export const logException = (description = '', fatal = false) => {
-  if (description) {
-    ReactGA.exception({ description, fatal });
+  sessionStart: () => {
+    if (!isConsentGranted()) return;
+    g('event', 'session_start');
+  },
+
+  consentAccept: () => {
+    try { localStorage.setItem('consent', 'accepted'); } catch { }
+    g('consent', 'update', {
+      'ad_storage': 'granted',
+      'analytics_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted'
+    });
+    Analytics.sessionStart();
+    Analytics.pageview({ path: window.location.pathname + window.location.search });
+  },
+
+  consentRevoke: () => {
+    try { localStorage.setItem('consent', 'declined'); } catch { }
+    g('consent', 'update', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
   }
 };

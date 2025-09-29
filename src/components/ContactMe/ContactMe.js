@@ -1,4 +1,3 @@
-import ReactGA from 'react-ga';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -12,6 +11,7 @@ import { CheckSVG } from '../../resources/styles/icons';
 import { ErrorSVG } from '../../resources/styles/icons';
 
 // helpers
+import { Analytics } from "../../helpers/analytics";
 import { contactMe, contactMeText, nameInput, emailInput, phoneInput, companyInput, messageInput, sendMessageText } from "../../helpers/text";
 
 
@@ -104,7 +104,7 @@ const ContactMe = ({ language, open }) => {
       if (response.ok) {
         createToast('Success');
         handleOnReset();
-        ReactGA.event({
+        Analytics.event('Contact Me Success', {
           category: 'Contact Me',
           action: 'Successfully sent an email',
           label: 'Send Message'
@@ -112,7 +112,7 @@ const ContactMe = ({ language, open }) => {
       } else {
         createToast('Fail');
         setError(true);
-        ReactGA.event({
+        Analytics.event('Contact Me Failure', {
           category: 'Contact Me',
           action: 'Failed to send an email',
           label: 'Send Message'
@@ -121,9 +121,10 @@ const ContactMe = ({ language, open }) => {
     }).catch(error => {
       createToast('Fail');
       setError(true);
-      ReactGA.exception({
-        description: 'Failed to send email',
-        fatal: true
+      Analytics.event('Contact Me Failure', {
+        category: 'Contact Me',
+        action: 'Failed to send an email',
+        label: 'Send Message'
       });
       console.log(`Unable to send email: ${error}`);
     });

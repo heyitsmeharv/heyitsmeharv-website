@@ -1,8 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from "styled-components";
-
-// helpers
-import { logPageView, logException } from "../helpers/analytics";
 
 // animations
 import SlideInLeft from "../animations/SlideInLeft";
@@ -31,14 +28,6 @@ const Description = styled.p`
 `;
 
 const NotFoundPage = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logException('looking for a blog that does not exist', false);
-    }
-  }, []);
-
   return (
     <Container>
       <Message>404</Message>

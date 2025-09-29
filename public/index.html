@@ -9,14 +9,25 @@
   <meta name="description" content="Adam Harvey's portfolio" />
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap" rel="stylesheet">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYKXW4LZ44"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
 
-    gtag('config', 'G-SYKXW4LZ44');
+    // Consent Mode v2: default denied until user accepts
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+
+    // Init GA4 (NO automatic page_view for SPA)
+    gtag('js', new Date());
+    gtag('config', 'G-SYKXW4LZ44', {
+      send_page_view: false,
+      transport_type: 'beacon'
+    });
   </script>
   <!--
       manifest.json provides metadata used when your web app is installed on a
