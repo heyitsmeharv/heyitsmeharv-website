@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 // helpers
-import { logPageView } from "../helpers/analytics";
+import { Analytics } from "../helpers/analytics";
 
+// components
 import Project from '../components/Project/Project';
 
 // images
@@ -37,6 +38,11 @@ const Container = styled.div`
 
 
 export default function Projects() {
+
+  useEffect(() => {
+    Analytics.event('projects', { slug: 'projects-selection' });
+  }, []);
+
   const projects = [
     {
       name: 'Text Based Adventure',
