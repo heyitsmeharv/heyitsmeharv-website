@@ -230,7 +230,7 @@ const Spacer = styled.br`
 const AWSVPC = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-vpc' });
+    Analytics.event('blog_opened', { slug: 'aws-vpc' });
   }, []);
 
   const columns = ['', 'NAT Gateway', 'NAT Instance'];

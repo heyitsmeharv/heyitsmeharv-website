@@ -75,7 +75,7 @@ function CookieBanner({ onAccept, onDecline }) {
         PrimaryButton,
         {
           onClick: () => {
-            Analytics.consentAccept();
+            Analytics.start();
             onAccept();
           },
           "aria-label": "Accept analytics",
@@ -97,7 +97,7 @@ export default function ConsentGate({ children }) {
 
   useEffect(() => {
     if (consent === "accepted" && !window.__consentApplied) {
-      Analytics.consentAccept();
+      Analytics.start();
       window.__consentApplied = true;
     }
   }, [consent]);
@@ -136,10 +136,10 @@ export function ManageCookies() {
     {
       onClick: () => {
         if (granted) {
-          Analytics.consentRevoke();
+          Analytics.stop();
           setGranted(false);
         } else {
-          Analytics.consentAccept();
+          Analytics.start();
           setGranted(true);
         }
       },

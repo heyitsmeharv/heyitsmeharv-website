@@ -62,7 +62,7 @@ const Spacer = styled.br`
 const TheStart = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'the-start' });
+    Analytics.event('blog_opened', { slug: 'the-start' });
   }, []);
 
   return (

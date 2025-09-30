@@ -213,7 +213,7 @@ const Spacer = styled.br`
 const AWSServerless = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-serverless' });
+    Analytics.event('blog_opened', { slug: 'aws-serverless' });
   }, []);
 
   const columns = ['Execution', 'Deployment'];

@@ -202,7 +202,7 @@ const Spacer = styled.br`
 const AWSContainers = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-containers' });
+    Analytics.event('blog_opened', { slug: 'aws-containers' });
   }, []);
 
   return (

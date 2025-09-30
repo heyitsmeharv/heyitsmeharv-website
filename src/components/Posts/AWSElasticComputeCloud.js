@@ -196,7 +196,7 @@ const Spacer = styled.br``
 const AWSElasticComputeCloud = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-ec2' });
+    Analytics.event('blog_opened', { slug: 'aws-ec2' });
   }, []);
 
   return (

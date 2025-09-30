@@ -223,7 +223,7 @@ const Spacer = styled.br`
 const AWSMachineLearning = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-machine-learning' });
+    Analytics.event('blog_opened', { slug: 'aws-machine-learning' });
   }, []);
 
   const columns = ['Capability', 'Description'];

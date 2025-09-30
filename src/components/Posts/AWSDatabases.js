@@ -200,7 +200,7 @@ const Spacer = styled.br`
 const AWSDatabases = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-databases' });
+    Analytics.event('blog_opened', { slug: 'aws-databases' });
   }, []);
 
   const columns = ['Redis', 'Memcached'];

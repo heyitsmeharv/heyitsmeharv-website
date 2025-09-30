@@ -228,7 +228,7 @@ const Spacer = styled.br`
 const AWSIdentityAccessManagement = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-iam' });
+    Analytics.event('blog_opened', { slug: 'aws-iam' });
   }, []);
 
   return (

@@ -199,7 +199,7 @@ const Spacer = styled.br`
 const AWSSQS = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-sqs' });
+    Analytics.event('blog_opened', { slug: 'aws-sqs' });
   }, []);
 
   return (
