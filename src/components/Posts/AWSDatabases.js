@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-
+import { Analytics } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -198,6 +198,11 @@ const Spacer = styled.br`
 `;
 
 const AWSDatabases = () => {
+
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'aws-databases' });
+  }, []);
+
   const columns = ['Redis', 'Memcached'];
   const data = [
     { Redis: 'Multi AZ with Auto-Failover', Memcached: 'Multi-node for partitioning of data (sharding)' },

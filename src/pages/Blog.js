@@ -649,7 +649,7 @@ export default function Blog() {
   ];
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'blog' });
+    Analytics.event('blog', { slug: 'post-selection' });
   }, []);
 
   useEffect(() => {

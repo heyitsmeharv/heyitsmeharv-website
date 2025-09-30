@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-
+// helpers
+import { Analytics } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -106,6 +107,11 @@ const Icon = styled.div`
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
+
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'aws-javascript-arrays' });
+  }, []);
+
   const [isCopied, setIsCopied] = useState([
     { value: false },
     { value: false },

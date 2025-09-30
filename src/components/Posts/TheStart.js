@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-
+// helpers
+import { Analytics } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -59,6 +60,11 @@ const Spacer = styled.br`
 `;
 
 const TheStart = () => {
+
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'the-start' });
+  }, []);
+
   return (
     <Wrapper>
       <StyledNavButton>

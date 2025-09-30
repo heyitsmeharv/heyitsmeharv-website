@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-
+// helpers
+import { Analytics } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -228,6 +229,11 @@ const Spacer = styled.br`
 `;
 
 const AWSMonitoringAudit = () => {
+
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'aws-monitoring-auditing' });
+  }, []);
+
   const columns = ['Feature', 'Description'];
   const data = [
     { Feature: 'Metrics', Description: 'Tracks CPU, memory, network utilization, and custom metrics from your applications.' },
