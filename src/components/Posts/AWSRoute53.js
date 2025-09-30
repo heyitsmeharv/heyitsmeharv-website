@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-
+// helpers
+import { Analytics } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -190,6 +191,11 @@ const Icon = styled.div`
 const Spacer = styled.br``
 
 const AWSRoute53 = () => {
+
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'aws-route53' });
+  }, []);
+
   return (
     <Wrapper>
       <StyledNavButton>

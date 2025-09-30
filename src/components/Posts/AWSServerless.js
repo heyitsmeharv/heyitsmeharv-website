@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-
+// helpers
+import { Analytics } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -210,6 +211,11 @@ const Spacer = styled.br`
 `;
 
 const AWSServerless = () => {
+
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'aws-serverless' });
+  }, []);
+
   const columns = ['Execution', 'Deployment'];
   const data = [
     { Execution: 'Memory Allocation 128 MB - 10GB (1 MB Increments)', Deployment: 'Lambda function deployment size (compressed .zip): 50 MB' },

@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-
+// helpers
+import { Analytics } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -220,6 +221,11 @@ const Spacer = styled.br`
 `;
 
 const AWSMachineLearning = () => {
+
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'aws-machine-learning' });
+  }, []);
+
   const columns = ['Capability', 'Description'];
   const data = [
     { Capability: 'Language Detection', Description: 'Identifies the dominant language in text (e.g., English, French, Spanish).' },

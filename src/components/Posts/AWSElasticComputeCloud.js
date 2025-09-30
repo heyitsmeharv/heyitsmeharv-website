@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-
+// helpers
+import { Analytics } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -193,6 +194,11 @@ const Icon = styled.div`
 const Spacer = styled.br``
 
 const AWSElasticComputeCloud = () => {
+
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'aws-ec2' });
+  }, []);
+
   return (
     <Wrapper>
       <StyledNavButton>

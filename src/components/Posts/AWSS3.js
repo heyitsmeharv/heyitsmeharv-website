@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-
+// helpers
+import { Analytics } from "../../helpers/analytics";
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -241,6 +242,11 @@ const Spacer = styled.br`
 `;
 
 const AWS3 = () => {
+
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'aws-s3' });
+  }, []);
+
   const columns = ['', 'User', 'Resource'];
   const data = [
     { '': 'Attachment Point', User: 'Attached to IAM identities (users, groups, roles).', Resource: 'Attached directly to AWS resources' },
