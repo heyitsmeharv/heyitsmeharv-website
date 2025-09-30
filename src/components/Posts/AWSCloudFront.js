@@ -197,7 +197,7 @@ const Spacer = styled.br`
 const AWSCloudFront = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-cloudfront' });
+    Analytics.event('blog_opened', { slug: 'aws-cloudfront' });
   }, []);
 
   return (

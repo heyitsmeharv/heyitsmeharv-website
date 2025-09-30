@@ -231,7 +231,7 @@ const Spacer = styled.br`
 const AWSMonitoringAudit = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-monitoring-auditing' });
+    Analytics.event('blog_opened', { slug: 'aws-monitoring-auditing' });
   }, []);
 
   const columns = ['Feature', 'Description'];

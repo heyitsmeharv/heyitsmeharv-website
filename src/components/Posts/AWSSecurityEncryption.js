@@ -235,7 +235,7 @@ const Spacer = styled.br`
 const AWSSecurityEncryption = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-encryption' });
+    Analytics.event('blog_opened', { slug: 'aws-encryption' });
   }, []);
 
   const columns = ['Feature', 'SSM Parameter Store', 'AWS Secrets Manager'];

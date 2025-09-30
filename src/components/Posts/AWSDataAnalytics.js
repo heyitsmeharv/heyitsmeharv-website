@@ -229,7 +229,7 @@ const Spacer = styled.br`
 const AWSDataAnalytics = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-data-analytics' });
+    Analytics.event('blog_opened', { slug: 'aws-data-analytics' });
   }, []);
 
   return (

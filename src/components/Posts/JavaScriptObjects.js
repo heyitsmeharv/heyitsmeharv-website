@@ -123,7 +123,7 @@ const Spacer = styled.br``
 const JavaScriptArray = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-javascript-objects' });
+    Analytics.event('blog_opened', { slug: 'aws-javascript-objects' });
   }, []);
 
   const [isCopied, setIsCopied] = useState([

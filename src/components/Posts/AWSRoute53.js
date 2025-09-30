@@ -193,7 +193,7 @@ const Spacer = styled.br``
 const AWSRoute53 = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-route53' });
+    Analytics.event('blog_opened', { slug: 'aws-route53' });
   }, []);
 
   return (

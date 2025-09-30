@@ -196,7 +196,7 @@ const Spacer = styled.br`
 const AWSSNS = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-sns' });
+    Analytics.event('blog_opened', { slug: 'aws-sns' });
   }, []);
 
   return (

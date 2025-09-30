@@ -244,7 +244,7 @@ const Spacer = styled.br`
 const AWS3 = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-s3' });
+    Analytics.event('blog_opened', { slug: 'aws-s3' });
   }, []);
 
   const columns = ['', 'User', 'Resource'];

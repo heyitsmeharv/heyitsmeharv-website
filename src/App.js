@@ -59,22 +59,26 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-const TrackingGate = ({ children }) => {
-  const location = useLocation();
-  const skipFirstPv = useRef(true);
+const slugFromPath = (p) => {
+  const m = (p || "").match(/^\/blog\/([^/?#]+)/);
+  return m ? m[1] : null;
+};
+
+const TrackingGate = ({ location, children }) => {
+  const skipFirstPv = useRef(true); // avoid double PV with the initial one fired in Analytics.start()
 
   useEffect(() => {
-    if (window.location.hostname === "localhost") return;
-    if (!isConsentGranted()) return;
-
-    if (skipFirstPv.current) {
+    if (!Consent.isGranted()) return; // only after Accept
+    if (skipFirstPv.current) {        // first PV already sent by start()
       skipFirstPv.current = false;
       return;
     }
 
     const path = location.pathname + location.search;
-    if (!isConsentGranted()) return;
-    const id = setTimeout(() => Analytics.pageview({ path }), 0);
+    const slug = slugFromPath(path);
+    const id = setTimeout(() => {
+      Analytics.pageview({ path, slug });
+    }, 0);
     return () => clearTimeout(id);
   }, [location]);
 
@@ -116,52 +120,50 @@ const App = () => {
           </Wrapper>
           <Consent>
             <Router>
-              <TrackingGate>
-                <Route
-                  render={({ location }) => {
-                    return (
-                      <>
-                        <Navbar />
-                        {!(window.location.href.indexOf("projects") > 1 || window.location.href.indexOf("blog") > 1) &&
-                          <Languages language={language} toggleLanguage={toggleLanguage} />
-                        }
-                        <Switch location={location}>
-                          <Route exact path='/' component={Home} />
-                          <Route exact path='/projects' component={Projects} />
-                          <Route exact path='/blog' component={Blog} />
-                          {/* Add blog posts here */}
-                          <Route exact path='/blog/the-start' component={TheStart} />
-                          <Route exact path='/blog/javascript-arrays' component={JavaScriptArray} />
-                          <Route exact path='/blog/javascript-objects' component={JavaScriptObjects} />
-                          <Route exact path='/blog/react-text-based-adventure' component={ReactAdventureGame} />
-                          <Route exact path='/blog/aws-identity-access-management' component={AWSIdentityAccessManagement} />
-                          <Route exact path='/blog/aws-elastic-compute-cloud' component={AWSElasticComputeCloud} />
-                          <Route exact path='/blog/aws-databases' component={AWSDatabases} />
-                          <Route exact path='/blog/aws-route53' component={AWSRoute53} />
-                          <Route exact path='/blog/aws-s3' component={AWSS3} />
-                          <Route exact path='/blog/aws-cloudfront' component={AWSCloudFront} />
-                          <Route exact path='/blog/aws-sqs' component={AWSSQS} />
-                          <Route exact path='/blog/aws-sns' component={AWSSNS} />
-                          <Route exact path='/blog/aws-kinesis' component={AWSKinesis} />
-                          <Route exact path='/blog/aws-containers' component={AWSContainers} />
-                          <Route exact path='/blog/aws-vpc' component={AWSVPC} />
-                          <Route exact path='/blog/aws-data-analytics' component={AWSDataAnalytics} />
-                          <Route exact path='/blog/aws-serverless' component={AWSServerless} />
-                          <Route exact path='/blog/aws-machine-learning' component={AWSMachineLearning} />
-                          <Route exact path='/blog/aws-monitoring-audit' component={AWSMonitoringAudit} />
-                          <Route exact path='/blog/aws-security-encryption' component={AWSSecurityEncryption} />
-                          <Route component={NotFound} />
-                        </Switch>
-                      </>
-                    );
-                  }}
-                />
-              </TrackingGate>
+              <Route
+                render={({ location }) => {
+                  return (
+                    <TrackingGate location={location}>
+                      <Navbar />
+                      {!(window.location.href.indexOf("projects") > 1 || window.location.href.indexOf("blog") > 1) &&
+                        <Languages language={language} toggleLanguage={toggleLanguage} />
+                      }
+                      <Switch location={location}>
+                        <Route exact path='/' component={Home} />
+                        <Route exact path='/projects' component={Projects} />
+                        <Route exact path='/blog' component={Blog} />
+                        {/* Add blog posts here */}
+                        <Route exact path='/blog/the-start' component={TheStart} />
+                        <Route exact path='/blog/javascript-arrays' component={JavaScriptArray} />
+                        <Route exact path='/blog/javascript-objects' component={JavaScriptObjects} />
+                        <Route exact path='/blog/react-text-based-adventure' component={ReactAdventureGame} />
+                        <Route exact path='/blog/aws-identity-access-management' component={AWSIdentityAccessManagement} />
+                        <Route exact path='/blog/aws-elastic-compute-cloud' component={AWSElasticComputeCloud} />
+                        <Route exact path='/blog/aws-databases' component={AWSDatabases} />
+                        <Route exact path='/blog/aws-route53' component={AWSRoute53} />
+                        <Route exact path='/blog/aws-s3' component={AWSS3} />
+                        <Route exact path='/blog/aws-cloudfront' component={AWSCloudFront} />
+                        <Route exact path='/blog/aws-sqs' component={AWSSQS} />
+                        <Route exact path='/blog/aws-sns' component={AWSSNS} />
+                        <Route exact path='/blog/aws-kinesis' component={AWSKinesis} />
+                        <Route exact path='/blog/aws-containers' component={AWSContainers} />
+                        <Route exact path='/blog/aws-vpc' component={AWSVPC} />
+                        <Route exact path='/blog/aws-data-analytics' component={AWSDataAnalytics} />
+                        <Route exact path='/blog/aws-serverless' component={AWSServerless} />
+                        <Route exact path='/blog/aws-machine-learning' component={AWSMachineLearning} />
+                        <Route exact path='/blog/aws-monitoring-audit' component={AWSMonitoringAudit} />
+                        <Route exact path='/blog/aws-security-encryption' component={AWSSecurityEncryption} />
+                        <Route component={NotFound} />
+                      </Switch>
+                    </TrackingGate>
+                  );
+                }}
+              />
             </Router>
           </Consent>
         </ThemeProvider>
       </LanguageContext.Provider>
-    </UserContext.Provider>
+    </UserContext.Provider >
   );
 };
 

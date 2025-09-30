@@ -199,7 +199,7 @@ const Spacer = styled.br`
 const AWSKinesis = () => {
 
   useEffect(() => {
-    Analytics.event('blog', { slug: 'aws-kinesis' });
+    Analytics.event('blog_opened', { slug: 'aws-kinesis' });
   }, []);
 
   const columns = ['Feature', 'Provisioned Mode', 'On-Demand Mode'];
