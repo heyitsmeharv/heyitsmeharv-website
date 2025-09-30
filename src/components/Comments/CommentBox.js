@@ -1,4 +1,3 @@
-import ReactGA from 'react-ga';
 import React, { useState, useRef } from 'react';
 import useDynamicHeightField from '../../hooks/useDynamicHeightField';
 import styled, { css } from 'styled-components';
@@ -12,6 +11,7 @@ import { CheckSVG } from '../../resources/styles/icons';
 import { ErrorSVG } from '../../resources/styles/icons';
 
 // helpers
+import { Analytics } from "../../helpers/analytics";
 import { nameInput, commentPrompt, cancel, submit } from "../../helpers/text";
 
 const INITIAL_HEIGHT = 46;
@@ -116,14 +116,14 @@ const CommentBox = ({ setLoading, language }) => {
       if (response.ok) {
         createToast('Success');
         setLoading(true);
-        ReactGA.event({
+        Analytics.event('Comment Success', {
           category: 'Comment',
           action: 'Successfully sent a comment',
           label: 'Submit'
         });
       } else {
         createToast('Fail');
-        ReactGA.event({
+        Analytics.event('Comment Failure', {
           category: 'Contact Me',
           action: 'Failed to send a comment',
           label: 'Submit'
@@ -132,9 +132,10 @@ const CommentBox = ({ setLoading, language }) => {
     })
       .catch(error => {
         console.log(`Unable to submit comment: ${error}`);
-        ReactGA.exception({
-          description: 'Failed to send comment',
-          fatal: true
+        Analytics.event('Comment Failure', {
+          category: 'Contact Me',
+          action: 'Failed to send a comment',
+          label: 'Submit'
         });
       });
     handleOnReset();

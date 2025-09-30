@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-// helpers
-import { logPageView } from "../../helpers/analytics";
+
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -242,14 +241,6 @@ const Spacer = styled.br`
 `;
 
 const AWS3 = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
-  }, []);
-
   const columns = ['', 'User', 'Resource'];
   const data = [
     { '': 'Attachment Point', User: 'Attached to IAM identities (users, groups, roles).', Resource: 'Attached directly to AWS resources' },

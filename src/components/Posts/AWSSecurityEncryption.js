@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-// helpers
-import { logPageView } from "../../helpers/analytics";
+
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -233,14 +232,6 @@ const Spacer = styled.br`
 `;
 
 const AWSSecurityEncryption = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
-  }, []);
-
   const columns = ['Feature', 'SSM Parameter Store', 'AWS Secrets Manager'];
   const data = [
     { Feature: 'Use Case', 'SSM Parameter Store': 'Configuration & secrets', 'AWS Secrets Manager': 'Primarily secrets' },

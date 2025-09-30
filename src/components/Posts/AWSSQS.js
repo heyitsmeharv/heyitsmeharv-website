@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-// helpers
-import { logPageView } from "../../helpers/analytics";
+
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -197,14 +196,6 @@ const Spacer = styled.br`
 `;
 
 const AWSSQS = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
-  }, []);
-
   return (
     <Wrapper>
       <StyledNavButton>
@@ -231,7 +222,7 @@ const AWSSQS = () => {
           <StyledAnchor href="#fifo-queue"><StyledListItem>FIFO Queue</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="sqs-introduction">Amazon Simple Queue Service</SubTitle>
-          Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
+          Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices,
           distributed systems, and serverless applications. When we start deploying multiple applications, they will inevitably need to communicate with one another. There are two patterns of communication.
           <StyledListItem>Synchronous communications (application to application).</StyledListItem>
           <StyledListItem>Asynchronous/Event based communications (application to queue to application).</StyledListItem>
@@ -246,16 +237,16 @@ const AWSSQS = () => {
           Producers sends messages to the queue via the SendMessage API. Once the message is sent it is persists in the queue until the consumer deletes it or it hits the retention limit.
           <Spacer />
           <SubTitleSmall>Consumers</SubTitleSmall>
-          Consumers are instances that could be EC2 or AWS Lambda or any server. This instance polls for SQS messages that can receive up to 10 messages at a time. Once the message has been processed (whatever custom code runs on the 
+          Consumers are instances that could be EC2 or AWS Lambda or any server. This instance polls for SQS messages that can receive up to 10 messages at a time. Once the message has been processed (whatever custom code runs on the
           server) the consumer will then delete the message using the DeleteMessage API.
           <Spacer />
           <SubTitleSmall>Message Visibility Timeout</SubTitleSmall>
-          After a message is polled by a consumer; it becomes invisible to other consumers. By default, the 'message visibility timeout' is 30 seconds which means the message has 30 seconds to be processed. If the message is not processed 
-          within the visibility timeout, it will be processed twice. If the message is in the middle of being processed by a consumer but hasn't finished before the timeout, it's possible for the consumer to call the ChangeMessageVisibility 
-          API to get more time. It's possible to change the timeout but keep in mind that if it's too high (hours) the consumer can crash and re-processing will take time. Alternatively if it's too low (seconds), the chances of duplicate messages 
+          After a message is polled by a consumer; it becomes invisible to other consumers. By default, the 'message visibility timeout' is 30 seconds which means the message has 30 seconds to be processed. If the message is not processed
+          within the visibility timeout, it will be processed twice. If the message is in the middle of being processed by a consumer but hasn't finished before the timeout, it's possible for the consumer to call the ChangeMessageVisibility
+          API to get more time. It's possible to change the timeout but keep in mind that if it's too high (hours) the consumer can crash and re-processing will take time. Alternatively if it's too low (seconds), the chances of duplicate messages
           will be higher.
           <SubTitleSmall>Long Polling</SubTitleSmall>
-          When a consumer requests messages from the queue, it can optionally 'wait' for messages to arrive if there are none in the queue - this is called Long Polling. Long Polling decreases the number of API calls made to SQS while increasing 
+          When a consumer requests messages from the queue, it can optionally 'wait' for messages to arrive if there are none in the queue - this is called Long Polling. Long Polling decreases the number of API calls made to SQS while increasing
           the efficiency and latency of an application. The wait time can be anywhere between 1-20 seconds.
           <Spacer />
           <SubTitle id="sqs-security">Security</SubTitle>
@@ -289,7 +280,7 @@ const AWSSQS = () => {
           <StyledImage src={SQSWithASG} />
           <Spacer />
           <SubTitleSmall>SQS To Decouple Between Application Tiers</SubTitleSmall>
-          Here is an example of having a separate instance process a message. This is a common architecture pattern to prevent any bottleneck to the front-end application. In this example the front-end application can send a message to a 
+          Here is an example of having a separate instance process a message. This is a common architecture pattern to prevent any bottleneck to the front-end application. In this example the front-end application can send a message to a
           queue and the second tier can poll the message and insert it into an S3 bucket.
           <Spacer />
           <StyledImage src={SQSDecoupleExample} />

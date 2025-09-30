@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-// helpers
-import { logPageView } from "../../helpers/analytics";
+
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -211,14 +210,6 @@ const Spacer = styled.br`
 `;
 
 const AWSServerless = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
-  }, []);
-
   const columns = ['Execution', 'Deployment'];
   const data = [
     { Execution: 'Memory Allocation 128 MB - 10GB (1 MB Increments)', Deployment: 'Lambda function deployment size (compressed .zip): 50 MB' },
@@ -277,7 +268,7 @@ const AWSServerless = () => {
           <SubTitle id="what-is-serverless">What Is Serverless?</SubTitle>
           Before we explore any AWS services that are classed as serverless, let's first outline what constitutes as 'Serverless'. Serverless was
           a term that was pioneered by AWS Lambda but now includes anything that's managed: databases, messaging, storage, etc. <BoldText>Serverless
-          doesn't mean there are no servers</BoldText>, it means you don't have to manage, provision, or see them. Serverless is a new paradigm in which
+            doesn't mean there are no servers</BoldText>, it means you don't have to manage, provision, or see them. Serverless is a new paradigm in which
           developers don't have to manage servers anymore.
           <SubTitle id="aws-lambda">Lambda</SubTitle>
           AWS Lambda, a serverless compute service, executes your code in response to events, handling compute resources for you. It is a virtual function which is

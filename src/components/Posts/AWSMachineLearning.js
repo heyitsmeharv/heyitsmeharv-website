@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-// helpers
-import { logPageView } from "../../helpers/analytics";
+
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -221,14 +220,6 @@ const Spacer = styled.br`
 `;
 
 const AWSMachineLearning = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
-  }, []);
-
   const columns = ['Capability', 'Description'];
   const data = [
     { Capability: 'Language Detection', Description: 'Identifies the dominant language in text (e.g., English, French, Spanish).' },

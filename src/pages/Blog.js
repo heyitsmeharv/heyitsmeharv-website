@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 // helpers
-import { logPageView } from "../helpers/analytics";
+import { Analytics } from "../helpers/analytics";
 
 // components
 import Pagination from "../components/Pagination/Pagination";
@@ -648,11 +648,8 @@ export default function Blog() {
     }
   ];
 
-  // analytics
   useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
+    Analytics.event('blog', { slug: 'blog' });
   }, []);
 
   useEffect(() => {

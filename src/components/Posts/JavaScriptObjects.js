@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-// helpers
-import { logPageView } from "../../helpers/analytics";
+
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -121,14 +120,6 @@ const Icon = styled.div`
 const Spacer = styled.br``
 
 const JavaScriptArray = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
-  }, []);
-
   const [isCopied, setIsCopied] = useState([
     { value: false },
     { value: false },

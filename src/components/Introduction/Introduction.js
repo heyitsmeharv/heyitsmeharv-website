@@ -1,4 +1,3 @@
-import ReactGA from 'react-ga';
 import React from "react";
 import styled from "styled-components";
 
@@ -12,6 +11,7 @@ import SlideInBottom from "../../animations/SlideInBottom";
 import ProfileImg from "../../resources/images/profile-portrait.jpeg";
 
 // helpers
+import { Analytics } from "../../helpers/analytics";
 import { introductionText, contactMe, curriculumVitaeButtonText } from "../../helpers/text";
 
 const Container = styled.div`
@@ -91,18 +91,21 @@ const Introduction = ({ language, open, setOpen }) => {
             {contactMe(language)}
           </ContactMeButton>
           <DownloadCVButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-            <ReactGA.OutboundLink
-              eventLabel="Curriculum Vitae"
-              to="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV.pdf"
+            <StyledAnchor
               target="_blank"
-              >
-              <StyledAnchor
-                target="_blank"
-                href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV.pdf"
-              >
-                {curriculumVitaeButtonText(language)}
-              </StyledAnchor>
-            </ReactGA.OutboundLink>
+              rel="noopener noreferrer"
+              href="https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV.pdf"
+              onClick={() =>
+                Analytics.event("file_download", {
+                  link_url: "https://heyitsmeharv.s3.eu-west-2.amazonaws.com/AH_CV.pdf",
+                  file_name: "AH_CV.pdf",
+                  file_extension: "pdf",
+                  link_label: "Curriculum Vitae",
+                })
+              }
+            >
+              {curriculumVitaeButtonText(language)}
+            </StyledAnchor>
           </DownloadCVButton>
         </ButtonWrapper>
       </IntroWrapper >

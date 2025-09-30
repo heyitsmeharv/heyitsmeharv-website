@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-// helpers
-import { logPageView } from "../../helpers/analytics";
+
 
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
@@ -194,14 +193,6 @@ const Spacer = styled.br`
 `;
 
 const AWSSNS = () => {
-
-  // analytics
-  useEffect(() => {
-    if (window.location.hostname !== "localhost") {
-      logPageView();
-    }
-  }, []);
-
   return (
     <Wrapper>
       <StyledNavButton>
@@ -228,12 +219,12 @@ const AWSSNS = () => {
           <StyledAnchor href="#message-filtering"><StyledListItem>Message Filtering</StyledListItem></StyledAnchor>
           <Spacer />
           <SubTitle id="sns-introduction">Amazon Simple Notification Service</SubTitle>
-          Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. What if you wanted to send 
+          Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. What if you wanted to send
           one message to many endpoints? Instead of having a direct integration with each endpoint/service, you can publish that message to a topic which then delivers the message to all subscribers.
           <Spacer />
           <StyledImage src={SNSPubSub} />
           <Spacer />
-          The event producer only sends messages to one SNS topic and the event receivers (subscriptions) which is as many as we want will listen to the SNS topic notification and everything subscribed will get a message.          
+          The event producer only sends messages to one SNS topic and the event receivers (subscriptions) which is as many as we want will listen to the SNS topic notification and everything subscribed will get a message.
           <Spacer />
           <SubTitle id="how-to-publish">How To Publish</SubTitle>
           <Spacer />
@@ -258,7 +249,7 @@ const AWSSNS = () => {
           <StyledListItemIndent>Useful for allowing other services (S3...) to write to an SNS Topic.</StyledListItemIndent>
           <Spacer />
           <SubTitle id="fan-out">SNS and SQS: Fan Out</SubTitle>
-          The idea of this method is to push once to an SNS topic which could have as many SQS queues subscribed as you want. This is a fully decoupled approach which helps prevent data loss. The SQS queue will need it's access 
+          The idea of this method is to push once to an SNS topic which could have as many SQS queues subscribed as you want. This is a fully decoupled approach which helps prevent data loss. The SQS queue will need it's access
           policy to allow for SNS to write to it. This also works for cross region delivery so you can have SQS queues from other regions.
           <StyledImage src={SNSSQSFanOut} />
           <Spacer />
