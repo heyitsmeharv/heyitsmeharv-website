@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 
 // helpers
-import { Analytics, isConsentGranted } from "./helpers/analytics";
+import { Analytics, Consent } from "./helpers/analytics";
 
 // context
 import { LanguageContext } from './context/languageContext';
@@ -25,7 +25,7 @@ import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 
 // components
-import Consent from "./components/Consent/ConsentGate";
+import ConsentGate from "./components/Consent/ConsentGate";
 import Themes from "./components/Theme/Theme";
 import Navbar from "./components/Navbar/Navbar";
 import SocialMediaBar from "./components/SocialMedia/SocialMediaBar";
@@ -118,7 +118,7 @@ const App = () => {
             <Themes theme={theme} toggleTheme={toggleTheme} />
             <SocialMediaBar />
           </Wrapper>
-          <Consent>
+          <ConsentGate>
             <Router>
               <Route
                 render={({ location }) => {
@@ -160,7 +160,7 @@ const App = () => {
                 }}
               />
             </Router>
-          </Consent>
+          </ConsentGate>
         </ThemeProvider>
       </LanguageContext.Provider>
     </UserContext.Provider >
