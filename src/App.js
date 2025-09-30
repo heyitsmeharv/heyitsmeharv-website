@@ -64,7 +64,7 @@ const TrackingGate = ({ children }) => {
   const skipFirstPv = useRef(true);
 
   useEffect(() => {
-    // if (window.location.hostname === "localhost") return;
+    if (window.location.hostname === "localhost") return;
     if (!isConsentGranted()) return;
 
     if (skipFirstPv.current) {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 // helpers
-import { logPageView } from "../helpers/analytics";
+import { Analytics } from "../helpers/analytics";
 
 // components
 import Pagination from "../components/Pagination/Pagination";
@@ -648,7 +648,9 @@ export default function Blog() {
     }
   ];
 
-
+  useEffect(() => {
+    Analytics.event('blog', { slug: 'blog' });
+  }, []);
 
   useEffect(() => {
     if (search !== '') {
