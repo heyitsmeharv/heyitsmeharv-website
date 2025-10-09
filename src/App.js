@@ -52,6 +52,7 @@ import AWSServerless from "./components/Posts/AWSServerless";
 import AWSMachineLearning from "./components/Posts/AWSMachineLearning";
 import AWSMonitoringAudit from "./components/Posts/AWSMonitoringAudit";
 import AWSSecurityEncryption from "./components/Posts/AWSSecurityEncryption";
+import BashScripting from "./components/Posts/BashScripting";
 
 const Wrapper = styled.div`
   display: flex;
@@ -153,6 +154,7 @@ const App = () => {
                         <Route exact path='/blog/aws-machine-learning' component={AWSMachineLearning} />
                         <Route exact path='/blog/aws-monitoring-audit' component={AWSMonitoringAudit} />
                         <Route exact path='/blog/aws-security-encryption' component={AWSSecurityEncryption} />
+                        <Route exact path='/blog/getting-started-with-bash-scripting' component={BashScripting} />
                         <Route component={NotFound} />
                       </Switch>
                     </TrackingGate>

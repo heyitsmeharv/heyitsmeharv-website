@@ -433,3 +433,72 @@ export const cloudwatchlogsAlarmStatus = `aws cloudwatch set-alarm-state
 --state-value ALARM 
 --state-reason "testing purposes"
 `;
+
+export const bashEnvironment = `echo $SHELL`;
+export const powershell = `$PSVersionTable`;
+export const bashVersion = `bash --version`;
+export const bashOutput = `ls > files.txt`;
+export const bashAppend = `echo "new line" >> files.txt`;
+export const bashPipe = `ls /etc | grep conf`;
+export const bashFirstScript = `#!/bin/bash
+# A simple hello world script
+
+echo "Hello, world!"`;
+export const bashFirstScript2 = `chmod +x hello.sh`;
+export const bashFirstScript3 = `./hello.sh`;
+export const bashFirstScript4 = `Hello, world!`;
+export const pythonScript = `#!/usr/bin/python3`;
+
+export const bashProjectSetup = `my_project/
+├── src/
+├── logs/
+├── data/
+└── README.md`;
+export const bashProjectSetup2 = `#!/bin/bash
+
+mkdir -p my_project/{src,logs,data}
+touch my_project/README.md
+echo "Project folder created successfully."`;
+export const bashProjectSetup3 = `chmod +x setup_project.sh`;
+export const bashProjectSetup4 = `./setup_project.sh`;
+export const bashUserInput = `#!/bin/bash
+
+name="Adam"
+echo "Hello, $name!"
+
+read -p "Enter your favourite language: " lang
+echo "You love $lang!"
+`;
+export const bashCommandSubstitution = `today=$(date)
+echo "Today is $today"`;
+export const bashPassingArguments = `#!/bin/bash
+
+echo "Script name: $0"
+echo "First argument: $1"
+echo "Second argument: $2"
+echo "Total arguments: $#"
+`;
+export const bashPassingArguments2 = `./args.sh apple banana`;
+export const bashPassingArguments3 = `Script name: ./args.sh
+First argument: apple
+Second argument: banana
+Total arguments: 2
+`;
+export const bashSystemInfo = `#!/bin/bash
+
+echo "System Report for: $(hostname)"
+echo "User: $(whoami)"
+echo "Memory usage:"
+systeminfo | grep "Total Physical Memory"
+echo "Disk usage:"
+df -h`;
+export const bashSystemInfo2 = `chmod +x sysinfo.sh
+./sysinfo.sh`;
+export const bashSystemInfo3 = `System Report for: dev-machine
+User: adam
+Memory usage:
+Total Physical Memory: 16,298 MB
+Disk usage: 
+Filesystem            Size  Used Avail Use% Mounted on
+D:/Program Files/Git  932G  251G  682G  27%    /
+C:                    465G  334G  131G  72%    /c`;
