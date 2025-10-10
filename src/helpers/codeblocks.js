@@ -502,3 +502,88 @@ Disk usage:
 Filesystem            Size  Used Avail Use% Mounted on
 D:/Program Files/Git  932G  251G  682G  27%    /
 C:                    465G  334G  131G  72%    /c`;
+export const bashIf = `if [ condition ]; then
+  # commands to run if true
+fi`;
+export const bashIf2 = `#!/bin/bash
+
+if [ -f "/etc/passwd" ]; then
+  echo "The file exists!"
+else
+  echo "File not found."
+fi`;
+export const bashIfElse = `#!/bin/bash
+
+read -p "Enter a number: " num
+
+if [ $num -gt 10 ]; then
+  echo "That's a big number!"
+elif [ $num -gt 5 ]; then
+  echo "That's a medium number."
+else
+  echo "That's a small number."
+fi`;
+export const bashCombiningConditions = `#!/bin/bash
+
+file="notes.txt"
+
+if [ -f "$file" ] && [ -r "$file" ]; then
+  echo "$file exists and is readable."
+else
+  echo "File missing or unreadable."
+fi`;
+export const bashCaseStatement = `#!/bin/bash
+
+read -p "Enter a letter (a, b, or c): " choice
+
+case $choice in
+  a) echo "You chose option A" ;;
+  b) echo "You chose option B" ;;
+  c) echo "You chose option C" ;;
+  *) echo "Invalid choice" ;;
+esac`;
+export const bashForLoop = `#!/bin/bash
+
+for file in *.txt; do
+  echo "Found file: $file"
+done`;
+export const bashForLoop2 = `for i in {1..5}; do
+  echo "Count: $i"
+done`;
+export const bashWhileLoop = `#!/bin/bash
+
+count=1
+while [ $count -le 5 ]; do
+  echo "Loop #$count"
+  ((count++))
+done`;
+export const bashWhileLoop2 = `#!/bin/bash
+
+while read line; do
+  echo "Line: $line"
+done < input.txt`;
+export const bashUntilLoop = `#!/bin/bash
+
+n=1
+until [ $n -gt 3 ]; do
+  echo "Number $n"
+  ((n++))
+done`;
+export const bashLoopExample = `#!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+
+read -p "Enter directory to clean (default: script directory): " dir
+dir=\${dir:-\$SCRIPT_DIR}
+
+read -p "Delete files older than how many days? " days
+
+if [ ! -d "\$dir" ]; then
+  echo "Directory not found: \$dir"
+  exit 1
+fi
+
+echo "Cleaning up \$dir..."
+find "\$dir" -type f -mtime +\$days -exec rm -v {} \\;
+
+echo "Cleanup complete."`;

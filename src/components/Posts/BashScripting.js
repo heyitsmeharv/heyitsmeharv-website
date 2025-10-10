@@ -16,7 +16,42 @@ import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
 import Table from '../Table/Table';
 
 // codeblocks
-import { bashEnvironment, powershell, bashVersion, bashOutput, bashAppend, bashPipe, bashFirstScript, bashFirstScript2, bashFirstScript3, bashFirstScript4, pythonScript, bashProjectSetup, bashProjectSetup2, bashProjectSetup3, bashProjectSetup4, bashUserInput, bashCommandSubstitution, bashPassingArguments, bashPassingArguments2, bashPassingArguments3, bashSystemInfo, bashSystemInfo2, bashSystemInfo3 } from "../../helpers/codeblocks";
+import {
+  bashEnvironment,
+  powershell,
+  bashVersion,
+  bashOutput,
+  bashAppend,
+  bashPipe,
+  bashFirstScript,
+  bashFirstScript2,
+  bashFirstScript3,
+  bashFirstScript4,
+  pythonScript,
+  bashProjectSetup,
+  bashProjectSetup2,
+  bashProjectSetup3,
+  bashProjectSetup4,
+  bashUserInput,
+  bashCommandSubstitution,
+  bashPassingArguments,
+  bashPassingArguments2,
+  bashPassingArguments3,
+  bashSystemInfo,
+  bashSystemInfo2,
+  bashSystemInfo3,
+  bashIf,
+  bashIf2,
+  bashIfElse,
+  bashCombiningConditions,
+  bashCaseStatement,
+  bashForLoop,
+  bashForLoop2,
+  bashWhileLoop,
+  bashWhileLoop2,
+  bashUntilLoop,
+  bashLoopExample
+} from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
   padding: 1rem 25%;
@@ -51,6 +86,16 @@ const Flex = styled.div`
 const FlexCenter = styled.div`
   display: flex;
   align-items: center;
+
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+  }
+`;
+
+const FlexColumn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 
   @media only screen and (max-width: 700px) {
     flex-direction: column;
@@ -246,10 +291,32 @@ const BashScripting = () => {
     { value: false },
     { value: false },
     { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
   ]);
 
   const handleCopy = (code, key) => {
     const isCopiedDefault = [
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
       { value: false },
       { value: false },
       { value: false },
@@ -301,6 +368,33 @@ const BashScripting = () => {
     { Command: 'rm', Description: 'Deletes files', Example: 'rm file.txt' },
   ];
 
+  const columns2 = ['Flag', 'What it checks', 'Example'];
+  const data2 = [
+    { Flag: '-f', 'What it checks': 'File exists', Example: '[ -f file.txt ]' },
+    { Flag: '-d', 'What it checks': 'Directory exists', Example: '[ -d myfolder ]' },
+    { Flag: '-e', 'What it checks': 'File or directory exists', Example: '[ -e path ]' },
+    { Flag: '-r', 'What it checks': 'Readable', Example: '[ -r file.txt ]' },
+    { Flag: '-w', 'What it checks': 'Writable', Example: '[ -w file.txt ]' },
+    { Flag: '-x', 'What it checks': 'Executable', Example: '[ -x script.sh ]' },
+  ];
+
+  const columns3 = ['Operator', 'Meaning', 'Example'];
+  const data3 = [
+    { Operator: '-eq', Meaning: 'Equal', Example: '[ $a -eq $b ]' },
+    { Operator: '-ne', Meaning: 'Not equal', Example: '[ $a -ne $b ]' },
+    { Operator: '-gt', Meaning: 'Greater than', Example: '[ $a -gt $b ]' },
+    { Operator: '-lt', Meaning: 'Less than', Example: '[ $a -lt $b ]' },
+    { Operator: '-ge', Meaning: 'Greater or equal', Example: '[ $a -ge $b ]' },
+    { Operator: '-le', Meaning: 'Less or equal', Example: '[ $a -le $b ]' },
+  ];
+
+
+  const columns4 = ['Operator', 'Meaning', 'Example'];
+  const data4 = [
+    { Operator: '&&', Meaning: 'AND', Example: '[ $a -gt 5 ] && [ $b -lt 10 ]' },
+    { Operator: '!', Meaning: 'NOT', Example: '[ ! -f file.txt ]' },
+  ];
+
   return (
     <Wrapper>
       <StyledNavButton>
@@ -322,17 +416,25 @@ const BashScripting = () => {
           but once you realise how much power sits behind a few keystrokes, it's addictive. In this post, we're going to start from the very beginning. We'll cover what Bash actually is, how to get set up, and then we'll
           move into writing our first few scripts. By the end, you'll be automating small tasks and understanding how your system works under the hood. Feel free to skip to any section:
           <Spacer />
-          <StyledAnchor href="#what-is-bash"><StyledListItem>What is Bash?</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#bash-vs-command-line"><StyledListItem>Bash vs. the Command Line - What's the Difference?</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#setting-up-your-environment"><StyledListItem>Setting up Your Environment</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#getting-comfortable-in-the-terminal"><StyledListItem>Getting Comfortable in the Terminal</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#redirecting-and-chaining-commands"><StyledListItem>Redirecting and Chaining Commands</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#writing-your-first-script"><StyledListItem>Writing Your First Script</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#setting-up-a-project-folder"><StyledListItem>A Quick Automation: Setting Up a Project Folder</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#using-variables-and-user-input"><StyledListItem>Using Variables and User Input</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#command-substitution"><StyledListItem>Command Substitution</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#passing-arguments"><StyledListItem>Passing Arguments</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#building-something-useful"><StyledListItem>Building Something Useful: A System Info Script</StyledListItem></StyledAnchor>
+          <FlexColumn>
+            <div>
+              <StyledAnchor href="#what-is-bash"><StyledListItem>What is Bash?</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#bash-vs-command-line"><StyledListItem>Bash vs. the Command Line - What's the Difference?</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#setting-up-your-environment"><StyledListItem>Setting up Your Environment</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#getting-comfortable-in-the-terminal"><StyledListItem>Getting Comfortable in the Terminal</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#redirecting-and-chaining-commands"><StyledListItem>Redirecting and Chaining Commands</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#writing-your-first-script"><StyledListItem>Writing Your First Script</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#setting-up-a-project-folder"><StyledListItem>A Quick Automation: Setting Up a Project Folder</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#using-variables-and-user-input"><StyledListItem>Using Variables and User Input</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#command-substitution"><StyledListItem>Command Substitution</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#passing-arguments"><StyledListItem>Passing Arguments</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#building-something-useful"><StyledListItem>Building Something Useful: A System Info Script</StyledListItem></StyledAnchor>
+            </div>
+            <div>
+              <StyledAnchor href="#logic-conditions-loops"><StyledListItem>Logic, Conditions, and Loops</StyledListItem></StyledAnchor>
+
+            </div>
+          </FlexColumn>
           <Spacer />
           <SubTitle id="what-is-bash">What is Bash?</SubTitle>
           Bash stands for Bourne Again Shell. It's the most common command-line interpreter for Linux and macOS (and available for Windows through WSL or Git Bash). When you open your terminal, you're actually talking to
@@ -546,6 +648,111 @@ const BashScripting = () => {
             {bashSystemInfo3}
           </CodeBlock>
           It's not exactly mind blowing, but it's a start - let's keep building.
+          <SubTitle id="logic-conditions-loops">Logic, Conditions, and Loops</SubTitle>
+          This is where your scripts begin to think - they'll make decisions, handle user input intelligently, and perform repetitive tasks automatically.
+          <Spacer />
+          We'll cover:
+          <StyledListItem>Conditional statements (if, elif, else)</StyledListItem>
+          <StyledListItem>Logical operators (&&, ||, !)</StyledListItem>
+          <StyledListItem>File testing (-f, -d, etc.)</StyledListItem>
+          <StyledListItem>For, While, and Until loops</StyledListItem>
+          <SubTitleSmall>Making Decisions with if</SubTitleSmall>
+          At some point, your script will need to make a choice. For example: "Does this file exist?", or "Did the user provide an argument?". That's where the if statement comes in. Here's the structure:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashIf, 23)}>
+              {isCopied[23].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashIf}
+          </CodeBlock>
+          Let's start simple:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashIf2, 24)}>
+              {isCopied[24].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashIf2}
+          </CodeBlock>
+          In Bash, [ ... ] is used for tests. The -f flag checks if a file exists. There are other useful tests too:
+          <Spacer />
+          <Table columns={columns2} data={data2} />
+          <Spacer />
+          <SubTitleSmall>Adding More Logic: elif and else</SubTitleSmall>
+          You can extend your condition with multiple branches:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashIfElse, 25)}>
+              {isCopied[25].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashIfElse}
+          </CodeBlock>
+          We used -gt (greater than). Bash has its own comparison operators:
+          <Spacer />
+          <Table columns={columns3} data={data3} />
+          <Spacer />
+          <SubTitleSmall>Combining Conditions</SubTitleSmall>
+          You can combine tests using logical operators:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCombiningConditions, 26)}>
+              {isCopied[26].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCombiningConditions}
+          </CodeBlock>
+          <Spacer />
+          <Table columns={columns4} data={data4} />
+          <Spacer />
+          <SubTitleSmall>The Case Statement (Cleaner Branching)</SubTitleSmall>
+          If you ever find yourself writing long chains of if and elif, a case statement can make things cleaner.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCaseStatement, 27)}>
+              {isCopied[27].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCaseStatement}
+          </CodeBlock>
+          It's basically Bash's version of a switch statement - neat and readable.
+          <SubTitleSmall>for Loop</SubTitleSmall>
+          Used when you know how many times you want to repeat something - like iterating over files.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashForLoop, 28)}>
+              {isCopied[28].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashForLoop}
+          </CodeBlock>
+          You can also loop through numbers:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashForLoop2, 29)}>
+              {isCopied[29].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashForLoop2}
+          </CodeBlock>
+          <SubTitleSmall>while Loop</SubTitleSmall>
+          Runs as long as a condition is true:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashWhileLoop, 30)}>
+              {isCopied[30].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashWhileLoop}
+          </CodeBlock>
+          You'll often use while loops to read files or process input dynamically:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashWhileLoop2, 31)}>
+              {isCopied[31].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashWhileLoop2}
+          </CodeBlock>
+          <SubTitleSmall>until Loop</SubTitleSmall>
+          The inverse of while: runs until a condition becomes true.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashUntilLoop, 32)}>
+              {isCopied[32].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashUntilLoop}
+          </CodeBlock>
+          <SubTitleSmall>Putting It All Together - A Mini Project</SubTitleSmall>
+          Let's build something slightly more practical: a file cleanup script. This will loop through a directory and remove files older than a certain number of days.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashLoopExample, 33)}>
+              {isCopied[33].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashLoopExample}
+          </CodeBlock>
         </Text>
       </Container>
     </Wrapper>

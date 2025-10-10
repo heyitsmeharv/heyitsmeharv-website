@@ -171,7 +171,7 @@ const Button = styled.button`
 // #64CBF6
 // #8B191D
 // #23262E
-// #333446
+// #08CB00
 
 export default function Blog() {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -653,7 +653,7 @@ export default function Blog() {
       readingTime: 'N/A',
       type: 'Practical',
       date: '09/10/2025',
-      tags: [{ name: 'Bash', background: '#333446', icon: <BashSVG /> }],
+      tags: [{ name: 'Bash', background: '#08CB00', icon: <BashSVG /> }],
       intro: `When you first start working in the command line, it can feel like stepping into a different world - one where you're talking directly to your computer instead of clicking buttons. 
       It's intimidating at first, but once you realise how much power sits behind a few keystrokes it's addictive. In this post...`,
       navigate: 'getting-started-with-bash-scripting',
