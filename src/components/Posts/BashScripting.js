@@ -50,7 +50,22 @@ import {
   bashWhileLoop,
   bashWhileLoop2,
   bashUntilLoop,
-  bashLoopExample
+  bashLoopExample,
+  bashDefensiveMode,
+  bashExitStatus,
+  bashExitStatus2,
+  bashExplicitlyFail,
+  bashFunctions,
+  bashFailGracefully,
+  bashHandlingExpectedFailures,
+  bashHandlingExpectedFailures2,
+  bashReturnDataOrState,
+  bashSafeLogger,
+  bashTinyLoggingHelper,
+  bashTinyLoggingHelper2,
+  bashReusableTemplate,
+  bashTrap,
+  bashValidatingInputs
 } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
@@ -302,10 +317,34 @@ const BashScripting = () => {
     { value: false },
     { value: false },
     { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
   ]);
 
   const handleCopy = (code, key) => {
     const isCopiedDefault = [
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
       { value: false },
       { value: false },
       { value: false },
@@ -360,12 +399,19 @@ const BashScripting = () => {
     { Command: 'pwd', Description: 'Prints the current directory', Example: 'pwd' },
     { Command: 'echo', Description: 'Print text to the terminal', Example: 'echo "Please enter a number: "' },
     { Command: 'ls', Description: 'Lists files and directories', Example: 'ls -l' },
+    // { Command: 'df', Description: 'Display the amount of disk space available', Example: 'ls -l' },
     { Command: 'cd', Description: 'Changes directory', Example: 'cd /etc' },
     { Command: 'mkdir', Description: 'Creates a new directory', Example: 'mkdir projects' },
     { Command: 'touch', Description: 'Creates a new file', Example: 'touch script.sh' },
     { Command: 'mv', Description: 'Moves or renames files', Example: 'mv old.txt new.txt' },
     { Command: 'cp', Description: 'Copies files', Example: 'cp file.txt backup.txt' },
     { Command: 'rm', Description: 'Deletes files', Example: 'rm file.txt' },
+    // { Command: 'cat', Description: 'Concatenate and print the contents of a file', Example: 'rm file.txt' },
+    // { Command: 'grep', Description: 'Search for a pattern in a file.', Example: 'rm file.txt' },
+    // { Command: 'chmod', Description: 'Change the permissions of a file or directory.', Example: 'rm file.txt' },
+    // { Command: 'sudo', Description: 'Run a command with administrative privileges.', Example: 'rm file.txt' },
+    // { Command: 'history', Description: 'Show a list of previously executed commands.', Example: 'rm file.txt' },
+    // { Command: 'ps', Description: 'Display information about running processes.', Example: 'rm file.txt' },
   ];
 
   const columns2 = ['Flag', 'What it checks', 'Example'];
@@ -422,17 +468,18 @@ const BashScripting = () => {
               <StyledAnchor href="#bash-vs-command-line"><StyledListItem>Bash vs. the Command Line - What's the Difference?</StyledListItem></StyledAnchor>
               <StyledAnchor href="#setting-up-your-environment"><StyledListItem>Setting up Your Environment</StyledListItem></StyledAnchor>
               <StyledAnchor href="#getting-comfortable-in-the-terminal"><StyledListItem>Getting Comfortable in the Terminal</StyledListItem></StyledAnchor>
+              {/* <StyledAnchor href="#how-to-debug-and-troubleshoot-bash-scripts"><StyledListItem>How to Debug and Troubleshoot Bash Scripts</StyledListItem></StyledAnchor> */}
               <StyledAnchor href="#redirecting-and-chaining-commands"><StyledListItem>Redirecting and Chaining Commands</StyledListItem></StyledAnchor>
               <StyledAnchor href="#writing-your-first-script"><StyledListItem>Writing Your First Script</StyledListItem></StyledAnchor>
               <StyledAnchor href="#setting-up-a-project-folder"><StyledListItem>A Quick Automation: Setting Up a Project Folder</StyledListItem></StyledAnchor>
+            </div>
+            <div>
+              <StyledAnchor href="#logic-conditions-loops"><StyledListItem>Logic, Conditions, and Loops</StyledListItem></StyledAnchor>
               <StyledAnchor href="#using-variables-and-user-input"><StyledListItem>Using Variables and User Input</StyledListItem></StyledAnchor>
               <StyledAnchor href="#command-substitution"><StyledListItem>Command Substitution</StyledListItem></StyledAnchor>
               <StyledAnchor href="#passing-arguments"><StyledListItem>Passing Arguments</StyledListItem></StyledAnchor>
               <StyledAnchor href="#building-something-useful"><StyledListItem>Building Something Useful: A System Info Script</StyledListItem></StyledAnchor>
-            </div>
-            <div>
-              <StyledAnchor href="#logic-conditions-loops"><StyledListItem>Logic, Conditions, and Loops</StyledListItem></StyledAnchor>
-
+              <StyledAnchor href="#functions-exit-codes-error-handling"><StyledListItem>Functions, Exit Codes, and Error Handling</StyledListItem></StyledAnchor>
             </div>
           </FlexColumn>
           <Spacer />
@@ -487,6 +534,7 @@ const BashScripting = () => {
           <Table columns={columns} data={data} />
           <Spacer />
           These might feel trivial at first, but understanding them deeply is key - every script you'll ever write will build on these fundamentals.
+          {/* <SubTitle id="how-to-debug-and-troubleshoot-bash-scripts">How to Debug and Troubleshoot Bash Scripts</SubTitle> */}
           <SubTitle id="redirecting-and-chaining-commands">Redirecting and Chaining Commands</SubTitle>
           One of the most useful things Bash can do is connect commands together. This is where redirection and pipes come in.
           Let's say you want to save the output of a command to a file instead of printing it to the screen. You can do that like this:
@@ -541,9 +589,9 @@ const BashScripting = () => {
             </CopyButton>
             {bashFirstScript4}
           </CodeBlock>
-          It's a small win, but it's the moment most developers realise — “wait, I can make my computer do things for me.”
+          It's a small win, but it's the moment most developers realise — "wait, I can make my computer do things for me."
           <SubTitleSmall>A Quick Note on Shebang</SubTitleSmall>
-          That first line — #!/bin/bash — is called the shebang (sometimes written as “hashbang”). It tells your system which interpreter should be used to run the script. When you execute a script directly
+          That first line — #!/bin/bash — is called the shebang (sometimes written as "hashbang"). It tells your system which interpreter should be used to run the script. When you execute a script directly
           (like ./hello.sh), the operating system looks at that line and says: "Ah, this file should be run using Bash, which lives at /bin/bash." If you were writing a Python script, it might look like this instead:
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(pythonScript, 10)}>
@@ -649,7 +697,7 @@ const BashScripting = () => {
           </CodeBlock>
           It's not exactly mind blowing, but it's a start - let's keep building.
           <SubTitle id="logic-conditions-loops">Logic, Conditions, and Loops</SubTitle>
-          This is where your scripts begin to think - they'll make decisions, handle user input intelligently, and perform repetitive tasks automatically.
+          Once you're comfortable running a few commands, the next step is to make your scripts respond. You'll add logic, make decisions, and repeat actions automatically.
           <Spacer />
           We'll cover:
           <StyledListItem>Conditional statements (if, elif, else)</StyledListItem>
@@ -671,7 +719,11 @@ const BashScripting = () => {
             </CopyButton>
             {bashIf2}
           </CodeBlock>
-          In Bash, [ ... ] is used for tests. The -f flag checks if a file exists. There are other useful tests too:
+          The square brackets are a test ([ ... ]). -f checks whether the given path is a regular file. Replace it with -d for directories or -r for readability. You can combine conditions with && (and), || (or), or negate them with !.
+          <Spacer />
+          Soon you'll find yourself using these checks to protect against bad input or missing files.
+          <Spacer />
+          There are other useful tests too:
           <Spacer />
           <Table columns={columns2} data={data2} />
           <Spacer />
@@ -683,7 +735,7 @@ const BashScripting = () => {
             </CopyButton>
             {bashIfElse}
           </CodeBlock>
-          We used -gt (greater than). Bash has its own comparison operators:
+          Here the comparisons (-gt, -lt, -eq) are Bash's way of saying greater-than, less-than, and equal. The structure reads almost like English once you get used to the spacing.
           <Spacer />
           <Table columns={columns3} data={data3} />
           <Spacer />
@@ -753,6 +805,129 @@ const BashScripting = () => {
             </CopyButton>
             {bashLoopExample}
           </CodeBlock>
+          When you run it, the script asks which directory to clean, defaults to its own folder if you just press Enter, and removes files older than the number of days you give it.
+          <Spacer />
+          The magic line here is the one with find. It walks through every file under the chosen directory, checks when it was last modified, and if it's older than your cutoff, deletes it -
+          printing each filename as it goes. It's a single, dense command that does the work of a whole GUI cleanup tool, and it runs in a fraction of a second.
+          <SubTitle id="functions-exit-codes-error-handling">Functions, Exit Codes, and Error Handling</SubTitle>
+          Functions are Bash's way of helping you stay organised. Instead of writing the same five lines again and again, you can wrap them up in a block, give it a name, and call it when you need it.
+          <Spacer />
+          Inside a function, the arguments you pass are stored in numbered variables: $1, $2, $3, and so on. They're positional — the first thing you pass is $1, the second is $2, etc.
+          Bash doesn't enforce types or names; it's your job to remember what each one represents.
+          <Spacer />
+          Inside a function, you'll often see the keyword local. It's there to stop your temporary variables from leaking out and messing with the rest of the script. Bash doesn't isolate function scopes by default,
+          so local is basically your guardrail.
+          <Spacer />
+          Every function also returns an exit status, just like any other Bash command.
+          A return code of 0 means success, and any non-zero number signals some kind of failure. You can explicitly set this with return, but here's the trick; Bash functions can also output data.
+          If you use echo inside a function, you can capture that output and use it elsewhere.
+          <Spacer />
+          That distinction keeps your scripts clean - echo sends information back, while return silently signals whether things went well.
+          <Spacer />
+          All examples use the same robust, path-safe patterns from earlier. If you're on Windows, run these in WSL or Git Bash.
+          <Spacer />
+          Here's a tiny example:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFunctions, 36)}>
+              {isCopied[36].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFunctions}
+          </CodeBlock>
+          <Spacer />
+          Here, sum prints its result to standard output, which we capture using command substitution $(...). validate_positive doesn't print anything - it simply exits with 0 or 1. The pattern is simple but powerful,
+          and once you start using it consistently, your functions will behave predictably.
+          <Spacer />
+          <SubTitleSmall>Making Scripts Fail Gracefully</SubTitleSmall>
+          By default, Bash is incredibly forgiving - maybe too forgiving. A command fails, and Bash just keeps going. That's fine for interactive use, but in automation it can lead to messy, half-finished jobs.
+          <Spacer />
+          You can change that behaviour with one line at the top of your script:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFailGracefully, 37)}>
+              {isCopied[37].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFailGracefully}
+          </CodeBlock>
+          <Spacer />
+          It's not as scary as it looks.
+          <StyledListItem><BoldText>-e</BoldText> means "exit immediately if any command fails."</StyledListItem>
+          <StyledListItem><BoldText>-u</BoldText> means "treat undefined variables as errors."</StyledListItem>
+          <StyledListItem><BoldText>-o pipefail</BoldText> means "if you chain commands with a pipe, the whole pipeline fails if any part of it fails."</StyledListItem>
+          Together they turn Bash from a laid-back surfer into a careful engineer who refuses to move on when something breaks. If you want to allow a failure intentionally, you can still do it explicitly:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashExplicitlyFail, 38)}>
+              {isCopied[38].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashExplicitlyFail}
+          </CodeBlock>
+          <Spacer />
+          That one-liner says, run this command; if it fails, don't crash — just log a note.
+          <Spacer />
+          <SubTitleSmall>Cleaning Up After Yourself</SubTitleSmall>
+          Every long-running script should leave things the way it found them. Temporary files, network mounts, locks - they all need cleaning up even if the script crashes halfway through. Bash gives you a built-in
+          tool for that called trap.
+          <Spacer />
+          Think of it as a safety net. You define a function that does the cleanup, and then tell Bash, "whenever the script exits, no matter why, run this."
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashTrap, 39)}>
+              {isCopied[39].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashTrap}
+          </CodeBlock>
+          <Spacer />
+          Now, whether you press Ctrl + C or the script finishes normally, the temporary file disappears.
+          <Spacer />
+          <SubTitleSmall>Logging What Happens</SubTitleSmall>
+          A script that runs silently is fine when it works, but when something goes wrong, you'll wish it had told you what it was doing. Adding timestamps and log levels turns guesswork into understanding.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashTinyLoggingHelper, 40)}>
+              {isCopied[40].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashTinyLoggingHelper}
+          </CodeBlock>
+          <Spacer />
+          You can even pipe these messages to a file so you have a written record of every run:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashTinyLoggingHelper2, 41)}>
+              {isCopied[41].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashTinyLoggingHelper2}
+          </CodeBlock>
+          <Spacer />
+          Now every message gets printed and saved — one of those small details that makes debugging a week later much less painful.
+          <Spacer />
+          <SubTitleSmall>Building a Reliable Script Skeleton</SubTitleSmall>
+          Once you've written a few scripts, you'll notice the same scaffolding appears again and again: a couple of set statements, a directory resolver, maybe a cleanup trap and a logger. Here's a template you can
+          drop at the top of any serious Bash project:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashReusableTemplate, 42)}>
+              {isCopied[42].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashReusableTemplate}
+          </CodeBlock>
+          <Spacer />
+          It's minimal but battle-tested. Every new script can start here and grow outward, confident that the basics - safety, logging, and cleanup - are already handled.
+          <Spacer />
+          <SubTitleSmall>Safe Log Archiver</SubTitleSmall>
+          Let's finish with something real: a script that tidies up old log files. This one validates inputs, archives files older than a certain age, compresses them, logs every step, and works no matter where you run
+          it from.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashSafeLogger, 46)}>
+              {isCopied[46].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashSafeLogger}
+          </CodeBlock>
+          <Spacer />
+          When you look inside the code, you'll notice a few clever bits. The mapfile command quietly reads the list of files returned by find into an array — it's clean and safe, even with filenames that contain spaces. Then there's
+          tar -C "/" — that option tells tar to treat every path as absolute, so when you extract the archive later, everything goes back exactly where it came from.
+          <Spacer />
+          And see that small commented-out loop at the end? If you uncomment it, the script deletes the original files after archiving, effectively turning it into a move operation instead of a copy. I usually leave it off until I've
+          verified that the archive looks good; it's the difference between a cautious script and a reckless one.
+          <Spacer />
+          When you run it, you'll watch each step logged as it happens — the directory being scanned, the files being packed, and finally a neat .tar.gz sitting in an archives/ folder right next to your script. The whole thing works
+          quietly and predictably, and if something goes wrong, you'll know exactly why.
+          <Spacer />
+          That's what this part of the series is really about: taking all the moving pieces of Bash and turning them into something reliable. Functions give you structure, exit codes give you control, and error handling keeps your work honest.
+          Together, they turn your scripts from quick hacks into tools you can actually depend on.
         </Text>
       </Container>
     </Wrapper>

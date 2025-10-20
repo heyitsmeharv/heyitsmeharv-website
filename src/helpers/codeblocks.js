@@ -587,3 +587,177 @@ echo "Cleaning up \$dir..."
 find "\$dir" -type f -mtime +\$days -exec rm -v {} \\;
 
 echo "Cleanup complete."`;
+
+export const bashExitStatus = `#!/usr/bin/env bash
+false
+echo "Last status: $?"   # prints non-zero
+true
+echo "Last status: $?"   # prints 0`;
+export const bashExitStatus2 = `cp source.txt dest.txt
+if [[ $? -ne 0 ]]; then
+  echo "Copy failed."
+  exit 1
+fi`;
+export const bashFunctions = `greet() {
+  local name="$1"
+  echo "Hello, $name"
+}
+
+greet "Adam"`;
+export const bashReturnDataOrState = `sum() {
+  local a="$1" b="$2"
+  # Return data
+  echo $((a + b))
+}
+
+validate_positive() {
+  local n="$1"
+  [[ "$n" -gt 0 ]] || return 1
+}
+
+result="$(sum 5 7)"          # "12"
+if validate_positive "$result"; then
+  echo "Positive sum: $result"
+else
+  echo "Not positive"
+fi`;
+export const bashFailGracefully = `set -euo pipefail`;
+export const bashDefensiveMode = `set -euo pipefail
+# -e : exit on any command failure
+# -u : error on using unset variables
+# -o pipefail : a pipeline fails if any command in it fails`;
+export const bashExplicitlyFail = `some_command || echo "non-fatal: some_command failed"`;
+export const bashTrap = `cleanup() {
+  rm -f "$TMP_FILE"
+}
+
+trap cleanup EXIT INT TERM
+
+TMP_FILE="$(mktemp)"
+echo "Working in $TMP_FILE"
+# ... do work ...`;
+export const bashTinyLoggingHelper = `log() {
+  local level="$1"; shift
+  printf '%s [%s] %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" "$level" "$*"
+}
+
+log INFO  "Starting job"
+log WARN  "Disk usage high"
+log ERROR "Backup failed"`;
+export const bashTinyLoggingHelper2 = `LOG_FILE="\${LOG_FILE:-/tmp/script.log}"
+logf() { log "$@" | tee -a "$LOG_FILE"; }  # prints & appends to file`;
+export const bashReusableTemplate = `#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve script dir (works when called from anywhere)
+SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+
+LOG_FILE="\${LOG_FILE:-$SCRIPT_DIR/script.log}"
+
+log() {
+  local level="$1"; shift
+  printf '%s [%s] %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" "$level" "$*"
+}
+
+logf() { log "$@" | tee -a "$LOG_FILE"; }
+
+cleanup() {
+  logf INFO "Cleanup complete."
+}
+trap cleanup EXIT INT TERM
+
+require() {
+  command -v "$1" >/dev/null 2>&1 || {
+    logf ERROR "Missing dependency: $1"
+    exit 127
+  }
+}
+
+# Example dependency checks (comment out if not needed)
+# require curl
+# require awk
+
+main() {
+  logf INFO "Script dir: $SCRIPT_DIR"
+  # your logic here
+}
+
+main "$@"`;
+export const bashValidatingInputs = `usage() {
+  echo "Usage: $0 <source_dir> <days>"
+  echo "Example: $0 /var/log 7"
+}
+
+[[ $# -eq 2 ]] || { usage; exit 64; }  # 64 = EX_USAGE
+
+SRC="$1"
+DAYS="$2"
+
+[[ -d "$SRC" ]] || { echo "Not a directory: $SRC"; exit 66; }  # 66 = NOINPUT-ish
+[[ "$DAYS" =~ ^[0-9]+$ ]] || { echo "Days must be an integer"; exit 65; }`;
+ export const bashHandlingExpectedFailures = `if ! grep -q "pattern" file.txt 2>/dev/null; then
+  echo "Pattern not found (that's okay)."
+fi`;
+export const bashHandlingExpectedFailures2 = `mkdir -p "$DIR" || true`;
+export const bashSafeLogger = `#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+LOG_FILE="\${LOG_FILE:-$SCRIPT_DIR/archive.log}"
+
+log() {
+  local level="$1"; shift
+  printf '%s [%s] %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" "$level" "$*"
+}
+logf() { log "$@" | tee -a "$LOG_FILE"; }
+
+cleanup() {
+  logf INFO "Exiting."
+}
+trap cleanup EXIT INT TERM
+
+usage() {
+  echo "Usage: $0 [target_dir] [days]"
+  echo "Default target_dir: script directory"
+  echo "Example: $0 /var/log 7"
+}
+
+TARGET="\${1:-$SCRIPT_DIR}"
+DAYS="\${2:-7}"
+
+if [[ ! -d "$TARGET" ]]; then
+  logf ERROR "Not a directory: $TARGET"
+  usage; exit 64
+fi
+
+if ! [[ "$DAYS" =~ ^[0-9]+$ ]]; then
+  logf ERROR "Days must be an integer, got '$DAYS'"
+  usage; exit 65
+fi
+
+ARCHIVE_DIR="$SCRIPT_DIR/archives"
+mkdir -p "$ARCHIVE_DIR"
+
+STAMP="$(date +'%Y%m%d_%H%M%S')"
+ARCHIVE_PATH="$ARCHIVE_DIR/logs_\${STAMP}.tar.gz"
+
+logf INFO "Target: $TARGET"
+logf INFO "Archiving files older than $DAYS days"
+logf INFO "Output: $ARCHIVE_PATH"
+
+# Find candidate files (text-ish logs), ignore the archive dir itself
+mapfile -t files < <(find "$TARGET" -type f -mtime +"$DAYS" ! -path "$ARCHIVE_DIR/*" 2>/dev/null || true)
+
+if (( \${#files[@]} == 0 )); then
+  logf WARN "No files older than $DAYS days found. Nothing to do."
+  exit 0
+fi
+
+# Create tar.gz
+tar -czf "$ARCHIVE_PATH" -C "/" "\${files[@]/#\//}"  # preserve paths
+logf INFO "Archived \${#files[@]} files."
+
+# Optional: remove originals after successful archive
+# for f in "\${files[@]}"; do rm -v "$f"; done
+
+logf INFO "Done."`;
