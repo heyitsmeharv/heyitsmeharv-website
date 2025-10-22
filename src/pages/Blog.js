@@ -65,7 +65,6 @@ import {
   BashSVG
 } from '../resources/styles/icons';
 
-
 const SearchBarWrapper = styled.div`
   display: flex;
   position: relative;

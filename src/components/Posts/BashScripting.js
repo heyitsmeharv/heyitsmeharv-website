@@ -70,6 +70,20 @@ import {
   bashLoggingDebugOutput2,
   bashNullGlob,
   bashWildcards,
+  bashGrep,
+  bashGrep2,
+  bashSed,
+  bashSed2,
+  bashSed3,
+  bashAwk,
+  bashAwk2,
+  bashAwk3,
+  bashGrepSedAwk,
+  bashGrepSedAwk2,
+  bashCleaningCSVData,
+  bashCleaningCSVData2,
+  bashCleaningCSVData3,
+  bashCleaningCSVDataText
 } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
@@ -113,6 +127,7 @@ const FlexCenter = styled.div`
 
 const FlexColumn = styled.div`
   display: flex;
+  justify-content: center;
 
   @media only screen and (max-width: 700px) {
     flex-direction: column;
@@ -335,10 +350,52 @@ const BashScripting = () => {
     { value: false },
     { value: false },
     { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
   ]);
 
   const handleCopy = (code, key) => {
     const isCopiedDefault = [
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
       { value: false },
       { value: false },
       { value: false },
@@ -480,15 +537,16 @@ const BashScripting = () => {
               <StyledAnchor href="#redirecting-and-chaining-commands"><StyledListItem>Redirecting and Chaining Commands</StyledListItem></StyledAnchor>
               <StyledAnchor href="#writing-your-first-script"><StyledListItem>Writing Your First Script</StyledListItem></StyledAnchor>
               <StyledAnchor href="#setting-up-a-project-folder"><StyledListItem>A Quick Automation: Setting Up a Project Folder</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#logic-conditions-loops"><StyledListItem>Logic, Conditions, and Loops</StyledListItem></StyledAnchor>
             </div>
             <div>
-              <StyledAnchor href="#logic-conditions-loops"><StyledListItem>Logic, Conditions, and Loops</StyledListItem></StyledAnchor>
               <StyledAnchor href="#using-variables-and-user-input"><StyledListItem>Using Variables and User Input</StyledListItem></StyledAnchor>
               <StyledAnchor href="#command-substitution"><StyledListItem>Command Substitution</StyledListItem></StyledAnchor>
               <StyledAnchor href="#passing-arguments"><StyledListItem>Passing Arguments</StyledListItem></StyledAnchor>
               <StyledAnchor href="#building-something-useful"><StyledListItem>Building Something Useful: A System Info Script</StyledListItem></StyledAnchor>
               <StyledAnchor href="#functions-exit-codes-error-handling"><StyledListItem>Functions, Exit Codes, and Error Handling</StyledListItem></StyledAnchor>
               <StyledAnchor href="#how-to-debug-and-troubleshoot-bash-scripts"><StyledListItem>How to Debug and Troubleshoot Bash Scripts</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#data-manipulation-and-text-transformation"><StyledListItem>Data Manipulation and Text Transformation</StyledListItem></StyledAnchor>
             </div>
           </FlexColumn>
           <Spacer />
@@ -987,14 +1045,14 @@ const BashScripting = () => {
           but it's a lifesaver when you're trying to understand why something works locally but not in a cron job.
           <Spacer />
           <SubTitleSmall>Understanding Wildcards and Expansion</SubTitleSmall>
-          Wildcards, or “globs”, are another core part of Bash that can quietly trip you up until you understand how they expand. They let you match patterns in filenames without listing them all manually.
+          Wildcards, or "globs", are another core part of Bash that can quietly trip you up until you understand how they expand. They let you match patterns in filenames without listing them all manually.
           <Spacer />
           The most common ones are:
           <StyledListItem><BoldText>*</BoldText> matches any number of characters (including none)</StyledListItem>
           <StyledListItem><BoldText>?</BoldText> matches a single character</StyledListItem>
           <StyledListItem><BoldText>[abc]</BoldText> matches one character from the set inside the brackets</StyledListItem>
           <StyledListItem><BoldText>[!abc]</BoldText> matches anything not in that set</StyledListItem>
-          If you run ls *.log, Bash expands *.log into a list of files before the command even starts. It's not ls doing the filtering - Bash is. That's why these are called “globs” (short for global patterns).
+          If you run ls *.log, Bash expands *.log into a list of files before the command even starts. It's not ls doing the filtering - Bash is. That's why these are called "globs" (short for global patterns).
           <Spacer />
           Here's a small demo that shows how wildcards behave:
           <CodeBlock>
@@ -1059,6 +1117,140 @@ const BashScripting = () => {
           That tells Bash: if a pattern doesn't match anything, expand it to nothing instead of leaving it literal. It prevents accidental operations like rm *.log when there are no .log files around.
           <Spacer />
           Pair that with set -x, and you'll see exactly what Bash expands each pattern to. Once you see that output, you'll never look at a wildcard the same way again.
+          <SubTitle id="data-manipulation-and-text-transformation">Data Manipulation and Text Transformation</SubTitle>
+          This part is all about data manipulation - reading, transforming, and filtering text using Bash's most powerful tools: grep, sed, and awk.
+          These three commands are the beating heart of Unix philosophy: small, sharp tools that each do one thing well. Together, they can reshape logs, extract patterns, and perform complex text transformations that would take pages of code in other languages.
+          <Spacer />
+          If you've ever looked at a giant log file or CSV and thought, "there's no way I'm sorting through this manually," Bash has your back. You'll start by finding things (grep), then modifying them (sed), and finally shaping the results into something meaningful (awk).
+          <Spacer />
+          <SubTitleSmall>Finding Needles in Haystacks with grep</SubTitleSmall>
+          The name grep stands for "Global Regular Expression Print" - which sounds technical, but it simply means search for text and print matching lines.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashGrep, 56)}>
+              {isCopied[56].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashGrep}
+          </CodeBlock>
+          That scans through your system log and prints every line containing the word error. You can make it case-insensitive with -i, show line numbers with -n, or search recursively through directories with -r.
+          <Spacer />
+          A few quick examples:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashGrep2, 57)}>
+              {isCopied[57].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashGrep2}
+          </CodeBlock>
+          The -v flag is worth remembering - it's "invert match," meaning show me everything that does NOT match. If you've ever filtered a spreadsheet, grep feels like that - but lightning fast and infinitely scriptable.
+          <Spacer />
+          <SubTitleSmall>Editing on the Fly with sed</SubTitleSmall>
+          If grep is how you find text, sed is how you change it. It stands for "stream editor" and that's exactly what it does - it reads text line by line, applies your edits, and prints the result.
+          <Spacer />
+          Here's the simplest form:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashSed, 58)}>
+              {isCopied[58].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashSed}
+          </CodeBlock>
+          That command looks cryptic until you know the structure: s means "substitute", old is the pattern to match, and new is what to replace it with.
+          <Spacer />
+          By default, sed prints the modified text to the terminal. To overwrite the file directly, add the -i flag:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashSed2, 59)}>
+              {isCopied[59].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashSed2}
+          </CodeBlock>
+          The g at the end means "global" - replace all occurrences on each line, not just the first. If you've ever used find-and-replace in a text editor, this is the command-line version, except it works on thousands of files at once.
+          <Spacer />
+          You can also delete lines, insert new ones, or modify only those matching certain patterns:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashSed3, 59)}>
+              {isCopied[59].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashSed3}
+          </CodeBlock>
+          When you start chaining these together, sed becomes a kind of text Swiss Army knife - small, sharp, and surprisingly expressive.
+          <Spacer />
+          <SubTitleSmall>Slicing and Dicing with awk</SubTitleSmall>
+          Now comes awk, the most misunderstood tool in Bash. While grep and sed deal with lines, awk deals with fields - chunks of data separated by spaces, commas, or other delimiters. It was made for analysing structured text long before spreadsheets existed.
+          <Spacer />
+          Let's look at a basic example:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashAwk, 60)}>
+              {isCopied[60].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashAwk}
+          </CodeBlock>
+          That prints the first and third column from every line in data.txt. $1 means "the first field," $2 is the second, and so on. By default, awk splits fields by spaces or tabs, but you can change that using -F (for "field separator"):
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashAwk2, 61)}>
+              {isCopied[61].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashAwk2}
+          </CodeBlock>
+          That one-liner prints the first two columns from a CSV file. You can also use simple logic inside awk:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashAwk3, 61)}>
+              {isCopied[61].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashAwk3}
+          </CodeBlock>
+          This prints only the rows where the third column is greater than 80. That's the magic of awk: you can filter and format data in a single pass, without ever touching a spreadsheet or a Python script.
+          <Spacer />
+          <SubTitleSmall>Combining the Trio</SubTitleSmall>
+          These tools shine brightest when you chain them together - each one doing one job in a pipeline. Here's a real-world example: imagine you're cleaning up a log file and want to count how many errors occurred today.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashGrepSedAwk, 62)}>
+              {isCopied[62].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashGrepSedAwk}
+          </CodeBlock>
+          This:
+          <StyledListItem><BoldText>Finds all lines containing today's date.</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Filters them down to those with "ERROR".</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Counts the number of matches.</BoldText></StyledListItem>
+          In a single command, you've just turned thousands of log lines into a single number.
+          <Spacer />
+          Here's another:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashGrepSedAwk2, 63)}>
+              {isCopied[63].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashGrepSedAwk2}
+          </CodeBlock>
+          That finds all running nginx processes and prints their process ID ($2) and command name ($11). If you've ever debugged a web server, this is one of those little commands that earns its place in muscle memory.
+          <Spacer />
+          <SubTitleSmall>Example: Cleaning CSV Data</SubTitleSmall>
+          Let's look at an example scenario which includes what we've learned. Say you have a messy CSV file full of user data:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCleaningCSVData, 64)}>
+              {isCopied[64].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCleaningCSVData}
+          </CodeBlock>
+          You want to:
+          <StyledListItem><BoldText>Remove entries with missing emails.</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Fix the broken email domains.</BoldText></StyledListItem>
+          <StyledListItem><BoldText>Output just the valid names and addresses.</BoldText></StyledListItem>
+          Here's one way to do it with a single pipeline:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCleaningCSVData2, 65)}>
+              {isCopied[65].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCleaningCSVData2}
+          </CodeBlock>
+          Let's break that down:
+          <StyledListItem><BoldText>grep -E ".+@.+"</BoldText> keeps only lines with an @ symbol - our quick "email present" check</StyledListItem>
+          <StyledListItem><BoldText>sed 's/@example$/@example.com/'</BoldText> fixes emails that were missing .com.</StyledListItem>
+          <StyledListItem><BoldText>{bashCleaningCSVDataText}</BoldText> skips the header row (NR `{'>'}` 1) and prints each name and email in a readable format.</StyledListItem>
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCleaningCSVData3, 66)}>
+              {isCopied[66].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCleaningCSVData3}
+          </CodeBlock>
+          Clean, simple, and no spreadsheets required.
         </Text>
       </Container>
     </Wrapper>

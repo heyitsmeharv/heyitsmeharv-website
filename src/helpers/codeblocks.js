@@ -764,3 +764,30 @@ BASH_XTRACEFD=5
 set -x
 `;
 export const bashNullGlob = `shopt -s nullglob`;
+export const bashGrep = `grep "error" /var/log/syslog`;
+export const bashGrep2 = `grep -i "failed" auth.log            # find failed logins
+grep -rn "TODO" ~/projects           # search all files for TODOs
+grep -v "DEBUG" app.log              # exclude debug lines
+`;
+export const bashSed = `sed 's/old/new/' file.txt`;
+export const bashSed2 = `sed -i 's/foo/bar/g' config.txt`;
+export const bashSed3 = `sed '/DEBUG/d' log.txt              # delete lines containing DEBUG
+sed '/ERROR/i ---- NEW SECTION ----' log.txt  # insert before matches`;
+export const bashAwk = `awk '{print $1, $3}' data.txt`;
+export const bashAwk2 = `awk -F, '{print $1, $2}' users.csv`;
+export const bashAwk3 = `awk '$3 > 80 {print $1, $3}' scores.txt`;
+export const bashGrepSedAwk = `grep "$(date +%Y-%m-%d)" app.log | grep "ERROR" | wc -l`;
+export const bashGrepSedAwk2 = `ps aux | grep nginx | awk '{print $2, $11}'`;
+export const bashCleaningCSVData = `id,name,email,signup_date
+1,Adam Harvey,adam@example.com,2025-05-12
+2,Jane Doe,jane@example,2025-05-13
+3,Tom, ,2025-05-14
+`;
+export const bashCleaningCSVData2 = `cat users.csv \
+  | grep -E ".+@.+" \
+  | sed 's/@example$/@example.com/' \
+  | awk -F, 'NR>1 {print $2 " <" $3 ">"}'
+`;
+export const bashCleaningCSVDataText = `awk -F, 'NR>1 \{print $2 " <" $3 ">"}'`;
+export const bashCleaningCSVData3 = `Adam Harvey <adam@example.com>
+Jane Doe <jane@example.com>`;
