@@ -51,21 +51,25 @@ import {
   bashWhileLoop2,
   bashUntilLoop,
   bashLoopExample,
-  bashDefensiveMode,
-  bashExitStatus,
-  bashExitStatus2,
   bashExplicitlyFail,
   bashFunctions,
   bashFailGracefully,
-  bashHandlingExpectedFailures,
-  bashHandlingExpectedFailures2,
-  bashReturnDataOrState,
   bashSafeLogger,
   bashTinyLoggingHelper,
   bashTinyLoggingHelper2,
   bashReusableTemplate,
   bashTrap,
-  bashValidatingInputs
+  bashDebugMode,
+  bashDebugMode2,
+  bashDebugMode3,
+  bashTrapDebug,
+  bashWildcardsText,
+  bashHandlingExpectedFailures,
+  bashHandlingExpectedFailures2,
+  bashLoggingDebugOutput,
+  bashLoggingDebugOutput2,
+  bashNullGlob,
+  bashWildcards,
 } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
@@ -109,8 +113,6 @@ const FlexCenter = styled.div`
 
 const FlexColumn = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
 
   @media only screen and (max-width: 700px) {
     flex-direction: column;
@@ -200,7 +202,8 @@ const BoldTextSmall = styled.b`
 const ItalicText = styled.span`
   color: ${({ theme }) => theme.text};
   font-size: 2rem;
-  font-weight: italic;
+  font-style: italic;
+  font-weight: bold;
 `;
 
 const StyledCodeSpan = styled.code`
@@ -329,10 +332,16 @@ const BashScripting = () => {
     { value: false },
     { value: false },
     { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
   ]);
 
   const handleCopy = (code, key) => {
     const isCopiedDefault = [
+      { value: false },
+      { value: false },
+      { value: false },
       { value: false },
       { value: false },
       { value: false },
@@ -468,7 +477,6 @@ const BashScripting = () => {
               <StyledAnchor href="#bash-vs-command-line"><StyledListItem>Bash vs. the Command Line - What's the Difference?</StyledListItem></StyledAnchor>
               <StyledAnchor href="#setting-up-your-environment"><StyledListItem>Setting up Your Environment</StyledListItem></StyledAnchor>
               <StyledAnchor href="#getting-comfortable-in-the-terminal"><StyledListItem>Getting Comfortable in the Terminal</StyledListItem></StyledAnchor>
-              {/* <StyledAnchor href="#how-to-debug-and-troubleshoot-bash-scripts"><StyledListItem>How to Debug and Troubleshoot Bash Scripts</StyledListItem></StyledAnchor> */}
               <StyledAnchor href="#redirecting-and-chaining-commands"><StyledListItem>Redirecting and Chaining Commands</StyledListItem></StyledAnchor>
               <StyledAnchor href="#writing-your-first-script"><StyledListItem>Writing Your First Script</StyledListItem></StyledAnchor>
               <StyledAnchor href="#setting-up-a-project-folder"><StyledListItem>A Quick Automation: Setting Up a Project Folder</StyledListItem></StyledAnchor>
@@ -480,6 +488,7 @@ const BashScripting = () => {
               <StyledAnchor href="#passing-arguments"><StyledListItem>Passing Arguments</StyledListItem></StyledAnchor>
               <StyledAnchor href="#building-something-useful"><StyledListItem>Building Something Useful: A System Info Script</StyledListItem></StyledAnchor>
               <StyledAnchor href="#functions-exit-codes-error-handling"><StyledListItem>Functions, Exit Codes, and Error Handling</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#how-to-debug-and-troubleshoot-bash-scripts"><StyledListItem>How to Debug and Troubleshoot Bash Scripts</StyledListItem></StyledAnchor>
             </div>
           </FlexColumn>
           <Spacer />
@@ -534,7 +543,6 @@ const BashScripting = () => {
           <Table columns={columns} data={data} />
           <Spacer />
           These might feel trivial at first, but understanding them deeply is key - every script you'll ever write will build on these fundamentals.
-          {/* <SubTitle id="how-to-debug-and-troubleshoot-bash-scripts">How to Debug and Troubleshoot Bash Scripts</SubTitle> */}
           <SubTitle id="redirecting-and-chaining-commands">Redirecting and Chaining Commands</SubTitle>
           One of the most useful things Bash can do is connect commands together. This is where redirection and pipes come in.
           Let's say you want to save the output of a command to a file instead of printing it to the screen. You can do that like this:
@@ -589,9 +597,9 @@ const BashScripting = () => {
             </CopyButton>
             {bashFirstScript4}
           </CodeBlock>
-          It's a small win, but it's the moment most developers realise — "wait, I can make my computer do things for me."
+          It's a small win, but it's the moment most developers realise - "wait, I can make my computer do things for me."
           <SubTitleSmall>A Quick Note on Shebang</SubTitleSmall>
-          That first line — #!/bin/bash — is called the shebang (sometimes written as "hashbang"). It tells your system which interpreter should be used to run the script. When you execute a script directly
+          That first line - #!/bin/bash - is called the shebang (sometimes written as "hashbang"). It tells your system which interpreter should be used to run the script. When you execute a script directly
           (like ./hello.sh), the operating system looks at that line and says: "Ah, this file should be run using Bash, which lives at /bin/bash." If you were writing a Python script, it might look like this instead:
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(pythonScript, 10)}>
@@ -599,7 +607,7 @@ const BashScripting = () => {
             </CopyButton>
             {pythonScript}
           </CodeBlock>
-          Without the shebang, the system doesn't automatically know which program should interpret your code — meaning your script might fail or behave differently depending on the environment. It's a small line,
+          Without the shebang, the system doesn't automatically know which program should interpret your code - meaning your script might fail or behave differently depending on the environment. It's a small line,
           but it's the reason Bash scripts "just work" when shared across systems.
           <SubTitle id="setting-up-a-project-folder">A Quick Automation: Setting Up a Project Folder</SubTitle>
           Let's create our first piece of automation - a small script that sets up a basic project directory structure. We'll call it setup_project.sh, and it'll generate this structure:
@@ -812,7 +820,7 @@ const BashScripting = () => {
           <SubTitle id="functions-exit-codes-error-handling">Functions, Exit Codes, and Error Handling</SubTitle>
           Functions are Bash's way of helping you stay organised. Instead of writing the same five lines again and again, you can wrap them up in a block, give it a name, and call it when you need it.
           <Spacer />
-          Inside a function, the arguments you pass are stored in numbered variables: $1, $2, $3, and so on. They're positional — the first thing you pass is $1, the second is $2, etc.
+          Inside a function, the arguments you pass are stored in numbered variables: $1, $2, $3, and so on. They're positional - the first thing you pass is $1, the second is $2, etc.
           Bash doesn't enforce types or names; it's your job to remember what each one represents.
           <Spacer />
           Inside a function, you'll often see the keyword local. It's there to stop your temporary variables from leaking out and messing with the rest of the script. Bash doesn't isolate function scopes by default,
@@ -860,7 +868,7 @@ const BashScripting = () => {
             {bashExplicitlyFail}
           </CodeBlock>
           <Spacer />
-          That one-liner says, run this command; if it fails, don't crash — just log a note.
+          That one-liner says, run this command; if it fails, don't crash - just log a note.
           <Spacer />
           <SubTitleSmall>Cleaning Up After Yourself</SubTitleSmall>
           Every long-running script should leave things the way it found them. Temporary files, network mounts, locks - they all need cleaning up even if the script crashes halfway through. Bash gives you a built-in
@@ -893,7 +901,7 @@ const BashScripting = () => {
             {bashTinyLoggingHelper2}
           </CodeBlock>
           <Spacer />
-          Now every message gets printed and saved — one of those small details that makes debugging a week later much less painful.
+          Now every message gets printed and saved - one of those small details that makes debugging a week later much less painful.
           <Spacer />
           <SubTitleSmall>Building a Reliable Script Skeleton</SubTitleSmall>
           Once you've written a few scripts, you'll notice the same scaffolding appears again and again: a couple of set statements, a directory resolver, maybe a cleanup trap and a logger. Here's a template you can
@@ -917,17 +925,140 @@ const BashScripting = () => {
             {bashSafeLogger}
           </CodeBlock>
           <Spacer />
-          When you look inside the code, you'll notice a few clever bits. The mapfile command quietly reads the list of files returned by find into an array — it's clean and safe, even with filenames that contain spaces. Then there's
-          tar -C "/" — that option tells tar to treat every path as absolute, so when you extract the archive later, everything goes back exactly where it came from.
+          When you look inside the code, you'll notice a few clever bits. The mapfile command quietly reads the list of files returned by find into an array - it's clean and safe, even with filenames that contain spaces. Then there's
+          tar -C "/" - that option tells tar to treat every path as absolute, so when you extract the archive later, everything goes back exactly where it came from.
           <Spacer />
           And see that small commented-out loop at the end? If you uncomment it, the script deletes the original files after archiving, effectively turning it into a move operation instead of a copy. I usually leave it off until I've
           verified that the archive looks good; it's the difference between a cautious script and a reckless one.
           <Spacer />
-          When you run it, you'll watch each step logged as it happens — the directory being scanned, the files being packed, and finally a neat .tar.gz sitting in an archives/ folder right next to your script. The whole thing works
+          When you run it, you'll watch each step logged as it happens - the directory being scanned, the files being packed, and finally a neat .tar.gz sitting in an archives/ folder right next to your script. The whole thing works
           quietly and predictably, and if something goes wrong, you'll know exactly why.
           <Spacer />
           That's what this part of the series is really about: taking all the moving pieces of Bash and turning them into something reliable. Functions give you structure, exit codes give you control, and error handling keeps your work honest.
           Together, they turn your scripts from quick hacks into tools you can actually depend on.
+          <SubTitle id="how-to-debug-and-troubleshoot-bash-scripts">How to Debug and Troubleshoot Bash Scripts</SubTitle>
+          Now we'll look into how to debug Bash scripts in real time, trace their execution, and use wildcards to work with complex sets of files. Once you understand how Bash expands patterns and how to watch its inner workings, writing reliable
+          automation becomes much easier.
+          <Spacer />
+          <SubTitleSmall>Seeing Inside the Script</SubTitleSmall>
+          When you're debugging, the first and easiest tool is <ItalicText>echo</ItalicText>. It sounds almost too simple, but printing a variable's value at the right moment often reveals everything you need to know. We've been using it throughout
+          our examples but of course, it can get messy fast as you can see - you don't want to litter your code with echoes everywhere.
+          <Spacer />
+          That's where Bash's build-in tracing comes in.
+          <Spacer />
+          <SubTitleSmall>Running in Debug Mode</SubTitleSmall>
+          You can ask Bash to show you every command it executes, line by line. The simplest way is to run your script like this:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashDebugMode, 47)}>
+              {isCopied[47].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashDebugMode}
+          </CodeBlock>
+          The -x flag prints each command as it's executed, with variables already expanded. It looks a little noisy, but it's brilliant for spotting logic errors, especially when conditions or loops aren't behaving.
+          <Spacer />
+          If you only want to trace part of a script, you can toggle it on and off inside the code itself:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashDebugMode2, 48)}>
+              {isCopied[48].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashDebugMode2}
+          </CodeBlock>
+          <Spacer />
+          That's great when you want to focus on one section without flooding your terminal with output.
+          <Spacer />
+          You can even customise the trace prefix with a special variable called var. This adds context to each debug line, which is a huge help in longer scripts.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashDebugMode3, 49)}>
+              {isCopied[49].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashDebugMode3}
+          </CodeBlock>
+          Now, every line Bash prints during debugging shows the filename, line number, and function name - almost like stepping through code in an IDE.
+          <Spacer />
+          <SubTitleSmall>Using trap DEBUG</SubTitleSmall>
+          If you want to go one level deeper, you can use the trap command with the DEBUG signal. This fires before every single command Bash runs, and it's handy when you need to log or audit behaviour.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashTrapDebug, 50)}>
+              {isCopied[50].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashTrapDebug}
+          </CodeBlock>
+          When this is active, every command is printed right before it executes. It's like having a live narrator describing your script's every move. You wouldn't leave this on in production,
+          but it's a lifesaver when you're trying to understand why something works locally but not in a cron job.
+          <Spacer />
+          <SubTitleSmall>Understanding Wildcards and Expansion</SubTitleSmall>
+          Wildcards, or “globs”, are another core part of Bash that can quietly trip you up until you understand how they expand. They let you match patterns in filenames without listing them all manually.
+          <Spacer />
+          The most common ones are:
+          <StyledListItem><BoldText>*</BoldText> matches any number of characters (including none)</StyledListItem>
+          <StyledListItem><BoldText>?</BoldText> matches a single character</StyledListItem>
+          <StyledListItem><BoldText>[abc]</BoldText> matches one character from the set inside the brackets</StyledListItem>
+          <StyledListItem><BoldText>[!abc]</BoldText> matches anything not in that set</StyledListItem>
+          If you run ls *.log, Bash expands *.log into a list of files before the command even starts. It's not ls doing the filtering - Bash is. That's why these are called “globs” (short for global patterns).
+          <Spacer />
+          Here's a small demo that shows how wildcards behave:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashTrapDebug, 51)}>
+              {isCopied[51].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashTrapDebug}
+          </CodeBlock>
+          You'll see <BoldText>fileA.log</BoldText> <BoldText>fileB.log</BoldText> printed - those filenames were expanded automatically by Bash.
+          <Spacer />
+          You can combine patterns, too:
+          {bashWildcardsText} lists both <ItalicText>.jpg</ItalicText> and <ItalicText>.png</ItalicText> files in the same go.
+          <Spacer />
+          <SubTitleSmall>Escaping Wildcards</SubTitleSmall>
+          Sometimes, though, you don't want Bash to expand a pattern - you just want to pass it literally (for example, to a grep or find command that expects the pattern). In those cases, you escape the characters
+          so Bash leaves them alone.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashWildcards, 52)}>
+              {isCopied[52].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashWildcards}
+          </CodeBlock>
+          Now the shell prints *.log exactly as written, without expanding it.
+          <Spacer />
+          <SubTitleSmall>Diagnosing Common Problems</SubTitleSmall>
+          When something goes wrong in Bash, it's almost always one of three things:
+          <StyledListItem><BoldText>A variable is unset or empty</BoldText></StyledListItem>
+          <StyledListItem><BoldText>A command is running in the wrong directory.</BoldText></StyledListItem>
+          <StyledListItem><BoldText>A pattern isn't matching what you think it should.</BoldText></StyledListItem>
+          You can protect against these with a few good habits. Always double-quote your variables ("$dir" instead of $dir), print them out when debugging, and use pwd at the start of critical operations to verify
+          where you are.
+          <Spacer />
+          If a loop doesn't run, check whether the glob you're looping over actually expands to anything. Bash will silently skip a loop if the pattern doesn't match any files.
+          <Spacer />
+          <SubTitleSmall>Logging Debug Output</SubTitleSmall>
+          If you've been following along from Part 3, you already have a simple logging function. You can easily adapt it to record debug-level messages too. For example:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashLoggingDebugOutput, 53)}>
+              {isCopied[53].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashLoggingDebugOutput}
+          </CodeBlock>
+          You can even redirect debugging output from set -x into a file by using the BASH_XTRACEFD variable:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashLoggingDebugOutput2, 54)}>
+              {isCopied[54].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashLoggingDebugOutput2}
+          </CodeBlock>
+          Now, all your trace output goes neatly into debug.log instead of cluttering the screen.
+          <Spacer />
+          <SubTitleSmall>Where Wildcards and Debugging Meet</SubTitleSmall>
+          Wildcards and debugging might seem unrelated, but they actually intersect in interesting ways. Many strange bugs come from unexpected globbing - Bash expanding a pattern into hundreds of files, or worse, no files at all.
+          <Spacer />
+          A simple trick is to enable the nullglob option temporarily:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashNullGlob, 55)}>
+              {isCopied[55].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashNullGlob}
+          </CodeBlock>
+          That tells Bash: if a pattern doesn't match anything, expand it to nothing instead of leaving it literal. It prevents accidental operations like rm *.log when there are no .log files around.
+          <Spacer />
+          Pair that with set -x, and you'll see exactly what Bash expands each pattern to. Once you see that output, you'll never look at a wildcard the same way again.
         </Text>
       </Container>
     </Wrapper>

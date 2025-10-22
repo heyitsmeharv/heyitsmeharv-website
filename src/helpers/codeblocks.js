@@ -587,17 +587,6 @@ echo "Cleaning up \$dir..."
 find "\$dir" -type f -mtime +\$days -exec rm -v {} \\;
 
 echo "Cleanup complete."`;
-
-export const bashExitStatus = `#!/usr/bin/env bash
-false
-echo "Last status: $?"   # prints non-zero
-true
-echo "Last status: $?"   # prints 0`;
-export const bashExitStatus2 = `cp source.txt dest.txt
-if [[ $? -ne 0 ]]; then
-  echo "Copy failed."
-  exit 1
-fi`;
 export const bashFunctions = `greet() {
   local name="$1"
   echo "Hello, $name"
@@ -622,10 +611,6 @@ else
   echo "Not positive"
 fi`;
 export const bashFailGracefully = `set -euo pipefail`;
-export const bashDefensiveMode = `set -euo pipefail
-# -e : exit on any command failure
-# -u : error on using unset variables
-# -o pipefail : a pipeline fails if any command in it fails`;
 export const bashExplicitlyFail = `some_command || echo "non-fatal: some_command failed"`;
 export const bashTrap = `cleanup() {
   rm -f "$TMP_FILE"
@@ -695,7 +680,7 @@ DAYS="$2"
 
 [[ -d "$SRC" ]] || { echo "Not a directory: $SRC"; exit 66; }  # 66 = NOINPUT-ish
 [[ "$DAYS" =~ ^[0-9]+$ ]] || { echo "Days must be an integer"; exit 65; }`;
- export const bashHandlingExpectedFailures = `if ! grep -q "pattern" file.txt 2>/dev/null; then
+export const bashHandlingExpectedFailures = `if ! grep -q "pattern" file.txt 2>/dev/null; then
   echo "Pattern not found (that's okay)."
 fi`;
 export const bashHandlingExpectedFailures2 = `mkdir -p "$DIR" || true`;
@@ -761,3 +746,21 @@ logf INFO "Archived \${#files[@]} files."
 # for f in "\${files[@]}"; do rm -v "$f"; done
 
 logf INFO "Done."`;
+export const bashDebugMode = `bash -x script.sh`;
+export const bashDebugMode2 = `set -x   # turn debugging on
+# commands here
+set +x   # turn debugging off`;
+export const bashDebugMode3 = `export var='+ \${BASH_SOURCE}:\${LINENO}:\${FUNCNAME[0]}: '
+set -x
+`;
+export const bashTrapDebug = `trap 'echo "Running: $BASH_COMMAND"' DEBUG`;
+export const bashWildcards = `touch file1.txt file2.txt fileA.log fileB.log
+echo *.log`;
+export const bashWildcards2 = `echo "*.log"`;
+export const bashWildcardsText = ` ls *.{jpg,png}`;
+export const bashLoggingDebugOutput = `log DEBUG "Variable dir=$dir"`;
+export const bashLoggingDebugOutput2 = `exec 5>debug.log
+BASH_XTRACEFD=5
+set -x
+`;
+export const bashNullGlob = `shopt -s nullglob`;
