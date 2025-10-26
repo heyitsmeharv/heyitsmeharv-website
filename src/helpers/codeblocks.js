@@ -438,8 +438,21 @@ export const bashEnvironment = `echo $SHELL`;
 export const powershell = `$PSVersionTable`;
 export const bashVersion = `bash --version`;
 export const bashOutput = `ls > files.txt`;
-export const bashAppend = `echo "new line" >> files.txt`;
-export const bashPipe = `ls /etc | grep conf`;
+export const bashAppend = `echo "Backup completed" >> logs.txt`;
+export const bashFeed = `sort < names.txt`;
+export const bashFeed2 = `while read user; do
+  echo "Hello $user"
+done < users.txt
+`;
+export const bashFeedAlt = `cat users.txt | while read user; do echo "Hello $user"; done`
+export const bashRedirectErr = `find / -name "config.json" > results.txt 2> errors.txt`;
+export const bashRedirectErr2 = `find / -name "config.json" > all_output.txt 2>&1`;
+export const bashMixingMatching = `sort < input.txt | uniq > cleaned.txt`;
+export const bashFileDescriptors = `exec 3>log.txt
+echo "Hello log" >&3
+exec 3>&-
+`;
+export const bashPipe = `ls | grep "log"`;
 export const bashFirstScript = `#!/bin/bash
 # A simple hello world script
 

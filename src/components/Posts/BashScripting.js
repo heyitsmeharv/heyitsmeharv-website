@@ -21,6 +21,13 @@ import {
   powershell,
   bashVersion,
   bashOutput,
+  bashFeed,
+  bashFeed2,
+  bashFeedAlt,
+  bashMixingMatching,
+  bashRedirectErr,
+  bashRedirectErr2,
+  bashFileDescriptors,
   bashAppend,
   bashPipe,
   bashFirstScript,
@@ -127,7 +134,7 @@ const FlexCenter = styled.div`
 
 const FlexColumn = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 
   @media only screen and (max-width: 700px) {
     flex-direction: column;
@@ -232,21 +239,25 @@ const UnStyledListItem = styled.li`
   list-style-type: none;
   color: ${({ theme }) => theme.text};
   margin-left: 5%;
+  width: 100%;
 `;
 
 const StyledListItem = styled.li`
   color: ${({ theme }) => theme.text};
   margin-left: 5%;
+  width: 100%;
 `;
 
 const StyledListItemIndent = styled.li`
   color: ${({ theme }) => theme.text};
   margin-left: 10%;
+  width: 100%;
 `;
 
 const StyledListItemIndentExtra = styled.li`
   color: ${({ theme }) => theme.text};
   margin-left: 15%;
+  width: 100%;
 `;
 
 const StyledAnchor = styled.a`
@@ -371,10 +382,30 @@ const BashScripting = () => {
     { value: false },
     { value: false },
     { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
   ]);
 
   const handleCopy = (code, key) => {
     const isCopiedDefault = [
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
       { value: false },
       { value: false },
       { value: false },
@@ -547,6 +578,7 @@ const BashScripting = () => {
               <StyledAnchor href="#functions-exit-codes-error-handling"><StyledListItem>Functions, Exit Codes, and Error Handling</StyledListItem></StyledAnchor>
               <StyledAnchor href="#how-to-debug-and-troubleshoot-bash-scripts"><StyledListItem>How to Debug and Troubleshoot Bash Scripts</StyledListItem></StyledAnchor>
               <StyledAnchor href="#data-manipulation-and-text-transformation"><StyledListItem>Data Manipulation and Text Transformation</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#networking-with-bash"><StyledListItem>Networking with Bash</StyledListItem></StyledAnchor>
             </div>
           </FlexColumn>
           <Spacer />
@@ -603,6 +635,15 @@ const BashScripting = () => {
           These might feel trivial at first, but understanding them deeply is key - every script you'll ever write will build on these fundamentals.
           <SubTitle id="redirecting-and-chaining-commands">Redirecting and Chaining Commands</SubTitle>
           One of the most useful things Bash can do is connect commands together. This is where redirection and pipes come in.
+          <Spacer />
+          Bash can take the output of one command and feed it into another. That's what the | symbol (the pipe) is for.
+          Bash actually has a three-way system for how it handles data:
+          <StyledListItem><BoldText>stdin</BoldText> standard input (what the command reads)</StyledListItem>
+          <StyledListItem><BoldText>stdout</BoldText> standard output (what it prints)</StyledListItem>
+          <StyledListItem><BoldText>stderr</BoldText> standard error (where it reports problems)</StyledListItem>
+          Every time you run a command, Bash quietly connects these three data streams in the background.
+          <Spacer />
+          <SubTitleSmall>Sending Output Somewhere Else - {`>`} and {`>>`}</SubTitleSmall>
           Let's say you want to save the output of a command to a file instead of printing it to the screen. You can do that like this:
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(bashOutput, 3)}>
@@ -610,13 +651,62 @@ const BashScripting = () => {
             </CopyButton>
             {bashOutput}
           </CodeBlock>
-          This writes the output of ls into a file called files.txt. To append instead of overwrite, use {`>>`} :
+          That line tells Bash: "take the normal output of ls and write it into a file instead of the screen." If the file already exists, it gets replaced.
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(bashAppend, 4)}>
               {isCopied[4].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
             {bashAppend}
           </CodeBlock>
+          <SubTitleSmall>Feeding Input into a Command - {`<`}</SubTitleSmall>
+          This one works in the opposite direction. It takes the contents of a file and feeds it into a command as if you were typing it manually. That command reads everything from names.txt, sorts it alphabetically, and prints the result to the screen.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFeed, 67)}>
+              {isCopied[67].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFeed}
+          </CodeBlock>
+          So at first glance it seems redundant - but here's where it becomes useful:
+          <Spacer />
+          Sometimes you need to pass input to commands that don't normally take filenames directly. Let's say you have a text file with a list of users and you want to run a command for each one. You could do this:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFeed2, 68)}>
+              {isCopied[68].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFeed2}
+          </CodeBlock>
+          That {`<`} users.txt at the end means, "feed the contents of this file into the loop as standard input." It's elegant and clean - the loop reads line by line until it runs out of data. Without {`<`}, you'd have to pipe or cat it, which works but looks messier:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFeedAlt, 69)}>
+              {isCopied[69].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFeedAlt}
+          </CodeBlock>
+          Both achieve the same result, but the version with {`<`} avoids creating an unnecessary pipe process (which we will visit soon). It's a small detail, but a sign of well-written Bash.
+          <Spacer />
+          <SubTitleSmall>Redirecting Errors - {`2>`}</SubTitleSmall>
+          We will be covering exit codes and error handling in more detail but we'll briefly cover it here as it's relevant.
+          <Spacer />
+          By default, Bash sends normal output (stdout) and error messages (stderr) to the same place: your terminal. Sometimes, though, you want to separate them.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashRedirectErr, 70)}>
+              {isCopied[70].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashRedirectErr}
+          </CodeBlock>
+          This tells Bash:
+          <StyledListItem>Write all the successful output into results.txt</StyledListItem>
+          <StyledListItem>Send all error messages (like 'permission denied') into errors.txt</StyledListItem>
+          The 2 refers to the file descriptor for stderr. You can also redirect both streams into one file:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashRedirectErr2, 71)}>
+              {isCopied[71].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashRedirectErr2}
+          </CodeBlock>
+          That 2{`>`}&1 means, "send stderr to wherever stdout is currently going." It's the kind of syntax that looks like gibberish at first, then suddenly makes sense the first time you debug a failing script.
+          <Spacer />
+          <SubTitleSmall>The Pipe - |</SubTitleSmall>
           You can also pipe commands together. This lets you take the output of one command and feed it directly into another:
           <CodeBlock>
             <CopyButton onClick={() => handleCopy(bashPipe, 5)}>
@@ -624,7 +714,31 @@ const BashScripting = () => {
             </CopyButton>
             {bashPipe}
           </CodeBlock>
-          That command lists everything in /etc and filters only the lines containing "conf". This is where Bash starts to feel less like typing commands and more like composing small data pipelines.
+          Here, the ls command lists everything, but instead of printing it to the screen, it hands the list straight to grep, which filters it for lines containing "log." The result is printed out as if it came from one command. You can keep chaining pipes indefinitely.
+          <Spacer />
+          <SubTitleSmall>Mixing and Matching</SubTitleSmall>
+          Once you understand that {`<`}, {`>`}, and | are just ways to control where data flows, you can combine them in creative ways.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashMixingMatching, 72)}>
+              {isCopied[72].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashMixingMatching}
+          </CodeBlock>
+          This reads from input.txt, sorts the lines, removes duplicates, and saves the result to cleaned.txt. No intermediate files, no temporary steps - just a single pipeline that flows cleanly from left to right.
+          <Spacer />
+          <SubTitleSmall>File Descriptors</SubTitleSmall>
+          Behind the scenes, Bash treats all input and output as file descriptors. You've already met three of them:
+          <StyledListItem>0 = standard input</StyledListItem>
+          <StyledListItem>1 = standard output</StyledListItem>
+          <StyledListItem>2 = standard error</StyledListItem>
+          You can open and close these manually if you ever need to redirect input or output dynamically. For example:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFileDescriptors, 74)}>
+              {isCopied[74].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFileDescriptors}
+          </CodeBlock>
+          That opens a new "output stream" to log.txt, writes a line to it, and then closes it. It's an advanced technique, but once you start writing more complex scripts - like logging functions or multi-stream tools - it gives you total control over what goes where.
           <Spacer />
           <SubTitle id="writing-your-first-script">Writing Your First Script</SubTitle>
           Let's go classic for a moment. Create a file called hello.sh:
@@ -1251,6 +1365,16 @@ const BashScripting = () => {
             {bashCleaningCSVData3}
           </CodeBlock>
           Clean, simple, and no spreadsheets required.
+          <SubTitle id="networking-with-bash">Networking with Bash</SubTitle>
+          The command line isn't just a local toolbox - it's also a full-featured networking workstation. From testing connections to calling APIs, Bash gives you direct control over how your system talks to others.
+          In this section, you'll learn how to use Bash to:
+          <StyledListItem>Check network connectivity</StyledListItem>
+          <StyledListItem>Query servers and APIs</StyledListItem>
+          <StyledListItem>Transfer files</StyledListItem>
+          <StyledListItem>Monitor latency and response times</StyledListItem>
+          By the end, you'll have a few short scripts that can check website uptime, test DNS resolution, and even pull live data from the internet - all from the shell.
+          <SubTitleSmall>Testing Connectivity with ping</SubTitleSmall>
+          The simplest test of network connectivity starts with one word:
         </Text>
       </Container>
     </Wrapper>
