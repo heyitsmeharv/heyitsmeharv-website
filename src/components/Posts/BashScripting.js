@@ -90,7 +90,25 @@ import {
   bashCleaningCSVData,
   bashCleaningCSVData2,
   bashCleaningCSVData3,
-  bashCleaningCSVDataText
+  bashCleaningCSVDataText,
+  bashPing,
+  bashPing2,
+  bashPing3,
+  bashCurl,
+  bashCurl2,
+  bashCurl3,
+  bashCurl4,
+  bashCurl5,
+  bashCurl6,
+  bashCurl7,
+  bashSCP,
+  bashSCP2,
+  bashNC,
+  bashNC2,
+  bashDig,
+  bashDig2,
+  bashDig3,
+  bashMonitoring
 } from "../../helpers/codeblocks";
 
 const Wrapper = styled.div`
@@ -392,10 +410,28 @@ const BashScripting = () => {
     { value: false },
     { value: false },
     { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
+    { value: false },
   ]);
 
   const handleCopy = (code, key) => {
     const isCopiedDefault = [
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
+      { value: false },
       { value: false },
       { value: false },
       { value: false },
@@ -563,10 +599,10 @@ const BashScripting = () => {
             <div>
               <StyledAnchor href="#what-is-bash"><StyledListItem>What is Bash?</StyledListItem></StyledAnchor>
               <StyledAnchor href="#bash-vs-command-line"><StyledListItem>Bash vs. the Command Line - What's the Difference?</StyledListItem></StyledAnchor>
-              <StyledAnchor href="#setting-up-your-environment"><StyledListItem>Setting up Your Environment</StyledListItem></StyledAnchor>
               <StyledAnchor href="#getting-comfortable-in-the-terminal"><StyledListItem>Getting Comfortable in the Terminal</StyledListItem></StyledAnchor>
-              <StyledAnchor href="#redirecting-and-chaining-commands"><StyledListItem>Redirecting and Chaining Commands</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#setting-up-your-environment"><StyledListItem>Setting up Your Environment</StyledListItem></StyledAnchor>
               <StyledAnchor href="#writing-your-first-script"><StyledListItem>Writing Your First Script</StyledListItem></StyledAnchor>
+              <StyledAnchor href="#redirecting-and-chaining-commands"><StyledListItem>Redirecting and Chaining Commands</StyledListItem></StyledAnchor>
               <StyledAnchor href="#setting-up-a-project-folder"><StyledListItem>A Quick Automation: Setting Up a Project Folder</StyledListItem></StyledAnchor>
               <StyledAnchor href="#logic-conditions-loops"><StyledListItem>Logic, Conditions, and Loops</StyledListItem></StyledAnchor>
             </div>
@@ -633,6 +669,48 @@ const BashScripting = () => {
           <Table columns={columns} data={data} />
           <Spacer />
           These might feel trivial at first, but understanding them deeply is key - every script you'll ever write will build on these fundamentals.
+          <Spacer />
+          <SubTitle id="writing-your-first-script">Writing Your First Script</SubTitle>
+          Let's go classic for a moment. Create a file called hello.sh:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFirstScript, 6)}>
+              {isCopied[6].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFirstScript}
+          </CodeBlock>
+          Give it permission to run:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFirstScript2, 7)}>
+              {isCopied[7].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFirstScript2}
+          </CodeBlock>
+          Then execute it:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFirstScript3, 8)}>
+              {isCopied[8].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFirstScript3}
+          </CodeBlock>
+          Output:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashFirstScript4, 9)}>
+              {isCopied[9].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashFirstScript4}
+          </CodeBlock>
+          It's a small win, but it's the moment most developers realise - "wait, I can make my computer do things for me."
+          <SubTitleSmall>A Quick Note on Shebang</SubTitleSmall>
+          That first line - #!/bin/bash - is called the shebang (sometimes written as "hashbang"). It tells your system which interpreter should be used to run the script. When you execute a script directly
+          (like ./hello.sh), the operating system looks at that line and says: "Ah, this file should be run using Bash, which lives at /bin/bash." If you were writing a Python script, it might look like this instead:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(pythonScript, 10)}>
+              {isCopied[10].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {pythonScript}
+          </CodeBlock>
+          Without the shebang, the system doesn't automatically know which program should interpret your code - meaning your script might fail or behave differently depending on the environment. It's a small line,
+          but it's the reason Bash scripts "just work" when shared across systems.
           <SubTitle id="redirecting-and-chaining-commands">Redirecting and Chaining Commands</SubTitle>
           One of the most useful things Bash can do is connect commands together. This is where redirection and pipes come in.
           <Spacer />
@@ -740,47 +818,6 @@ const BashScripting = () => {
           </CodeBlock>
           That opens a new "output stream" to log.txt, writes a line to it, and then closes it. It's an advanced technique, but once you start writing more complex scripts - like logging functions or multi-stream tools - it gives you total control over what goes where.
           <Spacer />
-          <SubTitle id="writing-your-first-script">Writing Your First Script</SubTitle>
-          Let's go classic for a moment. Create a file called hello.sh:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(bashFirstScript, 6)}>
-              {isCopied[6].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {bashFirstScript}
-          </CodeBlock>
-          Give it permission to run:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(bashFirstScript2, 7)}>
-              {isCopied[7].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {bashFirstScript2}
-          </CodeBlock>
-          Then execute it:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(bashFirstScript3, 8)}>
-              {isCopied[8].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {bashFirstScript3}
-          </CodeBlock>
-          Output:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(bashFirstScript4, 9)}>
-              {isCopied[9].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {bashFirstScript4}
-          </CodeBlock>
-          It's a small win, but it's the moment most developers realise - "wait, I can make my computer do things for me."
-          <SubTitleSmall>A Quick Note on Shebang</SubTitleSmall>
-          That first line - #!/bin/bash - is called the shebang (sometimes written as "hashbang"). It tells your system which interpreter should be used to run the script. When you execute a script directly
-          (like ./hello.sh), the operating system looks at that line and says: "Ah, this file should be run using Bash, which lives at /bin/bash." If you were writing a Python script, it might look like this instead:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(pythonScript, 10)}>
-              {isCopied[10].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {pythonScript}
-          </CodeBlock>
-          Without the shebang, the system doesn't automatically know which program should interpret your code - meaning your script might fail or behave differently depending on the environment. It's a small line,
-          but it's the reason Bash scripts "just work" when shared across systems.
           <SubTitle id="setting-up-a-project-folder">A Quick Automation: Setting Up a Project Folder</SubTitle>
           Let's create our first piece of automation - a small script that sets up a basic project directory structure. We'll call it setup_project.sh, and it'll generate this structure:
           <CodeBlock>
@@ -811,7 +848,6 @@ const BashScripting = () => {
             {bashProjectSetup4}
           </CodeBlock>
           And just like that, Bash created your project skeleton in seconds. You'll start to see how even small bits of automation can save time - and prevent the "new project setup" fatigue.
-          <Spacer />
           <SubTitle id="using-variables-and-user-input">Using Variables and User Input</SubTitle>
           Bash supports variables like any other language. They're simple - no types, no declarations - just a name and a value.
           <CodeBlock>
@@ -821,6 +857,8 @@ const BashScripting = () => {
             {bashUserInput}
           </CodeBlock>
           Notice how you can mix hard-coded values and user input in the same script. This opens the door to building small utilities that can interact with users or gather system data.
+
+
           <SubTitle id="command-substitution">Command Substitution</SubTitle>
           Another handy trick - storing the result of a command in a variable.
           <CodeBlock>
@@ -830,6 +868,8 @@ const BashScripting = () => {
             {bashCommandSubstitution}
           </CodeBlock>
           You can use this technique to dynamically pull system information or chain results between commands. It's one of those small things that suddenly makes scripts feel alive.
+
+
           <SubTitle id="passing-arguments">Passing Arguments</SubTitle>
           You can also pass arguments directly to your script:
           <CodeBlock>
@@ -853,6 +893,9 @@ const BashScripting = () => {
             {bashPassingArguments3}
           </CodeBlock>
           This becomes essential when you start writing reusable automation scripts - like a backup tool that accepts different file paths as input.
+
+
+
           <SubTitle id="building-something-useful">Building Something Useful: A System Info Script</SubTitle>
           Let's tie everything together with something you might actually use. We'll create a script that prints out a quick system health summary - your hostname, user, uptime, memory, and disk usage.
           <CodeBlock>
@@ -876,6 +919,9 @@ const BashScripting = () => {
             {bashSystemInfo3}
           </CodeBlock>
           It's not exactly mind blowing, but it's a start - let's keep building.
+
+
+
           <SubTitle id="logic-conditions-loops">Logic, Conditions, and Loops</SubTitle>
           Once you're comfortable running a few commands, the next step is to make your scripts respond. You'll add logic, make decisions, and repeat actions automatically.
           <Spacer />
@@ -1375,6 +1421,171 @@ const BashScripting = () => {
           By the end, you'll have a few short scripts that can check website uptime, test DNS resolution, and even pull live data from the internet - all from the shell.
           <SubTitleSmall>Testing Connectivity with ping</SubTitleSmall>
           The simplest test of network connectivity starts with one word:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashPing, 75)}>
+              {isCopied[75].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashPing}
+          </CodeBlock>
+          ping sends small packets (ICMP echo requests) to the destination and waits for a reply. It tells you two things: whether the host is reachable, and how long the round trip takes.
+          <Spacer />
+          The -c flag limits how many times it runs:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashPing2, 76)}>
+              {isCopied[76].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashPing2}
+          </CodeBlock>
+          That sends exactly four pings, then stops - perfect for scripting. You can use this inside a script to check if a host is up:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashPing3, 77)}>
+              {isCopied[77].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashPing3}
+          </CodeBlock>
+          That one-liner &{`>`}/dev/null hides all the normal ping output, keeping things clean. It's a nice first layer in any network health check.
+          <Spacer />
+          <SubTitleSmall>Downloading Data with curl</SubTitleSmall>
+          curl is the Swiss army knife of network tools. It can make HTTP requests, upload files, authenticate, and even handle APIs. If you've ever worked with cloud services or REST endpoints, curl is what you'll use most often.
+          <Spacer />
+          Start with something simple:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCurl, 78)}>
+              {isCopied[78].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCurl}
+          </CodeBlock>
+          That prints the HTML of the webpage straight to your terminal. Add -O (capital O) to save it to a file instead:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCurl2, 79)}>
+              {isCopied[79].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCurl2}
+          </CodeBlock>
+          You can use it for APIs too:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCurl3, 80)}>
+              {isCopied[80].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCurl3}
+          </CodeBlock>
+          That fetches a JSON response describing the user octocat. If you want to see the full request and response details (great for debugging), use:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCurl4, 81)}>
+              {isCopied[81].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCurl4}
+          </CodeBlock>
+          You'll see headers, status codes, and timing info - everything you'd expect from a browser's "network" tab, but right in your terminal.
+          <Spacer />
+          <SubTitleSmall>Checking Website Availability</SubTitleSmall>
+          You can build a quick website uptime checker using just curl and a little logic.
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCurl5, 82)}>
+              {isCopied[82].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCurl5}
+          </CodeBlock>
+          This runs silently (-s), discards the output (-o /dev/null), and prints only the HTTP status code (-w "%{`http_code`}"). It's the sort of quick check you could schedule in cron to alert you if a site suddenly goes offline.
+          <Spacer />
+          <SubTitleSmall>Fetching and Parsing API Data</SubTitleSmall>
+          The magic starts when you combine curl with grep or jq to pull out meaningful info from an API. For instance, here's how to check the current price of Bitcoin using the public Coindesk API:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCurl6, 83)}>
+              {isCopied[83].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCurl6}
+          </CodeBlock>
+          It's a one-liner that downloads JSON, filters for the "rate" field, and extracts just the number. With jq installed, you can make it even cleaner:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashCurl7, 84)}>
+              {isCopied[84].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashCurl7}
+          </CodeBlock>
+          That's the beauty of Bash - it's not just a programming language, it's a glue language. It connects external tools together to do exactly what you need.
+          <SubTitleSmall>Transferring Files with scp and rsync</SubTitleSmall>
+          Once you're comfortable reading and writing over the network, the next step is sending data. scp (secure copy) and rsync are the go-to commands for moving files between machines.
+          <Spacer />
+          scp is simple and reliable:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashSCP, 85)}>
+              {isCopied[85].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashSCP}
+          </CodeBlock>
+          That securely copies backup.tar.gz to your remote server over SSH.
+          <Spacer />
+          rsync is smarter - it copies only what's changed:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashSCP2, 86)}>
+              {isCopied[86].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashSCP2}
+          </CodeBlock>
+          The flags mean:
+          <StyledListItem><BoldText>a</BoldText> - archive mode (preserves permissions and timestamps)</StyledListItem>
+          <StyledListItem><BoldText>v</BoldText> - verbose</StyledListItem>
+          <StyledListItem><BoldText>z</BoldText> - compress during transfer</StyledListItem>
+          This is how many developers deploy static sites - it's basically a one-line deployment script.
+          <SubTitleSmall>Checking Ports and Network Services</SubTitleSmall>
+          Sometimes a server is online but a specific service isn't responding.
+          <Spacer />
+          You can check ports directly with nc (netcat):
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashNC, 87)}>
+              {isCopied[87].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashNC}
+          </CodeBlock>
+          That tests whether port 22 (SSH) is open on example.com. You'll get a simple success or failure message - perfect for debugging connectivity issues. If you need to continuously watch
+          a service, you can wrap that in a loop:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashNC2, 88)}>
+              {isCopied[88].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashNC2}
+          </CodeBlock>
+          That pings the web server every 10 seconds and reports the result. It's crude, but surprisingly useful when you're troubleshooting.
+          <SubTitleSmall>Checking DNS Resolution</SubTitleSmall>
+          When something goes wrong, DNS is often the culprit. You can check DNS records using dig or nslookup.
+          <Spacer />
+          For example:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashDig, 89)}>
+              {isCopied[89].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashDig}
+          </CodeBlock>
+          This returns the IP address of your domain. Or, to check the mail (MX) records:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashDig2, 90)}>
+              {isCopied[90].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashDig2}
+          </CodeBlock>
+          If you're scripting, you can easily turn this into a simple diagnostic:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashDig3, 91)}>
+              {isCopied[91].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashDig3}
+          </CodeBlock>
+          That line quietly checks whether DNS is working before your script tries to hit an API - a small sanity check that saves a lot of confusion later.
+          <SubTitleSmall>Putting It All Together</SubTitleSmall>
+          Here's a compact example that ties these tools into a useful network monitoring script:
+          <CodeBlock>
+            <CopyButton onClick={() => handleCopy(bashMonitoring, 92)}>
+              {isCopied[92].value === true ? 'Copied!' : 'Copy'}
+            </CopyButton>
+            {bashMonitoring}
+          </CodeBlock>
+          <Spacer />
+          Each run:
+          <StyledListItem>Checks if the host responds to ping.</StyledListItem>
+          <StyledListItem>Fetches its HTTP status code.</StyledListItem>
+          <StyledListItem>Logs both with timestamps to network.log.</StyledListItem>
+          Run it from cron every few minutes, and you've got a simple uptime monitor written entirely in Bash.
         </Text>
       </Container>
     </Wrapper>

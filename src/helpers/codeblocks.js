@@ -804,3 +804,67 @@ export const bashCleaningCSVData2 = `cat users.csv \
 export const bashCleaningCSVDataText = `awk -F, 'NR>1 \{print $2 " <" $3 ">"}'`;
 export const bashCleaningCSVData3 = `Adam Harvey <adam@example.com>
 Jane Doe <jane@example.com>`;
+export const bashPing = `ping google.com`;
+export const bashPing2 = `ping -c 4 google.com`;
+export const bashPing3 = `#!/usr/bin/env bash
+
+HOST="google.com"
+
+if ping -c 1 "$HOST" &>/dev/null; then
+  echo "$HOST is reachable."
+else
+  echo "$HOST is down!"
+fi
+`;
+export const bashCurl = `curl https://example.com`;
+export const bashCurl2 = `curl -O https://example.com/index.html`;
+export const bashCurl3 = `curl https://api.github.com/users/octocat`;
+export const bashCurl4 = `curl -v https://api.github.com`;
+export const bashCurl5 = `#!/usr/bin/env bash
+
+URL="https://harvgram.co.uk"
+STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
+
+if [ "$STATUS" -eq 200 ]; then
+  echo "$URL is up (HTTP $STATUS)"
+else
+  echo "$URL might be down (HTTP $STATUS)"
+fi`;
+export const bashCurl6 = `PRICE=$(curl -s https://api.coindesk.com/v1/bpi/currentprice.json | grep -o '"rate":"[0-9.,]*"' | head -1)
+echo "Current Bitcoin price: \${PRICE#*:}"`;
+export const bashCurl7 = `curl -s https://api.coindesk.com/v1/bpi/currentprice.json | jq '.bpi.USD.rate'`;
+export const bashSCP = `scp backup.tar.gz user@server:/home/user/backups/`;
+export const bashSCP2 = `rsync -avz ./site/ user@server:/var/www/html/`;
+export const bashNC = `nc -zv example.com 22`;
+export const bashNC2 = `while true; do
+  nc -z example.com 80 && echo "Web server is up" || echo "Down"
+  sleep 10
+done
+`;
+export const bashDig = `dig harvgram.co.uk +short`;
+export const bashDig2 = `dig harvgram.co.uk MX +short`;
+export const bashDig3 = `if ! dig +short google.com >/dev/null; then
+  echo "DNS resolution failed!"
+  exit 1
+fi
+`;
+export const bashMonitoring = `#!/usr/bin/env bash
+set -euo pipefail
+
+HOST="google.com"
+LOG="network.log"
+
+timestamp() { date +"%Y-%m-%d %H:%M:%S"; }
+
+{
+  echo "$(timestamp) Checking $HOST..."
+  if ping -c 1 "$HOST" &>/dev/null; then
+    echo "$(timestamp) Ping OK"
+    STATUS=$(curl -o /dev/null -s -w "%{http_code}" "https://$HOST")
+    echo "$(timestamp) HTTP Status: $STATUS"
+  else
+    echo "$(timestamp) Ping failed"
+  fi
+  echo
+} >> "$LOG"
+`;
