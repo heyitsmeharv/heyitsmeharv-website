@@ -433,3 +433,438 @@ export const cloudwatchlogsAlarmStatus = `aws cloudwatch set-alarm-state
 --state-value ALARM 
 --state-reason "testing purposes"
 `;
+
+export const bashEnvironment = `echo $SHELL`;
+export const powershell = `$PSVersionTable`;
+export const bashVersion = `bash --version`;
+export const bashOutput = `ls > files.txt`;
+export const bashAppend = `echo "Backup completed" >> logs.txt`;
+export const bashFeed = `sort < names.txt`;
+export const bashFeed2 = `while read user; do
+  echo "Hello $user"
+done < users.txt
+`;
+export const bashFeedAlt = `cat users.txt | while read user; do echo "Hello $user"; done`
+export const bashRedirectErr = `find ~ -name "config.json" > results.txt 2> errors.txt`;
+export const bashRedirectErr2 = `find ~ -name "config.json" > all_output.txt 2>&1`;
+export const bashMixingMatching = `sort < input.txt | uniq > cleaned.txt`;
+export const bashFileDescriptors = `exec 3>log.txt
+echo "Hello log" >&3
+exec 3>&-
+`;
+export const bashPipe = `ls | grep "log"`;
+export const bashFirstScript = `#!/bin/bash
+# A simple hello world script
+
+echo "Hello, world!"`;
+export const bashFirstScript2 = `chmod +x hello.sh`;
+export const bashFirstScript3 = `./hello.sh`;
+export const bashFirstScript4 = `Hello, world!`;
+export const pythonScript = `#!/usr/bin/python3`;
+
+export const bashProjectSetup = `my_project/
+├── src/
+├── logs/
+├── data/
+└── README.md`;
+export const bashProjectSetup2 = `#!/bin/bash
+
+mkdir -p my_project/{src,logs,data}
+touch my_project/README.md
+echo "Project folder created successfully."`;
+export const bashProjectSetup3 = `chmod +x setup_project.sh`;
+export const bashProjectSetup4 = `./setup_project.sh`;
+export const bashUserInput = `#!/bin/bash
+
+name="Adam"
+echo "Hello, $name!"
+
+read -p "Enter your favourite language: " lang
+echo "You love $lang!"
+`;
+export const bashCommandSubstitution = `today=$(date)
+echo "Today is $today"`;
+export const bashPassingArguments = `#!/bin/bash
+
+echo "Script name: $0"
+echo "First argument: $1"
+echo "Second argument: $2"
+echo "Total arguments: $#"
+`;
+export const bashPassingArguments2 = `./args.sh apple banana`;
+export const bashPassingArguments3 = `Script name: ./args.sh
+First argument: apple
+Second argument: banana
+Total arguments: 2
+`;
+export const bashSystemInfo = `#!/bin/bash
+
+echo "System Report for: $(hostname)"
+echo "User: $(whoami)"
+echo "Memory usage:"
+systeminfo | grep "Total Physical Memory"
+echo "Disk usage:"
+df -h`;
+export const bashSystemInfo2 = `chmod +x sysinfo.sh
+./sysinfo.sh`;
+export const bashSystemInfo3 = `System Report for: dev-machine
+User: adam
+Memory usage:
+Total Physical Memory: 16,298 MB
+Disk usage: 
+Filesystem            Size  Used Avail Use% Mounted on
+D:/Program Files/Git  932G  251G  682G  27%    /
+C:                    465G  334G  131G  72%    /c`;
+export const bashIf = `if [ condition ]; then
+  # commands to run if true
+fi`;
+export const bashIf2 = `#!/bin/bash
+
+if [ -f "/etc/passwd" ]; then
+  echo "The file exists!"
+else
+  echo "File not found."
+fi`;
+export const bashIfElse = `#!/bin/bash
+
+read -p "Enter a number: " num
+
+if [ $num -gt 10 ]; then
+  echo "That's a big number!"
+elif [ $num -gt 5 ]; then
+  echo "That's a medium number."
+else
+  echo "That's a small number."
+fi`;
+export const bashCombiningConditions = `#!/bin/bash
+
+file="notes.txt"
+
+if [ -f "$file" ] && [ -r "$file" ]; then
+  echo "$file exists and is readable."
+else
+  echo "File missing or unreadable."
+fi`;
+export const bashCaseStatement = `#!/bin/bash
+
+read -p "Enter a letter (a, b, or c): " choice
+
+case $choice in
+  a) echo "You chose option A" ;;
+  b) echo "You chose option B" ;;
+  c) echo "You chose option C" ;;
+  *) echo "Invalid choice" ;;
+esac`;
+export const bashForLoop = `#!/bin/bash
+
+for file in *.txt; do
+  echo "Found file: $file"
+done`;
+export const bashForLoop2 = `for i in {1..5}; do
+  echo "Count: $i"
+done`;
+export const bashWhileLoop = `#!/bin/bash
+
+count=1
+while [ $count -le 5 ]; do
+  echo "Loop #$count"
+  ((count++))
+done`;
+export const bashWhileLoop2 = `#!/bin/bash
+
+while read line; do
+  echo "Line: $line"
+done < input.txt`;
+export const bashUntilLoop = `#!/bin/bash
+
+n=1
+until [ $n -gt 3 ]; do
+  echo "Number $n"
+  ((n++))
+done`;
+export const bashLoopExample = `#!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+
+read -p "Enter directory to clean (default: script directory): " dir
+dir=\${dir:-\$SCRIPT_DIR}
+
+read -p "Delete files older than how many days? " days
+
+if [ ! -d "\$dir" ]; then
+  echo "Directory not found: \$dir"
+  exit 1
+fi
+
+echo "Cleaning up \$dir..."
+find "\$dir" -type f -mtime +\$days -exec rm -v {} \\;
+
+echo "Cleanup complete."`;
+export const bashFunctions = `greet() {
+  local name="$1"
+  echo "Hello, $name"
+}
+
+greet "Adam"`;
+export const bashReturnDataOrState = `sum() {
+  local a="$1" b="$2"
+  # Return data
+  echo $((a + b))
+}
+
+validate_positive() {
+  local n="$1"
+  [[ "$n" -gt 0 ]] || return 1
+}
+
+result="$(sum 5 7)"          # "12"
+if validate_positive "$result"; then
+  echo "Positive sum: $result"
+else
+  echo "Not positive"
+fi`;
+export const bashFailGracefully = `set -euo pipefail`;
+export const bashExplicitlyFail = `some_command || echo "non-fatal: some_command failed"`;
+export const bashTrap = `cleanup() {
+  rm -f "$TMP_FILE"
+}
+
+trap cleanup EXIT INT TERM
+
+TMP_FILE="$(mktemp)"
+echo "Working in $TMP_FILE"
+# ... do work ...`;
+export const bashTinyLoggingHelper = `log() {
+  local level="$1"; shift
+  printf '%s [%s] %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" "$level" "$*"
+}
+
+log INFO  "Starting job"
+log WARN  "Disk usage high"
+log ERROR "Backup failed"`;
+export const bashTinyLoggingHelper2 = `LOG_FILE="\${LOG_FILE:-/tmp/script.log}"
+logf() { log "$@" | tee -a "$LOG_FILE"; }  # prints & appends to file`;
+export const bashReusableTemplate = `#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve script dir (works when called from anywhere)
+SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+
+LOG_FILE="\${LOG_FILE:-$SCRIPT_DIR/script.log}"
+
+log() {
+  local level="$1"; shift
+  printf '%s [%s] %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" "$level" "$*"
+}
+
+logf() { log "$@" | tee -a "$LOG_FILE"; }
+
+cleanup() {
+  logf INFO "Cleanup complete."
+}
+trap cleanup EXIT INT TERM
+
+require() {
+  command -v "$1" >/dev/null 2>&1 || {
+    logf ERROR "Missing dependency: $1"
+    exit 127
+  }
+}
+
+# Example dependency checks (comment out if not needed)
+# require curl
+# require awk
+
+main() {
+  logf INFO "Script dir: $SCRIPT_DIR"
+  # your logic here
+}
+
+main "$@"`;
+export const bashValidatingInputs = `usage() {
+  echo "Usage: $0 <source_dir> <days>"
+  echo "Example: $0 /var/log 7"
+}
+
+[[ $# -eq 2 ]] || { usage; exit 64; }  # 64 = EX_USAGE
+
+SRC="$1"
+DAYS="$2"
+
+[[ -d "$SRC" ]] || { echo "Not a directory: $SRC"; exit 66; }  # 66 = NOINPUT-ish
+[[ "$DAYS" =~ ^[0-9]+$ ]] || { echo "Days must be an integer"; exit 65; }`;
+export const bashHandlingExpectedFailures = `if ! grep -q "pattern" file.txt 2>/dev/null; then
+  echo "Pattern not found (that's okay)."
+fi`;
+export const bashHandlingExpectedFailures2 = `mkdir -p "$DIR" || true`;
+export const bashSafeLogger = `#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+LOG_FILE="\${LOG_FILE:-$SCRIPT_DIR/archive.log}"
+
+log() {
+  local level="$1"; shift
+  printf '%s [%s] %s\n' "$(date +'%Y-%m-%d %H:%M:%S')" "$level" "$*"
+}
+logf() { log "$@" | tee -a "$LOG_FILE"; }
+
+cleanup() {
+  logf INFO "Exiting."
+}
+trap cleanup EXIT INT TERM
+
+usage() {
+  echo "Usage: $0 [target_dir] [days]"
+  echo "Default target_dir: script directory"
+  echo "Example: $0 /var/log 7"
+}
+
+TARGET="\${1:-$SCRIPT_DIR}"
+DAYS="\${2:-7}"
+
+if [[ ! -d "$TARGET" ]]; then
+  logf ERROR "Not a directory: $TARGET"
+  usage; exit 64
+fi
+
+if ! [[ "$DAYS" =~ ^[0-9]+$ ]]; then
+  logf ERROR "Days must be an integer, got '$DAYS'"
+  usage; exit 65
+fi
+
+ARCHIVE_DIR="$SCRIPT_DIR/archives"
+mkdir -p "$ARCHIVE_DIR"
+
+STAMP="$(date +'%Y%m%d_%H%M%S')"
+ARCHIVE_PATH="$ARCHIVE_DIR/logs_\${STAMP}.tar.gz"
+
+logf INFO "Target: $TARGET"
+logf INFO "Archiving files older than $DAYS days"
+logf INFO "Output: $ARCHIVE_PATH"
+
+# Find candidate files (text-ish logs), ignore the archive dir itself
+mapfile -t files < <(find "$TARGET" -type f -mtime +"$DAYS" ! -path "$ARCHIVE_DIR/*" 2>/dev/null || true)
+
+if (( \${#files[@]} == 0 )); then
+  logf WARN "No files older than $DAYS days found. Nothing to do."
+  exit 0
+fi
+
+# Create tar.gz
+tar -czf "$ARCHIVE_PATH" -C "/" "\${files[@]/#\//}"  # preserve paths
+logf INFO "Archived \${#files[@]} files."
+
+# Optional: remove originals after successful archive
+# for f in "\${files[@]}"; do rm -v "$f"; done
+
+logf INFO "Done."`;
+export const bashDebugMode = `bash -x script.sh`;
+export const bashDebugMode2 = `set -x   # turn debugging on
+# commands here
+set +x   # turn debugging off`;
+export const bashDebugMode3 = `export var='+ \${BASH_SOURCE}:\${LINENO}:\${FUNCNAME[0]}: '
+set -x
+`;
+export const bashTrapDebug = `trap 'echo "Running: $BASH_COMMAND"' DEBUG`;
+export const bashWildcards = `touch file1.txt file2.txt fileA.log fileB.log
+echo *.log`;
+export const bashWildcards2 = `echo "*.log"`;
+export const bashWildcardsText = ` ls *.{jpg,png}`;
+export const bashLoggingDebugOutput = `log DEBUG "Variable dir=$dir"`;
+export const bashLoggingDebugOutput2 = `exec 5>debug.log
+BASH_XTRACEFD=5
+set -x
+`;
+export const bashNullGlob = `shopt -s nullglob`;
+export const bashGrep = `grep "error" /var/log/syslog`;
+export const bashGrep2 = `grep -i "failed" auth.log            # find failed logins
+grep -rn "TODO" ~/projects           # search all files for TODOs
+grep -v "DEBUG" app.log              # exclude debug lines
+`;
+export const bashSed = `sed 's/old/new/' file.txt`;
+export const bashSed2 = `sed -i 's/foo/bar/g' config.txt`;
+export const bashSed3 = `sed '/DEBUG/d' log.txt              # delete lines containing DEBUG
+sed '/ERROR/i ---- NEW SECTION ----' log.txt  # insert before matches`;
+export const bashAwk = `awk '{print $1, $3}' data.txt`;
+export const bashAwk2 = `awk -F, '{print $1, $2}' users.csv`;
+export const bashAwk3 = `awk '$3 > 80 {print $1, $3}' scores.txt`;
+export const bashGrepSedAwk = `grep "$(date +%Y-%m-%d)" app.log | grep "ERROR" | wc -l`;
+export const bashGrepSedAwk2 = `ps aux | grep nginx | awk '{print $2, $11}'`;
+export const bashCleaningCSVData = `id,name,email,signup_date
+1,Adam Harvey,adam@example.com,2025-05-12
+2,Jane Doe,jane@example,2025-05-13
+3,Tom, ,2025-05-14
+`;
+export const bashCleaningCSVData2 = `cat users.csv \
+  | grep -E ".+@.+" \
+  | sed 's/@example$/@example.com/' \
+  | awk -F, 'NR>1 {print $2 " <" $3 ">"}'
+`;
+export const bashCleaningCSVDataText = `awk -F, 'NR>1 \{print $2 " <" $3 ">"}'`;
+export const bashCleaningCSVData3 = `Adam Harvey <adam@example.com>
+Jane Doe <jane@example.com>`;
+export const bashPing = `ping google.com`;
+export const bashPing2 = `ping -c 4 google.com`;
+export const bashPing3 = `#!/usr/bin/env bash
+
+HOST="google.com"
+
+if ping -c 1 "$HOST" &>/dev/null; then
+  echo "$HOST is reachable."
+else
+  echo "$HOST is down!"
+fi
+`;
+export const bashCurl = `curl https://heyitsmeharv.com`;
+export const bashCurl2 = `curl -O https://heyitsmeharv.com/index.html`;
+export const bashCurl3 = `curl https://api.github.com/users/octocat`;
+export const bashCurl4 = `curl -v https://api.github.com`;
+export const bashCurl5 = `#!/usr/bin/env bash
+
+URL="https://heyitsmeharv.com"
+STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
+
+if [ "$STATUS" -eq 200 ]; then
+  echo "$URL is up (HTTP $STATUS)"
+else
+  echo "$URL might be down (HTTP $STATUS)"
+fi`;
+export const bashCurl6 = `PRICE=$(curl -s https://api.coindesk.com/v1/bpi/currentprice.json | grep -o '"rate":"[0-9.,]*"' | head -1)
+echo "Current Bitcoin price: \${PRICE#*:}"`;
+export const bashCurl7 = `curl -s https://api.coindesk.com/v1/bpi/currentprice.json | jq '.bpi.USD.rate'`;
+export const bashSCP = `scp backup.tar.gz user@server:/home/user/backups/`;
+export const bashSCP2 = `rsync -avz ./site/ user@server:/var/www/html/`;
+export const bashNC = `nc -zv heyitsmeharv.com 22`;
+export const bashNC2 = `while true; do
+  nc -z heyitsmeharv.com 80 && echo "Web server is up" || echo "Down"
+  sleep 10
+done
+`;
+export const bashDig = `dig heyitsmeharv.com +short`;
+export const bashDig2 = `dig heyitsmeharv.com MX +short`;
+export const bashDig3 = `if ! dig +short google.com >/dev/null; then
+  echo "DNS resolution failed!"
+  exit 1
+fi
+`;
+export const bashMonitoring = `#!/usr/bin/env bash
+set -euo pipefail
+
+HOST="google.com"
+LOG="network.log"
+
+timestamp() { date +"%Y-%m-%d %H:%M:%S"; }
+
+{
+  echo "$(timestamp) Checking $HOST..."
+  if ping -c 1 "$HOST" &>/dev/null; then
+    echo "$(timestamp) Ping OK"
+    STATUS=$(curl -o /dev/null -s -w "%{http_code}" "https://$HOST")
+    echo "$(timestamp) HTTP Status: $STATUS"
+  else
+    echo "$(timestamp) Ping failed"
+  fi
+  echo
+} >> "$LOG"
+`;

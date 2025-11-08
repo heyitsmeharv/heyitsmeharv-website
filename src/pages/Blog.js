@@ -61,9 +61,9 @@ import {
   AWSFirewallSVG,
   AWSWAFSVG,
   AWSInspectorSVG,
-  AWSMacieSVG
+  AWSMacieSVG,
+  BashSVG
 } from '../resources/styles/icons';
-
 
 const SearchBarWrapper = styled.div`
   display: flex;
@@ -190,7 +190,7 @@ export default function Blog() {
       name: "React",
       colour: "#64CBF6",
       active: false,
-    },
+    }
   ]);
   const [blogPosts, setBlogPosts] = useState([
     {
@@ -417,6 +417,17 @@ export default function Blog() {
       If you're completely new to React I would recommend having a gander at their documentation...`,
       navigate: 'react-text-based-adventure',
       published: false
+    },
+    {
+      title: 'Getting Started with Bash Scripting',
+      readingTime: 'approx 45 mins',
+      type: 'Practical',
+      date: '09/10/2025',
+      tags: [{ name: 'Bash', background: '#fff', icon: <BashSVG /> }],
+      intro: `When you first start working in the command line, it can feel like stepping into a different world - one where you're talking directly to your computer instead of clicking buttons. 
+      It's intimidating at first, but once you realise how much power sits behind a few keystrokes it's addictive. In this post...`,
+      navigate: 'getting-started-with-bash-scripting',
+      published: true
     }
   ]);
 
@@ -645,6 +656,17 @@ export default function Blog() {
       If you're completely new to React I would recommend having a gander at their documentation...`,
       navigate: 'react-text-based-adventure',
       published: false
+    },
+    {
+      title: 'Getting Started with Bash Scripting',
+      readingTime: 'approx 45 mins',
+      type: 'Practical',
+      date: '09/10/2025',
+      tags: [{ name: 'Bash', background: '#fff', icon: <BashSVG /> }],
+      intro: `When you first start working in the command line, it can feel like stepping into a different world - one where you're talking directly to your computer instead of clicking buttons. 
+      It's intimidating at first, but once you realise how much power sits behind a few keystrokes it's addictive. In this post...`,
+      navigate: 'getting-started-with-bash-scripting',
+      published: true
     }
   ];
 
