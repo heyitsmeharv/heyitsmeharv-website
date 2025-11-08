@@ -26,6 +26,7 @@ const Theme = ({ theme, toggleTheme }) => {
     { name: 'dark', colour: '#000', border: '#fff' },
     { name: 'blue', colour: '#219ebc', border: '#fff' },
     { name: 'red', colour: '#780000', border: '#fff' },
+    { name: 'green', colour: '#84994F', border: '#fff' }
   ]
   return (
     <Wrapper>

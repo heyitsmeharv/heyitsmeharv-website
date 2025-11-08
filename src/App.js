@@ -15,7 +15,7 @@ import { useLanguageMode } from "./hooks/useLanguageMode";
 
 // styles
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, blueTheme, redTheme } from "./resources/styles/theme";
+import { lightTheme, darkTheme, blueTheme, redTheme, greenTheme } from "./resources/styles/theme";
 import { GlobalStyles } from "./resources/styles/global";
 
 // pages
@@ -100,6 +100,7 @@ const App = () => {
       case "dark": return darkTheme;
       case "blue": return blueTheme;
       case "red": return redTheme;
+      case "green": return greenTheme;
       default: return lightTheme;
     }
   }

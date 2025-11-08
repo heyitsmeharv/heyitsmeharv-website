@@ -45,3 +45,16 @@ export const redTheme = {
   buttonColour: '#b8860b',
   icon: '#6a040f'
 };
+
+
+export const greenTheme = {
+  primary: '#84994F',
+  secondary: '#043915',
+  accent: '#000',
+  text: '#fff',
+  separator: '#fff',
+  inputText: '#000',
+  buttonText: '#fff',
+  buttonColour: '#043915',
+  icon: '#84994F'
+};

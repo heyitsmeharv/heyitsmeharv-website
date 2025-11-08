@@ -9,11 +9,12 @@ export const useThemeMode = () => {
   };
 
   const toggleTheme = (theme) => {
-    switch(theme) {
+    switch (theme) {
       case "light": return setMode("light");
       case "dark": return setMode("dark");
       case "blue": return setMode("blue");
       case "red": return setMode("red");
+      case "green": return setMode("green");
     }
   };
 
