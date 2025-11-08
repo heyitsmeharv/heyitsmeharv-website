@@ -128,7 +128,7 @@ const BlogPost = ({ title, readingTime, type, date, tags, intro, navigate, publi
 
     <Container disabled={!published} hovered={hovered} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       {!published &&
-        <ComingSoonBanner>Coming Soon...</ComingSoonBanner>
+        <ComingSoonBanner>Not Published...</ComingSoonBanner>
       }
       <TopBarText>
         <StyledTopBarText>{type}</StyledTopBarText >
