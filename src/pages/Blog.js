@@ -420,14 +420,14 @@ export default function Blog() {
     },
     {
       title: 'Getting Started with Bash Scripting',
-      readingTime: 'N/A',
+      readingTime: 'approx 45 mins',
       type: 'Practical',
       date: '09/10/2025',
-      tags: [{ name: 'Bash', background: '#8B191D', icon: <BashSVG /> }],
+      tags: [{ name: 'Bash', background: '#fff', icon: <BashSVG /> }],
       intro: `When you first start working in the command line, it can feel like stepping into a different world - one where you're talking directly to your computer instead of clicking buttons. 
       It's intimidating at first, but once you realise how much power sits behind a few keystrokes it's addictive. In this post...`,
       navigate: 'getting-started-with-bash-scripting',
-      published: false
+      published: true
     }
   ]);
 
@@ -659,14 +659,14 @@ export default function Blog() {
     },
     {
       title: 'Getting Started with Bash Scripting',
-      readingTime: 'N/A',
+      readingTime: 'approx 45 mins',
       type: 'Practical',
       date: '09/10/2025',
-      tags: [{ name: 'Bash', background: '#8B191D', icon: <BashSVG /> }],
+      tags: [{ name: 'Bash', background: '#fff', icon: <BashSVG /> }],
       intro: `When you first start working in the command line, it can feel like stepping into a different world - one where you're talking directly to your computer instead of clicking buttons. 
       It's intimidating at first, but once you realise how much power sits behind a few keystrokes it's addictive. In this post...`,
       navigate: 'getting-started-with-bash-scripting',
-      published: false
+      published: true
     }
   ];
 

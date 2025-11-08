@@ -77,6 +77,7 @@ import {
   bashLoggingDebugOutput2,
   bashNullGlob,
   bashWildcards,
+  bashWildcards2,
   bashGrep,
   bashGrep2,
   bashSed,
@@ -1216,10 +1217,10 @@ const BashScripting = () => {
           <Spacer />
           Here's a small demo that shows how wildcards behave:
           <CodeBlock>
-            <CopyButton onClick={() => handleCopy(bashTrapDebug, 51)}>
+            <CopyButton onClick={() => handleCopy(bashWildcards, 51)}>
               {isCopied[51].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
-            {bashTrapDebug}
+            {bashWildcards}
           </CodeBlock>
           You'll see <BoldText>fileA.log</BoldText> <BoldText>fileB.log</BoldText> printed - those filenames were expanded automatically by Bash.
           <Spacer />
@@ -1230,10 +1231,10 @@ const BashScripting = () => {
           Sometimes, though, you don't want Bash to expand a pattern - you just want to pass it literally (for example, to a grep or find command that expects the pattern). In those cases, you escape the characters
           so Bash leaves them alone.
           <CodeBlock>
-            <CopyButton onClick={() => handleCopy(bashWildcards, 52)}>
+            <CopyButton onClick={() => handleCopy(bashWildcards2, 52)}>
               {isCopied[52].value === true ? 'Copied!' : 'Copy'}
             </CopyButton>
-            {bashWildcards}
+            {bashWildcards2}
           </CodeBlock>
           Now the shell prints *.log exactly as written, without expanding it.
           <Spacer />

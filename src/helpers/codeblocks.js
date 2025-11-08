@@ -445,8 +445,8 @@ export const bashFeed2 = `while read user; do
 done < users.txt
 `;
 export const bashFeedAlt = `cat users.txt | while read user; do echo "Hello $user"; done`
-export const bashRedirectErr = `find / -name "config.json" > results.txt 2> errors.txt`;
-export const bashRedirectErr2 = `find / -name "config.json" > all_output.txt 2>&1`;
+export const bashRedirectErr = `find ~ -name "config.json" > results.txt 2> errors.txt`;
+export const bashRedirectErr2 = `find ~ -name "config.json" > all_output.txt 2>&1`;
 export const bashMixingMatching = `sort < input.txt | uniq > cleaned.txt`;
 export const bashFileDescriptors = `exec 3>log.txt
 echo "Hello log" >&3
@@ -816,13 +816,13 @@ else
   echo "$HOST is down!"
 fi
 `;
-export const bashCurl = `curl https://example.com`;
-export const bashCurl2 = `curl -O https://example.com/index.html`;
+export const bashCurl = `curl https://heyitsmeharv.com`;
+export const bashCurl2 = `curl -O https://heyitsmeharv.com/index.html`;
 export const bashCurl3 = `curl https://api.github.com/users/octocat`;
 export const bashCurl4 = `curl -v https://api.github.com`;
 export const bashCurl5 = `#!/usr/bin/env bash
 
-URL="https://harvgram.co.uk"
+URL="https://heyitsmeharv.com"
 STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
 
 if [ "$STATUS" -eq 200 ]; then
@@ -835,14 +835,14 @@ echo "Current Bitcoin price: \${PRICE#*:}"`;
 export const bashCurl7 = `curl -s https://api.coindesk.com/v1/bpi/currentprice.json | jq '.bpi.USD.rate'`;
 export const bashSCP = `scp backup.tar.gz user@server:/home/user/backups/`;
 export const bashSCP2 = `rsync -avz ./site/ user@server:/var/www/html/`;
-export const bashNC = `nc -zv example.com 22`;
+export const bashNC = `nc -zv heyitsmeharv.com 22`;
 export const bashNC2 = `while true; do
-  nc -z example.com 80 && echo "Web server is up" || echo "Down"
+  nc -z heyitsmeharv.com 80 && echo "Web server is up" || echo "Down"
   sleep 10
 done
 `;
-export const bashDig = `dig harvgram.co.uk +short`;
-export const bashDig2 = `dig harvgram.co.uk MX +short`;
+export const bashDig = `dig heyitsmeharv.com +short`;
+export const bashDig2 = `dig heyitsmeharv.com MX +short`;
 export const bashDig3 = `if ! dig +short google.com >/dev/null; then
   echo "DNS resolution failed!"
   exit 1

@@ -61,7 +61,7 @@ function CookieBanner({ onAccept, onDecline }) {
     React.createElement(
       Text,
       null,
-      "We use Google Analytics to understand usage. Accept to enable analytics. You can change this anytime."
+      "I use Google Analytics to understand usage. Accept to enable analytics. You can change this anytime."
     ),
     React.createElement(
       Row,
