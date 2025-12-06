@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 // helpers
@@ -8,210 +8,205 @@ import { Analytics } from "../../helpers/analytics";
 import SlideInBottom from "../../animations/SlideInBottom";
 
 // icons
-import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircle';
-import { JavascriptSVG } from '../../resources/styles/icons';
+import { JavascriptSVG } from "../../resources/styles/icons";
 
 // components
-import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
+import BackButton from "../Button/BackButton";
 import ObjectExplorer from "../ObjectExplorer/ObjectExplorer";
+import { CodeBlockWithCopy } from "../Code/Code";
+
+// layout
+import {
+  PageWrapper,
+  PostTopBar,
+  PostContainer as BasePostContainer,
+  HeaderRow,
+  IconWrapper,
+  HeaderIcon,
+  PostImage,
+} from "../BlogLayout/BlogLayout";
+
+// typography
+import {
+  PageTitle,
+  SectionHeading,
+  SubSectionHeading,
+  Paragraph,
+  InlineHighlight,
+  Strong,
+  TextLink,
+  TextList,
+  TextListItem,
+} from "../Typography/Typography";
 
 // codeblocks
-import { objects, objectNotations, objectNotationsTwo } from "../../helpers/codeblocks";
+import {
+  objects,
+  objectNotations,
+  objectNotationsTwo,
+} from "../../helpers/codeblocks";
 
 // images
 import JavaScriptObject from "../../resources/images/blog/JavaScriptObject.png";
 
-const Wrapper = styled.div`
-  padding: 1rem 25%;
-  line-height: 6.5rem;
-  
-  @media only screen and (max-width: 1000px) {
-    line-height: 5rem;
-    padding: 0;
-  }
-
-  @media only screen and (min-width: 1001px) and (max-width: 1800px) {
-    line-height: 6.5rem;
-    padding: 1rem 20%;
-  }
-`;
-
-const Flex = styled.div`
-  display: flex;
-  align-items: baseline;
-`;
-
-const Container = styled.div`
-  padding: 4rem;
-  background: ${({ theme }) => theme.background};
+const AnimatedPostContainer = styled(BasePostContainer)`
   animation: ${SlideInBottom} 0.5s forwards;
 `;
 
-const CodeBlock = styled.pre`
-  font-family: 'Calibri';
-  font-size: 2rem;
-  background: #292929;
-  color: ${({ theme }) => theme.buttonText};
-  word-wrap: break-word;
-  padding: 1rem 2rem 1rem;
-  border-radius: 2rem;
-  overflow-x: auto;
-  line-height: 3.5rem;
-`;
-
-const Title = styled.h1`
-  font-size: 4rem;
-  font-weight: bold;
-`;
-
-const SubTitle = styled.h1`
-  font-size: 3rem;
-  font-weight: bold;
-  font-style: italic;
-`;
-
-const SubSubTitle = styled.h1`
-  font-size: 2.5rem;
-  font-weight: bold;
-`;
-
-const Text = styled.span`
-  color: ${({ theme }) => theme.text};
-  font-size: 2rem;
-`;
-
-const HighlightBackground = styled.span`
-  background: ${({ theme }) => theme.secondary};
-  padding: 0 5px;
-  margin: 0 5px;
-  font-weight: bold;
-`;
-
-const StyledAnchor = styled.a`
-  color: ${({ theme }) => theme.text};
-`;
-
-const StyledAnchorText = styled.span`
-  color: ${({ theme }) => theme.text};
-  font-style: italic;
-  font-weight: bold;
-`;
-
-const StyledBackIcon = styled(ChevronBackCircle)`
-  color: ${({ theme }) => theme.secondary};
-  width: 4rem;
-`;
-
-const StyledImage = styled.img`
-  width: 100%;
-`;
-
-const Icon = styled.div`
-  width: 50px;
-  height: 50px;
-  margin-left: auto;
-  margin-right: 25px;
-
-  @media only screen and (max-width: 1000px) {
-    width: 36px;
-    height: 36px;
-  }
-`;
-
-const Spacer = styled.br``
-
-const JavaScriptArray = () => {
-
+const JavaScriptObjects = () => {
   useEffect(() => {
-    Analytics.event('blog_opened', { slug: 'aws-javascript-objects' });
+    Analytics.event("blog_opened", { slug: "javascript-objects" });
   }, []);
 
-  const [isCopied, setIsCopied] = useState([
-    { value: false },
-    { value: false },
-    { value: false }
-  ]);
-
-  const handleCopy = (code, key) => {
-    const isCopiedDefault = [
-      { value: false },
-      { value: false },
-      { value: false }
-    ];
-    navigator.clipboard.writeText(code);
-
-    const newIsCopied = [...isCopied];
-    newIsCopied[key].value = true;
-    setIsCopied(newIsCopied);
-
-    setTimeout(() => setIsCopied(isCopiedDefault), 1500);
-  };
-
   return (
-    <Wrapper>
-      <StyledNavButton>
-        <StyledNavLink
-          exact to={`/blog`}>
-          <StyledBackIcon />
-        </StyledNavLink>
-      </StyledNavButton>
-      <Container>
-        <Flex>
-          <Title>JavaScript Objects</Title>
-          <Icon><JavascriptSVG /></Icon>
-        </Flex>
-        <Spacer />
-        <Text>
-          After writing a blog post about arrays, which you can find here 👉 <StyledAnchorText><StyledNavLink exact to={`/blog/javascript-arrays`}>JavaScript Arrays</StyledNavLink></StyledAnchorText>. Naturally it feels like the next post needs to be about JavaScript Objects.
-          Similar to my last post, I'll be keeping to the same format; that being explaining what objects are and how we can use them. Simple enough? Let's get it - Oh yeah, you can skip this if you're comfortable with JavaScript and you just want to look through the <StyledAnchor href="#use-case">use cases</StyledAnchor>.
-          <Spacer />
-          <Spacer />
-          <SubTitle>What is an Object?</SubTitle>
-          Well, in JavaScript objects are pretty much anything 'Non Primitive'. By using the <HighlightBackground>typeof</HighlightBackground> operator we can see for ourselves what is classed as an 'object'. This includes arrays, dates, regex and even functions;
-          <Spacer />
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(objects, 0)}>
-              {isCopied[0].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {objects}
-          </CodeBlock>
-          <Spacer />
-          Now I mentioned objects being 'Non Primitive' values, if you're not clear on what the difference between a 'Primitive' and 'Non-Primitive' value is? <StyledAnchor href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive" target="_blank">Read up.</StyledAnchor> 👀
-          <Spacer />
-          <Spacer />
-          What does that actually mean? It means that they are mutable (we can change them). Before looking at how we can access an objects properties, let's take a quick look at what an object is made of.
-          <Spacer />
-          <Spacer />
-          <SubSubTitle>The Anatomy Of An Object</SubSubTitle>
-          <StyledImage src={JavaScriptObject} />
-          Here is a declaration of an object which I've named 'person'. This object has three 'properties' and you'll notice that each property will be a 'kvp' (key value pair). The left side being - 'key' and the right side - 'value'.
-          <Spacer />
-          <Spacer />
-          <SubTitle>Object Manipulation</SubTitle>
-          I mentioned that we can change objects, but before we do, I'll show you how we can access them using the <HighlightBackground> . </HighlightBackground>(Dot) and <HighlightBackground>[   ]</HighlightBackground> (Bracket) notations.
-          <Spacer />
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(objectNotations, 1)}>
-              {isCopied[1].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {objectNotations}
-          </CodeBlock>
-          <Spacer />
-          Now if we wanted to manipulate the data, we could do so like so:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(objectNotationsTwo, 2)}>
-              {isCopied[2].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {objectNotationsTwo}
-          </CodeBlock>
-          <Spacer />
-          <SubTitle id='use-case'>Use Cases</SubTitle>
-          I have an object, I would like to...
-          <ObjectExplorer />
-        </Text>
-      </Container>
-    </Wrapper>
-  );
-}
+    <PageWrapper>
+      <PostTopBar>
+        <BackButton />
+      </PostTopBar>
 
-export default JavaScriptArray;
+      <AnimatedPostContainer>
+        <HeaderRow>
+          <PageTitle>JavaScript Objects</PageTitle>
+          <IconWrapper>
+            <HeaderIcon>
+              <JavascriptSVG />
+            </HeaderIcon>
+          </IconWrapper>
+        </HeaderRow>
+
+        <Paragraph>
+          After writing a blog post about arrays, which you can find here 👉{" "}
+          <TextLink href="/blog/javascript-arrays">JavaScript Arrays</TextLink>.
+          Naturally it feels like the next post needs to be about JavaScript
+          objects.
+        </Paragraph>
+
+        <Paragraph>
+          Similar to my last post, I'll be keeping to the same format; that
+          being explaining what objects are and how we can use them. Simple
+          enough? Let's get it - oh yeah, you can skip this if you're
+          comfortable with JavaScript and you just want to look through the{" "}
+          <TextLink href="#use-case">use cases</TextLink>.
+        </Paragraph>
+
+        <SectionHeading>What is an Object?</SectionHeading>
+
+        <Paragraph>
+          In JavaScript, objects are pretty much anything{" "}
+          <Strong>non-primitive</Strong>. By using the{" "}
+          <InlineHighlight>typeof</InlineHighlight> operator, we can see for
+          ourselves what is classed as an{" "}
+          <Strong>"object"</Strong>. This includes arrays,
+          dates, regexes and even functions:
+        </Paragraph>
+
+        <CodeBlockWithCopy code={objects} />
+
+        <Paragraph>
+          When I mentioned objects being "non primitive" values, I'm referring
+          to the difference between primitive and non-primitive types. If you're
+          not clear on that distinction,{" "}
+          <TextLink
+            href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive"
+            target="_blank"
+            rel="noreferrer"
+          >
+            MDN has a good overview
+          </TextLink>
+          .
+        </Paragraph>
+
+        <Paragraph>
+          What does that actually mean? It means that they are{" "}
+          <Strong>mutable</Strong> (we can change them). Before looking at how
+          we can access an object's properties, let's take a quick look at what
+          an object is made of.
+        </Paragraph>
+
+        <SubSectionHeading>The Anatomy Of An Object</SubSectionHeading>
+
+        <PostImage
+          src={JavaScriptObject}
+          alt="JavaScript object example with properties and key-value pairs"
+        />
+
+        <Paragraph>
+          Here is a declaration of an object which I've named{" "}
+          <Strong>person</Strong>. This object has three
+          properties and you'll notice that each property is a{" "}
+          <Strong>kvp (key-value pair)</Strong>. The left side is the{" "}
+          <Strong>key</Strong> and the right side is the{" "}
+          <Strong>value</Strong>.
+        </Paragraph>
+
+        <SectionHeading>Object Manipulation</SectionHeading>
+
+        <Paragraph>
+          I mentioned that we can change objects, but before we do, I'll show
+          you how we can access them using the{" "}
+          <InlineHighlight>.</InlineHighlight> (dot) and{" "}
+          <InlineHighlight>[ ]</InlineHighlight> (bracket) notations.
+        </Paragraph>
+
+        <CodeBlockWithCopy code={objectNotations} />
+
+        <Paragraph>
+          Once we know how to access properties, we can begin to manipulate the
+          data stored in an object - adding new properties, updating existing
+          ones or even deleting them:
+        </Paragraph>
+
+        <CodeBlockWithCopy code={objectNotationsTwo} />
+
+        <SectionHeading id="use-case">Use Cases</SectionHeading>
+
+        <Paragraph>I have an object, I would like to...</Paragraph>
+
+        <ObjectExplorer />
+
+        <SectionHeading>References</SectionHeading>
+
+        <TextList>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - Object
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - typeof operator
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - JavaScript data types and data structures
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://justjavascript.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Just JavaScript - Dan Abramov
+            </TextLink>
+          </TextListItem>
+        </TextList>
+      </AnimatedPostContainer>
+    </PageWrapper>
+  );
+};
+
+export default JavaScriptObjects;

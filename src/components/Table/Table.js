@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledTable = styled.table`
   border-collapse: collapse;
   width: 100%;
+  font-size: clamp(1.6rem, 1.8vw, 1.9rem);
 `;
 
 const StyledTableHeading = styled.th`

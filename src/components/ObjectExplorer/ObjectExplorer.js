@@ -11,6 +11,7 @@ import { options } from './options';
 import SlideInLeft from "../../animations/SlideInLeft";
 
 const StyledSelect = styled(Select)`
+  font-size: clamp(1.6rem, 1.8vw, 1.9rem);
   & .Select__menu {
     color: ${({ theme }) => theme.text};
     background:  ${({ theme }) => theme.secondary};

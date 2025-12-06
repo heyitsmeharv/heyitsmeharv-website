@@ -1,330 +1,452 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
 
 // helpers
-import { Analytics } from "../../helpers/analytics";
+import { Analytics } from '../../helpers/analytics';
 
 // animations
-import SlideInBottom from "../../animations/SlideInBottom";
+import SlideInBottom from '../../animations/SlideInBottom';
 
 // icons
-import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircle';
 import { JavascriptSVG } from '../../resources/styles/icons';
 
 // components
-import { StyledNavButton, StyledNavLink, CopyButton } from '../Button/Button';
-import ArrayExplorer from "../ArrayExplorer/ArrayExplorer";
+import BackButton from '../Button/BackButton';
+import ArrayExplorer from '../ArrayExplorer/ArrayExplorer';
+import { CodeBlockWithCopy } from '../Code/Code';
+
+// layout
+import {
+  PageWrapper,
+  PostTopBar,
+  PostContainer as BasePostContainer,
+  HeaderRow,
+  IconWrapper,
+  HeaderIcon,
+} from '../BlogLayout/BlogLayout';
+
+// typography
+import {
+  PageTitle,
+  SectionHeading,
+  SubSectionHeading,
+  Paragraph,
+  InlineHighlight,
+  Strong,
+  TextLink,
+  TextList,
+  TextListItem,
+} from '../Typography/Typography';
 
 // codeblocks
-import { example, mapExample, mapExample2, forEachExample, filterExample, findExample, findExample2, everyExample, someExample, reduceExample } from "../../helpers/codeblocks";
+import {
+  example,
+  mapExample,
+  mapExample2,
+  forEachExample,
+  filterExample,
+  findExample,
+  findExample2,
+  everyExample,
+  someExample,
+  reduceExample,
+} from '../../helpers/codeblocks';
 
-const Wrapper = styled.div`
-  padding: 1rem 25%;
-  line-height: 6.5rem;
-  
-  @media only screen and (max-width: 1000px) {
-    line-height: 5rem;
-    padding: 0;
-  }
-
-  @media only screen and (min-width: 1001px) and (max-width: 1800px) {
-    line-height: 6.5rem;
-    padding: 1rem 20%;
-  }
-`;
-
-const Container = styled.div`
-  padding: 4rem;
-  background: ${({ theme }) => theme.background};
+const AnimatedPostContainer = styled(BasePostContainer)`
   animation: ${SlideInBottom} 0.5s forwards;
 `;
 
-const Flex = styled.div`
-  display: flex;
-  align-items: baseline;
-`;
+const starWarsIndexExample = `const starWarsCharacters = [];
+starWarsCharacters.push("Luke", "Leia", "Han");
+console.log(starWarsCharacters[0]); // "Luke"`;
 
-const CodeBlock = styled.pre`
-  font-family: 'Calibri';
-  font-size: 2rem;
-  background: #292929;
-  color: ${({ theme }) => theme.buttonText};
-  word-wrap: break-word;
-  padding: 1rem 2rem 1rem;
-  border-radius: 2rem;
-  overflow-x: auto;
-  line-height: 3.5rem;
-`;
-
-const Title = styled.h1`
-  font-size: 4rem;
-  font-weight: bold;
-`;
-
-const SubTitle = styled.h1`
-  font-size: 3rem;
-  font-weight: bold;
-  font-style: italic;
-`;
-
-const Text = styled.span`
-  color: ${({ theme }) => theme.text};
-  font-size: 2rem;
-`;
-
-const BoldText = styled.b`
-  color: ${({ theme }) => theme.text};
-  font-size: 2rem;
-  font-weight: bold;
-`;
-
-const StyledListItem = styled.li`
-  color: ${({ theme }) => theme.text};
-  margin-left: 5%;
-`;
-
-const StyledAnchor = styled.a`
-  color: ${({ theme }) => theme.text};
-`;
-
-const StyledBackIcon = styled(ChevronBackCircle)`
-  color: ${({ theme }) => theme.secondary};
-  width: 4rem;
-`;
-
-const Icon = styled.div`
-  width: 50px;
-  height: 50px;
-  margin-left: auto;
-  margin-right: 25px;
-
-  @media only screen and (max-width: 1000px) {
-    width: 36px;
-    height: 36px;
-  }
-`;
-
-const Spacer = styled.br``
+const lastElementExample = `const starWarsCharacters = ["Luke", "Leia", "Han"];
+console.log(starWarsCharacters[starWarsCharacters.length - 1]); // "Han"`;
 
 const JavaScriptArray = () => {
-
   useEffect(() => {
     Analytics.event('blog_opened', { slug: 'aws-javascript-arrays' });
   }, []);
 
-  const [isCopied, setIsCopied] = useState([
-    { value: false },
-    { value: false },
-    { value: false },
-    { value: false },
-    { value: false },
-    { value: false },
-    { value: false },
-    { value: false },
-    { value: false }
-  ]);
-
-  const handleCopy = (code, key) => {
-    const isCopiedDefault = [
-      { value: false },
-      { value: false },
-      { value: false },
-      { value: false },
-      { value: false },
-      { value: false },
-      { value: false },
-      { value: false },
-      { value: false }
-    ];
-    navigator.clipboard.writeText(code);
-
-    const newIsCopied = [...isCopied];
-    newIsCopied[key].value = true;
-    setIsCopied(newIsCopied);
-
-    setTimeout(() => setIsCopied(isCopiedDefault), 1500);
-  };
-
   return (
-    <Wrapper>
-      <StyledNavButton>
-        <StyledNavLink
-          exact to={`/blog`}>
-          <StyledBackIcon />
-        </StyledNavLink>
-      </StyledNavButton>
-      <Container>
-        <Flex>
-          <Title>JavaScript Arrays</Title>
-          <Icon><JavascriptSVG /></Icon>
-        </Flex>
-        <Spacer />
-        <Text>
-          Do you ever find yourself forgetting what helper methods would be best to manipulate your data? In this blog post, we will cover the basics of JavaScript arrays, including how to create them, access and modify their elements, and use built-in methods to manipulate them.
-          But before we get into that, I'd just like to briefly tackle what an array is exactly and some useful tips. If you're not new to JavaScript, you can probably <StyledAnchor href="#skip">skip this part.</StyledAnchor> Alternatively, you can go straight to the  <StyledAnchor href="#use-case">use case </StyledAnchor>section which can help you find the helper method that best suits your needs.
-          <Spacer />
-          <Spacer />
-          <SubTitle>What is an Array?</SubTitle>
-          <BoldText>"Arrays are technically objects which help with storing a collection of multiple data sets under a single variable name."</BoldText>
-          <Spacer />
-          <ul>
-            <li>JavaScript arrays are incredibly versatile and can be used to create complex data structures and algorithms.
-              Arrays can be created using the Array constructor or by using literal notation. The most common method is using literal notation, which involves enclosing a list of values in square brackets.
-              <Spacer />
-              Here is an example:
-            </li>
-            <CodeBlock>
-              {example}
-            </CodeBlock>
-            Notice that they can contain a mix of different data types (integers, object and even arrays themselves).
-            <li>JavaScript arrays are zero-indexed, which means they start at index 0, the second index being 1 and so forth.</li>
-            <CodeBlock>
-              const starWarsCharacters = [];
-              <Spacer />
-              starWarsCharacters.push("Luke", "Leia", "Han");
-              <Spacer />
-              console.log(starWarsCharacters[0]); // "Luke"
-              <Spacer />
-            </CodeBlock>
-            <li>If you're wanting to get the last element of an array - you can always get the length of the array minus 1</li>
-            <CodeBlock>
-              const starWarsCharacters = ["Luke", "Leia", "Han"];
-              <Spacer />
-              console.log(starWarsCharacters[starWarsCharacters.length - 1]); // "Han"
-              <Spacer />
-            </CodeBlock>
-          </ul>
-          <Spacer />
-          <SubTitle>Why Data Manipulation?</SubTitle>
-          JavaScript Arrays come with helper methods which assist with data manipulation. The reason why we need to manipulate data can be for several reasons, this could be
-          because a front-end application needs it to be in a different format in order to easily display the data, or that we want the data to be more readable and understandable.
-          <Spacer />
-          <Spacer />
-          <SubTitle id="skip">Helper Methods</SubTitle>
+    <PageWrapper>
+      <PostTopBar>
+        <BackButton />
+      </PostTopBar>
+
+      <AnimatedPostContainer>
+        <HeaderRow>
+          <PageTitle>JavaScript Arrays</PageTitle>
+          <IconWrapper>
+            <HeaderIcon>
+              <JavascriptSVG />
+            </HeaderIcon>
+          </IconWrapper>
+        </HeaderRow>
+
+        {/* Intro */}
+        <Paragraph>
+          Do you ever find yourself forgetting what helper methods would be best
+          to manipulate your data? In this blog post, we'll cover the basics
+          of JavaScript arrays, including how to create them, access and modify
+          their elements, and use built-in methods to manipulate them.
+        </Paragraph>
+
+        <Paragraph>
+          But before we get into that, I'd just like to briefly tackle what
+          an array is exactly and share some useful tips. If you're not new
+          to JavaScript, you can probably{' '}
+          <TextLink href="#skip">skip this part.</TextLink> Alternatively, you
+          can go straight to the{' '}
+          <TextLink href="#use-case">use case</TextLink> section, which can help
+          you find the helper method that best suits your needs.
+        </Paragraph>
+
+        <SectionHeading>What is an Array?</SectionHeading>
+
+        <Paragraph>
+          <Strong>
+            Arrays are technically objects which help with storing a collection
+            of multiple data sets under a single variable name.
+          </Strong>
+        </Paragraph>
+
+        <Paragraph>
+          JavaScript arrays are incredibly versatile and can be used to create
+          complex data structures and algorithms. Arrays can be created using
+          the <Strong>Array</Strong> constructor or by using
+          literal notation. The most common method is using literal notation,
+          which involves enclosing a list of values in square brackets.
+        </Paragraph>
+
+        <Paragraph>Here is an example:</Paragraph>
+
+        <CodeBlockWithCopy code={example} />
+
+        <Paragraph>
+          Notice that arrays can contain a mix of different data types (integers,
+          objects, and even arrays themselves).
+        </Paragraph>
+
+        <Paragraph>
+          JavaScript arrays are zero-indexed, which means they start at index{' '}
+          <InlineHighlight>0</InlineHighlight>, the second index being{' '}
+          <InlineHighlight>1</InlineHighlight> and so on.
+        </Paragraph>
+
+        <CodeBlockWithCopy code={starWarsIndexExample} />
+
+        <Paragraph>
+          If you're wanting to get the last element of an array, you can
+          always get the length of the array minus 1.
+        </Paragraph>
+
+        <CodeBlockWithCopy code={lastElementExample} />
+
+        <SectionHeading>Why Data Manipulation?</SectionHeading>
+
+        <Paragraph>
+          JavaScript arrays come with helper methods which assist with data
+          manipulation. The reason why we need to manipulate data can be for
+          several reasons: it could be because a front-end application needs it
+          to be in a different format in order to easily display the data, or
+          because we want the data to be more readable and understandable.
+        </Paragraph>
+
+        {/* Helper Methods index */}
+        <SectionHeading id="skip">Helper Methods</SectionHeading>
+
+        <Paragraph>
           Here are the helper methods that I'll be covering in this post:
-          <StyledAnchor href="#map"><StyledListItem>map</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#forEach"><StyledListItem>forEach</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#filter"><StyledListItem>filter</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#find"><StyledListItem>find</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#every"><StyledListItem>every</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#some"><StyledListItem>some</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#reduce"><StyledListItem>reduce</StyledListItem></StyledAnchor>
-          <Spacer />
-          <SubTitle id='map'>Map</SubTitle>
-          The map helper method is an iterative method, meaning it loops through each element in the array and <BoldText>constructs a new array from the results.</BoldText>
-          <Spacer />
-          This can be quite handy when we want to manipulate the data into a new structure. The example below shows how we can remove the labels from each element in the array, and just show the key and value.
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(mapExample, 0)}>
-              {isCopied[0].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {mapExample}
-          </CodeBlock>
-          It's also common to have conditions within a map function. For example, if you needed to specifically change an element within the array, you can set a condition. Let's say we need
-          to amend our data set to only have British spelling.
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(mapExample2, 1)}>
-              {isCopied[1].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {mapExample2}
-          </CodeBlock>
-          I know this is a bit of a tedious example, and I am by no means recommending this approach, but I just want to easily demonstrate that you can manipulate data sets with conditions.
-          <Spacer />
-          <Spacer />
-          <SubTitle id='forEach'>ForEach</SubTitle>
-          The forEach helper method much like the map, is an iterative method, however a key difference is the output does not return a new array.
-          <Spacer />
-          The forEach method is a cleaner way of writing a 'for loop'.
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(forEachExample, 2)}>
-              {isCopied[2].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {forEachExample}
-          </CodeBlock>
-          <Spacer />
-          <Spacer />
-          <SubTitle id='filter'>Filter</SubTitle>
-          The filter method is used to create a new array with all the elements that pass a certain condition. When iterating over each element it will return a boolean value (true or false) indicating whether the element should be included in the filtered array or not.
-          <Spacer />
-          Here is an example of filtering out all even numbers from an array:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(filterExample, 3)}>
-              {isCopied[3].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {filterExample}
-          </CodeBlock>
-          In this example, the callback function checks if the current number is odd by using the modulus operator (%) to check if it's divisible by 2 with a remainder.
-          If the remainder is not 0, the number is odd and true is returned, so it is included in the oddNumbers array.
-          <Spacer />
-          <Spacer />
-          <SubTitle id='find'>Find</SubTitle>
-          The find method is used to search an array for a <BoldText>specific element</BoldText> and <BoldText>returns the first element</BoldText> in the array that satisfies the given condition.
-          <Spacer />
-          Here is an example of the find method out to search an array for a specific element:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(findExample, 4)}>
-              {isCopied[4].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {findExample}
-          </CodeBlock>
-          In this example, the callback function checks if the current number is greater than 3. The method then returns the first element in the array that satisfies this condition, which is 4.
-          If no element satisfies the search condition, the method returns undefined.
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(findExample2, 5)}>
-              {isCopied[5].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {findExample2}
-          </CodeBlock>
-          In this example, there is no element in the array greater than 10, so the method returns undefined.
-          <Spacer />
-          <Spacer />
-          <SubTitle id='every'>Every</SubTitle>
-          The every method is used to test whether <BoldText>all elements</BoldText> in an array passes a certain condition or not. It returns a boolean value (true or false) indicating whether every element in the array satisfies the given condition.
-          <Spacer />
-          Here is an example of testing if all elements in the array have a length of less than 4:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(everyExample, 6)}>
-              {isCopied[6].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {everyExample}
-          </CodeBlock>
-          In this example, the callback function checks each element's length and because the length of the string 'Anakin' is bigger than 4 the return will be false despite the other elements satisfying the condition.
-          <Spacer />
-          <Spacer />
-          <SubTitle id='some'>Some</SubTitle>
-          The some method is used to test <BoldText>at least one element</BoldText> in an array passes a certain condition or not. It returns a boolean value (true or false) indicating whether any element in the array satisfies the given condition.
-          <Spacer />
-          Here is an example of testing if there are any elements in the array that are odd:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(someExample, 7)}>
-              {isCopied[7].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {someExample}
-          </CodeBlock>
-          In this example, the callback function performs a calculation on each element (checks to see if the number is divisible by 2) and returns true because there is one element that does not meet the condition (7).
-          <Spacer />
-          <Spacer />
-          <SubTitle id='reduce'>Reduce</SubTitle>
-          The reduce method is used to <BoldText>reduce the values of an array to a single value.</BoldText> It iterates over an array and applies a function to each element of the array, accumulating the result as it goes along.
-          <Spacer />
-          Here is an example of using the reduce method to find the sum of an array of numbers:
-          <CodeBlock>
-            <CopyButton onClick={() => handleCopy(reduceExample, 8)}>
-              {isCopied[8].value === true ? 'Copied!' : 'Copy'}
-            </CopyButton>
-            {reduceExample}
-          </CodeBlock>
-          In this example, the callback function takes two arguments, the accumulator and the currentValue. It returns the sum of the accumulator and the currentValue. The reduce method then accumulates the result of each iteration, starting with an initial value of 0.
-          If no initial value is provided, the reduce method uses the first element of the array as the initial value, and starts iterating from the second element.
-          <Spacer />
-          <Spacer />
-          <SubTitle id='use-case'>Use Cases</SubTitle>
-          I have an array, I would like to...
-          <ArrayExplorer />
-        </Text>
-      </Container>
-    </Wrapper>
+        </Paragraph>
+
+        <TextList>
+          <TextListItem>
+            <TextLink href="#map">map</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#forEach">forEach</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#filter">filter</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#find">find</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#every">every</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#some">some</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#reduce">reduce</TextLink>
+          </TextListItem>
+        </TextList>
+
+        <SubSectionHeading id="map">Map</SubSectionHeading>
+
+        <Paragraph>
+          The <InlineHighlight>map</InlineHighlight> helper method is an
+          iterative method, meaning it loops through each element in the array
+          and <Strong>constructs a new array from the results.</Strong>
+        </Paragraph>
+
+        <Paragraph>
+          This can be quite handy when we want to manipulate the data into a new
+          structure. The example below shows how we can remove the labels from
+          each element in the array and just show the key and value.
+        </Paragraph>
+
+        <CodeBlockWithCopy code={mapExample} />
+
+        <Paragraph>
+          It's also common to have conditions within a map function. For
+          example, if you needed to specifically change an element within the
+          array, you can set a condition. Let's say we need to amend our
+          data set to only have British spelling.
+        </Paragraph>
+
+        <CodeBlockWithCopy code={mapExample2} />
+
+        <Paragraph>
+          I know this is a bit of a tedious example, and I am by no means
+          recommending this approach, but I just want to easily demonstrate that
+          you can manipulate data sets with conditions.
+        </Paragraph>
+
+        <SubSectionHeading id="forEach">forEach</SubSectionHeading>
+
+        <Paragraph>
+          The <InlineHighlight>forEach</InlineHighlight> helper method, much
+          like <InlineHighlight>map</InlineHighlight>, is an iterative method;
+          however, a key difference is the output does{' '}
+          <Strong>not return a new array</Strong>.
+        </Paragraph>
+
+        <Paragraph>
+          The <InlineHighlight>forEach</InlineHighlight> method is a cleaner way
+          of writing a traditional <InlineHighlight>for</InlineHighlight> loop.
+        </Paragraph>
+
+        <CodeBlockWithCopy code={forEachExample} />
+
+        <SubSectionHeading id="filter">Filter</SubSectionHeading>
+
+        <Paragraph>
+          The <InlineHighlight>filter</InlineHighlight> method is used to create
+          a new array with all the elements that pass a certain condition. When
+          iterating over each element it will return a boolean value (true or
+          false) indicating whether the element should be included in the
+          filtered array or not.
+        </Paragraph>
+
+        <Paragraph>Here is an example of filtering out all even numbers from an array:</Paragraph>
+
+        <CodeBlockWithCopy code={filterExample} />
+
+        <Paragraph>
+          In this example, the callback function checks if the current number is
+          odd by using the modulus operator (%) to check if it's divisible
+          by 2 with a remainder. If the remainder is not 0, the number is odd
+          and true is returned, so it is included in the{' '}
+          <Strong>oddNumbers</Strong> array.
+        </Paragraph>
+
+        <SubSectionHeading id="find">Find</SubSectionHeading>
+
+        <Paragraph>
+          The <InlineHighlight>find</InlineHighlight> method is used to search
+          an array for a <Strong>specific element</Strong> and{' '}
+          <Strong>returns the first element</Strong> in the array that satisfies
+          the given condition.
+        </Paragraph>
+
+        <Paragraph>
+          Here is an example of using the find method to search an array for a
+          specific element:
+        </Paragraph>
+
+        <CodeBlockWithCopy code={findExample} />
+
+        <Paragraph>
+          In this example, the callback function checks if the current number is
+          greater than 3. The method then returns the first element in the array
+          that satisfies this condition, which is 4. If no element satisfies the
+          search condition, the method returns{' '}
+          <InlineHighlight>undefined</InlineHighlight>.
+        </Paragraph>
+
+        <CodeBlockWithCopy code={findExample2} />
+
+        <Paragraph>
+          In this example, there is no element in the array greater than 10, so
+          the method returns <InlineHighlight>undefined</InlineHighlight>.
+        </Paragraph>
+
+        <SubSectionHeading id="every">Every</SubSectionHeading>
+
+        <Paragraph>
+          The <InlineHighlight>every</InlineHighlight> method is used to test
+          whether <Strong>all elements</Strong> in an array pass a certain
+          condition or not. It returns a boolean value (true or false)
+          indicating whether every element in the array satisfies the given
+          condition.
+        </Paragraph>
+
+        <Paragraph>
+          Here is an example of testing if all elements in the array have a
+          length of less than 4:
+        </Paragraph>
+
+        <CodeBlockWithCopy code={everyExample} />
+
+        <Paragraph>
+          In this example, the callback function checks each element's
+          length, and because the length of the string "Anakin" is bigger than 4,
+          the return will be false despite the other elements satisfying the
+          condition.
+        </Paragraph>
+
+        <SubSectionHeading id="some">Some</SubSectionHeading>
+
+        <Paragraph>
+          The <InlineHighlight>some</InlineHighlight> method is used to test
+          whether <Strong>at least one element</Strong> in an array passes a
+          certain condition or not. It returns a boolean value (true or false)
+          indicating whether any element in the array satisfies the given
+          condition.
+        </Paragraph>
+
+        <Paragraph>
+          Here is an example of testing if there are any elements in the array
+          that are odd:
+        </Paragraph>
+
+        <CodeBlockWithCopy code={someExample} />
+
+        <Paragraph>
+          In this example, the callback function performs a calculation on each
+          element (checks to see if the number is divisible by 2) and returns
+          true because there is one element that does not meet the condition (7).
+        </Paragraph>
+
+        <SubSectionHeading id="reduce">Reduce</SubSectionHeading>
+
+        <Paragraph>
+          The <InlineHighlight>reduce</InlineHighlight> method is used to{' '}
+          <Strong>reduce the values of an array to a single value.</Strong> It
+          iterates over an array and applies a function to each element of the
+          array, accumulating the result as it goes along.
+        </Paragraph>
+
+        <Paragraph>
+          Here is an example of using the reduce method to find the sum of an
+          array of numbers:
+        </Paragraph>
+
+        <CodeBlockWithCopy code={reduceExample} />
+
+        <Paragraph>
+          In this example, the callback function takes two arguments, the{' '}
+          <Strong>accumulator</Strong> and the{' '}
+          <Strong>currentValue</Strong>. It returns the sum of
+          the accumulator and the currentValue. The{' '}
+          <InlineHighlight>reduce</InlineHighlight> method then accumulates the
+          result of each iteration, starting with an initial value of 0.
+        </Paragraph>
+
+        <Paragraph>
+          If no initial value is provided, the reduce method uses the first
+          element of the array as the initial value, and starts iterating from
+          the second element.
+        </Paragraph>
+
+        <SectionHeading id="use-case">Use Cases</SectionHeading>
+
+        <Paragraph>I have an array, I would like to...</Paragraph>
+
+        <ArrayExplorer />
+
+        <SectionHeading>References</SectionHeading>
+
+        <TextList>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - Array
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - Array.prototype.map()
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - Array.prototype.forEach()
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - Array.prototype.filter()
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - Array.prototype.find()
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - Array.prototype.every()
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - Array.prototype.some()
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MDN - Array.prototype.reduce()
+            </TextLink>
+          </TextListItem>
+        </TextList>
+      </AnimatedPostContainer>
+    </PageWrapper>
   );
-}
+};
 
 export default JavaScriptArray;

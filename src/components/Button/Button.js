@@ -179,7 +179,7 @@ export const ToastCloseButton = styled.button`
 
 export const CopyButton = styled.button`
   position: absolute;
-  right: 50px;
+  right: 0;
   margin: 0;
   padding: 1rem;
   border-radius: 2rem;

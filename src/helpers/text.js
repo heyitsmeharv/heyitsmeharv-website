@@ -145,7 +145,7 @@ export const aboutMeText = (language) => {
   let text;
   switch (language) {
     case 'EN':
-      text = ` I'm a self taught programmer with multiple years of experience delivering commercialised web applications built in React.js.
+      text = `I am predominantly a self taught programmer with multiple years of experience delivering commercialised web applications built in React.js.
       I have an adventurous and inquisitive nature when it comes to technologies with a particular interest in cloud computing. I'm
       qualified in Amazon's cloud based computing platform (AWS).`
       break;

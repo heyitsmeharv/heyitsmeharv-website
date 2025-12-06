@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styled, { css, keyframes } from "styled-components";
+import styled from "styled-components";
 
 // helpers
 import { Analytics } from "../../helpers/analytics";
@@ -7,8 +7,33 @@ import { Analytics } from "../../helpers/analytics";
 // animations
 import SlideInBottom from "../../animations/SlideInBottom";
 
+// layout
+import {
+  PageWrapper,
+  PostTopBar,
+  PostContainer as BasePostContainer,
+  HeaderRow,
+  IconWrapper,
+  HeaderIcon,
+  PostImage,
+} from "../BlogLayout/BlogLayout";
+
+// typography
+import {
+  PageTitle,
+  SectionHeading,
+  SubSectionHeading,
+  TertiaryHeading,
+  Paragraph,
+  Strong,
+  TextLink,
+  TextList,
+  TextListItem,
+  IndentedTextList,
+  IndentedTextListItem,
+} from "../Typography/Typography";
+
 // icons
-import { ChevronBackCircle } from '@styled-icons/ionicons-solid/ChevronBackCircle';
 import {
   AWSSVG,
   AWSAthenaSVG,
@@ -17,434 +42,614 @@ import {
   AWSEMRSVG,
   AWSQuickSightSVG,
   AWSGlueSVG,
-  AWSLakeFormationSVG
-} from '../../resources/styles/icons';
-
-// components
-import { StyledNavButton, StyledNavLink } from '../Button/Button';
-import Table from '../../components/Table/Table';
+  AWSLakeFormationSVG,
+} from "../../resources/styles/icons";
 
 // images
-import FederatedQueries from "../../resources/images/blog/AWSDataAnalytics/data_analytics_federated_queries.jpeg"
-import RedshiftCluster from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_cluster.jpeg"
-import RedshiftSnapshot from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_snapshot.jpeg"
-import RedshiftSpectrum from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_spectrum.jpeg"
-import OpenSearchDynamoDB from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_dynamodb.jpeg"
-import OpenSearchCloudWatch from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_cloudwatch.jpeg"
-import OpenSearchKinesis from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_kinesis.jpeg"
-import QuickSightDashboard from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_dashboard.png"
-import QuickSightDataSources from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_data_sources.jpeg"
-import Glue from "../../resources/images/blog/AWSDataAnalytics/data_analytics_glue.jpeg"
-import LakeFormation from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_lake_formation.jpeg"
+import FederatedQueries from "../../resources/images/blog/AWSDataAnalytics/data_analytics_federated_queries.jpeg";
+import RedshiftCluster from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_cluster.jpeg";
+import RedshiftSnapshot from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_snapshot.jpeg";
+import RedshiftSpectrum from "../../resources/images/blog/AWSDataAnalytics/data_analytics_redshift_spectrum.jpeg";
+import OpenSearchDynamoDB from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_dynamodb.jpeg";
+import OpenSearchCloudWatch from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_cloudwatch.jpeg";
+import OpenSearchKinesis from "../../resources/images/blog/AWSDataAnalytics/data_analytics_opensearch_kinesis.jpeg";
+import QuickSightDashboard from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_dashboard.png";
+import QuickSightDataSources from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_quicksight_data_sources.jpeg";
+import Glue from "../../resources/images/blog/AWSDataAnalytics/data_analytics_glue.jpeg";
+import LakeFormation from "../../resources/images/blog/AWSDataAnalytics/aws_data_analytics_lake_formation.jpeg";
 
 // codeblocks
 import { partitionsInAthena, columnarFormat } from "../../helpers/codeblocks";
 
+// components
+import BackButton from "../Button/BackButton";
+import { CodeBlockWithCopy } from "../Code/Code";
 
-const Wrapper = styled.div`
-  padding: 1rem 25%;
-  line-height: 6.5rem;
-  
-  @media only screen and (max-width: 1000px) {
-    line-height: 5rem;
-    padding: 0;
-  }
-
-  @media only screen and (min-width: 1001px) and (max-width: 1800px) {
-    line-height: 6.5rem;
-    padding: 1rem 20%;
-  }
-`;
-
-const Container = styled.div`
-  padding: 4rem;
-  background: ${({ theme }) => theme.background};
+const PostContainer = styled(BasePostContainer)`
   animation: ${SlideInBottom} 0.5s forwards;
 `;
 
-const OverflowContainer = styled.div`
-  overflow: auto;
-`;
-
-const Flex = styled.div`
-  display: flex;
-  align-items: baseline;
-`;
-
-const FlexCenter = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media only screen and (max-width: 700px) {
-    flex-direction: column;
-  }
-`;
-
-const FlexTop = styled.div`
-  display: flex;
-  align-items: start;
-
-  @media only screen and (max-width: 2300px) {
-    flex-direction: column;
-  }
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
-`;
-
-const CodeBlock = styled.pre`
-  font-family: 'Calibri';
-  font-size: 2rem;
-  background: #292929;
-  color: ${({ theme }) => theme.buttonText};
-  word-wrap: break-word;
-  padding: 1rem 2rem 1rem;
-  border-radius: 2rem;
-  overflow-x: auto;
-  line-height: 3.5rem;
-`;
-
-const CodeBlockIndent = styled.pre`
-  font-family: 'Calibri';
-  font-size: 2rem;
-  background: #292929;
-  color: ${({ theme }) => theme.buttonText};
-  word-wrap: break-word;
-  padding: 1rem 2rem 1rem;
-  border-radius: 2rem;
-  overflow-x: auto;
-  line-height: 3.5rem;
-  margin-left: 10%;
-`;
-
-const Title = styled.h1`
-  font-size: 4rem;
-  font-weight: bold;
-`;
-
-const SubTitle = styled.h1`
-  font-size: 3rem;
-  font-weight: bold;
-  margin: 2% auto;
-`;
-
-const SubTitleSmall = styled.h1`
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 2% auto;
-`;
-
-const HeadingSmall = styled.h1`
-  font-size: 1.8rem;
-  font-weight: bold;
-  font-style: italic;
-`;
-
-const Text = styled.span`
-  color: ${({ theme }) => theme.text};
-  font-size: 2rem;
-`;
-
-const BoldText = styled.b`
-  color: ${({ theme }) => theme.text};
-  font-size: 2rem;
-  font-weight: bold;
-`;
-
-const BoldTextSmall = styled.b`
-  color: ${({ theme }) => theme.text};
-  font-size: 1.8rem;
-  font-weight: bold;
-`;
-
-const StyledCodeSpan = styled.code`
-  background-color: #f1f1f1;
-  color: crimson;
-  padding: 0 5px;
-  margin: 0 5px;
-`;
-
-const UnStyledListItem = styled.li`
-  list-style-type: none;
-  color: ${({ theme }) => theme.text};
-  margin-left: 5%;
-`;
-
-const StyledListItem = styled.li`
-  color: ${({ theme }) => theme.text};
-  margin-left: 5%;
-`;
-
-const StyledListItemIndent = styled.li`
-  color: ${({ theme }) => theme.text};
-  margin-left: 10%;
-`;
-
-const StyledListItemIndentExtra = styled.li`
-  color: ${({ theme }) => theme.text};
-  margin-left: 15%;
-`;
-
-const StyledAnchor = styled.a`
-  color: ${({ theme }) => theme.text};
-`;
-
-const StyledAnchorText = styled.span`
-  color: ${({ theme }) => theme.text};
-  font-style: italic;
-  font-weight: bold;
-`;
-
-const StyledBackIcon = styled(ChevronBackCircle)`
-  color: ${({ theme }) => theme.secondary};
-  width: 4rem;
-`;
-
-const StyledImage = styled.img`
-  width: ${props => props.width ? props.width : '100%'};
-  height: ${props => props.height ? props.height : '100%'};
-  margin-right: ${props => props.mr ? props.mr : '0px'};
-  margin-left: ${props => props.ml ? props.ml : '0px'};
-  margin-top: ${props => props.mt ? props.mt : '0px'};
-`;
-
-const Icon = styled.div`
-  width: 50px;
-  height: 50px;
-  margin-left: auto;
-  margin-right: 25px;
-
-  @media only screen and (max-width: 1000px) {
-    width: 36px;
-    height: 36px;
-  }
-`;
-
-const Spacer = styled.br`
-  display: block;
-  margin: 10px 0;
-`;
-
 const AWSDataAnalytics = () => {
-
   useEffect(() => {
-    Analytics.event('blog_opened', { slug: 'aws-data-analytics' });
+    Analytics.event("blog_opened", { slug: "aws-data-analytics" });
   }, []);
 
   return (
-    <Wrapper>
-      <StyledNavButton>
-        <StyledNavLink
-          exact to={`/blog`}>
-          <StyledBackIcon />
-        </StyledNavLink>
-      </StyledNavButton>
-      <Container>
-        <FlexTop>
-          <Title>Amazon Data and Analytics</Title>
+    <PageWrapper>
+      <PostTopBar>
+        <BackButton to="/blog" />
+      </PostTopBar>
+
+      <PostContainer>
+        <HeaderRow>
+          <PageTitle>Amazon Data and Analytics</PageTitle>
           <IconWrapper>
-            <Icon><AWSSVG /></Icon>
-            <Icon><AWSAthenaSVG /></Icon>
-            <Icon><AWSRedshiftSVG /></Icon>
-            <Icon><AWSOpenSearchSVG /></Icon>
-            <Icon><AWSEMRSVG /></Icon>
-            <Icon><AWSQuickSightSVG /></Icon>
-            <Icon><AWSGlueSVG /></Icon>
-            <Icon><AWSLakeFormationSVG /></Icon>
+            <HeaderIcon>
+              <AWSSVG />
+            </HeaderIcon>
+            <HeaderIcon>
+              <AWSAthenaSVG />
+            </HeaderIcon>
+            <HeaderIcon>
+              <AWSRedshiftSVG />
+            </HeaderIcon>
+            <HeaderIcon>
+              <AWSOpenSearchSVG />
+            </HeaderIcon>
+            <HeaderIcon>
+              <AWSEMRSVG />
+            </HeaderIcon>
+            <HeaderIcon>
+              <AWSQuickSightSVG />
+            </HeaderIcon>
+            <HeaderIcon>
+              <AWSGlueSVG />
+            </HeaderIcon>
+            <HeaderIcon>
+              <AWSLakeFormationSVG />
+            </HeaderIcon>
           </IconWrapper>
-        </FlexTop>
-        <Spacer />
-        <Text>
-          In this post we'll be diving into Amazon's services for Data Analytics which includes:
-          <StyledAnchor href="#aws-athena"><StyledListItem>Athena</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-redshfit"><StyledListItem>Redshift</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-opensearch"><StyledListItem>OpenSearch</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-emr"><StyledListItem>EMR (Elastic MapReduce)</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-quicksight"><StyledListItem>Quicksight</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-glue"><StyledListItem>Glue</StyledListItem></StyledAnchor>
-          <StyledAnchor href="#aws-lake-formation"><StyledListItem>Lake Formation</StyledListItem></StyledAnchor>
-          <Spacer />
-          <SubTitle id="aws-athena">Athena</SubTitle>
-          AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL.
-          It is designed for simplicity and cost-efficiency, making it a popular choice for data analytics. Athena supports formats including <BoldText>CSV, JSON, ORC, Avro</BoldText> and <BoldText>Parquet</BoldText>.
-          Athena is commonly used with AWS Quicksight for reporting and dashboards.
-          <Spacer />
-          <SubTitleSmall>Partitioning in AWS Athena</SubTitleSmall>
-          Partitioning is a method of dividing a dataset into smaller, more manageable pieces based on one or more columns. Each partition is stored as a separate folder in Amazon S3.
-          When queries are executed, Athena scans only the relevant partitions instead of the entire dataset, significantly improving performance and reducing costs.
-          <Spacer />
-          <SubTitleSmall>How Partitioning Works</SubTitleSmall>
-          <StyledListItem>Folder-Based Structure:</StyledListItem>
-          <StyledListItemIndent>Data is typically organized in S3 folders based on the partition key(s).</StyledListItemIndent>
-          <StyledListItemIndent>Example: If your data is partitioned by year and month, the folder structure might look like this:</StyledListItemIndent>
-          <CodeBlockIndent>
-            s3://my-bucket/sales/year=2024/month=01/
-            <Spacer />
-            s3://my-bucket/sales/year=2024/month=02/
-          </CodeBlockIndent>
-          <Spacer />
-          <StyledListItem>Defining Partitions in Athena:</StyledListItem>
-          <StyledListItemIndent>Use the PARTITIONED BY clause when creating a table to define which columns should be used as partitions.</StyledListItemIndent>
-          <StyledListItemIndent>Example:</StyledListItemIndent>
-          <CodeBlockIndent>
-            {partitionsInAthena}
-          </CodeBlockIndent>
-          <Spacer />
-          <StyledListItem>Adding Partitions:</StyledListItem>
-          <StyledListItemIndent>After data is added to S3, partitions must be registered with the table.</StyledListItemIndent>
-          <StyledListItemIndent>Use ALTER TABLE to manually add partitions:</StyledListItemIndent>
-          <CodeBlockIndent>
-            ALTER TABLE sales ADD PARTITION (year='2023', month='01') LOCATION 's3://my-bucket/sales/year=2023/month=01/';
-          </CodeBlockIndent>
-          <Spacer />
-          <SubTitleSmall>Benefits of Partitioning</SubTitleSmall>
-          Improved Query Performance: Filters like WHERE year = '2023' AND month = '01' ensure Athena scans only the relevant folders.
-          Reduced Query Costs: Since costs are based on the volume of data scanned, reducing unnecessary scans saves money.
-          <Spacer />
-          <SubTitleSmall>Optimization in AWS Athena</SubTitleSmall>
-          Optimization involves structuring your data and queries to make the best use of Athena’s capabilities. Key optimization strategies include:
-          <StyledListItem>Use Columnar File Formats</StyledListItem>
-          <StyledListItemIndent>File formats like Parquet and ORC store data in a columnar layout, meaning only the columns required by the query are read.
-            They also support compression and better data skipping, reducing the amount of data scanned.</StyledListItemIndent>
-          <StyledListItemIndent>Example:</StyledListItemIndent>
-          <CodeBlockIndent>
-            {columnarFormat}
-          </CodeBlockIndent>
-          <Spacer />
-          <StyledListItem>Use Glue Data Catalog for Schema Management</StyledListItem>
-          <StyledListItemIndent>Leverage AWS Glue to manage schemas and enable automatic schema discovery.</StyledListItemIndent>
-          <StyledListItemIndent>Use AWS Glue to convert your data to Parquet or ORC.</StyledListItemIndent>
-          <Spacer />
-          <StyledListItem>Compress Your Data</StyledListItem>
-          <StyledListItemIndent>Compressing files (e.g., using Gzip, Snappy) reduces storage costs and the volume of data scanned.</StyledListItemIndent>
-          <StyledListItemIndent>Some formats like Parquet and ORC support built-in compression.</StyledListItemIndent>
-          <Spacer />
-          <StyledListItem>Use Partition Pruning</StyledListItem>
-          <StyledListItemIndent>Write queries that leverage partition keys in WHERE clauses to avoid scanning all partitions.</StyledListItemIndent>
-          <StyledListItemIndent>Use functions like LIMIT when exploring data.</StyledListItemIndent>
-          <StyledListItemIndent>Join smaller datasets first in complex queries.</StyledListItemIndent>
-          <Spacer />
-          <StyledListItem>Optimize Data Layout</StyledListItem>
-          <StyledListItemIndent>Avoid very small files, as they can cause overhead during query execution.</StyledListItemIndent>
-          <StyledListItemIndent>Aim for file sizes between 128 MB and 1 GB.</StyledListItemIndent>
-          <Spacer />
-          <SubTitleSmall>Federated Query</SubTitleSmall>
-          Federated queries in AWS Athena allow you to query data across multiple data sources, not just Amazon S3. This feature enables you to use Athena as a
-          single interface to analyze data stored in various systems such as relational databases, NoSQL databases, and custom data stores, in addition to files in S3.
-          <Spacer />
-          <StyledImage src={FederatedQueries} />
-          <Spacer />
-          <SubTitleSmall>How Federated Queries Work</SubTitleSmall>
-          <StyledListItem>Connectors</StyledListItem>
-          <StyledListItemIndent>Athena uses data source connectors to interact with different data systems.</StyledListItemIndent>
-          <StyledListItemIndent>Connectors are based on the AWS Lambda service, which acts as a bridge between Athena and the external data source.</StyledListItemIndent>
-          <Spacer />
-          <StyledListItem>SQL Interface</StyledListItem>
-          <StyledListItemIndent>You write SQL queries in Athena, just as you would for querying data in S3.</StyledListItemIndent>
-          <StyledListItemIndent>Athena fetches data from the external source via the connector and processes it for your query.</StyledListItemIndent>
-          <Spacer />
-          <SubTitleSmall>Benefits of Federated Queries</SubTitleSmall>
-          <StyledListItem>Unified Analytics:</StyledListItem>
-          <StyledListItemIndent>Analyze data across disparate systems without the need to copy or ETL (Extract, Transform, Load) data into S3.</StyledListItemIndent>
-          <StyledListItem>Simplified Data Access:</StyledListItem>
-          <StyledListItemIndent>Use a single SQL interface to query various data sources, reducing complexity for data analysts.</StyledListItemIndent>
-          <Spacer />
-          <SubTitleSmall>Limitations</SubTitleSmall>
-          <StyledListItem>Federated queries can have higher latency compared to querying S3 directly.</StyledListItem>
-          <StyledListItem>Not all SQL functions and operations may be supported for all data sources.</StyledListItem>
-          <StyledListItem>Data source permissions must be carefully managed to ensure security.</StyledListItem>
-          <Spacer />
-          <SubTitle id="aws-redshfit">Redshift</SubTitle>
-          AWS Redshift is a fully managed, petabyte-scale cloud data warehouse service provided by Amazon Web Services.
-          It is designed to make it simple and cost-effective to analyze all your data using standard SQL and existing business intelligence (BI) tools.
-          <StyledListItem>Redshift uses columnar storage, data compression, and zone maps to minimize the amount of data read from disk.</StyledListItem>
-          <StyledListItem>Leverages Massively Parallel Processing (MPP) architecture to split workloads across multiple nodes.</StyledListItem>
-          <StyledListItem>Offers query optimization techniques, such as materialized views and result caching, for faster performance.</StyledListItem>
-          <SubTitleSmall>Scalability</SubTitleSmall>
-          <StyledListItem>Provisioned:</StyledListItem>
-          <StyledListItemIndent>Scale clusters vertically (change node types) or horizontally (add more nodes) to accommodate growing data needs.</StyledListItemIndent>
-          <StyledListItem>Serverless:</StyledListItem>
-          <StyledListItemIndent>Automatically provisions resources based on workload, ideal for unpredictable or spiky workloads.</StyledListItemIndent>
-          <SubTitleSmall>Redshift Cluster</SubTitleSmall>
-          Here is a basic overview of how Redshift Clusters are designed. They are made up of leader/compute nodes. The leader node coordinates query execution and manages metadata where
-          the compute nodes perform the actual data processing and return results to the leader node.
-          <Spacer />
-          <StyledImage src={RedshiftCluster} />
-          <SubTitleSmall>Snapshots and Disaster Recovery</SubTitleSmall>
-          Snapshots are backups of your Amazon Redshift cluster stored in Amazon S3. There are two types of snapshots:
-          <StyledListItem>Automated Snapshots:</StyledListItem>
-          <StyledListItemIndent>Created automatically by Redshift based on the backup retention period configured for your cluster.</StyledListItemIndent>
-          <StyledListItemIndent>Occur every 8 hours or after 5 GB of data changes, whichever comes first.</StyledListItemIndent>
-          <StyledListItemIndent>Retained for a configurable period (default is 1 day, maximum is 35 days).</StyledListItemIndent>
-          <StyledListItem>Manual Snapshots:</StyledListItem>
-          <StyledListItemIndent>Created explicitly by the user.</StyledListItemIndent>
-          <StyledListItemIndent>Retained until deleted manually (not subject to automated deletion).</StyledListItemIndent>
-          <SubTitleSmall>How Snapshots Work</SubTitleSmall>
-          Snapshots are incremental, meaning only changes since the last snapshot are stored, reducing storage costs.
-          Snapshots are region-specific but can be copied to another AWS region for disaster recovery purposes.
-          <Spacer />
-          <StyledImage src={RedshiftSnapshot} />
-          <Spacer />
-          <SubTitleSmall>Redshift Spectrum</SubTitleSmall>
-          Spectrum allows you to run SQL queries directly against exabytes of data stored in Amazon S3. A Redshift cluster is required to start the query, which is
-          submitted to thousands of spectrum nodes.
-          <Spacer />
-          <StyledImage src={RedshiftSpectrum} />
-          <Spacer />
-          <SubTitle id="aws-opensearch">OpenSearch</SubTitle>
-          AWS OpenSearch Service (formerly Amazon Elasticsearch Service) is a fully managed service that makes it easy to deploy, operate, and scale OpenSearch or Elasticsearch clusters
-          in the AWS Cloud. OpenSearch is a search and analytics engine, enabling fast, interactive search experiences and powerful data visualization capabilities.
-          <Spacer />
-          Here are some design patterns including OpenSearch:
-          <SubTitleSmall>DynamoDB Design Pattern</SubTitleSmall>
-          OpenSearch can be used to allow an application to search for a specific item (e.g. a partial search for the item name), returning the item id. It can then use DynamoDB to retrieve the item using the id retrieved from
-          OpenSearch. This is a common pattern where you can still have DynamoDB as your main source of data utilising OpenSearch to provide the search capability.
-          <StyledImage src={OpenSearchDynamoDB} />
-          <SubTitleSmall>CloudWatch Logs Design Pattern</SubTitleSmall>
-          A way to ingest CloudWatch Logs using OpenSearch by using a CloudWatch Log Subscription filter sending data in real time to a lambda function which is managed by AWS and then the lambda function in real time sends the data to OpenSearch.
-          Alternatively, you can use Kinesis Data Firehose to send the data but this would be in near real time.
-          <StyledImage src={OpenSearchCloudWatch} />
-          <SubTitleSmall>Kinesis Data Streams & Kinesis Data Firehose Design Pattern</SubTitleSmall>
-          To send data streams into OpenSearch there are two ways to do so. The first strategy involves sending data into Kinesis Data Firehose near real time with the option to do any data transformation via lambdas then sending the data into OpenSearch.
-          Alternatively, you can use lambda to read the data stream in real time to then send to OpenSearch.
-          <StyledImage src={OpenSearchKinesis} />
-          <Spacer />
-          <SubTitle id="aws-emr">EMR (Elastic MapReduce)</SubTitle>
-          EMR is designed to process vast amounts of data using distributed computing frameworks like Apache Hadoop, Apache Spark, and others. It uses a cluster of nodes which could be made up of hundreds of EC2 instances for distributed computing, and the nodes
-          are divided into three main types, each serving a distinct role in the cluster. EMR simplifies the processing, analysis, and transformation of big data, allowing organizations to derive insights from large datasets quickly and cost-effectively.
-          <SubTitleSmall>Node Types in AWS EMR</SubTitleSmall>
-          <StyledListItem><BoldText>Master Node</BoldText>: Manages the cluster, including the distribution of tasks and monitoring cluster health.</StyledListItem>
-          <StyledListItem><BoldText>Core Nodes</BoldText>: Execute tasks and store data within the Hadoop Distributed File System (HDFS).</StyledListItem>
-          <StyledListItem><BoldText>Task Nodes</BoldText>: Perform computational tasks but do not store data in HDFS.</StyledListItem>
-          <SubTitleSmall>Purchasing Options & Best Practices</SubTitleSmall>
-          <StyledListItem><BoldText>Master Node</BoldText>: Use On-Demand or Reserved Instances to ensure high availability and stability since the master node is critical to cluster operations.</StyledListItem>
-          <StyledListItem><BoldText>Core Nodes</BoldText>: Use Reserved Instances for predictable workloads requiring persistent storage (Spot Instances can be considered with a fault-tolerant design e.g., enabling replication in HDFS).</StyledListItem>
-          <StyledListItem><BoldText>Task Nodes</BoldText>: Use Spot Instances to minimize costs for transient compute needs..</StyledListItem>
-          <Spacer />
-          <SubTitle id="aws-quicksight">QuickSight</SubTitle>
-          Amazon QuickSight is a cloud-scale business intelligence (BI) service that you can use to deliver easy-to-understand insights to the people who you work with, wherever they are. QuickSight connects to your data in the
-          cloud and combines data from many different sources. In a single data dashboard, QuickSight can include AWS data, third-party data, big data, spreadsheet data, SaaS data, B2B data, and more. As a fully managed cloud-based service,
-          QuickSight provides enterprise-grade security, global availability, and built-in redundancy. It also provides the user-management tools that you need to scale from 10 users to 10,000, all with no infrastructure to deploy or manage.
-          <SubTitleSmall>QuickSight Integrations</SubTitleSmall>
-          <StyledImage src={QuickSightDataSources} />
-          <SubTitleSmall>Dashboard & Analysis</SubTitleSmall>
-          Define users (standard versions) and Groups (enterprise version). Note that users and groups are not stored in IAM and only exist within QuickSight. The dashboards are a read-only snapshot of the analysis you can share. The data is imported as
-          SPICE data which allows for really fast data analysis. The powerful aspect of QuickSight dashboards is that you can share them with users and groups.
-          <StyledImage src={QuickSightDashboard} />
-          <SubTitle id="aws-glue">Glue</SubTitle>
-          AWS Glue is a serverless data integration service that makes it easy for analytics users to discover, prepare, move, and integrate data from multiple sources. You can use it for analytics, machine learning, and application development.
-          It also includes additional productivity and data ops tooling for authoring, running jobs, and implementing business workflows.
-          <StyledImage src={Glue} />
-          <Spacer />
-          <SubTitle id="aws-lake-formation">Lake Formation</SubTitle>
-          AWS Lake Formation is a fully managed service that simplifies the process of creating, securing, and managing data lakes. A data lake is a centralised repository that stores structured and unstructured data at any scale, enabling you
-          to analyze and process data using different tools and frameworks. Lake Formation helps automate and streamline the creation of data lakes, making it easier to collect, organize, secure, and share data for analytics and machine learning.
-          <StyledImage src={LakeFormation} />
-        </Text>
-      </Container>
-    </Wrapper>
+        </HeaderRow>
+
+        <Paragraph>
+          In this post we'll be diving into Amazon's services for{" "}
+          <Strong>Data Analytics</Strong>, including{" "}
+          <Strong>Athena</Strong>, <Strong>Redshift</Strong>,{" "}
+          <Strong>OpenSearch</Strong>, <Strong>EMR</Strong>,{" "}
+          <Strong>QuickSight</Strong>, <Strong>Glue</Strong> and{" "}
+          <Strong>Lake Formation</Strong>.
+        </Paragraph>
+
+        <TextList>
+          <TextListItem>
+            <TextLink href="#aws-athena">Athena</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#aws-redshift">Redshift</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#aws-opensearch">OpenSearch</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#aws-emr">EMR (Elastic MapReduce)</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#aws-quicksight">QuickSight</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#aws-glue">Glue</TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink href="#aws-lake-formation">Lake Formation</TextLink>
+          </TextListItem>
+        </TextList>
+
+        <SectionHeading id="aws-athena">Athena</SectionHeading>
+        <Paragraph>
+          <Strong>AWS Athena</Strong> is a serverless interactive query
+          service that allows you to analyze data directly in{" "}
+          <Strong>Amazon S3</Strong> using standard SQL. It is designed for
+          simplicity and cost-efficiency, making it a popular choice for data
+          analytics.
+        </Paragraph>
+        <Paragraph>
+          Athena supports multiple formats including{" "}
+          <Strong>CSV, JSON, ORC, Avro</Strong> and{" "}
+          <Strong>Parquet</Strong>, and is commonly used with{" "}
+          <Strong>Amazon QuickSight</Strong> for reporting and dashboards.
+        </Paragraph>
+
+        <SubSectionHeading>Partitioning in AWS Athena</SubSectionHeading>
+        <Paragraph>
+          <Strong>Partitioning</Strong> is a method of dividing a dataset
+          into smaller, more manageable pieces based on one or more columns.
+          Each partition is stored as a separate folder in Amazon S3. When
+          queries are executed, Athena scans only the relevant partitions
+          instead of the entire dataset, significantly improving performance
+          and reducing costs.
+        </Paragraph>
+
+        <SubSectionHeading>How Partitioning Works</SubSectionHeading>
+        <TextList>
+          <TextListItem>
+            <Strong>Folder-based structure</Strong>: data is often
+            organised in S3 folders based on partition key(s), for example:
+          </TextListItem>
+        </TextList>
+
+        <CodeBlockWithCopy
+          code={`s3://my-bucket/sales/year=2024/month=01/\ns3://my-bucket/sales/year=2024/month=02/`}
+        />
+
+        <TextList>
+          <TextListItem>
+            <Strong>Defining partitions in Athena</Strong>: use{" "}
+            <Strong>PARTITIONED BY</Strong> when creating a table:
+          </TextListItem>
+        </TextList>
+
+        <CodeBlockWithCopy code={partitionsInAthena} />
+
+        <TextList>
+          <TextListItem>
+            <Strong>Adding partitions</Strong>: after data is added to
+            S3, partitions must be registered with the table, for example:
+          </TextListItem>
+        </TextList>
+
+        <CodeBlockWithCopy
+          code={`ALTER TABLE sales ADD PARTITION (year='2023', month='01') LOCATION 's3://my-bucket/sales/year=2023/month=01/';`}
+        />
+
+        <SubSectionHeading>Benefits of Partitioning</SubSectionHeading>
+        <TextList>
+          <TextListItem>
+            <Strong>Improved query performance</Strong>: queries that
+            filter on partition keys (e.g.{" "}
+            <Strong>WHERE year = '2023' AND month = '01'</Strong>) only scan the
+            relevant folders.
+          </TextListItem>
+          <TextListItem>
+            <Strong>Reduced query costs</Strong>: Athena pricing is based
+            on data scanned; partitioning reduces the scanned volume and
+            therefore reduces cost.
+          </TextListItem>
+        </TextList>
+
+        <SubSectionHeading>Optimisation in AWS Athena</SubSectionHeading>
+        <Paragraph>
+          Optimisation involves structuring your data and queries to make the
+          best use of Athena’s capabilities. Key strategies include:
+        </Paragraph>
+
+        <TertiaryHeading>Use Columnar File Formats</TertiaryHeading>
+        <Paragraph>
+          File formats like <Strong>Parquet</Strong> and{" "}
+          <Strong>ORC</Strong> store data in a columnar layout. Athena can
+          read only the columns required by the query, and take advantage of
+          built-in compression and predicate pushdown.
+        </Paragraph>
+
+        <CodeBlockWithCopy code={columnarFormat} />
+
+        <TertiaryHeading>Use Glue Data Catalog for Schema Management</TertiaryHeading>
+        <TextList>
+          <TextListItem>
+            Leverage <Strong>AWS Glue</Strong> as the central metadata
+            catalog for your Athena tables.
+          </TextListItem>
+          <TextListItem>
+            Use Glue crawlers or ETL jobs to discover schemas and convert raw
+            data to Parquet/ORC.
+          </TextListItem>
+        </TextList>
+
+        <TertiaryHeading>Compress Your Data</TertiaryHeading>
+        <TextList>
+          <TextListItem>
+            Use compression (Gzip, Snappy, etc.) to reduce storage and scan
+            size.
+          </TextListItem>
+          <TextListItem>
+            Columnar formats such as Parquet and ORC natively support
+            compression.
+          </TextListItem>
+        </TextList>
+
+        <TertiaryHeading>Use Partition Pruning</TertiaryHeading>
+        <TextList>
+          <TextListItem>
+            Always filter on partition keys in <Strong>WHERE</Strong>{" "}
+            clauses.
+          </TextListItem>
+          <TextListItem>
+            Use <Strong>LIMIT</Strong> when exploring data.
+          </TextListItem>
+          <TextListItem>
+            Join smaller datasets first in complex queries.
+          </TextListItem>
+        </TextList>
+
+        <TertiaryHeading>Optimise Data Layout</TertiaryHeading>
+        <TextList>
+          <TextListItem>
+            Avoid <Strong>very small files</Strong> as they increase
+            overhead during query planning and execution.
+          </TextListItem>
+          <TextListItem>
+            Aim for file sizes in the{" "}
+            <Strong>128 MB - 1 GB</Strong> range.
+          </TextListItem>
+        </TextList>
+
+        <SubSectionHeading>Federated Query</SubSectionHeading>
+        <Paragraph>
+          <Strong>Federated queries</Strong> in Athena allow you to query
+          data across multiple data sources, not just Amazon S3. You can use
+          Athena as a single interface to analyze data stored in relational
+          databases, NoSQL stores and custom data sources, alongside data in S3.
+        </Paragraph>
+
+        <PostImage src={FederatedQueries} alt="Athena federated queries" />
+
+        <SubSectionHeading>How Federated Queries Work</SubSectionHeading>
+        <TextList>
+          <TextListItem>
+            <Strong>Connectors</Strong>: Athena uses data source
+            connectors (running as Lambda functions) to interact with external
+            systems.
+          </TextListItem>
+          <TextListItem>
+            <Strong>SQL interface</Strong>: you write SQL queries in
+            Athena as normal; behind the scenes, Athena invokes connectors to
+            fetch and process data from the external sources.
+          </TextListItem>
+        </TextList>
+
+        <SubSectionHeading>Benefits of Federated Queries</SubSectionHeading>
+        <TextList>
+          <TextListItem>
+            <Strong>Unified analytics</Strong>: analyze data across
+            disparate systems without copying everything into S3 first.
+          </TextListItem>
+          <TextListItem>
+            <Strong>Simplified data access</Strong>: a single SQL
+            interface for multiple data sources.
+          </TextListItem>
+        </TextList>
+
+        <SubSectionHeading>Limitations</SubSectionHeading>
+        <TextList>
+          <TextListItem>
+            Higher latency compared to querying data stored directly in S3.
+          </TextListItem>
+          <TextListItem>
+            Not all SQL functions or operations are supported equally across
+            all connectors.
+          </TextListItem>
+          <TextListItem>
+            Permissions on the underlying data sources must be managed
+            carefully.
+          </TextListItem>
+        </TextList>
+
+        <SectionHeading id="aws-redshift">Redshift</SectionHeading>
+        <Paragraph>
+          <Strong>Amazon Redshift</Strong> is a fully managed,
+          petabyte-scale cloud data warehouse. It’s designed to make it simple
+          and cost-effective to analyze large volumes of data using standard
+          SQL and existing BI tools.
+        </Paragraph>
+        <TextList>
+          <TextListItem>
+            Uses <Strong>columnar storage</Strong>,{" "}
+            <Strong>data compression</Strong> and{" "}
+            <Strong>zone maps</Strong> to minimise I/O.
+          </TextListItem>
+          <TextListItem>
+            Leverages a <Strong>Massively Parallel Processing (MPP)</Strong>{" "}
+            architecture to split workloads across multiple nodes.
+          </TextListItem>
+          <TextListItem>
+            Supports optimisations like <Strong>materialized views</Strong>{" "}
+            and <Strong>result caching</Strong> for faster performance.
+          </TextListItem>
+        </TextList>
+
+        <SubSectionHeading>Scalability</SubSectionHeading>
+        <TextList>
+          <TextListItem>
+            <Strong>Provisioned</Strong>: scale clusters vertically (change
+            node types) or horizontally (add/remove nodes).
+          </TextListItem>
+          <TextListItem>
+            <Strong>Serverless</Strong>: resources are provisioned
+            automatically based on workload; great for unpredictable or spiky
+            usage.
+          </TextListItem>
+        </TextList>
+
+        <SubSectionHeading>Redshift Cluster Architecture</SubSectionHeading>
+        <Paragraph>
+          A Redshift cluster consists of a{" "}
+          <Strong>leader node</Strong> and one or more{" "}
+          <Strong>compute nodes</Strong>. The leader node coordinates query
+          execution and manages metadata, while compute nodes perform the heavy
+          lifting and return intermediate results to the leader.
+        </Paragraph>
+        <PostImage src={RedshiftCluster} alt="Redshift cluster architecture" />
+
+        <SubSectionHeading>Snapshots and Disaster Recovery</SubSectionHeading>
+        <Paragraph>
+          <Strong>Snapshots</Strong> are backups of your Redshift cluster
+          stored in S3. They can be:
+        </Paragraph>
+        <TextList>
+          <TextListItem>
+            <Strong>Automated snapshots</Strong>: created automatically
+            according to a retention period (default 1 day, up to 35 days).
+          </TextListItem>
+          <TextListItem>
+            <Strong>Manual snapshots</Strong>: created explicitly and
+            retained until deleted.
+          </TextListItem>
+        </TextList>
+        <Paragraph>
+          Snapshots are <Strong>incremental</Strong> (only changes since the
+          last snapshot are stored) and can be copied to other regions for
+          disaster recovery.
+        </Paragraph>
+        <PostImage src={RedshiftSnapshot} alt="Redshift snapshot model" />
+
+        <SubSectionHeading>Redshift Spectrum</SubSectionHeading>
+        <Paragraph>
+          <Strong>Redshift Spectrum</Strong> allows you to run SQL queries
+          directly against exabytes of data in S3 without loading it into
+          Redshift tables. Queries are initiated by the Redshift cluster but
+          executed by a fleet of Spectrum nodes that read from S3.
+        </Paragraph>
+        <PostImage src={RedshiftSpectrum} alt="Redshift Spectrum" />
+
+        <SectionHeading id="aws-opensearch">OpenSearch</SectionHeading>
+        <Paragraph>
+          <Strong>AWS OpenSearch Service</Strong> (formerly Amazon
+          Elasticsearch Service) is a fully managed service for deploying and
+          operating OpenSearch clusters. It’s ideal for search, log analytics
+          and observability use cases.
+        </Paragraph>
+        <Paragraph>Here are some common patterns combining OpenSearch with other AWS services:</Paragraph>
+
+        <SubSectionHeading>DynamoDB + OpenSearch Pattern</SubSectionHeading>
+        <Paragraph>
+          Use DynamoDB as your system of record, and OpenSearch as your search
+          engine. For example:
+        </Paragraph>
+        <TextList>
+          <TextListItem>
+            Application writes items to <Strong>DynamoDB</Strong>.
+          </TextListItem>
+          <TextListItem>
+            A stream / Lambda pipeline indexes those items in{" "}
+            <Strong>OpenSearch</Strong> for rich search (full-text, partial
+            matching).
+          </TextListItem>
+          <TextListItem>
+            The application first queries OpenSearch to find relevant IDs, then
+            fetches the full item from DynamoDB.
+          </TextListItem>
+        </TextList>
+        <PostImage
+          src={OpenSearchDynamoDB}
+          alt="OpenSearch and DynamoDB design pattern"
+        />
+
+        <SubSectionHeading>CloudWatch Logs + OpenSearch Pattern</SubSectionHeading>
+        <Paragraph>
+          A common pattern for log analytics is to ship CloudWatch Logs to
+          OpenSearch:
+        </Paragraph>
+        <TextList>
+          <TextListItem>
+            CloudWatch Logs use a <Strong>subscription filter</Strong> to send
+            data in near real time.
+          </TextListItem>
+          <TextListItem>
+            An AWS-managed <Strong>Lambda</Strong> or{" "}
+            <Strong>Kinesis Data Firehose</Strong> stream transforms and ships
+            the data to OpenSearch.
+          </TextListItem>
+        </TextList>
+        <PostImage
+          src={OpenSearchCloudWatch}
+          alt="OpenSearch and CloudWatch Logs pattern"
+        />
+
+        <SubSectionHeading>Kinesis + OpenSearch Pattern</SubSectionHeading>
+        <Paragraph>
+          To send streaming data into OpenSearch, you can:
+        </Paragraph>
+        <TextList>
+          <TextListItem>
+            Use <Strong>Kinesis Data Firehose</Strong> for near real-time
+            delivery, with optional Lambda transformations, or
+          </TextListItem>
+          <TextListItem>
+            Use <Strong>Kinesis Data Streams</Strong> with a Lambda
+            consumer that writes directly to OpenSearch.
+          </TextListItem>
+        </TextList>
+        <PostImage
+          src={OpenSearchKinesis}
+          alt="OpenSearch with Kinesis design pattern"
+        />
+
+        <SectionHeading id="aws-emr">EMR (Elastic MapReduce)</SectionHeading>
+        <Paragraph>
+          <Strong>Amazon EMR</Strong> is a managed big data platform used
+          to process large amounts of data using distributed frameworks like{" "}
+          <Strong>Apache Hadoop</Strong>, <Strong>Apache Spark</Strong>,
+          and more. It runs clusters of EC2 instances and simplifies
+          provisioning, scaling and tuning.
+        </Paragraph>
+
+        <SubSectionHeading>Node Types in EMR</SubSectionHeading>
+        <TextList>
+          <TextListItem>
+            <Strong>Master node</Strong>: manages the cluster, coordinates
+            tasks and monitors health.
+          </TextListItem>
+          <TextListItem>
+            <Strong>Core nodes</Strong>: run tasks and store data in{" "}
+            <Strong>HDFS</Strong>.
+          </TextListItem>
+          <TextListItem>
+            <Strong>Task nodes</Strong>: run tasks only, no persistent HDFS
+            storage.
+          </TextListItem>
+        </TextList>
+
+        <SubSectionHeading>Purchasing Options & Best Practices</SubSectionHeading>
+        <IndentedTextList>
+          <IndentedTextListItem>
+            <Strong>Master node</Strong>: use On-Demand or Reserved Instances
+            for stability (critical to cluster health).
+          </IndentedTextListItem>
+          <IndentedTextListItem>
+            <Strong>Core nodes</Strong>: typically Reserved Instances for
+            predictable, persistent workloads (Spot is possible with a
+            fault-tolerant design).
+          </IndentedTextListItem>
+          <IndentedTextListItem>
+            <Strong>Task nodes</Strong>: Spot Instances are ideal to reduce
+            cost for transient compute.
+          </IndentedTextListItem>
+        </IndentedTextList>
+
+        <SectionHeading id="aws-quicksight">QuickSight</SectionHeading>
+        <Paragraph>
+          <Strong>Amazon QuickSight</Strong> is a cloud-scale business
+          intelligence (BI) service. It connects to many data sources, allows
+          you to build interactive dashboards, and is fully managed with
+          enterprise features like security, global availability and built-in
+          redundancy.
+        </Paragraph>
+
+        <SubSectionHeading>QuickSight Integrations</SubSectionHeading>
+        <PostImage
+          src={QuickSightDataSources}
+          alt="QuickSight data sources and integrations"
+        />
+
+        <SubSectionHeading>Dashboards & Analysis</SubSectionHeading>
+        <Paragraph>
+          QuickSight uses <Strong>users</Strong> (standard) and{" "}
+          <Strong>groups</Strong> (enterprise) for access control. Data is
+          often imported into the in-memory <Strong>SPICE</Strong> engine for
+          very fast visual exploration. Dashboards are read-only views that you
+          can share with users and groups.
+        </Paragraph>
+        <PostImage
+          src={QuickSightDashboard}
+          alt="QuickSight dashboard example"
+        />
+
+        <SectionHeading id="aws-glue">Glue</SectionHeading>
+        <Paragraph>
+          <Strong>AWS Glue</Strong> is a serverless data integration
+          service used to discover, prepare, move and integrate data from
+          multiple sources for analytics, ML and application development. It
+          provides:
+        </Paragraph>
+        <TextList>
+          <TextListItem>Central metadata via the Glue Data Catalog</TextListItem>
+          <TextListItem>Visual and code-based ETL jobs</TextListItem>
+          <TextListItem>Job scheduling and workflow orchestration</TextListItem>
+        </TextList>
+        <PostImage src={Glue} alt="AWS Glue overview" />
+
+        <SectionHeading id="aws-lake-formation">Lake Formation</SectionHeading>
+        <Paragraph>
+          <Strong>AWS Lake Formation</Strong> is a managed service that
+          simplifies building and securing <Strong>data lakes</Strong> on AWS.
+          A data lake is a centralized repository for structured and
+          unstructured data at any scale.
+        </Paragraph>
+        <Paragraph>
+          Lake Formation helps automate data ingestion, cataloging, security
+          enforcement and fine-grained access control across analytics services
+          like Athena, Redshift and EMR.
+        </Paragraph>
+        <PostImage src={LakeFormation} alt="AWS Lake Formation overview" />
+
+        <SectionHeading id="references">References</SectionHeading>
+        <TextList>
+          <TextListItem>
+            <TextLink
+              href="https://docs.aws.amazon.com/athena/latest/ug/what-is.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              AWS Athena - User Guide
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://docs.aws.amazon.com/redshift/latest/dg/c_redshift.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Amazon Redshift - Database Developer Guide
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Amazon OpenSearch Service - Developer Guide
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Amazon EMR - Management Guide
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://docs.aws.amazon.com/quicksight/index.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Amazon QuickSight - Documentation
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              AWS Glue - Developer Guide
+            </TextLink>
+          </TextListItem>
+          <TextListItem>
+            <TextLink
+              href="https://docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              AWS Lake Formation - Developer Guide
+            </TextLink>
+          </TextListItem>
+        </TextList>
+      </PostContainer>
+    </PageWrapper>
   );
-}
+};
 
 export default AWSDataAnalytics;

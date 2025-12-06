@@ -12,8 +12,10 @@ const Container = styled.div`
   position: relative;
   width: 30%;
   margin: 25px 0;
+  transition: border-color 0.5s ease;
+  border: 2px solid transparent;
   ${props => props.hovered && css`
-    border: .5px solid ${({ theme }) => theme.text};
+    border-color:  ${({ theme }) => theme.text};
   `}
 
   ${props => props.disabled && css`
@@ -111,6 +113,7 @@ const StyledBorder = styled.div`
   border: 2px solid ${({ theme }) => theme.primary};
   :hover {
     background: ${({ theme }) => theme.primary};
+    border: 2px solid ${({ theme }) => theme.text};
     transition: background .5s;
   }
 `;

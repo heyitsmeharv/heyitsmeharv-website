@@ -112,15 +112,16 @@ const StyledPillButtonWrapper = styled.div`
 const StyledPillButton = styled.button`
   display: inline-block;
   padding: 10px 20px;
-  border: none;
   border-radius: 50px;
   background-color: ${props => props.colour}; 
   text-align: center;
   font-size: 1.5rem;
   margin: 10px;
+  transition: border-color 0.5s ease;
+  border: 2px solid transparent;
   :hover {
     cursor: pointer;
-    border: .5px solid ${({ theme }) => theme.text};
+    border-color:  ${({ theme }) => theme.text};
   }
 
   ${props => props.active && css`
@@ -200,18 +201,18 @@ export default function Blog() {
     },
   ]);
   const [blogPosts, setBlogPosts] = useState([
-    {
-      title: 'The Start',
-      readingTime: 'less than 1 minute',
-      type: 'Retrospective',
-      date: '05/04/2023',
-      tags: [{ name: 'Misc', background: '#23262E' }],
-      intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
-            The purpose of this blog is just to document my personal journey learning cool tech,
-            if only to cement my own understanding and potentially help people with similar interests...`,
-      navigate: 'the-start',
-      published: true
-    },
+    // {
+    //   title: 'The Start',
+    //   readingTime: 'less than 1 minute',
+    //   type: '',
+    //   date: '05/04/2023',
+    //   tags: [{ name: 'Misc', background: '#23262E' }],
+    //   intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
+    //         The purpose of this blog is just to document my personal journey learning cool tech,
+    //         if only to cement my own understanding and potentially help people with similar interests...`,
+    //   navigate: 'the-start',
+    //   published: true
+    // },
     {
       title: 'JavaScript Arrays',
       readingTime: 'approx 10 minutes',
@@ -243,8 +244,7 @@ export default function Blog() {
       date: '26/10/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
-      this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics 
-      if you're not familiar...`,
+      this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics...`,
       navigate: 'aws-identity-access-management',
       published: true
     },
@@ -310,7 +310,7 @@ export default function Blog() {
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
       intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
-      distributed systems, and serverless applications. When we start deploying multiple applications, they will inevitably need to communicate with one another...`,
+      distributed systems, and serverless applications. When we start deploying multiple applications, they will...`,
       navigate: 'aws-sqs',
       published: true
     },
@@ -439,18 +439,18 @@ export default function Blog() {
   ]);
 
   const defaultArr = [
-    {
-      title: 'The Start',
-      readingTime: 'less than 1 minute',
-      type: 'Retrospective',
-      date: '05/04/2023',
-      tags: [{ name: 'Misc', background: '#23262E' }],
-      intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
-            The purpose of this blog is just to document my personal journey learning cool tech,
-            if only to cement my own understanding and potentially help people with similar interests...`,
-      navigate: 'the-start',
-      published: true
-    },
+    // {
+    //   title: 'The Start',
+    //   readingTime: 'less than 1 minute',
+    //   type: '',
+    //   date: '05/04/2023',
+    //   tags: [{ name: 'Misc', background: '#23262E' }],
+    //   intro: `For a long time I've wanted to write a blog about technologies I'm interested in.
+    //         The purpose of this blog is just to document my personal journey learning cool tech,
+    //         if only to cement my own understanding and potentially help people with similar interests...`,
+    //   navigate: 'the-start',
+    //   published: true
+    // },
     {
       title: 'JavaScript Arrays',
       readingTime: 'approx 10 minutes',
@@ -482,8 +482,7 @@ export default function Blog() {
       date: '26/10/2023',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
-      this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics 
-      if you're not familiar...`,
+      this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics...`,
       navigate: 'aws-identity-access-management',
       published: true
     },
@@ -549,7 +548,7 @@ export default function Blog() {
       date: '05/08/2024',
       tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
       intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
-      distributed systems, and serverless applications. When we start deploying multiple applications, they will inevitably need to communicate with one another...`,
+      distributed systems, and serverless applications. When we start deploying multiple applications, they will...`,
       navigate: 'aws-sqs',
       published: true
     },

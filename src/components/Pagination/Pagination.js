@@ -34,15 +34,17 @@ const PaginationButton = styled(motion.button)`
   background: none;
   outline: none;
   padding: 6px 0px;
-  border: 2px solid ${({ theme }) => theme.secondary};
   margin: 0 10px;
   width: 50px;
   height: 30px;
   text-align: center;
   color: ${({ theme }) => theme.text};
   text-decoration: ${props => props.isActive ? 'underline' : 'none'};
+  transition: border-color 0.5s ease;
+  border: 2px solid transparent;
   :hover {
     cursor: pointer;
+    border-color:  ${({ theme }) => theme.text};
   }
   ${props => props.active && css`
     background: ${({ theme }) => theme.secondary};
