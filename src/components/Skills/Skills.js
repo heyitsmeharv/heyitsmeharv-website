@@ -10,7 +10,7 @@ import { skillsText, skillsListText } from "../../helpers/text";
 
 // icons
 import {
-  AWSSVG,
+  AWSWhiteBackgroundSVG,
   GraphqlSVG,
   ReactjsSVG,
   ExpressSVG,
@@ -23,7 +23,7 @@ import {
   TwilioSVG,
   WebpackSVG,
   DockerSVG,
-  GithubSVG,
+  GitHubSVG,
   GitSVG,
   SassSVG,
   StyledComponentsSVG,
@@ -175,7 +175,7 @@ const Skills = ({ language }) => {
       tag: ["all", "language"]
     },
     {
-      icon: <AWSSVG />,
+      icon: <AWSWhiteBackgroundSVG />,
       title: "AWS",
       tag: ["all", "misc"]
     },
@@ -245,7 +245,7 @@ const Skills = ({ language }) => {
       tag: ["all", "misc"]
     },
     {
-      icon: <GithubSVG />,
+      icon: <GitHubSVG />,
       title: "GitHub",
       tag: ["all", "misc"]
     },

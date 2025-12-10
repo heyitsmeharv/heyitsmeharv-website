@@ -8,12 +8,12 @@ import { Analytics } from "../helpers/analytics";
 import Pagination from "../components/Pagination/Pagination";
 
 // icons
-import { StyledClose } from '../resources/styles/icons';
+import { DockerSVG, StyledClose } from '../resources/styles/icons';
 import { Search } from '@styled-icons/ionicons-solid/Search'
 import {
   JavascriptSVG,
   ReactjsSVG,
-  AWSSVG,
+  AWSWhiteBackgroundSVG,
   AWSIAMSVG,
   AWSOrganisationsSVG,
   AWSControlTowerSVG,
@@ -63,7 +63,9 @@ import {
   AWSInspectorSVG,
   AWSMacieSVG,
   BashSVG,
-  DevOpsSVG
+  DevOpsSVG,
+  GitHubSVG,
+  KubernetesSVG
 } from '../resources/styles/icons';
 
 const SearchBarWrapper = styled.div`
@@ -242,7 +244,7 @@ export default function Blog() {
       readingTime: 'approx 8 minutes',
       type: 'Study',
       date: '26/10/2023',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
       this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics...`,
       navigate: 'aws-identity-access-management',
@@ -253,7 +255,7 @@ export default function Blog() {
       readingTime: 'approx 25 minutes',
       type: 'Study',
       date: '02/11/2023',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
       intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). 
       In short EC2 is a virtual service in the AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be handy...`,
       navigate: 'aws-elastic-compute-cloud',
@@ -264,7 +266,7 @@ export default function Blog() {
       readingTime: 'approx 20 minutes',
       type: 'Study',
       date: '20/12/2023',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
       intro: `This service allows you to create a database in the cloud. You can choose from the following: Microsoft SQL Server, MySQL, Postgres, MariaDB, Oracle,
       This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services such as...`,
       navigate: 'aws-databases',
@@ -275,7 +277,7 @@ export default function Blog() {
       readingTime: 'approx 16 minutes',
       type: 'Study',
       date: '24/05/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
       intro: `Amazon Route 53 is a scalable and highly available Domain Name System (DNS). It is designed to route end-user requests to internet applications hosted on AWS infrastructure,
       as well as external resources. Overall, Amazon Route 53 is a robust solution for DNS management...`,
       navigate: 'aws-route53',
@@ -286,7 +288,7 @@ export default function Blog() {
       readingTime: 'approx 25 mins',
       type: 'Study',
       date: '28/05/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }, { name: 'Snow', background: '#FF9900', icon: <AWSSnowSVG /> }, { name: 'FSX', background: '#FF9900', icon: <AWSFSXSVG /> }, { name: 'Storage Gateway', background: '#FF9900', icon: <AWSStorageGatewaySVG /> }, { name: 'Transfer Family', background: '#FF9900', icon: <AWSTransferFamilySVG /> }, { name: 'Data Sync', background: '#FF9900', icon: <AWSDataSyncSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }, { name: 'Snow', background: '#FF9900', icon: <AWSSnowSVG /> }, { name: 'FSX', background: '#FF9900', icon: <AWSFSXSVG /> }, { name: 'Storage Gateway', background: '#FF9900', icon: <AWSStorageGatewaySVG /> }, { name: 'Transfer Family', background: '#FF9900', icon: <AWSTransferFamilySVG /> }, { name: 'Data Sync', background: '#FF9900', icon: <AWSDataSyncSVG /> }],
       intro: `Amazon Simple Storage Service (Amazon S3) is a highly scalable, durable, and secure object storage service. Amazon S3 is widely used across industries for its reliability,
       scalability, and security, making it a foundational service for storing and managing data in the cloud...`,
       navigate: 'aws-s3',
@@ -297,7 +299,7 @@ export default function Blog() {
       readingTime: 'approx 7 mins',
       type: 'Study',
       date: '24/07/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
       intro: `Amazon CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds. 
       CloudFront integrates with other AWS services to give developers and businesses...`,
       navigate: 'aws-cloudfront',
@@ -308,7 +310,7 @@ export default function Blog() {
       readingTime: 'approx 5 mins',
       type: 'Study',
       date: '05/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
       intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
       distributed systems, and serverless applications. When we start deploying multiple applications, they will...`,
       navigate: 'aws-sqs',
@@ -319,7 +321,7 @@ export default function Blog() {
       readingTime: 'approx 4 mins',
       type: 'Study',
       date: '06/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Notification Service', background: '#FF9900', icon: <AWSSNSSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Simple Notification Service', background: '#FF9900', icon: <AWSSNSSVG /> }],
       intro: `Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. 
       What if you wanted to send one message to many endpoints? Instead of having a direct integration with each endpoint/service...`,
       navigate: 'aws-sns',
@@ -330,7 +332,7 @@ export default function Blog() {
       readingTime: 'approx 6 mins',
       type: 'Study',
       date: '28/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
       intro: `Amazon Kinesis is designed to handle real-time data streaming and processing. It allows you to collect, process, and analyze large streams of data in real-time, making it ideal for use cases that require 
       immediate insights or actions based on incoming data. Here's an overview of the main components and features of Amazon Kinesis...`,
       navigate: 'aws-kinesis',
@@ -341,7 +343,7 @@ export default function Blog() {
       readingTime: 'approx 10 mins',
       type: 'Study',
       date: '06/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
       intro: `Docker is an open-source platform designed to automate the deployment, scaling, and management of applications within lightweight, portable containers. Containers package an application with all its dependencies 
       (libraries, binaries, etc.), ensuring that it runs consistently across different environments. Apps are packed in containers that can be run on any OS...`,
       navigate: 'aws-containers',
@@ -352,7 +354,7 @@ export default function Blog() {
       readingTime: 'approx 30 mins',
       type: 'Study',
       date: '11/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
       intro: `A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources, such as EC2 instances, within a virtual network that you define. A VPC allows you to 
       customize your network environment, including selecting your own IP address range, creating subnets, configuring route tables, and setting up gateways...`,
       navigate: 'aws-vpc',
@@ -363,7 +365,7 @@ export default function Blog() {
       readingTime: 'approx 8 mins',
       type: 'Study',
       date: '04/09/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG /> }],
       intro: `AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL. It is designed for simplicity and cost-efficiency, 
       making it a popular choice for data analytics. Athena supports formats including CSV, JSON, ORC, Avro and Parquet...`,
       navigate: 'aws-data-analytics',
@@ -374,7 +376,7 @@ export default function Blog() {
       readingTime: 'approx 6 mins',
       type: 'Study',
       date: '12/01/2025',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Lambda', background: '#FF9900', icon: <AWSLambdaSVG /> }, { name: 'API Gateway', background: '#FF9900', icon: <AWSAPIGatewaySVG /> }, { name: 'Step Functions', background: '#FF9900', icon: <AWSStepFunctionsSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Lambda', background: '#FF9900', icon: <AWSLambdaSVG /> }, { name: 'API Gateway', background: '#FF9900', icon: <AWSAPIGatewaySVG /> }, { name: 'Step Functions', background: '#FF9900', icon: <AWSStepFunctionsSVG /> }],
       intro: `Before we explore any AWS services that are classed as serverless, let's first outline what constitutes as 'Serverless'. Serverless was a term that was pioneered by AWS Lambda but now includes anything that's managed: databases, messaging, storage, etc. Serverless
       doesn't mean there are no servers, it means you don't have to manage, provision, or see them...`,
       navigate: 'aws-serverless',
@@ -385,7 +387,7 @@ export default function Blog() {
       readingTime: 'approx 5 mins',
       type: 'Study',
       date: '15/01/2025',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Rekognition', background: '#FF9900', icon: <AWSRegoknitionSVG /> }, { name: 'Polly', background: '#FF9900', icon: <AWSPollySVG /> }, { name: 'Lex', background: '#FF9900', icon: <AWSLexSVG /> }, { name: 'Comprehend', background: '#FF9900', icon: <AWSComprehendSVG /> }, { name: 'SageMaker', background: '#FF9900', icon: <AWSSageMakerSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Rekognition', background: '#FF9900', icon: <AWSRegoknitionSVG /> }, { name: 'Polly', background: '#FF9900', icon: <AWSPollySVG /> }, { name: 'Lex', background: '#FF9900', icon: <AWSLexSVG /> }, { name: 'Comprehend', background: '#FF9900', icon: <AWSComprehendSVG /> }, { name: 'SageMaker', background: '#FF9900', icon: <AWSSageMakerSVG /> }],
       intro: `
       Amazon Rekognition is a cloud-based image and video analysis service that makes it easy to add advanced computer vision capabilities to your applications. Amazon Rekognition includes a simple, easy-to-use API that can quickly analyze 
       any image or video file that’s stored in Amazon S3...`,
@@ -397,7 +399,7 @@ export default function Blog() {
       readingTime: 'approx 8 mins',
       type: 'Study',
       date: '17/01/2025',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudWatch', background: '#FF9900', icon: <AWSCloudWatchSVG /> }, { name: 'CloudTrail', background: '#FF9900', icon: <AWSCloudTrailSVG /> }, { name: 'Config', background: '#FF9900', icon: <AWSConfigSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'CloudWatch', background: '#FF9900', icon: <AWSCloudWatchSVG /> }, { name: 'CloudTrail', background: '#FF9900', icon: <AWSCloudTrailSVG /> }, { name: 'Config', background: '#FF9900', icon: <AWSConfigSVG /> }],
       intro: `Amazon CloudWatch is a monitoring and observability service provided by AWS that collects and tracks metrics, monitors logs, and generates alerts for your applications and infrastructure. 
       It enables you to gain actionable insights into system performance, optimize resource utilization, and troubleshoot operational issues in real time...`,
       navigate: 'aws-monitoring-audit',
@@ -408,7 +410,7 @@ export default function Blog() {
       readingTime: 'approx 10 mins',
       type: 'Study',
       date: '03/02/2025',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'KMS', background: '#FF9900', icon: <AWSKMSSVG /> }, { name: 'SSM', background: '#FF9900', icon: <AWSSSMSVG /> }, { name: 'Secrets Manager', background: '#FF9900', icon: <AWSSecretsManagerSVG /> }, { name: 'ACM', background: '#FF9900', icon: <AWSCertificateManagerSVG /> }, { name: 'Sheild', background: '#FF9900', icon: <AWSShieldSVG /> }, { name: 'Firewall', background: '#FF9900', icon: <AWSFirewallSVG /> }, { name: 'WAF', background: '#FF9900', icon: <AWSWAFSVG /> }, { name: 'Inspector', background: '#FF9900', icon: <AWSInspectorSVG /> }, { name: 'Macie', background: '#FF9900', icon: <AWSMacieSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'KMS', background: '#FF9900', icon: <AWSKMSSVG /> }, { name: 'SSM', background: '#FF9900', icon: <AWSSSMSVG /> }, { name: 'Secrets Manager', background: '#FF9900', icon: <AWSSecretsManagerSVG /> }, { name: 'ACM', background: '#FF9900', icon: <AWSCertificateManagerSVG /> }, { name: 'Sheild', background: '#FF9900', icon: <AWSShieldSVG /> }, { name: 'Firewall', background: '#FF9900', icon: <AWSFirewallSVG /> }, { name: 'WAF', background: '#FF9900', icon: <AWSWAFSVG /> }, { name: 'Inspector', background: '#FF9900', icon: <AWSInspectorSVG /> }, { name: 'Macie', background: '#FF9900', icon: <AWSMacieSVG /> }],
       intro: `Encryption is necessary to protect sensitive information being sent or received over a network from being hijacked or leaked. The information (data)
       is encrypted before sending and decrypting after receiving...`,
       navigate: 'aws-security-encryption',
@@ -435,6 +437,28 @@ export default function Blog() {
       It's intimidating at first, but once you realise how much power sits behind a few keystrokes it's addictive. In this post...`,
       navigate: 'getting-started-with-bash-scripting',
       published: true
+    },
+    {
+      title: 'GitHub CI/CD',
+      readingTime: 'N/A',
+      type: 'Practical',
+      date: '10/12/2025',
+      tags: [{ name: 'DevOps', background: '#8B191D', icon: <DevOpsSVG /> }, { name: 'GitHub', background: '#000', icon: <GitHubSVG /> }],
+      intro: `GitHub Actions has quietly become one of the most powerful tools in a modern developer's toolkit. It's where your tests run, your Docker images build, your infrastructure deploys, and 
+      your app quietly rolls out to production while you're making coffee...`,
+      navigate: 'github-ci-cd',
+      published: false
+    },
+    {
+      title: 'Introduction to Docker and Kubernetes',
+      readingTime: 'N/A',
+      type: 'Practical',
+      date: '10/12/2025',
+      tags: [{ name: 'DevOps', background: '#8B191D', icon: <DevOpsSVG /> }, { name: 'Docker', background: '#D3ECEC', icon: <DockerSVG /> }],
+      intro: `Docker and Kubernetes can sometimes feel intimidating - a world full of clusters, orchestrators, containers, pods, and YAML files. But when you peel back the layers, the story they tell is 
+      actually quite simple: build your software once, run it consistently everywhere, and scale it effortlessly...`,
+      navigate: 'intro-to-docker-kubernetes',
+      published: false
     }
   ]);
 
@@ -480,7 +504,7 @@ export default function Blog() {
       readingTime: 'approx 8 minutes',
       type: 'Study',
       date: '26/10/2023',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSIAMSVG /> }, { name: 'Organisations', background: '#FF9900', icon: <AWSOrganisationsSVG /> }, { name: 'Control Tower', background: '#FF9900', icon: <AWSControlTowerSVG /> }],
       intro: `This is the first of my AWS series blog posts where I'll be going through the Identity and Access Management Service, also known as IAM. I'm hoping 
       this will serve at least somewhat of a refresher or a quick reference guide for those familiar with the IAM service; if not getting to grips with the basics...`,
       navigate: 'aws-identity-access-management',
@@ -491,7 +515,7 @@ export default function Blog() {
       readingTime: 'approx 25 minutes',
       type: 'Study',
       date: '02/11/2023',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'IAM', background: '#FF9900', icon: <AWSEC2SVG /> }],
       intro: `In this blog post we'll be going through the Elastic Compute Cloud service, also known as EC2 which can be defined as an infrastructure as a Service (IaaS). 
       In short EC2 is a virtual service in the AWS cloud. Why would you need this? Well, any time you need to compute a task this service will be handy...`,
       navigate: 'aws-elastic-compute-cloud',
@@ -502,7 +526,7 @@ export default function Blog() {
       readingTime: 'approx 20 minutes',
       type: 'Study',
       date: '20/12/2023',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'RDS', background: '#FF9900', icon: <AWSRDSSVG /> }],
       intro: `This service allows you to create a database in the cloud. You can choose from the following: Microsoft SQL Server, MySQL, Postgres, MariaDB, Oracle,
       This service is managed by AWS which means you won't be able to SSH into the instance but you do benefit from a list of services such as...`,
       navigate: 'aws-databases',
@@ -513,7 +537,7 @@ export default function Blog() {
       readingTime: 'approx 16 minutes',
       type: 'Study',
       date: '24/05/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Route53', background: '#FF9900', icon: <AWSRoute53SVG /> }],
       intro: `Amazon Route 53 is a scalable and highly available Domain Name System (DNS). It is designed to route end-user requests to internet applications hosted on AWS infrastructure,
       as well as external resources. Overall, Amazon Route 53 is a robust solution for DNS management...`,
       navigate: 'aws-route53',
@@ -524,7 +548,7 @@ export default function Blog() {
       readingTime: 'approx 25 mins',
       type: 'Study',
       date: '28/05/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }, { name: 'Snow', background: '#FF9900', icon: <AWSSnowSVG /> }, { name: 'FSX', background: '#FF9900', icon: <AWSFSXSVG /> }, { name: 'Storage Gateway', background: '#FF9900', icon: <AWSStorageGatewaySVG /> }, { name: 'Transfer Family', background: '#FF9900', icon: <AWSTransferFamilySVG /> }, { name: 'Data Sync', background: '#FF9900', icon: <AWSDataSyncSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'S3', background: '#FF9900', icon: <AWSS3SVG /> }, { name: 'Snow', background: '#FF9900', icon: <AWSSnowSVG /> }, { name: 'FSX', background: '#FF9900', icon: <AWSFSXSVG /> }, { name: 'Storage Gateway', background: '#FF9900', icon: <AWSStorageGatewaySVG /> }, { name: 'Transfer Family', background: '#FF9900', icon: <AWSTransferFamilySVG /> }, { name: 'Data Sync', background: '#FF9900', icon: <AWSDataSyncSVG /> }],
       intro: `Amazon Simple Storage Service (Amazon S3) is a highly scalable, durable, and secure object storage service. Amazon S3 is widely used across industries for its reliability,
       scalability, and security, making it a foundational service for storing and managing data in the cloud...`,
       navigate: 'aws-s3',
@@ -535,7 +559,7 @@ export default function Blog() {
       readingTime: 'approx 7 mins',
       type: 'Study',
       date: '24/07/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'CloudFront', background: '#FF9900', icon: <AWSCloudfrontSVG /> }],
       intro: `Amazon CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds. 
       CloudFront integrates with other AWS services to give developers and businesses...`,
       navigate: 'aws-cloudfront',
@@ -546,7 +570,7 @@ export default function Blog() {
       readingTime: 'approx 5 mins',
       type: 'Study',
       date: '05/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Simple Queue Service', background: '#FF9900', icon: <AWSSQSSVG /> }],
       intro: `Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service provided by Amazon Web Services (AWS). It enables the decoupling and scaling of microservices, 
       distributed systems, and serverless applications. When we start deploying multiple applications, they will...`,
       navigate: 'aws-sqs',
@@ -557,7 +581,7 @@ export default function Blog() {
       readingTime: 'approx 4 mins',
       type: 'Study',
       date: '06/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Simple Notification Service', background: '#FF9900', icon: <AWSSNSSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Simple Notification Service', background: '#FF9900', icon: <AWSSNSSVG /> }],
       intro: `Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service provided by Amazon Web Services (AWS) designed to send messages to a large number of subscribers or other services. 
       What if you wanted to send one message to many endpoints? Instead of having a direct integration with each endpoint/service...`,
       navigate: 'aws-sns',
@@ -568,7 +592,7 @@ export default function Blog() {
       readingTime: 'approx 6 mins',
       type: 'Study',
       date: '28/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Kinesis', background: '#FF9900', icon: <AWSKinesisSVG /> }],
       intro: `Amazon Kinesis is designed to handle real-time data streaming and processing. It allows you to collect, process, and analyze large streams of data in real-time, making it ideal for use cases that require 
       immediate insights or actions based on incoming data. Here's an overview of the main components and features of Amazon Kinesis...`,
       navigate: 'aws-kinesis',
@@ -579,7 +603,7 @@ export default function Blog() {
       readingTime: 'approx 10 mins',
       type: 'Study',
       date: '06/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Elastic Container Service', background: '#FF9900', icon: <AWSECSSVG /> }, { name: 'Elastic Kubernetes Service', background: '#FF9900', icon: <AWSEKSSVG /> }, { name: 'Fargate', background: '#FF9900', icon: <AWSFargateSVG /> }],
       intro: `Docker is an open-source platform designed to automate the deployment, scaling, and management of applications within lightweight, portable containers. Containers package an application with all its dependencies 
       (libraries, binaries, etc.), ensuring that it runs consistently across different environments. Apps are packed in containers that can be run on any OS...`,
       navigate: 'aws-containers',
@@ -590,7 +614,7 @@ export default function Blog() {
       readingTime: 'approx 30 mins',
       type: 'Study',
       date: '11/08/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Virtual Private Cloud', background: '#FF9900', icon: <AWSVPCSVG /> }],
       intro: `A Virtual Private Cloud (VPC) is a logically isolated section of the AWS cloud where you can launch AWS resources, such as EC2 instances, within a virtual network that you define. A VPC allows you to 
       customize your network environment, including selecting your own IP address range, creating subnets, configuring route tables, and setting up gateways...`,
       navigate: 'aws-vpc',
@@ -601,7 +625,7 @@ export default function Blog() {
       readingTime: 'approx 8 mins',
       type: 'Study',
       date: '04/09/2024',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Athena', background: '#FF9900', icon: <AWSAthenaSVG /> }, { name: 'Redshift', background: '#FF9900', icon: <AWSRedshiftSVG /> }, { name: 'Open Search', background: '#FF9900', icon: <AWSOpenSearchSVG /> }, { name: 'EMR', background: '#FF9900', icon: <AWSEMRSVG /> }, { name: 'QuickSight', background: '#FF9900', icon: <AWSQuickSightSVG /> }, { name: 'Glue', background: '#FF9900', icon: <AWSGlueSVG /> }, { name: 'LakeFormation', background: '#FF9900', icon: <AWSLakeFormationSVG /> }, { name: 'MSK', background: '#FF9900', icon: <AWSMSKSVG /> }],
       intro: `AWS Athena is a serverless interactive query service provided by Amazon Web Services that allows you to analyze data directly in Amazon S3 using standard SQL. It is designed for simplicity and cost-efficiency, 
       making it a popular choice for data analytics. Athena supports formats including CSV, JSON, ORC, Avro and Parquet...`,
       navigate: 'aws-data-analytics',
@@ -612,7 +636,7 @@ export default function Blog() {
       readingTime: 'approx 6 mins',
       type: 'Study',
       date: '12/01/2025',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Lambda', background: '#FF9900', icon: <AWSLambdaSVG /> }, { name: 'API Gateway', background: '#FF9900', icon: <AWSAPIGatewaySVG /> }, { name: 'Step Functions', background: '#FF9900', icon: <AWSStepFunctionsSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Lambda', background: '#FF9900', icon: <AWSLambdaSVG /> }, { name: 'API Gateway', background: '#FF9900', icon: <AWSAPIGatewaySVG /> }, { name: 'Step Functions', background: '#FF9900', icon: <AWSStepFunctionsSVG /> }],
       intro: `Before we explore any AWS services that are classed as serverless, let's first outline what constitutes as 'Serverless'. Serverless was a term that was pioneered by AWS Lambda but now includes anything that's managed: databases, messaging, storage, etc. Serverless
       doesn't mean there are no servers, it means you don't have to manage, provision, or see them...`,
       navigate: 'aws-serverless',
@@ -623,7 +647,7 @@ export default function Blog() {
       readingTime: 'approx 5 mins',
       type: 'Study',
       date: '15/01/2025',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'Rekognition', background: '#FF9900', icon: <AWSRegoknitionSVG /> }, { name: 'Polly', background: '#FF9900', icon: <AWSPollySVG /> }, { name: 'Lex', background: '#FF9900', icon: <AWSLexSVG /> }, { name: 'Comprehend', background: '#FF9900', icon: <AWSComprehendSVG /> }, { name: 'SageMaker', background: '#FF9900', icon: <AWSSageMakerSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'Rekognition', background: '#FF9900', icon: <AWSRegoknitionSVG /> }, { name: 'Polly', background: '#FF9900', icon: <AWSPollySVG /> }, { name: 'Lex', background: '#FF9900', icon: <AWSLexSVG /> }, { name: 'Comprehend', background: '#FF9900', icon: <AWSComprehendSVG /> }, { name: 'SageMaker', background: '#FF9900', icon: <AWSSageMakerSVG /> }],
       intro: `
       Amazon Rekognition is a cloud-based image and video analysis service that makes it easy to add advanced computer vision capabilities to your applications. Amazon Rekognition includes a simple, easy-to-use API that can quickly analyze 
       any image or video file that’s stored in Amazon S3...`,
@@ -635,7 +659,7 @@ export default function Blog() {
       readingTime: 'approx 8 mins',
       type: 'Study',
       date: '17/01/2025',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'CloudWatch', background: '#FF9900', icon: <AWSCloudWatchSVG /> }, { name: 'CloudTrail', background: '#FF9900', icon: <AWSCloudTrailSVG /> }, { name: 'Config', background: '#FF9900', icon: <AWSConfigSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'CloudWatch', background: '#FF9900', icon: <AWSCloudWatchSVG /> }, { name: 'CloudTrail', background: '#FF9900', icon: <AWSCloudTrailSVG /> }, { name: 'Config', background: '#FF9900', icon: <AWSConfigSVG /> }],
       intro: `Amazon CloudWatch is a monitoring and observability service provided by AWS that collects and tracks metrics, monitors logs, and generates alerts for your applications and infrastructure. 
       It enables you to gain actionable insights into system performance, optimize resource utilization, and troubleshoot operational issues in real time...`,
       navigate: 'aws-monitoring-audit',
@@ -646,7 +670,7 @@ export default function Blog() {
       readingTime: 'approx 10 mins',
       type: 'Study',
       date: '03/02/2025',
-      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSSVG /> }, { name: 'KMS', background: '#FF9900', icon: <AWSKMSSVG /> }, { name: 'SSM', background: '#FF9900', icon: <AWSSSMSVG /> }, { name: 'Secrets Manager', background: '#FF9900', icon: <AWSSecretsManagerSVG /> }, { name: 'ACM', background: '#FF9900', icon: <AWSCertificateManagerSVG /> }, { name: 'Sheild', background: '#FF9900', icon: <AWSShieldSVG /> }, { name: 'Firewall', background: '#FF9900', icon: <AWSFirewallSVG /> }, { name: 'WAF', background: '#FF9900', icon: <AWSWAFSVG /> }, { name: 'Inspector', background: '#FF9900', icon: <AWSInspectorSVG /> }, { name: 'Macie', background: '#FF9900', icon: <AWSMacieSVG /> }],
+      tags: [{ name: 'AWS', background: '#FF9900', icon: <AWSWhiteBackgroundSVG /> }, { name: 'KMS', background: '#FF9900', icon: <AWSKMSSVG /> }, { name: 'SSM', background: '#FF9900', icon: <AWSSSMSVG /> }, { name: 'Secrets Manager', background: '#FF9900', icon: <AWSSecretsManagerSVG /> }, { name: 'ACM', background: '#FF9900', icon: <AWSCertificateManagerSVG /> }, { name: 'Sheild', background: '#FF9900', icon: <AWSShieldSVG /> }, { name: 'Firewall', background: '#FF9900', icon: <AWSFirewallSVG /> }, { name: 'WAF', background: '#FF9900', icon: <AWSWAFSVG /> }, { name: 'Inspector', background: '#FF9900', icon: <AWSInspectorSVG /> }, { name: 'Macie', background: '#FF9900', icon: <AWSMacieSVG /> }],
       intro: `Encryption is necessary to protect sensitive information being sent or received over a network from being hijacked or leaked. The information (data)
       is encrypted before sending and decrypting after receiving...`,
       navigate: 'aws-security-encryption',
@@ -673,6 +697,28 @@ export default function Blog() {
       It's intimidating at first, but once you realise how much power sits behind a few keystrokes it's addictive. In this post...`,
       navigate: 'getting-started-with-bash-scripting',
       published: true
+    },
+    {
+      title: 'GitHub CI/CD',
+      readingTime: 'N/A',
+      type: 'Practical',
+      date: '10/12/2025',
+      tags: [{ name: 'DevOps', background: '#8B191D', icon: <DevOpsSVG /> }, { name: 'GitHub', background: '#000', icon: <GitHubSVG /> }],
+      intro: `GitHub Actions has quietly become one of the most powerful tools in a modern developer's toolkit. It's where your tests run, your Docker images build, your infrastructure deploys, and 
+      your app quietly rolls out to production while you're making coffee...`,
+      navigate: 'github-ci-cd',
+      published: false
+    },
+    {
+      title: 'Introduction to Docker and Kubernetes',
+      readingTime: 'N/A',
+      type: 'Practical',
+      date: '10/12/2025',
+      tags: [{ name: 'DevOps', background: '#8B191D', icon: <DevOpsSVG /> }, { name: 'Docker', background: '#D3ECEC', icon: <DockerSVG /> }, { name: 'Kubernetes', background: '#326DE6', icon: <KubernetesSVG /> }],
+      intro: `Docker and Kubernetes can sometimes feel intimidating - a world full of clusters, orchestrators, containers, pods, and YAML files. But when you peel back the layers, the story they tell is 
+      actually quite simple: build your software once, run it consistently everywhere, and scale it effortlessly...`,
+      navigate: 'intro-to-docker-kubernetes',
+      published: false
     }
   ];
 

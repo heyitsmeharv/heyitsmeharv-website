@@ -84,7 +84,6 @@ const JavaScriptArray = () => {
           </IconWrapper>
         </HeaderRow>
 
-        {/* Intro */}
         <Paragraph>
           Do you ever find yourself forgetting what helper methods would be best
           to manipulate your data? In this blog post, we'll cover the basics
@@ -153,7 +152,6 @@ const JavaScriptArray = () => {
           because we want the data to be more readable and understandable.
         </Paragraph>
 
-        {/* Helper Methods index */}
         <SectionHeading id="skip">Helper Methods</SectionHeading>
 
         <Paragraph>

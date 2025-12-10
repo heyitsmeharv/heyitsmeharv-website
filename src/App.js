@@ -53,6 +53,8 @@ import AWSMachineLearning from "./components/Posts/AWSMachineLearning";
 import AWSMonitoringAudit from "./components/Posts/AWSMonitoringAudit";
 import AWSSecurityEncryption from "./components/Posts/AWSSecurityEncryption";
 import BashScripting from "./components/Posts/BashScripting";
+import GitHubCICD from "./components/Posts/GitHubCICD";
+import DockerKubernetes from "./components/Posts/DockerKubernetes";
 
 const Wrapper = styled.div`
   display: flex;
@@ -156,6 +158,8 @@ const App = () => {
                         <Route exact path='/blog/aws-monitoring-audit' component={AWSMonitoringAudit} />
                         <Route exact path='/blog/aws-security-encryption' component={AWSSecurityEncryption} />
                         <Route exact path='/blog/getting-started-with-bash-scripting' component={BashScripting} />
+                        <Route exact path='/blog/github-ci-cd' component={GitHubCICD} />
+                        <Route exact path='/blog/intro-to-docker-kubernetes' component={DockerKubernetes} />
                         <Route component={NotFound} />
                       </Switch>
                     </TrackingGate>
